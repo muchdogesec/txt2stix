@@ -1,0 +1,8 @@
+====Good====
+
+something.example.local
+
+====Bad====
+
+example.local
+6.6.6.6

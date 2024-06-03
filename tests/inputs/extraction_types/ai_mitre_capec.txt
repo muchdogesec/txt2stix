@@ -1,0 +1,8 @@
+====Good====
+
+CAPEC-110
+Brute Force
+
+====Bad====
+
+CAPEC-999

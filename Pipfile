@@ -1,0 +1,23 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+langchain = {extras = ["openai"], version = "*"}
+langchain_openai = "*"
+openai = "*"
+stix2 = "*"
+phonenumbers = "*"
+python-arango = "*"
+pathvalidate = "*"
+tld = "*"
+tldextract = "*"
+validators = "*"
+schwifty = "*"
+requests = "*"
+python-dotenv = "*"
+stix4doge = {file = "https://github.com/muchdogesec/stix4doge/archive/main.zip"}
+
+[dev-packages]
+autopep8 = "*"

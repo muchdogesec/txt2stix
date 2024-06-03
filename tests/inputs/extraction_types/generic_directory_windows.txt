@@ -1,0 +1,15 @@
+====Good====
+
+\a\path
+a\path
+C:\Windows\System64
+..\Publications
+\\system07\C$
+\\.\C:\Test
+\\?\C:\Test\Foo
+%SYSTEM32%\Test\Foo
+
+====Bad====
+
+/is/unix/path
+\path\to\file.exe

@@ -1,0 +1,236 @@
+# ====== LOOKUP EXTRACTIONS =====
+
+####### MITRE ATT&CK #######
+
+lookup_mitre_attack_enterprise_id:
+  type: lookup
+  name: 'MITRE ATT&CK Enterprise IDs'
+  description: ''
+  notes: 'Uses lookup '
+  file: 'lookups/mitre_attack_enterprise_id.txt'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_mitre_attack_enterprise
+  ignore_extractions:
+    - 
+  stix_mapping: mitre-attack-enterprise-id
+
+lookup_mitre_attack_mobile_id:
+  type: lookup
+  name: 'MITRE ATT&CK Mobile IDs'
+  description: ''
+  notes: ''
+  file: 'lookups/mitre_attack_mobile_id.txt'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_mitre_attack_mobile
+  ignore_extractions:
+    - 
+  stix_mapping: mitre-attack-mobile-id
+
+lookup_mitre_attack_ics_id:
+  type: lookup
+  name: 'MITRE ATT&CK ICS IDs'
+  description: ''
+  file: 'lookups/mitre_attack_ics_id.txt'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_mitre_attack_ics
+  ignore_extractions:
+    - 
+  stix_mapping: mitre-attack-ics-id
+
+####### MITRE CAPEC #######
+
+lookup_mitre_capec_id:
+  type: lookup
+  name: 'MITRE CAPEC IDs'
+  description: ''
+  notes: ''
+  file: 'lookups/mitre_capec_id.txt'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_mitre_capec
+  ignore_extractions:
+    - 
+  stix_mapping: mitre-capec-id
+
+####### MITRE CWE #######
+
+lookup_mitre_cwe_id:
+  type: lookup
+  name: MITRE CWE IDs
+  description: ''
+  notes: ''
+  file: 'lookups/mitre_cwe_id.txt'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_mitre_cwe
+  ignore_extractions:
+    - 
+  stix_mapping: mitre-cwe-id
+
+####### County extractions #######
+
+lookup_country_alpha2:
+  type: lookup
+  name: 'Country Alpha2'
+  description: 'Extracts countries using ISO 3166-1 alpha2 codes'
+  notes: ''
+  file: 'lookups/country_iso3166_alpha2.txt'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_country_alpha2
+  ignore_extractions:
+    - 
+  stix_mapping: location
+
+####### Misc STIX Objects #######
+
+lookup_attack_pattern:
+  type: lookup
+  name: 'Attack Patterns'
+  description: ''
+  notes: ''
+  file: 'lookups/attack_pattern.txt'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: lookup_attack_pattern
+  ignore_extractions:
+    - 
+  stix_mapping: attack-pattern
+
+lookup_campaign:
+  type: lookup
+  name: 'Campaign'
+  description: ''
+  notes: ''
+  file: 'lookups/campaign.txt'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: lookup_campaign
+  ignore_extractions:
+    - 
+  stix_mapping: campaign
+
+lookup_course_of_action:
+  type: lookup
+  name: 'Course of Action'
+  description: ''
+  notes: ''
+  file: 'lookups/course_of_action.txt'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: lookup_course_of_action
+  ignore_extractions:
+    - 
+  stix_mapping: course-of-action
+
+lookup_identity:
+  type: lookup
+  name: 'Identity'
+  description: ''
+  notes: ''
+  file: 'lookups/identity.txt'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: lookup_identity
+  ignore_extractions:
+    - 
+  stix_mapping: identity
+  identity: lookups/identity.txt
+
+lookup_infrastructure:
+  type: lookup
+  name: 'Infrastructure'
+  description: ''
+  notes: ''
+  file: 'lookups/infrastructure.txt'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: lookup_infrastructure
+  ignore_extractions:
+    - 
+  stix_mapping: infrastructure
+
+lookup_intrusion_set:
+  type: lookup
+  name: 'Intrustion Set'
+  description: ''
+  notes: ''
+  file: 'lookups/intrusion_set.txt'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: lookup_intrusion_set
+  ignore_extractions:
+    - 
+  stix_mapping: intrusion-set
+
+lookup_malware:
+  type: lookup
+  name: 'Malware'
+  description: ''
+  notes: ''
+  file: 'lookups/malware.txt'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: lookup_malware
+  ignore_extractions:
+    - 
+  stix_mapping: malware
+
+lookup_threat_actor:
+  type: lookup
+  name: 'Threat Actor'
+  description: ''
+  notes: ''
+  file: 'lookups/threat_actor.txt'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: lookup_threat_actor
+  ignore_extractions:
+    - 
+  stix_mapping: threat-actor
+
+lookup_tool:
+  type: lookup
+  name: 'Tool'
+  description: ''
+  notes: ''
+  file: 'lookups/tool.txt'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: lookup_tool
+  ignore_extractions:
+    - 
+  stix_mapping: tool

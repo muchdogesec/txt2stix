@@ -1,0 +1,12 @@
+====Good====
+
+/a/file/path
+a/file/path
+~/documents
+../directory
+./downloads/directory
+
+====Bad====
+
+\a\path
+/a/file/path/file.sh

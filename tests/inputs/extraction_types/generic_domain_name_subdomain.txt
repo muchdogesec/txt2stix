@@ -1,0 +1,9 @@
+====Good====
+
+subdomain.microsoft.com
+deeper.subdomain.microsoft.com
+even.deeper.subdomain.microsoft.com
+
+====Bad====
+
+microsoft.com

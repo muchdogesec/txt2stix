@@ -1,0 +1,7 @@
+====Good====
+
+Exploit Protection
+
+====Bad====
+
+M0927

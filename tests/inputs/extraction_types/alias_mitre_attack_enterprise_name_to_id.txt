@@ -1,0 +1,7 @@
+====Good====
+
+Data Destruction Mitigation
+
+====Bad====
+
+T1044

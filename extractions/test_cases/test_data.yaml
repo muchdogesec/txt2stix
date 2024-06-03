@@ -1,0 +1,683 @@
+# ======= GENERIC EXTRACTIONS =======
+
+####### IPv4 extractions #######
+
+generic_ipv4_address_only:
+  test_positive_examples:
+    - '1.1.1.1'
+  test_negative_examples:
+    - '1.1.1.2:80' # is port
+    - '1.1.1.3/8' # is cidr
+    - '900.1.4.1' # bad format
+
+generic_ipv4_address_cidr:
+  test_positive_examples:
+    - '1.1.1.1/24'
+  test_negative_examples:
+    - '1.1.1.2'
+    - '1.1.1.3:80'
+    - '1.1.1.4/400000'
+
+generic_ipv4_address_port:
+  test_positive_examples:
+    - '1.1.1.1:80'
+  test_negative_examples:
+    - '1.1.1.2'
+    - '1.1.1.3/24'
+    - '1.1.1.4:400000'
+
+####### IPv6 extractions #######
+
+generic_ipv6_address_only:
+  test_positive_examples:
+    - '2001:0db8:85a3:0000:0000:8a2e:0370:7334'
+    - '2001:db8:3333:4444:5555:6666:7777:8888'
+    - '2001:db8:3333:4444:CCCC:DDDD:EEEE:FFFF'
+  test_negative_examples:
+    - '2001:db8::'
+    - '2001:db8::1234:5678'
+    - '2001:0db8:85a3:0000:0000:8a2e:0370:7335/32'
+    - '[2001:0db8:85a3:0000:0000:8a2e:0370:7336]:80'
+
+generic_ipv6_address_cidr:
+  test_positive_examples:
+    - '2001:0db8:85a3:0000:0000:8a2e:0370:7334/32'
+  test_negative_examples:
+    - '2001:0db8:85a3:0000:0000:8a2e:0370:7335'
+    - '2001:db8::/32'
+    - '[2001:0db8:85a3:0000:0000:8a2e:0370:7336]:80'
+    - '2001:0db8:85a3:0000:0000:8a2e:0370:7337/400000'
+
+generic_ipv6_address_port:
+  test_positive_examples:
+    - '[2001:0db8:85a3:0000:0000:8a2e:0370:7334]:80'
+  test_negative_examples:
+    - '2001:0db8:85a3:0000:0000:8a2e:0370:7335/32'
+    - '2001:0db8:85a3:0000:0000:8a2e:0370:7336'
+    - '[2001:0db8:85a3:0000:0000:8a2e:0370:7336]:400000'
+
+####### Domain name extractions #######
+
+generic_domain_name_only:
+  test_positive_examples:
+    - 'google.com'
+  test_negative_examples:
+    - 'subdomain.google.com' # is subdomain
+    - 'example.nottld' # invalid TLD
+
+generic_domain_name_subdomain:
+  test_positive_examples:
+    - 'subdomain.microsoft.com'
+    - 'deeper.subdomain.microsoft.com'
+    - 'even.deeper.subdomain.microsoft.com'
+  test_negative_examples:
+    - 'microsoft.com'
+
+####### URL extractions #######
+
+generic_url:
+  test_positive_examples:
+    - 'https://www.amazon.co.uk'
+    - 'http://3.3.3.3'
+    - 'https://fortinet.com/'
+  test_negative_examples:
+    - 'https://amazon.co.uk/path/index.html'
+    - 'http://3.3.3.3/path/'
+
+generic_url_file:
+  test_positive_examples:
+    - 'https://amazon.co.uk/path/index.html'
+    - 'http://3.3.3.3/path.exe'
+    - 'https://fortinet.com/blog.html'
+  test_negative_examples:
+    - 'http://3.3.3.3/path/'
+    - 'https://www.amazon.co.uk'
+    - 'https://www.fakedomain.co.uk/badfile.wtf'
+
+generic_url_path:
+  test_positive_examples:
+    - 'https://example.com/path/'
+    - 'http://3.3.3.3/path'
+    - 'https://fortinet.com/blog'
+  test_negative_examples:
+    - 'https://example.com/path/index.html'
+    - 'https://isbaseurl.com/'
+
+####### Hostname extractions #######
+
+generic_host_name:
+  test_positive_examples:
+    - 'example.nottld'
+    - 'example.local'
+  test_negative_examples:
+    - 'something.example.local' # is sub-host name
+    - '5.5.5.5'
+
+generic_host_name_subdomain:
+  test_positive_examples:
+    - 'something.example.local'
+  test_negative_examples:
+    - 'example.local'
+    - '6.6.6.6'
+
+generic_host_name_url:
+  test_positive_examples:
+    - 'http://example.nottld'
+    - 'https://example.local'
+    - 'https://www.another.faketld/'
+  test_negative_examples:
+    - 'example.nottld'
+    - 'http://example.nottld/path'
+    - 'http://example.nottld/file.exe'
+
+generic_host_name_file:
+  test_positive_examples:
+    - 'http://example.nottld/file.exe'
+  test_negative_examples:
+    - 'http://example.nottld'
+    - 'https://example.local/path'
+    - 'http://6.6.6.6'
+    - 'https://not.nottld/badfile.wtf'
+
+generic_host_name_path:
+  test_positive_examples:
+    - 'https://example.local/path'
+    - 'https://www.another.faketld/path/'
+  test_negative_examples:
+    - 'http://example.nottld'
+    - 'https://base.faketld/'
+    - 'http://example.nottld/file.exe'
+
+####### File name extractions #######
+
+generic_file_name:
+  test_positive_examples:
+    - 'file.exe'
+  test_negative_examples:
+    - 'file.notvalid'
+    - 'badfile.wtf'
+
+####### Directory path extractions #######
+
+generic_directory_windows:
+  test_positive_examples:
+    - '\a\path'
+    - 'a\path'
+    - 'C:\Windows\System64'
+    - '..\Publications'
+    - '\\system07\C$'
+    - '\\.\C:\Test'
+    - '\\?\C:\Test\Foo'
+    - '%SYSTEM32%\Test\Foo'
+  test_negative_examples:
+    - '/is/unix/path' # is unix path
+    - '\path\to\file.exe' # is path to file
+
+generic_directory_windows_with_file:
+  test_positive_examples:
+    - '\path\to\file.exe'
+  test_negative_examples:
+    - '\path\to\file.blah' # is invalid file type
+    - 'a\path' # no file extension
+
+generic_directory_unix:
+  test_positive_examples:
+    - '/a/file/path'
+    - 'a/file/path'
+    - '~/documents'
+    - '../directory'
+    - './downloads/directory'
+  test_negative_examples:
+    - '\a\path' # is windows
+    - '/a/file/path/file.sh' # is pattern_directory_unix_file
+
+generic_directory_unix_file:
+  test_positive_examples:
+    - '/a/file/path/file.sh'
+    - './downloads/directory/with/file.pdf'
+  test_negative_examples:
+    - '\path\to\file.exe' # is windows file path
+    - '/a/file/path' # no file extension
+
+####### File hash extractions #######
+
+generic_file_hash_md5:
+  test_positive_examples:
+    - '4ec503be252d765ea37621a629afdaa6'
+  test_negative_examples:
+    - '900zz11'
+
+generic_file_hash_sha_1:
+  test_positive_examples:
+    - '86F7E437FAA5A7FCE15D1DDCB9EAEAEA377667B8'
+  test_negative_examples:
+    - '900zz11'
+
+generic_file_hash_sha_224:
+  test_positive_examples:
+    - 'd14a028c2a3a2bc9476102bb288234c415a2b01f828ea62ac5b3e42f'
+  test_negative_examples:
+    - '900zz11'
+
+generic_file_hash_sha_256:
+  test_positive_examples:
+    - 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+  test_negative_examples:
+    - '900zz11'
+
+generic_file_hash_sha_384:
+  test_positive_examples:
+    - '59e1748777448c69de6b800d7a33bbfb9ff1b463e44354c3553bcdb9c666fa90125a3c79f90397bdf5f6a13de828684f'
+  test_negative_examples:
+    - '900zz11'
+
+generic_file_hash_sha_512:
+  test_positive_examples:
+    - '75d527c368f2efe848ecf6b073a36767800805e9eef2b1857d5f984f036eb6df891d75f72d9b154518c1cd58835286d1da9a38deba3de98b5a53e5ed78a84976'
+  test_negative_examples:
+    - '900zz11'
+
+####### Email address extractions #######
+
+generic_email_address:
+  test_positive_examples:
+    - 'example@example.com'
+    - 'test+1@google.com'
+    - 'test_2-1@google.com'
+    - 'test_2-1@subdomain.google.com'
+  test_negative_examples:
+    - 'example@example.blah' # tld is invalid
+
+####### MAC address extractions #######
+
+generic_mac_address:
+  test_positive_examples:
+    - 'd2:fb:49:24:37:18'
+    - '00-B0-D0-63-C2-26'
+  test_negative_examples:
+    - '00-B0-D0-63' # not long enough
+    - 'd2:fb:49:24:37:18:98' # is too long
+
+####### Windows registry key extractions #######
+
+generic_windows_registry_key:
+  test_positive_examples:
+    - 'HKEY_LOCAL_MACHINE\System\Foo\Bar'
+    - 'HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node'
+    - 'HKEY_CLASSES_ROOT\SYSTEM\system32\config\system'
+    - 'HKEY_CURRENT_USER\SYSTEM\system32\config\system'
+    - 'HKCU\SYSTEM'
+    - 'HKLM\Short\Name'
+  test_negative_examples:
+    - 'HKP\SYSTEM' # not a valid prefix
+
+####### User agent extractions #######
+
+generic_user_agent:
+  test_positive_examples:
+    - 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.6) Gecko/20040113'
+    - 'Mozilla/5.0 (Linux; Android 11; Lenovo YT-J706X) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36'
+    - 'Mozilla/5.0 (iPhone14,6; U; CPU iPhone OS 15_4 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) Version/10.0 Mobile/19E241 Safari/602.1'
+  test_negative_examples:
+    - 'not/a (valid) user/agent'
+
+####### ASN extractions #######
+
+generic_autonomous_system_number:
+  test_positive_examples:
+    - 'ASN15139'
+    - 'AS 23434'
+    - 'ASN 53453'
+    - 'ASN13335'
+  test_negative_examples:
+    - 'ASN4294967295' # too long
+
+####### Cryptocurrency extractions #######
+
+generic_cryptocurrency_btc_wallet:
+  test_positive_examples:
+    - '3Cwgr2g7vsi1bXDUkpEnVoRLA9w4FZfC69'
+  test_negative_examples:
+    - 
+
+generic_cryptocurrency_btc_transaction:
+  test_positive_examples:
+    - '8691f4cac0542ed1d1ae6c47bd5926e39d7911d9148e6ef64060c6ff5e245898'
+  test_negative_examples:
+    - ''
+
+generic_cryptocurrency_eth_wallet:
+  test_positive_examples:
+    - '0xbce510348026e7a2249fdd868503c99c05fdab2b'
+  test_negative_examples:
+    - ''
+
+generic_cryptocurrency_eth_transaction:
+  test_positive_examples:
+    - '0xe000ea1eaea92bc736d97a34bed331f0da4788b4c88368b3e277c82fdd7def7b'
+  test_negative_examples:
+    - ''
+
+generic_cryptocurrency_xmr_wallet:
+  test_positive_examples:
+    - '9b669f6bf58e8ba5618a6ce3ce1afbee488898af6b79d0febd5b75177702291d'
+  test_negative_examples:
+    - ''
+
+generic_cryptocurrency_xmr_transaction:
+  test_positive_examples:
+    - '3168d759a7c39676ee7f0c28eb8bc3a97b9cad5369d812680cf6a562cea6c662'
+  test_negative_examples:
+    - ''
+
+####### CVE extractions #######
+
+generic_cve_id:
+  test_positive_examples:
+    - 'CVE-2004-2573'
+    - 'CVE-2000-0177'
+    - 'CVE-2019-4706'
+  test_negative_examples:
+    - 'CVE-19999-0000' # too many digits in first part
+    - 'CVE-2022-000012' # too many digits in second part
+
+generic_cpe_uri:
+  test_positive_examples:
+    - 'cpe:2.3:a:timesheets-for-jira:timesheet_tracking:2.0.1:*:*:*:*:jira:*:*'
+    - 'cpe:2.3:a:codecabin:wp_go_maps:7.10.58:*:*:*:basic:wordpress:*:*'
+  test_negative_examples:
+    - '2.3:a:microsoft:365_apps:-:*:*:*:enterprise:*:x64:*' # start of string is incorrect
+    - 'cpe:2.3:a:microsoft' # is partial string
+
+####### Bank card extractions #######
+
+generic_bank_card_mastercard:
+  test_positive_examples:
+    - '5555555555554444'
+    - '5555555555554444'
+  test_negative_examples:
+    - '4242424242424242' # is visa
+    - '5555 5555 5555 4443' # not currently smart enough to extract spaces
+
+generic_bank_card_visa:
+  test_positive_examples:
+    - '4242424242424242'
+  test_negative_examples:
+    - '2223003122003222' # not valid number
+    - '424242424242424' # not long enough
+    - '4242 4242 4242 4243' # not currently smart enough to extract spaces
+
+generic_bank_card_amex:
+  test_positive_examples:
+    - '376654224631002'
+  ignore_extractions:
+    - '4242424242424242' # is visa
+    - '3710 0400 1548 810' # not currently smart enough to extract spaces
+    - '3766 542246 31000' # not currently smart enough to extract spaces
+
+generic_bank_card_union_pay:
+  test_positive_examples:
+    - '6220123456234563'
+    - '6036014561356399'
+    - '6219779456356356'
+    - '6033674535256453'
+  test_negative_examples:
+    - '4242424242424242' # is visa
+    - '6267 8710 2561 6714' # not currently smart enough to extract spaces
+
+generic_bank_card_diners:
+  test_positive_examples:
+    - '30569309025904'
+    - '38520000023237'
+  test_negative_examples:
+    - '4242424242424242' # is visa
+    - '38520 0000 23236' # not currently smart enough to extract spaces
+
+generic_bank_card_jcb:
+  test_positive_examples:
+    - '3530111333300000'
+  test_negative_examples:
+    - '4242424242424242' # is visa
+    - '3530 1113 3330 0003'  # not currently smart enough to extract spaces
+
+generic_bank_card_discover:
+  test_positive_examples:
+    - '6011111111111117'
+  test_negative_examples:
+    - '4242424242424242' # is visa
+    - '6011 1111 1111 1113' # not currently smart enough to extract spaces
+
+####### IBAN Extractions #######
+
+generic_iban_number:
+  test_positive_examples:
+    - 'DE29100500001061045672'
+    - 'GB94BARC10201530093459'
+  test_negative_examples:
+    - 'XX94BARC10201530093459' # prefix is invalid
+
+####### Phone number Extractions #######
+
+generic_phone_number:
+  test_positive_examples:
+    - '+442083661177'
+    - '00442083661177'
+    - '+12001230101'
+    - '07891345678'
+    - '07891 345 678'
+  test_negative_examples:
+    - '+4420836611' # is not long enough
+
+####### County extractions #######
+
+# note we have ai and generic extractions because AI logic has possibility of detecting descriptions of objects, not just their explicit IDs (the limitation of pattern/lookup modes)
+
+generic_country_alpha2:
+  test_positive_examples:
+    - 'AU'
+    - 'GB'
+  test_negative_examples:
+    - 'UK' # is not ISO 3166 complaint
+    - 'USA' # is alpha3, use lookup to convert to alpha2 if AI not convering as expected
+    - 'Belgium' # is name, use lookup to convert to alpha2 if AI not convering as expected
+
+ai_country_alpha2:
+  test_positive_examples:
+    - 'AU'
+    - 'GB'
+    - 'UK' # is not ISO 3166 complaint but should be converted
+    - 'USA' # is alpha3, but should be converted
+    - 'Belgium' # is name, but should be converted
+  test_negative_examples:
+    - ''
+
+####### MITRE ATT&CK #######
+
+# note we have ai and generic extractions because AI logic has possibility of detecting descriptions of objects, not just their explicit IDs (the limitation of pattern/lookup modes)
+
+generic_mitre_attack_enterprise:
+  test_positive_examples:
+    - 'T1174' # course-of-action--00d7d21b-69d6-4797-88a2-c86f3fc97651 , attack-pattern--b8c5c9dd-a662-479d-9428-ae745872537c
+    - 'TA0006' # x-mitre-tactic--2558fd61-8c75-4730-94c4-11926db2a263
+    - 'TA0011' # x-mitre-tactic--f72804c5-f15a-449e-a5da-2eecd181f813
+    - 'G1006' # intrusion-set--cc613a49-9bfa-4e22-98d1-15ffbb03f034
+    - 'T1053.005' # attack-pattern--005a06c6-14bf-4118-afa0-ebcd8aebb0c9
+    - 'T1040' # attack-pattern--3257eb21-f9a7-4430-8de1-d8b6e288f529 , course-of-action--46b7ef91-4e1d-43c5-a2eb-00fa9444f6f4
+    - 'TA0003' # x-mitre-tactic--5bc1d813-693e-4823-9961-abf9af4b0e92
+  test_negative_examples:
+    - 'P1174' # not a valid id
+    - 'SolarWinds Compromise' # is a name
+
+ai_mitre_attack_enterprise:
+  test_positive_examples:
+    - 'T1174' # course-of-action--00d7d21b-69d6-4797-88a2-c86f3fc97651 , attack-pattern--b8c5c9dd-a662-479d-9428-ae745872537c
+    - 'TA0006' # x-mitre-tactic--2558fd61-8c75-4730-94c4-11926db2a263
+    - 'TA0011' # x-mitre-tactic--f72804c5-f15a-449e-a5da-2eecd181f813
+    - 'G1006' # intrusion-set--cc613a49-9bfa-4e22-98d1-15ffbb03f034
+    - 'T1053.005' # attack-pattern--005a06c6-14bf-4118-afa0-ebcd8aebb0c9
+    - 'T1040' # attack-pattern--3257eb21-f9a7-4430-8de1-d8b6e288f529 , course-of-action--46b7ef91-4e1d-43c5-a2eb-00fa9444f6f4
+    - 'TA0003' # x-mitre-tactic--5bc1d813-693e-4823-9961-abf9af4b0e92
+    - 'SolarWinds Compromise' # is name, might be tempremental with AI extractions if good =  C0024 campaign--808d6b30-df4e-4341-8248-724da4bac650
+  test_negative_examples:
+    - 'P1174' # not a valid id
+
+generic_mitre_attack_mobile:
+  test_positive_examples:
+    - 'M1013' # course-of-action--25dc1ce8-eb55-4333-ae30-a7cb4f5894a1
+    - 'S0505' # malware--3271c107-92c4-442e-9506-e76d62230ee8
+    - 'T1630.001' # attack-pattern--0cdd66ad-26ac-4338-a764-4972a1e17ee3
+    - 'TA0029' # x-mitre-tactic--3e962de5-3280-43b7-bc10-334fbc1d6fa8
+  test_negative_examples:
+    - 'P1174' # not a valid id
+    - 'Use Recent OS Version' # is a name
+
+ai_mitre_attack_mobile:
+  test_positive_examples:
+    - 'M1013' # course-of-action--25dc1ce8-eb55-4333-ae30-a7cb4f5894a1
+    - 'S0505' # malware--3271c107-92c4-442e-9506-e76d62230ee8
+    - 'T1630.001' # attack-pattern--0cdd66ad-26ac-4338-a764-4972a1e17ee3
+    - 'TA0029' # x-mitre-tactic--3e962de5-3280-43b7-bc10-334fbc1d6fa8
+    - 'Use Recent OS Version' # is name, might be tempremental with AI extractions if good =  M1006 course-of-action--1553b156-6767-47f7-9eb4-2a692505666d
+  test_negative_examples:
+    - 'P1174' # not a valid id
+
+generic_mitre_attack_ics:
+  test_positive_examples:
+    - 'TA0111' # x-mitre-tactic--33752ae7-f875-4f43-bdb6-d8d02d341046
+  test_negative_examples:
+    - 'Privilege Escalation' # is name
+
+ai_mitre_attack_ics:
+  test_positive_examples:
+    - 'TA0111' # x-mitre-tactic--33752ae7-f875-4f43-bdb6-d8d02d341046
+    - 'Privilege Escalation' # is name, might be tempremental with AI extractions if good = TA0111 x-mitre-tactic--33752ae7-f875-4f43-bdb6-d8d02d341046
+  test_negative_examples:
+    - 'P1174' # not a valid id
+
+####### MITRE CAPEC #######
+
+# note we have ai and generic extractions because AI logic has possibility of detecting descriptions of objects, not just their explicit IDs (the limitation of pattern/lookup modes)
+
+generic_mitre_capec:
+  test_positive_examples:
+    - 'CAPEC-110'
+  test_negative_examples:
+    - 'CAPEC-999' # invalid ID
+    - 'Brute Force' # is name
+
+ai_mitre_capec:
+  test_positive_examples:
+    - 'CAPEC-110'
+    - 'Brute Force'
+  test_negative_examples:
+    - 'CAPEC-999' # invalid ID
+
+####### MITRE CWE #######
+
+# note we have ai and generic extractions because AI logic has possibility of detecting descriptions of objects, not just their explicit IDs (the limitation of pattern/lookup modes)
+
+generic_mitre_cwe:
+  test_positive_examples:
+    - 'CWE-1023'
+    - 'CWE-102'
+  test_negative_examples:
+    - 'CWE-999' # invalid id
+    - 'Destructor' # is name
+
+ai_mitre_cwe:
+  test_positive_examples:
+    - 'CWE-1023'
+    - 'CWE-102'
+    - 'Destructor' # is name, might be tempremental with AI extractions
+  test_negative_examples:
+    - 'CWE-999' # invalid id
+
+####### Misc STIX Objects #######
+
+lookup_attack_pattern:
+  test_positive_examples:
+    - 'Content Spoofer'
+  test_negative_examples:
+    - 'Attack Pattern' # not in lookup
+
+lookup_campaign:
+  test_positive_examples:
+    - 'Inspector-1'
+  test_negative_examples:
+    - 'Campaign' # not in lookup
+
+lookup_course_of_action:
+  test_positive_examples:
+    - 'Patch server'
+  test_negative_examples:
+    - 'Course of Action' # not in lookup
+
+lookup_identity:
+  test_positive_examples:
+    - 'Franistan Intelligence'
+  test_negative_examples:
+    - 'Identity' # not in lookup
+
+lookup_infrastructure:
+  test_positive_examples:
+    - 'C2 Server'
+  test_negative_examples:
+    - 'Infrastructure' # not in lookup
+
+lookup_intrusion_set:
+  test_positive_examples:
+    - 'APT BPP'
+  test_negative_examples:
+    - 'Intrustion Set' # not in lookup
+
+lookup_malware:
+  test_positive_examples:
+    - 'revil'
+    - 'Sodinokibi'
+  test_negative_examples:
+    - 'Malware' # not in lookup
+
+lookup_threat_actor:
+  test_positive_examples:
+    - 'APT9999'
+  test_negative_examples:
+    - 'Threat Actor' # not in lookups
+
+lookup_tool:
+  test_positive_examples:
+    - 'keygen'
+  test_negative_examples:
+    - 'tool' # not in lookups
+
+# ======= ALIASES =======
+
+alias_country_iso3166_alpha3_to_alpha2:
+  test_positive_examples:
+    - 'GBR'
+    - 'USA'
+  test_negative_examples:
+    - ''
+
+alias_country_name_to_iso2:
+  test_positive_examples:
+    - 'French Southern Territories'
+    - 'Belgium'
+  test_negative_examples:
+    - ''
+
+alias_mitre_cwe_name_to_id:
+  test_positive_examples:
+    - 'Comparison Using Wrong Factors'
+  test_negative_examples:
+    - 'CWE-103' # is ID
+
+alias_mitre_capec_name_to_id:
+  test_positive_examples:
+    - 'HTTP Request Splitting'
+  test_negative_examples:
+    - 'CAPEC-108' # is ID
+
+alias_mitre_attack_enterprise_name_to_id:
+  test_positive_examples:
+    - 'Data Destruction Mitigation'
+  test_negative_examples:
+    - 'T1044' # is ID
+
+alias_mitre_attack_ics_name_to_id:
+  test_positive_examples:
+    - 'Exploit Protection'
+  test_negative_examples:
+    - 'M0927' # is ID
+
+alias_mitre_attack_mobile_name_to_id:
+  test_positive_examples:
+    - 'Cerberus'
+  test_negative_examples:
+    - 'S0305' # is ID
+
+# ====== WHITELISTS =====
+
+whitelist_alexa_top_1000_domains:
+  test_positive_examples:
+    - 'apple.com'
+  test_negative_examples:
+    - 'dogesec.com'
+
+whitelist_security_vendor_domains:
+  test_positive_examples:
+    - 'ncsc.gov.uk'
+  test_negative_examples:
+    - 'homedepot.com'
+
+whitelist_examples:
+  test_positive_examples:
+    - 'T1174'
+    - 'TA0006'
+    - 'TA0011'
+    - 'G1006'
+    - 'T1053.005'
+    - 'T1040'
+    - 'TA0003'
+    - 'SolarWinds Compromise'
+  test_negative_examples:
+    - 

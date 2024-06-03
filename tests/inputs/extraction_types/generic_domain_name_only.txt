@@ -1,0 +1,8 @@
+====Good====
+
+google.com
+
+====Bad====
+
+subdomain.google.com
+example.nottld

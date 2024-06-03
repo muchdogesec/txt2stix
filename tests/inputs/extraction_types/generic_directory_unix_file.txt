@@ -1,0 +1,9 @@
+====Good====
+
+/a/file/path/file.sh
+./downloads/directory/with/file.pdf
+
+====Bad====
+
+\path\to\file.exe
+/a/file/path

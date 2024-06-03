@@ -1,0 +1,10 @@
+====Good====
+
+example@example.com
+test+1@google.com
+test_2-1@google.com
+test_2-1@subdomain.google.com
+
+====Bad====
+
+example@example.blah

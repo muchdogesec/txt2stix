@@ -1,0 +1,7 @@
+====Good====
+
+Inspector-1
+
+====Bad====
+
+Campaign

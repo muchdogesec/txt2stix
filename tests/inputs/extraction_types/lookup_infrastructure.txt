@@ -1,0 +1,7 @@
+====Good====
+
+C2 Server
+
+====Bad====
+
+Infrastructure

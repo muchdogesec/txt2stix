@@ -1,0 +1,14 @@
+SLUG: # REQUIRED: machine friendly name of extraction, must only contain characters `a-z`,`0-9`,`_`,`-`
+  type: # [dictionary] REQUIRED: should always be `lookup`
+  name: # [string] REQUIRED: human friendly name. max 72 characters.
+  description: # [string] OPTIONAL: human friendly description. max 270 characters.
+  notes: # [string] OPTIONAL: designed for more developer friendly notes that do not suit the description field.
+  file: # [path to file from repository root] REQUIRED: the path to the lookup file that should be used. Must be of type txt
+  created: # [date] REQUIRED: YYYY-MM-DD of creation time.
+  modified: # [date] REQUIRED: YYYY-MM-DD of creation time.
+  created_by: # [string] REQUIRED: name of author , must only contain characters `a-z`,`0-9`,`_`,`-`
+  version: # [number] REQUIRED: version number in format N.N.N
+  test_cases: # [test extraction slug] REQUIRED: test cases for this extraction. Slugs found in extractions/test_cases/test_data.yaml
+  ignore_extractions: 
+    - # [list of extraction slugs] OPTIONAL: defines slugs of other extraction types that should be ignored for any part of the matched string that they match too. e.g. ignore AI domain extractions (ai_domain_name_only) for google.com if url extraction matches https://google.com/something. This is dynamic, and you add/remove entries to enable/disable ignores
+  stix_mapping: # [dictionary] REQUIRED: STIX object extraction should map to. Must be supported STIX type

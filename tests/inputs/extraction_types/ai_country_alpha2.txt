@@ -1,0 +1,11 @@
+====Good====
+
+AU
+GB
+UK
+USA
+Belgium
+
+====Bad====
+
+

@@ -1,0 +1,8 @@
+====Good====
+
+\path\to\file.exe
+
+====Bad====
+
+\path\to\file.blah
+a\path

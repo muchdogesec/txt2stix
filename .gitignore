@@ -1,0 +1,11 @@
+
+.DS_Store
+.env
+__pycache__/
+
+# venv in docs
+txt2stix-venv/
+
+# output dirs
+output/
+logs/

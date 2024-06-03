@@ -1,0 +1,318 @@
+name,external_id
+Network-Based Effects,mobile-attack
+Mobile ATT&CK,mobile-attack
+Use Recent OS Version,M1006
+Application Vetting,M1005
+Application Developer Guidance,M1013
+Enterprise Policy,M1012
+User Guidance,M1011
+Antivirus/Antimalware,M1058
+System Partition Integrity,M1004
+Encrypt Network Traffic,M1009
+Lock Bootloader,M1003
+Security Updates,M1001
+Deploy Compromised Device Detection Method,M1010
+Interconnection Filtering,M1014
+Caution with Device Administrator Access,M1007
+Attestation,M1002
+CarbonSteal,S0529
+Cerberus,S0480
+DroidJack,S0320
+Rotexy,S0411
+Stealth Mango,S0328
+Allwinner,S0319
+GoldenEagle,S0551
+Bread,S0432
+Hornbill,S1077
+Judy,S0325
+OldBoot,S0285
+Gooligan,S0290
+SpyNote RAT,S0305
+TrickMo,S0427
+INSOMNIA,S0463
+Dvmap,S0420
+Zen,S0494
+NotCompatible,S0299
+XLoader for Android,S0318
+Trojan-SMS.AndroidOS.FakeInst.a,S0306
+XLoader for iOS,S0490
+AbstractEmu,S1061
+Chameleon,S1083
+Exodus,S0405
+Dendroid,S0301
+WireLurker,S0312
+Desert Scorpion,S0505
+Pegasus for iOS,S0289
+Tangelo,S0329
+RCSAndroid,S0295
+Corona Updates,S0425
+Skygofree,S0327
+KeyRaider,S0288
+ZergHelper,S0287
+DoubleAgent,S0550
+Twitoor,S0302
+Fakecalls,S1080
+S.O.V.A.,S1062
+ANDROIDOS_ANSERVER.A,S0310
+DualToy,S0315
+Mandrake,S0485
+X-Agent for Android,S0314
+DEFENSOR ID,S0479
+MazarBOT,S0303
+Ginp,S0423
+HummingWhale,S0321
+eSurv,S0507
+TangleBot,S1069
+Monokle,S0407
+Red Alert 2.0,S0539
+ViceLeaker,S0418
+FlyTrap,S1093
+FakeSpy,S0509
+SpyDealer,S0324
+Concipit1248,S0426
+RuMMS,S0313
+Pegasus for Android,S0316
+FrozenCell,S0577
+AndroidOS/MalLocker.B,S0524
+SharkBot,S1055
+RedDrop,S0326
+CHEMISTGAMES,S0555
+YiSpecter,S0311
+Trojan-SMS.AndroidOS.Agent.ao,S0307
+BOULDSPY,S1079
+Anubis,S0422
+AndroRAT,S0292
+FinFisher,S0182
+Agent Smith,S0440
+Asacub,S0540
+GPlayed,S0536
+EventBot,S0478
+HenBox,S0544
+Riltok,S0403
+GolfSpy,S0421
+Pallas,S0399
+Circles,S0602
+Tiktok Pro,S0558
+PJApps,S0291
+ShiftyBug,S0294
+HummingBad,S0322
+Exobot,S0522
+OBAD,S0286
+Android/Chuli.A,S0304
+Charger,S0323
+Drinik,S1054
+Trojan-SMS.AndroidOS.OpFake.a,S0308
+XcodeGhost,S0297
+SilkBean,S0549
+WolfRAT,S0489
+BusyGasper,S0655
+BrainTest,S0293
+TERRACOTTA,S0545
+Escobar,S1092
+Triada,S0424
+Golden Cup,S0535
+FluBot,S1067
+ViperRAT,S0506
+Adups,S0309
+SimBad,S0419
+Android/AdDisplay.Ashas,S0525
+Marcher,S0317
+TianySpy,S1056
+Sunbird,S1082
+DressCode,S0300
+Gustuff,S0406
+FlexiSpy,S0408
+Xbot,S0298
+Initial Access,TA0027
+Exfiltration,TA0036
+Persistence,TA0028
+Privilege Escalation,TA0029
+Command and Control,TA0037
+Execution,TA0041
+Impact,TA0034
+Credential Access,TA0031
+Collection,TA0035
+Lateral Movement,TA0033
+Defense Evasion,TA0030
+Network Effects,TA0038
+Discovery,TA0032
+Remote Service Effects,TA0039
+Scheduled Task/Job,T1603
+Code Injection,T1540
+Adversary-in-the-Middle,T1638
+Abuse Elevation Control Mechanism,T1626
+Remote Access Software,T1663
+Obtain Device Cloud Backups,T1470
+Uninstall Malicious Application,T1630.001
+Indicator Removal on Host,T1630
+Supply Chain Compromise,T1474
+Impersonate SS7 Nodes,T1430.002
+Match Legitimate Name or Location,T1655.001
+Protected User Data,T1636
+Asymmetric Cryptography,T1521.002
+Software Discovery,T1418
+Process Discovery,T1424
+Call Log,T1636.002
+Security Software Discovery,T1418.001
+Ptrace System Calls,T1631.001
+Impair Defenses,T1629
+Exploitation of Remote Services,T1428
+Web Protocols,T1437.001
+Steal Application Access Token,T1635
+User Evasion,T1628.002
+Virtualization/Sandbox Evasion,T1633
+Keychain,T1579
+Application Versioning,T1661
+Access Sensitive Data in Device Logs,T1413
+Command and Scripting Interpreter,T1623
+Disable or Modify Tools,T1629.003
+Ingress Tool Transfer,T1544
+Dynamic Resolution,T1637
+Exploit via Radio Interfaces,T1477
+Network Service Scanning,T1423
+User Evasion,T1618
+Exfiltration Over C2 Channel,T1646
+Exploitation for Privilege Escalation,T1404
+Call Control,T1616
+Exfiltration Over Unencrypted Non-C2 Protocol,T1639.001
+Broadcast Receivers,T1624.001
+Commonly Used Port,T1436
+Eavesdrop on Insecure Network Communication,T1439
+Access Notifications,T1517
+Network Traffic Capture or Redirection,T1410
+Input Prompt,T1411
+Exfiltration Over Alternative Protocol,T1639
+Boot or Logon Initialization Scripts,T1398
+Execution Guardrails,T1627
+GUI Input Capture,T1417.002
+Access Contact List,T1432
+Compromise Client Software Binary,T1645
+Software Packing,T1406.002
+Exploit SS7 to Track Device Location,T1450
+Native API,T1575
+Deliver Malicious App via Other Means,T1476
+Remotely Wipe Data Without Authorization,T1469
+Exploitation for Client Execution,T1658
+Proxy Through Victim,T1604
+Domain Generation Algorithms,T1520
+Access Calendar Entries,T1435
+Rogue Wi-Fi Access Points,T1465
+Foreground Persistence,T1541
+Replication Through Removable Media,T1458
+Audio Capture,T1429
+Hijack Execution Flow,T1625
+Unix Shell,T1623.001
+Application Layer Protocol,T1437
+Download New Code at Runtime,T1407
+Remotely Track Device Without Authorization,T1468
+System Checks,T1633.001
+Stored Application Data,T1409
+Screen Capture,T1513
+Transmitted Data Manipulation,T1641.001
+Manipulate App Store Rankings or Ratings,T1452
+URI Hijacking,T1416
+Compromise Software Dependencies and Development Tools,T1474.001
+Evade Analysis Environment,T1523
+URI Hijacking,T1635.001
+Subvert Trust Controls,T1632
+Access Call Log,T1433
+Geofencing,T1581
+Device Administrator Permissions,T1401
+Keychain,T1634.001
+Modify Cached Executable Code,T1403
+Uninstall Malicious Application,T1576
+Delete Device Data,T1447
+Carrier Billing Fraud,T1448
+Bidirectional Communication,T1481.002
+Non-Standard Port,T1509
+Compromise Software Supply Chain,T1474.003
+Dead Drop Resolver,T1481.001
+Location Tracking,T1430
+Device Administrator Permissions,T1626.001
+Device Lockout,T1446
+Remote Device Management Services,T1430.001
+Data Destruction,T1662
+Attack PC via USB Connection,T1427
+Rogue Cellular Base Station,T1467
+SIM Card Swap,T1451
+Input Capture,T1417
+Generate Traffic from Victim,T1643
+Disguise Root/Jailbreak Indicators,T1630.003
+Masquerade as Legitimate Application,T1444
+Calendar Entries,T1636.001
+File Deletion,T1630.002
+Device Lockout,T1629.002
+Keylogging,T1417.001
+SMS Control,T1582
+Disguise Root/Jailbreak Indicators,T1408
+Exfiltration Over Other Network Medium,T1438
+Process Injection,T1631
+Symmetric Cryptography,T1521.001
+Broadcast Receivers,T1402
+Compromise Hardware Supply Chain,T1474.002
+Clipboard Data,T1414
+Modify System Partition,T1400
+Data Manipulation,T1641
+SMS Messages,T1636.004
+Web Service,T1481
+System Runtime API Hijacking,T1625.001
+Credentials from Password Store,T1634
+Hooking,T1617
+Install Insecure or Malicious Configuration,T1478
+File and Directory Discovery,T1420
+Obfuscated Files or Information,T1406
+Input Injection,T1516
+Network Denial of Service,T1464
+Compromise Application Executable,T1577
+Event Triggered Execution,T1624
+System Network Configuration Discovery,T1422
+Manipulate Device Communication,T1463
+Video Capture,T1512
+One-Way Communication,T1481.003
+Deliver Malicious App via Authorized App Store,T1475
+Data Encrypted for Impact,T1471
+Prevent Application Removal,T1629.001
+System Network Connections Discovery,T1421
+Phishing,T1660
+Lockscreen Bypass,T1461
+Command-Line Interface,T1605
+Contact List,T1636.003
+Data from Local System,T1533
+Account Access Removal,T1640
+System Information Discovery,T1426
+Clipboard Modification,T1510
+Archive Collected Data,T1532
+Geofencing,T1627.001
+Network Information Discovery,T1507
+Capture SMS Messages,T1412
+Endpoint Denial of Service,T1642
+Out of Band Data,T1644
+Encrypted Channel,T1521
+Exploit TEE Vulnerability,T1405
+Suppress Application Icon,T1628.001
+Modify Trusted Execution Environment,T1399
+Downgrade to Insecure Protocols,T1466
+Masquerading,T1655
+Generate Fraudulent Advertising Revenue,T1472
+Steganography,T1406.001
+Exploit SS7 to Redirect Phone Calls/SMS,T1449
+Hide Artifacts,T1628
+Code Signing Policy Modification,T1632.001
+Domain Generation Algorithms,T1637.001
+Drive-By Compromise,T1456
+Suppress Application Icon,T1508
+Bouncing Golf,G0097
+Windshift,G0112
+Dark Caracal,G0070
+APT28,G0007
+Operation Dust Storm,C0016
+Earth Lusca,G1006
+Confucius,G0142
+MoustachedBouncer,G1019
+Sandworm Team,G0034
+Sensor Health,DS0013
+Application Vetting,DS0041
+Network Traffic,DS0029
+User Interface,DS0042
+Command,DS0017
+Process,DS0009

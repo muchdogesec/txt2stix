@@ -1,0 +1,83 @@
+country_iso3166_alpha3_to_alpha2:
+  type: alias
+  name: 'Country Alpha3 to Alpha2'
+  description: 'Turns ISO 3166 Country Alpha3 values into Alpha2'
+  notes: ''
+  file: 'aliases/country_iso3166_alpha3_to_alpha2.csv'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: alias_country_iso3166_alpha3_to_alpha2
+
+country_name_to_iso2:
+  type: alias
+  name: 'Country Name to Alpha2'
+  description: 'Turns ISO 3166 Country Name values into Alpha2'
+  notes: ''
+  file: 'aliases/country_iso3166_name_to_alpha2.csv'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: alias_country_name_to_iso2
+
+mitre_cwe_name_to_id:
+  type: alias
+  name: 'Mitre CWE name to ID'
+  description: 'Turns Mitre CWE name into ID'
+  notes: ''
+  file: 'aliases/mitre_cwe_name_to_id.csv'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: alias_mitre_cwe_name_to_id
+
+mitre_capec_name_to_id:
+  type: alias
+  name: 'MITRE CAPEC name to ID'
+  description: 'Turns MITRE CAPEC name into ID'
+  notes: ''
+  file: 'aliases/mitre_capec_name_to_id.csv'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: alias_mitre_capec_name_to_id
+
+mitre_attack_enterprise_name_to_id:
+  type: alias
+  name: 'MITRE ATT&CK Enterprise name to ID'
+  description: 'Turns MITRE ATT&CK Enterprise name into ID'
+  notes: ''
+  file: 'aliases/mitre_attack_enterprise_name_to_id.csv'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: alias_mitre_attack_enterprise_name_to_id
+
+mitre_attack_ics_name_to_id:
+  type: alias
+  name: 'MITRE ATT&CK ICS name to ID'
+  description: 'Turns MITRE ATT&CK ICS name into ID'
+  notes: ''
+  file: 'aliases/mitre_attack_ics_name_to_id.csv'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: alias_mitre_attack_ics_name_to_id
+
+mitre_attack_mobile_name_to_id:
+  type: alias
+  name: 'MITRE ATT&CK Mobile name to ID'
+  description: 'Turns MITRE ATT&CK Mobile name into ID'
+  notes: ''
+  file: 'aliases/mitre_attack_mobile_name_to_id.csv'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: alias_mitre_attack_mobile_name_to_id

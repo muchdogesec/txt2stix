@@ -1,0 +1,8 @@
+====Good====
+
+file.exe
+
+====Bad====
+
+file.notvalid
+badfile.wtf

@@ -1,0 +1,9 @@
+====Good====
+
+example.nottld
+example.local
+
+====Bad====
+
+something.example.local
+5.5.5.5

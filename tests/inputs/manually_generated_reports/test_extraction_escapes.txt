@@ -1,0 +1,15 @@
+Good
+
+Just 198.0.103.1 in a sentence.
+An IP (198.0.103.2) can be in parentheses.
+Here is a sentence. 198.0.103.3, and the IP is followed by a comma.
+Here is a sentence, 198.0.103.4. That sentence ended with a full stop.
+Sometime markdown `198.0.103.5` is also used.
+Or [198.0.103.6]
+Or 198.0.103.7!
+
+Bad
+
+Or _198.0.103.8_
+Some198.0.103.9text
+!198.0.103.10!

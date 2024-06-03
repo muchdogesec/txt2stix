@@ -1,0 +1,651 @@
+# ====== PATTERN EXTRACTIONS =====
+
+####### IPv4 extractions #######
+
+pattern_ipv4_address_only:
+  type: pattern
+  name: 'IPv4 Address Only'
+  description: 'Extracts IPv4 addresses'
+  notes: 'The logic for this is covered in the Python Validators library: https://validators.readthedocs.io/en/latest/#module-validators.ip_address. A good description of IPv4/IPv6 formats can be read here: https://www.ibm.com/docs/en/ts4500-tape-library?topic=functionality-ipv4-ipv6-address-formats.'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_ipv4_address_only
+  ignore_extractions:
+    - 
+  stix_mapping: ipv4-addr
+
+pattern_ipv4_address_cidr:
+  type: pattern
+  name: 'IPv4 Address with CIDR'
+  description: 'Extracts IPv4 addresses with CIDRs'
+  notes: 'The pattern_ipv4_address_only base extration is used, in addition to logic to detect a port. Port numbers must be within the range 0-65535.'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: ipv4_address_cidr
+  ignore_extractions:
+    - pattern_ipv4_address_only
+    - ai_ipv4_address_only
+  stix_mapping: ipv4-addr
+
+pattern_ipv4_address_port:
+  type: pattern
+  name: 'IPv4 Address with Port'
+  description: 'Extracts IPv4 addresses with Port'
+  notes: 'The pattern_ipv4_address_only base extration is used, in addition to logic to detect a CIDR. CIDR are always within the range 1-32.'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: ipv4_address_port
+  ignore_extractions:
+    - pattern_ipv4_address_only
+    - ai_ipv4_address_only
+  stix_mapping: ipv4-addr-port
+
+####### IPv6 extractions #######
+
+pattern_ipv6_address_only:
+  type: pattern
+  name: 'IPv6 Address Only'
+  description: 'Extracts IPv6 addresses, but not with CIDR or Ports'
+  notes: 'The logic for this is covered in the Python Validators library: https://validators.readthedocs.io/en/latest/#module-validators.ip_address. A good description of IPv4/IPv6 formats can be read here: https://www.ibm.com/docs/en/ts4500-tape-library?topic=functionality-ipv4-ipv6-address-formats. txt2stix only supports full (and NOT partial) ipv6 strings only in pattern mode. e.g. `::1234:5678` is a valid ipv6 address, but will not be extracted at present (use AI mode as a workaround).'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_ipv6_address_only
+  ignore_extractions:
+    - pattern_ipv6_address_cidr
+    - pattern_ipv6_address_port
+  stix_mapping: ipv6-addr
+
+pattern_ipv6_address_cidr:
+  type: pattern
+  name: 'IPv6 Address with CIDR'
+  description: 'Extracts IPv6 addresses with CIDRs'
+  notes: 'The pattern_ipv6_address_only base extration is used, in addition to logic to detect a port. Port numbers must be within the range 0-65535.'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_ipv6_address_cidr
+  ignore_extractions:
+    - pattern_ipv6_address_only
+    - ai_ipv6_address_only
+  stix_mapping: ipv6-addr
+
+pattern_ipv6_address_port:
+  type: pattern
+  name: 'IPv6 Address with Port'
+  description: 'Extracts IPv6 addresses with Port'
+  notes: 'The pattern_ipv6_address_only base extration is used, in addition to logic to detect a CIDR. CIDR are always within the range 1-32. When a port is written for IPv6 addressed the IPv6 part is wrapped in square brackets.'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_ipv6_address_port
+  ignore_extractions:
+    - pattern_ipv6_address_only
+    - ai_ipv6_address_only
+  stix_mapping: ipv6-addr-port
+
+####### Domain name extractions #######
+
+pattern_domain_name_only:
+  type: pattern
+  name: 'Domain name only'
+  description: 'Extracts domains, but not subdomains or IPv4 addresses. Must have a valid TLD.'
+  notes: 'Part of the logic for this is covered in the Python Validators library. However, this does not check for a valid TLD, which is important as domains can easily be confused with filenames. Therefore the extraction is then also validated to ensure the end of the domain has a valid TLD, using the TLD Python lib.'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_domain_name_only
+  ignore_extractions:
+    - 
+  stix_mapping: domain-name
+
+pattern_domain_name_subdomain:
+  type: pattern
+  name: 'Subdomain name only'
+  description: 'Extracts subdomains, but not root domains or IPv4 addresses. Must have a valid TLD.'
+  notes: 'Same as pattern_domain_name_only, however will extract subdomain present. Subdomains can have an unlimited number nested subdomains.'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_domain_name_subdomain
+  ignore_extractions:
+    - pattern_domain_name_only
+    - ai_domain_name_only
+  stix_mapping: domain-name
+
+####### URL extractions #######
+
+pattern_url:
+  type: pattern
+  name: 'URL Only'
+  description: 'Extracts base URLs (can be IPs) with no path/file extension. If the sub/domain part is not an IP, then it must have a valid TLD.'
+  notes: 'Part of the logic for this is covered in the Python Validators library. However, this does not check for a valid TLD, which is important as domains can easily be confused with filenames. Therefore the extraction is then also validated to ensure the end of the domain has a valid TLD, using the TLD Python lib. IP addresses can also be captured by this extraction, ignoring TLDs.'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_url
+  ignore_extractions:
+    - 
+  stix_mapping: url
+
+pattern_url_file:
+  type: pattern
+  name: 'URL with file extension'
+  description: 'Extracts URLs with file extension in path. If the sub/domain part is not an IP, then it must have a valid TLD. Filetype must also match valid filetype.'
+  notes: 'Similar to pattern_url except checks for URL with path to file'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_url_file
+  ignore_extractions:
+    - pattern_url
+    - ai_url
+    - pattern_url_path
+    - ai_url_path
+  stix_mapping: url
+
+pattern_url_path:
+  type: pattern
+  name: 'URL path'
+  description: 'Extracts URLs without file extension in path. If the sub/domain part is not an IP, then it must have a valid TLD.'
+  notes: 'Similar to pattern_url except checks for URL with path but without file'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_url_path
+  ignore_extractions:
+    - 
+  stix_mapping: url
+
+####### Hostname extractions #######
+
+pattern_host_name:
+  type: pattern
+  name: 'Hostname extractions'
+  description: 'Extracts hostnames that fail domain TLD validation'
+  notes: 'Captures data that fails pattern_domain_name TLD validation.'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_host_name
+  ignore_extractions:
+    - 
+  stix_mapping: domain-name
+
+pattern_host_name_subdomain:
+  type: pattern
+  name: 'Hostname extractions'
+  description: 'Extracts hostnames that fail subdomain TLD validation'
+  notes: 'Captures data that fails pattern_domain_name_subdomain TLD validation.'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_host_name_subdomain
+  ignore_extractions:
+    - pattern_host_name
+    - ai_host_name
+  stix_mapping: domain-name
+
+pattern_host_name_url:
+  type: pattern
+  name: 'Hostname extractions inside URL'
+  description: 'Extracts hostnames/sub hostnames with full URLs that fail subdomain TLD validation'
+  notes: 'Captures data that fails pattern_url TLD validation.'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_host_name_url
+  ignore_extractions:
+    - pattern_host_name_subdomain
+    - ai_host_name_subdomain
+    - pattern_host_name
+    - ai_host_name
+  stix_mapping: url
+
+pattern_host_name_file:
+  type: pattern
+  name: 'Hostname with file extension'
+  description: 'Extracts hostnames/sub hostnames with full URLs with file extension in path.'
+  notes: 'Captures data that fails pattern_url_file TLD validation.'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_host_name_file
+  ignore_extractions: host_name_path
+    - pattern_host_name_url
+    - ai_host_name_url
+    - pattern_host_name
+    - ai_host_name
+    - pattern_host_name_subdomain
+    - ai_host_name_subdomain
+    - pattern_host_name_path
+    - ai_host_name_path
+  stix_mapping: url
+
+pattern_host_name_path:
+  type: pattern
+  name: 'Hostname path'
+  description: 'Extracts hostnames/sub hostnames with full URLs without file extension in path.'
+  notes: 'Captures data that fails pattern_url_path TLD validation.'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_host_name_path
+  ignore_extractions:
+    - pattern_host_name_url
+    - ai_host_name_url
+    - pattern_host_name
+    - ai_host_name
+    - pattern_host_name_subdomain
+    - ai_host_name_subdomain
+  stix_mapping: url
+
+####### File name extractions #######
+
+pattern_file_name:
+  type: pattern
+  name: File name
+  description: 'Extracts filename. The file extension must match a valid file extension.'
+  notes: 'filenames have three parts `<NAME>.<EXTENSION>`. Filetypes only contain a single `.`. Note, the `.` and `<EXTENSION>` part are required, but `<NAME>` is optional (because hidden files can be in format like; `.DS_Store`). Uses helpers/mimetype_filename_extension_list.csv to check valid file extension.'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_file_name
+  ignore_extractions:
+    - 
+  stix_mapping: file
+
+####### Directory path extractions #######
+
+pattern_directory_windows:
+  type: pattern
+  name: Windows Directory
+  description: 'Extracts a Windows directory path'
+  notes: 'The .net docs provide a good overview to Windows paths: https://github.com/dotnet/docs/blob/main/docs/standard/io/file-path-formats.md#file-path-formats-on-windows-systems'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_directory_windows
+  ignore_extractions:
+    -
+  stix_mapping: directory
+
+pattern_directory_windows_with_file:
+  type: pattern
+  name: Windows Directory with file reported
+  description: ''
+  notes: 'Similar to pattern_directory_windows, but captures paths that include the file printed.'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_directory_windows_with_file
+  ignore_extractions:
+    - pattern_directory_windows
+  stix_mapping: directory-file
+
+pattern_directory_unix:
+  type: pattern
+  name: UNIX Directory
+  description: 'Extracts a UNIX directory path'
+  notes: ''
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_directory_unix
+  ignore_extractions:
+    - 
+  stix_mapping: directory
+
+pattern_directory_unix_file:
+  type: pattern
+  name: UNIX Directory with file
+  description: ''
+  notes: 'Similar to pattern_directory_unix, but captures paths that include the file printed.'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_directory_unix_file
+  ignore_extractions:
+    - pattern_directory_unix
+  stix_mapping: directory-file
+
+####### File hash extractions #######
+
+pattern_file_hash_md5:
+  type: pattern
+  name: 'MD5'
+  description: 'Extracts MD5 file hashes'
+  notes: 'Uses the Python Validators library.'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_file_hash_md5
+  ignore_extractions:
+    - 
+  stix_mapping: file-hash
+
+pattern_file_hash_sha_1:
+  type: pattern
+  name: 'SHA-1'
+  description: 'Extracts SHA-1 file hashes'
+  notes: 'Uses the Python Validators library.'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_file_hash_sha_1
+  ignore_extractions:
+    - 
+  stix_mapping: file-hash
+
+pattern_file_hash_sha_256:
+  type: pattern
+  name: 'SHA-256'
+  description: 'Extracts SHA-256 file hashes'
+  notes: 'Uses the Python Validators library.'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_file_hash_sha_256
+  ignore_extractions:
+    - 
+  stix_mapping: file-hash
+
+pattern_file_hash_sha_512:
+  type: pattern
+  name: 'SHA-512'
+  description: 'Extracts SHA-512 file hashes'
+  notes: 'Uses the Python Validators library.'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_file_hash_sha_512
+  ignore_extractions:
+    - 
+  stix_mapping: file-hash
+
+####### Email address extractions #######
+
+pattern_email_address:
+  type: pattern
+  name: 'Email addresses'
+  description: 'Extracts emails with valid TLDs'
+  notes: 'Uses the Python Validators library. However, this does not check for a valid TLD. Therefore the extraction is then also validated to ensure the end of the domain has a valid TLD, using the Python TLD library.'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_email_address
+  ignore_extractions:
+    - pattern_domain_name_only
+    - pattern_domain_name_subdomain
+  stix_mapping: email-addr
+
+####### MAC address extractions #######
+
+pattern_mac_address:
+  type: pattern
+  name: 'MAC Addresses'
+  description: 'Extracts MAC addresses with either `-` or `:` seperators.'
+  notes: 'Uses the Python Validators library.'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_mac_address
+  ignore_extractions:
+    - 
+  stix_mapping: mac-addr
+
+####### Windows registry key extractions #######
+
+pattern_windows_registry_key:
+  type: pattern
+  name: 'Windows Registry Key'
+  description: ''
+  notes: 'Must start with a valid prefix as defined in /helpers/windows_registry_key_prefix.txt'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_windows_registry_key
+  ignore_extractions:
+    - pattern_directory_windows
+  stix_mapping: windows-registry-key
+
+####### User agent extractions #######
+
+pattern_user_agent:
+  type: pattern
+  name: 'User Agent'
+  description: 'Will capture a string that looks like a user agent.'
+  notes: 'User Agents should follow: https://www.rfc-editor.org/rfc/rfc7231#section-5.5.3 . The problem here is that there is no defined prefix for user agent strings, they can be anything. txt2stix follows a similar approach to: https://regex101.com/r/nXKYBB/3'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_user_agent
+  ignore_extractions:
+    - pattern_directory_unix
+  stix_mapping: user-agent
+
+####### ASN extractions #######
+
+pattern_autonomous_system_number:
+  type: pattern
+  name: 'Autonomous System Numbers (ASN) numbers'
+  description: ''
+  notes: 'Always follow the formats: `ASN XXXXX` (e.g  `ASN15139`), `ASNXXXXX` (e.g  `ASN 15139`), `AS XXXXX` (e.g  `AS15139`), or `ASXXXXX` (e.g  `AS 15139`)'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_autonomous_system_number
+  ignore_extractions:
+    - 
+  stix_mapping: autonomous-system
+
+####### Cryptocurrency extractions #######
+
+pattern_cryptocurrency_btc_wallet:
+  type: pattern
+  name: 'Cryptocurrency Bitcoin Wallet'
+  description: ''
+  notes: 'Uses the Python validators library.'
+  created: 2020-01-01
+  modified: 2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_cryptocurrency_btc_wallet
+  ignore_extractions:
+    - 
+  stix_mapping: cryptocurrency-wallet
+
+####### CVE extractions #######
+
+pattern_cve_id:
+  type: pattern
+  name: 'CVE'
+  description:
+  notes: 'CVEs IDs always take the format; `CVE-YYYY-NNNNN` (e.g. `CVE-2022-29098`) or `CVE-YYYY-NNNN` (e.g. `CVE-1999-0007`).' 
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_cve_id
+  ignore_extractions:
+    - 
+  stix_mapping: cve-id
+
+####### CPE extractions #######
+
+pattern_cpe_uri:
+  type: pattern
+  name: 'CPE'
+  description: ''
+  notes: 'CPE URIs always start with `cpe:2.3` and have 13 parts (or 12 `:` characters)'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_cpe_uri
+  ignore_extractions:
+    - 
+  stix_mapping: cpe-id
+
+####### Bank card extractions #######
+
+pattern_bank_card_mastercard:
+  type: pattern
+  name: 'Bank Card Mastercard'
+  description: ''
+  notes: 'Uses the Python validators library.'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_bank_card_mastercard
+  ignore_extractions:
+    - 
+  stix_mapping: bank-card
+
+pattern_bank_card_visa:
+  type: pattern
+  name: 'Bank Card Visa'
+  description: ''
+  notes: 'Uses the Python validators library.'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_bank_card_visa
+  ignore_extractions:
+    - 
+  stix_mapping: bank-card
+
+pattern_bank_card_amex:
+  type: pattern
+  name: 'Bank Card American Express'
+  description: ''
+  notes: 'Uses the Python validators library.'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_bank_card_amex
+  stix_mapping: bank-card
+
+pattern_bank_card_union_pay:
+  type: pattern
+  name: 'Bank Card Union Pay'
+  description: ''
+  notes: 'Uses the Python validators library.'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_bank_card_union_pay
+  ignore_extractions:
+    -
+  stix_mapping: bank-card
+
+pattern_bank_card_diners:
+  type: pattern
+  name: 'Bank Card Diners'
+  description: ''
+  notes: 'Uses the Python validators library.'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_bank_card_diners
+  ignore_extractions:
+    - 
+  stix_mapping: bank-card
+
+pattern_bank_card_jcb:
+  type: pattern
+  name: 'Bank Card JCB'
+  description: ''
+  notes: 'Uses the Python validators library.'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_bank_card_jcb
+  ignore_extractions:
+    - 
+  stix_mapping: bank-card
+
+pattern_bank_card_discover:
+  type: pattern
+  name: 'Bank Card Discover'
+  description: ''
+  notes: 'Uses the Python validators library.'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_bank_card_discover
+  ignore_extractions:
+    - 
+  stix_mapping: bank-card
+
+####### IBAN Extractions #######
+
+pattern_iban_number:
+  type: pattern
+  name: 'IBAN'
+  description: ''
+  notes: 'Covered in the Python Validators library.'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_iban_number
+  ignore_extractions:
+    - 
+  stix_mapping: bank-account
+
+####### Phone number Extractions #######
+
+pattern_phone_number:
+  type: pattern
+  name: 'Phone number'
+  description: ''
+  notes: 'Uses the phonenumbers python library'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_phone_number
+  ignore_extractions:
+    - 
+  stix_mapping: phone-number

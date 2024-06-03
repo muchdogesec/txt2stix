@@ -1,0 +1,12 @@
+====Good====
+
+HKEY_LOCAL_MACHINE\System\Foo\Bar
+HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node
+HKEY_CLASSES_ROOT\SYSTEM\system32\config\system
+HKEY_CURRENT_USER\SYSTEM\system32\config\system
+HKCU\SYSTEM
+HKLM\Short\Name
+
+====Bad====
+
+HKP\SYSTEM

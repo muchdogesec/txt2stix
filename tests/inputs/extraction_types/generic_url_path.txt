@@ -1,0 +1,10 @@
+====Good====
+
+https://example.com/path/
+http://3.3.3.3/path
+https://fortinet.com/blog
+
+====Bad====
+
+https://example.com/path/index.html
+https://isbaseurl.com/

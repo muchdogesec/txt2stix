@@ -1,0 +1,14 @@
+====Good====
+
+T1174
+TA0006
+TA0011
+G1006
+T1053.005
+T1040
+TA0003
+SolarWinds Compromise
+
+====Bad====
+
+None

@@ -1,0 +1,10 @@
+====Good====
+
+http://example.nottld/file.exe
+
+====Bad====
+
+http://example.nottld
+https://example.local/path
+http://6.6.6.6
+https://not.nottld/badfile.wtf

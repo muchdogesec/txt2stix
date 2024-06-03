@@ -1,0 +1,222 @@
+# ====== AI EXTRACTIONS =====
+
+####### Cryptocurrency extractions #######
+
+ai_cryptocurrency_btc_wallet:
+  type: ai
+  name: 'Cryptocurrency Bitcoin Wallet'
+  description: ''
+  notes: ''
+  created: 2020-01-01
+  modified: 2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all Bitcoin Wallet hashes from the text.'
+  prompt_conversion: ''
+  test_cases: generic_cryptocurrency_btc_wallet
+  ignore_extractions:
+    -
+  stix_mapping: cryptocurrency-wallet
+
+ai_cryptocurrency_btc_transaction:
+  type: ai
+  name: 'Cryptocurrency Bitcoin Transaction'
+  description: ''
+  notes: ''
+  created: 2020-01-01
+  modified: 2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all Cryptocurrency Bitcoin Transaction hashes from the text.'
+  prompt_conversion: ''
+  test_cases: generic_cryptocurrency_btc_transaction
+  ignore_extractions:
+    -
+  stix_mapping: cryptocurrency-transaction
+
+ai_cryptocurrency_eth_wallet:
+  type: ai
+  name: 'Cryptocurrency Ethereum Wallet'
+  description: ''
+  notes: ''
+  created: 2020-01-01
+  modified: 2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all Ethereum Wallet hashes from the text.'
+  prompt_conversion: ''
+  test_cases: generic_cryptocurrency_eth_wallet
+  ignore_extractions:
+    - 
+  stix_mapping: cryptocurrency-wallet
+
+ai_cryptocurrency_eth_transaction:
+  type: ai
+  name: 'Cryptocurrency Ethereum Transaction'
+  description: ''
+  notes: ''
+  created: 2020-01-01
+  modified: 2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all Ethereum Transaction hashes from the text.'
+  prompt_conversion: ''
+  test_cases: generic_cryptocurrency_eth_transaction
+  ignore_extractions:
+    - 
+  stix_mapping: cryptocurrency-transaction
+
+ai_cryptocurrency_xmr_wallet:
+  type: ai
+  name: 'Cryptocurrency Monero Wallet'
+  description: ''
+  notes: ''
+  created: 2020-01-01
+  modified: 2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all Monero Wallter hashes from the text.'
+  prompt_conversion: ''
+  test_cases: generic_cryptocurrency_xmr_wallet
+  ignore_extractions:
+    - 
+  stix_mapping: cryptocurrency-wallet
+
+ai_cryptocurrency_xmr_transaction:
+  type: ai
+  name: 'Cryptocurrency Monrero Transaction'
+  description: ''
+  notes: ''
+  created: 2020-01-01
+  modified: 2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all Monero Transaction hashes from the text.'
+  prompt_conversion: ''
+  test_cases: generic_cryptocurrency_xmr_transaction
+  ignore_extractions:
+    - 
+  stix_mapping: cryptocurrency-transaction
+
+
+####### Phone number Extractions #######
+
+ai_phone_number:
+  type: ai
+  name: 'Phone number'
+  description: ''
+  notes: ''
+  created: 2020-01-01
+  modified: 2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all phone numbers from the text.'
+  prompt_conversion: 'If possible, please convert the number to the E.164 standard with the correct country code. Remove any whitespace from the final value.'
+  test_cases: generic_phone_number
+  ignore_extractions:
+    - 
+  stix_mapping: phone-number
+
+####### County extractions #######
+
+ai_country_alpha2:
+  type: ai
+  name: 'Country Alpha2'
+  description: ''
+  notes: ''
+  created: 2020-01-01
+  modified: 2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all countries from the text, including countries printed as IS0-3166 Alpha2 and Alpha3 codes.'
+  prompt_conversion: 'Convert all extractions to IS0-3166 Alpha2 codes.'
+  test_cases: ai_country_alpha2
+  ignore_extractions:
+    - 
+  stix_mapping: location
+
+####### MITRE ATT&CK #######
+
+ai_mitre_attack_enterprise:
+  type: ai
+  name: 'MITRE ATT&CK Enterprise'
+  description: ''
+  notes: ''
+  created: 2020-01-01
+  modified: 2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all MITRE ATT&CK Enterprise tactics, techniques, groups, data sources, mitigations, software, and campaigns described in the text. Do not include MITRE ATT&CK ICS or MITRE ATT&CK Mobile in the results.'
+  prompt_conversion: 'Convert all extractions into the corresponding ATT&CK ID.'
+  test_cases: ai_mitre_attack_enterprise
+  ignore_extractions:
+    - 
+  stix_mapping: mitre-attack-enterprise-id
+
+ai_mitre_attack_mobile:
+  type: ai
+  name: 'MITRE ATT&CK Mobile'
+  description: ''
+  notes: ''
+  created: 2020-01-01
+  modified: 2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all MITRE ATT&CK Mobile tactics, techniques, groups, data sources, mitigations, software, and campaigns described in the text. Do not include MITRE ATT&CK ICS or MITRE ATT&CK Enterprise in the results.'
+  prompt_conversion: 'Convert all extractions into the corresponding ATT&CK ID.'
+  test_cases: ai_mitre_attack_mobile
+  ignore_extractions:
+    - 
+  stix_mapping: mitre-attack-mobile-id
+
+ai_mitre_attack_ics:
+  type: ai
+  name: 'MITRE ATT&CK ICS'
+  description: ''
+  notes: ''
+  created: 2020-01-01
+  modified: 2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all MITRE ATT&CK ICS tactics, techniques, groups, data sources, mitigations, software, and campaigns described in the text. Do not include MITRE ATT&CK Mobile or MITRE ATT&CK Enterprise in the results.'
+  prompt_conversion: 'Convert all extractions into the corresponding ATT&CK ID.'
+  test_cases: ai_mitre_attack_ics
+  ignore_extractions:
+    - 
+  stix_mapping: mitre-attack-ics-id
+
+####### MITRE CAPEC #######
+
+ai_mitre_capec:
+  type: ai
+  name: 'MITRE CAPEC ID'
+  description: ''
+  notes: ''
+  created: 2020-01-01
+  modified: 2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all references to a MITRE CAPEC object.'
+  prompt_conversion: 'Convert all extractions into the corresponding CAPEC ID in the format `CAPEC-ID`'
+  test_cases: ai_mitre_capec
+  ignore_extractions:
+    - 
+  stix_mapping: mitre-capec-id
+
+####### MITRE CWE #######
+
+ai_mitre_cwe:
+  type: ai
+  name: 'MITRE CWE'
+  description: ''
+  notes: ''
+  created: 2020-01-01
+  modified: 2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all references to a MITRE CWE object.'
+  prompt_conversion: 'Convert all extractions into the corresponding CWE ID in the format `CWE-ID`'
+  test_cases: ai_mitre_cwe
+  ignore_extractions:
+    - 
+  stix_mapping: mitre-cwe-id

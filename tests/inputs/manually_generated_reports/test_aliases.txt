@@ -1,0 +1,5 @@
+Here is alpha3 GBR (country_iso3166_alpha3_to_alpha2) which is also known as United Kingdom (country_iso3166_name_to_alpha2.
+
+Hidden Users Mitigation (mitre_attack_enterprise_name_to_id) can be used to Limit Access to Resource Over Network (mitre_attack_ics_name_to_id / mitre_attack_enterprise_name_to_id) and Attestation (mitre_attack_mobile_name_to_id)
+
+Also Brute Force (mitre_capec_name_to_id) and Static Member Data Element outside of a Singleton Class Element (mitre_cwe_name_to_id) are often used together.

@@ -1,0 +1,10 @@
+====Good====
+
+https://example.local/path
+https://www.another.faketld/path/
+
+====Bad====
+
+http://example.nottld
+https://base.faketld/
+http://example.nottld/file.exe

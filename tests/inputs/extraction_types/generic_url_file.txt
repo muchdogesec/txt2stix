@@ -1,0 +1,11 @@
+====Good====
+
+https://amazon.co.uk/path/index.html
+http://3.3.3.3/path.exe
+https://fortinet.com/blog.html
+
+====Bad====
+
+http://3.3.3.3/path/
+https://www.amazon.co.uk
+https://www.fakedomain.co.uk/badfile.wtf

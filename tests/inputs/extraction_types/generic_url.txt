@@ -1,0 +1,10 @@
+====Good====
+
+https://www.amazon.co.uk
+http://3.3.3.3
+https://fortinet.com/
+
+====Bad====
+
+https://amazon.co.uk/path/index.html
+http://3.3.3.3/path/
