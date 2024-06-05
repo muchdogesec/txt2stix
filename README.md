@@ -128,7 +128,7 @@ A quick note on OPEN_AI and ARANGODB variables....
 
 `ARANGODB_*` properties are required if you want to use MITRE ATT&CK, MITRE CWE, MITRE CAPEC, NVD CPE, or NVD CVE extractions. You must define an ArangoDB instance with the required data in the expected format in order for these extraction types to work.
 
-You can populate your own instance of ArangoDB with the required data by using the scripts in [arango_cti_processor](https://github.com/muchdogesec/arango_cti_processor)
+You can populate your own instance of ArangoDB with the required data by using the scripts in [stix2arango](https://github.com/muchdogesec/stix2arango)
 
 **Make life simpler for yourself...**
 
