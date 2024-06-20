@@ -61,6 +61,7 @@ generic_ipv6_address_port:
 generic_domain_name_only:
   test_positive_examples:
     - 'google.com'
+    - 'igvmwp3544wpnd6u.onion'
   test_negative_examples:
     - 'subdomain.google.com' # is subdomain
     - 'example.nottld' # invalid TLD
@@ -70,6 +71,7 @@ generic_domain_name_subdomain:
     - 'subdomain.microsoft.com'
     - 'deeper.subdomain.microsoft.com'
     - 'even.deeper.subdomain.microsoft.com'
+    - 'something.igvmwp3544wpnd6u.onion'
   test_negative_examples:
     - 'microsoft.com'
 
@@ -80,6 +82,7 @@ generic_url:
     - 'https://www.amazon.co.uk'
     - 'http://3.3.3.3'
     - 'https://fortinet.com/'
+    - 'http://igvmwp3544wpnd6u.onion'
   test_negative_examples:
     - 'https://amazon.co.uk/path/index.html'
     - 'http://3.3.3.3/path/'
@@ -88,7 +91,8 @@ generic_url_file:
   test_positive_examples:
     - 'https://amazon.co.uk/path/index.html'
     - 'http://3.3.3.3/path.exe'
-    - 'https://fortinet.com/blog.html'
+    - 'https://sub.fortinet.com/blog.html'
+    - 'http://igvmwp3544wpnd6u.onion/blog.html'
   test_negative_examples:
     - 'http://3.3.3.3/path/'
     - 'https://www.amazon.co.uk'
@@ -98,7 +102,8 @@ generic_url_path:
   test_positive_examples:
     - 'https://example.com/path/'
     - 'http://3.3.3.3/path'
-    - 'https://fortinet.com/blog'
+    - 'https://sub.fortinet.com/blog'
+    - 'http://igvmwp3544wpnd6u.onion/blog'
   test_negative_examples:
     - 'https://example.com/path/index.html'
     - 'https://isbaseurl.com/'

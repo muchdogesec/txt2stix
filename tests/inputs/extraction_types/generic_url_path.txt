@@ -2,7 +2,8 @@
 
 https://example.com/path/
 http://3.3.3.3/path
-https://fortinet.com/blog
+https://sub.fortinet.com/blog
+http://igvmwp3544wpnd6u.onion/blog
 
 ====Bad====
 

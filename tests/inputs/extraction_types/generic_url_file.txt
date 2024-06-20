@@ -2,7 +2,8 @@
 
 https://amazon.co.uk/path/index.html
 http://3.3.3.3/path.exe
-https://fortinet.com/blog.html
+https://sub.fortinet.com/blog.html
+http://igvmwp3544wpnd6u.onion/blog.html
 
 ====Bad====
 
