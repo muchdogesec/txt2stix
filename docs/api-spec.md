@@ -212,7 +212,23 @@ With the payload of the request containing the following
 {
     "input_text": "<VALUE>",
     "relationship_mode": "<VALUE>",
-    "name": "<VALUE>"
+    "name": "<VALUE>",
+    "labels": [
+        "<LABELS"
+    ],
+    "tlp_level": "<VALUE>",
+    "confidence": "<VALUE>",
+    "use_identity": "<VALUE>",
+    "use_extractions": [
+        "<VALUE>"
+    ],
+    "use_aliases": [
+        "<VALUE>"
+    ],
+    "use_whitelists": [
+        "<VALUE>"
+    ],
+    "stix2arango_note": "<VALUE>"
 }
 ```
 
@@ -231,7 +247,8 @@ A full list of available options is as follows;
     * Important: if using any AI extractions, you must set an OpenAI API key in your `.env` file
     * Important: if you are using any MITRE ATT&CK, CAPEC, CWE or NVD CPE or CVE extractions you must set ArangoDB settings in your `.env` file
 * `--use_aliases` (optional): if you want to apply aliasing to the input doc (find and replace strings) you can pass their slug found in `aliases/config.yaml` (e.g. `country_iso3_to_iso2`). Default if not passed, no extractions applied.
-* `--use_whitelist` (optional): if you want to get the script to ignore certain values that might create extractions you can specify using `whitelist/config.yaml` (e.g. `alexa_top_1000`) related to the whitelist file you want to use. Default if not passed, no extractions applied.
+* `--use_whitelists` (optional): if you want to get the script to ignore certain values that might create extractions you can specify using `whitelist/config.yaml` (e.g. `alexa_top_1000`) related to the whitelist file you want to use. Default if not passed, no extractions applied.
+* `--stix2arango_note` (optional): the stix2arango note you want to use.
 
 A successful response will return a job id
 
