@@ -1,6 +1,8 @@
 import yaml, csv
 from pathlib import Path
 
+from . import lookups
+
 from .common import FatalException
 
 def load_alias(extractor):
@@ -24,3 +26,11 @@ def merge_aliases(extractors):
         terms.update(ex.aliases.items())
     # sort by length in descending order, this helps by making sure "A and B" is aliased before of "A" or "B"    
     return sorted(terms, key=lambda kv: len(kv[0]), reverse=True)
+
+
+def transform_all(extractors, input_text):
+    for term, alias in merge_aliases(extractors):
+        for index in lookups.find_get_indexes_re(term, input_text):
+            input_text = input_text[:index] + alias + input_text[index+len(term):]
+    return input_text
+    

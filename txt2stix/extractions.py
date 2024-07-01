@@ -64,6 +64,3 @@ def parse_extraction_config(path: Path):
     for p in path.glob("*/config.yaml"):
         config.update(yaml.safe_load(p.open()))
     return ExtractionConfig(config)
-
-# f = parse_extraction_config(Path("extractions/default.yaml"))
-# print(f["ipv4_address_only.prompt_helper"], f["ipv4_address_only.extraction_key"])
