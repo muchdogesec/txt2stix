@@ -32,15 +32,16 @@ def merge_lookups(extractors) -> list[tuple[str, Extractor]]:
         retval.extend(zip(ex.terms, [ex]*len(ex.terms)))
     return sorted(retval, key=lambda kv: len(kv[0]), reverse=True)
 
-def find_all_lookup(terms_ex:list[tuple[str, Extractor]], input_str, start_id=0):
+def extract_all(extractors, input_str):
+    terms_ex:list[tuple[str, Extractor]] = merge_lookups(extractors)
     seen_indexes = set()
-    retval = {}
+    retval = []
     for term, extractor in terms_ex:
         indexes = set(find_get_indexes_re(term, input_str))
         difference = list(indexes.difference(seen_indexes))
         seen_indexes.update(difference)
         if difference:
-            retval[f"extraction_{start_id+len(retval)}"] = {"value": term, "start_index":difference, "stix_mapping": extractor.stix_mapping, "type": extractor.slug}
+            retval.append({"value": term, "start_index":difference, "stix_mapping": extractor.stix_mapping, "type": extractor.slug})
     return retval
 
 def find_get_indexes(term, input_str):

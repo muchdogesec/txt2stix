@@ -4,8 +4,8 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-langchain = {extras = ["openai"], version = "*"}
-langchain_openai = "*"
+# langchain = {extras = ["openai"], version = "*"}
+# langchain_openai = "*"
 openai = "*"
 stix2 = "*"
 phonenumbers = "*"
@@ -17,6 +17,7 @@ validators = "*"
 schwifty = "*"
 requests = "*"
 python-dotenv = "*"
+llama-index = "*"
 stix4doge = {file = "https://github.com/muchdogesec/stix4doge/archive/main.zip"}
 
 [dev-packages]

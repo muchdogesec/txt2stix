@@ -1,3 +1,3 @@
-from src.main import main
+from txt2stix.txt2stix import main
 
 main()

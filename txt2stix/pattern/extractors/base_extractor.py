@@ -31,7 +31,7 @@ class BaseExtractor:
         cls.register_new_extractor(cls.name, cls)
 
     @classmethod
-    def extract_extraction_from_text(cls, text: str, extraction_index:int=0):
+    def extract_extraction_from_text(cls, text: str):
         """
         Extracts the required observables from text and returns the
         extracted observables and modified text.
@@ -93,16 +93,16 @@ class BaseExtractor:
                 string_positions[string] = []
             string_positions[string].append(pos)
 
-        response = {}
+        response = []
 
-        for i, (extraction, positions) in enumerate(string_positions.items()):
-            response[f"extraction_{extraction_index+i}"] =  {
+        for extraction, positions in string_positions.items():
+            response.append({
                 "value": extraction,
                 "type": cls.name,
                 "version": cls.version,
                 "stix_mapping": cls.stix_mapping,
                 "start_index": positions,
-            }
+            })
 
         return response
 

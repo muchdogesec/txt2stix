@@ -1,5 +1,4 @@
 from ..base_extractor import BaseExtractor
-from ..helper import extract_meta
 
 
 class JCBCardExtractor(BaseExtractor):
