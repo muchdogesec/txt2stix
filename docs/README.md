@@ -355,6 +355,8 @@ Note, this is different to relationship generation logic for relationship mode s
 * `indicator`
 * `ipv4-addr` (with `relationship` to `indicator`)
 
+Relationship modes:
+
 * Standard relationship SRO: Indicator is connected to Report
 * AI mode relationship SROs: ipv4-addr is connected as source or target object (depending on if extraction is source or target)
 
@@ -406,6 +408,8 @@ Note, this is different to relationship generation logic for relationship mode s
 * `indicator`
 * `ipv4-addr` (with `relationship` to `indicator`)
 * `network-traffic`
+
+Relationship modes:
 
 * Standard relationship SRO: Indicator is connected to Report
 * AI mode relationship SROs: ipv4-addr is connected as source or target object (depending on if extraction is source or target)
@@ -475,6 +479,8 @@ Generally, threat intel research reports cover destination ports when reported w
 * `indicator`
 * `ipv6-addr` (with `relationship` to `indicator`)
 
+Relationship modes:
+
 * Standard relationship SRO: Indicator is connected to Report
 * AI mode relationship SROs: ipv6-addr is connected as source or target object (depending on if extraction is source or target)
 
@@ -526,6 +532,8 @@ Generally, threat intel research reports cover destination ports when reported w
 * `indicator`
 * `ipv6-addr` (with `relationship` to `indicator`)
 * `network-traffic`
+
+Relationship modes:
 
 * Standard relationship SRO: Indicator is connected to Report
 * AI mode relationship SROs: ipv6-addr is connected as source or target object (depending on if extraction is source or target)
@@ -591,6 +599,8 @@ Generally, threat intel research reports cover destination ports when reported w
 * `indicator`
 * `domain-name` (with `relationship` to `indicator`)
 
+Relationship modes:
+
 * Standard relationship SRO: Indicator is connected to Report
 * AI mode relationship SROs: domain-name is connected as source or target object (depending on if extraction is source or target)
 
@@ -641,6 +651,8 @@ Generally, threat intel research reports cover destination ports when reported w
 
 * `indicator`
 * `url` (with `relationship` to `indicator`)
+
+Relationship modes:
 
 * Standard relationship SRO: Indicator is connected to Report
 * AI mode relationship SROs: url is connected as source or target object (depending on if extraction is source or target)
@@ -693,6 +705,8 @@ Generally, threat intel research reports cover destination ports when reported w
 * `indicator`
 * `file` (with `relationship` to `indicator`)
 
+Relationship modes:
+
 * Standard relationship SRO: Indicator is connected to Report
 * AI mode relationship SROs: file is connected as source or target object (depending on if extraction is source or target)
 
@@ -743,6 +757,8 @@ Generally, threat intel research reports cover destination ports when reported w
 
 * `indicator`
 * `directory` (with `relationship` to `indicator`)
+
+Relationship modes:
 
 * Standard relationship SRO: Indicator is connected to Report
 * AI mode relationship SROs: directory is connected as source or target object (depending on if extraction is source or target)
@@ -795,6 +811,8 @@ Generally, threat intel research reports cover destination ports when reported w
 * `indicator`
 * `directory` (with `relationship` to `indicator`)
 * `file`
+
+Relationship modes:
 
 * Standard relationship SRO: Indicator is connected to Report
 * AI mode relationship SROs: directory is connected as source or target object (depending on if extraction is source or target)
@@ -877,6 +895,8 @@ Note, we decided not to add the `parent_directory_ref` to the file object, as we
 * `indicator`
 * `file` (with `relationship` to `indicator`)
 
+Relationship modes:
+
 * Standard relationship SRO: Indicator is connected to Report
 * AI mode relationship SROs: file is connected as source or target object (depending on if extraction is source or target)
 
@@ -930,6 +950,8 @@ Note, we decided not to add the `parent_directory_ref` to the file object, as we
 * `indicator`
 * `email-addr` (with `relationship` to `indicator`)
 
+Relationship modes:
+
 * Standard relationship SRO: Indicator is connected to Report
 * AI mode relationship SROs: email-addr is connected as source or target object (depending on if extraction is source or target)
 
@@ -980,6 +1002,8 @@ Note, we decided not to add the `parent_directory_ref` to the file object, as we
 
 * `indicator`
 * `mac-addr` (with `relationship` to `indicator`)
+
+Relationship modes:
 
 * Standard relationship SRO: Indicator is connected to Report
 * AI mode relationship SROs: mac-addr is connected as source or target object (depending on if extraction is source or target)
@@ -1032,6 +1056,8 @@ Note, we decided not to add the `parent_directory_ref` to the file object, as we
 * `indicator`
 * `windows-registry-key` (with `relationship` to `indicator`)
 
+Relationship modes:
+
 * Standard relationship SRO: Indicator is connected to Report
 * AI mode relationship SROs: windows-registry-key is connected as source or target object (depending on if extraction is source or target)
 
@@ -1082,6 +1108,8 @@ Note, we decided not to add the `parent_directory_ref` to the file object, as we
 
 * `indicator`
 * [`autonomous-system`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_27gux0aol9e3) (with `relationship` to `indicator`)
+
+Relationship modes:
 
 * Standard relationship SRO: Indicator is connected to Report
 * AI mode relationship SROs: autonomous-system is connected as source or target object (depending on if extraction is source or target)
@@ -1134,6 +1162,8 @@ Note, we decided not to add the `parent_directory_ref` to the file object, as we
 * `indicator`
 * `user-agent` (with `relationship` to `indicator`)
 * User agent extension definition: https://raw.githubusercontent.com/muchdogesec/stix4doge/main/objects/extension-definition/user-agent.json
+
+Relationship modes:
 
 * Standard relationship SRO: Indicator is connected to Report
 * AI mode relationship SROs: user-agent is connected as source or target object (depending on if extraction is source or target)
@@ -1192,6 +1222,8 @@ Note, we decided not to add the `parent_directory_ref` to the file object, as we
 * `cryptocurrency-wallet` (with `relationship` to `indicator`)
 * Crypto wallet extension definition: https://raw.githubusercontent.com/muchdogesec/stix4doge/main/objects/extension-definition/cryptocurrency-wallet.json
 
+Relationship modes:
+
 * Standard relationship SRO: Indicator is connected to Report
 * AI mode relationship SROs: cryptocurrency-wallet is connected as source or target object (depending on if extraction is source or target)
 
@@ -1247,6 +1279,8 @@ At least 4 objects created:
 * Crypto wallet extension definition: https://raw.githubusercontent.com/muchdogesec/stix4doge/main/objects/extension-definition/cryptocurrency-wallet.json
 * Crypto transaction extension definition: https://raw.githubusercontent.com/muchdogesec/stix4doge/main/objects/extension-definition/cryptocurrency-transaction.json
 
+Relationship modes:
+
 * Standard relationship SRO: Indicator is connected to Report
 * AI mode relationship SROs: cryptocurrency-wallet is connected as source or target object (depending on if extraction is source or target)
 
@@ -1301,6 +1335,8 @@ Which generates the wallet object and any transactions associated with it.
 * `cryptocurrency-wallet` for wallets seen in transaction identified by crypto2stix (is not always generated if lookup unsuccessful)
 * Crypto transaction extension definition: https://raw.githubusercontent.com/muchdogesec/stix4doge/main/objects/extension-definition/cryptocurrency-transaction.json
 * Crypto wallet extension definition: https://raw.githubusercontent.com/muchdogesec/stix4doge/main/objects/extension-definition/cryptocurrency-wallet.json
+
+Relationship modes:
 
 * Standard relationship SRO: Indicator is connected to Report
 * AI mode relationship SROs: cryptocurrency-transaction is connected as source or target object (depending on if extraction is source or target)
@@ -1372,6 +1408,8 @@ This will also generate all `cryptocurrency-wallets` seen in the transaction.
 * `identity` (with `relationship` to `bank-card`) generated by creditcard2stix (is not always generated if lookup unsuccessful)
 * Bank card extension definition: https://raw.githubusercontent.com/muchdogesec/stix4doge/main/objects/extension-definition/bank-card.json
 
+Relationship modes:
+
 * Standard relationship SRO: Indicator is connected to Report
 * AI mode relationship SROs: bank-card is connected as source or target object (depending on if extraction is source or target)
 
@@ -1416,6 +1454,8 @@ The `bank-card` object is generated by [creditcard2stix](https://github.com/much
 * `indicator`
 * `bank-account` (with `relationship` to `indicator`)
 * Bank account extension definition: https://raw.githubusercontent.com/muchdogesec/stix4doge/main/objects/extension-definition/bank-account.json
+
+Relationship modes:
 
 * Standard relationship SRO: Indicator is connected to Report
 * AI mode relationship SROs: bank-card is connected as source or target object (depending on if extraction is source or target)
@@ -1479,6 +1519,8 @@ To ensure duplicate `bank-account` objects are not created for the same values, 
 * `phone-number` (with `relationship` to `indicator`)
 * Phone number extension definition: https://raw.githubusercontent.com/muchdogesec/stix4doge/main/objects/extension-definition/phone-number.json
 
+Relationship modes:
+
 * Standard relationship SRO: Indicator is connected to Report
 * AI mode relationship SROs: phone-number is connected as source or target object (depending on if extraction is source or target)
 
@@ -1539,6 +1581,8 @@ To ensure duplicate `phone-number` objects are not created for the same values, 
 
 * `attack-pattern`
 
+Relationship modes:
+
 * Standard relationship SRO: Attack Pattern is connected to Report
 * AI mode relationship SROs: attack-pattern is connected as source or target object (depending on if extraction is source or target)
 
@@ -1573,6 +1617,8 @@ To ensure duplicate `phone-number` objects are not created for the same values, 
 1 object created:
 
 * `campaign`
+
+Relationship modes:
 
 * Standard relationship SRO: Campaign is connected to Report
 * AI mode relationship SROs: campaign is connected as source or target object (depending on if extraction is source or target)
@@ -1609,6 +1655,8 @@ To ensure duplicate `phone-number` objects are not created for the same values, 
 
 * `course-of-action`
 
+Relationship modes:
+
 * Standard relationship SRO: Course of Action is connected to Report
 * AI mode relationship SROs: course-of-action is connected as source or target object (depending on if extraction is source or target)
 
@@ -1643,6 +1691,8 @@ To ensure duplicate `phone-number` objects are not created for the same values, 
 1 object created:
 
 * `infrastructure`
+
+Relationship modes:
 
 * Standard relationship SRO: Infrastructure is connected to Report
 * AI mode relationship SROs: infrastructure is connected as source or target object (depending on if extraction is source or target)
@@ -1680,6 +1730,8 @@ To ensure duplicate `phone-number` objects are not created for the same values, 
 
 * `intrusion-set`
 
+Relationship modes:
+
 * Standard relationship SRO: Intrusion Set is connected to Report
 * AI mode relationship SROs: intrusion-set is connected as source or target object (depending on if extraction is source or target)
 
@@ -1714,6 +1766,8 @@ To ensure duplicate `phone-number` objects are not created for the same values, 
 1 object created:
 
 * `malware`
+
+Relationship modes:
 
 * Standard relationship SRO: Malware is connected to Report
 * AI mode relationship SROs: malware is connected as source or target object (depending on if extraction is source or target)
@@ -1752,6 +1806,8 @@ To ensure duplicate `phone-number` objects are not created for the same values, 
 
 * `threat-actor`
 
+Relationship modes:
+
 * Standard relationship SRO: Threat Actor is connected to Report
 * AI mode relationship SROs: threat-actor is connected as source or target object (depending on if extraction is source or target)
 
@@ -1787,6 +1843,8 @@ To ensure duplicate `phone-number` objects are not created for the same values, 
 1 object created:
 
 * `tool`
+
+Relationship modes:
 
 * Standard relationship SRO: Tool is connected to Report
 * AI mode relationship SROs: tool is connected as source or target object (depending on if extraction is source or target)
@@ -1824,6 +1882,8 @@ To ensure duplicate `phone-number` objects are not created for the same values, 
 
 * `identity`
 
+Relationship modes:
+
 * Standard relationship SRO: Identity is connected to Report
 * AI mode relationship SROs: identity is connected as source or target object (depending on if extraction is source or target)
 
@@ -1859,6 +1919,8 @@ To ensure duplicate `phone-number` objects are not created for the same values, 
 1 object created:
 
 * `location`
+
+Relationship modes:
 
 * Standard relationship SRO: Location is connected to Report
 * AI mode relationship SROs: location is connected as source or target object (depending on if extraction is source or target)
@@ -1950,6 +2012,8 @@ FOR doc IN mitre_attack_enterprise_vertex_collection
     RETURN UNSET(doc, '_key', '_bundle_id', '_file_name', '_id', '_is_latest', '_record_created', '_record_md5_hash', '_record_modified', '_rev', '_stix2arango_note')
 ```
 
+Relationship modes:
+
 * Standard relationship SRO: Imported object(s) is connected to Report
 * AI mode relationship SROs: all imported objects are connected as source or target object (depending on if extraction is source or target)
 
@@ -1966,6 +2030,8 @@ FOR doc IN mitre_attack_mobile_vertex_collection
         FILTER external_references.external_id == '<ID>'
     RETURN UNSET(doc, '_key', '_bundle_id', '_file_name', '_id', '_is_latest', '_record_created', '_record_md5_hash', '_record_modified', '_rev', '_stix2arango_note')
 ```
+
+Relationship modes:
 
 * Standard relationship SRO: Imported object(s) is connected to Report
 * AI mode relationship SROs: all imported objects are connected as source or target object (depending on if extraction is source or target)
@@ -1984,6 +2050,8 @@ FOR doc IN mitre_attack_ics_vertex_collection
     RETURN UNSET(doc, '_key', '_bundle_id', '_file_name', '_id', '_is_latest', '_record_created', '_record_md5_hash', '_record_modified', '_rev', '_stix2arango_note')
 ```
 
+Relationship modes:
+
 * Standard relationship SRO: Imported object(s) is connected to Report
 * AI mode relationship SROs: all imported objects are c
 
@@ -2001,6 +2069,8 @@ FOR doc IN mitre_capec_vertex_collection
         FILTER external_references.external_id == '<ID>'
     RETURN UNSET( doc, '_key', '_bundle_id', '_file_name', '_id',  '_is_latest', '_record_created', '_record_md5_hash', '_record_modified', '_rev', '_stix2arango_note')
 ```
+
+Relationship modes:
 
 * Standard relationship SRO: Imported object is connected to Report
 * AI mode relationship SROs: all imported objects are connected as source or target object (depending on if extraction is source or target)
@@ -2023,6 +2093,8 @@ FOR doc IN mitre_cwe_vertex_collection
     RETURN UNSET( doc, '_key', '_bundle_id', '_file_name', '_id',  '_is_latest', '_record_created', '_record_md5_hash', '_record_modified', '_rev', '_stix2arango_note')
 ```
 
+Relationship modes:
+
 * Standard relationship SRO: Imported object is connected to Report
 * AI mode relationship SROs: all imported objects are connected as source or target object (depending on if extraction is source or target)
 
@@ -2039,6 +2111,8 @@ FOR doc IN nvd_cve_vertex_collection
     RETURN UNSET( doc, '_key', '_bundle_id', '_file_name', '_id',  '_is_latest', '_record_created', '_record_md5_hash', '_record_modified', '_rev', '_stix2arango_note')
 ```
 
+Relationship modes:
+
 * Standard relationship SRO: Imported object is connected to Report
 * AI mode relationship SROs: all imported objects are connected as source or target object (depending on if extraction is source or target)
 
@@ -2054,6 +2128,8 @@ FOR doc IN nvd_cpe_vertex_collection
     AND doc.cpe == '<ID>'
     RETURN UNSET( doc, '_key', '_bundle_id', '_file_name', '_id',  '_is_latest', '_record_created', '_record_md5_hash', '_record_modified', '_rev', '_stix2arango_note')
 ```
+
+Relationship modes:
 
 * Standard relationship SRO: Imported object is connected to Report
 * AI mode relationship SROs: all imported objects are connected as source or target object (depending on if extraction is source or target)
