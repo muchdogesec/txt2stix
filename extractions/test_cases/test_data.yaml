@@ -381,7 +381,7 @@ generic_bank_card_amex:
 
 generic_bank_card_union_pay:
   test_positive_examples:
-    - '6214833456234563'
+    - '6220123456234563'
   test_negative_examples:
     - '4242424242424242' # is visa
     - '6223 0510 2561 6714' # not currently smart enough to extract spaces
