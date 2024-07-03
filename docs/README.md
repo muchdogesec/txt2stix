@@ -352,8 +352,8 @@ Note, this is different to relationship generation logic for relationship mode s
 
 2 objects created:
 
-* [`indicator`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_muftrcpnf89v)
-* [`ipv4-addr`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_ki1ufj1ku8s0) (with `relationship` to `indicator`)
+* `indicator`
+* `ipv4-addr` (with `relationship` to `indicator`)
 
 * Standard relationship SRO: Indicator is connected to Report
 * AI mode relationship SROs: ipv4-addr is connected as source or target object (depending on if extraction is source or target)
@@ -403,9 +403,9 @@ Note, this is different to relationship generation logic for relationship mode s
 
 3 objects created:
 
-* [`indicator`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_muftrcpnf89v)
-* [`ipv4-addr`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_ki1ufj1ku8s0) (with `relationship` to `indicator`)
-* [`network-traffic`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_rgnc3w40xy)
+* `indicator`
+* `ipv4-addr` (with `relationship` to `indicator`)
+* `network-traffic`
 
 * Standard relationship SRO: Indicator is connected to Report
 * AI mode relationship SROs: ipv4-addr is connected as source or target object (depending on if extraction is source or target)
@@ -472,8 +472,8 @@ Generally, threat intel research reports cover destination ports when reported w
 
 2 objects created:
 
-* [`indicator`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_muftrcpnf89v)
-* [`ipv6-addr`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_oeggeryskriq) (with `relationship` to `indicator`)
+* `indicator`
+* `ipv6-addr` (with `relationship` to `indicator`)
 
 * Standard relationship SRO: Indicator is connected to Report
 * AI mode relationship SROs: ipv6-addr is connected as source or target object (depending on if extraction is source or target)
@@ -523,9 +523,9 @@ Generally, threat intel research reports cover destination ports when reported w
 
 3 objects created:
 
-* [`indicator`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_muftrcpnf89v)
-* [`ipv6-addr`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_oeggeryskriq) (with `relationship` to `indicator`)
-* [`network-traffic`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_rgnc3w40xy)
+* `indicator`
+* `ipv6-addr` (with `relationship` to `indicator`)
+* `network-traffic`
 
 * Standard relationship SRO: Indicator is connected to Report
 * AI mode relationship SROs: ipv6-addr is connected as source or target object (depending on if extraction is source or target)
@@ -588,8 +588,8 @@ Generally, threat intel research reports cover destination ports when reported w
 
 2 objects created:
 
-* [`indicator`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_muftrcpnf89v)
-* [`domain-name`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_prhhksbxbg87) (with `relationship` to `indicator`)
+* `indicator`
+* `domain-name` (with `relationship` to `indicator`)
 
 * Standard relationship SRO: Indicator is connected to Report
 * AI mode relationship SROs: domain-name is connected as source or target object (depending on if extraction is source or target)
@@ -639,8 +639,8 @@ Generally, threat intel research reports cover destination ports when reported w
 
 2 objects created:
 
-* [`indicator`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_muftrcpnf89v)
-* [`url`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_ah3hict2dez0) (with `relationship` to `indicator`)
+* `indicator`
+* `url` (with `relationship` to `indicator`)
 
 * Standard relationship SRO: Indicator is connected to Report
 * AI mode relationship SROs: url is connected as source or target object (depending on if extraction is source or target)
@@ -690,8 +690,8 @@ Generally, threat intel research reports cover destination ports when reported w
 
 2 objects created:
 
-* [`indicator`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_muftrcpnf89v)
-* [`file`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_99bl2dibcztv) (with `relationship` to `indicator`)
+* `indicator`
+* `file` (with `relationship` to `indicator`)
 
 * Standard relationship SRO: Indicator is connected to Report
 * AI mode relationship SROs: file is connected as source or target object (depending on if extraction is source or target)
@@ -741,8 +741,8 @@ Generally, threat intel research reports cover destination ports when reported w
 
 2 objects created:
 
-* [`indicator`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_muftrcpnf89v)
-* [`directory`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_lyvpga5hlw52) (with `relationship` to `indicator`)
+* `indicator`
+* `directory` (with `relationship` to `indicator`)
 
 * Standard relationship SRO: Indicator is connected to Report
 * AI mode relationship SROs: directory is connected as source or target object (depending on if extraction is source or target)
@@ -792,9 +792,9 @@ Generally, threat intel research reports cover destination ports when reported w
 
 3 objects created:
 
-* [`indicator`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_muftrcpnf89v)
-* [`directory`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_lyvpga5hlw52) (with `relationship` to `indicator`)
-* [`file`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_99bl2dibcztv)
+* `indicator`
+* `directory` (with `relationship` to `indicator`)
+* `file`
 
 * Standard relationship SRO: Indicator is connected to Report
 * AI mode relationship SROs: directory is connected as source or target object (depending on if extraction is source or target)
@@ -874,8 +874,8 @@ Note, we decided not to add the `parent_directory_ref` to the file object, as we
 
 2 objects created:
 
-* [`indicator`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_muftrcpnf89v)
-* [`file`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_99bl2dibcztv) (with `relationship` to `indicator`)
+* `indicator`
+* `file` (with `relationship` to `indicator`)
 
 * Standard relationship SRO: Indicator is connected to Report
 * AI mode relationship SROs: file is connected as source or target object (depending on if extraction is source or target)
@@ -927,8 +927,8 @@ Note, we decided not to add the `parent_directory_ref` to the file object, as we
 
 2 objects created:
 
-* [`indicator`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_muftrcpnf89v)
-* [`email-addr`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_wmenahkvqmgj) (with `relationship` to `indicator`)
+* `indicator`
+* `email-addr` (with `relationship` to `indicator`)
 
 * Standard relationship SRO: Indicator is connected to Report
 * AI mode relationship SROs: email-addr is connected as source or target object (depending on if extraction is source or target)
@@ -978,8 +978,8 @@ Note, we decided not to add the `parent_directory_ref` to the file object, as we
 
 2 objects created:
 
-* [`indicator`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_muftrcpnf89v)
-* [`mac-addr`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_f92nr9plf58y) (with `relationship` to `indicator`)
+* `indicator`
+* `mac-addr` (with `relationship` to `indicator`)
 
 * Standard relationship SRO: Indicator is connected to Report
 * AI mode relationship SROs: mac-addr is connected as source or target object (depending on if extraction is source or target)
@@ -1029,8 +1029,8 @@ Note, we decided not to add the `parent_directory_ref` to the file object, as we
 
 2 objects created:
 
-* [`indicator`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_muftrcpnf89v)
-* [`windows-registry-key`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_luvw8wjlfo3y) (with `relationship` to `indicator`)
+* `indicator`
+* `windows-registry-key` (with `relationship` to `indicator`)
 
 * Standard relationship SRO: Indicator is connected to Report
 * AI mode relationship SROs: windows-registry-key is connected as source or target object (depending on if extraction is source or target)
@@ -1080,7 +1080,7 @@ Note, we decided not to add the `parent_directory_ref` to the file object, as we
 
 2 objects created:
 
-* [`indicator`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_muftrcpnf89v)
+* `indicator`
 * [`autonomous-system`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_27gux0aol9e3) (with `relationship` to `indicator`)
 
 * Standard relationship SRO: Indicator is connected to Report
@@ -1131,7 +1131,7 @@ Note, we decided not to add the `parent_directory_ref` to the file object, as we
 
 3 objects created:
 
-* [`indicator`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_muftrcpnf89v)
+* `indicator`
 * `user-agent` (with `relationship` to `indicator`)
 * User agent extension definition: https://raw.githubusercontent.com/muchdogesec/stix4doge/main/objects/extension-definition/user-agent.json
 
@@ -1188,7 +1188,7 @@ Note, we decided not to add the `parent_directory_ref` to the file object, as we
 
 3 objects created:
 
-* [`indicator`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_muftrcpnf89v)
+* `indicator`
 * `cryptocurrency-wallet` (with `relationship` to `indicator`)
 * Crypto wallet extension definition: https://raw.githubusercontent.com/muchdogesec/stix4doge/main/objects/extension-definition/cryptocurrency-wallet.json
 
@@ -1227,32 +1227,80 @@ Note, we decided not to add the `parent_directory_ref` to the file object, as we
 }
 ```
 
+The `cryptocurrency-wallet` object is generated by [crypto2stix](https://github.com/muchdogesec/crypto2stix).
+
+The crypto2stix equivilant command is;
+
+```shell
+python3 crypto2stix.py --wallet HASH --wallet_only
+```
+
+Which only generates the wallet object.
+
+### stix-mapping: cryptocurrency-wallet-with-transaction
+
+At least 4 objects created:
+
+* `indicator`
+* `cryptocurrency-wallet` (with `relationship` to `indicator`)
+* `cryptocurrency-transaction` for all crypto transactions that exist related to the wallet (is not always generated if lookup unsuccessful)
+* Crypto wallet extension definition: https://raw.githubusercontent.com/muchdogesec/stix4doge/main/objects/extension-definition/cryptocurrency-wallet.json
+* Crypto transaction extension definition: https://raw.githubusercontent.com/muchdogesec/stix4doge/main/objects/extension-definition/cryptocurrency-transaction.json
+
+* Standard relationship SRO: Indicator is connected to Report
+* AI mode relationship SROs: cryptocurrency-wallet is connected as source or target object (depending on if extraction is source or target)
+
 ```json
-{
-    "type": "cryptocurrency-wallet",
+  {
+    "type": "indicator",
     "spec_version": "2.1",
-    "id": "cryptocurrency-wallet--<UUIDV5>",
-    "address": "<EXTRACTED CRYPTOCURRENCY OBSERVABLE VALUE>",
-    "extensions": {
-        "extension-definition--be78509e-6958-51b1-8b26-d17ee0eba2d7" : {
-            "extension_type" : "new-sco"
+    "id": "indicator--<GENERATED BY STIX2 LIBRARY>",
+    "created_by_ref": "identity--<DEFAULT OR CUSTOM IDENTITY OBJECT ID>",
+    "created": "<REPORT CREATED PROPERTY VALUE>",
+    "modified": "<REPORT MODIFIED PROPERTY VALUE>",
+    "indicator_types": [
+        "unknown"
+    ],
+    "name": "<CRYPTO TYPE> Wallet: <EXTRACTED CRYPTOCURRENCY OBSERVABLE VALUE>",
+    "pattern_type": "stix",
+    "pattern": "[ cryptocurrency-wallet:address = '<EXTRACTED CRYPTOCURRENCY OBSERVABLE VALUE>' ]",
+    "valid_from": "<REPORT CREATED PROPERTY VALUE>",
+    "object_marking_refs": [
+        "marking-definition--<TLP LEVEL SET>",
+        "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
+    ],
+    "external_references": [
+        {
+            "source_name": "txt2stix job ID",
+            "external_id": "<REPORT OBJECT ID>"
+        },
+        {
+            "source_name": "txt2stix extraction ID",
+            "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
-    }
+    ]
 }
 ```
 
-To ensure duplicate `cryptocurrency-wallet` objects are not created for the same values, a UUIDv5 address is generated for the ID as follows;
+The `cryptocurrency-transaction` object is generated by [crypto2stix](https://github.com/muchdogesec/crypto2stix).
 
-* Namespace = `00abedb4-aa42-466c-9c01-fed23315a9b7` (this is the default MITRE namespace used in the stix2 python lib https://github.com/oasis-open/cti-python-stix2/blob/50fd81fd6ba4f26824a864319305bc298e89bb45/stix2/base.py#L29)
-* Value = `<address>`
+The crypto2stix equivilant command is;
+
+```shell
+python3 crypto2stix.py --wallet HASH --transactions_only
+```
+
+Which generates the wallet object and any transactions associated with it.
 
 ### stix-mapping: cryptocurrency-transaction
 
-3 objects created:
+5 objects created:
 
-* [`indicator`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_muftrcpnf89v)
+* `indicator`
 * `cryptocurrency-transaction` (with `relationship` to `indicator`)
+* `cryptocurrency-wallet` for wallets seen in transaction identified by crypto2stix (is not always generated if lookup unsuccessful)
 * Crypto transaction extension definition: https://raw.githubusercontent.com/muchdogesec/stix4doge/main/objects/extension-definition/cryptocurrency-transaction.json
+* Crypto wallet extension definition: https://raw.githubusercontent.com/muchdogesec/stix4doge/main/objects/extension-definition/cryptocurrency-wallet.json
 
 * Standard relationship SRO: Indicator is connected to Report
 * AI mode relationship SROs: cryptocurrency-transaction is connected as source or target object (depending on if extraction is source or target)
@@ -1305,17 +1353,23 @@ To ensure duplicate `cryptocurrency-wallet` objects are not created for the same
 }
 ```
 
-To ensure duplicate `cryptocurrency-transaction` objects are not created for the same values, a UUIDv5 address is generated for the ID as follows;
+The `cryptocurrency-transaction` object is generated by [crypto2stix](https://github.com/muchdogesec/crypto2stix).
 
-* Namespace = `00abedb4-aa42-466c-9c01-fed23315a9b7` (this is the default MITRE namespace used in the stix2 python lib https://github.com/oasis-open/cti-python-stix2/blob/50fd81fd6ba4f26824a864319305bc298e89bb45/stix2/base.py#L29)
-* Value = `<hash>`
+The crypto2stix equivilant command is;
+
+```shell
+python3 crypto2stix.py --transaction HASH
+```
+
+This will also generate all `cryptocurrency-wallets` seen in the transaction.
 
 ### stix-mapping: bank-card
 
 3 objects created:
 
-* [`indicator`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_muftrcpnf89v)
-* `bank-card`] (with `relationship` to `indicator`)
+* `indicator`
+* `bank-card` (with `relationship` to `indicator`)
+* `identity` (with `relationship` to `bank-card`) generated by creditcard2stix (is not always generated if lookup unsuccessful)
 * Bank card extension definition: https://raw.githubusercontent.com/muchdogesec/stix4doge/main/objects/extension-definition/bank-card.json
 
 * Standard relationship SRO: Indicator is connected to Report
@@ -1353,31 +1407,14 @@ To ensure duplicate `cryptocurrency-transaction` objects are not created for the
 }
 ```
 
-```json
-{
-    "type": "bank-card",
-    "spec_version": "2.1",
-    "id": "bank-card--<UUIDV5>",
-    "number": "<CREDIT CARD NUMBER>",
-    "extensions": {
-        "extension-definition--7922f91a-ee77-58a5-8217-321ce6a2d6e0" : {
-            "extension_type" : "new-sco"
-        }
-    }
-}
-```
-
-To ensure duplicate `bank-card` objects are not created for the same values, a UUIDv5 address is generated for the ID as follows;
-
-* Namespace = `00abedb4-aa42-466c-9c01-fed23315a9b7` (this is the default MITRE namespace used in the stix2 python lib https://github.com/oasis-open/cti-python-stix2/blob/50fd81fd6ba4f26824a864319305bc298e89bb45/stix2/base.py#L29)
-* Value = `<number>`
+The `bank-card` object is generated by [creditcard2stix](https://github.com/muchdogesec/creditcard2stix). This will require users to enter an `BIN_LIST_API_KEY` in the `.env` file.
 
 ### stix-mapping: bank-account
 
 3 objects created:
 
-* [`indicator`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_muftrcpnf89v)
-* `bank-account` with `relationship` to `indicator`)
+* `indicator`
+* `bank-account` (with `relationship` to `indicator`)
 * Bank account extension definition: https://raw.githubusercontent.com/muchdogesec/stix4doge/main/objects/extension-definition/bank-account.json
 
 * Standard relationship SRO: Indicator is connected to Report
@@ -1438,7 +1475,7 @@ To ensure duplicate `bank-account` objects are not created for the same values, 
 
 3 objects created:
 
-* [`indicator`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_muftrcpnf89v)
+* `indicator`
 * `phone-number` (with `relationship` to `indicator`)
 * Phone number extension definition: https://raw.githubusercontent.com/muchdogesec/stix4doge/main/objects/extension-definition/phone-number.json
 
@@ -1500,7 +1537,7 @@ To ensure duplicate `phone-number` objects are not created for the same values, 
 
 1 object created:
 
-* [`attack-pattern`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_axjijf603msy)
+* `attack-pattern`
 
 * Standard relationship SRO: Attack Pattern is connected to Report
 * AI mode relationship SROs: attack-pattern is connected as source or target object (depending on if extraction is source or target)
@@ -1535,7 +1572,7 @@ To ensure duplicate `phone-number` objects are not created for the same values, 
 
 1 object created:
 
-* [`campaign`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_pcpvfz4ik6d6)
+* `campaign`
 
 * Standard relationship SRO: Campaign is connected to Report
 * AI mode relationship SROs: campaign is connected as source or target object (depending on if extraction is source or target)
@@ -1570,7 +1607,7 @@ To ensure duplicate `phone-number` objects are not created for the same values, 
 
 1 object created:
 
-* [`course-of-action`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_a925mpw39txn)
+* `course-of-action`
 
 * Standard relationship SRO: Course of Action is connected to Report
 * AI mode relationship SROs: course-of-action is connected as source or target object (depending on if extraction is source or target)
@@ -1605,7 +1642,7 @@ To ensure duplicate `phone-number` objects are not created for the same values, 
 
 1 object created:
 
-* [`infrastructure`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_jo3k1o6lr9)
+* `infrastructure`
 
 * Standard relationship SRO: Infrastructure is connected to Report
 * AI mode relationship SROs: infrastructure is connected as source or target object (depending on if extraction is source or target)
@@ -1641,7 +1678,7 @@ To ensure duplicate `phone-number` objects are not created for the same values, 
 
 1 object created:
 
-* [`intrusion-set`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_5ol9xlbbnrdn)
+* `intrusion-set`
 
 * Standard relationship SRO: Intrusion Set is connected to Report
 * AI mode relationship SROs: intrusion-set is connected as source or target object (depending on if extraction is source or target)
@@ -1676,7 +1713,7 @@ To ensure duplicate `phone-number` objects are not created for the same values, 
 
 1 object created:
 
-* [`malware`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_s5l7katgbp09)
+* `malware`
 
 * Standard relationship SRO: Malware is connected to Report
 * AI mode relationship SROs: malware is connected as source or target object (depending on if extraction is source or target)
@@ -1713,7 +1750,7 @@ To ensure duplicate `phone-number` objects are not created for the same values, 
 
 1 object created:
 
-* [`threat-actor`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_k017w16zutw)
+* `threat-actor`
 
 * Standard relationship SRO: Threat Actor is connected to Report
 * AI mode relationship SROs: threat-actor is connected as source or target object (depending on if extraction is source or target)
@@ -1749,7 +1786,7 @@ To ensure duplicate `phone-number` objects are not created for the same values, 
 
 1 object created:
 
-* [`tool`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_z4voa9ndw8v)
+* `tool`
 
 * Standard relationship SRO: Tool is connected to Report
 * AI mode relationship SROs: tool is connected as source or target object (depending on if extraction is source or target)
@@ -1785,7 +1822,7 @@ To ensure duplicate `phone-number` objects are not created for the same values, 
 
 1 object created:
 
-* [`identity`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_wh296fiwpklp)
+* `identity`
 
 * Standard relationship SRO: Identity is connected to Report
 * AI mode relationship SROs: identity is connected as source or target object (depending on if extraction is source or target)
@@ -1821,7 +1858,7 @@ To ensure duplicate `phone-number` objects are not created for the same values, 
 
 1 object created:
 
-* [`location`](https://docs.oasis-open.org/cti/stix/v2.1/os/stix-v2.1-os.html#_th8nitr8jb4k)
+* `location`
 
 * Standard relationship SRO: Location is connected to Report
 * AI mode relationship SROs: location is connected as source or target object (depending on if extraction is source or target)

@@ -145,7 +145,7 @@ python3 txt2stix.py \
 	--name NAME \
 	--tlp_level TLP_LEVEL \
 	--confidence CONFIDENCE_SCORE \
-	--label label1,label2 \
+	--labels label1,label2 \
 	--use_identity \{IDENTITY JSON\} \
 	--use_extractions EXTRACTION1,EXTRACTION2 \
 	--use_aliases ALIAS1,ALIAS2 \
@@ -157,9 +157,9 @@ python3 txt2stix.py \
 	* `standard`: extractions performed by either regex or AI (AI provider must be enabled) for extractions user selected. Basic relationships created from extractions back to master Report object generated.
 * `--input_file` (required): the file to be converted. Must be `.txt`
 * `--name` (required): name of file, max 72 chars. Will be used in the STIX Report Object created.
-* `--labels` (optional): comma seperated list of labels. Case-insensitive (will all be converted to lower-case). Allowed `a-z`, `0-9`. e.g.`label1,label2` would create 2 labels.
 * `--tlp_level` (optional): Options are `clear`, `green`, `amber`, `amber_strict`, `red`. Default if not passed, is `clear`.
 * `--confidence` (optional): value between 0-100. Default if not passed is null.
+* `--labels` (optional): comma seperated list of labels. Case-insensitive (will all be converted to lower-case). Allowed `a-z`, `0-9`. e.g.`label1,label2` would create 2 labels.
 * `--use_identity` (optional): can pass a full STIX 2.1 identity object (make sure to properly escape). Will be validated by the STIX2 library.
 * `--use_extractions` (required): if you only want to use certain extraction types, you can pass their slug found in either `ai/config.yaml`, `lookup/config.yaml` `regex/config.yaml` (e.g. `regex_ipv4_address_only`). Default if not passed, no extractions applied.
 	* Important: if using any AI extractions, you must set an OpenAI API key in your `.env` file
