@@ -87,6 +87,7 @@ CVE-2019-4706
 cpe:2.3:a:timesheets-for-jira:timesheet_tracking:2.0.1:*:*:*:*:jira:*:*
 cpe:2.3:a:codecabin:wp_go_maps:7.10.58:*:*:*:basic:wordpress:*:*
 5588601012060076
+5588 6010 1206 0076
 4239534242424242
 377240224631002
 6220123456234563

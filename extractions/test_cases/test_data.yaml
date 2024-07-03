@@ -359,9 +359,9 @@ generic_cpe_uri:
 generic_bank_card_mastercard:
   test_positive_examples:
     - '5588601012060076'
+    - '5588 6010 1206 0076'
   test_negative_examples:
     - '4242424242424242' # is visa
-    - '5588 6010 1206 0076' # not currently smart enough to extract spaces
 
 generic_bank_card_visa:
   test_positive_examples:
