@@ -8,3 +8,6 @@ from .extractors.ip import IP_EXTRACTORS
 from .extractors.hashes import SHA_EXTRACTORS
 from .extractors.url import URL_EXTRACTORS
 from .extractors.others import OTHER_EXTRACTORS
+
+
+from .extractors.helper import extract_all

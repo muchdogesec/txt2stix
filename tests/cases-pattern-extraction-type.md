@@ -358,16 +358,40 @@ python3 txt2stix.py \
 	--use_extractions pattern_autonomous_system_number
 ```
 
-#### 3.1.31 pattern_cryptocurrency_btc_wallet
+#### 3.1.31.1 pattern_cryptocurrency_btc_wallet
 
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
 	--input_file tests/inputs/extraction_types/generic_cryptocurrency_btc_wallet.txt \
-	--name 'Test 3.1.31 pattern_cryptocurrency_btc_wallet' \
+	--name 'Test 3.1.31.1 pattern_cryptocurrency_btc_wallet' \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions pattern_cryptocurrency_btc_wallet
+```
+
+#### 3.1.31.2 pattern_cryptocurrency_btc_wallet_transaction
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/inputs/extraction_types/generic_cryptocurrency_btc_wallet.txt \
+	--name 'Test 3.1.31.2 pattern_cryptocurrency_btc_wallet_transaction' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions pattern_cryptocurrency_btc_wallet_transaction
+```
+
+#### 3.1.31.3 pattern_cryptocurrency_btc_transaction
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/inputs/extraction_types/generic_cryptocurrency_btc_transaction.txt \
+	--name 'Test 3.1.31.3 pattern_cryptocurrency_btc_transaction' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions generic_cryptocurrency_btc_transaction
 ```
 
 #### 3.1.32 pattern_cve_id

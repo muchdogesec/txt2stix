@@ -1,4 +1,7 @@
 from typing import Any
+from uuid import UUID
+
+UUID_NAMESPACE = UUID("2c741473-e0f1-5f0a-a044-ae2a368ad0c6")
 
 class NamedDict(dict):
     def __getattribute__(self, attr: str):
