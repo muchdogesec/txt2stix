@@ -45,7 +45,12 @@ def setLogFile(logger, file: Path):
 
 
 MODULE_PATH = Path(__file__).parent.parent
-EXTRACTORS_PATH = MODULE_PATH/"extractions"
+INCLUDES_PATH = MODULE_PATH/"includes"
+try:
+    from . import includes
+    INCLUDES_PATH = Path(includes.__file__).parent
+except:
+    pass
 
 def split_comma(s: str) -> list[str]:
     return s.split(",")
@@ -97,7 +102,8 @@ def parse_extractors_globbed(type, all_extractors, names):
     return filtered_extractors
 
 def parse_args():
-    all_extractors = extractions.parse_extraction_config(EXTRACTORS_PATH)
+    EXTRACTORS_PATH = INCLUDES_PATH/"extractions"
+    all_extractors = extractions.parse_extraction_config(INCLUDES_PATH)
     
     parser = argparse.ArgumentParser(description="File Conversion Tool")
 
@@ -200,7 +206,7 @@ def main():
             # print("// warning AI relationship mode may fail")
             try:
                 ai_extractor_session.set_document(aliased_input)
-                relationship_types = (MODULE_PATH/"helpers/stix_relationship_types.txt").read_text().splitlines()
+                relationship_types = (INCLUDES_PATH/"helpers/stix_relationship_types.txt").read_text().splitlines()
                 relationships = ai_extractor_session.extract_relationships(all_extracts, relationship_types)
                 bundler.add_note(json.dumps(relationships), "Relationships")
                 bundler.process_relationships(relationships)

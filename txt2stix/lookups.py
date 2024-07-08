@@ -77,16 +77,3 @@ def merge_whitelists(whitelist_extractors):
             raise FatalException(f"cannot load whitelist `{extractor.slug}`: {e}")
     return terms
     
-
-
-
-if __name__ == "__main__":
-    from .extractions import parse_extraction_config
-    extractions = parse_extraction_config(Path(__file__).parent.parent/"extractions")
-    # lookups = load_config()
-    l1 = extractions['lookup_mitre_attack_ics_id']
-    load_lookup(l1)
-    ss = "'TA0108', 'TA0105', 'TA0110, 'TA0104', 'TA0101', 'TA0100', 'TA0103', 'TA0106', 'T0803', 'T0881', 'T0836', 'T0821'[]'TA0108', 'TA0105', 'TA0110', 'TA0104', 'TA0101',"
-    print(list(find_get_indexes_re("TA0110", ss)))
-    print(list(find_get_indexes("TA0110", ss)))
-    print(find_all(l1, ss))

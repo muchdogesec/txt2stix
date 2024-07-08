@@ -6,6 +6,7 @@ import logging
 import sys
 
 from ...extractions import Extractor
+from ...utils import read_included_file
 
 
 def read_text_file(file_path):
@@ -89,5 +90,5 @@ def extract_all(extractors :list[Extractor], input_text):
     return pattern_extracts
 
 
-FILE_EXTENSION = read_text_file('lookups/extensions.txt')
-TLD = read_text_file('lookups/tld.txt')
+FILE_EXTENSION = read_included_file('lookups/extensions.txt')
+TLD = read_included_file('lookups/tld.txt')
