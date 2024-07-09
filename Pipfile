@@ -18,7 +18,7 @@ schwifty = "*"
 requests = "*"
 python-dotenv = "*"
 llama-index = "*"
-stix4doge = {file = "https://github.com/muchdogesec/stix4doge/archive/main.zip"}
+stix2extensions = {file = "https://github.com/muchdogesec/stix2extensions/archive/main.zip"}
 
 [dev-packages]
 autopep8 = "*"

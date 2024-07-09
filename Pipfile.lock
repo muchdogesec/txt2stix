@@ -1483,8 +1483,8 @@
             "markers": "python_version >= '3.6'",
             "version": "==2.0.0"
         },
-        "stix4doge": {
-            "file": "https://github.com/muchdogesec/stix4doge/archive/main.zip"
+        "stix2extensions": {
+            "file": "https://github.com/muchdogesec/stix2extensions/archive/main.zip"
         },
         "striprtf": {
             "hashes": [

@@ -144,7 +144,7 @@ class txt2stixBundler:
         "phone-number": None,
         "weakness": None,
     }
-    EXTENSION_DEFINITION_BASE_URL = "https://raw.githubusercontent.com/muchdogesec/stix4doge/main/objects/extension-definition"
+    EXTENSION_DEFINITION_BASE_URL = "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/extension-definitions"
     report = None
     identity = None
     object_marking_refs = []
