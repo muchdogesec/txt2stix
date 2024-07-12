@@ -10,7 +10,7 @@ from pathlib import PurePosixPath, PureWindowsPath
 import phonenumbers
 from phonenumbers import geocoder
 import logging
-from stix4doge import (
+from stix2extensions import (
     BankAccount,
     BankCard,
     CryptocurrencyTransaction,
@@ -19,7 +19,7 @@ from stix4doge import (
     UserAgent,
     Weakness,
 )
-from stix4doge.tools import creditcard2stix, crypto2stix
+from stix2extensions.tools import creditcard2stix, crypto2stix
 
 # from schwifty import IBAN
 

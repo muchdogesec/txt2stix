@@ -36,36 +36,9 @@ class Extractor(NamedDict):
             for line in file.read_text().splitlines():
                 self.lookups.add(line.strip())
 
-
-class ExtractionConfig:
-    def __init__(self, raw_dct, include_path=None):
-        self.extractors = {}
-        self.raw = raw_dct
-        self.include_path = include_path
-        self.process_prompts()
-    
-    def __getitem__(self, key):
-        if not key:
-            return None
-        keys = key.split(".")
-        obj = self.extractors
-        for key in keys:
-            if key.isdigit():
-                key = int(key)
-            obj = obj[key]
-        if isinstance(obj, str):
-            return obj.format_map(self.extractors)
-        return obj
-
-    def process_prompts(self):
-        for k, v in self.raw.items():
-            if not isinstance(v, dict):
-                continue
-            self.extractors[k] = Extractor(k, v, self.include_path)
-
 def parse_extraction_config(include_path: Path):
     config = {}
     for p in include_path.glob("extractions/*/config.yaml"):
         config.update(yaml.safe_load(p.open()))
-    print(include_path, config)
-    return ExtractionConfig(config, include_path)
+    
+    return {k: Extractor(k, v, include_path) for k, v in config.items()}

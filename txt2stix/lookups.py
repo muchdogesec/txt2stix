@@ -29,6 +29,7 @@ def find_all(extractor, input_str, start_id=0):
 def merge_lookups(extractors) -> list[tuple[str, Extractor]]:
     retval = []
     for ex in extractors:
+        load_lookup(ex)
         retval.extend(zip(ex.terms, [ex]*len(ex.terms)))
     return sorted(retval, key=lambda kv: len(kv[0]), reverse=True)
 
@@ -71,7 +72,8 @@ def merge_whitelists(whitelist_extractors):
     terms = set()
     for extractor in whitelist_extractors:
         try:
-            eterms = extractor.terms or Path(extractor.file).read_text().splitlines()
+            load_lookup(extractor)
+            eterms = extractor.terms
             terms.update(eterms)
         except Exception as e:
             raise FatalException(f"cannot load whitelist `{extractor.slug}`: {e}")

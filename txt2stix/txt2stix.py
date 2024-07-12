@@ -75,7 +75,7 @@ def parse_labels(labels: str) -> list[str]:
 def parse_extractors_globbed(type, all_extractors, names):
     globbed_names = set()
     for name in names.split(","):
-        globbed_names.update(fnmatch.filter(all_extractors.extractors.keys(), name))
+        globbed_names.update(fnmatch.filter(all_extractors.keys(), name))
     filtered_extractors  = {}
     for extractor_name in globbed_names:
         try:
@@ -86,11 +86,7 @@ def parse_extractors_globbed(type, all_extractors, names):
             if extractor.type == "alias":
                 aliases.load_alias(extractor)
             if extractor.type == "pattern":
-                extractor.pattern_extractor = pattern.ALL_EXTRACTORS.get(extractor_name)
-                if not extractor.pattern_extractor:
-                    raise argparse.ArgumentTypeError(f"could not find associated python class for pattern")
-                extractor.pattern_extractor.version = extractor.version
-                extractor.pattern_extractor.stix_mapping = extractor.stix_mapping
+                pattern.load_extractor(extractor)
             filtered_extractors[extractor.type] =  extraction_processor
             extraction_processor[extractor_name] = extractor
         except KeyError:
@@ -126,7 +122,7 @@ def parse_args():
 
     #### process --use-extractions 
     for extraction_processor, extractors in args.use_extractions.items():
-        args.use_extractions[extraction_processor] = extractions.ExtractionConfig(extractors)
+        args.use_extractions[extraction_processor] = extractors
     args.all_extractors  = all_extractors
     args.use_aliases = args.use_aliases.get("alias", {})
     return args
@@ -151,7 +147,7 @@ def extract_all(bundler: txt2stixBundler, extractors_map, aliased_input, ai_extr
     all_extracts = dict()
     if extractors_map.get("lookup"):
         try:
-            lookup_extracts = lookups.extract_all(extractors_map["lookup"].extractors.values(), aliased_input)
+            lookup_extracts = lookups.extract_all(extractors_map["lookup"].values(), aliased_input)
             bundler.process_observables(lookup_extracts)
             all_extracts["lookup"] = lookup_extracts
         except BaseException as e:
@@ -160,7 +156,7 @@ def extract_all(bundler: txt2stixBundler, extractors_map, aliased_input, ai_extr
     if extractors_map.get("pattern"):
         try:
             logging.info("using pattern extractors")
-            pattern_extracts = pattern.extract_all(extractors_map["pattern"].extractors.values(), aliased_input)
+            pattern_extracts = pattern.extract_all(extractors_map["pattern"].values(), aliased_input)
             bundler.process_observables(pattern_extracts)
             all_extracts["pattern"] = pattern_extracts
         except BaseException as e:
@@ -173,12 +169,27 @@ def extract_all(bundler: txt2stixBundler, extractors_map, aliased_input, ai_extr
         else:
             try:
                 ai_extractor.set_document(aliased_input)
-                ai_extracts = ai_extractor.extract_objects(extractors_map["ai"].extractors.values())
+                ai_extracts = ai_extractor.extract_objects(extractors_map["ai"].values())
                 bundler.process_observables(ai_extracts)
                 all_extracts["ai"] = ai_extracts
             except BaseException as e:
                 logging.exception("AI extraction failed", exc_info=True)
+
+    bundler.add_note(json.dumps(all_extracts), "Extractions")
     return all_extracts
+
+def extract_relationships_with_ai(bundler: txt2stixBundler, aliased_input, all_extracts, ai_extractor_session: BaseAIExtractor):
+    relationships = None
+    try:
+        ai_extractor_session.set_document(aliased_input)
+        relationship_types = (INCLUDES_PATH/"helpers/stix_relationship_types.txt").read_text().splitlines()
+        relationships = ai_extractor_session.extract_relationships(all_extracts, relationship_types)
+        bundler.add_note(json.dumps(relationships), "Relationships")
+        bundler.process_relationships(relationships)
+    except BaseException as e:
+        logging.exception("Relationship processing failed: %s", e)
+    # convo_str = ai_extractor_session.get_conversation() if ai_extractor_session and ai_extractor_session.initialized else ""
+    return relationships
 
 def main():
     try:
@@ -201,17 +212,9 @@ def main():
         ai_extractor_session = GenericAIExtractor.openai()
         all_extracts = extract_all(bundler, args.use_extractions, aliased_input, ai_extractor=ai_extractor_session)
  
-        bundler.add_note(json.dumps(all_extracts), "Extractions")
         if args.relationship_mode == "ai" and sum(map(lambda x: len(x), all_extracts.values())):
-            # print("// warning AI relationship mode may fail")
-            try:
-                ai_extractor_session.set_document(aliased_input)
-                relationship_types = (INCLUDES_PATH/"helpers/stix_relationship_types.txt").read_text().splitlines()
-                relationships = ai_extractor_session.extract_relationships(all_extracts, relationship_types)
-                bundler.add_note(json.dumps(relationships), "Relationships")
-                bundler.process_relationships(relationships)
-            except BaseException as e:
-                logger.exception("Relationship processing failed:", e)
+            extract_relationships_with_ai(bundler, aliased_input, all_extracts, ai_extractor_session)
+            
         convo_str = ai_extractor_session.get_conversation() if ai_extractor_session and ai_extractor_session.initialized else ""
             
 

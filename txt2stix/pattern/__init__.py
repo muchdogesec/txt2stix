@@ -10,4 +10,4 @@ from .extractors.url import URL_EXTRACTORS
 from .extractors.others import OTHER_EXTRACTORS
 
 
-from .extractors.helper import extract_all
+from .extractors.helper import extract_all, load_extractor

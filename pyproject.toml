@@ -25,7 +25,7 @@ dependencies = [
   "python-arango>=8.0.0",
   "python-dotenv>=1.0.1",
   "schwifty>=2024.6.1",
-  "stix4doge @ https://github.com/muchdogesec/stix4doge/archive/main.zip",
+  "stix2extensions @ https://github.com/muchdogesec/stix2extensions/archive/main.zip",
   "tld>=0.13",
   "tldextract>=5.1.2",
   "validators>=0.28.3",
