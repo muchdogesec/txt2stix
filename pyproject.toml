@@ -29,6 +29,7 @@ dependencies = [
   "tld>=0.13",
   "tldextract>=5.1.2",
   "validators>=0.28.3",
+  "base58>=2.1.1",
 ]
 
 [tool.hatch.metadata]
