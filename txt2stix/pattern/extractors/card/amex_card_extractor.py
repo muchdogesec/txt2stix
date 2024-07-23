@@ -1,5 +1,5 @@
 from ..base_extractor import BaseExtractor
-
+from validators import card_number
 
 class AmexCardExtractor(BaseExtractor):
     """
@@ -48,3 +48,5 @@ class AmexCardExtractor(BaseExtractor):
     extraction_regex = "|".join(extraction_regex_list)
 
     # end of generated code
+
+    filter_function = card_number
