@@ -196,13 +196,18 @@ class txt2stixBundler:
         extractors,
         labels,
         job_id=None,
+        created=dt.now(),
     ) -> None:
+        self.created = created
         self.whitelisted_values = set()
         self.whitelisted_refs = set()
         self.all_extractors = extractors
         self.identity = identity or self.default_identity
         self.tlp_level = TLP_LEVEL.get(tlp_level)
-        self.uuid = job_id or str(uuid.uuid4())
+        self.uuid = str(
+            uuid.uuid5(UUID_NAMESPACE, f"{self.identity.id}+{self.created}+{name}")
+        )
+
         self.job_id = f"report--{self.uuid}"
         self.report = Report(
             created_by_ref=self.identity.id,
@@ -212,6 +217,7 @@ class txt2stixBundler:
             object_refs=[
                 f"note--{self.uuid}"
             ],  # won't allow creation with empty object_refs
+            created=self.created,
             object_marking_refs=[self.tlp_level.value.id],
             labels=labels,
             published=dt.now(),

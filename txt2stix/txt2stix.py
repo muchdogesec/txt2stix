@@ -1,4 +1,5 @@
 import argparse, dotenv
+from datetime import datetime
 import glob
 import uuid
 import itertools
@@ -105,6 +106,7 @@ def parse_args():
 
     inf_arg  = parser.add_argument("--input_file", "--input-file", required=True, help="The file to be converted. Must be .txt", type=Path)
     name_arg = parser.add_argument("--name", required=True, help="Name of the file, max 72 chars", default="stix-out")
+    parser.add_argument("--created", required=False, default=datetime.now(), help="Allow user to optionally pass --created time in input, which will hardcode the time used in created times")
     parser.add_argument("--labels", type=parse_labels)
     parser.add_argument("--relationship_mode", choices=["ai", "standard"], required=True)
     parser.add_argument("--confidence", type=range_type(0,100), default=None, help="value between 0-100. Default if not passed is null.", metavar="[0-100]")
@@ -204,7 +206,7 @@ def main():
 
         load_env(len(aliased_input))
 
-        bundler = txt2stixBundler(args.name, args.use_identity, args.tlp_level, aliased_input, args.confidence, args.all_extractors, args.labels, job_id=job_id)
+        bundler = txt2stixBundler(args.name, args.use_identity, args.tlp_level, aliased_input, args.confidence, args.all_extractors, args.labels, created=args.created)
         bundler.add_note(json.dumps(sys.argv), "Config")
         convo_str = None
 
