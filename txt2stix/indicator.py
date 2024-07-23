@@ -353,6 +353,24 @@ def build_observables(bundler, stix_mapping, indicator, extracted, extractor):
 
         return stix_objects, [txn_object.id]
 
+    if stix_mapping == "cryptocurrency-wallet-with-transaction":
+        # ASSUMPTION: always BTC
+        # TODO: parse crypto types
+
+        currency_symbol = "BTC"
+        btc2stix = crypto2stix.BTC2Stix()
+        indicator["name"] = f"{currency_symbol} Wallet: {value}"
+        indicator["pattern"] = f"[ cryptocurrency-wallet:address = { repr(value) } ]"
+        wallet_obj, *other_objects = btc2stix.process_wallet(value, wallet_only=False, transactions_only=False)
+
+        stix_objects.append(
+            wallet_obj
+        )
+        stix_objects.extend(other_objects)
+        stix_objects.append(
+            bundler.new_relationship(wallet_obj.id, indicator["id"], "related-to")
+        )
+        return stix_objects, [wallet_obj.id]
     if stix_mapping == "bank-card":
         # TODO
         card_type = extractor.name

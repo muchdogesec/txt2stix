@@ -488,6 +488,34 @@ pattern_cryptocurrency_btc_wallet:
     - 
   stix_mapping: cryptocurrency-wallet
 
+pattern_cryptocurrency_btc_transaction:
+  type: pattern
+  name: 'Cryptocurrency Bitcoin Transaction'
+  description: ''
+  notes: ''
+  created: 2020-01-01
+  modified: 2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_cryptocurrency_btc_transaction
+  ignore_extractions:
+    - 
+  stix_mapping: cryptocurrency-transaction
+
+pattern_cryptocurrency_btc_wallet_transaction:
+  type: pattern
+  name: 'Cryptocurrency Bitcoin Wallet And Transaction'
+  description: ''
+  notes: ''
+  created: 2020-01-01
+  modified: 2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_cryptocurrency_btc_wallet
+  ignore_extractions:
+    - 
+  stix_mapping: cryptocurrency-wallet-with-transaction
+
 ####### CVE extractions #######
 
 pattern_cve_id:
