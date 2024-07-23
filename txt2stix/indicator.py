@@ -1,3 +1,4 @@
+from __future__ import annotations
 import os
 import json, re
 from stix2.parsing import dict_to_stix2, parse as parse_stix
@@ -20,6 +21,10 @@ from stix2extensions import (
     Weakness,
 )
 from stix2extensions.tools import creditcard2stix, crypto2stix
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from .stix import txt2stixBundler
 
 # from schwifty import IBAN
 
@@ -76,7 +81,9 @@ def get_iban_details(number) -> tuple[str, str]:
     return number[:2], None
 
 
-def build_observables(bundler, stix_mapping, indicator, extracted, extractor):
+def build_observables(
+    bundler: txt2stixBundler, stix_mapping, indicator, extracted, extractor
+):
     value = extracted["value"]
 
     arango_objects = arangodb_check(stix_mapping, value)
@@ -323,11 +330,11 @@ def build_observables(bundler, stix_mapping, indicator, extracted, extractor):
         btc2stix = crypto2stix.BTC2Stix()
         indicator["name"] = f"{currency_symbol} Wallet: {value}"
         indicator["pattern"] = f"[ cryptocurrency-wallet:address = { repr(value) } ]"
-        wallet_obj, *other_objects = btc2stix.process_wallet(value, wallet_only=True, transactions_only=False)
-
-        stix_objects.append(
-            wallet_obj
+        wallet_obj, *other_objects = btc2stix.process_wallet(
+            value, wallet_only=True, transactions_only=False
         )
+
+        stix_objects.append(wallet_obj)
         stix_objects.extend(other_objects)
         stix_objects.append(
             bundler.new_relationship(wallet_obj.id, indicator["id"], "related-to")
@@ -343,9 +350,7 @@ def build_observables(bundler, stix_mapping, indicator, extracted, extractor):
         indicator["name"] = f"{currency_symbol} Transaction: {value}"
         indicator["pattern"] = f"[ cryptocurrency-transaction:hash = { repr(value) } ]"
 
-        stix_objects.append(
-            txn_object
-        )
+        stix_objects.append(txn_object)
         stix_objects.extend(other_objects)
         stix_objects.append(
             bundler.new_relationship(txn_object.id, indicator["id"], "related-to")
@@ -361,11 +366,11 @@ def build_observables(bundler, stix_mapping, indicator, extracted, extractor):
         btc2stix = crypto2stix.BTC2Stix()
         indicator["name"] = f"{currency_symbol} Wallet: {value}"
         indicator["pattern"] = f"[ cryptocurrency-wallet:address = { repr(value) } ]"
-        wallet_obj, *other_objects = btc2stix.process_wallet(value, wallet_only=False, transactions_only=False)
-
-        stix_objects.append(
-            wallet_obj
+        wallet_obj, *other_objects = btc2stix.process_wallet(
+            value, wallet_only=False, transactions_only=False
         )
+
+        stix_objects.append(wallet_obj)
         stix_objects.extend(other_objects)
         stix_objects.append(
             bundler.new_relationship(wallet_obj.id, indicator["id"], "related-to")
@@ -378,20 +383,23 @@ def build_observables(bundler, stix_mapping, indicator, extracted, extractor):
             card_type = extractor.name.split("Bank Card ")[1]
 
         value = value.replace("-", "").replace(" ", "")
-        card_object, *other_objects = creditcard2stix.create_objects({'card_number': value}, os.getenv("BIN_LIST_API_KEY", ""))
+        indicator["id"] = bundler.indicator_id_from_value(value, stix_mapping)
+        card_object, *other_objects = creditcard2stix.create_objects(
+            {"card_number": value}, os.getenv("BIN_LIST_API_KEY", "")
+        )
         stix_objects.append(card_object)
         stix_objects.extend(other_objects)
 
-        if  card_object.get('scheme'):
-            card_type = card_object['scheme']
+        if card_object.get("scheme"):
+            card_type = card_object["scheme"]
 
         indicator["name"] = f"{card_type}: {value}"
         indicator["pattern"] = f"[ bank-card:number = { repr(value) } ]"
 
         stix_objects.append(
-            bundler.new_relationship(card_object['id'], indicator["id"], "related-to")
+            bundler.new_relationship(card_object["id"], indicator["id"], "related-to")
         )
-        return stix_objects, [card_object['id']]
+        return stix_objects, [card_object["id"]]
 
     if stix_mapping == "bank-account":
         indicator["name"] = f"Bank account: {value}"
