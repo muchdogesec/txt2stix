@@ -190,6 +190,18 @@ python3 txt2stix.py \
 	--use_extractions pattern_ipv4_address_only
 ```
 
+#### 0.1.6 Created time
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/inputs/extraction_types/generic_ipv4_address_only.txt \
+	--name 'Test 0.1.5 Created time' \
+	--tlp_level green \
+	--created 2020-01-01T00:00:00.000Z \
+	--use_extractions pattern_ipv4_address_only
+```
+
 ### AI relationship mode tests
 
 #### 0.2.1 A descriptive example with all extraction types in txt file enabled (no external objects)
