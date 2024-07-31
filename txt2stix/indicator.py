@@ -367,7 +367,7 @@ def build_observables(
         indicator["name"] = f"{currency_symbol} Wallet: {value}"
         indicator["pattern"] = f"[ cryptocurrency-wallet:address = { repr(value) } ]"
         wallet_obj, *other_objects = btc2stix.process_wallet(
-            value, wallet_only=False, transactions_only=False
+            value, wallet_only=False, transactions_only=True
         )
 
         stix_objects.append(wallet_obj)
