@@ -18,7 +18,7 @@ In short txt2stix;
 
 ## tl;dr
 
-[![txt2stix](https://img.youtube.com/vi/z1ATbiecbg4/0.jpg)](https://www.youtube.com/watch?v=z1ATbiecbg4)
+[![txt2stix](https://img.youtube.com/vi/TWVGCou9oGk/0.jpg)](https://www.youtube.com/watch?v=TWVGCou9oGk)
 
 ## The problem
 
