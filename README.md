@@ -16,6 +16,10 @@ In short txt2stix;
 6. converts extracted relationships to STIX 2.1 SRO objects
 7. outputs a STIX 2.1 bundle
 
+## tl;dr
+
+[![txt2stix](https://img.youtube.com/vi/z1ATbiecbg4/0.jpg)](https://www.youtube.com/watch?v=z1ATbiecbg4)
+
 ## The problem
 
 More-and-more organisations are standardising the way the represent threat intelligence using the STIX 2.1 data model.
