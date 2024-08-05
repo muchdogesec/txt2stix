@@ -1,1 +1,3 @@
-1.1.1.1 and 2.2.2.2 have hosted google.com
+fakedomain.com resolves to 1.1.1.1.
+
+fakedomain.com has been known to distribute revil malware sent in  email attachments from the email address fakedomain@email.com
