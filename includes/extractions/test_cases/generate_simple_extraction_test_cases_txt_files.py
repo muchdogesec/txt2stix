@@ -50,7 +50,7 @@ def create_test_case_files(file_path, output_dir):
             file.write(f"{item}\n")
 
 # Usage
-file_path = 'extractions/test_cases/test_data.yaml'  # Update this to your file's location
+file_path = 'includes/extractions/test_cases/test_data.yaml'  # Update this to your file's location
 output_dir = 'tests/inputs/extraction_types/'  # Update this to your desired output directory
 create_test_case_files(file_path, output_dir)
 
