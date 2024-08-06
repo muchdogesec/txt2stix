@@ -13,6 +13,7 @@ from . import extractions
 from llama_index.llms.openai import OpenAI as ChatOpenAI
 from llama_index.core.chat_engine import SimpleChatEngine
 from llama_index.core.base.llms.types import ChatMessage, MessageRole
+import tiktoken
 
 dotenv.load_dotenv()
 logger = logging.getLogger("txt2stix.ai_session")
@@ -29,6 +30,10 @@ class BaseAIExtractor:
         raise NotImplementedError("this method should be implemented in subclass")
     def get_conversation(self):
         return "CONVERSATION: NotImplemented"
+    
+    def calculate_token_count(self, text, model='gpt-4o'):
+        enc = tiktoken.encoding_for_model(model)
+        return len(enc.encode(text))
 
 class OpenAIAssistantExtractor(BaseAIExtractor):
     extract_instruction = textwrap.dedent(
@@ -200,6 +205,7 @@ class OpenAIAssistantExtractor(BaseAIExtractor):
 
 class GenericAIExtractor(BaseAIExtractor):
     engine = None
+    model = None
     def __init__(self, llm):
         self.llm=llm
         self.history = []
@@ -208,7 +214,12 @@ class GenericAIExtractor(BaseAIExtractor):
     @staticmethod
     def openai(model_name=os.getenv("OPENAI_MODEL", "gpt-3.5")):
         llm = ChatOpenAI(model_name=model_name)
-        return GenericAIExtractor(llm)
+        retval = GenericAIExtractor(llm)
+        retval.model = model_name
+        return retval
+    
+    def calculate_token_count(self, text, model=None):
+        return super().calculate_token_count(text, model or self.model)
 
     def query(self, query):
         logger.info(f"AI Chat Query: {repr(query)}")
@@ -365,4 +376,3 @@ class GenericAIExtractor(BaseAIExtractor):
             out += f"\n==================== {message.role} ====================\n"
             out += message.content
         return out
-

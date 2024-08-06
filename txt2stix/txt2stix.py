@@ -144,8 +144,8 @@ def load_env(input_length):
     for env in REQUIRED_ENV_VARIABLES:
         if not os.getenv(env):
             raise FatalException(f"env variable `{env}` required")
-    if input_length > int(os.environ["INPUT_CHARACTER_LIMIT"]):
-        raise FatalException(f"input_file length ({input_length}) exceeds character limit ({os.environ['INPUT_CHARACTER_LIMIT']})")
+    # if input_length > int(os.environ["INPUT_CHARACTER_LIMIT"]):
+    #     raise FatalException(f"input_file length ({input_length}) exceeds character limit ({os.environ['INPUT_CHARACTER_LIMIT']})")
 
 def extract_all(bundler: txt2stixBundler, extractors_map, aliased_input, ai_extractor: BaseAIExtractor=None):
     all_extracts = dict()
@@ -214,6 +214,10 @@ def main():
 
         bundler.whitelisted_values = args.use_whitelist
         ai_extractor_session = GenericAIExtractor.openai()
+        if args.use_extractions.get("ai"):
+            token_count = ai_extractor_session.calculate_token_count(aliased_input, ai_extractor_session.model)
+            if  token_count > int(os.environ["INPUT_TOKEN_LIMIT"]):
+                raise FatalException(f"input_file token count ({token_count}) exceeds INPUT_TOKEN_LIMIT ({os.environ['INPUT_TOKEN_LIMIT']})")
         all_extracts = extract_all(bundler, args.use_extractions, aliased_input, ai_extractor=ai_extractor_session)
  
         if args.relationship_mode == "ai" and sum(map(lambda x: len(x), all_extracts.values())):
