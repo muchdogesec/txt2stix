@@ -76,7 +76,10 @@ def parse_labels(labels: str) -> list[str]:
 def parse_extractors_globbed(type, all_extractors, names):
     globbed_names = set()
     for name in names.split(","):
-        globbed_names.update(fnmatch.filter(all_extractors.keys(), name))
+        matches = fnmatch.filter(all_extractors.keys(), name)
+        if not matches:
+            raise argparse.ArgumentTypeError(f'`{name}` has 0 matches')
+        globbed_names.update(matches)
     filtered_extractors  = {}
     for extractor_name in globbed_names:
         try:
