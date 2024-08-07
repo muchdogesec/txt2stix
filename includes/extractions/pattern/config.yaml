@@ -472,12 +472,12 @@ pattern_autonomous_system_number:
     - 
   stix_mapping: autonomous-system
 
-####### Cryptocurrency extractions #######
+####### Cryptocurrency wallet extractions #######
 
 pattern_cryptocurrency_btc_wallet:
   type: pattern
   name: 'Cryptocurrency Bitcoin Wallet'
-  description: ''
+  description: 'Will extract bitcoin wallet hashes and create STIX cryptocurrency-wallet objects for them'
   notes: 'Uses the Python validators library.'
   created: 2020-01-01
   modified: 2020-01-01
@@ -490,9 +490,9 @@ pattern_cryptocurrency_btc_wallet:
 
 pattern_cryptocurrency_btc_wallet_transaction:
   type: pattern
-  name: 'Cryptocurrency Bitcoin Wallet with Transaction'
-  description: 'Also creates transactions objects for transactions related to the wallet'
-  notes: 'Uses the Python validators library.'
+  name: 'Cryptocurrency Bitcoin Wallet And Transaction'
+  description: 'Will extract bitcoin wallet hashes and lookup all transactions the extracted wallets have been seen in. Will create a cryptocurrency-wallet object for the wallet extracted, will create cryptocurrency-transaction objects for all transactions the wallet is found in.'
+  notes: 'Uses https://github.com/muchdogesec/crypto2stix for blockchain lookups'
   created: 2020-01-01
   modified: 2020-01-01
   created_by: DOGESEC
@@ -502,11 +502,13 @@ pattern_cryptocurrency_btc_wallet_transaction:
     - 
   stix_mapping: cryptocurrency-wallet-with-transaction
 
+####### Cryptocurrency transaction extractions #######
+
 pattern_cryptocurrency_btc_transaction:
   type: pattern
   name: 'Cryptocurrency Bitcoin Transaction'
-  description: ''
-  notes: 'Uses the Python validators library.'
+  description: 'Will extract bitcoin transaction hashes. Will create a cryptocurrency-transaction object for the transaction extracted and will create cryptocurrency-wallet objects for all wallets seen in the input or output of the transaction.'
+  notes: 'Uses https://github.com/muchdogesec/crypto2stix for blockchain lookups'
   created: 2020-01-01
   modified: 2020-01-01
   created_by: DOGESEC

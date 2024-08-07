@@ -19,6 +19,7 @@ requests = "*"
 python-dotenv = "*"
 llama-index = "*"
 stix2extensions = {file = "https://github.com/muchdogesec/stix2extensions/archive/main.zip"}
+base58 = "*"
 
 [dev-packages]
 autopep8 = "*"

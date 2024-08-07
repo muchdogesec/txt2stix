@@ -25,6 +25,7 @@ from stix2 import (
     EmailAddress,
     WindowsRegistryKey,
     AutonomousSystem,
+    v21,
 )
 import requests
 
@@ -195,13 +196,18 @@ class txt2stixBundler:
         extractors,
         labels,
         job_id=None,
+        created=dt.now(),
     ) -> None:
+        self.created = created
         self.whitelisted_values = set()
         self.whitelisted_refs = set()
         self.all_extractors = extractors
         self.identity = identity or self.default_identity
         self.tlp_level = TLP_LEVEL.get(tlp_level)
-        self.uuid = job_id or str(uuid.uuid4())
+        self.uuid = str(
+            uuid.uuid5(UUID_NAMESPACE, f"{self.identity.id}+{self.created}+{name}")
+        )
+
         self.job_id = f"report--{self.uuid}"
         self.report = Report(
             created_by_ref=self.identity.id,
@@ -211,6 +217,7 @@ class txt2stixBundler:
             object_refs=[
                 f"note--{self.uuid}"
             ],  # won't allow creation with empty object_refs
+            created=self.created,
             object_marking_refs=[self.tlp_level.value.id],
             labels=labels,
             published=dt.now(),
@@ -243,7 +250,14 @@ class txt2stixBundler:
     def add_extension(self, object):
         _type = object["type"]
         if self.EXTENSION_MAPPING.get(_type, "") is None:
-            url = self.EXTENSION_DEFINITION_BASE_URL + f"/{_type}.json"
+            if isinstance(object, v21._Observable):
+                url = self.EXTENSION_DEFINITION_BASE_URL + f"/scos/{_type}.json"
+            elif isinstance(object, v21._DomainObject):
+                url = self.EXTENSION_DEFINITION_BASE_URL + f"/sdos/{_type}.json"
+            else:
+                raise Exception(
+                    f"Unknown custom object object.type = {_type}, {type(object)=}"
+                )
             logger.info(f'getting extension definition for "{_type}" from `{url}`')
             self.EXTENSION_MAPPING[_type] = self.load_object_from_json(url)
             extension = self.EXTENSION_MAPPING[_type]
@@ -352,8 +366,8 @@ class txt2stixBundler:
         ):
             return
 
-        for source_ref in self.id_map.get(gpt_out["source_ref"]):
-            for target_ref in self.id_map.get(gpt_out["target_ref"]):
+        for source_ref in self.id_map.get(gpt_out["source_ref"], []):
+            for target_ref in self.id_map.get(gpt_out["target_ref"], []):
                 self.add_standard_relationship(
                     source_ref, target_ref, gpt_out["relationship_type"]
                 )
@@ -363,7 +377,8 @@ class txt2stixBundler:
 
     def new_relationship(self, source_ref, target_ref, relationship_type):
         return Relationship(
-            id="relationship--" + str(
+            id="relationship--"
+            + str(
                 uuid.uuid5(
                     UUID_NAMESPACE, f"{relationship_type}+{source_ref}+{target_ref}"
                 )
@@ -385,13 +400,13 @@ class txt2stixBundler:
         )
 
     def to_json(self):
-        return serialize(self.bundle, pretty=True)
+        return serialize(self.bundle, indent=4)
 
     def process_observables(self, extractions, add_standard_relationship=False):
-        self.objects_count = getattr(self, 'objects_count', 0)
+        self.objects_count = getattr(self, "objects_count", 0)
         for ex in extractions:
             try:
-                ex["id"] = ex.get('id', f"ex_{self.objects_count}")
+                ex["id"] = ex.get("id", f"ex_{self.objects_count}")
                 self.objects_count += 1
                 self.add_indicator(ex, add_standard_relationship)
             except BaseException as e:

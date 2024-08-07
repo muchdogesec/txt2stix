@@ -391,7 +391,7 @@ python3 txt2stix.py \
 	--name 'Test 3.1.31.3 pattern_cryptocurrency_btc_transaction' \
 	--tlp_level clear \
 	--confidence 100 \
-	--use_extractions generic_cryptocurrency_btc_transaction
+	--use_extractions pattern_cryptocurrency_btc_transaction
 ```
 
 #### 3.1.32 pattern_cve_id

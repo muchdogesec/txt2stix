@@ -13,14 +13,13 @@ class ArangoSession:
     }
 
     def __init__(self) -> None:
-        host, port, db_name, user, passwd = (
-            os.environ["ARANGODB_HOST"],
-            os.environ["ARANGODB_PORT"],
+        host_url, db_name, user, passwd = (
+            os.environ["ARANGODB_HOST_URL"],
             os.environ["ARANGODB_DATABASE"],
             os.environ["ARANGODB_USERNAME"],
             os.environ["ARANGODB_PASSWORD"],
         )
-        self.client = ArangoClient(hosts=f"http://{host}:{port}/")
+        self.client = ArangoClient(hosts=host_url)
         self.db = self.client.db(db_name, username=user, password=passwd)
 
     def mitre_attack_id(self, id, stix_mapping):

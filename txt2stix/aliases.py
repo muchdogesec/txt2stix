@@ -23,6 +23,7 @@ def load_alias(extractor):
 def merge_aliases(extractors):
     terms = set()
     for ex in extractors:
+        load_alias(ex)
         terms.update(ex.aliases.items())
     # sort by length in descending order, this helps by making sure "A and B" is aliased before of "A" or "B"    
     return sorted(terms, key=lambda kv: len(kv[0]), reverse=True)

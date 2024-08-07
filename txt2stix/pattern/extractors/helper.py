@@ -5,7 +5,10 @@ import csv
 import logging
 import sys
 
+from .base_extractor import ALL_EXTRACTORS
+
 from ...extractions import Extractor
+from ...utils import read_included_file
 
 
 def read_text_file(file_path):
@@ -79,15 +82,25 @@ def validate_tld(tld):
     """
     return tld in TLD
 
+def load_extractor(extractor):
+    if extractor.pattern_extractor:
+        return
+    extractor.pattern_extractor = ALL_EXTRACTORS.get(extractor.slug)
+    if not extractor.pattern_extractor:
+        raise TypeError(f"could not find associated python class for pattern extractor `{extractor.slug}`")
+    extractor.pattern_extractor.version = extractor.version
+    extractor.pattern_extractor.stix_mapping = extractor.stix_mapping
+
 
 def extract_all(extractors :list[Extractor], input_text):
     logging.info("using pattern extractors")
     pattern_extracts = []
     for extractor in extractors:
+        load_extractor(extractor)
         extracts = extractor.pattern_extractor().extract_extraction_from_text(input_text)
         pattern_extracts.extend(extracts)
     return pattern_extracts
 
 
-FILE_EXTENSION = read_text_file('lookups/extensions.txt')
-TLD = read_text_file('lookups/tld.txt')
+FILE_EXTENSION = read_included_file('lookups/extensions.txt')
+TLD = read_included_file('lookups/tld.txt')

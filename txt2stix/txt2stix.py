@@ -1,4 +1,5 @@
 import argparse, dotenv
+from datetime import datetime
 import glob
 import uuid
 import itertools
@@ -45,7 +46,12 @@ def setLogFile(logger, file: Path):
 
 
 MODULE_PATH = Path(__file__).parent.parent
-EXTRACTORS_PATH = MODULE_PATH/"extractions"
+INCLUDES_PATH = MODULE_PATH/"includes"
+try:
+    from . import includes
+    INCLUDES_PATH = Path(includes.__file__).parent
+except:
+    pass
 
 def split_comma(s: str) -> list[str]:
     return s.split(",")
@@ -70,7 +76,10 @@ def parse_labels(labels: str) -> list[str]:
 def parse_extractors_globbed(type, all_extractors, names):
     globbed_names = set()
     for name in names.split(","):
-        globbed_names.update(fnmatch.filter(all_extractors.extractors.keys(), name))
+        matches = fnmatch.filter(all_extractors.keys(), name)
+        if not matches:
+            raise argparse.ArgumentTypeError(f'`{name}` has 0 matches')
+        globbed_names.update(matches)
     filtered_extractors  = {}
     for extractor_name in globbed_names:
         try:
@@ -81,11 +90,7 @@ def parse_extractors_globbed(type, all_extractors, names):
             if extractor.type == "alias":
                 aliases.load_alias(extractor)
             if extractor.type == "pattern":
-                extractor.pattern_extractor = pattern.ALL_EXTRACTORS.get(extractor_name)
-                if not extractor.pattern_extractor:
-                    raise argparse.ArgumentTypeError(f"could not find associated python class for pattern")
-                extractor.pattern_extractor.version = extractor.version
-                extractor.pattern_extractor.stix_mapping = extractor.stix_mapping
+                pattern.load_extractor(extractor)
             filtered_extractors[extractor.type] =  extraction_processor
             extraction_processor[extractor_name] = extractor
         except KeyError:
@@ -97,12 +102,14 @@ def parse_extractors_globbed(type, all_extractors, names):
     return filtered_extractors
 
 def parse_args():
-    all_extractors = extractions.parse_extraction_config(EXTRACTORS_PATH)
+    EXTRACTORS_PATH = INCLUDES_PATH/"extractions"
+    all_extractors = extractions.parse_extraction_config(INCLUDES_PATH)
     
     parser = argparse.ArgumentParser(description="File Conversion Tool")
 
     inf_arg  = parser.add_argument("--input_file", "--input-file", required=True, help="The file to be converted. Must be .txt", type=Path)
     name_arg = parser.add_argument("--name", required=True, help="Name of the file, max 72 chars", default="stix-out")
+    parser.add_argument("--created", required=False, default=datetime.now(), help="Allow user to optionally pass --created time in input, which will hardcode the time used in created times")
     parser.add_argument("--labels", type=parse_labels)
     parser.add_argument("--relationship_mode", choices=["ai", "standard"], required=True)
     parser.add_argument("--confidence", type=range_type(0,100), default=None, help="value between 0-100. Default if not passed is null.", metavar="[0-100]")
@@ -120,15 +127,13 @@ def parse_args():
 
     #### process --use-extractions 
     for extraction_processor, extractors in args.use_extractions.items():
-        args.use_extractions[extraction_processor] = extractions.ExtractionConfig(extractors)
+        args.use_extractions[extraction_processor] = extractors
     args.all_extractors  = all_extractors
     args.use_aliases = args.use_aliases.get("alias", {})
     return args
 
 REQUIRED_ENV_VARIABLES = [
-    "INPUT_CHARACTER_LIMIT",
-    "ARANGODB_HOST",
-    "ARANGODB_PORT",
+    "ARANGODB_HOST_URL",
     "ARANGODB_USERNAME",
     "ARANGODB_PASSWORD",
     "ARANGODB_DATABASE",
@@ -138,14 +143,12 @@ def load_env(input_length):
     for env in REQUIRED_ENV_VARIABLES:
         if not os.getenv(env):
             raise FatalException(f"env variable `{env}` required")
-    if input_length > int(os.environ["INPUT_CHARACTER_LIMIT"]):
-        raise FatalException(f"input_file length ({input_length}) exceeds character limit ({os.environ['INPUT_CHARACTER_LIMIT']})")
-
+            
 def extract_all(bundler: txt2stixBundler, extractors_map, aliased_input, ai_extractor: BaseAIExtractor=None):
     all_extracts = dict()
     if extractors_map.get("lookup"):
         try:
-            lookup_extracts = lookups.extract_all(extractors_map["lookup"].extractors.values(), aliased_input)
+            lookup_extracts = lookups.extract_all(extractors_map["lookup"].values(), aliased_input)
             bundler.process_observables(lookup_extracts)
             all_extracts["lookup"] = lookup_extracts
         except BaseException as e:
@@ -154,7 +157,7 @@ def extract_all(bundler: txt2stixBundler, extractors_map, aliased_input, ai_extr
     if extractors_map.get("pattern"):
         try:
             logging.info("using pattern extractors")
-            pattern_extracts = pattern.extract_all(extractors_map["pattern"].extractors.values(), aliased_input)
+            pattern_extracts = pattern.extract_all(extractors_map["pattern"].values(), aliased_input)
             bundler.process_observables(pattern_extracts)
             all_extracts["pattern"] = pattern_extracts
         except BaseException as e:
@@ -167,12 +170,27 @@ def extract_all(bundler: txt2stixBundler, extractors_map, aliased_input, ai_extr
         else:
             try:
                 ai_extractor.set_document(aliased_input)
-                ai_extracts = ai_extractor.extract_objects(extractors_map["ai"].extractors.values())
+                ai_extracts = ai_extractor.extract_objects(extractors_map["ai"].values())
                 bundler.process_observables(ai_extracts)
                 all_extracts["ai"] = ai_extracts
             except BaseException as e:
                 logging.exception("AI extraction failed", exc_info=True)
+
+    bundler.add_note(json.dumps(all_extracts), "Extractions")
     return all_extracts
+
+def extract_relationships_with_ai(bundler: txt2stixBundler, aliased_input, all_extracts, ai_extractor_session: BaseAIExtractor):
+    relationships = None
+    try:
+        ai_extractor_session.set_document(aliased_input)
+        relationship_types = (INCLUDES_PATH/"helpers/stix_relationship_types.txt").read_text().splitlines()
+        relationships = ai_extractor_session.extract_relationships(all_extracts, relationship_types)
+        bundler.add_note(json.dumps(relationships), "Relationships")
+        bundler.process_relationships(relationships)
+    except BaseException as e:
+        logging.exception("Relationship processing failed: %s", e)
+    # convo_str = ai_extractor_session.get_conversation() if ai_extractor_session and ai_extractor_session.initialized else ""
+    return relationships
 
 def main():
     try:
@@ -187,25 +205,21 @@ def main():
 
         load_env(len(aliased_input))
 
-        bundler = txt2stixBundler(args.name, args.use_identity, args.tlp_level, aliased_input, args.confidence, args.all_extractors, args.labels, job_id=job_id)
+        bundler = txt2stixBundler(args.name, args.use_identity, args.tlp_level, aliased_input, args.confidence, args.all_extractors, args.labels, created=args.created)
         bundler.add_note(json.dumps(sys.argv), "Config")
         convo_str = None
 
         bundler.whitelisted_values = args.use_whitelist
         ai_extractor_session = GenericAIExtractor.openai()
+        if args.use_extractions.get("ai"):
+            token_count = ai_extractor_session.calculate_token_count(aliased_input, ai_extractor_session.model)
+            if  token_count > int(os.environ["INPUT_TOKEN_LIMIT"]):
+                raise FatalException(f"input_file token count ({token_count}) exceeds INPUT_TOKEN_LIMIT ({os.environ['INPUT_TOKEN_LIMIT']})")
         all_extracts = extract_all(bundler, args.use_extractions, aliased_input, ai_extractor=ai_extractor_session)
  
-        bundler.add_note(json.dumps(all_extracts), "Extractions")
         if args.relationship_mode == "ai" and sum(map(lambda x: len(x), all_extracts.values())):
-            # print("// warning AI relationship mode may fail")
-            try:
-                ai_extractor_session.set_document(aliased_input)
-                relationship_types = (MODULE_PATH/"helpers/stix_relationship_types.txt").read_text().splitlines()
-                relationships = ai_extractor_session.extract_relationships(all_extracts, relationship_types)
-                bundler.add_note(json.dumps(relationships), "Relationships")
-                bundler.process_relationships(relationships)
-            except BaseException as e:
-                logger.exception("Relationship processing failed:", e)
+            extract_relationships_with_ai(bundler, aliased_input, all_extracts, ai_extractor_session)
+            
         convo_str = ai_extractor_session.get_conversation() if ai_extractor_session and ai_extractor_session.initialized else ""
             
 

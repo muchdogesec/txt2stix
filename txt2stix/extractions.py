@@ -21,11 +21,14 @@ class Extractor(NamedDict):
     prompt_extraction_extra = None
 
 
-    def __init__(self, key, dct):
+    def __init__(self, key, dct, include_path=None):
         super().__init__(dct)
         self.extraction_key = key
         self.slug = key
-   
+        if self.file and not Path(self.file).is_absolute() and include_path:
+            self.file = Path(include_path) / self.file
+
+
     def load(self):
         if self.type == "lookup":
             self.lookups = set()
@@ -33,34 +36,9 @@ class Extractor(NamedDict):
             for line in file.read_text().splitlines():
                 self.lookups.add(line.strip())
 
-
-class ExtractionConfig:
-    def __init__(self, raw_dct):
-        self.extractors = {}
-        self.raw = raw_dct
-        self.process_prompts()
-    
-    def __getitem__(self, key):
-        if not key:
-            return None
-        keys = key.split(".")
-        obj = self.extractors
-        for key in keys:
-            if key.isdigit():
-                key = int(key)
-            obj = obj[key]
-        if isinstance(obj, str):
-            return obj.format_map(self.extractors)
-        return obj
-
-    def process_prompts(self):
-        for k, v in self.raw.items():
-            if not isinstance(v, dict):
-                continue
-            self.extractors[k] = Extractor(k, v)
-
-def parse_extraction_config(path: Path):
+def parse_extraction_config(include_path: Path):
     config = {}
-    for p in path.glob("*/config.yaml"):
+    for p in include_path.glob("extractions/*/config.yaml"):
         config.update(yaml.safe_load(p.open()))
-    return ExtractionConfig(config)
+    
+    return {k: Extractor(k, v, include_path) for k, v in config.items()}
