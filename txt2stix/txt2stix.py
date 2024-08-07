@@ -133,7 +133,6 @@ def parse_args():
     return args
 
 REQUIRED_ENV_VARIABLES = [
-    "INPUT_CHARACTER_LIMIT",
     "ARANGODB_HOST_URL",
     "ARANGODB_USERNAME",
     "ARANGODB_PASSWORD",
@@ -144,9 +143,7 @@ def load_env(input_length):
     for env in REQUIRED_ENV_VARIABLES:
         if not os.getenv(env):
             raise FatalException(f"env variable `{env}` required")
-    # if input_length > int(os.environ["INPUT_CHARACTER_LIMIT"]):
-    #     raise FatalException(f"input_file length ({input_length}) exceeds character limit ({os.environ['INPUT_CHARACTER_LIMIT']})")
-
+            
 def extract_all(bundler: txt2stixBundler, extractors_map, aliased_input, ai_extractor: BaseAIExtractor=None):
     all_extracts = dict()
     if extractors_map.get("lookup"):
