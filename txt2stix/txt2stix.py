@@ -214,7 +214,7 @@ def main():
 
         bundler.whitelisted_values = args.use_whitelist
         ai_extractor_session = GenericAIExtractor.openai()
-        if args.use_extractions.get("ai"):
+        if args.use_extractions.get("ai") or args.relationship_mode == "ai":
             token_count = ai_extractor_session.calculate_token_count(aliased_input, ai_extractor_session.model)
             if  token_count > int(os.environ["INPUT_TOKEN_LIMIT"]):
                 raise FatalException(f"input_file token count ({token_count}) exceeds INPUT_TOKEN_LIMIT ({os.environ['INPUT_TOKEN_LIMIT']})")
