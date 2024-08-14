@@ -18,6 +18,9 @@ import tiktoken
 dotenv.load_dotenv()
 logger = logging.getLogger("txt2stix.ai_session")
 
+class AIExtractionError(Exception):
+    pass
+
 class BaseAIExtractor:
     document = None
     initialized = False
