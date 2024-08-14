@@ -58,7 +58,7 @@ However, we wanted a more modularised extraction logic, especially to take advan
 
 Here is an overview of how the txt2stix processes txt files into STIX 2.1 bundles:
 
-<iframe width="768" height="432" src="https://miro.com/app/live-embed/uXjVKEyFzB8=/?moveToViewport=-762,-540,2696,919&embedId=241901701201" frameborder="0" scrolling="no" allow="fullscreen; clipboard-read; clipboard-write" allowfullscreen></iframe>
+https://miro.com/app/board/uXjVKEyFzB8=/
 
 ### Extractions
 
