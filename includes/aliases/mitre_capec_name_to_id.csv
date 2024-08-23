@@ -1,4 +1,4 @@
-value,alias
+name,external_id
 Accessing Functionality Not Properly Constrained by ACLs,CAPEC-1
 Buffer Overflow via Environment Variables,CAPEC-10
 Overflow Buffers,CAPEC-100

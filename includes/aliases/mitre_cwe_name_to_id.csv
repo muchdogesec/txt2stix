@@ -1,4 +1,4 @@
-value,alias
+name,external_id
 Sensitive Cookie Without 'HttpOnly' Flag,CWE-1004
 Insufficient Visual Distinction of Homoglyphs Presented to User,CWE-1007
 Struts: Duplicate Validation Forms,CWE-102
@@ -124,7 +124,7 @@ Improper Isolation of Shared Resources on System-on-a-Chip (SoC),CWE-1189
 Improper Restriction of Operations within the Bounds of a Memory Buffer,CWE-119
 DMA Device Enabled Too Early in Boot Phase,CWE-1190
 On-Chip Debug and Test Interface With Improper Access Control,CWE-1191
-"System-on-Chip (SoC) Using Components without Unique, Immutable Identifiers",CWE-1192
+Improper Identifier for IP Block used in System-On-Chip (SOC),CWE-1192
 Power-On of Untrusted Execution Core Before Enabling Fabric Access Control,CWE-1193
 ASP.NET Misconfiguration: Missing Custom Error Page,CWE-12
 Buffer Copy without Checking Size of Input ('Classic Buffer Overflow'),CWE-120
@@ -217,7 +217,7 @@ ASP.NET Misconfiguration: Password in Configuration File,CWE-13
 Improper Handling of Length Parameter Inconsistency,CWE-130
 Improper Protection of Physical Side Channels,CWE-1300
 Insufficient or Incomplete Data Removal within Hardware Component,CWE-1301
-Missing Security Identifier,CWE-1302
+Missing Source Identifier in Entity Transactions on a System-On-Chip (SOC),CWE-1302
 Non-Transparent Sharing of Microarchitectural Resources,CWE-1303
 Improperly Preserved Integrity of Hardware Configuration State During a Power Save/Restore Operation,CWE-1304
 Incorrect Calculation of Buffer Size,CWE-131
@@ -273,6 +273,11 @@ Improper Neutralization of Delimiters,CWE-140
 Improper Neutralization of Parameter/Argument Delimiters,CWE-141
 Incorrect Initialization of Resource,CWE-1419
 Improper Neutralization of Value Delimiters,CWE-142
+Exposure of Sensitive Information during Transient Execution,CWE-1420
+Exposure of Sensitive Information in Shared Microarchitectural Structures during Transient Execution,CWE-1421
+Exposure of Sensitive Information caused by Incorrect Data Forwarding during Transient Execution,CWE-1422
+Exposure of Sensitive Information caused by Shared Microarchitectural Predictor State that Influences Transient Execution,CWE-1423
+Improper Validation of Generative AI Output,CWE-1426
 Improper Neutralization of Record Delimiters,CWE-143
 Improper Neutralization of Line Delimiters,CWE-144
 Improper Neutralization of Section Delimiters,CWE-145

@@ -1,218 +1,264 @@
 name,external_id
-ATT&CK for ICS,ics-attack
-Application Isolation and Sandboxing,M0948
-Filter Network Traffic,M0937
-Restrict Web-Based Content,M0921
-Validate Program Inputs,M0818
-Network Segmentation,M0930
-Restrict Library Loading,M0944
-Active Directory Configuration,M0915
-Network Intrusion Prevention,M0931
-Restrict Registry Permissions,M0924
-Data Loss Prevention,M0803
-Access Management,M0801
-Mitigation Limited or Not Effective,M0816
-Exploit Protection,M0950
-Limit Access to Resource Over Network,M0935
-Execution Prevention,M0938
-Static Network Configuration,M0814
-Password Policies,M0927
-Privileged Account Management,M0926
-Human User Authentication,M0804
-SSL/TLS Inspection,M0920
-Code Signing,M0945
-Software Process and Device Authentication,M0813
-Encrypt Network Traffic,M0808
-Account Use Policies,M0936
-Application Developer Guidance,M0913
-Boot Integrity,M0946
-Mechanical Protection Layers,M0805
-Update Software,M0951
-Watchdog Timers,M0815
-Operational Information Confidentiality,M0809
-Operating System Configuration,M0928
-Limit Hardware Installation,M0934
-Encrypt Sensitive Information,M0941
-Network Allowlists,M0807
-Supply Chain Management,M0817
-Data Backup,M0953
-Out-of-Band Communications Channel,M0810
-Audit,M0947
-Communication Authenticity,M0802
-Disable or Remove Feature or Program,M0942
-Threat Intelligence Program,M0919
-Safety Instrumented Systems,M0812
-User Training,M0917
-Multi-factor Authentication,M0932
-Vulnerability Scanning,M0916
-Authorization Enforcement,M0800
-User Account Management,M0918
-Redundancy of Service,M0811
-Restrict File and Directory Permissions,M0922
-Software Configuration,M0954
-Antivirus/Antimalware,M0949
-Minimize Wireless Signal Propagation,M0806
-EKANS,S0605
-Backdoor.Oldrea,S0093
-Stuxnet,S0603
-Bad Rabbit,S0606
-PLC-Blaster,S1006
-BlackEnergy,S0089
-NotPetya,S0368
-Conficker,S0608
-LockerGoga,S0372
-VPNFilter,S1010
-Duqu,S0038
-Industroyer2,S1072
-WannaCry,S0366
-Triton,S1009
-Ryuk,S0446
-ACAD/Medre.A,S1000
-REvil,S0496
-INCONTROLLER,S1045
-KillDisk,S0607
-Industroyer,S0604
-Flame,S0143
-Inhibit Response Function,TA0107
-Privilege Escalation,TA0111
-Lateral Movement,TA0109
-Discovery,TA0102
-Initial Access,TA0108
-Impact,TA0105
-Persistence,TA0110
-Execution,TA0104
-Command and Control,TA0101
-Collection,TA0100
-Evasion,TA0103
-Impair Process Control,TA0106
-Block Command Message,T0803
-Service Stop,T0881
-Modify Parameter,T0836
-Modify Controller Tasking,T0821
-Wireless Sniffing,T0887
-Loss of View,T0829
-Activate Firmware Update Mode,T0800
-Manipulation of Control,T0831
-Denial of Service,T0814
-Block Serial COM,T0805
-Command-Line Interface,T0807
-Point & Tag Identification,T0861
-Device Restart/Shutdown,T0816
-User Execution,T0863
-Wireless Compromise,T0860
-Change Operating Mode,T0858
-Alarm Suppression,T0878
-Detect Operating Mode,T0868
-Loss of Protection,T0837
-Monitor Process State,T0801
-Scripting,T0853
-Remote System Information Discovery,T0888
-Program Upload,T0845
-Exploit Public-Facing Application,T0819
-Data from Information Repositories,T0811
-Transient Cyber Asset,T0864
-Manipulate I/O Image,T0835
-Network Sniffing,T0842
-Rootkit,T0851
-Automated Collection,T0802
-Block Reporting Message,T0804
-Unauthorized Command Message,T0855
-Data Destruction,T0809
-Manipulation of View,T0832
-Indicator Removal on Host,T0872
-I/O Image,T0877
-Denial of View,T0815
-Execution through API,T0871
-Supply Chain Compromise,T0862
-Loss of Safety,T0880
-Loss of Productivity and Revenue,T0828
-Spearphishing Attachment,T0865
-Drive-by Compromise,T0817
-Damage to Property,T0879
-Spoof Reporting Message,T0856
-Exploitation of Remote Services,T0866
-Default Credentials,T0812
-External Remote Services,T0822
-Brute Force I/O,T0806
-Adversary-in-the-Middle,T0830
-Exploitation for Evasion,T0820
-Loss of Control,T0827
-Hooking,T0874
-Graphical User Interface,T0823
-Rogue Master,T0848
-Native API,T0834
-Loss of Availability,T0826
-Theft of Operational Information,T0882
-System Firmware,T0857
-Masquerading,T0849
-Program Download,T0843
-Replication Through Removable Media,T0847
-Screen Capture,T0852
-Hardcoded Credentials,T0891
-Valid Accounts,T0859
-Exploitation for Privilege Escalation,T0890
-Remote System Discovery,T0846
-Connection Proxy,T0884
-Standard Application Layer Protocol,T0869
-Remote Services,T0886
-Denial of Control,T0813
-Modify Alarm Settings,T0838
-Commonly Used Port,T0885
-Project File Infection,T0873
-Network Connection Enumeration,T0840
-Lateral Tool Transfer,T0867
-Module Firmware,T0839
-Internet Accessible Device,T0883
-Data from Local System,T0893
-Change Credential,T0892
-Modify Program,T0889
-Application Server,A0008
-2015 Ukraine Electric Power Attack,C0028
 Workstation,A0001
-Intelligent Electronic Device (IED),A0005
-Routers,A0014
-Data Gateway,A0009
 Human-Machine Interface (HMI),A0002
-Dragonfly,G0035
-HEXANE,G1001
-Data Historian,A0006
-Remote Terminal Unit (RTU),A0004
-Safety Controller,A0010
-Jump Host,A0012
 Programmable Logic Controller (PLC),A0003
-Field I/O,A0013
-APT33,G0064
+Remote Terminal Unit (RTU),A0004
+Intelligent Electronic Device (IED),A0005
+Data Historian,A0006
 Control Server,A0007
-ALLANITE,G1000
+Application Server,A0008
+Data Gateway,A0009
+Safety Controller,A0010
 Virtual Private Network (VPN) Server,A0011
-Sandworm Team,G0034
-2016 Ukraine Electric Power Attack,C0025
-Maroochy Water Breach,C0020
-Dragonfly 2.0,G0074
-Lazarus Group,G0032
+Jump Host,A0012
+Field I/O,A0013
+Routers,A0014
 Oldsmar Treatment Plant Intrusion,C0009
-OilRig,G0049
-FIN7,G0046
-Wizard Spider,G0102
-TEMP.Veles,G0088
-FIN6,G0037
-GOLD SOUTHFIELD,G0115
-APT38,G0082
-Application Log,DS0015
-User Account,DS0002
-Network Share,DS0033
-File,DS0022
-Process,DS0009
-Service,DS0019
-Operational Databases,DS0040
-Network Traffic,DS0029
-Command,DS0017
-Scheduled Job,DS0003
-Asset,DS0039
-Windows Registry,DS0024
-Module,DS0011
-Logon Session,DS0028
-Drive,DS0016
-Script,DS0012
+Maroochy Water Breach,C0020
+2016 Ukraine Electric Power Attack,C0025
+2015 Ukraine Electric Power Attack,C0028
+Triton Safety Instrumented System Attack,C0030
+Unitronics Defacement Campaign,C0031
+2022 Ukraine Electric Power Attack,C0034
 Firmware,DS0001
+User Account,DS0002
+Scheduled Job,DS0003
+Process,DS0009
+Module,DS0011
+Script,DS0012
+Application Log,DS0015
+Drive,DS0016
+Command,DS0017
+Service,DS0019
+File,DS0022
+Windows Registry,DS0024
+Logon Session,DS0028
+Network Traffic,DS0029
+Network Share,DS0033
+Asset,DS0039
+Operational Databases,DS0040
+Lazarus Group,G0032
+Sandworm Team,G0034
+Dragonfly,G0035
+FIN6,G0037
+FIN7,G0046
+OilRig,G0049
 APT34,G0057
+APT33,G0064
+Dragonfly 2.0,G0074
+Leafminer,G0077
+APT38,G0082
+TEMP.Veles,G0088
+Wizard Spider,G0102
+GOLD SOUTHFIELD,G0115
+ALLANITE,G1000
+HEXANE,G1001
+CyberAv3ngers,G1027
+Authorization Enforcement,M0800
+Access Management,M0801
+Communication Authenticity,M0802
+Data Loss Prevention,M0803
+Human User Authentication,M0804
+Mechanical Protection Layers,M0805
+Minimize Wireless Signal Propagation,M0806
+Network Allowlists,M0807
+Encrypt Network Traffic,M0808
+Operational Information Confidentiality,M0809
+Out-of-Band Communications Channel,M0810
+Redundancy of Service,M0811
+Safety Instrumented Systems,M0812
+Software Process and Device Authentication,M0813
+Static Network Configuration,M0814
+Watchdog Timers,M0815
+Mitigation Limited or Not Effective,M0816
+Supply Chain Management,M0817
+Validate Program Inputs,M0818
+Application Developer Guidance,M0913
+Active Directory Configuration,M0915
+Vulnerability Scanning,M0916
+User Training,M0917
+User Account Management,M0918
+Threat Intelligence Program,M0919
+SSL/TLS Inspection,M0920
+Restrict Web-Based Content,M0921
+Restrict File and Directory Permissions,M0922
+Restrict Registry Permissions,M0924
+Privileged Account Management,M0926
+Password Policies,M0927
+Operating System Configuration,M0928
+Network Segmentation,M0930
+Network Intrusion Prevention,M0931
+Multi-factor Authentication,M0932
+Limit Hardware Installation,M0934
+Limit Access to Resource Over Network,M0935
+Account Use Policies,M0936
+Filter Network Traffic,M0937
+Execution Prevention,M0938
+Encrypt Sensitive Information,M0941
+Disable or Remove Feature or Program,M0942
+Restrict Library Loading,M0944
+Code Signing,M0945
+Boot Integrity,M0946
+Audit,M0947
+Application Isolation and Sandboxing,M0948
+Antivirus/Antimalware,M0949
+Exploit Protection,M0950
+Update Software,M0951
+Data Backup,M0953
+Software Configuration,M0954
+Application Developer Guidance,M1013
+User Training,M1017
+Restrict Registry Permissions,M1024
+Password Policies,M1027
+Operating System Configuration,M1028
+Multi-factor Authentication,M1032
+Account Use Policies,M1036
+Execution Prevention,M1038
+Audit,M1047
+Software Configuration,M1054
+Duqu,S0038
+Black Energy,S0089
+BlackEnergy,S0089
+Backdoor.Oldrea,S0093
+Havex,S0093
+sKyWIper,S0143
+Flamer,S0143
+Flame,S0143
+WanaCry,S0366
+WanaCrypt0r,S0366
+WannaCry,S0366
+WanaCrypt,S0366
+WCry,S0366
+NotPetya,S0368
+Diskcoder.C,S0368
+Petrwrap,S0368
+Nyetya,S0368
+ExPetr,S0368
+GoldenEye,S0368
+LockerGoga,S0372
+Ryuk,S0446
+REvil,S0496
+Sodin,S0496
+Sodinokibi,S0496
+Stuxnet,S0603
+W32.Stuxnet,S0603
+Industroyer,S0604
+CRASHOVERRIDE,S0604
+Win32/Industroyer,S0604
+EKANS,S0605
+SNAKEHOSE,S0605
+Bad Rabbit,S0606
+Win32/Diskcoder.D,S0606
+KillDisk,S0607
+Win32/KillDisk.NBH,S0607
+Win32/KillDisk.NBC,S0607
+Win32/KillDisk.NBI,S0607
+Win32/KillDisk.NBB,S0607
+Win32/KillDisk.NBD,S0607
+Conficker,S0608
+Kido,S0608
+Downadup,S0608
+ACAD/Medre.A,S1000
+PLC-Blaster,S1006
+HatMan,S1009
+TRISIS,S1009
+Triton,S1009
+VPNFilter,S1010
+PIPEDREAM,S1045
+INCONTROLLER,S1045
+Industroyer2,S1072
+Activate Firmware Update Mode,T0800
+Monitor Process State,T0801
+Automated Collection,T0802
+Block Command Message,T0803
+Block Reporting Message,T0804
+Block Serial COM,T0805
+Brute Force I/O,T0806
+Command-Line Interface,T0807
+Data Destruction,T0809
+Data from Information Repositories,T0811
+Default Credentials,T0812
+Denial of Control,T0813
+Denial of Service,T0814
+Denial of View,T0815
+Device Restart/Shutdown,T0816
+Drive-by Compromise,T0817
+Exploit Public-Facing Application,T0819
+Exploitation for Evasion,T0820
+Modify Controller Tasking,T0821
+External Remote Services,T0822
+Graphical User Interface,T0823
+Loss of Availability,T0826
+Loss of Control,T0827
+Loss of Productivity and Revenue,T0828
+Loss of View,T0829
+Adversary-in-the-Middle,T0830
+Manipulation of Control,T0831
+Manipulation of View,T0832
+Native API,T0834
+Manipulate I/O Image,T0835
+Modify Parameter,T0836
+Loss of Protection,T0837
+Modify Alarm Settings,T0838
+Module Firmware,T0839
+Network Connection Enumeration,T0840
+Network Sniffing,T0842
+Program Download,T0843
+Program Upload,T0845
+Remote System Discovery,T0846
+Replication Through Removable Media,T0847
+Rogue Master,T0848
+Masquerading,T0849
+Rootkit,T0851
+Screen Capture,T0852
+Scripting,T0853
+Unauthorized Command Message,T0855
+Spoof Reporting Message,T0856
+System Firmware,T0857
+Change Operating Mode,T0858
+Valid Accounts,T0859
+Wireless Compromise,T0860
+Point & Tag Identification,T0861
+Supply Chain Compromise,T0862
+User Execution,T0863
+Transient Cyber Asset,T0864
+Spearphishing Attachment,T0865
+Exploitation of Remote Services,T0866
+Lateral Tool Transfer,T0867
+Detect Operating Mode,T0868
+Standard Application Layer Protocol,T0869
+Execution through API,T0871
+Indicator Removal on Host,T0872
+Project File Infection,T0873
+Hooking,T0874
+I/O Image,T0877
+Alarm Suppression,T0878
+Damage to Property,T0879
+Loss of Safety,T0880
+Service Stop,T0881
+Theft of Operational Information,T0882
+Internet Accessible Device,T0883
+Connection Proxy,T0884
+Commonly Used Port,T0885
+Remote Services,T0886
+Wireless Sniffing,T0887
+Remote System Information Discovery,T0888
+Modify Program,T0889
+Exploitation for Privilege Escalation,T0890
+Hardcoded Credentials,T0891
+Change Credential,T0892
+Data from Local System,T0893
+System Binary Proxy Execution,T0894
+Autorun Image,T0895
+Collection,TA0100
+Command and Control,TA0101
+Discovery,TA0102
+Evasion,TA0103
+Execution,TA0104
+Impact,TA0105
+Impair Process Control,TA0106
+Inhibit Response Function,TA0107
+Initial Access,TA0108
+Lateral Movement,TA0109
+Persistence,TA0110
+Privilege Escalation,TA0111
