@@ -4,20 +4,27 @@ Generate `mitre_cwe_name_to_id.csv`:
 
 ```sql
 FOR doc IN mitre_cwe_vertex_collection
-  FILTER IS_ARRAY(doc.external_references)
+  FILTER doc._is_latest == true
+  AND doc._stix2arango_note == "v4.15"
+  AND IS_ARRAY(doc.external_references)
   FOR reference IN doc.external_references
     FILTER reference.source_name == "cwe"
+    SORT reference.external_id ASC
     RETURN {
       name: doc.name,
       external_id: reference.external_id
     }
 ```
 
+(964 results in v4.15)
+
 Generate `mitre_capec_name_to_id.csv`:
 
 ```sql
 FOR doc IN mitre_capec_vertex_collection
-  FILTER IS_ARRAY(doc.external_references)
+  FILTER doc._is_latest == true
+  AND doc._stix2arango_note == "v3.9"
+  AND IS_ARRAY(doc.external_references)
   FOR reference IN doc.external_references
     FILTER reference.source_name == "capec"
     RETURN {
@@ -25,6 +32,8 @@ FOR doc IN mitre_capec_vertex_collection
       external_id: reference.external_id
     }
 ```
+
+(615 results in v3.9)
 
 Generate `mitre_attack_enterprise_name_to_id.csv` (also include x_mitre_aliases):
 

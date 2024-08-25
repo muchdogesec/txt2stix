@@ -20,6 +20,8 @@ In short txt2stix;
 
 [![txt2stix](https://img.youtube.com/vi/TWVGCou9oGk/0.jpg)](https://www.youtube.com/watch?v=TWVGCou9oGk)
 
+[Watch the demo](https://www.youtube.com/watch?v=TWVGCou9oGk).
+
 ## The problem
 
 More-and-more organisations are standardising the way the represent threat intelligence using the STIX 2.1 data model.
