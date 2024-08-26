@@ -205,4 +205,4 @@ This documentation is paticularly helpful to read for those of you wanting to ad
 
 ## License
 
-[AGPLv3](/LICENSE).
+[Apache 2.0](/LICENSE).
