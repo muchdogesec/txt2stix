@@ -881,6 +881,7 @@ Note, we decided not to add the `parent_directory_ref` to the file object, as we
     "relationship_type": "directory",
     "source_ref": "file--<FILE OBJECT>",
     "target_ref": "directory--<DIRECTORY OBJECT>",
+    "description": "<FILE NAME> is in the directory <DIRECTORY PATH>",
     "object_marking_refs": [
         "marking-definition--<TLP LEVEL SET>",
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
@@ -2191,6 +2192,7 @@ Read the extraction definition in extraction-commons.md to see what objects for 
     "relationship_type": "extracted-from",
     "source_ref": "<SOURCE OBJECT ID AS DEFINED BY STIX CONVERSION TYPE>",
     "target_ref": "report--<REPORT OBJECT ID CREATED FOR JOB>",
+    "description": "<SOURCE OBJECT NAME> is found in <REPORT NAME>",
     "object_marking_refs": [
         "marking-definition--<TLP LEVEL SET>"
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
@@ -2253,6 +2255,7 @@ The Relationship will be generated as follows;
     "relationship_type": "<OPENAI REPORTED RELATIONSHIP_TYPE>",
     "source_ref": "<SOURCE OBJECT ID AS DEFINED BY STIX CONVERSION TYPE>",
     "target_ref": "<TARGET OBJECT ID AS DEFINED BY STIX CONVERSION TYPE>",
+    "description": "<SOURCE OBJECT NAME FOR SDO OR FOR SDO VALUE/HASHES/PATH/KEY/NUMBER/STRING/ADDRESS/HASH/SYMBOL/IBAN_NUMBER/DEFAULT TO ID IF NO VALUE> <relationship_type> <TARGET OBJECT SDO/SCO NAME/VALUE/ETC.>",
     "object_marking_refs": [
         "marking-definition--<TLP LEVEL SET>"
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
