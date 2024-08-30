@@ -2,7 +2,7 @@
 
 ## Overview
 
-![](docs/txt2stix.png)
+![txt2stix](docs/txt2stix.png)
 
 txt2stix is a Python script that is designed to identify and extract IoCs and TTPs from text files, identify the relationships between them, convert them to STIX 2.1 objects, and output as a STIX 2.1 bundle.
 
