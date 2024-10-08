@@ -138,12 +138,6 @@ A quick note on OPEN_AI and ARANGODB variables....
 
 You can populate your own instance of ArangoDB with the required data by using the scripts referenced in the [stix2arango](https://github.com/muchdogesec/stix2arango) quickstart.
 
-**Make life simpler for yourself...**
-
-If you do not want to backfill, maintain, or support your own ArangoDB STIX objects check out CTI Butler which provides a fully manage database of these objects you can use with txt2stix.
-
-https://www.ctibutler.com/
-
 ### Usage
 
 ```shell
