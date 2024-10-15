@@ -197,9 +197,9 @@ class txt2stixBundler:
         extractors,
         labels,
         job_id=None,
-        created=dt.now(),
+        created=None,
     ) -> None:
-        self.created = created
+        self.created = created or dt.now()
         self.whitelisted_values = set()
         self.whitelisted_refs = set()
         self.all_extractors = extractors
