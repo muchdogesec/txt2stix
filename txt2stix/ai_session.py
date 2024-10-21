@@ -40,7 +40,9 @@ class BaseAIExtractor:
 
 class OpenAIAssistantExtractor(BaseAIExtractor):
     extract_instruction = textwrap.dedent(
-    """
+    """    
+    <requirement>
+
     Using the file above, you are to extract objects from the body of input (either plaintext or markdown), extractions must be unique!
 
     ```json
@@ -71,38 +73,76 @@ class OpenAIAssistantExtractor(BaseAIExtractor):
 
     Only one JSON object should exist for each unique value.
 
-    Only include a valid JSON document in your response and no other text. The JSON document should be minified!.
+    IMPORTANT: Only include a valid JSON document in your response and no other text. The JSON document should be minified!.
+
+    </requirement>
+
+    <accuracy>
+
+    Think about your answer first before you respond.
+
+    If you don't know the answer, reply with DO NOT UNDERSTAND, do not every try to make up an answer.
+
+    </accuracy>
+
+    <audience>
+
+    The intended audience is cybersecurity threat intelligence analysts who are responsible for analysing intelligence. They have a deep understanding of cybersecurity concepts and threat intelligence.
+
+    </audience>
         
     """)
+
     relationship_instruction = textwrap.dedent(
     """
-        please logically describe the relationships between the extractions in the following JSON format.
+    <requirement>
 
-        ```json
-        [
-            {
-                "source_ref": "<source extraction id>",
-                "target_ref": "<target extraction id>",
-                "relationship_type": "<valid relationship type>"
-            },
-            {
-                "source_ref": "<source extraction id>",
-                "target_ref": "<target extraction id>",
-                "relationship_type": "<valid relationship type>"
-            }
-        ]
-        ```
+    Please captute the relationships between the extractions described in the text using NLP techniques.
+
+    Your response should be in the following JSON format;
+
+    ```json
+    [
+        {
+             "source_ref": "<source extraction id>",
+            "target_ref": "<target extraction id>",
+            "relationship_type": "<valid relationship type>"
+        },
+        {
+            "source_ref": "<source extraction id>",
+            "target_ref": "<target extraction id>",
+            "relationship_type": "<valid relationship type>"
+        }
+    ]
+    ```
         
-        Where;
+    Where;
 
-        * `source_ref`: is the id for the source extraction for the relationship (e.g. extraction_1).
-        * `target_ref`: is the index for the target extraction for the relationship (e.g. extraction_2).
-        * `relationship_type`: is a description of the relationship between target and source.
+    * `source_ref`: is the id for the source extraction for the relationship (e.g. extraction_1).
+    * `target_ref`: is the index for the target extraction for the relationship (e.g. extraction_2).
+    * `relationship_type`: is a description of the relationship between target and source.
 
+    IMPORTANT: Only include a valid JSON document in your response and no other text. The JSON document should be minified!.
 
-        important: JSON output must be minified!
-        """
+    </requirement>
+
+    <accuracy>
+
+    Think about your answer first before you respond.
+
+    If you don't know the answer, reply with DO NOT UNDERSTAND, do not every try to make up an answer.
+
+    </accuracy>
+
+    <audience>
+
+    The intended audience is cybersecurity threat intelligence analysts who are responsible for analysing intelligence. They have a deep understanding of cybersecurity concepts and threat intelligence.
+
+    </audience>
+
+    """
     )
+
     def __init__(self, model="gpt-4-turbo", filename="txt2stix-file.md") -> None:
         self.client = OpenAI(timeout=120)
         self.assistant = self.client.beta.assistants.create(
