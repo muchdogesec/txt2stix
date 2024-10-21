@@ -41,6 +41,12 @@ class BaseAIExtractor:
 class OpenAIAssistantExtractor(BaseAIExtractor):
     extract_instruction = textwrap.dedent(
     """    
+    <persona>
+
+    You are a cyber-security threat intelligence analyst responsible for analysing intelligence. You have a deep understanding of cybersecurity concepts and threat intelligence. You are responsible for extracting observables and TTPs from documents provided, and understanding the relationships being described that link them.
+
+    </persona>
+
     <requirement>
 
     Using the file above, you are to extract objects from the body of input (either plaintext or markdown), extractions must be unique!
@@ -84,17 +90,16 @@ class OpenAIAssistantExtractor(BaseAIExtractor):
     If you don't know the answer, reply with DO NOT UNDERSTAND, do not every try to make up an answer.
 
     </accuracy>
-
-    <audience>
-
-    The intended audience is cybersecurity threat intelligence analysts who are responsible for analysing intelligence. They have a deep understanding of cybersecurity concepts and threat intelligence.
-
-    </audience>
-        
     """)
 
     relationship_instruction = textwrap.dedent(
     """
+    <persona>
+
+    You are a cyber-security threat intelligence analyst responsible for analysing intelligence. You have a deep understanding of cybersecurity concepts and threat intelligence.
+
+    </persona>
+
     <requirement>
 
     Please captute the relationships between the extractions described in the text using NLP techniques.
@@ -104,7 +109,7 @@ class OpenAIAssistantExtractor(BaseAIExtractor):
     ```json
     [
         {
-             "source_ref": "<source extraction id>",
+            "source_ref": "<source extraction id>",
             "target_ref": "<target extraction id>",
             "relationship_type": "<valid relationship type>"
         },
@@ -133,13 +138,6 @@ class OpenAIAssistantExtractor(BaseAIExtractor):
     If you don't know the answer, reply with DO NOT UNDERSTAND, do not every try to make up an answer.
 
     </accuracy>
-
-    <audience>
-
-    The intended audience is cybersecurity threat intelligence analysts who are responsible for analysing intelligence. They have a deep understanding of cybersecurity concepts and threat intelligence.
-
-    </audience>
-
     """
     )
 
@@ -169,7 +167,7 @@ class OpenAIAssistantExtractor(BaseAIExtractor):
         # vector = self.client.beta.vector_stores.create(expires_after=ExpiresAfter(days=1, anchor='last_active_at'), file_ids=[f['file_id'] for f in self.files])
         message = dict(
             role="assistant",
-            content="I will be working with this file, all subsequent messages after this will bve working on this file.",
+            content="I will be working with this file, all subsequent messages after this will be working on this file.",
             attachments=self.files,
         )
         self.thread = self.client.beta.threads.create(messages=[message])
