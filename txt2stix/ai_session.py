@@ -96,13 +96,13 @@ class OpenAIAssistantExtractor(BaseAIExtractor):
     """
     <persona>
 
-    You are a cyber-security threat intelligence analyst responsible for analysing intelligence. You have a deep understanding of cybersecurity concepts and threat intelligence.
+    You are a cyber-security threat intelligence analyst responsible for analysing intelligence. You have a deep understanding of cybersecurity concepts and threat intelligence. You are responsible for extracting observables and TTPs from documents provided, and understanding the relationships being described that link them.
 
     </persona>
 
     <requirement>
 
-    Please captute the relationships between the extractions described in the text using NLP techniques.
+    Please capture the relationships between the extractions described in the text using NLP techniques.
 
     Your response should be in the following JSON format;
 
@@ -147,10 +147,29 @@ class OpenAIAssistantExtractor(BaseAIExtractor):
             model=model,
             name="CTI Extractor",
             instructions=textwrap.dedent("""
-            You are a CTI extractor, you are to extract objects from the input file and return JSON reponse! 
+            <persona>
+
+            You are a cyber-security threat intelligence analyst responsible for analysing intelligence. You have a deep understanding of cybersecurity concepts and threat intelligence. You are responsible for extracting observables and TTPs from documents provided, and understanding the relationships being described that link them.
+
+            </persona>
+
+            <requirement>
+
+            You are to extract objects from the input file and return JSON reponse! 
+            
             IMPORTANT
             - Extractions must be unique
             - All JSON output must be minified!
+
+            </requirement>
+
+            <accuracy>
+
+            Think about your answer first before you respond.
+
+            If you don't know the answer, reply with DO NOT UNDERSTAND, do not every try to make up an answer.
+
+            </accuracy>
             """),
             tools=[{"type": "file_search"}],
         )
@@ -233,7 +252,7 @@ class OpenAIAssistantExtractor(BaseAIExtractor):
             dict(
                 role="assistant",
                 content=textwrap.dedent("""
-                relationship_type must be one of the following values, please pick the most suitable value that logically decribe the relationship between the extractions.
+                relationship_type must be one of the following values, please pick the most suitable value that logically describe the relationship between the extractions.
 
                 - {}
                 """).format("\n- ".join(relationship_types))
