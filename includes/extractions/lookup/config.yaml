@@ -15,7 +15,7 @@ lookup_mitre_attack_enterprise_id:
   test_cases: generic_mitre_attack_enterprise
   ignore_extractions:
     - 
-  stix_mapping: mitre-attack-enterprise-id
+  stix_mapping: ctibutler-mitre-attack-enterprise-id
 
 lookup_mitre_attack_mobile_id:
   type: lookup
@@ -30,7 +30,7 @@ lookup_mitre_attack_mobile_id:
   test_cases: generic_mitre_attack_mobile
   ignore_extractions:
     - 
-  stix_mapping: mitre-attack-mobile-id
+  stix_mapping: ctibutler-mitre-attack-mobile-id
 
 lookup_mitre_attack_ics_id:
   type: lookup
@@ -44,7 +44,7 @@ lookup_mitre_attack_ics_id:
   test_cases: generic_mitre_attack_ics
   ignore_extractions:
     - 
-  stix_mapping: mitre-attack-ics-id
+  stix_mapping: ctibutler-mitre-attack-ics-id
 
 ####### MITRE CAPEC #######
 
@@ -61,7 +61,7 @@ lookup_mitre_capec_id:
   test_cases: generic_mitre_capec
   ignore_extractions:
     - 
-  stix_mapping: mitre-capec-id
+  stix_mapping: ctibutler-mitre-capec-id
 
 ####### MITRE CWE #######
 
@@ -78,7 +78,7 @@ lookup_mitre_cwe_id:
   test_cases: generic_mitre_cwe
   ignore_extractions:
     - 
-  stix_mapping: mitre-cwe-id
+  stix_mapping: ctibutler-mitre-cwe-id
 
 ####### County extractions #######
 

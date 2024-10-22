@@ -532,7 +532,7 @@ pattern_cve_id:
   test_cases: generic_cve_id
   ignore_extractions:
     - 
-  stix_mapping: cve-id
+  stix_mapping: vulmatch-cve-id
 
 ####### CPE extractions #######
 
@@ -548,7 +548,7 @@ pattern_cpe_uri:
   test_cases: generic_cpe_uri
   ignore_extractions:
     - 
-  stix_mapping: cpe-id
+  stix_mapping: vulmatch-cpe-id
 
 ####### Bank card extractions #######
 

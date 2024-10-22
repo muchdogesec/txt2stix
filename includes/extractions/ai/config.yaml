@@ -86,7 +86,7 @@ ai_mitre_attack_enterprise:
   test_cases: ai_mitre_attack_enterprise
   ignore_extractions:
     - 
-  stix_mapping: mitre-attack-enterprise-id
+  stix_mapping: ctibutler-mitre-attack-enterprise-id
 
 ai_mitre_attack_mobile:
   type: ai
@@ -102,7 +102,7 @@ ai_mitre_attack_mobile:
   test_cases: ai_mitre_attack_mobile
   ignore_extractions:
     - 
-  stix_mapping: mitre-attack-mobile-id
+  stix_mapping: ctibutler-mitre-attack-mobile-id
 
 ai_mitre_attack_ics:
   type: ai
@@ -118,7 +118,7 @@ ai_mitre_attack_ics:
   test_cases: ai_mitre_attack_ics
   ignore_extractions:
     - 
-  stix_mapping: mitre-attack-ics-id
+  stix_mapping: ctibutler-mitre-attack-ics-id
 
 ####### MITRE CAPEC #######
 
@@ -136,7 +136,7 @@ ai_mitre_capec:
   test_cases: ai_mitre_capec
   ignore_extractions:
     - 
-  stix_mapping: mitre-capec-id
+  stix_mapping: ctibutler-mitre-capec-id
 
 ####### MITRE CWE #######
 
@@ -154,4 +154,4 @@ ai_mitre_cwe:
   test_cases: ai_mitre_cwe
   ignore_extractions:
     - 
-  stix_mapping: mitre-cwe-id
+  stix_mapping: ctibutler-mitre-cwe-id
