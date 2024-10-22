@@ -3,7 +3,7 @@
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_ipv4_address_only.txt \
+	--input_file tests/data/extraction_types/generic_ipv4_address_only.txt \
 	--name 'Test 3.1.1 pattern_ipv4_address_only' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -15,7 +15,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_ipv4_address_cidr.txt \
+	--input_file tests/data/extraction_types/generic_ipv4_address_cidr.txt \
 	--name 'Test 3.1.2 pattern_ipv4_address_cidr' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -27,7 +27,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_ipv4_address_port.txt \
+	--input_file tests/data/extraction_types/generic_ipv4_address_port.txt \
 	--name 'Test 3.1.3 pattern_ipv4_address_port' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -39,7 +39,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_ipv6_address_only.txt \
+	--input_file tests/data/extraction_types/generic_ipv6_address_only.txt \
 	--name 'Test 3.1.4 pattern_ipv6_address_only' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -51,7 +51,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_ipv6_address_cidr.txt \
+	--input_file tests/data/extraction_types/generic_ipv6_address_cidr.txt \
 	--name 'Test 3.1.5 pattern_ipv6_address_cidr' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -63,7 +63,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_ipv6_address_port.txt \
+	--input_file tests/data/extraction_types/generic_ipv6_address_port.txt \
 	--name 'Test 3.1.6 pattern_ipv6_address_port' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -75,7 +75,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_domain_name_only.txt \
+	--input_file tests/data/extraction_types/generic_domain_name_only.txt \
 	--name 'Test 3.1.7 pattern_domain_name_only' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -87,7 +87,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_domain_name_subdomain.txt \
+	--input_file tests/data/extraction_types/generic_domain_name_subdomain.txt \
 	--name 'Test 3.1.8 pattern_domain_name_subdomain' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -99,7 +99,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_url.txt \
+	--input_file tests/data/extraction_types/generic_url.txt \
 	--name 'Test 3.1.9 pattern_url' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -111,7 +111,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_url_file.txt \
+	--input_file tests/data/extraction_types/generic_url_file.txt \
 	--name 'Test 3.1.10 pattern_url_file' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -123,7 +123,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_url_path.txt \
+	--input_file tests/data/extraction_types/generic_url_path.txt \
 	--name 'Test 3.1.11 pattern_url_path' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -135,7 +135,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_host_name.txt \
+	--input_file tests/data/extraction_types/generic_host_name.txt \
 	--name 'Test 3.1.12 pattern_host_name' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -147,7 +147,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_host_name_subdomain.txt \
+	--input_file tests/data/extraction_types/generic_host_name_subdomain.txt \
 	--name 'Test 3.1.13 pattern_host_name_subdomain' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -159,7 +159,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_host_name_url.txt \
+	--input_file tests/data/extraction_types/generic_host_name_url.txt \
 	--name 'Test 3.1.14 pattern_host_name_url' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -171,7 +171,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_host_name_file.txt \
+	--input_file tests/data/extraction_types/generic_host_name_file.txt \
 	--name 'Test 3.1.15 pattern_host_name_file' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -183,7 +183,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_host_name_path.txt \
+	--input_file tests/data/extraction_types/generic_host_name_path.txt \
 	--name 'Test 3.1.16 pattern_host_name_path' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -195,7 +195,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_file_name.txt \
+	--input_file tests/data/extraction_types/generic_file_name.txt \
 	--name 'Test 3.1.17 pattern_file_name' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -207,7 +207,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_directory_windows.txt \
+	--input_file tests/data/extraction_types/generic_directory_windows.txt \
 	--name 'Test 3.1.18 pattern_directory_windows' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -219,7 +219,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_directory_windows_with_file.txt \
+	--input_file tests/data/extraction_types/generic_directory_windows_with_file.txt \
 	--name 'Test 3.1.19 pattern_directory_windows_with_file' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -231,7 +231,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_directory_unix.txt \
+	--input_file tests/data/extraction_types/generic_directory_unix.txt \
 	--name 'Test 3.1.20 pattern_directory_unix' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -243,7 +243,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_directory_unix_file.txt \
+	--input_file tests/data/extraction_types/generic_directory_unix_file.txt \
 	--name 'Test 3.1.21 pattern_directory_unix_file' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -255,7 +255,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_file_hash_md5.txt \
+	--input_file tests/data/extraction_types/generic_file_hash_md5.txt \
 	--name 'Test 3.1.22 pattern_file_hash_md5' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -267,7 +267,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_file_hash_sha_1.txt \
+	--input_file tests/data/extraction_types/generic_file_hash_sha_1.txt \
 	--name 'Test 3.1.23 pattern_file_hash_sha_1' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -279,7 +279,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_file_hash_sha_256.txt \
+	--input_file tests/data/extraction_types/generic_file_hash_sha_256.txt \
 	--name 'Test 3.1.24 pattern_file_hash_sha_256' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -291,7 +291,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_file_hash_sha_512.txt \
+	--input_file tests/data/extraction_types/generic_file_hash_sha_512.txt \
 	--name 'Test 3.1.25 pattern_file_hash_sha_512' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -303,7 +303,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_email_address.txt \
+	--input_file tests/data/extraction_types/generic_email_address.txt \
 	--name 'Test 3.1.26 pattern_email_address' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -315,7 +315,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_mac_address.txt \
+	--input_file tests/data/extraction_types/generic_mac_address.txt \
 	--name 'Test 3.1.27 pattern_mac_address' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -327,7 +327,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_windows_registry_key.txt \
+	--input_file tests/data/extraction_types/generic_windows_registry_key.txt \
 	--name 'Test 3.1.28 pattern_windows_registry_key' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -339,7 +339,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_user_agent.txt \
+	--input_file tests/data/extraction_types/generic_user_agent.txt \
 	--name 'Test 3.1.29 pattern_user_agent' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -351,7 +351,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_autonomous_system_number.txt \
+	--input_file tests/data/extraction_types/generic_autonomous_system_number.txt \
 	--name 'Test 3.1.30 pattern_autonomous_system_number' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -363,7 +363,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_cryptocurrency_btc_wallet.txt \
+	--input_file tests/data/extraction_types/generic_cryptocurrency_btc_wallet.txt \
 	--name 'Test 3.1.31.1 pattern_cryptocurrency_btc_wallet' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -375,7 +375,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_cryptocurrency_btc_wallet.txt \
+	--input_file tests/data/extraction_types/generic_cryptocurrency_btc_wallet.txt \
 	--name 'Test 3.1.31.2 pattern_cryptocurrency_btc_wallet_transaction' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -387,7 +387,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_cryptocurrency_btc_transaction.txt \
+	--input_file tests/data/extraction_types/generic_cryptocurrency_btc_transaction.txt \
 	--name 'Test 3.1.31.3 pattern_cryptocurrency_btc_transaction' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -399,7 +399,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_cve_id.txt \
+	--input_file tests/data/extraction_types/generic_cve_id.txt \
 	--name 'Test 3.1.32 pattern_cve_id' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -411,7 +411,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_cpe_uri.txt \
+	--input_file tests/data/extraction_types/generic_cpe_uri.txt \
 	--name 'Test 3.1.33 pattern_cpe_uri' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -423,7 +423,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_bank_card_mastercard.txt \
+	--input_file tests/data/extraction_types/generic_bank_card_mastercard.txt \
 	--name 'Test 3.1.34 pattern_bank_card_mastercard' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -435,7 +435,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_bank_card_visa.txt \
+	--input_file tests/data/extraction_types/generic_bank_card_visa.txt \
 	--name 'Test 3.1.35 pattern_bank_card_visa' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -447,7 +447,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_bank_card_amex.txt \
+	--input_file tests/data/extraction_types/generic_bank_card_amex.txt \
 	--name 'Test 3.1.36 pattern_bank_card_amex' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -459,7 +459,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_bank_card_union_pay.txt \
+	--input_file tests/data/extraction_types/generic_bank_card_union_pay.txt \
 	--name 'Test 3.1.37 pattern_bank_card_union_pay' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -471,7 +471,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_bank_card_diners.txt \
+	--input_file tests/data/extraction_types/generic_bank_card_diners.txt \
 	--name 'Test 3.1.38 pattern_bank_card_diners' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -483,7 +483,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_bank_card_jcb.txt \
+	--input_file tests/data/extraction_types/generic_bank_card_jcb.txt \
 	--name 'Test 3.1.39 pattern_bank_card_jcb' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -495,7 +495,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_bank_card_discover.txt \
+	--input_file tests/data/extraction_types/generic_bank_card_discover.txt \
 	--name 'Test 3.1.40 pattern_bank_card_discover' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -507,7 +507,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_iban_number.txt \
+	--input_file tests/data/extraction_types/generic_iban_number.txt \
 	--name 'Test 3.1.41 pattern_iban_number' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -519,7 +519,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_phone_number.txt \
+	--input_file tests/data/extraction_types/generic_phone_number.txt \
 	--name 'Test 3.1.42 pattern_phone_number' \
 	--tlp_level clear \
 	--confidence 100 \

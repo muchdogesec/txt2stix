@@ -1,4 +1,4 @@
-# python3 extractions/test_cases/generate_simple_extraction_test_cases_txt_files.py
+# python3 tests/scripts/generate_simple_extraction_test_cases_txt_files.py
 
 import os
 import yaml
@@ -50,8 +50,8 @@ def create_test_case_files(file_path, output_dir):
             file.write(f"{item}\n")
 
 # Usage
-file_path = 'includes/extractions/test_cases/test_data.yaml'  # Update this to your file's location
-output_dir = 'tests/inputs/extraction_types/'  # Update this to your desired output directory
+file_path = 'tests/test_cases.yaml'  # Update this to your file's location
+output_dir = 'tests/data/extraction_types/'  # Update this to your desired output directory
 create_test_case_files(file_path, output_dir)
 
 print("Test case files and all_cases.txt created successfully.")

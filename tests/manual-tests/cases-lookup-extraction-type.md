@@ -3,7 +3,7 @@
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_mitre_attack_enterprise.txt \
+	--input_file tests/data/extraction_types/generic_mitre_attack_enterprise.txt \
 	--name 'Test 2.1.1 lookup_mitre_attack_enterprise_id' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -27,7 +27,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_mitre_attack_mobile.txt \
+	--input_file tests/data/extraction_types/generic_mitre_attack_mobile.txt \
 	--name 'Test 2.1.2 lookup_mitre_attack_mobile_id' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -41,7 +41,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_mitre_attack_ics.txt \
+	--input_file tests/data/extraction_types/generic_mitre_attack_ics.txt \
 	--name 'Test 2.1.3 lookup_mitre_attack_ics_id' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -53,7 +53,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_mitre_capec.txt \
+	--input_file tests/data/extraction_types/generic_mitre_capec.txt \
 	--name 'Test 2.1.4 lookup_mitre_capec_id' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -65,7 +65,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_mitre_cwe.txt \
+	--input_file tests/data/extraction_types/generic_mitre_cwe.txt \
 	--name 'Test 2.1.5 lookup_mitre_cwe_id' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -77,7 +77,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/lookup_attack_pattern.txt \
+	--input_file tests/data/extraction_types/lookup_attack_pattern.txt \
 	--name 'Test 2.1.6 lookup_attack_pattern' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -89,7 +89,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/lookup_campaign.txt \
+	--input_file tests/data/extraction_types/lookup_campaign.txt \
 	--name 'Test 2.1.7 lookup_campaign' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -101,7 +101,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/lookup_course_of_action.txt \
+	--input_file tests/data/extraction_types/lookup_course_of_action.txt \
 	--name 'Test 2.1.8 lookup_course_of_action' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -113,7 +113,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/lookup_identity.txt \
+	--input_file tests/data/extraction_types/lookup_identity.txt \
 	--name 'Test 2.1.9 lookup_identity' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -125,7 +125,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/lookup_infrastructure.txt \
+	--input_file tests/data/extraction_types/lookup_infrastructure.txt \
 	--name 'Test 2.1.10 lookup_infrastructure' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -137,7 +137,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/lookup_intrusion_set.txt \
+	--input_file tests/data/extraction_types/lookup_intrusion_set.txt \
 	--name 'Test 2.1.11 lookup_intrusion_set' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -149,7 +149,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/lookup_malware.txt \
+	--input_file tests/data/extraction_types/lookup_malware.txt \
 	--name 'Test 2.1.12 lookup_malware' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -161,7 +161,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/lookup_threat_actor.txt \
+	--input_file tests/data/extraction_types/lookup_threat_actor.txt \
 	--name 'Test 2.1.13 lookup_threat_actor' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -173,7 +173,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/lookup_tool.txt \
+	--input_file tests/data/extraction_types/lookup_tool.txt \
 	--name 'Test 2.1.14 lookup_tool' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -185,7 +185,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_country_alpha2.txt \
+	--input_file tests/data/extraction_types/generic_country_alpha2.txt \
 	--name 'Test 2.1.15 lookup_country_alpha2' \
 	--tlp_level clear \
 	--confidence 100 \

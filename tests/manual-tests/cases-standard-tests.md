@@ -7,7 +7,7 @@ Clear
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_ipv4_address_only.txt \
+	--input_file tests/data/extraction_types/generic_ipv4_address_only.txt \
 	--name 'Test 0.1.1 Clear' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -18,7 +18,7 @@ Green
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_ipv4_address_only.txt \
+	--input_file tests/data/extraction_types/generic_ipv4_address_only.txt \
 	--name 'Test 0.1.1 Green' \
 	--tlp_level green \
 	--confidence 100 \
@@ -30,7 +30,7 @@ Amber
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_ipv4_address_only.txt \
+	--input_file tests/data/extraction_types/generic_ipv4_address_only.txt \
 	--name 'Test 0.1.1 Amber' \
 	--tlp_level amber \
 	--confidence 100 \
@@ -42,7 +42,7 @@ Amber+Strict
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_ipv4_address_only.txt \
+	--input_file tests/data/extraction_types/generic_ipv4_address_only.txt \
 	--name 'Test 0.1.1 Amber+Strict' \
 	--tlp_level amber_strict \
 	--confidence 100 \
@@ -54,7 +54,7 @@ Red
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_ipv4_address_only.txt \
+	--input_file tests/data/extraction_types/generic_ipv4_address_only.txt \
 	--name 'Test 0.1.1 Red' \
 	--tlp_level red \
 	--confidence 100 \
@@ -66,7 +66,7 @@ Bad TLP value -- should return error
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_ipv4_address_only.txt \
+	--input_file tests/data/extraction_types/generic_ipv4_address_only.txt \
 	--name 'Test 0.1.1 Bad TLP value' \
 	--tlp_level bad \
 	--confidence 100 \
@@ -80,7 +80,7 @@ Following should use default identity `identity--9c259ff7-f413-5001-9911-70b4352
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_ipv4_address_only.txt \
+	--input_file tests/data/extraction_types/generic_ipv4_address_only.txt \
 	--name 'Test 0.1.2 Custom Identity' \
 	--tlp_level amber_strict \
 	--confidence 90 \
@@ -96,7 +96,7 @@ Following should PASS as Identity is valid:
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_ipv4_address_only.txt \
+	--input_file tests/data/extraction_types/generic_ipv4_address_only.txt \
 	--name 'Test 0.1.2 Custom Identity' \
 	--tlp_level amber_strict \
 	--confidence 90 \
@@ -113,7 +113,7 @@ Following should FAIL as Identity is bad:
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_ipv4_address_only.txt \
+	--input_file tests/data/extraction_types/generic_ipv4_address_only.txt \
 	--name 'Test 0.1.2 Custom Identity' \
 	--tlp_level amber_strict \
 	--confidence 90 \
@@ -128,7 +128,7 @@ Confidence score not passed, is valid (no `confidence` property in report)
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_ipv4_address_only.txt \
+	--input_file tests/data/extraction_types/generic_ipv4_address_only.txt \
 	--name 'Test 0.1.3 Confidence score not passed' \
 	--tlp_level clear \
 	--use_extractions ai_ipv4_address_only
@@ -141,7 +141,7 @@ Bad confidence value (out of range 0-100) -- should return error
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_ipv4_address_only.txt \
+	--input_file tests/data/extraction_types/generic_ipv4_address_only.txt \
 	--name 'Test 0.1.1 Bad Confidence value' \
 	--tlp_level clear \
 	--confidence 1000 \
@@ -155,7 +155,7 @@ Set `INPUT_CHARACTER_LIMIT= 50000` in `.env` file and this test should fail:
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/manually_generated_reports/char_length_too_long.txt \
+	--input_file tests/data/manually_generated_reports/char_length_too_long.txt \
 	--name 'Test 0.1.4 File too many chars' \
 	--tlp_level amber \
 	--confidence 100 \
@@ -169,7 +169,7 @@ Adding good labels, expect to see 2 labels in report:
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_ipv4_address_only.txt \
+	--input_file tests/data/extraction_types/generic_ipv4_address_only.txt \
 	--name 'Test 0.1.5 Good labels' \
 	--tlp_level amber \
 	--labels label1,labels2 \
@@ -182,7 +182,7 @@ One bad label as not `a-z`, `0-9`, should error
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_ipv4_address_only.txt \
+	--input_file tests/data/extraction_types/generic_ipv4_address_only.txt \
 	--name 'Test 0.1.5 Bad labels' \
 	--tlp_level amber \
 	--labels label_1,labels2 \
@@ -195,7 +195,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/inputs/extraction_types/generic_ipv4_address_only.txt \
+	--input_file tests/data/extraction_types/generic_ipv4_address_only.txt \
 	--name 'Test 0.1.5 Created time' \
 	--tlp_level green \
 	--created 2020-01-01T00:00:00.000Z \
@@ -209,7 +209,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode ai \
-	--input_file tests/inputs/manually_generated_reports/descriptive_for_ai_relationships_1.txt \
+	--input_file tests/data/manually_generated_reports/descriptive_for_ai_relationships_1.txt \
 	--name 'Test 0.2.1 Lots of descriptive relationships' \
 	--tlp_level clear \
 	--confidence 100 \
@@ -223,7 +223,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
     --relationship_mode standard \
-    --input_file tests/inputs/manually_generated_reports/test_aliases.txt \
+    --input_file tests/data/manually_generated_reports/test_aliases.txt \
     --name '0.3.1 Test All Default Aliases in Standard relationships mode' \
     --tlp_level clear \
     --confidence 100 \
@@ -254,7 +254,7 @@ Same input / extractions, but testing AI relationships...
 ```shell
 python3 txt2stix.py \
     --relationship_mode ai \
-    --input_file tests/inputs/manually_generated_reports/test_aliases.txt \
+    --input_file tests/data/manually_generated_reports/test_aliases.txt \
     --name '0.3.1 Test All Default Aliases in Standard relationships mode' \
     --tlp_level clear \
     --confidence 100 \
@@ -271,7 +271,7 @@ Contains `google.com` which matches whitelist. Also contains `signalcorps.com` w
 ```shell
 python3 txt2stix.py \
     --relationship_mode standard \
-    --input_file tests/inputs/extraction_types/whitelist_alexa_top_1000_domains.txt \
+    --input_file tests/data/extraction_types/whitelist_alexa_top_1000_domains.txt \
     --name '0.4.1 Whitelist with 1 known match, 1 unknown' \
     --tlp_level clear \
     --confidence 100 \
@@ -290,7 +290,7 @@ Here is the same input, this time without whitelist:
 ```shell
 python3 txt2stix.py \
     --relationship_mode standard \
-    --input_file tests/inputs/extraction_types/whitelist_alexa_top_1000_domains.txt \
+    --input_file tests/data/extraction_types/whitelist_alexa_top_1000_domains.txt \
     --name '0.4.1 Whitelist with 1 known match, 1 unknown' \
     --tlp_level clear \
     --confidence 100 \
@@ -308,7 +308,7 @@ Expect
 ```shell
 python3 txt2stix.py \
     --relationship_mode standard \
-    --input_file tests/inputs/extraction_types/whitelist_examples.txt \
+    --input_file tests/data/extraction_types/whitelist_examples.txt \
     --name '0.4.2 Whitelist of Lookup with 1 known match' \
     --tlp_level clear \
     --confidence 100 \
@@ -324,7 +324,7 @@ Expect
 ```shell
 python3 txt2stix.py \
     --relationship_mode standard \
-    --input_file tests/inputs/extraction_types/whitelist_examples.txt \
+    --input_file tests/data/extraction_types/whitelist_examples.txt \
     --name '0.4.2 Whitelist of Lookup with 1 known match' \
     --tlp_level clear \
     --confidence 100 \
@@ -339,7 +339,7 @@ Expect 0 extractions
 ```shell
 python3 txt2stix.py \
     --relationship_mode standard \
-    --input_file tests/inputs/extraction_types/whitelist_examples.txt \
+    --input_file tests/data/extraction_types/whitelist_examples.txt \
     --name '0.4.3 Whitelist of AI with 1 known match' \
     --tlp_level clear \
     --confidence 100 \
@@ -352,7 +352,7 @@ Expect 0 extractions.
 ```shell
 python3 txt2stix.py \
     --relationship_mode standard \
-    --input_file tests/inputs/extraction_types/whitelist_examples.txt \
+    --input_file tests/data/extraction_types/whitelist_examples.txt \
     --name '0.4.3 Whitelist of AI with 1 known match' \
     --tlp_level clear \
     --confidence 100 \
@@ -370,7 +370,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
     --relationship_mode standard \
-    --input_file tests/inputs/extraction_types/generic_url_path.txt \
+    --input_file tests/data/extraction_types/generic_url_path.txt \
     --name '0.4.4 Where whitelist value appears in string no whitelist' \
     --tlp_level clear \
     --confidence 100 \
@@ -383,7 +383,7 @@ https://fortinet.com/blog should extract
 ```shell
 python3 txt2stix.py \
     --relationship_mode standard \
-    --input_file tests/inputs/extraction_types/generic_url_path.txt \
+    --input_file tests/data/extraction_types/generic_url_path.txt \
     --name '0.4.4 Where whitelist value appears in string with whitelist' \
     --tlp_level clear \
     --confidence 100 \
@@ -402,7 +402,7 @@ https://github.com/signalscorps/txt2stix/blob/beta-1/design/mvp/extraction-types
 ```shell
 python3 txt2stix.py \
     --relationship_mode standard \
-    --input_file tests/inputs/manually_generated_reports/test_extraction_escapes.txt \
+    --input_file tests/data/manually_generated_reports/test_extraction_escapes.txt \
     --name '0.5.1 Test extraction escapes in pattern mode' \
     --tlp_level clear \
     --confidence 100 \
@@ -418,7 +418,7 @@ Here 7 IPs will be extracted. But this may vary depending on how AI is feeling!
 ```shell
 python3 txt2stix.py \
     --relationship_mode standard \
-    --input_file tests/inputs/extraction_types/all_cases.txt \
+    --input_file tests/data/extraction_types/all_cases.txt \
     --name '0.6.1 All test cases pattern extractions' \
     --tlp_level clear \
     --confidence 100 \
@@ -430,7 +430,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
     --relationship_mode standard \
-    --input_file tests/inputs/extraction_types/all_cases.txt \
+    --input_file tests/data/extraction_types/all_cases.txt \
     --name '0.6.2 All test cases lookup extractions' \
     --tlp_level clear \
     --confidence 100 \
@@ -442,7 +442,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
     --relationship_mode standard \
-    --input_file tests/inputs/extraction_types/all_cases.txt \
+    --input_file tests/data/extraction_types/all_cases.txt \
     --name '0.6.3 All test cases ai extractions' \
     --tlp_level clear \
     --confidence 100 \
