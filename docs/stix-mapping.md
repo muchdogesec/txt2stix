@@ -1721,6 +1721,8 @@ Takes the extracted ID and passes it to
 GET CTIBUTLER_HOST/api/v1/attack-enterprise/objects/:attack_id/
 ```
 
+`CTIBUTLER_APIKEY` in request passed if set.
+
 All the objects returned are imported.
 
 Relationship mode object generation behaviour:
@@ -1751,6 +1753,8 @@ Takes the extracted ID and passes it to
 GET CTIBUTLER_HOST/api/v1/attack-ics/objects/:attack_id/
 ```
 
+`CTIBUTLER_APIKEY` in request passed if set.
+
 All the objects returned are imported.
 
 Relationship mode object generation behaviour:
@@ -1765,6 +1769,8 @@ Takes the extracted ID and passes it to
 ```shell
 GET CTIBUTLER_HOST/api/v1/capec/objects/:capec_id/
 ```
+
+`CTIBUTLER_APIKEY` in request passed if set.
 
 All the objects returned are imported.
 
@@ -1781,6 +1787,8 @@ Takes the extracted ID and passes it to
 GET CTIBUTLER_HOST/api/v1/cwe/objects/:cwe_id/
 ```
 
+`CTIBUTLER_APIKEY` in request passed if set.
+
 Relationship mode object generation behaviour:
 
 * Standard relationship SRO: Imported `weakness` object is (`source_ref`) object connected to Report
@@ -1794,6 +1802,8 @@ Takes the extracted ID and passes it to
 GET VULMATCH_HOST/api/v1/cve/objects/:cve_id/
 ```
 
+`VULMATCH_APIKEY` in request passed if set.
+
 Relationship mode object generation behaviour:
 
 * Standard relationship SRO: Imported `vulnerability` object is (`source_ref`) object connected to Report
@@ -1806,6 +1816,8 @@ Takes the extracted ID and passes it to
 ```shell
 GET VULMATCH_HOST/api/v1/cpe/objects/:cpe_id/
 ```
+
+`VULMATCH_APIKEY` in request passed if set.
 
 Relationship mode object generation behaviour:
 
