@@ -8,7 +8,7 @@ SLUG: # REQUIRED: machine friendly name of extraction, must only contain charact
   modified: # [date] REQUIRED: YYYY-MM-DD of creation time.
   created_by: # [string] REQUIRED: name of author , must only contain characters `a-z`,`0-9`,`_`,`-`
   version: # [number] REQUIRED: version number in format N.N.N
-  test_cases: # [test extraction slug] REQUIRED: test cases for this extraction. Slugs found in extractions/test_cases/test_data.yaml
+  test_cases: # [test extraction slug] REQUIRED: test cases for this extraction. Slugs found in tests/test_cases.yaml
   ignore_extractions: 
     - # [list of extraction slugs] OPTIONAL: defines slugs of other extraction types that should be ignored for any part of the matched string that they match too. e.g. ignore AI domain extractions (ai_domain_name_only) for google.com if url extraction matches https://google.com/something. This is dynamic, and you add/remove entries to enable/disable ignores
   stix_mapping: # [dictionary] REQUIRED: STIX object extraction should map to. Must be supported STIX type

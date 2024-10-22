@@ -1794,6 +1794,23 @@ Relationship mode object generation behaviour:
 * Standard relationship SRO: Imported `weakness` object is (`source_ref`) object connected to Report
 * AI mode relationship SROs: all imported objects are connected as source or target object (depending on if extraction is source or target)
 
+### stix-mapping: `ctibutler-mitre-atlas-id`
+
+Takes the extracted ID and passes it to
+
+```shell
+GET CTIBUTLER_HOST/api/v1/atlas/objects/:atlas_id/
+```
+
+`CTIBUTLER_APIKEY` in request passed if set.
+
+All the objects returned are imported.
+
+Relationship mode object generation behaviour:
+
+* Standard relationship SRO: Imported object(s) is (`source_ref`) object connected to Report with type `extracted-from`
+* AI mode relationship SROs: all imported objects are connected as source or target object (depending on if extraction is source or target)
+
 ### stix-mapping: `vulmatch-cve-id`
 
 Takes the extracted ID and passes it to 

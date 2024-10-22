@@ -8,4 +8,4 @@ SLUG: # REQUIRED: machine friendly name of alias, must only contain characters `
   modified: # [date] REQUIRED: YYYY-MM-DD of creation time.
   created_by: # [string] REQUIRED: name of author , must only contain characters `a-z`,`0-9`,`_`,`-`
   version: # [number] REQUIRED: version number in format N.N.N
-  test_cases: # [test extraction slug] REQUIRED: test cases for this extraction. Slugs found in extractions/test_cases/test_data.yaml
+  test_cases: # [test extraction slug] REQUIRED: test cases for this extraction. Slugs found in tests/test_cases.yaml

@@ -557,6 +557,16 @@ ai_mitre_cwe:
   test_negative_examples:
     - 'CWE-999' # invalid id
 
+####### MITRE ATLAS #######
+
+generic_mitre_atlas:
+  test_positive_examples:
+    - 'AML.M0015'
+    - 'AML.T0050'
+  test_negative_examples:
+    - 'AML.T0000' # invalid id
+    - 'Reconnaissance' # is name
+
 ####### Misc STIX Objects #######
 
 lookup_attack_pattern:
