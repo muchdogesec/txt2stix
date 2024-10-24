@@ -22,7 +22,7 @@ dependencies = [
   "llama-index>=0.10.50",
   "pathvalidate>=3.2.0",
   "phonenumbers>=8.13.39",
-  "python-arango>=8.0.0",
+  "requests==2.32.3",
   "python-dotenv>=1.0.1",
   "schwifty>=2024.6.1",
   "stix2extensions @ https://github.com/muchdogesec/stix2extensions/archive/main.zip",

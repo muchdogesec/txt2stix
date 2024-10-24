@@ -329,7 +329,6 @@ class txt2stixBundler:
 
 
         self.id_value_map[sdo_id] = sdo_value
-        print("value_id_map", sdo_id, sdo_value, sdo)
 
 
     def add_indicator(self, extracted_dict, add_standard_relationship):
@@ -340,7 +339,7 @@ class txt2stixBundler:
         if extracted_value in self.whitelisted_values:
             self.whitelisted_refs.add(extracted_id)
             return
-        # print(stix_mapping, gpt_out)
+
         indicator = {
             "type": "indicator",
             "id": self.indicator_id_from_value(extracted_value, stix_mapping),

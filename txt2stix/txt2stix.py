@@ -134,10 +134,8 @@ def parse_args():
 
 REQUIRED_ENV_VARIABLES = [
     "INPUT_TOKEN_LIMIT",
-    "ARANGODB_HOST_URL",
-    "ARANGODB_USERNAME",
-    "ARANGODB_PASSWORD",
-    "ARANGODB_DATABASE",
+    "CTIBUTLER_HOST",
+    "VULMATCH_HOST",
 ]
 def load_env(input_length):
     dotenv.load_dotenv()

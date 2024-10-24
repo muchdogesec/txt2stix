@@ -1,25 +1,15 @@
 from __future__ import annotations
 import os
-import json, re
-from stix2.parsing import dict_to_stix2, parse as parse_stix
-from stix2 import IPv4Address, CustomObject, CustomObservable, File, HashConstant
+import re
+from stix2.parsing import dict_to_stix2
+from stix2 import HashConstant
 from stix2.v21.vocab import HASHING_ALGORITHM
 from stix2.patterns import _HASH_REGEX as HASHING_ALGORITHM_2
-from urllib.parse import urlparse
 from ipaddress import ip_address
 from pathlib import PurePosixPath, PureWindowsPath
 import phonenumbers
 from phonenumbers import geocoder
 import logging
-from stix2extensions import (
-    BankAccount,
-    BankCard,
-    CryptocurrencyTransaction,
-    CryptocurrencyWallet,
-    Phonenumber,
-    UserAgent,
-    Weakness,
-)
 from stix2extensions.tools import creditcard2stix, crypto2stix
 from typing import TYPE_CHECKING
 
@@ -30,7 +20,7 @@ if TYPE_CHECKING:
 
 from .common import MinorExcption
 
-from .arangodb import ArangoSession
+from .retriever import retrieve_stix_objects
 
 logger = logging.getLogger("txt2stix.indicator")
 
@@ -86,12 +76,12 @@ def build_observables(
 ):
     value = extracted["value"]
 
-    arango_objects = arangodb_check(stix_mapping, value)
-    if arango_objects:
-        return arango_objects, [sdo["id"] for sdo in arango_objects]
-    if arango_objects == []:
+    retrieved_objects = retrieve_stix_objects(stix_mapping, value)
+    if retrieved_objects:
+        return retrieved_objects, [sdo["id"] for sdo in retrieved_objects]
+    if retrieved_objects == []:
         logger.error(
-            f"could not find `{stix_mapping}` with value `{value}` in ArangoDB"
+            f"could not find `{stix_mapping}` with id=`{value}` in remote"
         )
         return [], []
 
@@ -658,25 +648,4 @@ def build_observables(
     return stix_objects, relationships
 
 
-def arangodb_check(stix_mapping, id):
-    try:
-        s = ArangoSession()
-        if stix_mapping in s.ATTACK_ID_TABLES:
-            return s.mitre_attack_id(id, stix_mapping)
-        if stix_mapping == "mitre-capec-id":
-            return s.mitre_capec_id(id)
-        if stix_mapping == "mitre-cwe-id":
-            return s.mitre_cwe_id(id)
-        if stix_mapping == "cve-id":
-            return s.cve_id(id)
-        if stix_mapping == "cpe-id":
-            return s.cpe_id(id)
-    except Exception as e:
-        pass
-    return None
 
-
-# print(build_indicator("ipv4-addr", {}, "192.168.0.1"))
-# print(build_indicator("ipv4-addr-port", {}, "192.168.0.1:80"))
-# print(build_indicator("cryptocurrency-wallet", {}, "192.168.0.1:80"))
-# print(get_country_code("2349027338509"))
