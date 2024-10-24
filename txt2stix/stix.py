@@ -268,27 +268,7 @@ class txt2stixBundler:
     def load_object_from_json(url):
         resp = requests.get(url)
         return dict_to_stix2(resp.json())
-
-    def add_note(self, content, type):
-        content, _ = codecs.utf_8_encode(content)
-        note = Note(
-            created=self.report.created,
-            modified=self.report.modified,
-            abstract=f"txt2stix {type}: {self.job_id}",
-            content=base64.b64encode(content).decode(),
-            object_refs=[self.report.id],
-            created_by_ref=self.report.created_by_ref,
-            object_marking_refs=[
-                "marking-definition--e828b379-4e03-4974-9ac4-e53a884c97c1",
-                "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5",
-            ],
-            external_references=[
-                {"source_name": "txt2stix job ID", "external_id": self.job_id}
-            ],
-        )
-
-        self.bundle.objects.append(note)
-
+    
     def add_ref(self, sdo):
         self.add_extension(sdo)
         sdo_id = sdo["id"]

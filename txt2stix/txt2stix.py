@@ -145,6 +145,13 @@ def load_env(input_length):
     # if input_length > int(os.environ["INPUT_TOKEN_LIMIT"]):
     #     raise FatalException(f"input_file length ({input_length}) exceeds character limit ({os.environ['INPUT_TOKEN_LIMIT']})")
 
+
+def log_notes(content, type):
+    logging.debug(f" ========================= {type} ========================= ")
+    logging.debug(f" ========================= {"+"*len(type)} ========================= ")
+    logging.debug(json.dumps(content, sort_keys=True, indent=4))
+    logging.debug(f" ========================= {"-"*len(type)} ========================= ")
+
 def extract_all(bundler: txt2stixBundler, extractors_map, aliased_input, ai_extractor: BaseAIExtractor=None):
     all_extracts = dict()
     if extractors_map.get("lookup"):
@@ -177,7 +184,7 @@ def extract_all(bundler: txt2stixBundler, extractors_map, aliased_input, ai_extr
             except BaseException as e:
                 logging.exception("AI extraction failed", exc_info=True)
 
-    bundler.add_note(json.dumps(all_extracts), "Extractions")
+    log_notes(all_extracts, "Extractions")
     return all_extracts
 
 def extract_relationships_with_ai(bundler: txt2stixBundler, aliased_input, all_extracts, ai_extractor_session: BaseAIExtractor):
@@ -186,7 +193,7 @@ def extract_relationships_with_ai(bundler: txt2stixBundler, aliased_input, all_e
         ai_extractor_session.set_document(aliased_input)
         relationship_types = (INCLUDES_PATH/"helpers/stix_relationship_types.txt").read_text().splitlines()
         relationships = ai_extractor_session.extract_relationships(all_extracts, relationship_types)
-        bundler.add_note(json.dumps(relationships), "Relationships")
+        log_notes(relationships, "Relationships")
         bundler.process_relationships(relationships)
     except BaseException as e:
         logging.exception("Relationship processing failed: %s", e)
@@ -207,7 +214,7 @@ def main():
         load_env(len(aliased_input))
 
         bundler = txt2stixBundler(args.name, args.use_identity, args.tlp_level, aliased_input, args.confidence, args.all_extractors, args.labels, created=args.created)
-        bundler.add_note(json.dumps(sys.argv), "Config")
+        log_notes(sys.argv, "Config")
         convo_str = None
 
         bundler.whitelisted_values = args.use_whitelist
