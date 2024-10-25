@@ -197,6 +197,7 @@ class txt2stixBundler:
         extractors,
         labels,
         job_id=None,
+        report_id=None,
         created=None,
     ) -> None:
         self.created = created or dt.now()
@@ -205,9 +206,12 @@ class txt2stixBundler:
         self.all_extractors = extractors
         self.identity = identity or self.default_identity
         self.tlp_level = TLP_LEVEL.get(tlp_level)
-        self.uuid = str(
-            uuid.uuid5(UUID_NAMESPACE, f"{self.identity.id}+{self.created}+{name}")
-        )
+        if report_id:
+            self.uuid = report_id
+        else:
+            self.uuid = str(
+                uuid.uuid5(UUID_NAMESPACE, f"{self.identity.id}+{self.created}+{name}")
+            )
 
         self.job_id = f"report--{self.uuid}"
         self.report = Report(

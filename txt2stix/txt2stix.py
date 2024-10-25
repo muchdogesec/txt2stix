@@ -112,6 +112,7 @@ def parse_args():
     parser.add_argument("--created", required=False, default=datetime.now(), help="Allow user to optionally pass --created time in input, which will hardcode the time used in created times")
     parser.add_argument("--labels", type=parse_labels)
     parser.add_argument("--relationship_mode", choices=["ai", "standard"], required=True)
+    parser.add_argument("--report_id", type=uuid.UUID, required=False, help="id to use instead of automatically generated `{name}+{created}`", metavar="[Valid UUID]")
     parser.add_argument("--confidence", type=range_type(0,100), default=None, help="value between 0-100. Default if not passed is null.", metavar="[0-100]")
     parser.add_argument("--tlp_level", "--tlp-level", choices=TLP_LEVEL.levels().keys(), default="clear", help="TLP level, default is clear")
     parser.add_argument("--use_extractions", "--use-extractions", default={}, type=functools.partial(parse_extractors_globbed, "extractor", all_extractors),  help="Specify extraction types from the default/local extractions .yaml file", metavar="EXTRACTION1,EXTRACTION2")
@@ -213,7 +214,7 @@ def main():
 
         load_env(len(aliased_input))
 
-        bundler = txt2stixBundler(args.name, args.use_identity, args.tlp_level, aliased_input, args.confidence, args.all_extractors, args.labels, created=args.created)
+        bundler = txt2stixBundler(args.name, args.use_identity, args.tlp_level, aliased_input, args.confidence, args.all_extractors, args.labels, created=args.created, report_id=args.report_id)
         log_notes(sys.argv, "Config")
         convo_str = None
 
