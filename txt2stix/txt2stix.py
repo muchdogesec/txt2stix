@@ -112,6 +112,7 @@ def parse_args():
     parser.add_argument("--created", required=False, default=datetime.now(), help="Allow user to optionally pass --created time in input, which will hardcode the time used in created times")
     parser.add_argument("--labels", type=parse_labels)
     parser.add_argument("--relationship_mode", choices=["ai", "standard"], required=True)
+    parser.add_argument("--report_id", type=uuid.UUID, required=False, help="id to use instead of automatically generated `{name}+{created}`", metavar="[Valid UUID]")
     parser.add_argument("--confidence", type=range_type(0,100), default=None, help="value between 0-100. Default if not passed is null.", metavar="[0-100]")
     parser.add_argument("--tlp_level", "--tlp-level", choices=TLP_LEVEL.levels().keys(), default="clear", help="TLP level, default is clear")
     parser.add_argument("--use_extractions", "--use-extractions", default={}, type=functools.partial(parse_extractors_globbed, "extractor", all_extractors),  help="Specify extraction types from the default/local extractions .yaml file", metavar="EXTRACTION1,EXTRACTION2")
@@ -134,10 +135,8 @@ def parse_args():
 
 REQUIRED_ENV_VARIABLES = [
     "INPUT_TOKEN_LIMIT",
-    "ARANGODB_HOST_URL",
-    "ARANGODB_USERNAME",
-    "ARANGODB_PASSWORD",
-    "ARANGODB_DATABASE",
+    "CTIBUTLER_HOST",
+    "VULMATCH_HOST",
 ]
 def load_env(input_length):
     dotenv.load_dotenv()
@@ -146,6 +145,13 @@ def load_env(input_length):
             raise FatalException(f"env variable `{env}` required")
     # if input_length > int(os.environ["INPUT_TOKEN_LIMIT"]):
     #     raise FatalException(f"input_file length ({input_length}) exceeds character limit ({os.environ['INPUT_TOKEN_LIMIT']})")
+
+
+def log_notes(content, type):
+    logging.debug(f" ========================= {type} ========================= ")
+    logging.debug(f" ========================= {"+"*len(type)} ========================= ")
+    logging.debug(json.dumps(content, sort_keys=True, indent=4))
+    logging.debug(f" ========================= {"-"*len(type)} ========================= ")
 
 def extract_all(bundler: txt2stixBundler, extractors_map, aliased_input, ai_extractor: BaseAIExtractor=None):
     all_extracts = dict()
@@ -179,7 +185,7 @@ def extract_all(bundler: txt2stixBundler, extractors_map, aliased_input, ai_extr
             except BaseException as e:
                 logging.exception("AI extraction failed", exc_info=True)
 
-    bundler.add_note(json.dumps(all_extracts), "Extractions")
+    log_notes(all_extracts, "Extractions")
     return all_extracts
 
 def extract_relationships_with_ai(bundler: txt2stixBundler, aliased_input, all_extracts, ai_extractor_session: BaseAIExtractor):
@@ -188,7 +194,7 @@ def extract_relationships_with_ai(bundler: txt2stixBundler, aliased_input, all_e
         ai_extractor_session.set_document(aliased_input)
         relationship_types = (INCLUDES_PATH/"helpers/stix_relationship_types.txt").read_text().splitlines()
         relationships = ai_extractor_session.extract_relationships(all_extracts, relationship_types)
-        bundler.add_note(json.dumps(relationships), "Relationships")
+        log_notes(relationships, "Relationships")
         bundler.process_relationships(relationships)
     except BaseException as e:
         logging.exception("Relationship processing failed: %s", e)
@@ -208,8 +214,8 @@ def main():
 
         load_env(len(aliased_input))
 
-        bundler = txt2stixBundler(args.name, args.use_identity, args.tlp_level, aliased_input, args.confidence, args.all_extractors, args.labels, created=args.created)
-        bundler.add_note(json.dumps(sys.argv), "Config")
+        bundler = txt2stixBundler(args.name, args.use_identity, args.tlp_level, aliased_input, args.confidence, args.all_extractors, args.labels, created=args.created, report_id=args.report_id)
+        log_notes(sys.argv, "Config")
         convo_str = None
 
         bundler.whitelisted_values = args.use_whitelist

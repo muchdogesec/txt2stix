@@ -151,6 +151,7 @@ class txt2stixBundler:
     object_marking_refs = []
     uuid = None
     id_map = dict()
+    id_value_map = dict()
     # this identity is https://raw.githubusercontent.com/muchdogesec/stix4doge/main/objects/identity/txt2stix.json
     default_identity = Identity(
         type="identity",
@@ -196,17 +197,21 @@ class txt2stixBundler:
         extractors,
         labels,
         job_id=None,
-        created=dt.now(),
+        report_id=None,
+        created=None,
     ) -> None:
-        self.created = created
+        self.created = created or dt.now()
         self.whitelisted_values = set()
         self.whitelisted_refs = set()
         self.all_extractors = extractors
         self.identity = identity or self.default_identity
         self.tlp_level = TLP_LEVEL.get(tlp_level)
-        self.uuid = str(
-            uuid.uuid5(UUID_NAMESPACE, f"{self.identity.id}+{self.created}+{name}")
-        )
+        if report_id:
+            self.uuid = report_id
+        else:
+            self.uuid = str(
+                uuid.uuid5(UUID_NAMESPACE, f"{self.identity.id}+{self.created}+{name}")
+            )
 
         self.job_id = f"report--{self.uuid}"
         self.report = Report(
@@ -267,33 +272,48 @@ class txt2stixBundler:
     def load_object_from_json(url):
         resp = requests.get(url)
         return dict_to_stix2(resp.json())
-
-    def add_note(self, content, type):
-        content, _ = codecs.utf_8_encode(content)
-        note = Note(
-            created=self.report.created,
-            modified=self.report.modified,
-            abstract=f"txt2stix {type}: {self.job_id}",
-            content=base64.b64encode(content).decode(),
-            object_refs=[self.report.id],
-            created_by_ref=self.report.created_by_ref,
-            object_marking_refs=[
-                "marking-definition--e828b379-4e03-4974-9ac4-e53a884c97c1",
-                "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5",
-            ],
-            external_references=[
-                {"source_name": "txt2stix job ID", "external_id": self.job_id}
-            ],
-        )
-
-        self.bundle.objects.append(note)
-
+    
     def add_ref(self, sdo):
         self.add_extension(sdo)
         sdo_id = sdo["id"]
         if sdo_id not in self.report.object_refs:
             self.report.object_refs.append(sdo_id)
             self.bundle.objects.append(sdo)
+
+        # match t := sdo['type']:
+        #     case 'indicator' | 'file':
+        #         sdo_value = sdo['name']
+        #     case 'ipv4-addr':
+        #         sdo_value = sdo['value']
+        #     case 'directory':
+        #         sdo_value = sdo['path']
+        #     case 'windows-registry-key':
+        #         sdo_value = sdo['key']
+        #     case 'user-agent':
+        #         sdo_value = sdo['string']
+        #     case 'autonomous-system' | 'bank-card':
+        #         sdo_value = sdo['number']
+        #     case 'cryptocurrency-wallet':
+        #         sdo_value = sdo['address']
+        #     case 'cryptocurrency-transaction':
+        #         sdo_value = sdo['hash']
+        #     case _:
+        #         sdo_value = "{NOTEXTRACTED}"
+
+        sdo_value = ""
+        for key in ['name', 'value', 'path', 'key', 'string', 'number', 'iban_number', 'address', 'hashes']:
+            if v := sdo.get(key):
+                sdo_value = v
+                break
+        else:
+            if refs := sdo.get('external_references', []):
+                sdo_value = refs[0]['external_id']
+            else:
+                sdo_value = "{NOTEXTRACTED}"
+
+
+        self.id_value_map[sdo_id] = sdo_value
+
 
     def add_indicator(self, extracted_dict, add_standard_relationship):
         extractor = self.all_extractors[extracted_dict["type"]]
@@ -303,7 +323,7 @@ class txt2stixBundler:
         if extracted_value in self.whitelisted_values:
             self.whitelisted_refs.add(extracted_id)
             return
-        # print(stix_mapping, gpt_out)
+
         indicator = {
             "type": "indicator",
             "id": self.indicator_id_from_value(extracted_value, stix_mapping),
@@ -369,13 +389,17 @@ class txt2stixBundler:
         for source_ref in self.id_map.get(gpt_out["source_ref"], []):
             for target_ref in self.id_map.get(gpt_out["target_ref"], []):
                 self.add_standard_relationship(
-                    source_ref, target_ref, gpt_out["relationship_type"]
+                    source_ref, target_ref, gpt_out["relationship_type"],
                 )
 
     def add_standard_relationship(self, source_ref, target_ref, relationship_type):
-        self.add_ref(self.new_relationship(source_ref, target_ref, relationship_type))
+        descriptor = ' '.join(relationship_type.split('-'))
+        self.add_ref(self.new_relationship(
+            source_ref, target_ref, relationship_type,
+            description=f"{self.id_value_map.get(source_ref, source_ref)} {descriptor} {self.id_value_map.get(target_ref, target_ref)}"
+        ))
 
-    def new_relationship(self, source_ref, target_ref, relationship_type):
+    def new_relationship(self, source_ref, target_ref, relationship_type, description=None):
         return Relationship(
             id="relationship--"
             + str(
@@ -388,6 +412,7 @@ class txt2stixBundler:
             relationship_type=relationship_type,
             created_by_ref=self.report.created_by_ref,
             created=self.report.created,
+            description=description,
             modified=self.report.modified,
             object_marking_refs=self.report.object_marking_refs,
             allow_custom=True,

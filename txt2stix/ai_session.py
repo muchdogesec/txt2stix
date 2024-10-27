@@ -40,7 +40,15 @@ class BaseAIExtractor:
 
 class OpenAIAssistantExtractor(BaseAIExtractor):
     extract_instruction = textwrap.dedent(
-    """
+    """    
+    <persona>
+
+    You are a cyber-security threat intelligence analyst responsible for analysing intelligence. You have a deep understanding of cybersecurity concepts and threat intelligence. You are responsible for extracting observables and TTPs from documents provided, and understanding the relationships being described that link them.
+
+    </persona>
+
+    <requirement>
+
     Using the file above, you are to extract objects from the body of input (either plaintext or markdown), extractions must be unique!
 
     ```json
@@ -71,48 +79,97 @@ class OpenAIAssistantExtractor(BaseAIExtractor):
 
     Only one JSON object should exist for each unique value.
 
-    Only include a valid JSON document in your response and no other text. The JSON document should be minified!.
-        
+    IMPORTANT: Only include a valid JSON document in your response and no other text. The JSON document should be minified!.
+
+    </requirement>
+
+    <accuracy>
+
+    Think about your answer first before you respond.
+
+    If you don't know the answer, reply with DO NOT UNDERSTAND, do not every try to make up an answer.
+
+    </accuracy>
     """)
+
     relationship_instruction = textwrap.dedent(
     """
-        please logically describe the relationships between the extractions in the following JSON format.
+    <persona>
 
-        ```json
-        [
-            {
-                "source_ref": "<source extraction id>",
-                "target_ref": "<target extraction id>",
-                "relationship_type": "<valid relationship type>"
-            },
-            {
-                "source_ref": "<source extraction id>",
-                "target_ref": "<target extraction id>",
-                "relationship_type": "<valid relationship type>"
-            }
-        ]
-        ```
+    You are a cyber-security threat intelligence analyst responsible for analysing intelligence. You have a deep understanding of cybersecurity concepts and threat intelligence. You are responsible for extracting observables and TTPs from documents provided, and understanding the relationships being described that link them.
+
+    </persona>
+
+    <requirement>
+
+    Please capture the relationships between the extractions described in the text using NLP techniques.
+
+    Your response should be in the following JSON format;
+
+    ```json
+    [
+        {
+            "source_ref": "<source extraction id>",
+            "target_ref": "<target extraction id>",
+            "relationship_type": "<valid relationship type>"
+        },
+        {
+            "source_ref": "<source extraction id>",
+            "target_ref": "<target extraction id>",
+            "relationship_type": "<valid relationship type>"
+        }
+    ]
+    ```
         
-        Where;
+    Where;
 
-        * `source_ref`: is the id for the source extraction for the relationship (e.g. extraction_1).
-        * `target_ref`: is the index for the target extraction for the relationship (e.g. extraction_2).
-        * `relationship_type`: is a description of the relationship between target and source.
+    * `source_ref`: is the id for the source extraction for the relationship (e.g. extraction_1).
+    * `target_ref`: is the index for the target extraction for the relationship (e.g. extraction_2).
+    * `relationship_type`: is a description of the relationship between target and source.
 
+    IMPORTANT: Only include a valid JSON document in your response and no other text. The JSON document should be minified!.
 
-        important: JSON output must be minified!
-        """
+    </requirement>
+
+    <accuracy>
+
+    Think about your answer first before you respond.
+
+    If you don't know the answer, reply with DO NOT UNDERSTAND, do not every try to make up an answer.
+
+    </accuracy>
+    """
     )
+
     def __init__(self, model="gpt-4-turbo", filename="txt2stix-file.md") -> None:
         self.client = OpenAI(timeout=120)
         self.assistant = self.client.beta.assistants.create(
             model=model,
             name="CTI Extractor",
             instructions=textwrap.dedent("""
-            You are a CTI extractor, you are to extract objects from the input file and return JSON reponse! 
+            <persona>
+
+            You are a cyber-security threat intelligence analyst responsible for analysing intelligence. You have a deep understanding of cybersecurity concepts and threat intelligence. You are responsible for extracting observables and TTPs from documents provided, and understanding the relationships being described that link them.
+
+            </persona>
+
+            <requirement>
+
+            You are to extract objects from the input file and return JSON reponse! 
+            
             IMPORTANT
             - Extractions must be unique
             - All JSON output must be minified!
+
+            </requirement>
+
+            <accuracy>
+
+            Think about your answer first before you respond.
+
+            If you don't know the answer, reply with DO NOT UNDERSTAND, do not every try to make up an answer.
+
+            </accuracy>
             """),
             tools=[{"type": "file_search"}],
         )
@@ -129,7 +186,7 @@ class OpenAIAssistantExtractor(BaseAIExtractor):
         # vector = self.client.beta.vector_stores.create(expires_after=ExpiresAfter(days=1, anchor='last_active_at'), file_ids=[f['file_id'] for f in self.files])
         message = dict(
             role="assistant",
-            content="I will be working with this file, all subsequent messages after this will bve working on this file.",
+            content="I will be working with this file, all subsequent messages after this will be working on this file.",
             attachments=self.files,
         )
         self.thread = self.client.beta.threads.create(messages=[message])
@@ -195,7 +252,7 @@ class OpenAIAssistantExtractor(BaseAIExtractor):
             dict(
                 role="assistant",
                 content=textwrap.dedent("""
-                relationship_type must be one of the following values, please pick the most suitable value that logically decribe the relationship between the extractions.
+                relationship_type must be one of the following values, please pick the most suitable value that logically describe the relationship between the extractions.
 
                 - {}
                 """).format("\n- ".join(relationship_types))

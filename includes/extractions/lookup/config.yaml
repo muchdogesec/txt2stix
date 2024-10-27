@@ -5,8 +5,8 @@
 lookup_mitre_attack_enterprise_id:
   type: lookup
   name: 'MITRE ATT&CK Enterprise IDs'
-  description: ''
-  notes: 'Uses lookup '
+  description: 'Extracts MITRE ATT&CK Enterprise IDs from text.'
+  notes: 'Currently uses v15.1'
   file: 'lookups/mitre_attack_enterprise_id.txt'
   created: 2020-01-01
   modified:  2020-01-01
@@ -15,13 +15,13 @@ lookup_mitre_attack_enterprise_id:
   test_cases: generic_mitre_attack_enterprise
   ignore_extractions:
     - 
-  stix_mapping: mitre-attack-enterprise-id
+  stix_mapping: ctibutler-mitre-attack-enterprise-id
 
 lookup_mitre_attack_mobile_id:
   type: lookup
   name: 'MITRE ATT&CK Mobile IDs'
-  description: ''
-  notes: ''
+  description: 'Extracts MITRE ATT&CK Mobile IDs from text.'
+  notes: 'Currently uses v15.1'
   file: 'lookups/mitre_attack_mobile_id.txt'
   created: 2020-01-01
   modified:  2020-01-01
@@ -30,12 +30,13 @@ lookup_mitre_attack_mobile_id:
   test_cases: generic_mitre_attack_mobile
   ignore_extractions:
     - 
-  stix_mapping: mitre-attack-mobile-id
+  stix_mapping: ctibutler-mitre-attack-mobile-id
 
 lookup_mitre_attack_ics_id:
   type: lookup
   name: 'MITRE ATT&CK ICS IDs'
-  description: ''
+  description: 'Extracts MITRE ATT&CK ICS IDs from text.'
+  notes: 'Currently uses v15.1'
   file: 'lookups/mitre_attack_ics_id.txt'
   created: 2020-01-01
   modified:  2020-01-01
@@ -44,15 +45,15 @@ lookup_mitre_attack_ics_id:
   test_cases: generic_mitre_attack_ics
   ignore_extractions:
     - 
-  stix_mapping: mitre-attack-ics-id
+  stix_mapping: ctibutler-mitre-attack-ics-id
 
 ####### MITRE CAPEC #######
 
 lookup_mitre_capec_id:
   type: lookup
   name: 'MITRE CAPEC IDs'
-  description: ''
-  notes: ''
+  description: 'Extracts MITRE CAPEC IDs from text.'
+  notes: 'Currently uses v3.9'
   file: 'lookups/mitre_capec_id.txt'
   created: 2020-01-01
   modified:  2020-01-01
@@ -61,15 +62,15 @@ lookup_mitre_capec_id:
   test_cases: generic_mitre_capec
   ignore_extractions:
     - 
-  stix_mapping: mitre-capec-id
+  stix_mapping: ctibutler-mitre-capec-id
 
 ####### MITRE CWE #######
 
 lookup_mitre_cwe_id:
   type: lookup
   name: MITRE CWE IDs
-  description: ''
-  notes: ''
+  description: 'Extracts MITRE CWE IDs from text.'
+  notes: 'Currently uses v4.15'
   file: 'lookups/mitre_cwe_id.txt'
   created: 2020-01-01
   modified:  2020-01-01
@@ -78,7 +79,24 @@ lookup_mitre_cwe_id:
   test_cases: generic_mitre_cwe
   ignore_extractions:
     - 
-  stix_mapping: mitre-cwe-id
+  stix_mapping: ctibutler-mitre-cwe-id
+
+####### MITRE ATLAS #######
+
+lookup_mitre_atlas_id:
+  type: lookup
+  name: MITRE ATLAS IDs
+  description: 'Extracts MITRE ATLAS IDs from text.'
+  notes: 'Currently uses v4.5.2'
+  file: 'lookups/mitre_atlas_id.txt'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_mitre_atlas
+  ignore_extractions:
+    - 
+  stix_mapping: ctibutler-mitre-atlas-id
 
 ####### County extractions #######
 

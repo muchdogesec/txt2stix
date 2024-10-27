@@ -1,25 +1,15 @@
 from __future__ import annotations
 import os
-import json, re
-from stix2.parsing import dict_to_stix2, parse as parse_stix
-from stix2 import IPv4Address, CustomObject, CustomObservable, File, HashConstant
+import re
+from stix2.parsing import dict_to_stix2
+from stix2 import HashConstant
 from stix2.v21.vocab import HASHING_ALGORITHM
 from stix2.patterns import _HASH_REGEX as HASHING_ALGORITHM_2
-from urllib.parse import urlparse
 from ipaddress import ip_address
 from pathlib import PurePosixPath, PureWindowsPath
 import phonenumbers
 from phonenumbers import geocoder
 import logging
-from stix2extensions import (
-    BankAccount,
-    BankCard,
-    CryptocurrencyTransaction,
-    CryptocurrencyWallet,
-    Phonenumber,
-    UserAgent,
-    Weakness,
-)
 from stix2extensions.tools import creditcard2stix, crypto2stix
 from typing import TYPE_CHECKING
 
@@ -30,7 +20,7 @@ if TYPE_CHECKING:
 
 from .common import MinorExcption
 
-from .arangodb import ArangoSession
+from .retriever import retrieve_stix_objects
 
 logger = logging.getLogger("txt2stix.indicator")
 
@@ -86,12 +76,12 @@ def build_observables(
 ):
     value = extracted["value"]
 
-    arango_objects = arangodb_check(stix_mapping, value)
-    if arango_objects:
-        return arango_objects, [sdo["id"] for sdo in arango_objects]
-    if arango_objects == []:
+    retrieved_objects = retrieve_stix_objects(stix_mapping, value)
+    if retrieved_objects:
+        return retrieved_objects, [sdo["id"] for sdo in retrieved_objects]
+    if retrieved_objects == []:
         logger.error(
-            f"could not find `{stix_mapping}` with value `{value}` in ArangoDB"
+            f"could not find `{stix_mapping}` with id=`{value}` in remote"
         )
         return [], []
 
@@ -106,7 +96,7 @@ def build_observables(
         )
 
         stix_objects.append(
-            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to")
+            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to", description=f"{stix_objects[1]['value']} is related to {indicator['name']}")
         )
 
     if stix_mapping == "ipv4-addr-port":
@@ -119,7 +109,7 @@ def build_observables(
         )
         id = stix_objects[-1].id
         stix_objects.append(
-            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to")
+            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to", description=f"{stix_objects[1]['value']} is related to {indicator['name']}")
         )
 
         stix_objects.append(
@@ -142,7 +132,7 @@ def build_observables(
             dict_to_stix2({"type": "ipv6-addr", "spec_version": "2.1", "value": value})
         )
         stix_objects.append(
-            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to")
+            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to", description=f"{stix_objects[1]['value']} is related to {indicator['name']}")
         )
 
     if stix_mapping == "ipv6-addr-port":
@@ -155,7 +145,7 @@ def build_observables(
         )
         id = stix_objects[-1].id
         stix_objects.append(
-            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to")
+            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to", description=f"{stix_objects[1]['value']} is related to {indicator['name']}")
         )
         stix_objects.append(
             dict_to_stix2(
@@ -179,7 +169,7 @@ def build_observables(
             )
         )
         stix_objects.append(
-            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to")
+            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to", description=f"{value} is related to {indicator['name']}")
         )
 
     if stix_mapping == "url":
@@ -190,7 +180,7 @@ def build_observables(
             dict_to_stix2({"type": "url", "spec_version": "2.1", "value": value})
         )
         stix_objects.append(
-            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to")
+            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to", description=f"{value} is related to {indicator['name']}")
         )
 
     if stix_mapping == "file":
@@ -201,7 +191,7 @@ def build_observables(
             dict_to_stix2({"type": "file", "spec_version": "2.1", "name": value})
         )
         stix_objects.append(
-            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to")
+            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to", description=f"{value} is related to {indicator['name']}")
         )
 
     if stix_mapping == "directory":
@@ -212,7 +202,7 @@ def build_observables(
             dict_to_stix2({"type": "directory", "spec_version": "2.1", "path": value})
         )
         stix_objects.append(
-            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to")
+            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to", description=f"{value} is related to {indicator['name']}")
         )
 
     if stix_mapping == "directory-file":
@@ -226,7 +216,7 @@ def build_observables(
         )
         dir = stix_objects[-1]
         stix_objects.append(
-            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to")
+            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to", description=f"{value} is related to {indicator['name']}")
         )
 
         stix_objects.append(
@@ -234,7 +224,7 @@ def build_observables(
         )
         file = stix_objects[-1]
 
-        stix_objects.append(bundler.new_relationship(file.id, dir.id, "directory"))
+        stix_objects.append(bundler.new_relationship(file.id, dir.id, "directory", description=f"{value} directory {indicator['name']}"))
 
     if stix_mapping == "file-hash":
         file_hash_type = find_hash_type(value, extractor.name) or extractor.slug
@@ -254,7 +244,7 @@ def build_observables(
             )
         )
         stix_objects.append(
-            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to")
+            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to", description=f"{value} is related to {indicator['name']}")
         )
 
     if stix_mapping == "email-addr":
@@ -265,7 +255,7 @@ def build_observables(
             dict_to_stix2({"type": "email-addr", "spec_version": "2.1", "value": value})
         )
         stix_objects.append(
-            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to")
+            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to", description=f"{value} is related to {indicator['name']}")
         )
 
     if stix_mapping == "mac-addr":
@@ -276,7 +266,7 @@ def build_observables(
             dict_to_stix2({"type": "mac-addr", "spec_version": "2.1", "value": value})
         )
         stix_objects.append(
-            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to")
+            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to", description=f"{value} is related to {indicator['name']}")
         )
 
     if stix_mapping == "windows-registry-key":
@@ -289,7 +279,7 @@ def build_observables(
             )
         )
         stix_objects.append(
-            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to")
+            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to", description=f"{value} is related to {indicator['name']}")
         )
 
     if stix_mapping == "user-agent":
@@ -302,7 +292,7 @@ def build_observables(
             )
         )
         stix_objects.append(
-            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to")
+            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to", description=f"{value} is related to {indicator['name']}")
         )
 
     if stix_mapping == "autonomous-system":
@@ -319,7 +309,7 @@ def build_observables(
             )
         )
         stix_objects.append(
-            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to")
+            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to", description=f"{value} is related to {indicator['name']}")
         )
 
     if stix_mapping == "cryptocurrency-wallet":
@@ -337,7 +327,7 @@ def build_observables(
         stix_objects.append(wallet_obj)
         stix_objects.extend(other_objects)
         stix_objects.append(
-            bundler.new_relationship(wallet_obj.id, indicator["id"], "related-to")
+            bundler.new_relationship(wallet_obj.id, indicator["id"], "related-to", description=f"{value} is related to {indicator['name']}")
         )
         return stix_objects, [wallet_obj.id]
 
@@ -353,7 +343,7 @@ def build_observables(
         stix_objects.append(txn_object)
         stix_objects.extend(other_objects)
         stix_objects.append(
-            bundler.new_relationship(txn_object.id, indicator["id"], "related-to")
+            bundler.new_relationship(txn_object.id, indicator["id"], "related-to", description=f"{value} is related to {indicator['name']}")
         )
 
         return stix_objects, [txn_object.id]
@@ -373,7 +363,7 @@ def build_observables(
         stix_objects.append(wallet_obj)
         stix_objects.extend(other_objects)
         stix_objects.append(
-            bundler.new_relationship(wallet_obj.id, indicator["id"], "related-to")
+            bundler.new_relationship(wallet_obj.id, indicator["id"], "related-to", description=f"{value} is related to {indicator['name']}")
         )
         return stix_objects, [wallet_obj.id]
     if stix_mapping == "bank-card":
@@ -397,7 +387,7 @@ def build_observables(
         indicator["pattern"] = f"[ bank-card:number = { repr(value) } ]"
 
         stix_objects.append(
-            bundler.new_relationship(card_object["id"], indicator["id"], "related-to")
+            bundler.new_relationship(card_object["id"], indicator["id"], "related-to", description=f"{value} is related to {indicator['name']}")
         )
         return stix_objects, [card_object["id"]]
 
@@ -419,7 +409,7 @@ def build_observables(
             )
         )
         stix_objects.append(
-            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to")
+            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to", description=f"{value} is related to {indicator['name']}")
         )
 
     if stix_mapping == "phone-number":
@@ -441,7 +431,7 @@ def build_observables(
             )
         )
         stix_objects.append(
-            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to")
+            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to", description=f"{value} is related to {indicator['name']}")
         )
 
     if stix_mapping == "attack-pattern":
@@ -612,7 +602,7 @@ def build_observables(
             )
         )
         stix_objects.append(
-            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to")
+            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to", description=f"{value} is related to {indicator['name']}")
         )
 
     RELATABLE = [
@@ -658,25 +648,4 @@ def build_observables(
     return stix_objects, relationships
 
 
-def arangodb_check(stix_mapping, id):
-    try:
-        s = ArangoSession()
-        if stix_mapping in s.ATTACK_ID_TABLES:
-            return s.mitre_attack_id(id, stix_mapping)
-        if stix_mapping == "mitre-capec-id":
-            return s.mitre_capec_id(id)
-        if stix_mapping == "mitre-cwe-id":
-            return s.mitre_cwe_id(id)
-        if stix_mapping == "cve-id":
-            return s.cve_id(id)
-        if stix_mapping == "cpe-id":
-            return s.cpe_id(id)
-    except Exception as e:
-        pass
-    return None
 
-
-# print(build_indicator("ipv4-addr", {}, "192.168.0.1"))
-# print(build_indicator("ipv4-addr-port", {}, "192.168.0.1:80"))
-# print(build_indicator("cryptocurrency-wallet", {}, "192.168.0.1:80"))
-# print(get_country_code("2349027338509"))

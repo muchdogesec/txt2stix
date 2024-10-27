@@ -5,7 +5,7 @@
 ```shell
 python3 txt2stix.py \
 	--relationship_mode ai \
-	--input_file tests/inputs/manually_generated_reports/basic_relationship.txt \
+	--input_file tests/data/manually_generated_reports/basic_relationship.txt \
 	--name 'Test 4.0.1 Basic AI relationships' \
 	--tlp_level clear \
 	--confidence 100 \

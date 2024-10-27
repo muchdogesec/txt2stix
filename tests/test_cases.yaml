@@ -473,19 +473,6 @@ generic_mitre_attack_enterprise:
     - 'P1174' # not a valid id
     - 'SolarWinds Compromise' # is a name
 
-ai_mitre_attack_enterprise:
-  test_positive_examples:
-    - 'T1174' # course-of-action--00d7d21b-69d6-4797-88a2-c86f3fc97651 , attack-pattern--b8c5c9dd-a662-479d-9428-ae745872537c
-    - 'TA0006' # x-mitre-tactic--2558fd61-8c75-4730-94c4-11926db2a263
-    - 'TA0011' # x-mitre-tactic--f72804c5-f15a-449e-a5da-2eecd181f813
-    - 'G1006' # intrusion-set--cc613a49-9bfa-4e22-98d1-15ffbb03f034
-    - 'T1053.005' # attack-pattern--005a06c6-14bf-4118-afa0-ebcd8aebb0c9
-    - 'T1040' # attack-pattern--3257eb21-f9a7-4430-8de1-d8b6e288f529 , course-of-action--46b7ef91-4e1d-43c5-a2eb-00fa9444f6f4
-    - 'TA0003' # x-mitre-tactic--5bc1d813-693e-4823-9961-abf9af4b0e92
-    - 'SolarWinds Compromise' # is name, might be tempremental with AI extractions if good =  C0024 campaign--808d6b30-df4e-4341-8248-724da4bac650
-  test_negative_examples:
-    - 'P1174' # not a valid id
-
 generic_mitre_attack_mobile:
   test_positive_examples:
     - 'M1013' # course-of-action--25dc1ce8-eb55-4333-ae30-a7cb4f5894a1
@@ -496,28 +483,11 @@ generic_mitre_attack_mobile:
     - 'P1174' # not a valid id
     - 'Use Recent OS Version' # is a name
 
-ai_mitre_attack_mobile:
-  test_positive_examples:
-    - 'M1013' # course-of-action--25dc1ce8-eb55-4333-ae30-a7cb4f5894a1
-    - 'S0505' # malware--3271c107-92c4-442e-9506-e76d62230ee8
-    - 'T1630.001' # attack-pattern--0cdd66ad-26ac-4338-a764-4972a1e17ee3
-    - 'TA0029' # x-mitre-tactic--3e962de5-3280-43b7-bc10-334fbc1d6fa8
-    - 'Use Recent OS Version' # is name, might be tempremental with AI extractions if good =  M1006 course-of-action--1553b156-6767-47f7-9eb4-2a692505666d
-  test_negative_examples:
-    - 'P1174' # not a valid id
-
 generic_mitre_attack_ics:
   test_positive_examples:
     - 'TA0111' # x-mitre-tactic--33752ae7-f875-4f43-bdb6-d8d02d341046
   test_negative_examples:
     - 'Privilege Escalation' # is name
-
-ai_mitre_attack_ics:
-  test_positive_examples:
-    - 'TA0111' # x-mitre-tactic--33752ae7-f875-4f43-bdb6-d8d02d341046
-    - 'Privilege Escalation' # is name, might be tempremental with AI extractions if good = TA0111 x-mitre-tactic--33752ae7-f875-4f43-bdb6-d8d02d341046
-  test_negative_examples:
-    - 'P1174' # not a valid id
 
 ####### MITRE CAPEC #######
 
@@ -529,13 +499,6 @@ generic_mitre_capec:
   test_negative_examples:
     - 'CAPEC-999' # invalid ID
     - 'Brute Force' # is name
-
-ai_mitre_capec:
-  test_positive_examples:
-    - 'CAPEC-110'
-    - 'Brute Force'
-  test_negative_examples:
-    - 'CAPEC-999' # invalid ID
 
 ####### MITRE CWE #######
 
@@ -549,13 +512,15 @@ generic_mitre_cwe:
     - 'CWE-999' # invalid id
     - 'Destructor' # is name
 
-ai_mitre_cwe:
+####### MITRE ATLAS #######
+
+generic_mitre_atlas:
   test_positive_examples:
-    - 'CWE-1023'
-    - 'CWE-102'
-    - 'Destructor' # is name, might be tempremental with AI extractions
+    - 'AML.M0015'
+    - 'AML.T0050'
   test_negative_examples:
-    - 'CWE-999' # invalid id
+    - 'AML.T0000' # invalid id
+    - 'Reconnaissance' # is name
 
 ####### Misc STIX Objects #######
 

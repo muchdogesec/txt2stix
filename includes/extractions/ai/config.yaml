@@ -83,10 +83,10 @@ ai_mitre_attack_enterprise:
   version: 1.0.0
   prompt_base: 'Extract all MITRE ATT&CK Enterprise tactics, techniques, groups, data sources, mitigations, software, and campaigns described in the text. Do not include MITRE ATT&CK ICS or MITRE ATT&CK Mobile in the results.'
   prompt_conversion: 'Convert all extractions into the corresponding ATT&CK ID.'
-  test_cases: ai_mitre_attack_enterprise
+  test_cases: generic_mitre_attack_enterprise
   ignore_extractions:
     - 
-  stix_mapping: mitre-attack-enterprise-id
+  stix_mapping: ctibutler-mitre-attack-enterprise-id
 
 ai_mitre_attack_mobile:
   type: ai
@@ -99,10 +99,10 @@ ai_mitre_attack_mobile:
   version: 1.0.0
   prompt_base: 'Extract all MITRE ATT&CK Mobile tactics, techniques, groups, data sources, mitigations, software, and campaigns described in the text. Do not include MITRE ATT&CK ICS or MITRE ATT&CK Enterprise in the results.'
   prompt_conversion: 'Convert all extractions into the corresponding ATT&CK ID.'
-  test_cases: ai_mitre_attack_mobile
+  test_cases: generic_mitre_attack_mobile
   ignore_extractions:
     - 
-  stix_mapping: mitre-attack-mobile-id
+  stix_mapping: ctibutler-mitre-attack-mobile-id
 
 ai_mitre_attack_ics:
   type: ai
@@ -115,10 +115,10 @@ ai_mitre_attack_ics:
   version: 1.0.0
   prompt_base: 'Extract all MITRE ATT&CK ICS tactics, techniques, groups, data sources, mitigations, software, and campaigns described in the text. Do not include MITRE ATT&CK Mobile or MITRE ATT&CK Enterprise in the results.'
   prompt_conversion: 'Convert all extractions into the corresponding ATT&CK ID.'
-  test_cases: ai_mitre_attack_ics
+  test_cases: generic_mitre_attack_ics
   ignore_extractions:
     - 
-  stix_mapping: mitre-attack-ics-id
+  stix_mapping: ctibutler-mitre-attack-ics-id
 
 ####### MITRE CAPEC #######
 
@@ -133,10 +133,10 @@ ai_mitre_capec:
   version: 1.0.0
   prompt_base: 'Extract all references to a MITRE CAPEC object.'
   prompt_conversion: 'Convert all extractions into the corresponding CAPEC ID in the format `CAPEC-ID`'
-  test_cases: ai_mitre_capec
+  test_cases: generic_mitre_capec
   ignore_extractions:
     - 
-  stix_mapping: mitre-capec-id
+  stix_mapping: ctibutler-mitre-capec-id
 
 ####### MITRE CWE #######
 
@@ -151,7 +151,7 @@ ai_mitre_cwe:
   version: 1.0.0
   prompt_base: 'Extract all references to a MITRE CWE object.'
   prompt_conversion: 'Convert all extractions into the corresponding CWE ID in the format `CWE-ID`'
-  test_cases: ai_mitre_cwe
+  test_cases: generic_mitre_cwe
   ignore_extractions:
     - 
-  stix_mapping: mitre-cwe-id
+  stix_mapping: ctibutler-mitre-cwe-id
