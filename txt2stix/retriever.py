@@ -31,7 +31,7 @@ class STIXObjectRetriever:
         return self.get_objects(urljoin(self.api_root, f"/api/v1/cwe/objects/{cwe_id}/"))
     
     def get_cve_object(self, cve_id):
-        return self.get_objects(urljoin(self.api_root, f"/api/v1/cve/objects/{cve_id}/"), 'vulnerabilities')
+        return self.get_objects(urljoin(self.api_root, f"/api/v1/cve/objects/{cve_id}/"))
     
     def get_cpe_object(self, cpe_id):
         return self.get_objects(urljoin(self.api_root, f"/api/v1/cpe/objects/{cpe_id}/"))

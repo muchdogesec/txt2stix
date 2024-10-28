@@ -80,7 +80,7 @@ def build_observables(
     if retrieved_objects:
         return retrieved_objects, [sdo["id"] for sdo in retrieved_objects]
     if retrieved_objects == []:
-        logger.error(
+        logger.warning(
             f"could not find `{stix_mapping}` with id=`{value}` in remote"
         )
         return [], []
