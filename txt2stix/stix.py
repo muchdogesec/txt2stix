@@ -228,11 +228,11 @@ class txt2stixBundler:
             published=dt.now(),
             external_references=[
                 {
-                    "source_name": "txt2stix job ID",
+                    "source_name": "txt2stix_report_id",
                     "description": self.job_id,
                 },
                 {
-                    "source_name": "txt2stix Report MD5",
+                    "source_name": "txt2stix_report_md5",
                     "external_id": hashlib.md5(description.encode()).hexdigest(),
                 },
             ],
@@ -339,11 +339,11 @@ class txt2stixBundler:
             "object_marking_refs": self.report.object_marking_refs,
             "external_references": [
                 {
-                    "source_name": "txt2stix job ID",
+                    "source_name": "txt2stix_report_id",
                     "description": self.job_id,
                 },
                 {
-                    "source_name": "txt2stix extraction ID",
+                    "source_name": "txt2stix_extraction_type",
                     "description": f"{extractor.slug}_{extractor.version}",
                 },
             ],
@@ -418,7 +418,7 @@ class txt2stixBundler:
             allow_custom=True,
             external_references=[
                 {
-                    "source_name": "txt2stix job ID",
+                    "source_name": "txt2stix_report_id",
                     "external_id": self.job_id,
                 }
             ],

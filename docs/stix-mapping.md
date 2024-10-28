@@ -61,6 +61,10 @@ All files uploaded are represented as a unique [STIX Report SDO](https://docs.oa
     ],
     "external_references": [
         {
+            "source_name": "txt2stix_report_id",
+            "external_id": "<UUID OF REPORT OBJECT>"
+        },
+        {
             "source_name": "txt2stix Report MD5",
             "external_id": "<MD5 HASH OF DESCRIPTION FIELD>"
         }   
@@ -117,7 +121,11 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix extraction ID",
+            "source_name": "txt2stix_report_id",
+            "external_id": "<UUID OF REPORT OBJECT>"
+        },
+        {
+            "source_name": "txt2stix_extraction_type",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
     ]
@@ -168,7 +176,11 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix extraction ID",
+            "source_name": "txt2stix_report_id",
+            "external_id": "<UUID OF REPORT OBJECT>"
+        },
+        {
+            "source_name": "txt2stix_extraction_type",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
     ]
@@ -235,7 +247,11 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix extraction ID",
+            "source_name": "txt2stix_report_id",
+            "external_id": "<UUID OF REPORT OBJECT>"
+        },
+        {
+            "source_name": "txt2stix_extraction_type",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
     ]
@@ -286,7 +302,11 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix extraction ID",
+            "source_name": "txt2stix_report_id",
+            "external_id": "<UUID OF REPORT OBJECT>"
+        },
+        {
+            "source_name": "txt2stix_extraction_type",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
     ]
@@ -349,7 +369,11 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix extraction ID",
+            "source_name": "txt2stix_report_id",
+            "external_id": "<UUID OF REPORT OBJECT>"
+        },
+        {
+            "source_name": "txt2stix_extraction_type",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
     ]
@@ -399,7 +423,11 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix extraction ID",
+            "source_name": "txt2stix_report_id",
+            "external_id": "<UUID OF REPORT OBJECT>"
+        },
+        {
+            "source_name": "txt2stix_extraction_type",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
     ]
@@ -449,7 +477,11 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix extraction ID",
+            "source_name": "txt2stix_report_id",
+            "external_id": "<UUID OF REPORT OBJECT>"
+        },
+        {
+            "source_name": "txt2stix_extraction_type",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
     ]
@@ -499,7 +531,11 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix extraction ID",
+            "source_name": "txt2stix_report_id",
+            "external_id": "<UUID OF REPORT OBJECT>"
+        },
+        {
+            "source_name": "txt2stix_extraction_type",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
     ]
@@ -550,7 +586,11 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix extraction ID",
+            "source_name": "txt2stix_report_id",
+            "external_id": "<UUID OF REPORT OBJECT>"
+        },
+        {
+            "source_name": "txt2stix_extraction_type",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
     ]
@@ -593,6 +633,16 @@ Note, we decided not to add the `parent_directory_ref` to the file object, as we
     "object_marking_refs": [
         "marking-definition--<TLP LEVEL SET>",
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
+    ],
+    "external_references": [
+        {
+            "source_name": "txt2stix_report_id",
+            "external_id": "<UUID OF REPORT OBJECT>"
+        },
+        {
+            "source_name": "txt2stix_extraction_type",
+            "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
+        }
     ]
 }
 ```
@@ -631,9 +681,13 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix extraction ID",
+            "source_name": "txt2stix_extraction_type",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
-        }
+        },
+        {
+            "source_name": "txt2stix_report_id",
+            "external_id": "<UUID OF REPORT OBJECT>"
+        },
     ]
 }
 ```
@@ -683,7 +737,11 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix extraction ID",
+            "source_name": "txt2stix_report_id",
+            "external_id": "<UUID OF REPORT OBJECT>"
+        },
+        {
+            "source_name": "txt2stix_extraction_type",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
     ]
@@ -733,7 +791,11 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix extraction ID",
+            "source_name": "txt2stix_report_id",
+            "external_id": "<UUID OF REPORT OBJECT>"
+        },
+        {
+            "source_name": "txt2stix_extraction_type",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
     ]
@@ -783,7 +845,11 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix extraction ID",
+            "source_name": "txt2stix_report_id",
+            "external_id": "<UUID OF REPORT OBJECT>"
+        },
+        {
+            "source_name": "txt2stix_extraction_type",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
     ]
@@ -833,7 +899,11 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix extraction ID",
+            "source_name": "txt2stix_report_id",
+            "external_id": "<UUID OF REPORT OBJECT>"
+        },
+        {
+            "source_name": "txt2stix_extraction_type",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
     ]
@@ -884,7 +954,11 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix extraction ID",
+            "source_name": "txt2stix_report_id",
+            "external_id": "<UUID OF REPORT OBJECT>"
+        },
+        {
+            "source_name": "txt2stix_extraction_type",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
     ]
@@ -940,7 +1014,11 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix extraction ID",
+            "source_name": "txt2stix_report_id",
+            "external_id": "<UUID OF REPORT OBJECT>"
+        },
+        {
+            "source_name": "txt2stix_extraction_type",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
     ]
@@ -994,7 +1072,11 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix extraction ID",
+            "source_name": "txt2stix_report_id",
+            "external_id": "<UUID OF REPORT OBJECT>"
+        },
+        {
+            "source_name": "txt2stix_extraction_type",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
     ]
@@ -1048,7 +1130,11 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix extraction ID",
+            "source_name": "txt2stix_report_id",
+            "external_id": "<UUID OF REPORT OBJECT>"
+        },
+        {
+            "source_name": "txt2stix_extraction_type",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
     ]
@@ -1117,7 +1203,11 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix extraction ID",
+            "source_name": "txt2stix_report_id",
+            "external_id": "<UUID OF REPORT OBJECT>"
+        },
+        {
+            "source_name": "txt2stix_extraction_type",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
     ]
@@ -1161,7 +1251,11 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix extraction ID",
+            "source_name": "txt2stix_report_id",
+            "external_id": "<UUID OF REPORT OBJECT>"
+        },
+        {
+            "source_name": "txt2stix_extraction_type",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
     ]
@@ -1222,7 +1316,11 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix extraction ID",
+            "source_name": "txt2stix_report_id",
+            "external_id": "<UUID OF REPORT OBJECT>"
+        },
+        {
+            "source_name": "txt2stix_extraction_type",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
     ]
@@ -1274,7 +1372,11 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix extraction ID",
+            "source_name": "txt2stix_report_id",
+            "external_id": "<UUID OF REPORT OBJECT>"
+        },
+        {
+            "source_name": "txt2stix_extraction_type",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
     ]
@@ -1307,7 +1409,11 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix extraction ID",
+            "source_name": "txt2stix_report_id",
+            "external_id": "<UUID OF REPORT OBJECT>"
+        },
+        {
+            "source_name": "txt2stix_extraction_type",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
     ]
@@ -1340,7 +1446,11 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix extraction ID",
+            "source_name": "txt2stix_report_id",
+            "external_id": "<UUID OF REPORT OBJECT>"
+        },
+        {
+            "source_name": "txt2stix_extraction_type",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
     ]
@@ -1374,7 +1484,11 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix extraction ID",
+            "source_name": "txt2stix_report_id",
+            "external_id": "<UUID OF REPORT OBJECT>"
+        },
+        {
+            "source_name": "txt2stix_extraction_type",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
     ]
@@ -1407,7 +1521,11 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix extraction ID",
+            "source_name": "txt2stix_report_id",
+            "external_id": "<UUID OF REPORT OBJECT>"
+        },
+        {
+            "source_name": "txt2stix_extraction_type",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
     ]
@@ -1442,7 +1560,11 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix extraction ID",
+            "source_name": "txt2stix_report_id",
+            "external_id": "<UUID OF REPORT OBJECT>"
+        },
+        {
+            "source_name": "txt2stix_extraction_type",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
     ]
@@ -1476,7 +1598,11 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix extraction ID",
+            "source_name": "txt2stix_report_id",
+            "external_id": "<UUID OF REPORT OBJECT>"
+        },
+        {
+            "source_name": "txt2stix_extraction_type",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
     ]
@@ -1510,7 +1636,11 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix extraction ID",
+            "source_name": "txt2stix_report_id",
+            "external_id": "<UUID OF REPORT OBJECT>"
+        },
+        {
+            "source_name": "txt2stix_extraction_type",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
     ]
@@ -1544,7 +1674,11 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix extraction ID",
+            "source_name": "txt2stix_report_id",
+            "external_id": "<UUID OF REPORT OBJECT>"
+        },
+        {
+            "source_name": "txt2stix_extraction_type",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
     ]
@@ -1725,12 +1859,19 @@ These relationships are modelled as follows;
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
     ],
     "external_references": [
-
+        {
+            "source_name": "txt2stix_report_id",
+            "external_id": "<UUID OF REPORT OBJECT>"
+        },
+        {
+            "source_name": "txt2stix_extraction_type",
+            "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
+        }
     ]
 }
 ```
 
-### Relationships generated in `standard` relationship mode (not lookups)
+### Relationships generated in `standard` relationship mode
 
 In standard mode, one SRO is created for each extraction back to the source report object created for the job. 
 
@@ -1752,9 +1893,12 @@ In standard mode, one SRO is created for each extraction back to the source repo
     ],
     "external_references": [
         {
-            "source_name": "txt2stix_lookup",
-            "external_id": "<BOOLEAN, true IF source_ref is remote extraction, else false>"
-
+            "source_name": "txt2stix_report_id",
+            "external_id": "<UUID OF REPORT OBJECT>"
+        },
+        {
+            "source_name": "txt2stix_extraction_type",
+            "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
     ]
 }
@@ -1784,9 +1928,12 @@ The Relationship SRO created for each relationship identified will be generated 
     ],
     "external_references": [
         {
-            "source_name": "txt2stix_lookup",
-            "external_id": "<BOOLEAN, true IF source_ref is remote extraction, else false>"
-
+            "source_name": "txt2stix_report_id",
+            "external_id": "<UUID OF REPORT OBJECT>"
+        },
+        {
+            "source_name": "txt2stix_extraction_type",
+            "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
     ]
 }
