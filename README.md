@@ -72,6 +72,7 @@ python3 txt2stix.py \
 	* `standard`: extractions performed by either regex or AI (AI provider must be enabled) for extractions user selected. Basic relationships created from extractions back to master Report object generated.
 * `--input_file` (required): the file to be converted. Must be `.txt`
 * `--name` (required): name of file, max 72 chars. Will be used in the STIX Report Object created.
+* `--report_id` (optional): Sometimes it is required to control the id of the `report` object generated. You can therefore pass a valid UUIDv4 in this field to be assigned to the report. e.g. passing `2611965-930e-43db-8b95-30a1e119d7e2` would create a STIX object id `report--2611965-930e-43db-8b95-30a1e119d7e2`. If this argument is not passed, the UUID will be randomly generated.
 * `--tlp_level` (optional): Options are `clear`, `green`, `amber`, `amber_strict`, `red`. Default if not passed, is `clear`.
 * `--confidence` (optional): value between 0-100. Default if not passed is null.
 * `--labels` (optional): comma seperated list of labels. Case-insensitive (will all be converted to lower-case). Allowed `a-z`, `0-9`. e.g.`label1,label2` would create 2 labels.
@@ -79,7 +80,7 @@ python3 txt2stix.py \
 * `--use_identity` (optional): can pass a full STIX 2.1 identity object (make sure to properly escape). Will be validated by the STIX2 library.
 * `--use_extractions` (required): if you only want to use certain extraction types, you can pass their slug found in either `ai/config.yaml`, `lookup/config.yaml` `regex/config.yaml` (e.g. `regex_ipv4_address_only`). Default if not passed, no extractions applied.
 	* Important: if using any AI extractions, you must set an OpenAI API key in your `.env` file
-	* Important: if you are using any MITRE ATT&CK, CAPEC, CWE or NVD CPE or CVE extractions you must set ArangoDB settings in your `.env` file
+	* Important: if you are using any MITRE ATT&CK, CAPEC, CWE you must set `CTIBUTLER` or NVD CPE, CVE extractions you must set `VULMATCH` settings in your `.env` file
 * `--use_aliases` (optional): if you want to apply aliasing to the input doc (find and replace strings) you can pass their slug found in `aliases/config.yaml` (e.g. `country_iso3_to_iso2`). Default if not passed, no extractions applied.
 * `--use_whitelist` (optional): if you want to get the script to ignore certain values that might create extractions you can specify using `whitelist/config.yaml` (e.g. `alexa_top_1000`) related to the whitelist file you want to use. Default if not passed, no extractions applied.
 
