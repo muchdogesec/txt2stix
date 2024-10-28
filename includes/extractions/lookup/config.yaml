@@ -113,7 +113,7 @@ lookup_country_alpha2:
   test_cases: generic_country_alpha2
   ignore_extractions:
     - 
-  stix_mapping: location
+  stix_mapping: ctibutler-location
 
 ####### Misc STIX Objects #######
 
