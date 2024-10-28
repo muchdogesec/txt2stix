@@ -1,0 +1,9 @@
+====Good====
+
+AML.M0015
+AML.T0050
+
+====Bad====
+
+AML.T0000
+Reconnaissance

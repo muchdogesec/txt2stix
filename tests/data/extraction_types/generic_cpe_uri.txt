@@ -1,7 +1,7 @@
 ====Good====
 
-cpe:2.3:a:timesheets-for-jira:timesheet_tracking:2.0.1:*:*:*:*:jira:*:*
-cpe:2.3:a:codecabin:wp_go_maps:7.10.58:*:*:*:basic:wordpress:*:*
+cpe:2.3:a:knative:serving:0.37.4:*:*:*:*:*:*:*
+cpe:2.3:a:sequelize:sequelize-typescript:0.6.5:beta0:*:*:*:node.js:*:*
 
 ====Bad====
 

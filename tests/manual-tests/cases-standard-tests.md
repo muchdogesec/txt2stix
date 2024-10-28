@@ -448,3 +448,16 @@ python3 txt2stix.py \
     --confidence 100 \
     --use_extractions ai_cryptocurrency_btc_wallet,ai_cryptocurrency_btc_transaction,ai_cryptocurrency_eth_wallet,ai_cryptocurrency_eth_transaction,ai_cryptocurrency_xmr_wallet,ai_cryptocurrency_xmr_transaction,ai_phone_number,ai_country_alpha2,ai_mitre_attack_enterprise,ai_mitre_attack_mobile,ai_mitre_attack_ics,ai_mitre_capec,ai_mitre_cwe
 ```
+
+### 0.7 passing report id
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_ipv4_address_only.txt \
+	--name 'Test 0.7 Using report id 62611965-930e-43db-8b95-30a1e119d7e2' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions pattern_ipv4_address_only \
+	--report_id 62611965-930e-43db-8b95-30a1e119d7e2
+```
