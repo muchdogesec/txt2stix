@@ -149,9 +149,9 @@ def load_env(input_length):
 
 def log_notes(content, type):
     logging.debug(f" ========================= {type} ========================= ")
-    logging.debug(f" ========================= {"+"*len(type)} ========================= ")
+    logging.debug(f" ========================= {'+'*len(type)} ========================= ")
     logging.debug(json.dumps(content, sort_keys=True, indent=4))
-    logging.debug(f" ========================= {"-"*len(type)} ========================= ")
+    logging.debug(f" ========================= {'-'*len(type)} ========================= ")
 
 def extract_all(bundler: txt2stixBundler, extractors_map, aliased_input, ai_extractor: BaseAIExtractor=None):
     all_extracts = dict()
