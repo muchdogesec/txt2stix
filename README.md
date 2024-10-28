@@ -80,7 +80,7 @@ python3 txt2stix.py \
 * `--use_identity` (optional): can pass a full STIX 2.1 identity object (make sure to properly escape). Will be validated by the STIX2 library.
 * `--use_extractions` (required): if you only want to use certain extraction types, you can pass their slug found in either `ai/config.yaml`, `lookup/config.yaml` `regex/config.yaml` (e.g. `regex_ipv4_address_only`). Default if not passed, no extractions applied.
 	* Important: if using any AI extractions, you must set an OpenAI API key in your `.env` file
-	* Important: if you are using any MITRE ATT&CK, CAPEC, CWE you must set `CTIBUTLER` or NVD CPE, CVE extractions you must set `VULMATCH` settings in your `.env` file
+	* Important: if you are using any MITRE ATT&CK, CAPEC, CWE, ATLAS or Location extractions you must set `CTIBUTLER` or NVD CPE or CVE extractions you must set `VULMATCH` settings in your `.env` file
 * `--use_aliases` (optional): if you want to apply aliasing to the input doc (find and replace strings) you can pass their slug found in `aliases/config.yaml` (e.g. `country_iso3_to_iso2`). Default if not passed, no extractions applied.
 * `--use_whitelist` (optional): if you want to get the script to ignore certain values that might create extractions you can specify using `whitelist/config.yaml` (e.g. `alexa_top_1000`) related to the whitelist file you want to use. Default if not passed, no extractions applied.
 
