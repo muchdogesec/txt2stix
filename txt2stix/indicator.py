@@ -585,26 +585,6 @@ def build_observables(
             )
         ]
 
-    if stix_mapping == "location":
-        stix_objects.append(
-            dict_to_stix2(
-                {
-                    "type": "location",
-                    "spec_version": "2.1",
-                    "created_by_ref": indicator["created_by_ref"],
-                    "created": indicator["created"],
-                    "modified": indicator["modified"],
-                    "name": f"Country: {value}",
-                    "country": value,
-                    "object_marking_refs": indicator["object_marking_refs"],
-                    "external_references": indicator["external_references"],
-                }
-            )
-        )
-        stix_objects.append(
-            bundler.new_relationship(stix_objects[1].id, indicator["id"], "related-to", description=f"{value} is related to {indicator['name']}")
-        )
-
     RELATABLE = [
         "ipv4-addr",
         "ipv4-addr",

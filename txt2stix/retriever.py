@@ -27,6 +27,9 @@ class STIXObjectRetriever:
     def get_xxxx_objects(self, id, type):
         return self._retrieve_objects(urljoin(self.api_root, f"/api/v1/{type}/objects/{id}/"))
     
+    def get_location_objects(self, id):
+        return self._retrieve_objects(urljoin(self.api_root, f"/api/v1/location/objects/?alpha2_code={id}"))
+    
     def _retrieve_objects(self, endpoint, key='objects'):
         s = requests.Session()
         s.headers.update({
@@ -49,6 +52,8 @@ class STIXObjectRetriever:
     
 def retrieve_stix_objects(stix_mapping: str, id, host=None):
     try:
+        if stix_mapping in ['location']:
+            host = 'ctibutler'
         if not host:
             host, stix_mapping = stix_mapping.split('-', 1)
         retreiver = STIXObjectRetriever(host)
@@ -69,6 +74,8 @@ def retrieve_stix_objects(stix_mapping: str, id, host=None):
                 return retreiver.get_xxxx_objects(id, 'cve')
             case "cpe-id":
                 return retreiver.get_xxxx_objects(id, 'cpe')
+            case "location":
+                return retreiver.get_location_objects(id)
             case _:
                 raise NotImplementedError(f"pair {(host, stix_mapping)=} not implemented")
     except Exception as e:
