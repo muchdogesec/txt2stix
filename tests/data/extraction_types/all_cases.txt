@@ -81,11 +81,11 @@ ASN13335
 0xe000ea1eaea92bc736d97a34bed331f0da4788b4c88368b3e277c82fdd7def7b
 9b669f6bf58e8ba5618a6ce3ce1afbee488898af6b79d0febd5b75177702291d
 3168d759a7c39676ee7f0c28eb8bc3a97b9cad5369d812680cf6a562cea6c662
-CVE-2004-2573
-CVE-2000-0177
-CVE-2019-4706
-cpe:2.3:a:timesheets-for-jira:timesheet_tracking:2.0.1:*:*:*:*:jira:*:*
-cpe:2.3:a:codecabin:wp_go_maps:7.10.58:*:*:*:basic:wordpress:*:*
+CVE-2024-9930
+CVE-2024-9626
+CVE-2024-9475
+cpe:2.3:a:knative:serving:0.37.4:*:*:*:*:*:*:*
+cpe:2.3:a:sequelize:sequelize-typescript:0.6.5:beta0:*:*:*:node.js:*:*
 5555555555554444
 5555555555554444
 4242424242424242
@@ -119,34 +119,16 @@ G1006
 T1053.005
 T1040
 TA0003
-T1174
-TA0006
-TA0011
-G1006
-T1053.005
-T1040
-TA0003
-SolarWinds Compromise
 M1013
 S0505
 T1630.001
 TA0029
-M1013
-S0505
-T1630.001
-TA0029
-Use Recent OS Version
 TA0111
-TA0111
-Privilege Escalation
 CAPEC-110
-CAPEC-110
-Brute Force
 CWE-1023
 CWE-102
-CWE-1023
-CWE-102
-Destructor
+AML.M0015
+AML.T0050
 Content Spoofer
 Inspector-1
 Patch server
