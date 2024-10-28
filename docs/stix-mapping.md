@@ -117,10 +117,6 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix job ID",
-            "external_id": "<REPORT OBJECT ID>"
-        },
-        {
             "source_name": "txt2stix extraction ID",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
@@ -171,10 +167,6 @@ Relationship mode object generation behaviour:
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
     ],
     "external_references": [
-        {
-            "source_name": "txt2stix job ID",
-            "external_id": "<REPORT OBJECT ID>"
-        },
         {
             "source_name": "txt2stix extraction ID",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
@@ -243,10 +235,6 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix job ID",
-            "external_id": "<REPORT OBJECT ID>"
-        },
-        {
             "source_name": "txt2stix extraction ID",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
@@ -297,10 +285,6 @@ Relationship mode object generation behaviour:
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
     ],
     "external_references": [
-        {
-            "source_name": "txt2stix job ID",
-            "external_id": "<REPORT OBJECT ID>"
-        },
         {
             "source_name": "txt2stix extraction ID",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
@@ -365,10 +349,6 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix job ID",
-            "external_id": "<REPORT OBJECT ID>"
-        },
-        {
             "source_name": "txt2stix extraction ID",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
@@ -418,10 +398,6 @@ Relationship mode object generation behaviour:
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
     ],
     "external_references": [
-        {
-            "source_name": "txt2stix job ID",
-            "external_id": "<REPORT OBJECT ID>"
-        },
         {
             "source_name": "txt2stix extraction ID",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
@@ -473,10 +449,6 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix job ID",
-            "external_id": "<REPORT OBJECT ID>"
-        },
-        {
             "source_name": "txt2stix extraction ID",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
@@ -526,10 +498,6 @@ Relationship mode object generation behaviour:
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
     ],
     "external_references": [
-        {
-            "source_name": "txt2stix job ID",
-            "external_id": "<REPORT OBJECT ID>"
-        },
         {
             "source_name": "txt2stix extraction ID",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
@@ -581,10 +549,6 @@ Relationship mode object generation behaviour:
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
     ],
     "external_references": [
-        {
-            "source_name": "txt2stix job ID",
-            "external_id": "<REPORT OBJECT ID>"
-        },
         {
             "source_name": "txt2stix extraction ID",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
@@ -667,10 +631,6 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix job ID",
-            "external_id": "<REPORT OBJECT ID>"
-        },
-        {
             "source_name": "txt2stix extraction ID",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
@@ -723,10 +683,6 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix job ID",
-            "external_id": "<REPORT OBJECT ID>"
-        },
-        {
             "source_name": "txt2stix extraction ID",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
@@ -776,10 +732,6 @@ Relationship mode object generation behaviour:
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
     ],
     "external_references": [
-        {
-            "source_name": "txt2stix job ID",
-            "external_id": "<REPORT OBJECT ID>"
-        },
         {
             "source_name": "txt2stix extraction ID",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
@@ -831,10 +783,6 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix job ID",
-            "external_id": "<REPORT OBJECT ID>"
-        },
-        {
             "source_name": "txt2stix extraction ID",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
@@ -884,10 +832,6 @@ Relationship mode object generation behaviour:
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
     ],
     "external_references": [
-        {
-            "source_name": "txt2stix job ID",
-            "external_id": "<REPORT OBJECT ID>"
-        },
         {
             "source_name": "txt2stix extraction ID",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
@@ -939,10 +883,6 @@ Relationship mode object generation behaviour:
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
     ],
     "external_references": [
-        {
-            "source_name": "txt2stix job ID",
-            "external_id": "<REPORT OBJECT ID>"
-        },
         {
             "source_name": "txt2stix extraction ID",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
@@ -1000,10 +940,6 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix job ID",
-            "external_id": "<REPORT OBJECT ID>"
-        },
-        {
             "source_name": "txt2stix extraction ID",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
@@ -1058,10 +994,6 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix job ID",
-            "external_id": "<REPORT OBJECT ID>"
-        },
-        {
             "source_name": "txt2stix extraction ID",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
@@ -1115,10 +1047,6 @@ Relationship mode object generation behaviour:
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
     ],
     "external_references": [
-        {
-            "source_name": "txt2stix job ID",
-            "external_id": "<REPORT OBJECT ID>"
-        },
         {
             "source_name": "txt2stix extraction ID",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
@@ -1189,10 +1117,6 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix job ID",
-            "external_id": "<REPORT OBJECT ID>"
-        },
-        {
             "source_name": "txt2stix extraction ID",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
@@ -1236,10 +1160,6 @@ Relationship mode object generation behaviour:
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
     ],
     "external_references": [
-        {
-            "source_name": "txt2stix job ID",
-            "external_id": "<REPORT OBJECT ID>"
-        },
         {
             "source_name": "txt2stix extraction ID",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
@@ -1302,10 +1222,6 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix job ID",
-            "external_id": "<REPORT OBJECT ID>"
-        },
-        {
             "source_name": "txt2stix extraction ID",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
@@ -1358,10 +1274,6 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix job ID",
-            "external_id": "<REPORT OBJECT ID>"
-        },
-        {
             "source_name": "txt2stix extraction ID",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
@@ -1395,10 +1307,6 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix job ID",
-            "external_id": "<REPORT OBJECT ID>"
-        },
-        {
             "source_name": "txt2stix extraction ID",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
@@ -1431,10 +1339,6 @@ Relationship mode object generation behaviour:
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
     ],
     "external_references": [
-        {
-            "source_name": "txt2stix job ID",
-            "external_id": "<REPORT OBJECT ID>"
-        },
         {
             "source_name": "txt2stix extraction ID",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
@@ -1470,10 +1374,6 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix job ID",
-            "external_id": "<REPORT OBJECT ID>"
-        },
-        {
             "source_name": "txt2stix extraction ID",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
@@ -1506,10 +1406,6 @@ Relationship mode object generation behaviour:
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
     ],
     "external_references": [
-        {
-            "source_name": "txt2stix job ID",
-            "external_id": "<REPORT OBJECT ID>"
-        },
         {
             "source_name": "txt2stix extraction ID",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
@@ -1546,10 +1442,6 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix job ID",
-            "external_id": "<REPORT OBJECT ID>"
-        },
-        {
             "source_name": "txt2stix extraction ID",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
@@ -1583,10 +1475,6 @@ Relationship mode object generation behaviour:
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
     ],
     "external_references": [
-        {
-            "source_name": "txt2stix job ID",
-            "external_id": "<REPORT OBJECT ID>"
-        },
         {
             "source_name": "txt2stix extraction ID",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
@@ -1622,10 +1510,6 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix job ID",
-            "external_id": "<REPORT OBJECT ID>"
-        },
-        {
             "source_name": "txt2stix extraction ID",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
@@ -1660,10 +1544,6 @@ Relationship mode object generation behaviour:
     ],
     "external_references": [
         {
-            "source_name": "txt2stix job ID",
-            "external_id": "<REPORT OBJECT ID>"
-        },
-        {
             "source_name": "txt2stix extraction ID",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
         }
@@ -1697,10 +1577,6 @@ Relationship mode object generation behaviour:
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
     ],
     "external_references": [
-        {
-            "source_name": "txt2stix job ID",
-            "external_id": "<REPORT OBJECT ID>"
-        },
         {
             "source_name": "txt2stix extraction ID",
             "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
@@ -1866,15 +1742,12 @@ These relationships are modelled as follows;
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
     ],
     "external_references": [
-        {
-            "source_name": "txt2stix job ID",
-            "external_id": "<REPORT OBJECT ID>"
-        }
+
     ]
 }
 ```
 
-### Relationships generated in `standard` relationship mode
+### Relationships generated in `standard` relationship mode (not lookups)
 
 In standard mode, one SRO is created for each extraction back to the source report object created for the job. 
 
@@ -1896,8 +1769,9 @@ In standard mode, one SRO is created for each extraction back to the source repo
     ],
     "external_references": [
         {
-            "source_name": "txt2stix job ID",
-            "external_id": "<REPORT OBJECT ID>"
+            "source_name": "txt2stix_lookup",
+            "external_id": "<BOOLEAN, true IF source_ref is remote extraction, else false>"
+
         }
     ]
 }
@@ -1927,8 +1801,9 @@ The Relationship SRO created for each relationship identified will be generated 
     ],
     "external_references": [
         {
-            "source_name": "txt2stix job ID",
-            "external_id": "<REPORT OBJECT ID>"
+            "source_name": "txt2stix_lookup",
+            "external_id": "<BOOLEAN, true IF source_ref is remote extraction, else false>"
+
         }
     ]
 }
