@@ -22,21 +22,12 @@ class STIXObjectRetriever:
 
     def get_attack_objects(self, matrix, attack_id):
         endpoint = urljoin(self.api_root, f"/api/v1/attack-{matrix}/objects/{attack_id}/")
-        return self.get_objects(endpoint)
+        return self._retrieve_objects(endpoint)
     
-    def get_capec_object(self, capec_id):
-        return self.get_objects(urljoin(self.api_root, f"/api/v1/capec/objects/{capec_id}/"))
+    def get_xxxx_objects(self, id, type):
+        return self._retrieve_objects(urljoin(self.api_root, f"/api/v1/{type}/objects/{id}/"))
     
-    def get_cwe_object(self, cwe_id):
-        return self.get_objects(urljoin(self.api_root, f"/api/v1/cwe/objects/{cwe_id}/"))
-    
-    def get_cve_object(self, cve_id):
-        return self.get_objects(urljoin(self.api_root, f"/api/v1/cve/objects/{cve_id}/"))
-    
-    def get_cpe_object(self, cpe_id):
-        return self.get_objects(urljoin(self.api_root, f"/api/v1/cpe/objects/{cpe_id}/"))
-    
-    def get_objects(self, endpoint, key='objects'):
+    def _retrieve_objects(self, endpoint, key='objects'):
         s = requests.Session()
         s.headers.update({
             "Authority": f"Bearer {self.api_key}"
@@ -69,13 +60,15 @@ def retrieve_stix_objects(stix_mapping: str, id, host=None):
             case 'mitre-attack-enterprise-id':
                 return retreiver.get_attack_objects('enterprise', id)
             case "mitre-capec-id":
-                return retreiver.get_capec_object(id)
+                return retreiver.get_xxxx_objects(id, 'capec')
+            case "mitre-atlas-id":
+                return retreiver.get_xxxx_objects(id, 'atlas')
             case "mitre-cwe-id":
-                return retreiver.get_cwe_object(id)
+                return retreiver.get_xxxx_objects(id, 'cwe')
             case "cve-id":
-                return retreiver.get_cve_object(id)
+                return retreiver.get_xxxx_objects(id, 'cve')
             case "cpe-id":
-                return retreiver.get_cpe_object(id)
+                return retreiver.get_xxxx_objects(id, 'cpe')
             case _:
                 raise NotImplementedError(f"pair {(host, stix_mapping)=} not implemented")
     except Exception as e:
