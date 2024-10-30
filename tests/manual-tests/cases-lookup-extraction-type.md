@@ -1,3 +1,20 @@
+
+
+
+
+
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_mitre_atlas.txt \
+	--name 'lookup_mitre_atlas_id' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions lookup_mitre_atlas_id
+```
+
+
 #### 2.1.1 lookup_mitre_attack_enterprise_id
 
 ```shell
