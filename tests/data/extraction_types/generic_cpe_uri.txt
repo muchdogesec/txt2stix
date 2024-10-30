@@ -1,7 +1,7 @@
 ====Good====
 
-cpe:2.3:a:knative:serving:0.37.4:*:*:*:*:*:*:*
-cpe:2.3:a:sequelize:sequelize-typescript:0.6.5:beta0:*:*:*:node.js:*:*
+cpe:2.3:a:appcheap:app_builder:3.9.2:*:*:*:*:wordpress:*:*
+cpe:2.3:a:yithemes:yith_woocommerce_tab_manager:1.29.0:*:*:*:*:wordpress:*:*
 
 ====Bad====
 

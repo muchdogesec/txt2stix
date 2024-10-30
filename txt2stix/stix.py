@@ -229,11 +229,11 @@ class txt2stixBundler:
             external_references=[
                 {
                     "source_name": "txt2stix_report_id",
-                    "description": self.job_id,
+                    "external_id": self.uuid,
                 },
                 {
-                    "source_name": "txt2stix_report_md5",
-                    "external_id": hashlib.md5(description.encode()).hexdigest(),
+                    "source_name": "txt2stix Report MD5",
+                    "description": hashlib.md5(description.encode()).hexdigest(),
                 },
             ],
             confidence=confidence,
@@ -340,7 +340,7 @@ class txt2stixBundler:
             "external_references": [
                 {
                     "source_name": "txt2stix_report_id",
-                    "description": self.job_id,
+                    "external_id": self.uuid,
                 },
                 {
                     "source_name": "txt2stix_extraction_type",
@@ -399,7 +399,7 @@ class txt2stixBundler:
             description=f"{self.id_value_map.get(source_ref, source_ref)} {descriptor} {self.id_value_map.get(target_ref, target_ref)}"
         ))
 
-    def new_relationship(self, source_ref, target_ref, relationship_type, description=None):
+    def new_relationship(self, source_ref, target_ref, relationship_type, description=None, external_references=None):
         return Relationship(
             id="relationship--"
             + str(
@@ -416,10 +416,10 @@ class txt2stixBundler:
             modified=self.report.modified,
             object_marking_refs=self.report.object_marking_refs,
             allow_custom=True,
-            external_references=[
+            external_references=external_references or [
                 {
                     "source_name": "txt2stix_report_id",
-                    "external_id": self.job_id,
+                    "external_id": self.uuid,
                 }
             ],
         )

@@ -202,12 +202,12 @@ def extract_relationships_with_ai(bundler: txt2stixBundler, aliased_input, all_e
     return relationships
 
 def main():
+    logger = newLogger("txt2stix")
     try:
-        job_id = str(uuid.uuid4())
-        logger = newLogger("txt2stix")
+        args = parse_args()
+        job_id = args.report_id or str(uuid.uuid4())
         setLogFile(logger, Path(f"logs/logs-{job_id}.log"))
         logger.info(f"Arguments: {json.dumps(sys.argv[1:])}")
-        args = parse_args()
         
         input_text = remove_data_images(args.input_file.read_text())
         aliased_input = aliases.transform_all(args.use_aliases.values(), input_text)
