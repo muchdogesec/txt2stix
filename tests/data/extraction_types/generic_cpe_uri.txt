@@ -1,7 +1,7 @@
 ====Good====
 
-cpe:2.3:a:timesheets-for-jira:timesheet_tracking:2.0.1:*:*:*:*:jira:*:*
-cpe:2.3:a:codecabin:wp_go_maps:7.10.58:*:*:*:basic:wordpress:*:*
+cpe:2.3:a:appcheap:app_builder:3.9.2:*:*:*:*:wordpress:*:*
+cpe:2.3:a:yithemes:yith_woocommerce_tab_manager:1.29.0:*:*:*:*:wordpress:*:*
 
 ====Bad====
 

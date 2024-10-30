@@ -1,8 +1,5 @@
 
-
-
-
-
+#### lookup_mitre_atlas_id
 
 ```shell
 python3 txt2stix.py \

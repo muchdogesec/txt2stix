@@ -336,20 +336,21 @@ generic_cryptocurrency_xmr_transaction:
     - ''
 
 ####### CVE extractions #######
+### YOU NEED TO ENSURE POSITIVE TESTS EXIST IN YOUR VULMATCH INSTALL
 
 generic_cve_id:
   test_positive_examples:
-    - 'CVE-2004-2573'
-    - 'CVE-2000-0177'
-    - 'CVE-2019-4706'
+    - 'CVE-2024-1135'
+    - 'CVE-2024-34508'
+    - 'CVE-2023-36665'
   test_negative_examples:
     - 'CVE-19999-0000' # too many digits in first part
     - 'CVE-2022-000012' # too many digits in second part
 
 generic_cpe_uri:
   test_positive_examples:
-    - 'cpe:2.3:a:timesheets-for-jira:timesheet_tracking:2.0.1:*:*:*:*:jira:*:*'
-    - 'cpe:2.3:a:codecabin:wp_go_maps:7.10.58:*:*:*:basic:wordpress:*:*'
+    - 'cpe:2.3:a:appcheap:app_builder:3.9.2:*:*:*:*:wordpress:*:*'
+    - 'cpe:2.3:a:yithemes:yith_woocommerce_tab_manager:1.29.0:*:*:*:*:wordpress:*:*'
   test_negative_examples:
     - '2.3:a:microsoft:365_apps:-:*:*:*:enterprise:*:x64:*' # start of string is incorrect
     - 'cpe:2.3:a:microsoft' # is partial string
@@ -434,6 +435,7 @@ generic_phone_number:
     - '+4420836611' # is not long enough
 
 ####### County extractions #######
+### YOU NEED TO ENSURE POSITIVE TESTS EXIST IN YOUR CTIBUTLER INSTALL
 
 # note we have ai and generic extractions because AI logic has possibility of detecting descriptions of objects, not just their explicit IDs (the limitation of pattern/lookup modes)
 
@@ -457,6 +459,7 @@ ai_country_alpha2:
     - ''
 
 ####### MITRE ATT&CK #######
+### YOU NEED TO ENSURE POSITIVE TESTS EXIST IN YOUR CTIBUTLER INSTALL
 
 # note we have ai and generic extractions because AI logic has possibility of detecting descriptions of objects, not just their explicit IDs (the limitation of pattern/lookup modes)
 
@@ -490,6 +493,7 @@ generic_mitre_attack_ics:
     - 'Privilege Escalation' # is name
 
 ####### MITRE CAPEC #######
+### YOU NEED TO ENSURE POSITIVE TESTS EXIST IN YOUR CTIBUTLER INSTALL
 
 # note we have ai and generic extractions because AI logic has possibility of detecting descriptions of objects, not just their explicit IDs (the limitation of pattern/lookup modes)
 
@@ -501,6 +505,7 @@ generic_mitre_capec:
     - 'Brute Force' # is name
 
 ####### MITRE CWE #######
+### YOU NEED TO ENSURE POSITIVE TESTS EXIST IN YOUR CTIBUTLER INSTALL
 
 # note we have ai and generic extractions because AI logic has possibility of detecting descriptions of objects, not just their explicit IDs (the limitation of pattern/lookup modes)
 
@@ -513,6 +518,7 @@ generic_mitre_cwe:
     - 'Destructor' # is name
 
 ####### MITRE ATLAS #######
+### YOU NEED TO ENSURE POSITIVE TESTS EXIST IN YOUR CTIBUTLER INSTALL
 
 generic_mitre_atlas:
   test_positive_examples:

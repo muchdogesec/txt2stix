@@ -81,11 +81,11 @@ ASN13335
 0xe000ea1eaea92bc736d97a34bed331f0da4788b4c88368b3e277c82fdd7def7b
 9b669f6bf58e8ba5618a6ce3ce1afbee488898af6b79d0febd5b75177702291d
 3168d759a7c39676ee7f0c28eb8bc3a97b9cad5369d812680cf6a562cea6c662
-CVE-2004-2573
-CVE-2000-0177
-CVE-2019-4706
-cpe:2.3:a:timesheets-for-jira:timesheet_tracking:2.0.1:*:*:*:*:jira:*:*
-cpe:2.3:a:codecabin:wp_go_maps:7.10.58:*:*:*:basic:wordpress:*:*
+CVE-2024-1135
+CVE-2024-34508
+CVE-2023-36665
+cpe:2.3:a:appcheap:app_builder:3.9.2:*:*:*:*:wordpress:*:*
+cpe:2.3:a:yithemes:yith_woocommerce_tab_manager:1.29.0:*:*:*:*:wordpress:*:*
 5555555555554444
 5555555555554444
 4242424242424242
