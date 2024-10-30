@@ -1,4 +1,3 @@
-
 #### lookup_mitre_atlas_id
 
 ```shell
@@ -10,7 +9,6 @@ python3 txt2stix.py \
 	--confidence 100 \
 	--use_extractions lookup_mitre_atlas_id
 ```
-
 
 #### 2.1.1 lookup_mitre_attack_enterprise_id
 
