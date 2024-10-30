@@ -192,7 +192,7 @@ python3 txt2stix.py \
 	--use_extractions lookup_tool
 ```
 
-### 3.1.15 lookup_tool
+### 3.1.15 lookup_country_alpha2
 
 ```shell
 python3 txt2stix.py \
