@@ -101,6 +101,12 @@ def parse_extractors_globbed(type, all_extractors, names):
         return lookups.merge_whitelists(filtered_extractors.get("whitelist", {}).values())
     return filtered_extractors
 
+def parse_ref(value):
+    m = re.compile(r'(.+?)=(.+)').match(value)
+    if not m:
+        raise argparse.ArgumentTypeError("must be in format key=value")
+    return dict(source_name=m.group(1), external_id=m.group(2))
+
 def parse_args():
     EXTRACTORS_PATH = INCLUDES_PATH/"extractions"
     all_extractors = extractions.parse_extraction_config(INCLUDES_PATH)
@@ -112,13 +118,14 @@ def parse_args():
     parser.add_argument("--created", required=False, default=datetime.now(), help="Allow user to optionally pass --created time in input, which will hardcode the time used in created times")
     parser.add_argument("--labels", type=parse_labels)
     parser.add_argument("--relationship_mode", choices=["ai", "standard"], required=True)
-    parser.add_argument("--report_id", type=uuid.UUID, required=False, help="id to use instead of automatically generated `{name}+{created}`", metavar="[Valid UUID]")
+    parser.add_argument("--report_id", type=uuid.UUID, required=False, help="id to use instead of automatically generated `{name}+{created}`", metavar="VALID_UUID")
     parser.add_argument("--confidence", type=range_type(0,100), default=None, help="value between 0-100. Default if not passed is null.", metavar="[0-100]")
     parser.add_argument("--tlp_level", "--tlp-level", choices=TLP_LEVEL.levels().keys(), default="clear", help="TLP level, default is clear")
     parser.add_argument("--use_extractions", "--use-extractions", default={}, type=functools.partial(parse_extractors_globbed, "extractor", all_extractors),  help="Specify extraction types from the default/local extractions .yaml file", metavar="EXTRACTION1,EXTRACTION2")
     parser.add_argument("--use_identity", "--use-identity", help="Specify an identity file id (e.g., {\"type\":\"identity\",\"name\":\"demo\",\"identity_class\":\"system\"})", metavar="[stix2 identity json]", type=parse_stix)
     parser.add_argument("--use_aliases", "--use-aliases", type=functools.partial(parse_extractors_globbed, "alias", all_extractors), help="if you want to apply aliasing to the input doc (find and replace strings) you can pass their slug found in aliases/config.yaml (e.g. country_iso3_to_iso2). Default if not passed, no extractions applied.", default={}, metavar="ALIAS1,ALIAS2")
     parser.add_argument("--use_whitelist", type=functools.partial(parse_extractors_globbed, "whitelist", all_extractors), help="if you want to get the script to ignore certain values that might create extractions you can specify using whitelist/config.yaml (e.g. alexa_top_1000) related to the whitelist file you want to use. Default if not passed, no extractions applied.", default=[], metavar="whitelist1,whitelist2")
+    parser.add_argument("--external_refs", type=parse_ref, help="pass additional `external_references` entry (or entries) to the report object created. e.g --external_ref author=dogesec link=https://dkjjadhdaj.net", default=[], metavar="{source_name}={external_id}", action="extend", nargs='+')
 
     args = parser.parse_args()
     if not args.input_file.exists():
@@ -214,7 +221,7 @@ def main():
 
         load_env(len(aliased_input))
 
-        bundler = txt2stixBundler(args.name, args.use_identity, args.tlp_level, aliased_input, args.confidence, args.all_extractors, args.labels, created=args.created, report_id=args.report_id)
+        bundler = txt2stixBundler(args.name, args.use_identity, args.tlp_level, aliased_input, args.confidence, args.all_extractors, args.labels, created=args.created, report_id=args.report_id, external_references=args.external_refs)
         log_notes(sys.argv, "Config")
         convo_str = None
 
