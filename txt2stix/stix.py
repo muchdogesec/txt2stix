@@ -199,6 +199,7 @@ class txt2stixBundler:
         job_id=None,
         report_id=None,
         created=None,
+        external_references=None
     ) -> None:
         self.created = created or dt.now()
         self.whitelisted_values = set()
@@ -212,6 +213,7 @@ class txt2stixBundler:
             self.uuid = str(
                 uuid.uuid5(UUID_NAMESPACE, f"{self.identity.id}+{self.created}+{name}")
             )
+        external_references = external_references or []
 
         self.job_id = f"report--{self.uuid}"
         self.report = Report(
@@ -235,7 +237,7 @@ class txt2stixBundler:
                     "source_name": "txt2stix Report MD5",
                     "description": hashlib.md5(description.encode()).hexdigest(),
                 },
-            ],
+            ] + external_references,
             confidence=confidence,
         )
         self.report.object_refs.clear()  # clear object refs
