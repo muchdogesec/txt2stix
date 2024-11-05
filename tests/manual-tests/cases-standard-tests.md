@@ -461,3 +461,16 @@ python3 txt2stix.py \
 	--use_extractions pattern_ipv4_address_only \
 	--report_id 62611965-930e-43db-8b95-30a1e119d7e2
 ```
+
+### 0.8 test custom external_refernces
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_ipv4_address_only.txt \
+	--name 'Test 0.7 Using report id 62611965-930e-43db-8b95-30a1e119d7e2' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions pattern_ipv4_address_only \
+	--external_refs key=value source=id
+```
