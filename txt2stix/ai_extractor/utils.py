@@ -9,12 +9,6 @@ from ..extractions import Extractor
 from pydantic import BaseModel, Field
 from llama_index.core.output_parsers import PydanticOutputParser
 
-
-dotenv.load_dotenv()
-logging.basicConfig(level=logging.DEBUG)
-logger = logging.getLogger("txt2stix.ai_extractor")
-logger.setLevel(logging.DEBUG)
-
 class Extraction(BaseModel):
     type : str = Field(description="is the extraction_key value shown in the list printed earlier in this prompt")
     id: str =  Field(description='is the id of the extraction of the format `"ai-%d" %(position in list)`, it should start from 1 (e.g `"ai-1", "ai-2", ..., "ai-n"`)')
