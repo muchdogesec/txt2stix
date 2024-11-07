@@ -37,7 +37,7 @@ class ParserWithLogging(PydanticOutputParser):
         print("\n"*5 + "=================start=================", file=f)
         print(text, file=f)
         print("=================close=================" + "\n"*5, file=f)
-        logging.info(f.getvalue())
+        logging.debug(f.getvalue())
         return super().parse(text)
 
 def get_extractors_str(extractors):
