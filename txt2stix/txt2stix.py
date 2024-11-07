@@ -8,16 +8,18 @@ import re
 from pathlib import Path
 import sys, os
 
+from pydantic import BaseModel
+
 from .utils import remove_data_images
 
 from .common import UUID_NAMESPACE, FatalException
 
 from .stix import txt2stixBundler, parse_stix, TLP_LEVEL
 from .import extractions, aliases, lookups, pattern
-from .ai_session import GenericAIExtractor, OpenAIAssistantExtractor, BaseAIExtractor
 from types import SimpleNamespace
 import functools
 from fnmatch import filter
+from .ai_extractor import ALL_AI_EXTRACTORS, BaseAIExtractor
 
 import json, logging
 
@@ -107,6 +109,16 @@ def parse_ref(value):
         raise argparse.ArgumentTypeError("must be in format key=value")
     return dict(source_name=m.group(1), external_id=m.group(2))
 
+def parse_model(value: str):
+    splits = value.split(':', 1)
+    provider = splits[0]
+    if provider not in ALL_AI_EXTRACTORS:
+        raise argparse.ArgumentTypeError(f"invalid AI provider, must be one of [{list(ALL_AI_EXTRACTORS)}]")
+    splits[0] = ALL_AI_EXTRACTORS[provider]
+    if len(splits) == 2:
+        return splits
+    return splits[0], None
+
 def parse_args():
     EXTRACTORS_PATH = INCLUDES_PATH/"extractions"
     all_extractors = extractions.parse_extraction_config(INCLUDES_PATH)
@@ -116,6 +128,7 @@ def parse_args():
     inf_arg  = parser.add_argument("--input_file", "--input-file", required=True, help="The file to be converted. Must be .txt", type=Path)
     name_arg = parser.add_argument("--name", required=True, help="Name of the file, max 72 chars", default="stix-out")
     parser.add_argument("--created", required=False, default=datetime.now(), help="Allow user to optionally pass --created time in input, which will hardcode the time used in created times")
+    parser.add_argument("--ai_model", required=False, type=parse_model, help="Select ai_model to use. e.g openai:gpt-4o", metavar="provider:model")
     parser.add_argument("--labels", type=parse_labels)
     parser.add_argument("--relationship_mode", choices=["ai", "standard"], required=True)
     parser.add_argument("--report_id", type=uuid.UUID, required=False, help="id to use instead of automatically generated `{name}+{created}`", metavar="VALID_UUID")
@@ -132,6 +145,9 @@ def parse_args():
         raise argparse.ArgumentError(inf_arg, "cannot open file")
     if len(args.name) > 72:
         raise argparse.ArgumentError(name_arg, "max 72 characters")
+    
+    if not args.ai_model:
+        args.ai_model = parse_model('openai')
 
     #### process --use-extractions 
     for extraction_processor, extractors in args.use_extractions.items():
@@ -185,9 +201,9 @@ def extract_all(bundler: txt2stixBundler, extractors_map, aliased_input, ai_extr
             logging.error(f"use of ai extractors while {ai_extractor=}, skipping")
         else:
             try:
-                ai_extractor.set_document(aliased_input)
-                ai_extracts = ai_extractor.extract_objects(extractors_map["ai"].values())
-                bundler.process_observables(ai_extracts)
+                ai_extracts = ai_extractor.extract_objects(aliased_input, extractors_map["ai"].values())
+                ai_extracts = ai_extracts.model_dump()
+                bundler.process_observables(ai_extracts['extractions'])
                 all_extracts["ai"] = ai_extracts
             except BaseException as e:
                 logging.exception("AI extraction failed", exc_info=True)
@@ -198,11 +214,11 @@ def extract_all(bundler: txt2stixBundler, extractors_map, aliased_input, ai_extr
 def extract_relationships_with_ai(bundler: txt2stixBundler, aliased_input, all_extracts, ai_extractor_session: BaseAIExtractor):
     relationships = None
     try:
-        ai_extractor_session.set_document(aliased_input)
         relationship_types = (INCLUDES_PATH/"helpers/stix_relationship_types.txt").read_text().splitlines()
-        relationships = ai_extractor_session.extract_relationships(all_extracts, relationship_types)
+        relationships = ai_extractor_session.extract_relationships(aliased_input, all_extracts, relationship_types)
+        relationships = relationships.model_dump()
         log_notes(relationships, "Relationships")
-        bundler.process_relationships(relationships)
+        bundler.process_relationships(relationships['relationships'])
     except BaseException as e:
         logging.exception("Relationship processing failed: %s", e)
     # convo_str = ai_extractor_session.get_conversation() if ai_extractor_session and ai_extractor_session.initialized else ""
@@ -226,9 +242,9 @@ def main():
         convo_str = None
 
         bundler.whitelisted_values = args.use_whitelist
-        ai_extractor_session = GenericAIExtractor.openai()
+        ai_extractor_session = args.ai_model[0](args.ai_model[1])
         if args.use_extractions.get("ai") or args.relationship_mode == "ai":
-            token_count = ai_extractor_session.calculate_token_count(aliased_input, ai_extractor_session.model)
+            token_count = ai_extractor_session.count_tokens(aliased_input)
             if  token_count > int(os.environ["INPUT_TOKEN_LIMIT"]):
                 raise FatalException(f"input_file token count ({token_count}) exceeds INPUT_TOKEN_LIMIT ({os.environ['INPUT_TOKEN_LIMIT']})")
         all_extracts = extract_all(bundler, args.use_extractions, aliased_input, ai_extractor=ai_extractor_session)
@@ -236,7 +252,7 @@ def main():
         if args.relationship_mode == "ai" and sum(map(lambda x: len(x), all_extracts.values())):
             extract_relationships_with_ai(bundler, aliased_input, all_extracts, ai_extractor_session)
             
-        convo_str = ai_extractor_session.get_conversation() if ai_extractor_session and ai_extractor_session.initialized else ""
+        # convo_str = ai_extractor_session.get_conversation() if ai_extractor_session and ai_extractor_session.initialized else ""
             
 
         out = bundler.to_json()

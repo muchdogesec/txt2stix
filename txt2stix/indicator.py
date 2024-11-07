@@ -224,7 +224,9 @@ def build_observables(
         )
         file = stix_objects[-1]
 
-        stix_objects.append(bundler.new_relationship(file.id, dir.id, "directory", description=f"{value} directory {indicator['name']}"), external_references=indicator['external_references'])
+        stix_objects.append(
+            bundler.new_relationship(file.id, dir.id, "directory", description=f"{value} directory {indicator['name']}", external_references=indicator['external_references'])
+        )
 
     if stix_mapping == "file-hash":
         file_hash_type = find_hash_type(value, extractor.name) or extractor.slug
