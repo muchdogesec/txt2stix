@@ -1,12 +1,16 @@
+import logging
+from typing import Type
 from llama_index.core.program import LLMTextCompletionProgram
 
 import textwrap
 from llama_index.core import PromptTemplate
+from llama_index.core.llms.llm import LLM
 
 from txt2stix.ai_extractor.utils import ExtractionList, ParserWithLogging, RelationshipList, get_extractors_str
+from llama_index.core.utils import get_tokenizer
 
 
-_ai_extractor_registry = {}
+_ai_extractor_registry: dict[str, 'Type[BaseAIExtractor]'] = {}
 class BaseAIExtractor():
     system_prompt = """
     You are a cyber-security threat intelligence analysis tool responsible for analysing intelligence.
@@ -132,9 +136,14 @@ class BaseAIExtractor():
         pass
 
     def count_tokens(self, input_text):
-        raise NotImplementedError("tokenize is not implemented for this class")
+        logging.info("unsupported model `%s`, estimating using llama-index's default tokenizer", self.extractor_name)
+        return len(get_tokenizer()(input_text))
     
     def __init_subclass__(cls, /, provider, **kwargs):
         super().__init_subclass__(**kwargs)
         cls.provider = provider
         _ai_extractor_registry[provider] = cls
+
+    @property
+    def extractor_name(self):
+        return f"{self.provider}:{self.llm.model}"

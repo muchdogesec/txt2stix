@@ -201,6 +201,7 @@ class txt2stixBundler:
         created=None,
         external_references=None
     ) -> None:
+        self.observables_processed = 0
         self.created = created or dt.now()
         self.whitelisted_values = set()
         self.whitelisted_refs = set()
@@ -281,26 +282,6 @@ class txt2stixBundler:
         if sdo_id not in self.report.object_refs:
             self.report.object_refs.append(sdo_id)
             self.bundle.objects.append(sdo)
-
-        # match t := sdo['type']:
-        #     case 'indicator' | 'file':
-        #         sdo_value = sdo['name']
-        #     case 'ipv4-addr':
-        #         sdo_value = sdo['value']
-        #     case 'directory':
-        #         sdo_value = sdo['path']
-        #     case 'windows-registry-key':
-        #         sdo_value = sdo['key']
-        #     case 'user-agent':
-        #         sdo_value = sdo['string']
-        #     case 'autonomous-system' | 'bank-card':
-        #         sdo_value = sdo['number']
-        #     case 'cryptocurrency-wallet':
-        #         sdo_value = sdo['address']
-        #     case 'cryptocurrency-transaction':
-        #         sdo_value = sdo['hash']
-        #     case _:
-        #         sdo_value = "{NOTEXTRACTED}"
 
         sdo_value = ""
         for key in ['name', 'value', 'path', 'key', 'string', 'number', 'iban_number', 'address', 'hashes']:
@@ -430,11 +411,12 @@ class txt2stixBundler:
         return serialize(self.bundle, indent=4)
 
     def process_observables(self, extractions, add_standard_relationship=False):
-        self.objects_count = getattr(self, "objects_count", 0)
         for ex in extractions:
             try:
-                ex["id"] = ex.get("id", f"ex_{self.objects_count}")
-                self.objects_count += 1
+                if ex.get('id', '').startswith('ai'): #so id is distinct across multiple AIExtractors
+                    ex["id"] = f'{ex["id"]}_{self.observables_processed}'
+                ex["id"] = ex.get("id", f"ex_{self.observables_processed}")
+                self.observables_processed += 1
                 self.add_indicator(ex, add_standard_relationship)
             except BaseException as e:
                 logger.debug(
