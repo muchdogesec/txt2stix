@@ -4,8 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-# langchain = {extras = ["openai"], version = "*"}
-# langchain_openai = "*"
 openai = "*"
 stix2 = "*"
 phonenumbers = "*"
@@ -20,6 +18,10 @@ python-dotenv = "*"
 llama-index = "*"
 stix2extensions = {file = "https://github.com/muchdogesec/stix2extensions/archive/main.zip"}
 base58 = "*"
+llama-index-llms-gemini = "*"
+llama-index-core = "*"
+llama-index-llms-openai = "*"
+llama-index-llms-anthropic = "*"
 
 [dev-packages]
 autopep8 = "*"
