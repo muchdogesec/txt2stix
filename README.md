@@ -42,13 +42,17 @@ source txt2stix-venv/bin/activate
 pip3 install -r requirements.txt
 ```
 
-Now copy the `.env` file to set your config:
+### Set variables
+
+txt2stix has various settings that are defined in an `.env` file.
+
+To create a template for the file:
 
 ```shell
-cp .env.sample .env
+cp .env.example .env
 ```
 
-You can new set the correct values in `.env`.
+To see more information about how to set the variables, and what they do, read the `.env.markdown` file.
 
 ### Usage
 
