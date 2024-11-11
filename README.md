@@ -112,9 +112,9 @@ If any AI extractions, or AI relationship mode is set, you must set the followin
 
 It is very likely you'll want to extend txt2stix to include new extractions, aliases, and/or lookups. The following is possible:
 
-* Add a new lookup extraction: add your lookup to `lookups` as a `.txt` file. Lookups should be a list of items seperated by new lines to be searched for in documents. Once this is added, update `extactions/lookups/config.yaml` with a new record pointing to your lookup. You can now use this lookup time at script run-time.
-* Add a new AI extraction: Edit `extactions/ai/config.yaml` with a new record for your extraction. You can craft the prompt used in the config to control how the LLM performs the extraction.
-* Add a new alias: add a your alias to `aliases` as a `.csv` file. Alias files should have two columns `value,alias`, where `value` is the document in the original document to replace and `alias` is the value it should be replaced with.
+* Add a new lookup extraction: add your lookup to `includes/lookups` as a `.txt` file. Lookups should be a list of items seperated by new lines to be searched for in documents. Once this is added, update `includes/extractions/lookup/config.yaml` with a new record pointing to your lookup. You can now use this lookup time at script run-time.
+* Add a new AI extraction: Edit `includes/extractions/ai/config.yaml` with a new record for your extraction. You can craft the prompt used in the config to control how the LLM performs the extraction.
+* Add a new alias: add a your alias to `includes/aliases` as a `.csv` file. Alias files should have two columns `value,alias`, where `value` is the document in the original document to replace and `alias` is the value it should be replaced with. Once this is added, update `includes/extractions/alias/config.yaml` with a new record pointing to your alias. You can now use this lookup time at script run-time.
 
 Currently it is not possible to easily add any other types of extractions (without modifying the logic at a code level).
 

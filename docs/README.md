@@ -89,13 +89,11 @@ After aliasing has been applied, extractions happen. There are 3 types of extrac
 2. Lookup: Lookup extraction type searches an input document from a list of strings defined in a file (the lookup).
     * when to use: for specialist data not easily detected in patterns
     * when not to use: for large amounts of data (in the lookup)
-3. AI: AI extractions work by analysing the users text file input and extracting date (keywords / phrases from it) using the prompt template set in the config
+3. AI: AI extractions work by analysing the users text file input and extracting date (keywords / phrases from it) using the prompt template set for each extraction in `includes/extractions/ai/config.yaml`
     * when to use: contextual types data that can't be easily detected using patterns (e.g. ttps)
     * when not to use: when costs are an issue, when user will not review output for errors
 
 A user can use a mix of all extractions in any request.
-
-Read more about ai extractions in `docs/ai.md`
 
 #### A note on extraction logic
 
@@ -133,5 +131,3 @@ A user can set the relationship mode at the command line level, depending on the
 
 * standard: all objects created will be linked back to the report
 * AI: the extractions and text will be passed to the AI and asked to determine wether any relationships exist between the extractions based on the text.
-
-Read more about ai relationship in `docs/ai.md`
