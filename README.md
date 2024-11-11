@@ -99,7 +99,7 @@ How the extractions are performed
 If any AI extractions, or AI relationship mode is set, you must set the following accordingly
 
 * `--ai_settings_extractions`:
-	* defines the `provider:model` to be used. You can supply more than one provider. If more than one provider passed, txt2stix will take extractions from all models, de-dupelicate them, and them package them in the output. Currently supports:
+	* defines the `provider:model` to be used for extractions. You can supply more than one provider. If more than one provider passed, txt2stix will take extractions from all models, de-dupelicate them, and them package them in the output. Currently supports:
 		* Provider: `openai:`, models e.g.: `GPT-4o`, `gpt-4o-mini`, `gpt-4-turbo`, `gpt-4` ([More here](https://platform.openai.com/docs/models))
 		* Provider: `anthropic:`, models e.g.: `claude-3-5-sonnet-latest`, `claude-3-5-haiku-latest`, `claude-3-opus-latest` ([More here](https://docs.anthropic.com/en/docs/about-claude/models))
 		* Provider: `google:`, models: `gemini-1.5-pro-latest`, `gemini-1.5-flash-latest` ([More here](https://ai.google.dev/gemini-api/docs/models/gemini))

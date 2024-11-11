@@ -131,7 +131,7 @@ python3 txt2stix.py \
 	--input_file tests/data/extraction_types/generic_ipv4_address_only.txt \
 	--name 'Test 0.1.3 Confidence score not passed' \
 	--tlp_level clear \
-	--use_extractions ai_ipv4_address_only
+	--use_extractions pattern_ipv4_address_only
 ```
 
 ---
@@ -202,19 +202,6 @@ python3 txt2stix.py \
 	--use_extractions pattern_ipv4_address_only
 ```
 
-### AI relationship mode tests
-
-#### 0.2.1 A descriptive example with all extraction types in txt file enabled (no external objects)
-
-```shell
-python3 txt2stix.py \
-	--relationship_mode ai \
-	--input_file tests/data/manually_generated_reports/descriptive_for_ai_relationships_1.txt \
-	--name 'Test 0.2.1 Lots of descriptive relationships' \
-	--tlp_level clear \
-	--confidence 100 \
-	--use_extractions pattern_ipv4_address_only,pattern_url,lookup_country_alpha2,pattern_autonomous_system_number,lookup_malware,pattern_file_hash_sha_256,lookup_mitre_attack_enterprise_id
-```
 
 ### Aliasing
 
@@ -334,36 +321,7 @@ python3 txt2stix.py \
 
 Expect 0 extractions
 
-#### 0.4.3 ai extractions whitelist
 
-```shell
-python3 txt2stix.py \
-    --relationship_mode standard \
-    --input_file tests/data/extraction_types/whitelist_examples.txt \
-    --name '0.4.3 Whitelist of AI with 1 known match' \
-    --tlp_level clear \
-    --confidence 100 \
-    --use_whitelist examples_whitelist \
-    --use_extractions ai_mitre_attack_enterprise
-```
-
-Expect 0 extractions.
-
-```shell
-python3 txt2stix.py \
-    --relationship_mode standard \
-    --input_file tests/data/extraction_types/whitelist_examples.txt \
-    --name '0.4.3 Whitelist of AI with 1 known match' \
-    --tlp_level clear \
-    --confidence 100 \
-    --use_extractions ai_mitre_attack_enterprise
-```
-
-* course-of-action (2)
-* attack-pattern (3)
-* x-mitre-tactic (3)
-* intrusion-set (1)
-* relationship (9)
 
 #### 0.4.4 Where whitelist value appears in string
 
@@ -435,18 +393,6 @@ python3 txt2stix.py \
     --tlp_level clear \
     --confidence 100 \
     --use_extractions lookup_mitre_attack_enterprise_id,lookup_mitre_attack_mobile_id,lookup_mitre_attack_ics_id,lookup_mitre_capec_id,lookup_mitre_cwe_id,lookup_country_alpha2,lookup_attack_pattern,lookup_campaign,lookup_course_of_action,lookup_identity,lookup_infrastructure,lookup_intrusion_set,lookup_malware,lookup_threat_actor,lookup_tool
-```
-
-#### 0.6.3 All AI extractions
-
-```shell
-python3 txt2stix.py \
-    --relationship_mode standard \
-    --input_file tests/data/extraction_types/all_cases.txt \
-    --name '0.6.3 All test cases ai extractions' \
-    --tlp_level clear \
-    --confidence 100 \
-    --use_extractions ai_cryptocurrency_btc_wallet,ai_cryptocurrency_btc_transaction,ai_cryptocurrency_eth_wallet,ai_cryptocurrency_eth_transaction,ai_cryptocurrency_xmr_wallet,ai_cryptocurrency_xmr_transaction,ai_phone_number,ai_country_alpha2,ai_mitre_attack_enterprise,ai_mitre_attack_mobile,ai_mitre_attack_ics,ai_mitre_capec,ai_mitre_cwe
 ```
 
 ### 0.7 passing report id
