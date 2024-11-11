@@ -31,7 +31,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode ai \
-	--ai_settings_relationships google:gemini-1.5-pro-latest \
+	--ai_settings_relationships google:models/gemini-1.5-pro-latest \
 	--input_file tests/data/manually_generated_reports/basic_relationship.txt \
 	--name 'Test 4.0.3 Basic AI relationships Google' \
 	--tlp_level clear \
@@ -72,7 +72,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode ai \
-	--ai_settings_relationships google:gemini-1.5-pro-latest \
+	--ai_settings_relationships google:models/gemini-1.5-pro-latest \
 	--input_file tests/data/manually_generated_reports/descriptive_for_ai_relationships_1.txt \
 	--name 'Test 4.1.3 Basic AI relationships google' \
 	--tlp_level clear \
