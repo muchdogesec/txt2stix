@@ -129,6 +129,8 @@ CWE-1023
 CWE-102
 AML.M0015
 AML.T0050
+T0145
+TA01
 Content Spoofer
 Inspector-1
 Patch server

@@ -98,6 +98,23 @@ lookup_mitre_atlas_id:
     - 
   stix_mapping: ctibutler-mitre-atlas-id
 
+####### DISARM #######
+
+lookup_mitre_atlas_id:
+  type: lookup
+  name: DISARM IDs
+  description: 'Extracts DISARM IDs from text.'
+  notes: 'Currently uses v1.5'
+  file: 'lookups/disarm_id.txt'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_disarm
+  ignore_extractions:
+    - 
+  stix_mapping: ctibutler-disarm-id
+
 ####### County extractions #######
 
 lookup_country_alpha2:

@@ -1,0 +1,9 @@
+====Good====
+
+T0145
+TA01
+
+====Bad====
+
+TA0001
+Reconnaissance
