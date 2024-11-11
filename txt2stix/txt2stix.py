@@ -148,7 +148,7 @@ def parse_args():
     if len(args.name) > 72:
         raise argparse.ArgumentError(name_arg, "max 72 characters")
 
-    if args.relationship_mode and not args.ai_settings_relationships:
+    if args.relationship_mode == 'ai' and not args.ai_settings_relationships:
         parser.error("relationship_mode is set to AI, --ai_settings_relationships is required")
 
     #### process --use-extractions 
