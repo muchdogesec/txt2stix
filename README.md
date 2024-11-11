@@ -11,9 +11,9 @@ The general design goal of txt2stix was to keep it flexible, but simple, so that
 In short txt2stix;
 
 1. takes a txt file input
-2. (optional) rewrites file with enabled aliases
+2. (OPTIONAL) rewrites file with enabled aliases
 3. extracts observables for enabled extractions (ai, pattern, or lookup)
-4. (optional) removes any extractions that match whitelists
+4. (OPTIONAL) removes any extractions that match whitelists
 5. converts extracted observables to STIX 2.1 objects
 6. generates the relationships between extracted observables (ai, standard)
 7. converts extracted relationships to STIX 2.1 SRO objects
@@ -60,34 +60,51 @@ To see more information about how to set the variables, and what they do, read t
 python3 txt2stix.py \
 	--relationship_mode MODE \
 	--input_file FILE.txt \
-	--name NAME \
-	--tlp_level TLP_LEVEL \
-	--confidence CONFIDENCE_SCORE \
-	--labels label1,label2 \
-	--created DATE \
-	--use_identity \{IDENTITY JSON\} \
-	--use_extractions EXTRACTION1,EXTRACTION2 \
-	--use_aliases ALIAS1,ALIAS2 \
-	--use_whitelist WHITELIST1,WHITELIST2
+	...
 ```
 
-* `--relationship_mode` (required): either.
-	* `ai`: AI provider must be enabled. extractions performed by either regex or AI for extractions user selected. Rich relationships created from AI provider from extractions.
-	* `standard`: extractions performed by either regex or AI (AI provider must be enabled) for extractions user selected. Basic relationships created from extractions back to master Report object generated.
-* `--input_file` (required): the file to be converted. Must be `.txt`
-* `--name` (required): name of file, max 72 chars. Will be used in the STIX Report Object created.
-* `--report_id` (optional): Sometimes it is required to control the id of the `report` object generated. You can therefore pass a valid UUIDv4 in this field to be assigned to the report. e.g. passing `2611965-930e-43db-8b95-30a1e119d7e2` would create a STIX object id `report--2611965-930e-43db-8b95-30a1e119d7e2`. If this argument is not passed, the UUID will be randomly generated.
-* `--tlp_level` (optional): Options are `clear`, `green`, `amber`, `amber_strict`, `red`. Default if not passed, is `clear`.
-* `--confidence` (optional): value between 0-100. Default if not passed is null.
-* `--labels` (optional): comma seperated list of labels. Case-insensitive (will all be converted to lower-case). Allowed `a-z`, `0-9`. e.g.`label1,label2` would create 2 labels.
-* `--created` (optional): by default all object `created` times will take the time the script was run. If you want to explicitly set these times you can do so using this flag. Pass the value in the format `YYYY-MM-DDTHH:MM:SS.sssZ` e.g. `2020-01-01T00:00:00.000Z`
-* `--use_identity` (optional): can pass a full STIX 2.1 identity object (make sure to properly escape). Will be validated by the STIX2 library.
-* `--external_refs` (optional): txt2stix will automatically populate the `external_references` of the report object it creates for the input. You can use this value to add additional objects to `external_references`. Note, you can only add `source_name` and `external_id` values currently. Pass as `source_name=external_id`. e.g. `--external_refs txt2stix=demo1 source=id` would create the following objects under the `external_references` property: `{"source_name":"txt2stix","external_id":"demo1"},{"source_name":"source","external_id":"id"}`
-* `--use_extractions` (required): if you only want to use certain extraction types, you can pass their slug found in either `ai/config.yaml`, `lookup/config.yaml` `regex/config.yaml` (e.g. `regex_ipv4_address_only`). Default if not passed, no extractions applied.
+The following arguments are available:
+
+#### Input settings
+
+* `--input_file` (REQUIRED): the file to be converted. Must be `.txt`
+
+#### STIX Report generation settings
+
+
+* `--name` (REQUIRED): name of file, max 72 chars. Will be used in the STIX Report Object created.
+* `--report_id` (OPTIONAL): Sometimes it is required to control the id of the `report` object generated. You can therefore pass a valid UUIDv4 in this field to be assigned to the report. e.g. passing `2611965-930e-43db-8b95-30a1e119d7e2` would create a STIX object id `report--2611965-930e-43db-8b95-30a1e119d7e2`. If this argument is not passed, the UUID will be randomly generated.
+* `--tlp_level` (OPTIONAL): Options are `clear`, `green`, `amber`, `amber_strict`, `red`. Default if not passed, is `clear`.
+* `--confidence` (OPTIONAL): value between 0-100. Default if not passed is null.
+* `--labels` (OPTIONAL): comma seperated list of labels. Case-insensitive (will all be converted to lower-case). Allowed `a-z`, `0-9`. e.g.`label1,label2` would create 2 labels.
+* `--created` (OPTIONAL): by default all object `created` times will take the time the script was run. If you want to explicitly set these times you can do so using this flag. Pass the value in the format `YYYY-MM-DDTHH:MM:SS.sssZ` e.g. `2020-01-01T00:00:00.000Z`
+* `--use_identity` (OPTIONAL): can pass a full STIX 2.1 identity object (make sure to properly escape). Will be validated by the STIX2 library.
+* `--external_refs` (OPTIONAL): txt2stix will automatically populate the `external_references` of the report object it creates for the input. You can use this value to add additional objects to `external_references`. Note, you can only add `source_name` and `external_id` values currently. Pass as `source_name=external_id`. e.g. `--external_refs txt2stix=demo1 source=id` would create the following objects under the `external_references` property: `{"source_name":"txt2stix","external_id":"demo1"},{"source_name":"source","external_id":"id"}`
+
+#### Output settings
+
+How the extractions are performed
+
+* `--use_extractions` (REQUIRED): if you only want to use certain extraction types, you can pass their slug found in either `ai/config.yaml`, `lookup/config.yaml` `regex/config.yaml` (e.g. `regex_ipv4_address_only`). Default if not passed, no extractions applied.
 	* Important: if using any AI extractions, you must set an OpenAI API key in your `.env` file
 	* Important: if you are using any MITRE ATT&CK, CAPEC, CWE, ATLAS or Location extractions you must set `CTIBUTLER` or NVD CPE or CVE extractions you must set `VULMATCH` settings in your `.env` file
-* `--use_aliases` (optional): if you want to apply aliasing to the input doc (find and replace strings) you can pass their slug found in `aliases/config.yaml` (e.g. `country_iso3_to_iso2`). Default if not passed, no extractions applied.
-* `--use_whitelist` (optional): if you want to get the script to ignore certain values that might create extractions you can specify using `whitelist/config.yaml` (e.g. `alexa_top_1000`) related to the whitelist file you want to use. Default if not passed, no extractions applied.
+* `--use_aliases` (OPTIONAL): if you want to apply aliasing to the input doc (find and replace strings) you can pass their slug found in `aliases/config.yaml` (e.g. `country_iso3_to_iso2`). Default if not passed, no aliases applied.
+* `--use_whitelist` (OPTIONAL): if you want to get the script to ignore certain values that might create extractions you can specify using `whitelist/config.yaml` (e.g. `alexa_top_1000`) related to the whitelist file you want to use. Default if not passed, no whitelists applied.
+* `--relationship_mode` (REQUIRED): either.
+	* `ai`: AI provider must be enabled. extractions performed by either regex or AI for extractions user selected. Rich relationships created from AI provider from extractions.
+	* `standard`: extractions performed by either regex or AI (AI provider must be enabled) for extractions user selected. Basic relationships created from extractions back to master Report object generated.
+
+#### AI settings
+
+If any AI extractions, or AI relationship mode is set, you must set the following accordingly
+
+* `--ai_settings_extractions`:
+	* defines the `provider:model` to be used. You can supply more than one provider. If more than one provider passed, txt2stix will take extractions from all models, de-dupelicate them, and them package them in the output. Currently supports:
+		* Provider: `openai:`, models e.g.: `GPT-4o`, `gpt-4o-mini`, `gpt-4-turbo`, `gpt-4` ([More here](https://platform.openai.com/docs/models))
+		* Provider: `anthropic:`, models e.g.: `claude-3-5-sonnet-latest`, `claude-3-5-haiku-latest`, `claude-3-opus-latest` ([More here](https://docs.anthropic.com/en/docs/about-claude/models))
+		* Provider: `google:`, models: `gemini-1.5-pro-latest`, `gemini-1.5-flash-latest` ([More here](https://ai.google.dev/gemini-api/docs/models/gemini))
+* `--ai_settings_relationships`:
+	* similar to `ai_settings_extractions` but defines the model used to generate relationships. Only one model can be provided. Passed in same format as `ai_settings_extractions`
 
 ## Adding new extractions/lookups/aliases
 
