@@ -8,7 +8,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_cryptocurrency_btc_wallet \
-	--ai_settings_extractions openai:gpt4o,anthropic:claude-3-5-sonnet-latest,google:models/gemini-1.5-pro-latest
+	--ai_settings_extractions openai:gpt-4o,anthropic:claude-3-5-sonnet-latest,gemini:models/gemini-1.5-pro-latest
 ```
 
 #### 1.1.2 ai_cryptocurrency_btc_transaction
@@ -21,7 +21,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_cryptocurrency_btc_transaction \
-	--ai_settings_extractions openai:gpt4o,anthropic:claude-3-5-sonnet-latest,google:models/gemini-1.5-pro-latest
+	--ai_settings_extractions openai:gpt-4o,anthropic:claude-3-5-sonnet-latest,gemini:models/gemini-1.5-pro-latest
 ```
 
 #### 1.1.3 ai_cryptocurrency_eth_wallet
@@ -34,7 +34,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_cryptocurrency_eth_wallet \
-	--ai_settings_extractions openai:gpt4o,anthropic:claude-3-5-sonnet-latest,google:models/gemini-1.5-pro-latest
+	--ai_settings_extractions openai:gpt-4o,anthropic:claude-3-5-sonnet-latest,gemini:models/gemini-1.5-pro-latest
 ```
 
 #### 1.1.4 ai_cryptocurrency_eth_transaction
@@ -47,7 +47,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_cryptocurrency_eth_transaction \
-	--ai_settings_extractions openai:gpt4o,anthropic:claude-3-5-sonnet-latest,google:models/gemini-1.5-pro-latest
+	--ai_settings_extractions openai:gpt-4o,anthropic:claude-3-5-sonnet-latest,gemini:models/gemini-1.5-pro-latest
 ```
 
 #### 1.1.5 ai_cryptocurrency_xmr_wallet
@@ -60,7 +60,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_cryptocurrency_xmr_wallet \
-	--ai_settings_extractions openai:gpt4o,anthropic:claude-3-5-sonnet-latest,google:models/gemini-1.5-pro-latest
+	--ai_settings_extractions openai:gpt-4o,anthropic:claude-3-5-sonnet-latest,gemini:models/gemini-1.5-pro-latest
 ```
 
 #### 1.1.6 ai_cryptocurrency_xmr_transaction
@@ -73,7 +73,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_cryptocurrency_xmr_transaction \
-	--ai_settings_extractions openai:gpt4o,anthropic:claude-3-5-sonnet-latest,google:models/gemini-1.5-pro-latest
+	--ai_settings_extractions openai:gpt-4o,anthropic:claude-3-5-sonnet-latest,gemini:models/gemini-1.5-pro-latest
 ```
 
 #### 1.1.7 ai_phone_number
@@ -86,7 +86,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_phone_number \
-	--ai_settings_extractions openai:gpt4o,anthropic:claude-3-5-sonnet-latest,google:models/gemini-1.5-pro-latest
+	--ai_settings_extractions openai:gpt-4o,anthropic:claude-3-5-sonnet-latest,gemini:models/gemini-1.5-pro-latest
 ```
 
 #### 1.1.8 ai_country_alpha2
@@ -99,7 +99,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_country_alpha2 \
-	--ai_settings_extractions openai:gpt4o,anthropic:claude-3-5-sonnet-latest,google:models/gemini-1.5-pro-latest
+	--ai_settings_extractions openai:gpt-4o,anthropic:claude-3-5-sonnet-latest,gemini:models/gemini-1.5-pro-latest
 ```
 
 #### 1.1.9 ai_mitre_attack_enterprise
@@ -112,7 +112,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_mitre_attack_enterprise \
-	--ai_settings_extractions openai:gpt4o,anthropic:claude-3-5-sonnet-latest,google:models/gemini-1.5-pro-latest
+	--ai_settings_extractions openai:gpt-4o,anthropic:claude-3-5-sonnet-latest,gemini:models/gemini-1.5-pro-latest
 ```
 
 #### 1.1.10 ai_mitre_attack_mobile
@@ -125,7 +125,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_mitre_attack_mobile \
-	--ai_settings_extractions openai:gpt4o,anthropic:claude-3-5-sonnet-latest,google:models/gemini-1.5-pro-latest
+	--ai_settings_extractions openai:gpt-4o,anthropic:claude-3-5-sonnet-latest,gemini:models/gemini-1.5-pro-latest
 ```
 
 #### 1.1.11 ai_mitre_attack_ics
@@ -138,7 +138,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_mitre_attack_ics \
-	--ai_settings_extractions openai:gpt4o,anthropic:claude-3-5-sonnet-latest,google:models/gemini-1.5-pro-latest
+	--ai_settings_extractions openai:gpt-4o,anthropic:claude-3-5-sonnet-latest,gemini:models/gemini-1.5-pro-latest
 ```
 
 #### 1.1.12 ai_mitre_capec
@@ -151,7 +151,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_mitre_capec \
-	--ai_settings_extractions openai:gpt4o,anthropic:claude-3-5-sonnet-latest,google:models/gemini-1.5-pro-latest
+	--ai_settings_extractions openai:gpt-4o,anthropic:claude-3-5-sonnet-latest,gemini:models/gemini-1.5-pro-latest
 ```
 
 #### 1.1.13 ai_mitre_cwe
@@ -164,7 +164,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_mitre_cwe \
-	--ai_settings_extractions openai:gpt4o,anthropic:claude-3-5-sonnet-latest,google:models/gemini-1.5-pro-latest
+	--ai_settings_extractions openai:gpt-4o,anthropic:claude-3-5-sonnet-latest,gemini:models/gemini-1.5-pro-latest
 ```
 
 
@@ -179,7 +179,7 @@ python3 txt2stix.py \
     --confidence 100 \
     --use_whitelist examples_whitelist \
     --use_extractions ai_mitre_attack_enterprise \
-	--ai_settings_extractions openai:gpt4o,anthropic:claude-3-5-sonnet-latest,google:models/gemini-1.5-pro-latest
+	--ai_settings_extractions openai:gpt-4o,anthropic:claude-3-5-sonnet-latest,gemini:models/gemini-1.5-pro-latest
 ```
 
 Expect 0 extractions.
@@ -192,7 +192,7 @@ python3 txt2stix.py \
     --tlp_level clear \
     --confidence 100 \
     --use_extractions ai_mitre_attack_enterprise \
-	--ai_settings_extractions openai:gpt4o,anthropic:claude-3-5-sonnet-latest,google:models/gemini-1.5-pro-latest
+	--ai_settings_extractions openai:gpt-4o,anthropic:claude-3-5-sonnet-latest,gemini:models/gemini-1.5-pro-latest
 ```
 
 * course-of-action (2)
@@ -212,5 +212,5 @@ python3 txt2stix.py \
     --tlp_level clear \
     --confidence 100 \
     --use_extractions ai_cryptocurrency_btc_wallet,ai_cryptocurrency_btc_transaction,ai_cryptocurrency_eth_wallet,ai_cryptocurrency_eth_transaction,ai_cryptocurrency_xmr_wallet,ai_cryptocurrency_xmr_transaction,ai_phone_number,ai_country_alpha2,ai_mitre_attack_enterprise,ai_mitre_attack_mobile,ai_mitre_attack_ics,ai_mitre_capec,ai_mitre_cwe \
-	--ai_settings_extractions openai:gpt4o,anthropic:claude-3-5-sonnet-latest,google:models/gemini-1.5-pro-latest
+	--ai_settings_extractions openai:gpt-4o,anthropic:claude-3-5-sonnet-latest,gemini:models/gemini-1.5-pro-latest
 ```

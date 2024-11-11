@@ -12,12 +12,12 @@ from llama_index.core.utils import get_tokenizer
 
 _ai_extractor_registry: dict[str, 'Type[BaseAIExtractor]'] = {}
 class BaseAIExtractor():
-    system_prompt = """
+    system_prompt = (textwrap.dedent("""
     You are a cyber-security threat intelligence analysis tool responsible for analysing intelligence.
     You have a deep understanding of cybersecurity concepts and threat intelligence.
     You are responsible for extracting observables and TTPs from documents provided, and understanding the relationships being described that link them.
     You are responsible for delivering computer-parsable output in JSON format. All output from you will be parsed with pydantic for further processing
-    """
+    """))
     extraction_template = PromptTemplate(textwrap.dedent("""
         <persona>
 
@@ -54,7 +54,7 @@ class BaseAIExtractor():
 
         <response>
         Response MUST be in JSON format
-        Response MUST start with: {"sucess":
+        Response MUST start with: {"success":
         </response>
     """))
 
@@ -105,7 +105,7 @@ class BaseAIExtractor():
 
         <response>
         Response MUST be in JSON format
-        Response MUST start with: {"sucess":
+        Response MUST start with: {"success":
         </response>
         """
         ))
