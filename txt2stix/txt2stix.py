@@ -15,7 +15,7 @@ from .utils import remove_data_images
 from .common import UUID_NAMESPACE, FatalException
 
 from .stix import txt2stixBundler, parse_stix, TLP_LEVEL
-from .import extractions, aliases, lookups, pattern
+from .import extractions, lookups, pattern
 from types import SimpleNamespace
 import functools
 from fnmatch import filter
@@ -87,10 +87,8 @@ def parse_extractors_globbed(type, all_extractors, names):
         try:
             extractor = all_extractors[extractor_name]
             extraction_processor  = filtered_extractors.get(extractor.type, {})
-            if extractor.type in ["lookup", "whitelist"]:
+            if extractor.type in ["lookup"]:
                 lookups.load_lookup(extractor)
-            if extractor.type == "alias":
-                aliases.load_alias(extractor)
             if extractor.type == "pattern":
                 pattern.load_extractor(extractor)
             filtered_extractors[extractor.type] =  extraction_processor
@@ -99,8 +97,6 @@ def parse_extractors_globbed(type, all_extractors, names):
             raise argparse.ArgumentTypeError(f"no such {type} slug `{extractor_name}`")
         except BaseException as e:
             raise argparse.ArgumentTypeError(f"{type} `{extractor_name}`: {e}")
-    if type == "whitelist":
-        return lookups.merge_whitelists(filtered_extractors.get("whitelist", {}).values())
     return filtered_extractors
 
 def parse_ref(value):
@@ -138,8 +134,6 @@ def parse_args():
     parser.add_argument("--tlp_level", "--tlp-level", choices=TLP_LEVEL.levels().keys(), default="clear", help="TLP level, default is clear")
     parser.add_argument("--use_extractions", "--use-extractions", default={}, type=functools.partial(parse_extractors_globbed, "extractor", all_extractors),  help="Specify extraction types from the default/local extractions .yaml file", metavar="EXTRACTION1,EXTRACTION2")
     parser.add_argument("--use_identity", "--use-identity", help="Specify an identity file id (e.g., {\"type\":\"identity\",\"name\":\"demo\",\"identity_class\":\"system\"})", metavar="[stix2 identity json]", type=parse_stix)
-    parser.add_argument("--use_aliases", "--use-aliases", type=functools.partial(parse_extractors_globbed, "alias", all_extractors), help="if you want to apply aliasing to the input doc (find and replace strings) you can pass their slug found in aliases/config.yaml (e.g. country_iso3_to_iso2). Default if not passed, no extractions applied.", default={}, metavar="ALIAS1,ALIAS2")
-    parser.add_argument("--use_whitelist", type=functools.partial(parse_extractors_globbed, "whitelist", all_extractors), help="if you want to get the script to ignore certain values that might create extractions you can specify using whitelist/config.yaml (e.g. alexa_top_1000) related to the whitelist file you want to use. Default if not passed, no extractions applied.", default=[], metavar="whitelist1,whitelist2")
     parser.add_argument("--external_refs", type=parse_ref, help="pass additional `external_references` entry (or entries) to the report object created. e.g --external_ref author=dogesec link=https://dkjjadhdaj.net", default=[], metavar="{source_name}={external_id}", action="extend", nargs='+')
 
     args = parser.parse_args()
@@ -156,7 +150,6 @@ def parse_args():
         parser.error("ai based extractors are passed, --ai_settings_relationships is required")
 
     args.all_extractors  = all_extractors
-    args.use_aliases = args.use_aliases.get("alias", {})
     return args
 
 REQUIRED_ENV_VARIABLES = [
@@ -164,7 +157,7 @@ REQUIRED_ENV_VARIABLES = [
     "CTIBUTLER_HOST",
     "VULMATCH_HOST",
 ]
-def load_env(input_length):
+def load_env():
     dotenv.load_dotenv()
     for env in REQUIRED_ENV_VARIABLES:
         if not os.getenv(env):
@@ -177,13 +170,13 @@ def log_notes(content, type):
     logging.debug(json.dumps(content, sort_keys=True, indent=4))
     logging.debug(f" ========================= {'-'*len(type)} ========================= ")
 
-def extract_all(bundler: txt2stixBundler, extractors_map, aliased_input, ai_extractors: list[BaseAIExtractor]=[]):
+def extract_all(bundler: txt2stixBundler, extractors_map, text_content, ai_extractors: list[BaseAIExtractor]=[]):
     assert ai_extractors or not extractors_map.get("ai"), "There should be at least one AI extractor in ai_extractors"
 
     all_extracts = dict()
     if extractors_map.get("lookup"):
         try:
-            lookup_extracts = lookups.extract_all(extractors_map["lookup"].values(), aliased_input)
+            lookup_extracts = lookups.extract_all(extractors_map["lookup"].values(), text_content)
             bundler.process_observables(lookup_extracts)
             all_extracts["lookup"] = lookup_extracts
         except BaseException as e:
@@ -192,7 +185,7 @@ def extract_all(bundler: txt2stixBundler, extractors_map, aliased_input, ai_extr
     if extractors_map.get("pattern"):
         try:
             logging.info("using pattern extractors")
-            pattern_extracts = pattern.extract_all(extractors_map["pattern"].values(), aliased_input)
+            pattern_extracts = pattern.extract_all(extractors_map["pattern"].values(), text_content)
             bundler.process_observables(pattern_extracts)
             all_extracts["pattern"] = pattern_extracts
         except BaseException as e:
@@ -204,7 +197,7 @@ def extract_all(bundler: txt2stixBundler, extractors_map, aliased_input, ai_extr
         for extractor in ai_extractors:
             logging.info("running extractor: %s", extractor.extractor_name)
             try:
-                ai_extracts = extractor.extract_objects(aliased_input, extractors_map["ai"].values())
+                ai_extracts = extractor.extract_objects(text_content, extractors_map["ai"].values())
                 ai_extracts = ai_extracts.model_dump().get('extractions', [])
                 bundler.process_observables(ai_extracts)
                 all_extracts[f"ai-{extractor.extractor_name}"] = ai_extracts
@@ -214,12 +207,12 @@ def extract_all(bundler: txt2stixBundler, extractors_map, aliased_input, ai_extr
     log_notes(all_extracts, "Extractions")
     return all_extracts
 
-def extract_relationships_with_ai(bundler: txt2stixBundler, aliased_input, all_extracts, ai_extractor_session: BaseAIExtractor):
+def extract_relationships_with_ai(bundler: txt2stixBundler, text_content, all_extracts, ai_extractor_session: BaseAIExtractor):
     relationships = None
     try:
         all_extracts = list(itertools.chain(*all_extracts.values()))
         relationship_types = (INCLUDES_PATH/"helpers/stix_relationship_types.txt").read_text().splitlines()
-        relationships = ai_extractor_session.extract_relationships(aliased_input, all_extracts, relationship_types)
+        relationships = ai_extractor_session.extract_relationships(text_content, all_extracts, relationship_types)
         relationships = relationships.model_dump()
         log_notes(relationships, "Relationships")
         bundler.process_relationships(relationships['relationships'])
@@ -244,25 +237,23 @@ def main():
         logger.info(f"Arguments: {json.dumps(sys.argv[1:])}")
         
         input_text = remove_data_images(args.input_file.read_text())
-        aliased_input = aliases.transform_all(args.use_aliases.values(), input_text)
 
-        load_env(len(aliased_input))
+        load_env()
 
-        bundler = txt2stixBundler(args.name, args.use_identity, args.tlp_level, aliased_input, args.confidence, args.all_extractors, args.labels, created=args.created, report_id=args.report_id, external_references=args.external_refs)
+        bundler = txt2stixBundler(args.name, args.use_identity, args.tlp_level, input_text, args.confidence, args.all_extractors, args.labels, created=args.created, report_id=args.report_id, external_references=args.external_refs)
         log_notes(sys.argv, "Config")
         convo_str = None
 
-        bundler.whitelisted_values = args.use_whitelist
         # ai_extractor_session = args.ai_model[0](args.ai_model[1])
         if args.use_extractions.get("ai"):
-            validate_token_count(int(os.environ["INPUT_TOKEN_LIMIT"]), aliased_input, args.ai_settings_extractions)
+            validate_token_count(int(os.environ["INPUT_TOKEN_LIMIT"]), input_text, args.ai_settings_extractions)
         if args.relationship_mode == "ai":
-            validate_token_count(int(os.environ["INPUT_TOKEN_LIMIT"]), aliased_input, [args.ai_settings_relationships])
+            validate_token_count(int(os.environ["INPUT_TOKEN_LIMIT"]), input_text, [args.ai_settings_relationships])
 
-        all_extracts = extract_all(bundler, args.use_extractions, aliased_input, ai_extractors=args.ai_settings_extractions)
+        all_extracts = extract_all(bundler, args.use_extractions, input_text, ai_extractors=args.ai_settings_extractions)
  
         if args.relationship_mode == "ai" and sum(map(lambda x: len(x), all_extracts.values())):
-            extract_relationships_with_ai(bundler, aliased_input, all_extracts, args.ai_settings_relationships)
+            extract_relationships_with_ai(bundler, input_text, all_extracts, args.ai_settings_relationships)
             
         # convo_str = ai_extractor_session.get_conversation() if ai_extractor_session and ai_extractor_session.initialized else ""
             

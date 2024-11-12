@@ -67,15 +67,4 @@ def find_get_indexes_re(term, input_str):
         left, right = match.span()
         yield left+1
 
-
-def merge_whitelists(whitelist_extractors):
-    terms = set()
-    for extractor in whitelist_extractors:
-        try:
-            load_lookup(extractor)
-            eterms = extractor.terms
-            terms.update(eterms)
-        except Exception as e:
-            raise FatalException(f"cannot load whitelist `{extractor.slug}`: {e}")
-    return terms
     
