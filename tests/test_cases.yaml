@@ -528,6 +528,17 @@ generic_mitre_atlas:
     - 'AML.T0000' # invalid id
     - 'Reconnaissance' # is name
 
+####### DISARM #######
+### YOU NEED TO ENSURE POSITIVE TESTS EXIST IN YOUR CTIBUTLER INSTALL
+
+generic_disarm:
+  test_positive_examples:
+    - 'T0131.001'
+    - 'TA01'
+  test_negative_examples:
+    - 'TA0001' # invalid id
+    - 'Reconnaissance' # is name
+
 ####### Misc STIX Objects #######
 
 lookup_attack_pattern:

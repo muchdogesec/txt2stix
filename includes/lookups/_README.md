@@ -93,3 +93,19 @@ FOR doc IN mitre_atlas_vertex_collection
     SORT reference.external_id ASC
     RETURN reference.external_id
 ```
+
+Generate `disarm_id.txt`
+
+```sql
+FOR doc IN disarm_vertex_collection
+  FILTER doc._is_latest == true
+  AND doc._stix2arango_note == "v1.5"
+  AND doc.type != "x-mitre-matrix"
+  AND doc.x_mitre_deprecated != true
+  AND doc.revoked != true
+  AND IS_ARRAY(doc.external_references)
+  FOR reference IN doc.external_references
+    FILTER reference.source_name == "DISARM"
+    SORT reference.external_id ASC
+    RETURN reference.external_id
+```

@@ -10,6 +10,18 @@ python3 txt2stix.py \
 	--use_extractions lookup_mitre_atlas_id
 ```
 
+#### lookup_disarm_id
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_disarm.txt \
+	--name 'lookup_disarm_id' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions lookup_disarm_id
+```
+
 #### 2.1.1 lookup_mitre_attack_enterprise_id
 
 ```shell
