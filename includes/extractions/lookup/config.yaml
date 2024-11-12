@@ -100,7 +100,7 @@ lookup_mitre_atlas_id:
 
 ####### DISARM #######
 
-lookup_mitre_atlas_id:
+lookup_disarm_id:
   type: lookup
   name: DISARM IDs
   description: 'Extracts DISARM IDs from text.'

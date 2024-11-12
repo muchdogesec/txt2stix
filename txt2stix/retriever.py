@@ -7,9 +7,6 @@ dotenv.load_dotenv()
 
 
 class STIXObjectRetriever:
-    api_root = os.environ['CTIBUTLER_HOST']
-    api_key = os.environ['CTIBUTLER_HOST']
-
     def __init__(self, host="ctibutler") -> None:
         if host == "ctibutler":
             self.api_root = os.environ['CTIBUTLER_HOST']
@@ -68,6 +65,8 @@ def retrieve_stix_objects(stix_mapping: str, id, host=None):
                 return retreiver.get_xxxx_objects(id, 'capec')
             case "mitre-atlas-id":
                 return retreiver.get_xxxx_objects(id, 'atlas')
+            case "disarm-id":
+                return retreiver.get_xxxx_objects(id, 'disarm')
             case "mitre-cwe-id":
                 return retreiver.get_xxxx_objects(id, 'cwe')
             case "cve-id":
