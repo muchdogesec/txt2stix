@@ -11,13 +11,11 @@ The general design goal of txt2stix was to keep it flexible, but simple, so that
 In short txt2stix;
 
 1. takes a txt file input
-2. (OPTIONAL) rewrites file with enabled aliases
-3. extracts observables for enabled extractions (ai, pattern, or lookup)
-4. (OPTIONAL) removes any extractions that match whitelists
-5. converts extracted observables to STIX 2.1 objects
-6. generates the relationships between extracted observables (ai, standard)
-7. converts extracted relationships to STIX 2.1 SRO objects
-8. outputs a STIX 2.1 bundle
+2. extracts observables for enabled extractions (ai, pattern, or lookup)
+3. converts extracted observables to STIX 2.1 objects
+4. generates the relationships between extracted observables (ai, standard)
+5. converts extracted relationships to STIX 2.1 SRO objects
+6. outputs a STIX 2.1 bundle
 
 ## tl;dr
 
@@ -88,8 +86,6 @@ How the extractions are performed
 * `--use_extractions` (REQUIRED): if you only want to use certain extraction types, you can pass their slug found in either `ai/config.yaml`, `lookup/config.yaml` `regex/config.yaml` (e.g. `regex_ipv4_address_only`). Default if not passed, no extractions applied.
 	* Important: if using any AI extractions, you must set an OpenAI API key in your `.env` file
 	* Important: if you are using any MITRE ATT&CK, CAPEC, CWE, ATLAS or Location extractions you must set `CTIBUTLER` or NVD CPE or CVE extractions you must set `VULMATCH` settings in your `.env` file
-* `--use_aliases` (OPTIONAL): if you want to apply aliasing to the input doc (find and replace strings) you can pass their slug found in `aliases/config.yaml` (e.g. `country_iso3_to_iso2`). Default if not passed, no aliases applied.
-* `--use_whitelist` (OPTIONAL): if you want to get the script to ignore certain values that might create extractions you can specify using `whitelist/config.yaml` (e.g. `alexa_top_1000`) related to the whitelist file you want to use. Default if not passed, no whitelists applied.
 * `--relationship_mode` (REQUIRED): either.
 	* `ai`: AI provider must be enabled. extractions performed by either regex or AI for extractions user selected. Rich relationships created from AI provider from extractions.
 	* `standard`: extractions performed by either regex or AI (AI provider must be enabled) for extractions user selected. Basic relationships created from extractions back to master Report object generated.
@@ -108,13 +104,12 @@ If any AI extractions, or AI relationship mode is set, you must set the followin
 	* similar to `ai_settings_extractions` but defines the model used to generate relationships. Only one model can be provided. Passed in same format as `ai_settings_extractions`
 	* See `tests/manual-tests/cases-ai-relationships.md` for some examples
 
-## Adding new extractions/lookups/aliases
+## Adding new extractions
 
-It is very likely you'll want to extend txt2stix to include new extractions, aliases, and/or lookups. The following is possible:
+It is very likely you'll want to extend txt2stix to include new extractions to;
 
 * Add a new lookup extraction: add your lookup to `includes/lookups` as a `.txt` file. Lookups should be a list of items seperated by new lines to be searched for in documents. Once this is added, update `includes/extractions/lookup/config.yaml` with a new record pointing to your lookup. You can now use this lookup time at script run-time.
 * Add a new AI extraction: Edit `includes/extractions/ai/config.yaml` with a new record for your extraction. You can craft the prompt used in the config to control how the LLM performs the extraction.
-* Add a new alias: add a your alias to `includes/aliases` as a `.csv` file. Alias files should have two columns `value,alias`, where `value` is the document in the original document to replace and `alias` is the value it should be replaced with. Once this is added, update `includes/extractions/alias/config.yaml` with a new record pointing to your alias. You can now use this lookup time at script run-time.
 
 Currently it is not possible to easily add any other types of extractions (without modifying the logic at a code level).
 

@@ -32,56 +32,9 @@ Here is an overview of how the txt2stix processes txt files into STIX 2.1 bundle
 
 https://miro.com/app/board/uXjVKEyFzB8=/
 
-### Aliases
-
-In many cases two extractions might be related to the same thing. For example, the extraction `USA` and `United States` and `United States of America` are all referring to the same thing.
-
-Aliases normalise the input text before extractions happen so that the same extraction is used. e.g. changing `United States` -> `USA`.
-
-Aliases are applied before extractions. Essentially the first step of processing is to replace the alias values, with the desired value.
-
-The aliaases are set in the `includes/extractions/config.yaml`
-
-To demonstrate, lets say the alias config file (in `aliases/`) looks like so;
-
-```yaml
-country_iso3_to_iso2:
-  name: Turns Country ISO2 values into ISO3
-  description:
-  created: 2020-01-01
-  modified:  2020-01-01
-  created_by: signalscorps
-  version: 1.0.0
-  file: /aliases/default/country_iso3_alias.csv
-```
-
-This aliases uses the alias file `country_iso3_alias.csv`.
-
-The contents of an alias file has two columns, `value` and `alias`
-
-```csv
-value,alias
-AFG,AF
-ALA,AX
-ALB,AL
-DZA,DZ
-```
-
-This will turn all references of AFG in the inp
-
-### Whitelists
-
-In many cases files will have IoC extractions that are not malicious. e.g. `google.com` (and thus they don't want them to appear in final bundle).
-
-Whitelists provide a list of values to be compared to extractions. If a whitelist value matches an extraction, that extraction is removed and any relationships where is the `source_ref` or `target_ref` are also removed so that a user does not see them.
-
-Design decision: This is done after extractions to save tokens with AI providers (otherwise might be easily passing 10000+ more tokens to the AI).
-
-Note, whitelists are designed to be simplistic in txt2stix. If you want more advanced removal of potential benign extractions you should use another tool, like a Threat Intelligence Platform.
-
 ### Extractions
 
-After aliasing has been applied, extractions happen. There are 3 types of extractions in txt2stix.
+There are 3 types of extractions in txt2stix.
 
 1. Pattern: Pattern extraction type works by using regex patterns to extract data from the inputted document.
     * when to use: for pattern based extractions that are easy to detect
@@ -97,7 +50,7 @@ A user can use a mix of all extractions in any request.
 
 #### A note on extraction logic
 
-When searching in written reports, extractions/aliasing is not always obvious to a machine (when pattern matching).
+When searching in written reports, extractions are not always obvious to a machine (when pattern matching).
 
 e.g. lets say `MITRE ATT&CK` was in a report, and country code alpha2 extraction was on (IT and AT might be extracted incorrectly as countries).
 
@@ -123,7 +76,7 @@ To make it clear, the above formats will all extract. The logic for txt2stix ext
 
 As you can see, this logic would avoid the issue shown in the `MITRE ATT&CK` example.
 
-Design decision: this does not apply to AI mode extractions (but still applies for aliasing before extractions) because assumption is AI model is smart enough to deal with extracting data in a more intelligent manner.
+Design decision: this does not apply to AI mode extractions because assumption is AI model is smart enough to deal with extracting data in a more intelligent manner.
 
 ### Relationship modes
 

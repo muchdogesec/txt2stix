@@ -49,7 +49,7 @@ All files uploaded are represented as a unique [STIX Report SDO](https://docs.oa
     "created": "<ITEM INGEST DATE>",
     "modified": "<ITEM INGEST DATE>",
     "name": "<NAME ENTERED ON UPLOAD>",
-    "description": "<FULL BODY OF TEXT FROM FILE WITH ALIASES APPLIED>",
+    "description": "<FULL BODY OF TEXT FROM FILE>",
     "confidence": "<CONFIDENCE VALUE PASSED AT CLI, IF EXISTS, ELSE NOT PRINTED>",
     "published": "<ITEM INGEST DATE>",
     "object_marking_refs": [

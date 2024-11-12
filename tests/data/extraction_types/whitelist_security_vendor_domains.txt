@@ -1,7 +1,0 @@
-====Good====
-
-ncsc.gov.uk
-
-====Bad====
-
-homedepot.com

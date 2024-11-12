@@ -168,38 +168,6 @@ python3 txt2stix.py \
 ```
 
 
-#### 0.4.3 ai extractions whitelist
-
-```shell
-python3 txt2stix.py \
-    --relationship_mode standard \
-    --input_file tests/data/extraction_types/whitelist_examples.txt \
-    --name '0.4.3 Whitelist of AI with 1 known match' \
-    --tlp_level clear \
-    --confidence 100 \
-    --use_whitelist examples_whitelist \
-    --use_extractions ai_mitre_attack_enterprise \
-	--ai_settings_extractions openai:gpt-4o anthropic:claude-3-5-sonnet-latest gemini:models/gemini-1.5-pro-latest
-```
-
-Expect 0 extractions.
-
-```shell
-python3 txt2stix.py \
-    --relationship_mode standard \
-    --input_file tests/data/extraction_types/whitelist_examples.txt \
-    --name '0.4.3 Whitelist of AI with 1 known match' \
-    --tlp_level clear \
-    --confidence 100 \
-    --use_extractions ai_mitre_attack_enterprise \
-	--ai_settings_extractions openai:gpt-4o anthropic:claude-3-5-sonnet-latest gemini:models/gemini-1.5-pro-latest
-```
-
-* course-of-action (2)
-* attack-pattern (3)
-* x-mitre-tactic (3)
-* intrusion-set (1)
-* relationship (9)
 
 
 #### 0.6.3 All AI extractions
