@@ -139,10 +139,11 @@ class BaseAIExtractor():
         logging.info("unsupported model `%s`, estimating using llama-index's default tokenizer", self.extractor_name)
         return len(get_tokenizer()(input_text))
     
-    def __init_subclass__(cls, /, provider, **kwargs):
+    def __init_subclass__(cls, /, provider, register=True, **kwargs):
         super().__init_subclass__(**kwargs)
-        cls.provider = provider
-        _ai_extractor_registry[provider] = cls
+        if register:
+            cls.provider = provider
+            _ai_extractor_registry[provider] = cls
 
     @property
     def extractor_name(self):
