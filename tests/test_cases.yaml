@@ -533,7 +533,7 @@ generic_mitre_atlas:
 
 generic_disarm:
   test_positive_examples:
-    - 'T0145'
+    - 'T0131.001'
     - 'TA01'
   test_negative_examples:
     - 'TA0001' # invalid id
