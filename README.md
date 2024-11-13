@@ -83,7 +83,7 @@ The following arguments are available:
 
 How the extractions are performed
 
-* `--use_extractions` (REQUIRED): if you only want to use certain extraction types, you can pass their slug found in either `ai/config.yaml`, `lookup/config.yaml` `regex/config.yaml` (e.g. `regex_ipv4_address_only`). Default if not passed, no extractions applied.
+* `--use_extractions` (REQUIRED): if you only want to use certain extraction types, you can pass their slug found in either `includes/ai/config.yaml`, `includes/lookup/config.yaml` `includes/pattern/config.yaml` (e.g. `pattern_ipv4_address_only`). Default if not passed, no extractions applied.
 	* Important: if using any AI extractions, you must set an OpenAI API key in your `.env` file
 	* Important: if you are using any MITRE ATT&CK, CAPEC, CWE, ATLAS or Location extractions you must set `CTIBUTLER` or NVD CPE or CVE extractions you must set `VULMATCH` settings in your `.env` file
 * `--relationship_mode` (REQUIRED): either.
