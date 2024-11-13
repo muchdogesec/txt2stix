@@ -1860,7 +1860,6 @@ Takes the extracted name and passes it to;
 GET CTIBUTLER_HOST/api/v1/atlas/objects/?name=<VALUE>
 ```
 
-
 ### stix-mapping: `ctibutler-location`
 
 Takes the extracted ID and passes it to
