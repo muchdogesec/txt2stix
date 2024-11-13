@@ -1,7 +1,0 @@
-====Good====
-
-HTTP Request Splitting
-
-====Bad====
-
-CAPEC-108

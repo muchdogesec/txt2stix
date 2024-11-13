@@ -18,7 +18,6 @@ class BaseExtractor:
     meta_extractor = None
     version = None
     stix_mapping = None
-    search_whitelist_for_custom_extraction = True
     invalid_characters = ['.', ',', '!', '`', '(', ')', '{', '}', '"', '````', ' ']
 
 

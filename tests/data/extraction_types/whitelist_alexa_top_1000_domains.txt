@@ -1,7 +1,0 @@
-====Good====
-
-apple.com
-
-====Bad====
-
-dogesec.com

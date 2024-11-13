@@ -1,7 +1,0 @@
-====Good====
-
-Comparison Using Wrong Factors
-
-====Bad====
-
-CWE-103
