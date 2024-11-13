@@ -196,15 +196,12 @@ class txt2stixBundler:
         confidence,
         extractors,
         labels,
-        job_id=None,
         report_id=None,
         created=None,
         external_references=None
     ) -> None:
         self.observables_processed = 0
         self.created = created or dt.now()
-        self.whitelisted_values = set()
-        self.whitelisted_refs = set()
         self.all_extractors = extractors
         self.identity = identity or self.default_identity
         self.tlp_level = TLP_LEVEL.get(tlp_level)
@@ -303,9 +300,7 @@ class txt2stixBundler:
         stix_mapping = extractor.stix_mapping
         extracted_value = extracted_dict["value"]
         extracted_id = extracted_dict["id"]
-        if extracted_value in self.whitelisted_values:
-            self.whitelisted_refs.add(extracted_id)
-            return
+
 
         indicator = {
             "type": "indicator",
@@ -352,23 +347,7 @@ class txt2stixBundler:
             sdo = parse_stix(sdo, allow_custom=True)
             self.add_ref(sdo)
 
-        # if add_standard_relationship and not indicator:
-        #     for r in related_refs:
-        #         self.add_standard_relationship(
-        #             r["id"], self.report.id, "extracted-from"
-        #         )
-        # elif add_standard_relationship:
-        #     self.add_standard_relationship(
-        #         objects[0].id, self.report.id, "extracted-from"
-        #     )
-
     def add_ai_relationship(self, gpt_out):
-        if (
-            gpt_out["source_ref"] in self.whitelisted_refs
-            or gpt_out["target_ref"] in self.whitelisted_refs
-        ):
-            return
-
         for source_ref in self.id_map.get(gpt_out["source_ref"], []):
             for target_ref in self.id_map.get(gpt_out["target_ref"], []):
                 self.add_standard_relationship(
