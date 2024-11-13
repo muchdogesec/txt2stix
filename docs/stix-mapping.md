@@ -1706,6 +1706,14 @@ Relationship mode object generation behaviour:
 * Standard relationship SRO: Imported object(s) is (`source_ref`) object connected to Report with type `extracted-from`
 * AI mode relationship SROs: all imported objects are connected as source or target object (depending on if extraction is source or target)
 
+### stix-mapping: `ctibutler-mitre-attack-enterprise-name`
+
+Takes the extracted name and passes it to;
+
+```shell
+GET CTIBUTLER_HOST/api/v1/attack-enterprise/objects/?name=<VALUE>
+```
+
 ### stix-mapping: `ctibutler-mitre-attack-mobile-id`
 
 Takes the extracted ID and passes it to
@@ -1720,6 +1728,14 @@ Relationship mode object generation behaviour:
 
 * Standard relationship SRO: Imported object(s) is (`source_ref`) object connected to Report with type `extracted-from`
 * AI mode relationship SROs: all imported objects are connected as source or target object (depending on if extraction is source or target)
+
+### stix-mapping: `ctibutler-mitre-attack-mobile-name`
+
+Takes the extracted name and passes it to;
+
+```shell
+GET CTIBUTLER_HOST/api/v1/attack-mobile/objects/?name=<VALUE>
+```
 
 ### stix-mapping: `ctibutler-mitre-attack-ics-id`
 
@@ -1738,6 +1754,14 @@ Relationship mode object generation behaviour:
 * Standard relationship SRO: Imported object(s) is (`source_ref`) object connected to Report with type `extracted-from`
 * AI mode relationship SROs: all imported objects are connected as source or target object (depending on if extraction is source or target)
 
+### stix-mapping: `ctibutler-mitre-attack-ics-name`
+
+Takes the extracted name and passes it to;
+
+```shell
+GET CTIBUTLER_HOST/api/v1/attack-ics/objects/?name=<VALUE>
+```
+
 ### stix-mapping: `ctibutler-mitre-capec-id`
 
 Takes the extracted ID and passes it to 
@@ -1755,6 +1779,14 @@ Relationship mode object generation behaviour:
 * Standard relationship SRO: Imported object(s) is (`source_ref`) object connected to Report with type `extracted-from`
 * AI mode relationship SROs: all imported `course-of-action` / `attack-pattern` objects are connected as source or target object (depending on if extraction is source or target)
 
+### stix-mapping: `ctibutler-mitre-capec-name`
+
+Takes the extracted name and passes it to;
+
+```shell
+GET CTIBUTLER_HOST/api/v1/capec/objects/?name=<VALUE>
+```
+
 ### stix-mapping: `ctibutler-mitre-cwe-id`
 
 Takes the extracted ID and passes it to 
@@ -1769,6 +1801,14 @@ Relationship mode object generation behaviour:
 
 * Standard relationship SRO: Imported `weakness` object is (`source_ref`) object connected to Report
 * AI mode relationship SROs: all imported objects are connected as source or target object (depending on if extraction is source or target)
+
+### stix-mapping: `ctibutler-mitre-cwe-name`
+
+Takes the extracted name and passes it to;
+
+```shell
+GET CTIBUTLER_HOST/api/v1/cwe/objects/?name=<VALUE>
+```
 
 ### stix-mapping: `ctibutler-mitre-atlas-id`
 
@@ -1787,6 +1827,14 @@ Relationship mode object generation behaviour:
 * Standard relationship SRO: Imported object(s) is (`source_ref`) object connected to Report with type `extracted-from`
 * AI mode relationship SROs: all imported objects are connected as source or target object (depending on if extraction is source or target)
 
+### stix-mapping: `ctibutler-mitre-atlas-name`
+
+Takes the extracted name and passes it to;
+
+```shell
+GET CTIBUTLER_HOST/api/v1/atlas/objects/?name=<VALUE>
+```
+
 ### stix-mapping: `ctibutler-disarm-id`
 
 Takes the extracted ID and passes it to
@@ -1803,6 +1851,15 @@ Relationship mode object generation behaviour:
 
 * Standard relationship SRO: Imported object(s) is (`source_ref`) object connected to Report with type `extracted-from`
 * AI mode relationship SROs: all imported objects are connected as source or target object (depending on if extraction is source or target)
+
+### stix-mapping: `ctibutler-mitre-atlas-name`
+
+Takes the extracted name and passes it to;
+
+```shell
+GET CTIBUTLER_HOST/api/v1/atlas/objects/?name=<VALUE>
+```
+
 
 ### stix-mapping: `ctibutler-location`
 
