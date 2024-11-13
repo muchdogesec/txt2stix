@@ -1,0 +1,1695 @@
+Enterprise ATT&CK
+Extra Window Memory Injection
+Scheduled Task
+Socket Filters
+Archive via Utility
+VNC
+Windows Management Instrumentation
+Screen Capture
+Fileless Storage
+Boot or Logon Initialization Scripts
+Adversary-in-the-Middle
+System Owner/User Discovery
+Acquire Infrastructure
+Rundll32
+Container and Resource Discovery
+Serverless
+Standard Encoding
+Embedded Payloads
+Pluggable Authentication Modules
+Revert Cloud Instance
+Gather Victim Host Information
+Digital Certificates
+Keylogging
+File/Path Exclusions
+Linux and Mac File and Directory Permissions Modification
+Password Guessing
+PubPrn
+Purchase Technical Data
+OS Credential Dumping
+Shared Modules
+Data from Configuration Repository
+Disk Structure Wipe
+Direct Network Flood
+Path Interception by PATH Environment Variable
+Sharepoint
+Direct Volume Access
+Artificial Intelligence
+Email Hiding Rules
+External Defacement
+Encrypted/Encoded File
+IP Addresses
+OS Exhaustion Flood
+Rootkit
+PowerShell Profile
+JavaScript
+DNS
+Audio Capture
+Create or Modify System Process
+External Remote Services
+LC_LOAD_DYLIB Addition
+Steal Web Session Cookie
+Container Orchestration Job
+Domain Generation Algorithms
+Double File Extension
+Bypass User Account Control
+Internet Connection Discovery
+Sudo and Sudo Caching
+Archive via Custom Method
+Modify Cloud Compute Infrastructure
+Network Devices
+Malvertising
+Permission Groups Discovery
+Email Collection
+Security Account Manager
+WHOIS
+System Firmware
+Search Victim-Owned Websites
+Cloud Groups
+Services Registry Permissions Weakness
+DNS/Passive DNS
+Application Exhaustion Flood
+Compromise Software Dependencies and Development Tools
+Digital Certificates
+DNS Server
+Disk Wipe
+DNS
+Cloud Instance Metadata API
+Securityd Memory
+Group Policy Discovery
+Bootkit
+Data from Removable Media
+Mavinject
+Local Data Staging
+Match Legitimate Name or Location
+Digital Certificates
+Stored Data Manipulation
+Password Cracking
+Local Email Collection
+Keychain
+Boot or Logon Autostart Execution
+LSA Secrets
+Weaken Encryption
+SAML Tokens
+Masquerade File Type
+Service Stop
+Malware
+Device Driver Discovery
+Domain Account
+Active Setup
+Hide Artifacts
+Dynamic Data Exchange
+Malicious File
+Identify Business Tempo
+Hardware
+Taint Shared Content
+Trust Modification
+Symmetric Cryptography
+Local Account
+Social Media Accounts
+Safe Mode Boot
+TFTP Boot
+Windows Service
+Fast Flux DNS
+System Checks
+Cron
+Domain Groups
+Vulnerabilities
+Spearphishing Link
+Clear Linux or Mac System Logs
+Application or System Exploitation
+Office Application Startup
+InstallUtil
+Spearphishing Link
+SSH
+Additional Cloud Roles
+Print Processors
+Spearphishing Attachment
+Stripped Payloads
+Component Object Model
+DLL Search Order Hijacking
+Automated Collection
+Clipboard Data
+Proc Filesystem
+Botnet
+Password Managers
+Gatekeeper Bypass
+Drive-by Target
+System Service Discovery
+Network Sniffing
+Code Signing
+Data from Cloud Storage
+Runtime Data Manipulation
+Credentials in Registry
+Network Share Discovery
+Peripheral Device Discovery
+Break Process Trees
+Network Topology
+Code Signing Certificates
+Windows File and Directory Permissions Modification
+Add-ins
+Transport Agent
+System Information Discovery
+Application Layer Protocol
+AppDomainManager
+Remote Data Staging
+Additional Container Cluster Roles
+Scheduled Task/Job
+Msiexec
+Network Trust Dependencies
+Reflection Amplification
+Password Filter DLL
+Terminal Services DLL
+AppleScript
+Browser Extensions
+Service Exhaustion Flood
+Compromise Hardware Supply Chain
+Native API
+Clear Network Connection History and Configurations
+AS-REP Roasting
+Virtual Private Server
+AutoHotKey & AutoIT
+Reduce Key Space
+Clear Command History
+Indirect Command Execution
+Replication Through Removable Media
+Data from Local System
+Deobfuscate/Decode Files or Information
+Outlook Rules
+Impair Defenses
+Cloud Accounts
+Email Accounts
+Upload Malware
+Supply Chain Compromise
+Exploit Public-Facing Application
+Steal or Forge Kerberos Tickets
+Credentials from Password Stores
+Exfiltration Over Web Service
+Remote Access Software
+Domains
+Archive via Library
+Thread Execution Hijacking
+Masquerading
+Application Shimming
+Unsecured Credentials
+Port Monitors
+Clear Mailbox Data
+Login Hook
+Content Injection
+Process Injection
+Exfiltration Over Webhook
+Traffic Signaling
+Direct Cloud VM Connections
+System Binary Proxy Execution
+Timestomp
+Reflective Code Loading
+Wi-Fi Discovery
+Ignore Process Interrupts
+Escape to Host
+Shortcut Modification
+Application Window Discovery
+Email Account
+Time Based Evasion
+CMSTP
+SSH Hijacking
+Disable Windows Event Logging
+Scheduled Transfer
+SMB/Windows Admin Shares
+Implant Internal Image
+Protocol Tunneling
+Control Panel
+Network Address Translation Traversal
+Upload Tool
+Security Support Provider
+Use Alternate Authentication Material
+Threat Intel Vendors
+Exfiltration Over Other Network Medium
+Network Device Configuration Dump
+Gather Victim Identity Information
+Disable or Modify System Firewall
+Archive Collected Data
+SIP and Trust Provider Hijacking
+Browser Session Hijacking
+Remote Services
+Mail Protocols
+Hybrid Identity
+Vulnerability Scanning
+Cloud API
+Search Open Technical Databases
+Electron Applications
+Disable or Modify Linux Audit System
+Rogue Domain Controller
+Code Signing Policy Modification
+Deploy Container
+Modify Registry
+Launch Daemon
+Cloud Infrastructure Discovery
+Credentials from Web Browsers
+Path Interception by Search Order Hijacking
+Defacement
+Unused/Unsupported Cloud Regions
+DHCP Spoofing
+Remote Service Session Hijacking
+Binary Padding
+Web Shell
+Group Policy Modification
+Browser Information Discovery
+Private Keys
+Server
+Windows Remote Management
+Exfiltration Over Bluetooth
+Default Accounts
+Time Providers
+Trap
+Dynamic Linker Hijacking
+Local Account
+Communication Through Removable Media
+Clear Windows Event Logs
+Email Accounts
+LLMNR/NBT-NS Poisoning and SMB Relay
+File and Directory Permissions Modification
+LSASS Memory
+Active Scanning
+Abuse Elevation Control Mechanism
+Create Process with Token
+Setuid and Setgid
+Winlogon Helper DLL
+Distributed Component Object Model
+Password Spraying
+External Proxy
+Web Portal Capture
+Email Addresses
+Spearphishing Voice
+Cached Domain Credentials
+SSH Authorized Keys
+Network Security Appliances
+Image File Execution Options Injection
+Odbcconf
+Search Engines
+Business Relationships
+Temporary Elevated Cloud Access
+Video Capture
+Process Doppelgänging
+System Network Configuration Discovery
+Delete Cloud Instance
+Code Repositories
+Executable Installer File Permissions Weakness
+Accessibility Features
+Account Discovery
+Proxy
+Command and Scripting Interpreter
+Indicator Blocking
+Domain Account
+Employee Names
+Domain Trust Discovery
+Golden Ticket
+Automated Exfiltration
+Client Configurations
+Disable or Modify Cloud Firewall
+Right-to-Left Override
+Malware
+Component Firmware
+Indicator Removal
+Exfiltration Over Symmetric Encrypted Non-C2 Protocol
+Office Template Macros
+Virtual Private Server
+Confluence
+Pass the Ticket
+Container Administration Command
+File and Directory Discovery
+Dynamic Resolution
+Masquerade Task or Service
+Asynchronous Procedure Call
+Traffic Duplication
+Plist File Modification
+AppCert DLLs
+Email Forwarding Rule
+Data Staged
+Steal or Forge Authentication Certificates
+Device Registration
+System Network Connections Discovery
+Compromise Infrastructure
+Mark-of-the-Web Bypass
+Disable Crypto Hardware
+Pre-OS Boot
+Build Image on Host
+Portable Executable Injection
+Verclsid
+Compromise Accounts
+Launchctl
+Botnet
+Network Device CLI
+Bash History
+Downgrade Attack
+XPC Services
+Virtualization/Sandbox Evasion
+Web Service
+Credentials In Files
+DNS Calculation
+Mshta
+Login Items
+Stage Capabilities
+Link Target
+Multi-Stage Channels
+Financial Theft
+Execution Guardrails
+Cloud Storage Object Discovery
+Web Cookies
+Log Enumeration
+Token Impersonation/Theft
+Exfiltration to Code Repository
+Cloud Services
+Port Knocking
+LNK Icon Smuggling
+Web Services
+Steal Application Access Token
+Spearphishing Attachment
+Additional Cloud Credentials
+User Execution
+Internal Defacement
+Hidden Users
+Make and Impersonate Token
+Group Policy Preferences
+Exfiltration Over Asymmetric Encrypted Non-C2 Protocol
+Cloud Account
+Process Discovery
+Impair Command History Logging
+Network Provider DLL
+Windows Management Instrumentation Event Subscription
+CDNs
+User Activity Based Checks
+Cloud Accounts
+Software Deployment Tools
+Exfiltration Over C2 Channel
+Parent PID Spoofing
+Gather Victim Org Information
+Forge Web Credentials
+Multi-Factor Authentication Request Generation
+Compromise Host Software Binary
+Chat Messages
+PowerShell
+Change Default File Association
+VDSO Hijacking
+File Transfer Protocols
+Exploitation for Credential Access
+Emond
+One-Way Communication
+Gather Victim Network Information
+Exploitation of Remote Services
+Internal Spearphishing
+Services File Permissions Weakness
+Registry Run Keys / Startup Folder
+Trusted Relationship
+Cloud Account
+Local Groups
+Search Open Websites/Domains
+Account Manipulation
+Exfiltration Over Alternative Protocol
+Kernel Modules and Extensions
+GUI Input Capture
+Tool
+Exfiltration over USB
+KernelCallbackTable
+Search Closed Sources
+Systemd Timers
+Phishing
+ROMMONkit
+Compiled HTML File
+Network Share Connection Removal
+Multi-hop Proxy
+Brute Force
+Unix Shell
+Outlook Forms
+Disable or Modify Tools
+Data Manipulation
+Inter-Process Communication
+Data Obfuscation
+Data from Network Shared Drive
+Web Services
+Modify System Image
+Hijack Execution Flow
+Indicator Removal from Tools
+Malicious Image
+Container Service
+Valid Accounts
+Non-Standard Port
+Social Media Accounts
+Process Hollowing
+Exploitation for Privilege Escalation
+Resource Forking
+Account Access Removal
+Credential Stuffing
+Obfuscated Files or Information
+Multi-Factor Authentication
+Remote Email Collection
+IIS Components
+Invalid Code Signature
+Run Virtual Instance
+Password Policy Discovery
+Event Triggered Execution
+Unix Shell Configuration Modification
+Forced Authentication
+SID-History Injection
+Network Boundary Bridging
+Data Encrypted for Impact
+Subvert Trust Controls
+Elevated Execution with Prompt
+Firmware
+Encrypted Channel
+Authentication Package
+Regsvr32
+Exfiltration to Text Storage Sites
+Software
+Input Capture
+Spearphishing Voice
+Exploits
+Social Media
+Component Object Model Hijacking
+Credentials
+Compromise Software Supply Chain
+Rename System Utilities
+Bidirectional Communication
+Exploitation for Client Execution
+Wordlist Scanning
+Spoof Security Alerting
+Outlook Home Page
+Asymmetric Cryptography
+Exfiltration to Cloud Storage
+Lateral Tool Transfer
+Path Interception by Unquoted Path
+Install Digital Certificate
+Startup Items
+System Language Discovery
+Non-Application Layer Protocol
+Steganography
+DNS Server
+Protocol Impersonation
+Query Registry
+Data Transfer Size Limits
+Web Session Cookie
+Domain Accounts
+Regsvcs/Regasm
+Install Root Certificate
+Network Logon Script
+Endpoint Denial of Service
+Compile After Delivery
+System Location Discovery
+VBA Stomping
+BITS Jobs
+MSBuild
+Impersonation
+Modify Cloud Compute Configurations
+Domain Fronting
+ARP Cache Poisoning
+Disable or Modify Cloud Logs
+Security Software Discovery
+Hidden Window
+Python
+Identify Roles
+Data Encoding
+AppInit DLLs
+Phishing for Information
+Resource Hijacking
+Establish Accounts
+Obtain Capabilities
+Screensaver
+Conditional Access Policies
+Create Cloud Instance
+Cloud Secrets Management Stores
+Code Repositories
+Transmitted Data Manipulation
+/etc/passwd and /etc/shadow
+Launch Agent
+System Services
+Windows Command Shell
+Proc Memory
+Acquire Access
+Patch System Image
+Silver Ticket
+Data from Information Repositories
+Clear Persistence
+Windows Credential Manager
+Hardware Additions
+Server Software Component
+Data Destruction
+Non-Standard Encoding
+Domain Controller Authentication
+Transfer Data to Cloud Account
+HTML Smuggling
+Reversible Encryption
+Command Obfuscation
+File Deletion
+Drive-by Compromise
+Network Denial of Service
+Cloud Administration Command
+Installer Packages
+Scanning IP Blocks
+Template Injection
+RC Scripts
+Access Token Manipulation
+Multi-Factor Authentication Interception
+Software Packing
+Serverless
+Web Protocols
+Visual Basic
+Hidden File System
+Systemd Service
+RDP Hijacking
+Create Account
+XDG Autostart Entries
+Server
+Cloud Service Discovery
+Remote System Discovery
+Network Service Discovery
+Domain Properties
+Software Discovery
+Cloud Service Dashboard
+Thread Local Storage
+Debugger Evasion
+Space after Filename
+Re-opened Applications
+SEO Poisoning
+Pass the Hash
+Exfiltration Over Physical Medium
+DLL Side-Loading
+Ingress Tool Transfer
+SyncAppvPublishingServer
+Additional Email Delegate Permissions
+Code Signing Certificates
+Serverless Execution
+TCC Manipulation
+Ptrace System Calls
+Power Settings
+Dynamic API Resolution
+Remote Desktop Protocol
+Logon Script (Windows)
+ListPlanting
+Hide Infrastructure
+Domain or Tenant Policy Modification
+XSL Script Processing
+Scan Databases
+Hidden Files and Directories
+Create Snapshot
+Determine Physical Locations
+Office Test
+Develop Capabilities
+NTDS
+SNMP (MIB Dump)
+Steganography
+Malicious Link
+Application Access Token
+LSASS Driver
+Service Execution
+Cloud Accounts
+Environmental Keying
+Fallback Channels
+NTFS File Attributes
+Kerberoasting
+DCSync
+System Time Discovery
+At
+Dynamic-link Library Injection
+Exploits
+Modify Authentication Process
+Credential API Hooking
+Firmware Corruption
+Inhibit System Recovery
+Netsh Helper DLL
+Spearphishing via Service
+Internal Proxy
+System Script Proxy Execution
+Dead Drop Resolver
+Junk Data
+Spearphishing Service
+Container API
+Domains
+SQL Stored Procedures
+Network Device Authentication
+Disk Content Wipe
+Exfiltration Over Unencrypted Non-C2 Protocol
+Dylib Hijacking
+Downgrade System Image
+Local Accounts
+Exploitation for Defense Evasion
+Trusted Developer Utilities Proxy Execution
+System Shutdown/Reboot
+MMC
+Process Argument Spoofing
+COR_PROFILER
+Operation Dream Job
+Frankenstein
+Operation Sharpshooter
+Operation Honeybee
+Triton Safety Instrumented System Attack
+Operation Dust Storm
+2015 Ukraine Electric Power Attack
+Operation Spalax
+Cutting Edge
+C0018
+C0021
+C0015
+Operation Ghost
+C0032
+SolarWinds Compromise
+FunnyDream
+Operation CuckooBees
+C0033
+2016 Ukraine Electric Power Attack
+C0010
+Night Dragon
+Operation Wocao
+C0011
+C0017
+C0026
+C0027
+2022 Ukraine Electric Power Attack
+CostaRicto
+Network Intrusion Prevention
+Vulnerability Scanning
+Limit Access to Resource Over Network
+Remote Data Storage
+Filter Network Traffic
+Restrict Web-Based Content
+Limit Software Installation
+Application Developer Guidance
+Limit Hardware Installation
+User Training
+User Account Control
+Operating System Configuration
+Data Backup
+Execution Prevention
+Credential Access Protection
+Code Signing
+Environment Variable Permissions
+Data Loss Prevention
+Privileged Process Integrity
+Do Not Mitigate
+Pre-compromise
+SSL/TLS Inspection
+Boot Integrity
+Network Segmentation
+Threat Intelligence Program
+Password Policies
+Behavior Prevention on Endpoint
+User Account Management
+Restrict File and Directory Permissions
+Privileged Account Management
+Restrict Registry Permissions
+Antivirus/Antimalware
+Multi-factor Authentication
+Software Configuration
+Application Isolation and Sandboxing
+Audit
+Exploit Protection
+Active Directory Configuration
+Update Software
+Restrict Library Loading
+Disable or Remove Feature or Program
+Account Use Policies
+Encrypt Sensitive Information
+The MITRE Corporation
+APT38
+Indrik Spider
+NEODYMIUM
+Elderwood
+SideCopy
+GALLIUM
+APT17
+APT3
+Mustard Tempest
+GCMAN
+Kimsuky
+EXOTIC LILY
+admin@338
+Volt Typhoon
+Patchwork
+APT41
+Dragonfly
+Evilnum
+Gorgon Group
+menuPass
+APT32
+HAFNIUM
+MuddyWater
+Strider
+Naikon
+FIN6
+Gamaredon Group
+Moafee
+Gallmaker
+Leafminer
+TeamTNT
+FIN7
+Sandworm Team
+Machete
+APT18
+Andariel
+CURIUM
+Sidewinder
+Mustang Panda
+ZIRCONIUM
+Rocke
+Scattered Spider
+APT39
+TA2541
+Akira
+APT37
+Moses Staff
+OilRig
+Windigo
+Higaisa
+Carbanak
+Tropic Trooper
+Orangeworm
+Suckfly
+Putter Panda
+POLONIUM
+TA459
+Aquatic Panda
+Aoqin Dragon
+Ferocious Kitten
+The White Company
+Ke3chang
+APT1
+DarkHydrus
+Confucius
+BlackTech
+Leviathan
+MoustachedBouncer
+Group5
+Blue Mockingbird
+SilverTerrier
+Turla
+Poseidon Group
+TA505
+BITTER
+DarkVishnya
+APT-C-23
+FIN5
+Mofang
+Lotus Blossom
+Stealth Falcon
+APT29
+Dark Caracal
+Cinnamon Tempest
+Chimera
+Cleaver
+Silent Librarian
+BRONZE BUTLER
+TA551
+TEMP.Veles
+Equation
+BackdoorDiplomacy
+Darkhotel
+Axiom
+Deep Panda
+Ember Bear
+LazyScripter
+Windshift
+Volatile Cedar
+ToddyCat
+Whitefly
+LuminousMoth
+APT28
+Malteiro
+Metador
+APT5
+Fox Kitten
+RTM
+APT12
+APT-C-36
+Scarlet Mimic
+Winnti Group
+Tonto Team
+GOLD SOUTHFIELD
+Lazarus Group
+Earth Lusca
+FIN4
+Silence
+Sowbug
+Threat Group-1314
+Thrip
+APT16
+LAPSUS$
+BlackOasis
+Cobalt Group
+CopyKittens
+Wizard Spider
+Molerats
+Transparent Tribe
+IndigoZebra
+Inception
+PROMETHIUM
+APT30
+HEXANE
+DragonOK
+Rancor
+WIRTE
+PLATINUM
+Magic Hound
+Ajax Security Team
+Threat Group-3390
+APT33
+FIN10
+FIN8
+FIN13
+APT19
+PittyTiger
+Nomadic Octopus
+HDoor
+TrickBot
+PowerDuke
+EKANS
+BLINDINGCAN
+Ninja
+Wiarp
+RCSession
+Spark
+QuietSieve
+SynAck
+Bumblebee
+MURKYTOP
+AcidRain
+GRIFFON
+Exaramel for Windows
+Amadey
+RDFSNIFFER
+Proxysvc
+Orz
+Torisma
+NOKKI
+yty
+Backdoor.Oldrea
+DOGCALL
+Stuxnet
+Downdelph
+RotaJakiro
+AvosLocker
+SEASHARPEE
+Get2
+POWRUNER
+KOPILUWAK
+RobbinHood
+Power Loader
+TDTESS
+Chinoxy
+SharpStage
+COATHANGER
+Sardonic
+Smoke Loader
+HALFBAKED
+WindTail
+Misdat
+FLIPSIDE
+Linux Rabbit
+adbupd
+Emissary
+Exaramel for Linux
+KEYMARBLE
+BUBBLEWRAP
+HAWKBALL
+PS1
+Ursnif
+ThreatNeedle
+ZLib
+RedLeaves
+Miner-C
+POWERSOURCE
+LITTLELAMB.WOOLTEA
+Felismus
+Zeus Panda
+GeminiDuke
+CARROTBAT
+Matryoshka
+FrameworkPOS
+GravityRAT
+WEBC2
+Prestige
+Bankshot
+SharpDisco
+StrongPity
+HAPPYWORK
+xCaon
+PLAINTEE
+Pony
+WinMM
+Nebulae
+Janicab
+AuditCred
+Lurid
+Kasidet
+OceanSalt
+Brave Prince
+RainyDay
+Ecipekac
+AppleSeed
+BUSHWALK
+macOS.OSAMiner
+LOWBALL
+NETWIRE
+TinyTurla
+PyDCrypt
+HyperStack
+iKitten
+HAMMERTOSS
+OLDBAIT
+Bad Rabbit
+CosmicDuke
+EvilGrab
+EnvyScout
+SslMM
+GreyEnergy
+Aria-body
+Emotet
+SNUGRIDE
+Olympic Destroyer
+Crimson
+Tomiris
+TEARDROP
+Turian
+BADHATCH
+Machete
+PowerLess
+Action RAT
+Avenger
+Prikormka
+PingPull
+WellMess
+Dacls
+DropBook
+Woody RAT
+Mafalda
+KARAE
+Squirrelwaffle
+ELMER
+PolyglotDuke
+Umbreon
+AuTo Stealer
+Hildegard
+Agent.btz
+SLOWDRIFT
+SHUTTERSPEED
+SombRAT
+FlawedGrace
+FLASHFLOOD
+FlawedAmmyy
+Snip3
+FYAnti
+Rifdoor
+SUGARUSH
+LoFiSe
+HOPLIGHT
+GuLoader
+MobileOrder
+WastedLocker
+RegDuke
+ProLock
+InvisiMole
+P.A.S. Webshell
+QUIETEXIT
+Naid
+Volgmer
+WINERACK
+WhisperGate
+FruitFly
+ZeroT
+Keydnap
+RDAT
+Hacking Team UEFI Rootkit
+Skidmap
+Okrum
+Regin
+Bonadan
+SamSam
+Neoichor
+Conti
+Mispadu
+RemoteCMD
+Diavol
+Raindrop
+Doki
+TEXTMATE
+Siloscape
+BlackCat
+Fysbis
+IcedID
+VERMIN
+UBoatRAT
+MarkiRAT
+PowerShower
+Kazuar
+NavRAT
+DarkComet
+NETEAGLE
+POORAIM
+HUI Loader
+Ragnar Locker
+FatDuke
+Lucifer
+BlackEnergy
+zwShell
+Zeroaccess
+GLASSTOKEN
+DCSrv
+DRATzarus
+BOOSTWRITE
+Rising Sun
+ASPXSpy
+NotPetya
+ShimRat
+Chrommme
+BADFLICK
+ObliqueRAT
+SHOTPUT
+Avaddon
+Conficker
+SocGholish
+Flagpro
+Hi-Zor
+SpicyOmelette
+XAgentOSX
+Green Lambert
+China Chopper
+CALENDAR
+LockerGoga
+Chaos
+ISMInjector
+PUNCHBUGGY
+GoldMax
+HELLOKITTY
+CostaBricks
+Cheerscrypt
+LIGHTWIRE
+KeyBoy
+POSHSPY
+MiniDuke
+HyperBro
+Anchor
+Pteranodon
+DarkTortilla
+ROKRAT
+CORESHELL
+RunningRAT
+Babuk
+DarkWatchman
+Dyre
+BlackMould
+Javali
+PACEMAKER
+BBSRAT
+PlugX
+Reaver
+Bisonal
+S-Type
+SeaDuke
+BS2005
+DustySky
+Duqu
+Truvasys
+Remsec
+Industroyer2
+Sykipot
+Explosive
+Xbash
+Rover
+Epic
+LightNeuron
+Peppy
+KEYPLUG
+Cuba
+DEATHRANSOM
+Clambling
+Akira
+DarkGate
+Mongall
+NanHaiShu
+SVCReady
+ThiefQuest
+FoggyWeb
+NGLite
+Carbanak
+XTunnel
+Hydraq
+SHARPSTATS
+Ferocious
+HOMEFRY
+CreepyDrive
+Caterpillar WebShell
+Netwalker
+Elise
+USBferry
+WannaCry
+Gazer
+TSCookie
+Saint Bot
+Pay2Key
+Chaes
+Briba
+CharmPower
+TYPEFRAME
+3PARA RAT
+Bundlore
+P8RAT
+EVILNUM
+KOMPROGO
+SMOKEDHAM
+Mori
+QUADAGENT
+TAINTEDSCRIBE
+Sys10
+pngdowner
+Royal
+BendyBear
+Uroburos
+Metamorfo
+Trojan.Karagany
+Bandook
+PipeMon
+SYNful Knock
+TINYTYPHON
+KONNI
+T9000
+Winnti for Linux
+RAPIDPULSE
+gh0st RAT
+Shamoon
+Skeleton Key
+DnsSystem
+MoleNet
+CORALDECK
+JHUHUGIT
+SPACESHIP
+BLUELIGHT
+KGH_SPY
+down_new
+Ixeshe
+Micropsia
+Kerrdown
+RARSTONE
+VBShower
+Black Basta
+Catchamas
+StoneDrill
+OopsIE
+4H RAT
+RogueRobin
+Attor
+DealersChoice
+SQLRat
+LitePower
+MegaCortex
+StreamEx
+BoxCaon
+NightClub
+Crutch
+SDBbot
+Mosquito
+RTM
+QUIETCANARY
+Derusbi
+SodaMaster
+Hikit
+Grandoreiro
+WellMail
+LiteDuke
+Starloader
+Sakula
+VaporRage
+RawPOS
+Sibot
+ZxxZ
+Tarrask
+WINDSHIELD
+Drovorub
+Shark
+Bazar
+PULSECHECK
+Kobalos
+BadPatch
+MESSAGETAP
+RATANKBA
+SUGARDUMP
+SOUNDBITE
+BADCALL
+hcdLoader
+Nidiran
+MoonWind
+Ryuk
+Cryptoistic
+HermeticWiper
+ABK
+Pysa
+Wiper
+Final1stspy
+ccf32
+Zebrocy
+Pandora
+FinFisher
+SpeakUp
+WARPWIRE
+CrossRAT
+OwaAuth
+Cadelspy
+Cobalt Strike
+SUNBURST
+EvilBunny
+Wingbird
+Cobian RAT
+HotCroissant
+ServHelper
+JCry
+Unknown Logger
+REvil
+RIPTIDE
+Valak
+Samurai
+PinchDuke
+Milan
+USBStealer
+OSX_OCEANLOTUS.D
+CCBkdr
+OnionDuke
+Taidoor
+SHIPSHAPE
+Cherry Picker
+SUPERNOVA
+P2P ZeuS
+Kivars
+CaddyWiper
+Cyclops Blink
+PoisonIvy
+Seasalt
+NativeZone
+NanoCore
+TajMahal
+PLEAD
+Daserf
+GoldFinder
+Carbon
+LoJax
+Cardinal RAT
+DanBot
+BISCUIT
+Calisto
+Pisloader
+GoldenSpy
+Gold Dragon
+RGDoor
+Ramsay
+FakeM
+Carberp
+FRAMESTING
+HARDRAIN
+NKAbuse
+Pillowmint
+TrailBlazer
+Revenge RAT
+MacMa
+FunnyDream
+SUNSPOT
+More_eggs
+SysUpdate
+TinyZBot
+OutSteel
+BackConfig
+PowGoop
+Kwampirs
+Nerex
+BoomBox
+DEADEYE
+PUNCHTRACK
+Proton
+Trojan.Mebromi
+InnaputRAT
+WIREFIRE
+Kessel
+GrimAgent
+LookBack
+STEADYPULSE
+Clop
+NetTraveler
+YAHOYAH
+Lokibot
+CallMe
+ROCKBOOT
+CloudDuke
+Egregor
+PoetRAT
+CHOPSTICK
+FELIXROOT
+ZxShell
+SLIGHTPULSE
+NDiskMonitor
+CoinTicker
+DDKONG
+Penquin
+BabyShark
+Cannon
+CreepySnail
+build_downer
+Melcoz
+Winnti for Windows
+PowerPunch
+BONDUPDATER
+BLACKCOFFEE
+Ebury
+Kinsing
+PITSTOP
+Meteor
+njRAT
+ZIPLINE
+Maze
+BOOTRASH
+ComRAT
+TURNEDUP
+ChChes
+PowerStallion
+ANDROMEDA
+IceApple
+JPIN
+metaMain
+SideTwist
+KOCTOPUS
+MechaFlounder
+Psylo
+Heyoka Backdoor
+HTTPBrowser
+Mis-Type
+XCSSET
+Disco
+Dipsind
+Octopus
+KillDisk
+AppleJeus
+SoreFang
+STARWHALE
+MirageFox
+Industroyer
+DownPaper
+Socksbot
+Pcexter
+HIDEDRV
+CozyCar
+Kevin
+Agent Tesla
+Pasam
+httpclient
+POWERSTATS
+POWERTON
+ECCENTRICBANDWAGON
+BADNEWS
+Linfo
+Goopy
+ShadowPad
+Remexi
+Astaroth
+QakBot
+SYSCON
+CookieMiner
+Hancitor
+Gelsemium
+jRAT
+Helminth
+Dridex
+BBK
+Komplex
+OSX/Shlayer
+Denis
+GLOOXMAIL
+Dok
+Waterbear
+FIVEHANDS
+Comnie
+Vasport
+AutoIt backdoor
+JSS Loader
+PHOREAL
+OSInfo
+MacSpy
+Lizar
+Dtrack
+H1N1
+SLOWPULSE
+Seth-Locker
+LoudMiner
+Azorult
+BitPaymer
+BACKSPACE
+Zox
+UPPERCUT
+ADVSTORESHELL
+StrifeWater
+Mivast
+HiddenWasp
+WarzoneRAT
+Net Crawler
+SLOTHFULMEDIA
+FALLCHILL
+Small Sieve
+Flame
+HermeticWizard
+None
+Net
+RemoteUtilities
+BloodHound
+certutil
+at
+UACMe
+ShimRatReporter
+Sliver
+SILENTTRINITY
+PowerSploit
+Pacu
+Windows Credential Editor
+Impacket
+ipconfig
+AADInternals
+Tasklist
+ngrok
+Lslsass
+Arp
+spwebmember
+Empire
+ifconfig
+dsquery
+PcShare
+RawDisk
+netstat
+PoshC2
+Fgdump
+xCmd
+CSPY Downloader
+Rclone
+MimiPenguin
+netsh
+CARROTBALL
+BITSAdmin
+meek
+AsyncRAT
+ROADTools
+Brute Ratel C4
+Peirates
+Remcos
+Systeminfo
+Out1
+ConnectWise
+Imminent Monitor
+Ruler
+Forfiles
+Winexe
+MCMD
+Nltest
+MailSniper
+sqlmap
+pwdump
+Responder
+Pass-The-Hash Toolkit
+Donut
+Mimikatz
+gsecdump
+IronNetInjector
+nbtstat
+Invoke-PSImage
+NBTscan
+LaZagne
+Ping
+cmd
+route
+esentutl
+CrackMapExec
+Koadic
+schtasks
+Cachedump
+Expand
+Pupy
+Reg
+ftp
+Mythic
+HTRAN
+SDelete
+QuasarRAT
+Rubeus
+Tor
+AdFind
+Wevtutil
+Havij
+PsExec
+Active Directory Credential Request
+WMI Creation
+Group Modification
+Image Modification
+Pod Enumeration
+Response Content
+Volume Metadata
+Response Metadata
+Windows Registry Key Deletion
+Instance Stop
+Malware Content
+Snapshot Deletion
+Network Connection Creation
+Process Access
+Active Directory Object Creation
+Certificate Registration
+File Access
+Kernel Module Load
+Instance Enumeration
+File Creation
+Active DNS
+Driver Load
+Network Traffic Content
+Logon Session Metadata
+Volume Deletion
+Process Creation
+Drive Creation
+Snapshot Creation
+Cloud Storage Modification
+Instance Modification
+Instance Metadata
+Cloud Storage Deletion
+Drive Modification
+Pod Creation
+Service Creation
+Cloud Storage Access
+Cloud Storage Creation
+Active Directory Object Modification
+Active Directory Object Access
+Web Credential Creation
+Container Start
+Process Termination
+File Metadata
+Service Modification
+Pod Modification
+Command Execution
+Drive Access
+Firewall Metadata
+Service Metadata
+Instance Deletion
+Scheduled Job Metadata
+Windows Registry Key Creation
+File Modification
+Host Status
+Image Deletion
+Snapshot Metadata
+Cloud Service Enumeration
+Group Metadata
+Group Enumeration
+Social Media
+Active Directory Object Deletion
+Container Enumeration
+Malware Metadata
+OS API Execution
+Application Log Content
+Logon Session Creation
+Script Execution
+Container Creation
+Network Traffic Flow
+User Account Authentication
+Image Creation
+Cloud Service Metadata
+Image Metadata
+Instance Creation
+User Account Metadata
+Named Pipe Metadata
+Firmware Modification
+Firewall Enumeration
+Module Load
+Firewall Disable
+Passive DNS
+User Account Modification
+Firewall Rule Modification
+Volume Modification
+Process Modification
+User Account Deletion
+Windows Registry Key Modification
+Volume Creation
+User Account Creation
+Cloud Storage Metadata
+Cloud Service Modification
+File Deletion
+Cloud Service Disable
+Volume Enumeration
+Windows Registry Key Access
+Process Metadata
+Snapshot Modification
+Scheduled Job Creation
+Network Share Access
+Driver Metadata
+Instance Start
+Scheduled Job Modification
+Cloud Storage Enumeration
+Web Credential Usage
+Domain Registration
+Snapshot Enumeration
+Pod
+Container
+User Account
+Windows Registry
+Script
+Image
+Web Credential
+Named Pipe
+Certificate
+WMI
+Cloud Storage
+Internet Scan
+Persona
+Group
+Application Log
+Logon Session
+Instance
+Sensor Health
+File
+Drive
+Snapshot
+Command
+Kernel
+Driver
+Volume
+Cloud Service
+Malware Repository
+Network Share
+Network Traffic
+Scheduled Job
+Firmware
+Active Directory
+Service
+Domain Name
+Process
+Firewall
+Module
+Credential Access
+Execution
+Impact
+Persistence
+Privilege Escalation
+Lateral Movement
+Defense Evasion
+Exfiltration
+Discovery
+Collection
+Resource Development
+Reconnaissance
+Command and Control
+Initial Access
+Twitoor
+Bouncing Golf

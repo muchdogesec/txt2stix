@@ -1,0 +1,617 @@
+None
+The MITRE Corporation
+Accessing Functionality Not Properly Constrained by ACLs
+Buffer Overflow via Environment Variables
+Overflow Buffers
+Server Side Include (SSI) Injection
+Session Sidejacking
+Clickjacking
+Cross Zone Scripting
+HTTP Request Splitting
+DEPRECATED: XSS through Log Files
+Cross Site Tracing
+Command Line Execution through SQL Injection
+Object Relational Mapping Injection
+Cause Web Server Misclassification
+SQL Injection through SOAP Parameter Tampering
+JSON Hijacking (aka JavaScript Hijacking)
+Brute Force
+Interface Manipulation
+Authentication Abuse
+Authentication Bypass
+Excavation
+Interception
+Choosing Message Identifier
+Double Encoding
+Exploit Non-Production Interfaces
+Privilege Abuse
+Buffer Manipulation
+Shared Resource Manipulation
+Flooding
+Path Traversal
+Directory Indexing
+Integer Attacks
+Pointer Manipulation
+Subverting Environment Variable Values
+Excessive Allocation
+Resource Leak Exposure
+Symlink Attack
+Try All Common Switches
+Email Injection
+Format String Injection
+LDAP Injection
+Parameter Injection
+Reflection Injection
+Relative Path Traversal
+Client-side Injection-induced Buffer Overflow
+Bypassing of Intermediate Forms in Multiple-Form Sets
+Cache Poisoning
+DNS Cache Poisoning
+Detect Unpublicized Web Pages
+Detect Unpublicized Web Services
+Checksum Spoofing
+XML Schema Poisoning
+XML Ping of the Death
+Content Spoofing
+Explore for Predictable Temporary File Names
+Command Delimiters
+Collect Data from Common Resource Locations
+Identity Spoofing
+Input Data Manipulation
+Resource Location Spoofing
+Screen Temporary Files for Sensitive Information
+Sniffing Attacks
+Sniffing Network Traffic
+Redirect Access to Libraries
+Dictionary-based Password Attack
+Exploit Script-Based APIs
+Infrastructure Manipulation
+Manipulating Hidden Fields
+Spear Phishing
+Mobile Phishing
+File Manipulation
+Force the System to Reset Values
+White Box Reverse Engineering
+Windows ::DATA Alternate Data Stream
+Footprinting
+Using Malicious Files
+Web Application Fingerprinting
+DEPRECATED: Variable Manipulation
+Action Spoofing
+Flash Parameter Injection
+Code Inclusion
+Configuration/Environment Manipulation
+Create files with the same name as files protected with a higher classification
+Cross-Site Flashing
+Calling Micro-Services Directly
+XSS Targeting Non-Script Elements
+Exploiting Incorrectly Configured Access Control Security Levels
+Flash File Overlay
+Flash Injection
+IMAP/SMTP Command Injection
+Software Integrity Attack
+Malicious Software Download
+Malicious Software Update
+Malicious Automated Software Update via Redirection
+Reverse Engineering
+Black Box Reverse Engineering
+Embedding Scripts within Scripts
+Reverse Engineer an Executable to Expose Assumed Hidden Functionality
+Read Sensitive Constants Within an Executable
+Protocol Analysis
+PHP Remote File Inclusion
+Fake the Source of Data
+Principal Spoof
+Session Credential Falsification through Forging
+Exponential Data Expansion
+XSS Targeting Error Pages
+XSS Using Alternate Syntax
+Inducing Account Lockout
+Encryption Brute Forcing
+Removal of filters: Input filters, output filters, data masking
+Serialized Data External Linking
+Create Malicious Client
+Manipulate Registry Information
+Lifting Sensitive Data Embedded in Cache
+DEPRECATED: Lifting credential(s)/key material embedded in client distributions (thick or thin)
+Signing Malicious Code
+Removing Important Client Functionality
+Removing/short-circuiting 'Purse' logic: removing/mutating 'cash' decrements
+XSS Using MIME Type Mismatch
+Exploitation of Trusted Identifiers
+DEPRECATED: Leveraging web tools (e.g. Mozilla's GreaseMonkey, Firebug) to change application behavior
+Functionality Misuse
+DEPRECATED: Directory Traversal
+DEPRECATED: Fuzzing for garnering J2EE/.NET-based stack traces, for application mapping
+Fuzzing for application mapping
+Communication Channel Manipulation
+Exploiting Incorrectly Configured SSL/TLS
+Spoofing of UDDI/ebXML Messages
+XML Routing Detour Attacks
+Exploiting Trust in Client
+Client-Server Protocol Manipulation
+Data Serialization External Entities Blowup
+iFrame Overlay
+Fingerprinting
+Session Credential Falsification through Manipulation
+Sustained Client Engagement
+DTD Injection
+Serialized Data Parameter Blowup
+File Content Injection
+Serialized Data with Nested Payloads
+Oversized Serialized Data Payloads
+Privilege Escalation
+Hijacking a privileged process
+DEPRECATED: Implementing a callback to system routine (old AWT Queue)
+DEPRECATED: Catching exception throw/signal from privileged block
+Escaping a Sandbox by Calling Code in Another Language
+DEPRECATED: Using URL/codebase / G.A.C. (code source) to convince sandbox of privilege
+DEPRECATED: Subversion of Authorization Checks: Cache Filtering, Programmatic Security, etc.
+Filter Failure through Buffer Overflow
+Resource Injection
+DEPRECATED: Code Injection
+Code Injection
+XSS Targeting HTML Attributes
+XSS Targeting URI Placeholders
+XSS Using Doubled Characters
+DEPRECATED: XSS Using Flash
+XSS Using Invalid Characters
+Command Injection
+DEPRECATED: Linux Terminal Injection
+Forced Deadlock
+XML Injection
+Local Code Inclusion
+PHP Local File Inclusion
+Remote Code Inclusion
+DEPRECATED: DTD Injection in a SOAP Message
+SOAP Array Overflow
+DEPRECATED: Abuse of Transaction Data Structure
+DEPRECATED: Passively Sniffing and Capturing Application Code Bound for an Authorized Client During Dynamic Update
+DEPRECATED: Passively Sniffing and Capturing Application Code Bound for an Authorized Client During Patching
+Leveraging Race Conditions
+DEPRECATED: Passively Sniffing and Capturing Application Code Bound for an Authorized Client During Initial Distribution
+Fuzzing for garnering other adjacent user/sensitive data
+Force Use of Corrupted Files
+DEPRECATED: Environment Variable Manipulation
+DEPRECATED: Global variable manipulation
+DEPRECATED: Manipulate Canonicalization
+Leverage Alternate Encoding
+Audit Log Manipulation
+DEPRECATED: Registry Manipulation
+Leveraging Race Conditions via Symbolic Links
+Modification of Registry Run Keys
+Schema Poisoning
+Protocol Manipulation
+HTTP Response Smuggling
+HTTP Verb Tampering
+DNS Rebinding
+Inter-component Protocol Manipulation
+Data Interchange Protocol Manipulation
+Web Services Protocol Manipulation
+SOAP Manipulation
+Fuzzing
+DEPRECATED: SOAP Parameter Tampering
+ICMP Echo Request Ping
+TCP SYN Scan
+DEPRECATED: ICMP Echo Request Ping
+DEPRECATED: Infrastructure-based footprinting
+Leveraging Time-of-Check and Time-of-Use (TOCTOU) Race Conditions
+Enumerate Mail Exchange (MX) Records
+DNS Zone Transfers
+Host Discovery
+Traceroute Route Enumeration
+ICMP Address Mask Request
+Timestamp Request
+ICMP Information Request
+TCP ACK Ping
+UDP Ping
+TCP SYN Ping
+Using Leading 'Ghost' Character Sequences to Bypass Input Filters
+Hijacking a Privileged Thread of Execution
+Port Scanning
+TCP Connect Scan
+TCP FIN Scan
+TCP Xmas Scan
+TCP Null Scan
+TCP ACK Scan
+TCP Window Scan
+TCP RPC Scan
+UDP Scan
+Network Topology Mapping
+Accessing/Intercepting/Modifying HTTP Cookies
+Scanning for Vulnerable Software
+DEPRECATED: OS Fingerprinting
+Active OS Fingerprinting
+Passive OS Fingerprinting
+DEPRECATED: IP Fingerprinting Probes
+DEPRECATED: TCP/IP Fingerprinting Probes
+DEPRECATED: ICMP Fingerprinting Probes
+IP ID Sequencing Probe
+IP 'ID' Echoed Byte-Order Probe
+IP (DF) 'Don't Fragment Bit' Echoing Probe
+XSS Through HTTP Query Strings
+TCP Timestamp Probe
+TCP Sequence Number Probe
+TCP (ISN) Greatest Common Divisor Probe
+TCP (ISN) Counter Rate Probe
+TCP (ISN) Sequence Predictability Probe
+TCP Congestion Control Flag (ECN) Probe
+TCP Initial Window Size Probe
+TCP Options Probe
+TCP 'RST' Flag Checksum Probe
+ICMP Error Message Quoting Probe
+HTTP Request Smuggling
+ICMP Error Message Echoing Integrity Probe
+ICMP IP Total Length Field Probe
+ICMP IP 'ID' Field Error Message Probe
+HTTP Response Splitting
+Leverage Executable Code in Non-Executable Files
+Using Unpublished Interfaces or Functionality
+Retrieve Embedded Sensitive Data
+Leveraging/Manipulating Configuration File Search Paths
+Harvesting Information via API Event Monitoring
+Application API Message Manipulation via Man-in-the-Middle
+Transaction or Event Tampering via Application API Manipulation
+Application API Navigation Remapping
+Navigation Remapping To Propagate Malicious Content
+Application API Button Hijacking
+Content Spoofing Via Application API Manipulation
+Manipulating Opaque Client-based Data Tokens
+Bypassing Physical Security
+Bypassing Physical Locks
+Lock Bumping
+Lock Picking
+Using a Snap Gun Lock to Force a Lock
+Bypassing Electronic Locks and Access Controls
+DEPRECATED: Bypassing Card or Badge-Based Systems
+Cloning Magnetic Strip Cards
+Magnetic Strip Card Brute Force Attacks
+Cloning RFID Cards or Chips
+Using Alternative IP Address Encodings
+Manipulating Writeable Terminal Devices
+RFID Chip Deactivation or Destruction
+Physically Hacking Hardware
+Bypassing ATA Password Security
+DEPRECATED: Social Information Gathering Attacks
+DEPRECATED: Social Information Gathering via Research
+Dumpster Diving
+Pretexting
+DEPRECATED: Information Gathering from Traditional Sources
+DEPRECATED: Information Gathering from Non-Traditional Sources
+Using Meta-characters in E-mail Headers to Inject Malicious Payloads
+Information Elicitation
+DEPRECATED: Pretexting
+Pretexting via Customer Service
+Pretexting via Tech Support
+Pretexting via Delivery Person
+Pretexting via Phone
+Manipulate Human Behavior
+Influence Perception
+Influence Perception of Reciprocation
+DEPRECATED: Target Influence via Perception of Concession
+MIME Conversion
+Influence Perception of Scarcity
+Influence Perception of Authority
+Influence Perception of Commitment and Consistency
+Influence Perception of Liking
+Influence Perception of Consensus or Social Proof
+Target Influence via Framing
+Influence via Incentives
+Influence via Psychological Principles
+Influence via Modes of Thinking
+Target Influence via Eye Cues
+Exploiting Multiple Input Interpretation Layers
+DEPRECATED:  Target Influence via Micro-Expressions
+DEPRECATED:  Target Influence via Neuro-Linguistic Programming (NLP)
+DEPRECATED:  Target Influence via Voice in NLP
+Target Influence via The Human Buffer Overflow
+Target Influence via Interview and Interrogation
+Target Influence via Instant Rapport
+Modification During Manufacture
+Manipulation During Distribution
+Overflow Binary Resource File
+Hardware Integrity Attack
+Malicious Logic Insertion
+Infected Software
+Malicious Logic Inserted Into Product by Authorized Developer
+Development Alteration
+Malicious Logic Insertion into Product Software via Configuration Management Manipulation
+Malicious Logic Insertion into Product via Inclusion of Third-Party Component
+Design Alteration
+Embed Virus into DLL
+DEPRECATED: Malware Propagation via USB Stick
+Buffer Overflow via Symbolic Links
+DEPRECATED: Malware Propagation via USB U3 Autorun
+DEPRECATED: Malware Propagation via Infected Peripheral Device
+Infected Hardware
+DEPRECATED: Malicious Logic Insertion via Counterfeit Hardware
+DEPRECATED: Modification of Existing Components with Counterfeit Hardware
+DEPRECATED: Malicious Logic Insertion via Inclusion of Counterfeit Hardware Components
+Infected Memory
+USB Memory Attacks
+Flash Memory Attacks
+Creating a Rogue Certification Authority Certificate
+Overflow Variables and Tags
+HTTP Parameter Pollution (HPP)
+Web Services API Signature Forgery Leveraging Hash Function Extension Weakness
+Cross-Domain Search Timing
+Padding Oracle Crypto Attack
+Evercookie
+Transparent Proxy Abuse
+Leveraging Active Adversary in the Middle Attacks to Bypass Same Origin Policy
+Cross Site Identification
+Generic Cross-Browser Cross-Domain Theft
+HTTP DoS
+Buffer Overflow via Parameter Expansion
+Expanding Control over the Operating System from the Database
+Search Order Hijacking
+Browser Fingerprinting
+Signature Spoof
+Signature Spoofing by Key Theft
+Signature Spoofing by Improper Validation
+Signature Spoofing by Misrepresentation
+Signature Spoofing by Mixing Signed and Unsigned Content
+Modification of Windows Service Configuration
+Malicious Root Certificate
+Passing Local Filenames to Functions That Expect a URL
+Escaping Virtualization
+Contradictory Destinations in Traffic Routing Schemes
+TCP Flood
+DEPRECATED: XML Client-Side Attack
+Signature Spoofing by Key Recreation
+UDP Flood
+ICMP Flood
+HTTP Flood
+SSL Flood
+Password Brute Forcing
+Amplification
+Quadratic Data Expansion
+Regular Expression Exponential Blowup
+SOAP Array Blowup
+TCP Fragmentation
+UDP Fragmentation
+ICMP Fragmentation
+File Discovery
+Probe iOS Screenshots
+Android Intent Intercept
+Blue Boxing
+Password Recovery Exploitation
+WebView Injection
+Android Activity Hijack
+Intent Spoof
+WebView Exposure
+Task Impersonation
+Scheme Squatting
+Tapjacking
+Physical Theft
+Shoulder Surfing
+Kerberoasting
+Poison Web Service Registry
+SaaS User Request Forgery
+Infiltration of Software Development Environment
+Hardware Component Substitution During Baselining
+Documentation Alteration to Circumvent Dial-down
+Documentation Alteration to Produce Under-performing Systems
+Documentation Alteration to Cause Errors in System Design
+Embedding NULL Bytes
+Counterfeit Hardware Component Inserted During Product Assembly
+Hardware Design Specifications Are Altered
+Malicious Hardware Component Replacement
+Malicious Software Implanted
+Rogue Integration Procedures
+XML Flood
+Malware-Directed Internal Reconnaissance
+Postfix, Null Terminate, and Backslash
+Provide Counterfeit Component
+Hardware Component Substitution
+Altered Installed BIOS
+Malicious Manual Software Update
+Malicious Hardware Update
+Malicious Gray Market Hardware
+Data Injected During Configuration
+Infiltration of Hardware Development Environment
+Open-Source Library Manipulation
+ASIC With Malicious Functionality
+Query System for Information
+Overread Buffers
+Application Fingerprinting
+Targeted Malware
+Counterfeit Websites
+Counterfeit Organizations
+Pull Data from System Resources
+Incomplete Data Deletion in a Multi-Tenant Environment
+Physical Destruction of Device or Component
+Contaminate Resource
+Local Execution of Code
+Rainbow Table Password Cracking
+Install New Service
+Modify Existing Service
+Install Rootkit 
+Functionality Bypass
+Remote Services with Stolen Credentials
+Replace File Extension Handlers
+DEPRECATED: Schedule Software To Run
+Replace Trusted Executable
+Orbital Jamming
+DEPRECATED: Removing/short-circuiting 'guard logic'
+Use of Known Domain Credentials
+Windows Admin Shares with Stolen Credentials
+Modify Shared File
+Add Malicious File to Shared Webroot
+Run Software at Logon
+Password Spraying
+DEPRECATED: Dump Password Hashes
+DEPRECATED: Obtain Data via Utilities
+Capture Credentials via Keylogger
+Collect Data as Provided by Users
+Utilizing REST's Trust in the System Resource to Obtain Sensitive Data
+DEPRECATED: Signature-Based Avoidance
+Block Logging to Central Repository
+Artificially Inflate File Sizes
+Process Footprinting
+Services Footprinting
+Account Footprinting
+Group Permission Footprinting
+Owner Footprinting
+Disable Security Software
+Replace Winlogon Helper DLL
+Restful Privilege Elevation
+System Footprinting
+Security Software Footprinting
+Route Disabling
+Disabling Network Hardware
+BGP Route Disabling
+DNS Domain Seizure
+Object Injection
+Cross Frame Scripting (XFS)
+DOM-Based XSS
+DNS Blocking
+Session Credential Falsification through Prediction
+IP Address Blocking
+Reflected XSS
+Stored XSS
+Session Hijacking
+Traffic Injection
+Connection Reset
+TCP RST Injection
+Absolute Path Traversal
+DNS Spoofing
+Terrestrial Jamming
+Argument Injection
+Reusing Session IDs (aka Session Replay)
+Credential Stuffing
+Jamming
+DEPRECATED: Degradation
+Blockage
+Wi-Fi Jamming
+Cellular Jamming
+Weakening of Cellular Encryption
+Obstruction
+Cryptanalysis of Cellular Encryption
+Cellular Traffic Intercept
+Session Fixation
+Cellular Data Injection
+BitSquatting
+WiFi MAC Address Tracking
+WiFi SSID Tracking
+Rooting SIM Cards
+Evil Twin Wi-Fi Attack
+Establish Rogue Location
+Cellular Rogue Base Station
+Cellular Broadcast Message Request
+Signal Strength Tracking
+Cross Site Request Forgery
+Drop Encryption Level
+Analysis of Packet Timing and Sizes
+Electromagnetic Side-Channel Attack
+Compromising Emanations Attack
+Hardware Fault Injection
+Mobile Device Fault Injection
+Smudge Attack
+Counterfeit GPS Signals
+Carry-Off GPS Attack
+DEPRECATED: Unauthorized Use of Device Resources
+Cross-Site Scripting (XSS)
+TypoSquatting
+SoundSquatting
+Homograph Attack via Homoglyphs
+Token Impersonation
+Probe Audio and Video Peripherals
+Alternative Execution Due to Deceptive Filenames
+Hiding Malicious Data or Code within Files
+Collect Data from Clipboard
+Altered Component Firmware
+Probe System Files
+Using Slashes and URL Encoding Combined to Bypass Validation Logic
+Inclusion of Code in Existing Process
+DLL Side-Loading
+Replace Binaries
+Identify Shared Files/Directories on System
+Use of Captured Hashes (Pass The Hash)
+Use of Captured Tickets (Pass The Ticket)
+Peripheral Footprinting
+Collect Data from Registries
+Collect Data from Screen Capture
+Adding a Space to a File Extension
+Sniff Application Code
+Upload a Web Shell to a Web Server
+Eavesdropping
+Use of Known Kerberos Credentials
+Use of Known Operating System Credentials
+Credential Prompt Impersonation
+Avoid Security Tool Identification by Adding Data
+Voice Phishing
+Malicious Automated Software Update via Spoofing
+SQL Injection
+Root/Jailbreak Detection Evasion via Hooking
+Root/Jailbreak Detection Evasion via Debugging
+Adversary in the Browser (AiTB)
+Exploitation of Transient Instruction Execution
+Server Side Request Forgery
+Exploitation of Thunderbolt Protection Flaws
+BlueSmacking
+Bluetooth Impersonation AttackS (BIAS)
+Key Negotiation of Bluetooth Attack (KNOB)
+Alteration of a Software Update
+String Format Overflow in syslog()
+Software Development Tools Maliciously Altered
+Requirements for ASIC Functionality Maliciously Altered
+Malicious Code Implanted During Chip Programming
+Developer Signing Maliciously Altered Software
+Design for FPGA Maliciously Altered
+Retrieve Data from Decommissioned Devices
+NoSQL Injection
+Server Motherboard Compromise
+System Build Data Maliciously Altered
+Exploitation of Improperly Configured or Implemented Memory Protections
+Subvert Code-signing Facilities
+Exploitation of Improperly Controlled Registers
+Exploitation of Improperly Controlled Hardware Security Identifiers
+Exploitation of Firmware or ROM Code with Unpatchable Vulnerabilities
+Target Programs with Elevated Privileges
+Metadata Spoofing
+Spoof Open-Source Software Metadata
+Spoof Version Control System Commit Metadata
+StarJacking
+System Location Discovery
+Repo Jacking
+Load Value Injection
+DHCP Spoofing
+Install Malicious Extension
+Eavesdropping on a Monitor
+Blind SQL Injection
+Try Common or Default Usernames and Passwords
+Network Boundary Bridging
+Browser in the Middle (BiTM)
+Exploiting Incorrect Chaining or Granularity of Hardware Debug Components
+Using Unicode Encoding to Bypass Validation Logic
+URL Encoding
+User-Controlled Filename
+Manipulating State
+Manipulating Writeable Configuration Files
+Manipulating Web Input to File System Calls
+Manipulating User-Controlled Variables
+Using Escaped Slashes in Alternate Encoding
+Using Slashes in Alternate Encoding
+Buffer Overflow in an API Call
+Using UTF-8 Encoding to Bypass Validation Logic
+Web Server Logs Tampering
+DEPRECATED: Violating Implicit Assumptions Regarding XML Content (aka XML Denial of Service (XDoS))
+XPath Injection
+XQuery Injection
+AJAX Footprinting
+XSS Through HTTP Headers
+Forceful Browsing
+OS Command Injection
+Pharming
+Buffer Overflow in Local Command-Line Utilities
+Reflection Attack in Authentication Protocol
+DEPRECATED: XSS in IMG Tags
+Forced Integer Overflow
+Log Injection-Tampering-Forging
+Adversary in the Middle (AiTM)
+WSDL Scanning
+Block Access to Libraries
+Cryptanalysis
+Phishing
+DEPRECATED: XML Parser Attack

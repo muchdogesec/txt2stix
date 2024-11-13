@@ -1,0 +1,232 @@
+Mobile ATT&CK
+Scheduled Task/Job
+Adversary-in-the-Middle
+Abuse Elevation Control Mechanism
+Remote Access Software
+Uninstall Malicious Application
+Indicator Removal on Host
+Supply Chain Compromise
+Impersonate SS7 Nodes
+Match Legitimate Name or Location
+Protected User Data
+Software Discovery
+Process Discovery
+Call Log
+Security Software Discovery
+Ptrace System Calls
+Impair Defenses
+Exploitation of Remote Services
+Steal Application Access Token
+Virtualization/Sandbox Evasion
+Application Versioning
+Command and Scripting Interpreter
+Disable or Modify Tools
+Ingress Tool Transfer
+Dynamic Resolution
+Exfiltration Over C2 Channel
+Exploitation for Privilege Escalation
+Call Control
+Exfiltration Over Unencrypted Non-C2 Protocol
+Broadcast Receivers
+Access Notifications
+Exfiltration Over Alternative Protocol
+Internet Connection Discovery
+Boot or Logon Initialization Scripts
+Execution Guardrails
+GUI Input Capture
+Compromise Client Software Binary
+Software Packing
+Exploitation for Client Execution
+Proxy Through Victim
+Foreground Persistence
+Replication Through Removable Media
+Audio Capture
+Hijack Execution Flow
+Unix Shell
+Download New Code at Runtime
+Exploitation for Initial Access
+System Checks
+Stored Application Data
+Screen Capture
+Transmitted Data Manipulation
+Compromise Software Dependencies and Development Tools
+URI Hijacking
+Subvert Trust Controls
+Keychain
+Bidirectional Communication
+Non-Standard Port
+Compromise Software Supply Chain
+Dead Drop Resolver
+Location Tracking
+Device Administrator Permissions
+Remote Device Management Services
+Data Destruction
+Input Capture
+Generate Traffic from Victim
+Disguise Root/Jailbreak Indicators
+Calendar Entries
+File Deletion
+Device Lockout
+Keylogging
+SMS Control
+Process Injection
+Wi-Fi Discovery
+Compromise Hardware Supply Chain
+Clipboard Data
+Data Manipulation
+SMS Messages
+Web Service
+System Runtime API Hijacking
+Credentials from Password Store
+Hooking
+File and Directory Discovery
+Obfuscated Files or Information
+Input Injection
+Network Denial of Service
+Compromise Application Executable
+Event Triggered Execution
+System Network Configuration Discovery
+Video Capture
+One-Way Communication
+Data Encrypted for Impact
+Prevent Application Removal
+Phishing
+SSL Pinning
+Lockscreen Bypass
+Contact List
+Account Access Removal
+Geofencing
+Conceal Multimedia Files
+Endpoint Denial of Service
+Out of Band Data
+Suppress Application Icon
+Masquerading
+Hide Artifacts
+Code Signing Policy Modification
+Domain Generation Algorithms
+Drive-By Compromise
+Operation Dust Storm
+C0033
+Use Recent OS Version
+Application Developer Guidance
+Enterprise Policy
+User Guidance
+Do Not Mitigate
+Antivirus/Antimalware
+System Partition Integrity
+Encrypt Network Traffic
+Lock Bootloader
+Security Updates
+Deploy Compromised Device Detection Method
+Interconnection Filtering
+Attestation
+UNC788
+Sandworm Team
+Scattered Spider
+Confucius
+MoustachedBouncer
+BITTER
+APT-C-23
+Dark Caracal
+Windshift
+APT28
+Earth Lusca
+PROMETHIUM
+Cerberus
+DroidJack
+Stealth Mango
+Allwinner
+FlixOnline
+Bread
+Hornbill
+Judy
+OldBoot
+Gooligan
+SpyNote RAT
+TrickMo
+NotCompatible
+AhRat
+XLoader for Android
+Trojan-SMS.AndroidOS.FakeInst.a
+AbstractEmu
+Chameleon
+Dendroid
+WireLurker
+Pegasus for iOS
+Tangelo
+RCSAndroid
+Skygofree
+KeyRaider
+ZergHelper
+Twitoor
+Fakecalls
+S.O.V.A.
+ANDROIDOS_ANSERVER.A
+DualToy
+HilalRAT
+X-Agent for Android
+DEFENSOR ID
+BRATA
+MazarBOT
+Ginp
+HummingWhale
+eSurv
+TangleBot
+Monokle
+FlyTrap
+FakeSpy
+SpyDealer
+RuMMS
+Pegasus for Android
+SharkBot
+RedDrop
+YiSpecter
+Trojan-SMS.AndroidOS.Agent.ao
+BOULDSPY
+Anubis
+AndroRAT
+Agent Smith
+PJApps
+ShiftyBug
+HummingBad
+Exobot
+OBAD
+Android/Chuli.A
+Charger
+Drinik
+Trojan-SMS.AndroidOS.OpFake.a
+XcodeGhost
+BusyGasper
+Escobar
+FluBot
+Adups
+Phenakite
+Marcher
+TianySpy
+Sunbird
+DressCode
+None
+FlexiSpy
+Xbot
+Network Connection Creation
+Network Traffic Content
+Process Creation
+System Settings
+API Calls
+Application Assets
+Process Termination
+Command Execution
+Protected Configuration
+Network Communication
+Host Status
+Network Traffic Flow
+Permissions Requests
+System Notifications
+Permissions Request
+Process Metadata
+Sensor Health
+User Interface
+Command
+Network Traffic
+Application Vetting
+Process
