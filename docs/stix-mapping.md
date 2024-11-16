@@ -93,7 +93,7 @@ Objects always created:
 
 * `indicator`
 * `ipv4-addr`
-* `relationship` (`ipv4-addr` `related-to` `indicator`)
+* `relationship` (`ipv4-addr` -> `indicator`)
 
 Relationship mode object generation behaviour:
 
@@ -147,7 +147,7 @@ Objects always created:
 
 * `indicator`
 * `ipv4-addr` 
-* `relationship` (`ipv4-addr` `related-to` `indicator`)
+* `relationship` (`ipv4-addr` -> `indicator`)
 * `network-traffic`
 
 Relationship mode object generation behaviour:
@@ -219,7 +219,7 @@ Objects always created:
 
 * `indicator`
 * `ipv6-addr`
-* `relationship` (`ipv6-addr` `related-to` `indicator`)
+* `relationship` (`ipv6-addr` -> `indicator`)
 
 Relationship mode object generation behaviour:
 
@@ -273,7 +273,7 @@ Objects always created:
 
 * `indicator`
 * `ipv6-addr`
-* `relationship` (`ipv6-addr` `related-to` `indicator`)
+* `relationship` (`ipv6-addr` -> `indicator`)
 * `network-traffic`
 
 Relationship mode object generation behaviour:
@@ -341,7 +341,7 @@ Objects always created:
 
 * `indicator`
 * `domain-name`
-* `relationship` (`domain-name` `related-to` `indicator`)
+* `relationship` (`domain-name` -> `indicator`)
 
 Relationship mode object generation behaviour:
 
@@ -395,7 +395,7 @@ Objects always created:
 
 * `indicator`
 * `url`
-* `relationship` (`url` `related-to` `indicator`)
+* `relationship` (`url` -> `indicator`)
 
 Relationship mode object generation behaviour:
 
@@ -449,7 +449,7 @@ Objects always created:
 
 * `indicator`
 * `file`
-* `relationship` (`file` `related-to` `indicator`)
+* `relationship` (`file` -> `indicator`)
 
 Relationship mode object generation behaviour:
 
@@ -503,7 +503,7 @@ Objects always created:
 
 * `indicator`
 * `directory`
-* `relationship` (`directory` `related-to` `indicator`)
+* `relationship` (`directory` -> `indicator`)
 
 Relationship mode object generation behaviour:
 
@@ -557,7 +557,7 @@ Objects always created:
 
 * `indicator`
 * `directory`
-* `relationship` (`directory` `related-to` `indicator`)
+* `relationship` (`directory` -> `indicator`)
 * `file`
 
 Relationship mode object generation behaviour:
@@ -653,7 +653,7 @@ Objects always created:
 
 * `indicator`
 * `file`
-* `relationship` (`file` `related-to` `indicator`)
+* `relationship` (`file` -> `indicator`)
 
 Relationship mode object generation behaviour:
 
@@ -709,7 +709,7 @@ Objects always created:
 
 * `indicator`
 * `email-addr`
-* `relationship` (`email-addr` `related-to` `indicator`)
+* `relationship` (`email-addr` -> `indicator`)
 
 Relationship mode object generation behaviour:
 
@@ -763,7 +763,7 @@ Objects always created:
 
 * `indicator`
 * `mac-addr`
-* `relationship` (`mac-addr` `related-to` `indicator`)
+* `relationship` (`mac-addr` -> `indicator`)
 
 Relationship mode object generation behaviour:
 
@@ -817,7 +817,7 @@ Objects always created:
 
 * `indicator`
 * `windows-registry-key`
-* `relationship` (`windows-registry-key` `related-to` `indicator`)
+* `relationship` (`windows-registry-key` -> `indicator`)
 
 Relationship mode object generation behaviour:
 
@@ -871,7 +871,7 @@ Objects always created:
 
 * `indicator`
 * `autonomous-system`
-* `relationship` (`autonomous-system` `related-to` `indicator`)
+* `relationship` (`autonomous-system` -> `indicator`)
 
 Relationship mode object generation behaviour:
 
@@ -925,7 +925,7 @@ Objects always created:
 
 * `indicator`
 * `user-agent`
-* `relationship` (`user-agent` `related-to` `indicator`)
+* `relationship` (`user-agent` -> `indicator`)
 * `extensions-definition`: https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/extension-definitions/scos/user-agent.json
 
 Relationship mode object generation behaviour:
@@ -985,7 +985,7 @@ Objects always created:
 
 * `indicator`
 * `cryptocurrency-wallet`
-* `relationship` (`cryptocurrency-wallet` `related-to` `indicator`)
+* `relationship` (`cryptocurrency-wallet` -> `indicator`)
 * `extensions-definition`: https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/extension-definitions/scos/cryptocurrency-wallet.json
 
 Relationship mode object generation behaviour:
@@ -1041,7 +1041,7 @@ Objects always created:
 
 * `indicator`
 * `cryptocurrency-wallet`
-* `relationship` (`cryptocurrency-wallet` `related-to` `indicator`)
+* `relationship` (`cryptocurrency-wallet` -> `indicator`)
 * `cryptocurrency-transaction` for all crypto transactions that exist related to the wallet (is not always generated if lookup unsuccessful)
 * `extensions-definition`: https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/extension-definitions/scos/cryptocurrency-wallet.json
 * `extensions-definition`: https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/extension-definitions/scos/cryptocurrency-transaction.json
@@ -1099,7 +1099,7 @@ Objects always created:
 
 * `indicator`
 * `cryptocurrency-transaction`
-* `relationship` (`cryptocurrency-transaction` `related-to` `indicator`)
+* `relationship` (`cryptocurrency-transaction` -> `indicator`)
 * `cryptocurrency-wallet` for wallets seen in transaction identified by crypto2stix (is not always generated if lookup unsuccessful)
 * `extensions-definition`: https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/extension-definitions/scos/cryptocurrency-transaction.json
 * `extensions-definition`: https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/extension-definitions/scos/cryptocurrency-wallet.json
@@ -1173,7 +1173,7 @@ Objects always created:
 
 * `indicator`
 * `bank-card` (with `relationship` to `indicator`)
-* `relationship` (`bank-card` `related-to` `indicator`)
+* `relationship` (`bank-card` -> `indicator`)
 * `identity` (with `relationship` to `bank-card`) generated by creditcard2stix (is not always generated if lookup unsuccessful)
 * `extension-definition`: https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/extension-definitions/scos/bank-card.json
 
@@ -1222,7 +1222,7 @@ Objects always created:
 
 * `indicator`
 * `bank-account`
-* `relationship` (`bank-card` `related-to` `indicator`)
+* `relationship` (`bank-card` -> `indicator`)
 * `extension-definition`: https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/extension-definitions/scos/bank-account.json
 
 Relationship mode object generation behaviour:
@@ -1287,7 +1287,7 @@ Objects always created:
 
 * `indicator`
 * `phone-number`
-* `relationship` (`phone-number` `related-to` `indicator`)
+* `relationship` (`phone-number` -> `indicator`)
 * `extension-definition`: https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/extension-definitions/scos/phone-number.json
 
 Relationship mode object generation behaviour:
