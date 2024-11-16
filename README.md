@@ -37,7 +37,7 @@ cd txt2stix
 python3 -m venv txt2stix-venv
 source txt2stix-venv/bin/activate
 # install requirements
-pip install .
+pip3 install .
 ```
 
 ### Set variables
