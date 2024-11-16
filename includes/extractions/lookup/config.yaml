@@ -17,6 +17,21 @@ lookup_mitre_attack_enterprise_id:
     - 
   stix_mapping: ctibutler-mitre-attack-enterprise-id
 
+lookup_mitre_attack_enterprise_name:
+  type: lookup
+  name: 'MITRE ATT&CK Enterprise names'
+  description: 'Extracts MITRE ATT&CK Enterprise names from text.'
+  notes: 'Currently uses v15.1'
+  file: 'lookups/mitre_attack_enterprise_name.txt'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_mitre_attack_enterprise_name
+  ignore_extractions:
+    - 
+  stix_mapping: ctibutler-mitre-attack-enterprise-name
+
 lookup_mitre_attack_mobile_id:
   type: lookup
   name: 'MITRE ATT&CK Mobile IDs'
@@ -32,6 +47,21 @@ lookup_mitre_attack_mobile_id:
     - 
   stix_mapping: ctibutler-mitre-attack-mobile-id
 
+lookup_mitre_attack_mobile_name:
+  type: lookup
+  name: 'MITRE ATT&CK Mobile names'
+  description: 'Extracts MITRE ATT&CK Mobile names from text.'
+  notes: 'Currently uses v15.1'
+  file: 'lookups/mitre_attack_mobile_name.txt'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_mitre_attack_mobile_name
+  ignore_extractions:
+    - 
+  stix_mapping: ctibutler-mitre-attack-mobile-name
+
 lookup_mitre_attack_ics_id:
   type: lookup
   name: 'MITRE ATT&CK ICS IDs'
@@ -46,6 +76,21 @@ lookup_mitre_attack_ics_id:
   ignore_extractions:
     - 
   stix_mapping: ctibutler-mitre-attack-ics-id
+
+lookup_mitre_attack_ics_name:
+  type: lookup
+  name: 'MITRE ATT&CK ICS names'
+  description: 'Extracts MITRE ATT&CK ICS names from text.'
+  notes: 'Currently uses v15.1'
+  file: 'lookups/mitre_attack_ics_name.txt'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_mitre_attack_ics_name
+  ignore_extractions:
+    - 
+  stix_mapping: ctibutler-mitre-attack-ics-name
 
 ####### MITRE CAPEC #######
 
@@ -64,6 +109,21 @@ lookup_mitre_capec_id:
     - 
   stix_mapping: ctibutler-mitre-capec-id
 
+lookup_mitre_capec_name:
+  type: lookup
+  name: 'MITRE CAPEC names'
+  description: 'Extracts MITRE CAPEC names from text.'
+  notes: 'Currently uses v3.9'
+  file: 'lookups/mitre_capec_name.txt'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_mitre_capec_name
+  ignore_extractions:
+    - 
+  stix_mapping: ctibutler-mitre-capec-name
+
 ####### MITRE CWE #######
 
 lookup_mitre_cwe_id:
@@ -80,6 +140,21 @@ lookup_mitre_cwe_id:
   ignore_extractions:
     - 
   stix_mapping: ctibutler-mitre-cwe-id
+
+lookup_mitre_cwe_name:
+  type: lookup
+  name: MITRE CWE names
+  description: 'Extracts MITRE CWE names from text.'
+  notes: 'Currently uses v4.15'
+  file: 'lookups/mitre_cwe_name.txt'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_mitre_cwe_name
+  ignore_extractions:
+    - 
+  stix_mapping: ctibutler-mitre-cwe-name
 
 ####### MITRE ATLAS #######
 
@@ -98,6 +173,21 @@ lookup_mitre_atlas_id:
     - 
   stix_mapping: ctibutler-mitre-atlas-id
 
+lookup_mitre_atlas_name:
+  type: lookup
+  name: MITRE ATLAS names
+  description: 'Extracts MITRE ATLAS names from text.'
+  notes: 'Currently uses v4.5.2'
+  file: 'lookups/mitre_atlas_name.txt'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_mitre_atlas_name
+  ignore_extractions:
+    - 
+  stix_mapping: ctibutler-mitre-atlas-name
+
 ####### DISARM #######
 
 lookup_disarm_id:
@@ -114,6 +204,21 @@ lookup_disarm_id:
   ignore_extractions:
     - 
   stix_mapping: ctibutler-disarm-id
+
+lookup_disarm_name:
+  type: lookup
+  name: DISARM IDs
+  description: 'Extracts DISARM names from text.'
+  notes: 'Currently uses v1.5'
+  file: 'lookups/disarm_name.txt'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_disarm_name
+  ignore_extractions:
+    - 
+  stix_mapping: ctibutler-disarm-name
 
 ####### County extractions #######
 

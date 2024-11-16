@@ -1,0 +1,8 @@
+====Good====
+
+Use of Redundant Code
+Insufficient Encapsulation
+
+====Bad====
+
+CWE-102

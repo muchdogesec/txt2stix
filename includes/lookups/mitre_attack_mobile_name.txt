@@ -1,0 +1,297 @@
+Mobile ATT&CK
+Scheduled Task/Job
+Adversary-in-the-Middle
+Abuse Elevation Control Mechanism
+Remote Access Software
+Uninstall Malicious Application
+Indicator Removal on Host
+Supply Chain Compromise
+Impersonate SS7 Nodes
+Match Legitimate Name or Location
+Protected User Data
+Asymmetric Cryptography
+Software Discovery
+Process Discovery
+Call Log
+Security Software Discovery
+Ptrace System Calls
+Impair Defenses
+Exploitation of Remote Services
+Web Protocols
+Steal Application Access Token
+User Evasion
+Virtualization/Sandbox Evasion
+Application Versioning
+Command and Scripting Interpreter
+Disable or Modify Tools
+Ingress Tool Transfer
+Dynamic Resolution
+Network Service Scanning
+Exfiltration Over C2 Channel
+Exploitation for Privilege Escalation
+Call Control
+Exfiltration Over Unencrypted Non-C2 Protocol
+Broadcast Receivers
+Access Notifications
+Exfiltration Over Alternative Protocol
+Internet Connection Discovery
+Boot or Logon Initialization Scripts
+Execution Guardrails
+GUI Input Capture
+Compromise Client Software Binary
+Software Packing
+Native API
+Exploitation for Client Execution
+Proxy Through Victim
+Foreground Persistence
+Replication Through Removable Media
+Audio Capture
+Hijack Execution Flow
+Unix Shell
+Application Layer Protocol
+Download New Code at Runtime
+Exploitation for Initial Access
+System Checks
+Stored Application Data
+Screen Capture
+Transmitted Data Manipulation
+Compromise Software Dependencies and Development Tools
+URI Hijacking
+Subvert Trust Controls
+Keychain
+Bidirectional Communication
+Non-Standard Port
+Compromise Software Supply Chain
+Dead Drop Resolver
+Location Tracking
+Device Administrator Permissions
+Remote Device Management Services
+Data Destruction
+Input Capture
+Generate Traffic from Victim
+Disguise Root/Jailbreak Indicators
+Calendar Entries
+File Deletion
+Device Lockout
+Keylogging
+SMS Control
+Process Injection
+Symmetric Cryptography
+Wi-Fi Discovery
+Compromise Hardware Supply Chain
+Clipboard Data
+Data Manipulation
+SMS Messages
+Web Service
+System Runtime API Hijacking
+Credentials from Password Store
+Hooking
+File and Directory Discovery
+Obfuscated Files or Information
+Input Injection
+Network Denial of Service
+Compromise Application Executable
+Event Triggered Execution
+System Network Configuration Discovery
+Video Capture
+One-Way Communication
+Data Encrypted for Impact
+Prevent Application Removal
+System Network Connections Discovery
+Phishing
+SSL Pinning
+Lockscreen Bypass
+Contact List
+Data from Local System
+Account Access Removal
+System Information Discovery
+Archive Collected Data
+Geofencing
+Conceal Multimedia Files
+Endpoint Denial of Service
+Out of Band Data
+Encrypted Channel
+Suppress Application Icon
+Masquerading
+Steganography
+Hide Artifacts
+Code Signing Policy Modification
+Domain Generation Algorithms
+Drive-By Compromise
+Operation Dust Storm
+C0033
+Use Recent OS Version
+Application Developer Guidance
+Enterprise Policy
+User Guidance
+Do Not Mitigate
+Antivirus/Antimalware
+System Partition Integrity
+Encrypt Network Traffic
+Lock Bootloader
+Security Updates
+Deploy Compromised Device Detection Method
+Interconnection Filtering
+Attestation
+The MITRE Corporation
+Bouncing Golf
+UNC788
+Sandworm Team
+Scattered Spider
+Confucius
+MoustachedBouncer
+BITTER
+APT-C-23
+Dark Caracal
+Windshift
+APT28
+Earth Lusca
+PROMETHIUM
+CarbonSteal
+Cerberus
+DroidJack
+Rotexy
+Stealth Mango
+Allwinner
+GoldenEagle
+FlixOnline
+Bread
+Hornbill
+Judy
+OldBoot
+Gooligan
+SpyNote RAT
+TrickMo
+INSOMNIA
+Dvmap
+Zen
+NotCompatible
+AhRat
+XLoader for Android
+Trojan-SMS.AndroidOS.FakeInst.a
+XLoader for iOS
+AbstractEmu
+Chameleon
+Exodus
+Dendroid
+WireLurker
+Desert Scorpion
+Pegasus for iOS
+Tangelo
+RCSAndroid
+Corona Updates
+Skygofree
+KeyRaider
+ZergHelper
+DoubleAgent
+Twitoor
+Fakecalls
+S.O.V.A.
+ANDROIDOS_ANSERVER.A
+DualToy
+Mandrake
+HilalRAT
+X-Agent for Android
+DEFENSOR ID
+BRATA
+MazarBOT
+Ginp
+HummingWhale
+eSurv
+TangleBot
+Monokle
+Red Alert 2.0
+ViceLeaker
+FlyTrap
+FakeSpy
+SpyDealer
+Concipit1248
+RuMMS
+Pegasus for Android
+FrozenCell
+AndroidOS/MalLocker.B
+SharkBot
+RedDrop
+CHEMISTGAMES
+YiSpecter
+Trojan-SMS.AndroidOS.Agent.ao
+BOULDSPY
+Anubis
+AndroRAT
+FinFisher
+Agent Smith
+Asacub
+GPlayed
+EventBot
+HenBox
+Riltok
+GolfSpy
+Pallas
+Circles
+Tiktok Pro
+PJApps
+ShiftyBug
+HummingBad
+Exobot
+OBAD
+Android/Chuli.A
+Charger
+Drinik
+Trojan-SMS.AndroidOS.OpFake.a
+XcodeGhost
+SilkBean
+WolfRAT
+BusyGasper
+BrainTest
+TERRACOTTA
+Escobar
+Triada
+Golden Cup
+FluBot
+ViperRAT
+Adups
+SimBad
+Android/AdDisplay.Ashas
+Phenakite
+Marcher
+TianySpy
+Sunbird
+DressCode
+Gustuff
+None
+FlexiSpy
+Xbot
+Network Connection Creation
+Network Traffic Content
+Process Creation
+System Settings
+API Calls
+Application Assets
+Process Termination
+Command Execution
+Protected Configuration
+Network Communication
+Host Status
+Network Traffic Flow
+Permissions Requests
+System Notifications
+Permissions Request
+Process Metadata
+Sensor Health
+User Interface
+Command
+Network Traffic
+Application Vetting
+Process
+Initial Access
+Exfiltration
+Persistence
+Privilege Escalation
+Command and Control
+Execution
+Impact
+Credential Access
+Collection
+Lateral Movement
+Defense Evasion
+Discovery

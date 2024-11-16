@@ -476,6 +476,13 @@ generic_mitre_attack_enterprise:
     - 'P1174' # not a valid id
     - 'SolarWinds Compromise' # is a name
 
+generic_mitre_attack_enterprise_name:
+  test_positive_examples:
+    - 'Rundll32' # attack-pattern--045d0922-2310-4e60-b5e4-3302302cb3c5
+    - 'OS Credential Dumping' # attack-pattern--0a3ead4e-6d47-4ccb-854c-a6a4f9d96b22
+  test_negative_examples:
+    - 'TA0006' # is id
+
 generic_mitre_attack_mobile:
   test_positive_examples:
     - 'M1013' # course-of-action--25dc1ce8-eb55-4333-ae30-a7cb4f5894a1
@@ -486,11 +493,25 @@ generic_mitre_attack_mobile:
     - 'P1174' # not a valid id
     - 'Use Recent OS Version' # is a name
 
+generic_mitre_attack_mobile_name:
+  test_positive_examples:
+    - 'Impair Defenses' # attack-pattern--20b0931a-8952-42ca-975f-775bad295f1a
+    - 'Call Log' # attack-pattern--1d1b1558-c833-482e-aabb-d07ef6eae63d
+  test_negative_examples:
+    - 'M1013' # is id
+
 generic_mitre_attack_ics:
   test_positive_examples:
     - 'TA0111' # x-mitre-tactic--33752ae7-f875-4f43-bdb6-d8d02d341046
   test_negative_examples:
     - 'Privilege Escalation' # is name
+
+generic_mitre_attack_ics_name:
+  test_positive_examples:
+    - 'Scripting' # attack-pattern--2dc2b567-8821-49f9-9045-8740f3d0b958
+    - 'Program Upload' # attack-pattern--3067b85e-271e-4bc5-81ad-ab1a81d411e3
+  test_negative_examples:
+    - 'TA0111' # is id
 
 ####### MITRE CAPEC #######
 ### YOU NEED TO ENSURE POSITIVE TESTS EXIST IN YOUR CTIBUTLER INSTALL
@@ -499,10 +520,17 @@ generic_mitre_attack_ics:
 
 generic_mitre_capec:
   test_positive_examples:
-    - 'CAPEC-110'
+    - 'CAPEC-110' # attack-pattern--7c90bef7-530c-427b-8fb7-f9d3eda9c26a
   test_negative_examples:
     - 'CAPEC-999' # invalid ID
     - 'Brute Force' # is name
+
+generic_mitre_capec_name:
+  test_positive_examples:
+    - 'Clickjacking' # attack-pattern--ec41b2b3-a3b6-4af0-be65-69e82907dfef
+    - 'Overflow Buffers' # attack-pattern--77e51461-7843-411c-a90e-852498957f76
+  test_negative_examples:
+    - 'CAPEC-110' # is id
 
 ####### MITRE CWE #######
 ### YOU NEED TO ENSURE POSITIVE TESTS EXIST IN YOUR CTIBUTLER INSTALL
@@ -511,33 +539,54 @@ generic_mitre_capec:
 
 generic_mitre_cwe:
   test_positive_examples:
-    - 'CWE-1023'
-    - 'CWE-102'
+    - 'CWE-1023' # weakness--c122031a-5735-54f2-a80b-194da3a2c0e6
+    - 'CWE-102' # weakness--ad5b3e38-fdf2-5c97-90da-30dad0f1f016
   test_negative_examples:
     - 'CWE-999' # invalid id
     - 'Destructor' # is name
+
+generic_mitre_cwe_name:
+  test_positive_examples:
+    - 'Use of Redundant Code' # weakness--6dfb4e56-706d-5243-a3eb-6d4e49b16389
+    - 'Insufficient Encapsulation' # weakness--b0a3b7a9-fefa-5435-8336-4d2e019597f8
+  test_negative_examples:
+    - 'CWE-102' # is id
 
 ####### MITRE ATLAS #######
 ### YOU NEED TO ENSURE POSITIVE TESTS EXIST IN YOUR CTIBUTLER INSTALL
 
 generic_mitre_atlas:
   test_positive_examples:
-    - 'AML.M0015'
-    - 'AML.T0050'
+    - 'AML.M0015' # course-of-action--91d08908-dd7d-487c-b035-6f43f54f1855
+    - 'AML.T0050' # attack-pattern--3f58075b-fed5-49ad-b41d-b6f664678e24
   test_negative_examples:
     - 'AML.T0000' # invalid id
     - 'Reconnaissance' # is name
+
+generic_mitre_atlas_name:
+  test_positive_examples:
+    - 'Defense Evasion' # x-mitre-tactic--45d9ba3e-1656-4de1-b132-e9faa8f8c969
+    - 'ML Attack Staging' # x-mitre-tactic--483cda0b-e5d6-45e6-a87e-06f5986a39e4
+  test_negative_examples:
+    - 'AML.T0050' # is id
 
 ####### DISARM #######
 ### YOU NEED TO ENSURE POSITIVE TESTS EXIST IN YOUR CTIBUTLER INSTALL
 
 generic_disarm:
   test_positive_examples:
-    - 'T0131.001'
-    - 'TA01'
+    - 'T0131.001' # attack-pattern--db0a00c8-7913-5895-b0a2-a7378eaab591
+    - 'TA01' # x-mitre-tactic--b977ad29-eb0c-5f09-bb2f-6d3f23e2a175
   test_negative_examples:
     - 'TA0001' # invalid id
     - 'Reconnaissance' # is name
+
+generic_disarm_name:
+  test_positive_examples:
+    - 'Microtarget' # x-mitre-tactic--10ccaa61-bf44-56ec-b1a7-3fc01942ec6d
+    - 'Develop Narratives' # x-mitre-tactic--ec5943c5-cf40-59dd-a7ed-c2175fc9727a
+  test_negative_examples:
+    - 'T0131.001' # is id
 
 ####### Misc STIX Objects #######
 

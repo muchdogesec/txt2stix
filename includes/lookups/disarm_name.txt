@@ -1,0 +1,347 @@
+Plan Strategy
+Plan Objectives
+Microtarget
+Develop Content
+Select Channels and Affordances
+Conduct Pump Priming
+Deliver Content
+Drive Offline Activity
+Persist in the Information Environment
+Assess Effectiveness
+Target Audience Analysis
+Develop Narratives
+Establish Assets
+Establish Legitimacy
+Maximise Exposure
+Drive Online Harms
+Facilitate State Propaganda
+Leverage Existing Narratives
+Develop Competing Narratives
+Create Inauthentic Social Media Pages and Groups
+Cultivate Ignorant Agents
+Create Inauthentic Websites
+Prepare Fundraising Campaigns
+Raise Funds from Malign Actors
+Raise Funds from Ignorant Agents
+Create Hashtags and Search Artefacts
+Create Clickbait
+Conduct Fundraising
+Conduct Crowdfunding Campaigns
+Purchase Targeted Advertisements
+Trial Content
+Leverage Conspiracy Theory Narratives
+Amplify Existing Conspiracy Theory Narratives
+Develop Original Conspiracy Theory Narratives
+Distort Facts
+Reframe Context
+Edit Open-Source Content
+Online Polls
+Bait Influencer
+Demand Insurmountable Proof
+Seed Kernel of Truth
+Chat Apps
+Use Encrypted Chat Apps
+Use Unencrypted Chats Apps
+Seed Distortions
+Use Fake Experts
+Use Search Engine Optimisation
+Censor Social Media as a Political Force
+Harass
+Boycott/"Cancel" Opponents
+Harass People Based on Identities
+Threaten to Dox
+Dox
+Flood Information Space
+Trolls Amplify and Manipulate
+Flood Existing Hashtag
+Bots Amplify via Automated Forwarding and Reposting
+Utilise Spamoflauge
+Conduct Swarming
+Conduct Keyword Squatting
+Inauthentic Sites Amplify News and Narratives
+Generate Information Pollution
+Organise Events
+Pay for Physical Action
+Conduct Symbolic Action
+Play the Long Game
+Continue to Amplify
+Sell Merchandise
+Prepare Physical Broadcast Capabilities
+Degrade Adversary
+Respond to Breaking News Event or Active Crisis
+Segment Audiences
+Geographic Segmentation
+Demographic Segmentation
+Economic Segmentation
+Psychographic Segmentation
+Political Segmentation
+Determine Target Audiences
+Determine Strategic Ends
+Geopolitical Advantage
+Domestic Political Advantage
+Economic Advantage
+Ideological Advantage
+Dismiss
+Discredit Credible Sources
+Distort
+Distract
+Dismay
+Divide
+Map Target Audience Information Environment
+Monitor Social Media Analytics
+Evaluate Media Surveys
+Identify Trending Topics/Hashtags
+Conduct Web Traffic Analysis
+Assess Degree/Type of Media Access
+Identify Social and Technical Vulnerabilities
+Find Echo Chambers
+Identify Data Voids
+Identify Existing Prejudices
+Identify Existing Fissures
+Identify Existing Conspiracy Narratives/Suspicions
+Identify Wedge Issues
+Identify Target Audience Adversaries
+Identify Media System Vulnerabilities
+Develop New Narratives
+Integrate Target Audience Vulnerabilities into Narrative
+Reuse Existing Content
+Use Copypasta
+Plagiarise Content
+Deceptively Labelled or Translated
+Appropriate Content
+Develop Text-Based Content
+Develop AI-Generated Text
+Develop Inauthentic News Articles
+Develop Document
+Develop Book
+Develop Opinion Article
+Create Fake Research
+Machine Translated Text
+Develop Image-Based Content
+Develop Memes
+Develop AI-Generated Images (Deepfakes)
+Deceptively Edit Images (Cheap Fakes)
+Aggregate Information into Evidence Collages
+Develop Video-Based Content
+Develop AI-Generated Videos (Deepfakes)
+Deceptively Edit Video (Cheap Fakes)
+Develop Audio-Based Content
+Develop AI-Generated Audio (Deepfakes)
+Deceptively Edit Audio (Cheap Fakes)
+Obtain Private Documents
+Obtain Authentic Documents
+Alter Authentic Documents
+Create Inauthentic Accounts
+Create Anonymous Accounts
+Create Cyborg Accounts
+Create Bot Accounts
+Create Sockpuppet Accounts
+Recruit Malign Actors
+Recruit Contractors
+Recruit Partisans
+Enlist Troll Accounts
+Build Network
+Create Organisations
+Use Follow Trains
+Create Community or Sub-Group
+Acquire/Recruit Network
+Fund Proxies
+Acquire Botnets
+Infiltrate Existing Networks
+Identify Susceptible Targets in Networks
+Utilise Butterfly Attacks
+Develop Owned Media Assets
+Leverage Content Farms
+Create Content Farms
+Outsource Content Creation to External Organisations
+Present Persona
+Individual Persona
+Local Persona
+Journalist Persona
+Activist Persona
+Hacktivist Persona
+Military Personnel Persona
+Recruiter Persona
+Researcher Persona
+Expert Persona
+Romantic Suitor Persona
+Party Official Persona
+Government Official Persona
+Government Employee Persona
+Institutional Persona
+Local Institution Persona
+News Outlet Persona
+Fact Checking Organisation Persona
+Think Tank Persona
+Business Persona
+Government Institution Persona
+NGO Persona
+Social Cause Persona
+Establish Inauthentic News Sites
+Create Inauthentic News Sites
+Leverage Existing Inauthentic News Sites
+Co-Opt Trusted Sources
+Co-Opt Trusted Individuals
+Co-Opt Grassroots Groups
+Co-Opt Influencers
+Create Localised Content
+Leverage Echo Chambers/Filter Bubbles
+Use Existing Echo Chambers/Filter Bubbles
+Create Echo Chambers/Filter Bubbles
+Exploit Data Voids
+Livestream
+Video Livestream
+Audio Livestream
+Social Networks
+Mainstream Social Networks
+Dating App
+Private/Closed Social Networks
+Interest-Based Networks
+Use Hashtags
+Create Dedicated Hashtag
+Media Sharing Networks
+Photo Sharing
+Video Sharing
+Audio Sharing
+Discussion Forums
+Anonymous Message Boards
+Bookmarking and Content Curation
+Blogging and Publishing Networks
+Consumer Review Networks
+Formal Diplomatic Channels
+Traditional Media
+TV
+Newspaper
+Radio
+Email
+Employ Commercial Analytic Firms
+Deliver Ads
+Social Media
+Traditional Media
+Post Content
+Share Memes
+Post Violative Content to Provoke Takedown and Backlash
+One-Way Direct Posting
+Comment or Reply on Content
+Post Inauthentic Social Media Comment
+Attract Traditional Media
+Amplify Existing Narrative
+Cross-Posting
+Post across Groups
+Post across Platform
+Post across Disciplines
+Incentivize Sharing
+Use Affiliate Marketing Programmes
+Use Contests and Prizes
+Manipulate Platform Algorithm
+Bypass Content Blocking
+Direct Users to Alternative Platforms
+Control Information Environment through Offensive Cyberspace Operations
+Delete Opposing Content
+Block Content
+Destroy Information Generation Capabilities
+Conduct Server Redirect
+Suppress Opposition
+Report Non-Violative Opposing Content
+Goad People into Harmful Action (Stop Hitting Yourself)
+Exploit Platform TOS/Content Moderation
+Platform Filtering
+Encourage Attendance at Events
+Call to Action to Attend
+Facilitate Logistics or Support for Attendance
+Physical Violence
+Conduct Physical Violence
+Encourage Physical Violence
+Conceal Information Assets
+Use Pseudonyms
+Conceal Network Identity
+Distance Reputable Individuals from Operation
+Launder Information Assets
+Change Names of Information Assets
+Conceal Operational Activity
+Conceal Network Identity
+Generate Content Unrelated to Narrative
+Break Association with Content
+Delete URLs
+Coordinate on Encrypted/Closed Networks
+Deny Involvement
+Delete Accounts/Account Activity
+Redirect URLs
+Remove Post Origins
+Misattribute Activity
+Conceal Infrastructure
+Conceal Sponsorship
+Utilise Bulletproof Hosting
+Use Shell Organisations
+Use Cryptocurrency
+Obfuscate Payment
+Exploit TOS/Content Moderation
+Legacy Web Content
+Post Borderline Content
+Measure Performance
+People Focused
+Content Focused
+View Focused
+Measure Effectiveness
+Behaviour Changes
+Content
+Awareness
+Knowledge
+Action/Attitude
+Measure Effectiveness Indicators (or KPIs)
+Message Reach
+Social Media Engagement
+Undermine
+Smear
+Thwart
+Subvert
+Polarise
+Cultivate Support
+Defend Reputaton
+Justify Action
+Energise Supporters
+Boost Reputation
+Cultvate Support for Initiative
+Cultivate Support for Ally
+Recruit Members
+Increase Prestige
+Make Money
+Generate Ad Revenue
+Scam
+Raise Funds
+Sell Items under False Pretences
+Extort
+Manipulate Stocks
+Motivate to Act
+Encourage
+Provoke
+Compel
+Dissuade from Acting
+Discourage
+Silence
+Deter
+Cause Harm
+Defame
+Intimidate
+Spread Hate
+Acquire Compromised Asset
+Acquire Compromised Account
+Acquire Compromised Website
+Persona Legitimacy
+Authentic Persona
+Fabricated Persona
+Impersonated Persona
+Parody Persona
+Persona Legitimacy Evidence
+Present Persona across Platforms
+Persona Template
+Establish Account Imagery
+Copy Account Imagery
+AI-Generated Account Imagery
+Animal Account Imagery
+Scenery Account Imagery
+Illustrated Character Account Imagery
+Attractive Person Account Imagery
+Stock Image Account Imagery
+disarm2stix
+None
