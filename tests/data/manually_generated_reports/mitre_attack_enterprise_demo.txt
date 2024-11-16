@@ -2,6 +2,6 @@ example.com is hosted on the ip address 1.1.1.1
 
 1.1.1.1 has the ASN13335 which is located in US.
 
-The google.com domain has been known for distributing the malware revil which can be detected using the hash e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+The google.com domain has been known for distributing the malware REvil which can be detected using the hash e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 
 revil is know to use Windows Management Instrumentation to monitor for and kill specific processes listed in its configuration file
