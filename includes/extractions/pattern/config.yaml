@@ -12,8 +12,6 @@ pattern_ipv4_address_only:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_ipv4_address_only
-  ignore_extractions:
-    - 
   stix_mapping: ipv4-addr
 
 pattern_ipv4_address_cidr:
@@ -26,9 +24,6 @@ pattern_ipv4_address_cidr:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: ipv4_address_cidr
-  ignore_extractions:
-    - pattern_ipv4_address_only
-    - ai_ipv4_address_only
   stix_mapping: ipv4-addr
 
 pattern_ipv4_address_port:
@@ -41,9 +36,6 @@ pattern_ipv4_address_port:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: ipv4_address_port
-  ignore_extractions:
-    - pattern_ipv4_address_only
-    - ai_ipv4_address_only
   stix_mapping: ipv4-addr-port
 
 ####### IPv6 extractions #######
@@ -58,9 +50,6 @@ pattern_ipv6_address_only:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_ipv6_address_only
-  ignore_extractions:
-    - pattern_ipv6_address_cidr
-    - pattern_ipv6_address_port
   stix_mapping: ipv6-addr
 
 pattern_ipv6_address_cidr:
@@ -73,9 +62,6 @@ pattern_ipv6_address_cidr:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_ipv6_address_cidr
-  ignore_extractions:
-    - pattern_ipv6_address_only
-    - ai_ipv6_address_only
   stix_mapping: ipv6-addr
 
 pattern_ipv6_address_port:
@@ -88,9 +74,6 @@ pattern_ipv6_address_port:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_ipv6_address_port
-  ignore_extractions:
-    - pattern_ipv6_address_only
-    - ai_ipv6_address_only
   stix_mapping: ipv6-addr-port
 
 ####### Domain name extractions #######
@@ -105,8 +88,6 @@ pattern_domain_name_only:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_domain_name_only
-  ignore_extractions:
-    - 
   stix_mapping: domain-name
 
 pattern_domain_name_subdomain:
@@ -119,9 +100,6 @@ pattern_domain_name_subdomain:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_domain_name_subdomain
-  ignore_extractions:
-    - pattern_domain_name_only
-    - ai_domain_name_only
   stix_mapping: domain-name
 
 ####### URL extractions #######
@@ -136,8 +114,6 @@ pattern_url:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_url
-  ignore_extractions:
-    - 
   stix_mapping: url
 
 pattern_url_file:
@@ -150,11 +126,6 @@ pattern_url_file:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_url_file
-  ignore_extractions:
-    - pattern_url
-    - ai_url
-    - pattern_url_path
-    - ai_url_path
   stix_mapping: url
 
 pattern_url_path:
@@ -167,8 +138,6 @@ pattern_url_path:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_url_path
-  ignore_extractions:
-    - 
   stix_mapping: url
 
 ####### Hostname extractions #######
@@ -183,8 +152,6 @@ pattern_host_name:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_host_name
-  ignore_extractions:
-    - 
   stix_mapping: domain-name
 
 pattern_host_name_subdomain:
@@ -197,9 +164,6 @@ pattern_host_name_subdomain:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_host_name_subdomain
-  ignore_extractions:
-    - pattern_host_name
-    - ai_host_name
   stix_mapping: domain-name
 
 pattern_host_name_url:
@@ -212,11 +176,6 @@ pattern_host_name_url:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_host_name_url
-  ignore_extractions:
-    - pattern_host_name_subdomain
-    - ai_host_name_subdomain
-    - pattern_host_name
-    - ai_host_name
   stix_mapping: url
 
 pattern_host_name_file:
@@ -229,15 +188,6 @@ pattern_host_name_file:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_host_name_file
-  ignore_extractions: host_name_path
-    - pattern_host_name_url
-    - ai_host_name_url
-    - pattern_host_name
-    - ai_host_name
-    - pattern_host_name_subdomain
-    - ai_host_name_subdomain
-    - pattern_host_name_path
-    - ai_host_name_path
   stix_mapping: url
 
 pattern_host_name_path:
@@ -250,13 +200,6 @@ pattern_host_name_path:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_host_name_path
-  ignore_extractions:
-    - pattern_host_name_url
-    - ai_host_name_url
-    - pattern_host_name
-    - ai_host_name
-    - pattern_host_name_subdomain
-    - ai_host_name_subdomain
   stix_mapping: url
 
 ####### File name extractions #######
@@ -271,8 +214,6 @@ pattern_file_name:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_file_name
-  ignore_extractions:
-    - 
   stix_mapping: file
 
 ####### Directory path extractions #######
@@ -287,8 +228,6 @@ pattern_directory_windows:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_directory_windows
-  ignore_extractions:
-    -
   stix_mapping: directory
 
 pattern_directory_windows_with_file:
@@ -301,8 +240,6 @@ pattern_directory_windows_with_file:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_directory_windows_with_file
-  ignore_extractions:
-    - pattern_directory_windows
   stix_mapping: directory-file
 
 pattern_directory_unix:
@@ -315,8 +252,6 @@ pattern_directory_unix:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_directory_unix
-  ignore_extractions:
-    - 
   stix_mapping: directory
 
 pattern_directory_unix_file:
@@ -329,8 +264,6 @@ pattern_directory_unix_file:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_directory_unix_file
-  ignore_extractions:
-    - pattern_directory_unix
   stix_mapping: directory-file
 
 ####### File hash extractions #######
@@ -345,8 +278,6 @@ pattern_file_hash_md5:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_file_hash_md5
-  ignore_extractions:
-    - 
   stix_mapping: file-hash
 
 pattern_file_hash_sha_1:
@@ -359,8 +290,6 @@ pattern_file_hash_sha_1:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_file_hash_sha_1
-  ignore_extractions:
-    - 
   stix_mapping: file-hash
 
 pattern_file_hash_sha_256:
@@ -373,8 +302,6 @@ pattern_file_hash_sha_256:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_file_hash_sha_256
-  ignore_extractions:
-    - 
   stix_mapping: file-hash
 
 pattern_file_hash_sha_512:
@@ -387,8 +314,6 @@ pattern_file_hash_sha_512:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_file_hash_sha_512
-  ignore_extractions:
-    - 
   stix_mapping: file-hash
 
 ####### Email address extractions #######
@@ -403,9 +328,6 @@ pattern_email_address:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_email_address
-  ignore_extractions:
-    - pattern_domain_name_only
-    - pattern_domain_name_subdomain
   stix_mapping: email-addr
 
 ####### MAC address extractions #######
@@ -420,8 +342,6 @@ pattern_mac_address:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_mac_address
-  ignore_extractions:
-    - 
   stix_mapping: mac-addr
 
 ####### Windows registry key extractions #######
@@ -436,8 +356,6 @@ pattern_windows_registry_key:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_windows_registry_key
-  ignore_extractions:
-    - pattern_directory_windows
   stix_mapping: windows-registry-key
 
 ####### User agent extractions #######
@@ -452,8 +370,6 @@ pattern_user_agent:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_user_agent
-  ignore_extractions:
-    - pattern_directory_unix
   stix_mapping: user-agent
 
 ####### ASN extractions #######
@@ -468,8 +384,6 @@ pattern_autonomous_system_number:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_autonomous_system_number
-  ignore_extractions:
-    - 
   stix_mapping: autonomous-system
 
 ####### Cryptocurrency wallet extractions #######
@@ -484,8 +398,6 @@ pattern_cryptocurrency_btc_wallet:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_cryptocurrency_btc_wallet
-  ignore_extractions:
-    - 
   stix_mapping: cryptocurrency-wallet
 
 pattern_cryptocurrency_btc_wallet_transaction:
@@ -498,8 +410,6 @@ pattern_cryptocurrency_btc_wallet_transaction:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_cryptocurrency_btc_wallet
-  ignore_extractions:
-    - 
   stix_mapping: cryptocurrency-wallet-with-transaction
 
 ####### Cryptocurrency transaction extractions #######
@@ -514,8 +424,6 @@ pattern_cryptocurrency_btc_transaction:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_cryptocurrency_btc_transaction
-  ignore_extractions:
-    - 
   stix_mapping: cryptocurrency-transaction
 
 ####### CVE extractions #######
@@ -530,8 +438,6 @@ pattern_cve_id:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_cve_id
-  ignore_extractions:
-    - 
   stix_mapping: vulmatch-cve-id
 
 ####### CPE extractions #######
@@ -546,8 +452,6 @@ pattern_cpe_uri:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_cpe_uri
-  ignore_extractions:
-    - 
   stix_mapping: vulmatch-cpe-id
 
 ####### Bank card extractions #######
@@ -562,8 +466,6 @@ pattern_bank_card_mastercard:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_bank_card_mastercard
-  ignore_extractions:
-    - 
   stix_mapping: bank-card
 
 pattern_bank_card_visa:
@@ -576,8 +478,6 @@ pattern_bank_card_visa:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_bank_card_visa
-  ignore_extractions:
-    - 
   stix_mapping: bank-card
 
 pattern_bank_card_amex:
@@ -602,8 +502,6 @@ pattern_bank_card_union_pay:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_bank_card_union_pay
-  ignore_extractions:
-    -
   stix_mapping: bank-card
 
 pattern_bank_card_diners:
@@ -616,8 +514,6 @@ pattern_bank_card_diners:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_bank_card_diners
-  ignore_extractions:
-    - 
   stix_mapping: bank-card
 
 pattern_bank_card_jcb:
@@ -630,8 +526,6 @@ pattern_bank_card_jcb:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_bank_card_jcb
-  ignore_extractions:
-    - 
   stix_mapping: bank-card
 
 pattern_bank_card_discover:
@@ -644,8 +538,6 @@ pattern_bank_card_discover:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_bank_card_discover
-  ignore_extractions:
-    - 
   stix_mapping: bank-card
 
 ####### IBAN Extractions #######
@@ -660,8 +552,6 @@ pattern_iban_number:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_iban_number
-  ignore_extractions:
-    - 
   stix_mapping: bank-account
 
 ####### Phone number Extractions #######
@@ -676,6 +566,4 @@ pattern_phone_number:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_phone_number
-  ignore_extractions:
-    - 
   stix_mapping: phone-number

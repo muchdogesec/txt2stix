@@ -12,6 +12,7 @@ ai_cryptocurrency_btc_wallet:
   created_by: DOGESEC
   version: 1.0.0
   prompt_base: 'Extract all Bitcoin Wallet hashes from the text.'
+  prompt_helper:
   prompt_conversion: ''
   test_cases: generic_cryptocurrency_btc_wallet
   ignore_extractions:
@@ -28,6 +29,7 @@ ai_cryptocurrency_btc_transaction:
   created_by: DOGESEC
   version: 1.0.0
   prompt_base: 'Extract all Cryptocurrency Bitcoin Transaction hashes from the text.'
+  prompt_helper:
   prompt_conversion: ''
   test_cases: generic_cryptocurrency_btc_transaction
   ignore_extractions:
@@ -46,10 +48,9 @@ ai_phone_number:
   created_by: DOGESEC
   version: 1.0.0
   prompt_base: 'Extract all phone numbers from the text.'
+  prompt_helper:
   prompt_conversion: 'If possible, please convert the number to the E.164 standard with the correct country code. Remove any whitespace from the final value.'
   test_cases: generic_phone_number
-  ignore_extractions:
-    - 
   stix_mapping: phone-number
 
 ####### County extractions #######
@@ -63,11 +64,10 @@ ai_country_alpha2:
   modified: 2020-01-01
   created_by: DOGESEC
   version: 1.0.0
-  prompt_base: 'Extract all countries from the text, including countries printed as IS0-3166 Alpha2 and Alpha3 codes.'
-  prompt_conversion: 'Convert all extractions to IS0-3166 Alpha2 codes.'
+  prompt_base: 'Extract all countries described in the text, including countries printed as IS0-3166 Alpha2 and Alpha3 codes.'
+  prompt_helper: 'If you are unsure, you can read more about the standard here: https://www.iso.org/iso-3166-country-codes.html'
+  prompt_conversion: 'Convert all country extractions to their corresponding IS0-3166 Alpha2 codes.'
   test_cases: ai_country_alpha2
-  ignore_extractions:
-    - 
   stix_mapping: location
 
 ####### MITRE ATT&CK #######
@@ -81,11 +81,10 @@ ai_mitre_attack_enterprise:
   modified: 2020-01-01
   created_by: DOGESEC
   version: 1.0.0
-  prompt_base: 'Extract all MITRE ATT&CK Enterprise tactics, techniques, groups, data sources, mitigations, software, and campaigns described in the text. Do not include MITRE ATT&CK ICS or MITRE ATT&CK Mobile in the results.'
+  prompt_base: 'Extract all references to MITRE ATT&CK Enterprise tactics, techniques, groups, data sources, mitigations, software, and campaigns described in the text. These references may not be explicit in the text so you should be careful to account for the natural language of the text your analysis. Do not include MITRE ATT&CK ICS or MITRE ATT&CK Mobile in the results.'
+  prompt_helper: 'If you are unsure, you can learn more about MITRE ATT&CK Enterprise here: https://attack.mitre.org/matrices/enterprise/'
   prompt_conversion: 'Convert all extractions into the corresponding ATT&CK ID.'
   test_cases: generic_mitre_attack_enterprise
-  ignore_extractions:
-    - 
   stix_mapping: ctibutler-mitre-attack-enterprise-id
 
 ai_mitre_attack_mobile:
@@ -97,11 +96,10 @@ ai_mitre_attack_mobile:
   modified: 2020-01-01
   created_by: DOGESEC
   version: 1.0.0
-  prompt_base: 'Extract all MITRE ATT&CK Mobile tactics, techniques, groups, data sources, mitigations, software, and campaigns described in the text. Do not include MITRE ATT&CK ICS or MITRE ATT&CK Enterprise in the results.'
+  prompt_base: 'Extract all references to MITRE ATT&CK Mobile tactics, techniques, groups, data sources, mitigations, software, and campaigns described in the text. These references may not be explicit in the text so you should be careful to account for the natural language of the text your analysis. Do not include MITRE ATT&CK ICS or MITRE ATT&CK Enterprise in the results.'
+  prompt_helper: 'If you are unsure, you can learn more about MITRE ATT&CK Enterprise here: https://attack.mitre.org/matrices/mobile/'
   prompt_conversion: 'Convert all extractions into the corresponding ATT&CK ID.'
   test_cases: generic_mitre_attack_mobile
-  ignore_extractions:
-    - 
   stix_mapping: ctibutler-mitre-attack-mobile-id
 
 ai_mitre_attack_ics:
@@ -113,11 +111,10 @@ ai_mitre_attack_ics:
   modified: 2020-01-01
   created_by: DOGESEC
   version: 1.0.0
-  prompt_base: 'Extract all MITRE ATT&CK ICS tactics, techniques, groups, data sources, mitigations, software, and campaigns described in the text. Do not include MITRE ATT&CK Mobile or MITRE ATT&CK Enterprise in the results.'
+  prompt_base: 'Extract all references to MITRE ATT&CK ICS tactics, techniques, groups, data sources, mitigations, software, and campaigns described in the text. These references may not be explicit in the text so you should be careful to account for the natural language of the text your analysis. Do not include MITRE ATT&CK Mobile or MITRE ATT&CK Enterprise in the results.'
+  prompt_helper: 'If you are unsure, you can learn more about MITRE ATT&CK Enterprise here: https://attack.mitre.org/matrices/ics/'
   prompt_conversion: 'Convert all extractions into the corresponding ATT&CK ID.'
   test_cases: generic_mitre_attack_ics
-  ignore_extractions:
-    - 
   stix_mapping: ctibutler-mitre-attack-ics-id
 
 ####### MITRE CAPEC #######
@@ -132,10 +129,9 @@ ai_mitre_capec:
   created_by: DOGESEC
   version: 1.0.0
   prompt_base: 'Extract all references to a MITRE CAPEC object.'
+  prompt_helper: 'If you are unsure, you can learn more about MITRE CAPEC here: https://capec.mitre.org/'
   prompt_conversion: 'Convert all extractions into the corresponding CAPEC ID in the format `CAPEC-ID`'
   test_cases: generic_mitre_capec
-  ignore_extractions:
-    - 
   stix_mapping: ctibutler-mitre-capec-id
 
 ####### MITRE CWE #######
@@ -150,8 +146,7 @@ ai_mitre_cwe:
   created_by: DOGESEC
   version: 1.0.0
   prompt_base: 'Extract all references to a MITRE CWE object.'
+  prompt_helper: 'If you are unsure, you can learn more about MITRE CAPEC here: https://cwe.mitre.org/'
   prompt_conversion: 'Convert all extractions into the corresponding CWE ID in the format `CWE-ID`'
   test_cases: generic_mitre_cwe
-  ignore_extractions:
-    - 
   stix_mapping: ctibutler-mitre-cwe-id

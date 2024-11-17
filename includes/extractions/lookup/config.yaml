@@ -13,8 +13,6 @@ lookup_mitre_attack_enterprise_id:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_mitre_attack_enterprise
-  ignore_extractions:
-    - 
   stix_mapping: ctibutler-mitre-attack-enterprise-id
 
 lookup_mitre_attack_enterprise_name:
@@ -28,8 +26,6 @@ lookup_mitre_attack_enterprise_name:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_mitre_attack_enterprise_name
-  ignore_extractions:
-    - 
   stix_mapping: ctibutler-mitre-attack-enterprise-name
 
 lookup_mitre_attack_mobile_id:
@@ -43,8 +39,6 @@ lookup_mitre_attack_mobile_id:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_mitre_attack_mobile
-  ignore_extractions:
-    - 
   stix_mapping: ctibutler-mitre-attack-mobile-id
 
 lookup_mitre_attack_mobile_name:
@@ -58,8 +52,6 @@ lookup_mitre_attack_mobile_name:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_mitre_attack_mobile_name
-  ignore_extractions:
-    - 
   stix_mapping: ctibutler-mitre-attack-mobile-name
 
 lookup_mitre_attack_ics_id:
@@ -73,8 +65,6 @@ lookup_mitre_attack_ics_id:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_mitre_attack_ics
-  ignore_extractions:
-    - 
   stix_mapping: ctibutler-mitre-attack-ics-id
 
 lookup_mitre_attack_ics_name:
@@ -88,8 +78,6 @@ lookup_mitre_attack_ics_name:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_mitre_attack_ics_name
-  ignore_extractions:
-    - 
   stix_mapping: ctibutler-mitre-attack-ics-name
 
 ####### MITRE CAPEC #######
@@ -105,8 +93,6 @@ lookup_mitre_capec_id:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_mitre_capec
-  ignore_extractions:
-    - 
   stix_mapping: ctibutler-mitre-capec-id
 
 lookup_mitre_capec_name:
@@ -120,8 +106,6 @@ lookup_mitre_capec_name:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_mitre_capec_name
-  ignore_extractions:
-    - 
   stix_mapping: ctibutler-mitre-capec-name
 
 ####### MITRE CWE #######
@@ -137,8 +121,6 @@ lookup_mitre_cwe_id:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_mitre_cwe
-  ignore_extractions:
-    - 
   stix_mapping: ctibutler-mitre-cwe-id
 
 lookup_mitre_cwe_name:
@@ -152,8 +134,6 @@ lookup_mitre_cwe_name:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_mitre_cwe_name
-  ignore_extractions:
-    - 
   stix_mapping: ctibutler-mitre-cwe-name
 
 ####### MITRE ATLAS #######
@@ -169,8 +149,6 @@ lookup_mitre_atlas_id:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_mitre_atlas
-  ignore_extractions:
-    - 
   stix_mapping: ctibutler-mitre-atlas-id
 
 lookup_mitre_atlas_name:
@@ -184,8 +162,6 @@ lookup_mitre_atlas_name:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_mitre_atlas_name
-  ignore_extractions:
-    - 
   stix_mapping: ctibutler-mitre-atlas-name
 
 ####### DISARM #######
@@ -201,8 +177,6 @@ lookup_disarm_id:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_disarm
-  ignore_extractions:
-    - 
   stix_mapping: ctibutler-disarm-id
 
 lookup_disarm_name:
@@ -216,8 +190,6 @@ lookup_disarm_name:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_disarm_name
-  ignore_extractions:
-    - 
   stix_mapping: ctibutler-disarm-name
 
 ####### County extractions #######
@@ -233,8 +205,6 @@ lookup_country_alpha2:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_country_alpha2
-  ignore_extractions:
-    - 
   stix_mapping: ctibutler-location
 
 ####### Misc STIX Objects #######
@@ -250,8 +220,6 @@ lookup_attack_pattern:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: lookup_attack_pattern
-  ignore_extractions:
-    - 
   stix_mapping: attack-pattern
 
 lookup_campaign:
@@ -265,8 +233,6 @@ lookup_campaign:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: lookup_campaign
-  ignore_extractions:
-    - 
   stix_mapping: campaign
 
 lookup_course_of_action:
@@ -280,8 +246,6 @@ lookup_course_of_action:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: lookup_course_of_action
-  ignore_extractions:
-    - 
   stix_mapping: course-of-action
 
 lookup_identity:
@@ -295,8 +259,6 @@ lookup_identity:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: lookup_identity
-  ignore_extractions:
-    - 
   stix_mapping: identity
   identity: lookups/identity.txt
 
@@ -311,8 +273,6 @@ lookup_infrastructure:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: lookup_infrastructure
-  ignore_extractions:
-    - 
   stix_mapping: infrastructure
 
 lookup_intrusion_set:
@@ -326,8 +286,6 @@ lookup_intrusion_set:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: lookup_intrusion_set
-  ignore_extractions:
-    - 
   stix_mapping: intrusion-set
 
 lookup_malware:
@@ -341,8 +299,6 @@ lookup_malware:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: lookup_malware
-  ignore_extractions:
-    - 
   stix_mapping: malware
 
 lookup_threat_actor:
@@ -356,8 +312,6 @@ lookup_threat_actor:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: lookup_threat_actor
-  ignore_extractions:
-    - 
   stix_mapping: threat-actor
 
 lookup_tool:
@@ -371,6 +325,4 @@ lookup_tool:
   created_by: DOGESEC
   version: 1.0.0
   test_cases: lookup_tool
-  ignore_extractions:
-    - 
   stix_mapping: tool

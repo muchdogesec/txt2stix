@@ -1,0 +1,1 @@
+REvil uses WMI to execute malicious commands to reference a retrieved PE file through a path modification.

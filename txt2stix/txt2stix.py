@@ -123,7 +123,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description="File Conversion Tool")
 
     inf_arg  = parser.add_argument("--input_file", "--input-file", required=True, help="The file to be converted. Must be .txt", type=Path)
-    name_arg = parser.add_argument("--name", required=True, help="Name of the file, max 72 chars", default="stix-out")
+    name_arg = parser.add_argument("--name", required=True, help="Name of the file, max 124 chars", default="stix-out")
     parser.add_argument("--created", required=False, default=datetime.now(), help="Allow user to optionally pass --created time in input, which will hardcode the time used in created times")
     parser.add_argument("--ai_settings_extractions", required=False, type=parse_model, help="(required if AI extraction enabled): passed in format provider:model e.g. openai:gpt4o. Can pass more than one value to get extractions from multiple providers.", metavar="provider[:model]", nargs='+', default=[parse_model('openai')])
     parser.add_argument("--ai_settings_relationships", required=False, type=parse_model, help="(required if AI relationship enabled): passed in format `provider:model`. Can only pass one model at this time.", metavar="provider[:model]")
@@ -139,8 +139,8 @@ def parse_args():
     args = parser.parse_args()
     if not args.input_file.exists():
         raise argparse.ArgumentError(inf_arg, "cannot open file")
-    if len(args.name) > 72:
-        raise argparse.ArgumentError(name_arg, "max 72 characters")
+    if len(args.name) > 124:
+        raise argparse.ArgumentError(name_arg, "max 124 characters")
 
     if args.relationship_mode == 'ai' and not args.ai_settings_relationships:
         parser.error("relationship_mode is set to AI, --ai_settings_relationships is required")
