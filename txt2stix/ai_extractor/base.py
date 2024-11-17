@@ -12,82 +12,107 @@ from llama_index.core.utils import get_tokenizer
 
 _ai_extractor_registry: dict[str, 'Type[BaseAIExtractor]'] = {}
 class BaseAIExtractor():
-    system_prompt = (textwrap.dedent("""
-    You are a cyber-security threat intelligence analysis tool responsible for analysing intelligence.
-    You have a deep understanding of cybersecurity concepts and threat intelligence.
-    You are responsible for extracting observables and TTPs from documents provided, and understanding the relationships being described that link them.
-    You are responsible for delivering computer-parsable output in JSON format. All output from you will be parsed with pydantic for further processing
-    """))
-    extraction_template = PromptTemplate(textwrap.dedent("""
+    system_prompt = (textwrap.dedent(
+        """
         <persona>
 
-        You are a cyber-security threat intelligence analyst responsible for analysing intelligence. You have a deep understanding of cybersecurity concepts and threat intelligence. You are responsible for extracting observables and TTPs from documents provided, and understanding the relationships being described that link them.
+            You are a cyber-security threat intelligence analysis tool responsible for analysing intelligence provided in text files.
 
+            You have a deep understanding of cybersecurity and threat intelligence concepts.
+
+             IMPORTANT: You must always deliver your work as a computer-parsable output in JSON format. All output from you will be parsed with pydantic for further processing.
+        
+        </persona>
+        """
+    ))
+    extraction_template = PromptTemplate(textwrap.dedent(
+        """
+        <persona>
+
+            You are a cyber-security threat intelligence analysis tool responsible for analysing intelligence provided in text files.
+
+            You have a deep understanding of cybersecurity and threat intelligence concepts.
+
+            IMPORTANT: You must always deliver your work as a computer-parsable output in JSON format. All output from you will be parsed with pydantic for further processing.
+        
         </persona>
 
-        <requirement>
+        <requirements>
 
-        Using the file in `<document>`, you are to extract objects from the body of input (either plaintext or markdown), extractions must be unique!
-        
+            Using the report text printed between the `<document>` tags, you should extract the Indicators of Compromise (IoCs) and Tactics, Techniques, and Procedures (TTPs) being described in it.
 
-        Only one JSON object should exist for each unique value.
+            The document can contain the same IOC or TTP one or more times. Only create one record for each extraction -- the extractions must be unique!
+            
+            Only one JSON object should exist for each unique value.
 
-        IMPORTANT: Only include a valid JSON document in your response and no other text. The JSON document should be minified!.
-
-        </requirement>
+        </requirements>
 
         <accuracy>
 
-        Think about your answer first before you respond.
+            Think about your answer first before you respond. The accuracy of your response is very important as this data will be used for operational purposes.
 
-        If you don't know the answer, reply with success: false, do not every try to make up an answer.
+            If you don't know the answer, reply with success: false, do not ever try to make up an answer.
 
         </accuracy>
 
         <document>
+
         {input_file}
+        
         </document>
 
         <extractors>
+        
         {extractors}
+        
         </extractors>
 
         <response>
-        Response MUST be in JSON format
-        Response MUST start with: {"success":
+
+            IMPORTANT: Only include a valid JSON document in your response and no other text. The JSON document should be minified!.
+
+            Response MUST be in JSON format.
+            
+            Response MUST start with: {"success":
         </response>
-    """))
+        """
+    ))
 
     relationship_template = PromptTemplate(textwrap.dedent(
         """
         <persona>
 
-        You are a cyber-security threat intelligence analysis tool responsible for analysing intelligence. You have a deep understanding of cybersecurity concepts and threat intelligence. You are responsible for extracting observables and TTPs from documents provided, and understanding the relationships being described that link them.
+            You are a cyber-security threat intelligence analysis tool responsible for analysing intelligence provided in text files.
 
+            You have a deep understanding of cybersecurity and threat intelligence concepts.
+
+            IMPORTANT: You must always deliver your work as a computer-parsable output in JSON format. All output from you will be parsed with pydantic for further processing.
+        
         </persona>
 
-        <requirement>
-        The tag `<extractions>` contains all the observables and TTPs that were extracted from the document provided in `<document>`
+        <requirements>
 
-        Please capture the relationships between the extractions and describe them using NLP techniques.
+            The tag `<extractions>` contains all the observables and TTPs that were extracted from the document provided in `<document>`
 
-        A relationship MUST have different source_ref and target_ref
+            Please capture the relationships between the extractions and describe them using NLP techniques.
 
-        Select an appropriate relationship_type from `<relationship_types>`.
-        
-        Only use `related-to` or any other vague `relationship_type` as a last resort. 
-        The value of relationship_type MUST be clear, and it SHOULD NOT describe everything as related-to each other unless they are related in context of the `<document>
+            A relationship MUST have different source_ref and target_ref
 
-        IMPORTANT: Only include a valid JSON document in your response and no other text. The JSON document should be minified!.
+            Select an appropriate relationship_type from `<relationship_types>`.
+            
+            Only use `related-to` or any other vague `relationship_type` as a last resort. 
+            
+            The value of relationship_type MUST be clear, and it SHOULD NOT describe everything as related-to each other unless they are related in context of the `<document>
 
-        </requirement>
+            IMPORTANT: Only include a valid JSON document in your response and no other text. The JSON document should be minified!.
+
+        </requirements>
 
         <accuracy>
 
-        Think about your answer first before you respond.
+            Think about your answer first before you respond. The accuracy of your response is very important as this data will be used for operational purposes.
 
-        If you don't know the answer, reply with `success: false`, do not every try to make up an answer.
-        IMPORTANT: response must be a json and conform to the provided schema, it must not contain anything extra. 
+            If you don't know the answer, reply with success: false, do not ever try to make up an answer.
 
         </accuracy>
 
@@ -104,8 +129,12 @@ class BaseAIExtractor():
         </relationship_types>
 
         <response>
-        Response MUST be in JSON format
-        Response MUST start with: {"success":
+
+            IMPORTANT: Only include a valid JSON document in your response and no other text. The JSON document should be minified!.
+
+            Response MUST be in JSON format.
+            
+            Response MUST start with: {"success":
         </response>
         """
         ))
