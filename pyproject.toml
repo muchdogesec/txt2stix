@@ -32,6 +32,7 @@ dependencies = [
   'llama-index-llms-anthropic==0.3.9',
   'llama-index-llms-gemini==0.3.7',
   'llama-index-llms-openai==0.2.16',
+  'mistune==3.0.2',
 ]
 
 [tool.hatch.metadata]
