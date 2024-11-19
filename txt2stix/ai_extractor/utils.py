@@ -42,18 +42,17 @@ class ParserWithLogging(PydanticOutputParser):
 
 def get_extractors_str(extractors):
     extractor: Extractor = None
-    extractors_str = []
+    buffer = io.StringIO()
     for extractor in extractors:
-        extractor_str = textwrap.dedent(
-        f"""
-        <extractor name={repr(extractor.name)} extraction_key={repr(extractor.extraction_key)}>
-        - {extractor.prompt_base}
-        - {extractor.prompt_conversion}
-        </extractor>
-        """
-        )
-        extractors_str.append(extractor_str)
-    return "".join(extractors_str)
+        print(f"<extractor name={repr(extractor.name)} extraction_key={repr(extractor.extraction_key)}>", file=buffer)
+        print(f"- {extractor.prompt_base}", file=buffer)
+        if extractor.prompt_helper:
+            print(f"- {extractor.prompt_helper}", file=buffer)
+        if extractor.prompt_conversion:
+            print(f"- {extractor.prompt_conversion}", file=buffer)
+        print("</extractor>", file=buffer)
+        print("\n"*2, file=buffer)
+    return buffer.getvalue()
 
 
 
