@@ -27,7 +27,11 @@ class ImageLinkRemover(MarkdownRenderer):
         token['raw'] = unescape(token['raw'])
         return super().codespan(token, state)
     
+
     def block_html(self, token: Dict[str, dict], state: mistune.BlockState) -> str:
+        return self.inline_html(token, state) + '\n\n'
+    
+    def inline_html(self, token: Dict[str, dict], state: mistune.BlockState) -> str:
         raw = token['raw']
         soup = bs4.BeautifulSoup(raw, 'html.parser')
         if self.remove_links:
@@ -36,16 +40,11 @@ class ImageLinkRemover(MarkdownRenderer):
         if self.remove_images:
             for img in soup.find_all('img'):
                 img.decompose()
-        token['raw'] = soup.decode()
-        return super().block_html(token, state)
-    
-    def inline_html(self, token: Dict[str, dict], state: mistune.BlockState) -> str:
-        return self.block_html(token, state)
+        return soup.decode()
 
 
 def remove_links(input_text: str, remove_images: bool, remove_anchors: bool):
     modify_links = mistune.create_markdown(escape=False, renderer=ImageLinkRemover(remove_links=remove_anchors, remove_images=remove_images))
-    print(modify_links(input_text))
     return modify_links(input_text)
 
 def read_included_file(path):
