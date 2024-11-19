@@ -62,7 +62,7 @@ def find_get_indexes_re(term, input_str):
     for open, close in ['""', "[]", "()", "``", "''",]:
         rexp.append(re.escape(open)+ "(" + re_i +")" + re.escape(close))
     rexp = "|".join(rexp)
-    r = re.compile(rexp)
+    r = re.compile(rexp, flags=re.IGNORECASE)
     for match in r.finditer(input_str):
         left, right = match.span()
         yield left+1
