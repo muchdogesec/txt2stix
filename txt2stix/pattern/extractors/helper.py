@@ -53,34 +53,7 @@ def check_false_positive_domain(domain):
     else:
         return True
 
-
-def validate_file_extension(extension):
-    """
-    Validate if a file extension is in the list of valid extensions.
-
-    Args:
-        extension (str): The file extension to be validated.
-
-    Returns:
-        bool: True if the extension is valid, False otherwise.
-    """
-
-    extension = extension.split(".")[-1]
-
-    return extension in FILE_EXTENSION
-
-
-def validate_tld(tld):
-    """
-    Validate if a file tld is in the list of valid extensions.
-
-    Args:
-        tld (str): The file extension to be validated.
-
-    Returns:
-        bool: True if the extension is valid, False otherwise.
-    """
-    return tld in TLD
+from txt2stix.utils import validate_file_mimetype as validate_file_extension, validate_tld
 
 def load_extractor(extractor):
     if extractor.pattern_extractor:

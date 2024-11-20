@@ -39,6 +39,6 @@ class WindowDirectoryExtractor(BaseExtractor):
                 break
         if flag:
             check = is_valid_filepath(directory_path, platform="Windows")
-            if not validate_file_extension(directory_path.split('.')[-1]) and check:
+            if not validate_file_extension(directory_path) and check:
                 return check
         return False

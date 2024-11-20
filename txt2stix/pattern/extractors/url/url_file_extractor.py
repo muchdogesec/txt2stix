@@ -1,8 +1,5 @@
-import tldextract
-from urllib.parse import urlparse
 
-from ..base_extractor import BaseExtractor
-from ..helper import check_false_positive_domain, validate_tld, validate_file_extension
+from ..helper import validate_file_extension
 from .url_path_extractor import URLPathExtractor
 
 
