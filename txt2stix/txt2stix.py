@@ -251,9 +251,9 @@ def main():
             validate_token_count(int(os.environ["INPUT_TOKEN_LIMIT"]), input_text, [args.ai_settings_relationships])
 
         all_extracts = extract_all(bundler, args.use_extractions, input_text, ai_extractors=args.ai_settings_extractions)
- 
+        extracted_relationships = None
         if args.relationship_mode == "ai" and sum(map(lambda x: len(x), all_extracts.values())):
-            extract_relationships_with_ai(bundler, input_text, all_extracts, args.ai_settings_relationships)
+            extracted_relationships = extract_relationships_with_ai(bundler, input_text, all_extracts, args.ai_settings_relationships)
             
         # convo_str = ai_extractor_session.get_conversation() if ai_extractor_session and ai_extractor_session.initialized else ""
             
@@ -262,12 +262,14 @@ def main():
         output_path = Path("./output")/f"{bundler.bundle.id}.json"
         output_path.parent.mkdir(exist_ok=True)
         output_path.write_text(out)
-        logger.info(f"Writing bundle output to `{output_path}`")
-        log_path = Path("./logs/chat-log--%s.txt"%bundler.bundle.id.split("--")[1])
-        if convo_str:
-            logger.info(f"Writing chat log to `{log_path}`")
-            log_path.parent.mkdir(exist_ok=True)
-            log_path.write_text(convo_str)
+        logger.info(f"Wrote bundle output to `{output_path}`")
+        data = {
+            "extractions": all_extracts,
+            "relationships": extracted_relationships
+        }
+        data_path = Path(str(output_path).replace('bundle--', 'data--'))
+        data_path.write_text(json.dumps(data, indent=4))
+        logger.info(f"Wrote data output to `{data_path}`")
     except argparse.ArgumentError as e:
         logger.exception(e, exc_info=True)
     except:
