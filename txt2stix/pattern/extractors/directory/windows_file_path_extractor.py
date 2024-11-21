@@ -1,4 +1,6 @@
 from pathvalidate import is_valid_filepath
+
+from txt2stix import utils
 from ..base_extractor import BaseExtractor
 from ..helper import validate_file_extension
 
@@ -34,7 +36,7 @@ class WindowsFilePathExtractor(BaseExtractor):
                 break
         if flag:
             check = is_valid_filepath(directory_path, platform="Windows")
-            if validate_file_extension(directory_path.split('.')[-1]) and check:
+            if utils.validate_file_mimetype(directory_path) and check:
                 return True
         return False
 

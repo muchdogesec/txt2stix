@@ -13,6 +13,8 @@ import logging
 from stix2extensions.tools import creditcard2stix, crypto2stix
 from typing import TYPE_CHECKING
 
+from txt2stix.utils import validate_file_mimetype, validate_reg_key
+
 if TYPE_CHECKING:
     from .stix import txt2stixBundler
 
@@ -36,7 +38,6 @@ def find_hash_type(value, name):
         except:
             pass
     return
-
 
 class ParseObservableError(Exception):
     pass
@@ -183,12 +184,16 @@ def build_observables(
             bundler.new_relationship(stix_objects[1].id, indicator["id"], "detected-using", description=f"{value} can be detected in the STIX pattern {indicator['name']}", external_references=indicator['external_references'])
         )
 
+    mimetype = validate_file_mimetype(value)
+    if stix_mapping in ['file', 'directory-file'] and not mimetype:
+        raise MinorExcption(f'invalid file extension in `{value}`')
+    
     if stix_mapping == "file":
         indicator["name"] = f"File name: {value}"
         indicator["pattern"] = f"[ file:name = { repr(value) } ]"
 
         stix_objects.append(
-            dict_to_stix2({"type": "file", "spec_version": "2.1", "name": value})
+            dict_to_stix2({"type": "file", "spec_version": "2.1", "name": value, "mime_type": mimetype})
         )
         stix_objects.append(
             bundler.new_relationship(stix_objects[1].id, indicator["id"], "detected-using", description=f"{value} can be detected in the STIX pattern {indicator['name']}", external_references=indicator['external_references'])
@@ -220,7 +225,7 @@ def build_observables(
         )
 
         stix_objects.append(
-            dict_to_stix2({"type": "file", "spec_version": "2.1", "name": path.name})
+            dict_to_stix2({"type": "file", "spec_version": "2.1", "name": path.name, "mime_type": mimetype})
         )
         file = stix_objects[-1]
 
@@ -272,6 +277,8 @@ def build_observables(
         )
 
     if stix_mapping == "windows-registry-key":
+        if not validate_reg_key(value):
+            raise MinorExcption("Invalid registry key")
         indicator["name"] = f"Windows Registry Key: {value}"
         indicator["pattern"] = f"[ windows-registry-key:key = { repr(value) } ]"
 
