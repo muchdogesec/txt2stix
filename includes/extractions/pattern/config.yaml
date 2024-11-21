@@ -206,7 +206,7 @@ pattern_host_name_path:
 
 pattern_directory_windows:
   type: pattern
-  name: Windows Directory
+  name: 'Windows Directory'
   description: 'Extracts a Windows directory path. The .net docs provide a good overview to Windows paths: https://github.com/dotnet/docs/blob/main/docs/standard/io/file-path-formats.md#file-path-formats-on-windows-systems'
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_directory_windows'
   created: 2020-01-01
@@ -218,7 +218,7 @@ pattern_directory_windows:
 
 pattern_directory_windows_with_file:
   type: pattern
-  name: Windows Directory with file reported
+  name: 'Windows Directory with file reported'
   description: 'Similar to pattern_directory_windows, but captures paths that include the file printed.'
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_directory_windows_with_file'
   created: 2020-01-01
@@ -230,7 +230,7 @@ pattern_directory_windows_with_file:
 
 pattern_directory_unix:
   type: pattern
-  name: UNIX Directory
+  name: 'UNIX Directory'
   description: 'Extracts a UNIX directory path'
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_directory_unix'
   created: 2020-01-01
@@ -242,7 +242,7 @@ pattern_directory_unix:
 
 pattern_directory_unix_file:
   type: pattern
-  name: UNIX Directory with file
+  name: 'UNIX Directory with file'
   description: 'Similar to pattern_directory_unix, but captures paths that include the file printed.'
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_directory_unix_file'
   created: 2020-01-01
@@ -256,7 +256,7 @@ pattern_directory_unix_file:
 
 pattern_file_name:
   type: pattern
-  name: File name
+  name: 'File name'
   description: 'Extracts filename. The file extension must match a valid file extension. filenames have three parts `<NAME>.<EXTENSION>`. Filetypes only contain a single `.`. Note, the `.` and `<EXTENSION>` part are required, but `<NAME>` is optional (because hidden files can be in format like; `.DS_Store`). Uses helpers/mimetype_filename_extension_list.csv to check valid file extension.'
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_file_name'
   created: 2020-01-01
@@ -374,7 +374,7 @@ pattern_user_agent:
 
 pattern_autonomous_system_number:
   type: pattern
-  name: 'Autonomous System Numbers (ASN) numbers'
+  name: 'Autonomous System Numbers (ASN)'
   description: 'Always follow the formats: `ASN XXXXX` (e.g  `ASN15139`), `ASNXXXXX` (e.g  `ASN 15139`), `AS XXXXX` (e.g  `AS15139`), or `ASXXXXX` (e.g  `AS 15139`)'
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_autonomous_system_number'
   created: 2020-01-01
@@ -384,7 +384,7 @@ pattern_autonomous_system_number:
   test_cases: generic_autonomous_system_number
   stix_mapping: autonomous-system
 
-####### Cryptocurrency wallet extractions #######
+####### Cryptocurrency extractions #######
 
 pattern_cryptocurrency_btc_wallet:
   type: pattern
@@ -401,8 +401,8 @@ pattern_cryptocurrency_btc_wallet:
 pattern_cryptocurrency_btc_wallet_transaction:
   type: pattern
   name: 'Cryptocurrency Bitcoin Wallet And Transaction'
-  description: 'Will extract bitcoin wallet hashes and lookup all transactions the extracted wallets have been seen in. Will create a cryptocurrency-wallet object for the wallet extracted, will create cryptocurrency-transaction objects for all transactions the wallet is found in.'
-  notes: 'Uses https://github.com/muchdogesec/crypto2stix for blockchain lookups'
+  description: 'Will extract bitcoin wallet hashes and lookup all transactions the extracted wallets have been seen in. Will create a cryptocurrency-wallet object for the wallet extracted, will create cryptocurrency-transaction objects for all transactions the wallet is found in. Use either pattern_cryptocurrency_btc_wallet_transaction or pattern_cryptocurrency_btc_transaction but not both in same extraction'
+  notes: ''
   created: 2020-01-01
   modified: 2020-01-01
   created_by: DOGESEC
@@ -410,13 +410,11 @@ pattern_cryptocurrency_btc_wallet_transaction:
   test_cases: generic_cryptocurrency_btc_wallet
   stix_mapping: cryptocurrency-wallet-with-transaction
 
-####### Cryptocurrency transaction extractions #######
-
 pattern_cryptocurrency_btc_transaction:
   type: pattern
   name: 'Cryptocurrency Bitcoin Transaction'
-  description: 'Will extract bitcoin transaction hashes. Will create a cryptocurrency-transaction object for the transaction extracted and will create cryptocurrency-wallet objects for all wallets seen in the input or output of the transaction.'
-  notes: 'Uses https://github.com/muchdogesec/crypto2stix for blockchain lookups'
+  description: 'Will extract bitcoin transaction hashes. Will create a cryptocurrency-transaction object for the transaction extracted and will create cryptocurrency-wallet objects for all wallets seen in the input or output of the transaction. Use either pattern_cryptocurrency_btc_wallet_transaction or pattern_cryptocurrency_btc_transaction but not both in same extraction'
+  notes: ''
   created: 2020-01-01
   modified: 2020-01-01
   created_by: DOGESEC
