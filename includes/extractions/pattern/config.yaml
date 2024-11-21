@@ -208,7 +208,7 @@ pattern_directory_windows:
   type: pattern
   name: Windows Directory
   description: 'Extracts a Windows directory path. The .net docs provide a good overview to Windows paths: https://github.com/dotnet/docs/blob/main/docs/standard/io/file-path-formats.md#file-path-formats-on-windows-systems'
-  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use directory_windows'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_directory_windows'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -219,8 +219,8 @@ pattern_directory_windows:
 pattern_directory_windows_with_file:
   type: pattern
   name: Windows Directory with file reported
-  description: ''
-  notes: 'Similar to pattern_directory_windows, but captures paths that include the file printed.'
+  description: 'Similar to pattern_directory_windows, but captures paths that include the file printed.'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_directory_windows_with_file'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -232,7 +232,7 @@ pattern_directory_unix:
   type: pattern
   name: UNIX Directory
   description: 'Extracts a UNIX directory path'
-  notes: ''
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_directory_unix'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -243,8 +243,8 @@ pattern_directory_unix:
 pattern_directory_unix_file:
   type: pattern
   name: UNIX Directory with file
-  description: ''
-  notes: 'Similar to pattern_directory_unix, but captures paths that include the file printed.'
+  description: 'Similar to pattern_directory_unix, but captures paths that include the file printed.'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_directory_unix_file'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -270,7 +270,7 @@ pattern_file_hash_md5:
   type: pattern
   name: 'MD5'
   description: 'Extracts MD5 file hashes'
-  notes: 'Uses the Python Validators library.'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_file_hash_md5'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -282,7 +282,7 @@ pattern_file_hash_sha_1:
   type: pattern
   name: 'SHA-1'
   description: 'Extracts SHA-1 file hashes'
-  notes: 'Uses the Python Validators library.'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_file_hash_sha_1'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -294,7 +294,7 @@ pattern_file_hash_sha_256:
   type: pattern
   name: 'SHA-256'
   description: 'Extracts SHA-256 file hashes'
-  notes: 'Uses the Python Validators library.'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_file_hash_sha_256'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -306,7 +306,7 @@ pattern_file_hash_sha_512:
   type: pattern
   name: 'SHA-512'
   description: 'Extracts SHA-512 file hashes'
-  notes: 'Uses the Python Validators library.'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_file_hash_sha_512'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -320,7 +320,7 @@ pattern_email_address:
   type: pattern
   name: 'Email addresses'
   description: 'Extracts emails with valid TLDs'
-  notes: 'Uses the Python Validators library. However, this does not check for a valid TLD. Therefore the extraction is then also validated to ensure the end of the domain has a valid TLD, using the Python TLD library.'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_email_address'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -334,7 +334,7 @@ pattern_mac_address:
   type: pattern
   name: 'MAC Addresses'
   description: 'Extracts MAC addresses with either `-` or `:` seperators.'
-  notes: 'Uses the Python Validators library.'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_mac_address'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -347,8 +347,8 @@ pattern_mac_address:
 pattern_windows_registry_key:
   type: pattern
   name: 'Windows Registry Key'
-  description: ''
-  notes: 'Must start with a valid prefix as defined in /helpers/windows_registry_key_prefix.txt'
+  description: 'Must start with a valid prefix as defined in /includes/helpers/windows_registry_key_prefix.txt'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_windows_registry_key'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -361,8 +361,8 @@ pattern_windows_registry_key:
 pattern_user_agent:
   type: pattern
   name: 'User Agent'
-  description: 'Will capture a string that looks like a user agent.'
-  notes: 'User Agents should follow: https://www.rfc-editor.org/rfc/rfc7231#section-5.5.3 . The problem here is that there is no defined prefix for user agent strings, they can be anything. txt2stix follows a similar approach to: https://regex101.com/r/nXKYBB/3'
+  description: 'Will capture a string that looks like a user agent. User Agents should follow: https://www.rfc-editor.org/rfc/rfc7231#section-5.5.3 . The problem here is that there is no defined prefix for user agent strings, they can be anything. txt2stix follows a similar approach to: https://regex101.com/r/nXKYBB/3'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_user_agent'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -375,8 +375,8 @@ pattern_user_agent:
 pattern_autonomous_system_number:
   type: pattern
   name: 'Autonomous System Numbers (ASN) numbers'
-  description: ''
-  notes: 'Always follow the formats: `ASN XXXXX` (e.g  `ASN15139`), `ASNXXXXX` (e.g  `ASN 15139`), `AS XXXXX` (e.g  `AS15139`), or `ASXXXXX` (e.g  `AS 15139`)'
+  description: 'Always follow the formats: `ASN XXXXX` (e.g  `ASN15139`), `ASNXXXXX` (e.g  `ASN 15139`), `AS XXXXX` (e.g  `AS15139`), or `ASXXXXX` (e.g  `AS 15139`)'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_autonomous_system_number'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC

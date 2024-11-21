@@ -173,6 +173,307 @@ ai_url_path:
   test_cases: generic_url_path
   stix_mapping: url
 
+####### Hostname extractions #######
+
+ai_host_name:
+  type: ai
+  name: 'Hostname extractions'
+  description: 'Extracts hostnames that fail domain TLD validation. Captures data that fails pattern_domain_name TLD validation.'
+  notes: 'pattern_host_name legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all hostnames from the text. Hostnames should not have a valid TLD extension (these are domains).'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_host_name
+  stix_mapping: domain-name
+
+ai_host_name_subdomain:
+  type: ai
+  name: 'Hostname extractions'
+  description: 'Extracts hostnames that fail subdomain TLD validation. Captures data that fails pattern_domain_name_subdomain TLD validation.'
+  notes: 'pattern_host_name_subdomain legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all sub-hostnames from the text. Sub-hostnames should not have a valid TLD extension.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_host_name_subdomain
+  stix_mapping: domain-name
+
+ai_host_name_url:
+  type: ai
+  name: 'Hostname extractions inside URL'
+  description: 'Extracts hostnames/sub hostnames with full URLs that fail subdomain TLD validation. Captures data that fails pattern_url TLD validation.'
+  notes: 'pattern_host_name_url legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all hostnames / sub-hostnames with full URLs from the text. All extractions should not have a valid TLD extension.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_host_name_url
+  stix_mapping: url
+
+ai_host_name_file:
+  type: ai
+  name: 'Hostname with file extension'
+  description: 'Extracts hostnames/sub hostnames with full URLs with file extension in path. Captures data that fails pattern_url_file TLD validation.'
+  notes: 'pattern_host_name_file legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all hostnames / sub-hostnames with full URLs from the text that contain a path to a valid file extension. All extractions should not have a valid TLD extension. All file extensions should be valid file extensions.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_host_name_file
+  stix_mapping: url
+
+ai_host_name_path:
+  type: ai
+  name: 'Hostname path'
+  description: 'Extracts hostnames/sub hostnames with full URLs without file extension in path. Captures data that fails pattern_url_path TLD validation.'
+  notes: 'pattern_host_name_path legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all hostnames / sub-hostnames with full URLs (but do not contain a path to a file) from the text that. All extractions should not have a valid TLD extension. All file extensions should be valid file extensions.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_host_name_path
+  stix_mapping: url
+
+####### Directory path extractions #######
+
+ai_directory_windows:
+  type: ai
+  name: 'Windows Directory'
+  description: 'Extracts a Windows directory path. The .net docs provide a good overview to Windows paths: https://github.com/dotnet/docs/blob/main/docs/standard/io/file-path-formats.md#file-path-formats-on-windows-systems'
+  notes: 'pattern_directory_windows legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all Windows directory paths from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_directory_windows
+  stix_mapping: directory
+
+ai_directory_windows_with_file:
+  type: ai
+  name: 'Windows Directory with file reported'
+  description: 'Similar to pattern_directory_windows, but captures paths that include the file printed.'
+  notes: 'pattern_directory_windows_with_file legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all Windows directory paths from the text that contain a path to a file.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_directory_windows_with_file
+  stix_mapping: directory-file
+
+ai_directory_unix:
+  type: ai
+  name: 'UNIX Directory'
+  description: 'Extracts a UNIX directory path'
+  notes: 'pattern_directory_unix legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all UNIX directory paths from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_directory_unix
+  stix_mapping: directory
+
+ai_directory_unix_file:
+  type: ai
+  name: 'UNIX Directory with file'
+  description: 'Similar to pattern_directory_unix, but captures paths that include the file printed.'
+  notes: 'pattern_directory_unix_file legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all UNIX directory paths from the text that contain a path to a file.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_directory_unix_file
+  stix_mapping: directory-file
+
+####### File extractions #######
+
+ai_file_name:
+  type: ai
+  name: 'File name'
+  description: 'Extracts filename. The file extension must match a valid file extension. filenames have three parts `<NAME>.<EXTENSION>`. Filetypes only contain a single `.`. Note, the `.` and `<EXTENSION>` part are required, but `<NAME>` is optional (because hidden files can be in format like; `.DS_Store`). Uses helpers/mimetype_filename_extension_list.csv to check valid file extension.'
+  notes: 'pattern_file_name legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all file names from the text. All the extensions must be valid file extensions.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_file_name
+  stix_mapping: file
+
+ai_file_hash_md5:
+  type: ai
+  name: 'MD5'
+  description: 'Extracts MD5 file hashes'
+  notes: 'pattern_file_hash_md5 legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all MD5 hashes from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_file_hash_md5
+  stix_mapping: file-hash
+
+ai_file_hash_sha_1:
+  type: ai
+  name: 'SHA-1'
+  description: 'Extracts SHA-1 file hashes'
+  notes: 'pattern_file_hash_sha_1 legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all SHA-1 hashes from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_file_hash_sha_1
+  stix_mapping: file-hash
+
+ai_file_hash_sha_256:
+  type: ai
+  name: 'SHA-256'
+  description: 'Extracts SHA-256 file hashes'
+  notes: 'pattern_file_hash_sha_256 legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all SHA-256 hashes from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_file_hash_sha_256
+  stix_mapping: file-hash
+
+ai_file_hash_sha_512:
+  type: ai
+  name: 'SHA-512'
+  description: 'Extracts SHA-512 file hashes'
+  notes: 'pattern_file_hash_sha_512 legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all SHA-512 hashes from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_file_hash_sha_512
+  stix_mapping: file-hash
+
+####### Email address extractions #######
+
+ai_email_address:
+  type: ai
+  name: 'Email addresses'
+  description: 'Extracts emails with valid TLDs'
+  notes: 'pattern_email_address legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: ''
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_email_address
+  stix_mapping: email-addr
+
+####### MAC address extractions #######
+
+ai_mac_address:
+  type: ai
+  name: 'MAC Addresses'
+  description: 'Extracts MAC addresses with either `-` or `:` seperators.'
+  notes: 'pattern_mac_address legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: ''
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_mac_address
+  stix_mapping: mac-addr
+
+####### Windows registry key extractions #######
+
+ai_windows_registry_key:
+  type: ai
+  name: 'Windows Registry Key'
+  description: 'Must start with a valid prefix as defined in /includes/helpers/windows_registry_key_prefix.txt'
+  notes: 'pattern_windows_registry_key legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: ''
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_windows_registry_key
+  stix_mapping: windows-registry-key
+
+####### User agent extractions #######
+
+ai_user_agent:
+  type: ai
+  name: 'User Agent'
+  description: 'Will capture a string that looks like a user agent. User Agents should follow: https://www.rfc-editor.org/rfc/rfc7231#section-5.5.3 . The problem here is that there is no defined prefix for user agent strings, they can be anything. txt2stix follows a similar approach to: https://regex101.com/r/nXKYBB/3'
+  notes: 'pattern_user_agent legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: ''
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_user_agent
+  stix_mapping: user-agent
+
+####### ASN extractions #######
+
+ai_autonomous_system_number:
+  type: ai
+  name: 'Autonomous System Numbers (ASN) numbers'
+  description: 'Always follow the formats: `ASN XXXXX` (e.g  `ASN15139`), `ASNXXXXX` (e.g  `ASN 15139`), `AS XXXXX` (e.g  `AS15139`), or `ASXXXXX` (e.g  `AS 15139`)'
+  notes: 'pattern_user_agent legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: ''
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_autonomous_system_number
+  stix_mapping: autonomous-system
+
 
 
 

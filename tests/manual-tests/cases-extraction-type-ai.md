@@ -128,7 +128,8 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_url \
-	--report_id 725bc0bf-d631-4e10-9bef-74a4cf670bd8
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id bcd05fa3-d219-4151-9bbe-76a2eb1f77ca
 ```
 
 #### ai_url_file
@@ -141,7 +142,8 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_url_file \
-	--report_id 697b24f5-d2df-4f57-aaf1-3998db5e7281
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id 6d062894-6762-42e7-a36c-5dbad10f7b59
 ```
 
 #### ai_url_path
@@ -154,10 +156,211 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_url_path \
-	--report_id 49d002da-b037-460a-9cdf-b7607bd5d99d
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id a7e94479-b79a-4bd6-9fa8-1a4a0c43f973
 ```
 
+### Hostname
 
+#### ai_host_name
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_host_name.txt \
+	--name 'ai_host_name' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_host_name \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id 92b49b8b-75eb-40de-96ab-5bda4608afb2
+```
+
+#### ai_host_name_subdomain
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_host_name_subdomain.txt \
+	--name 'ai_host_name_subdomain' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_host_name_subdomain \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id 487bc2d3-5bb0-4413-af93-7da64b86f682
+```
+
+#### ai_host_name_url
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_host_name_url.txt \
+	--name 'ai_host_name_url' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_host_name_url \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id 9e113deb-71b4-4415-9266-460dbb0518d0
+```
+
+#### ai_host_name_file
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_host_name_file.txt \
+	--name 'ai_host_name_file' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_host_name_file \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id f9b6b76e-fbde-45e8-9bfb-a739e3cc5e14
+```
+
+#### ai_host_name_path
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_host_name_path.txt \
+	--name 'ai_host_name_path' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_host_name_path \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id 5572ff73-9a88-4715-8a97-c12fdaea477a
+```
+
+### Directories
+
+#### ai_directory_windows
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_directory_windows.txt \
+	--name 'ai_directory_windows' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_directory_windows \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id 81a7188a-4c9c-48c0-8dbb-38a591182f03
+```
+
+#### ai_directory_windows_with_file
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_directory_windows_with_file.txt \
+	--name 'ai_directory_windows_with_file' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_directory_windows_with_file \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id 03fe7f4f-101d-481f-ab47-5b7dd55c1e85
+```
+
+#### ai_directory_unix
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_directory_unix.txt \
+	--name 'ai_directory_unix' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_directory_unix \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id bc82d4c1-c924-48fd-8896-82633c0bafb3
+```
+
+#### ai_directory_unix_file
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_directory_unix_file.txt \
+	--name 'ai_directory_unix_file' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_directory_unix_file \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id b2b8e25e-44df-40b7-9a32-170d8976ee72
+```
+
+### Files
+
+#### ai_file_name
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_file_name.txt \
+	--name 'ai_file_name' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_file_name \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id 86fcb9d4-f0bb-4a3b-b014-30694bd568b4
+```
+
+#### ai_file_hash_md5
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_file_hash_md5.txt \
+	--name 'ai_file_hash_md5' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_file_hash_md5 \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id cd086fd4-3a7f-49ff-9e7d-2f024b754501
+```
+
+#### ai_file_hash_sha_1
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_file_hash_sha_1.txt \
+	--name 'ai_file_hash_sha_1' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_file_hash_sha_1 \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id dbfda3d7-56f2-4cd1-b909-9a8f7f28667e
+```
+
+#### ai_file_hash_sha_256
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_file_hash_sha_256.txt \
+	--name 'ai_file_hash_sha_256' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_file_hash_sha_256 \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id 0cbfb4aa-9482-46d6-8c86-475973021378
+```
+
+#### ai_file_hash_sha_512
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_file_hash_sha_512.txt \
+	--name 'ai_file_hash_sha_512' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_file_hash_sha_512 \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id bea70032-f6fe-4261-8aad-e11ca3a89c50
+```
 
 
 

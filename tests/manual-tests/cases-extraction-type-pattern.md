@@ -269,6 +269,7 @@ python3 txt2stix.py \
 	--use_extractions pattern_directory_unix_file \
 	--report_id ed473f19-2651-408a-8400-06c1fea66dcc
 ```
+
 ### Files
 
 #### pattern_file_name
