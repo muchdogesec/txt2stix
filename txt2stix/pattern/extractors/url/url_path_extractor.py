@@ -1,8 +1,10 @@
 import tldextract
 import validators
 
+from txt2stix import utils
+
 from ..base_extractor import BaseExtractor
-from ..helper import check_false_positive_domain, validate_file_extension, validate_tld
+from ..helper import check_false_positive_domain, validate_file_extension
 from urllib.parse import urlparse
 from ipaddress import ip_address
 
@@ -27,17 +29,12 @@ class URLPathExtractor(BaseExtractor):
         return False
 
     @classmethod
-    def validate_tld(cls, url):
-        extracted_domain = tldextract.extract(url)
-        return validate_tld(extracted_domain.suffix)
-
-    @classmethod
     def validate_host(cls, url, validate_tld=True):
         uri = urlparse(url)
         if not validators.hostname(uri.hostname):
             return False
         if validate_tld and not cls.is_ip_address(uri.hostname):
-            return cls.validate_tld(uri.hostname)
+            return utils.validate_tld(uri.hostname)
         return True
 
     @staticmethod

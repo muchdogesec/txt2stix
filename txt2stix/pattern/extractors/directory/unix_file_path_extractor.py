@@ -35,9 +35,7 @@ class UnixFilePathExtractor(BaseExtractor):
             if check:
                 try:
                     # Checking if it's a file path by splitting the path and checking the last component for a dot.
-                    file_name = directory_path.split('/')[-1]
-                    extension = file_name.split('.')[-1]
-                    if validate_file_extension(extension):
+                    if validate_file_extension(directory_path):
                         return True
                 except Exception as e:
                     return False

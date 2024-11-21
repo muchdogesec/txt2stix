@@ -10,7 +10,7 @@ import sys, os
 
 from pydantic import BaseModel
 
-from .utils import remove_data_images
+from .utils import remove_links
 
 from .common import UUID_NAMESPACE, FatalException
 
@@ -116,6 +116,10 @@ def parse_model(value: str):
         return provider(model=splits[1])
     return provider()
 
+def parse_bool(value: str):
+    value = value.lower()
+    return value in ["yes", "y", "true", "1"]
+
 def parse_args():
     EXTRACTORS_PATH = INCLUDES_PATH/"extractions"
     all_extractors = extractions.parse_extraction_config(INCLUDES_PATH)
@@ -135,6 +139,8 @@ def parse_args():
     parser.add_argument("--use_extractions", "--use-extractions", default={}, type=functools.partial(parse_extractors_globbed, "extractor", all_extractors),  help="Specify extraction types from the default/local extractions .yaml file", metavar="EXTRACTION1,EXTRACTION2")
     parser.add_argument("--use_identity", "--use-identity", help="Specify an identity file id (e.g., {\"type\":\"identity\",\"name\":\"demo\",\"identity_class\":\"system\"})", metavar="[stix2 identity json]", type=parse_stix)
     parser.add_argument("--external_refs", type=parse_ref, help="pass additional `external_references` entry (or entries) to the report object created. e.g --external_ref author=dogesec link=https://dkjjadhdaj.net", default=[], metavar="{source_name}={external_id}", action="extend", nargs='+')
+    parser.add_argument('--ignore_image_refs', default=True, type=parse_bool)
+    parser.add_argument('--ignore_link_refs', default=True, type=parse_bool)
 
     args = parser.parse_args()
     if not args.input_file.exists():
@@ -236,8 +242,8 @@ def main():
         setLogFile(logger, Path(f"logs/logs-{job_id}.log"))
         logger.info(f"Arguments: {json.dumps(sys.argv[1:])}")
         
-        input_text = remove_data_images(args.input_file.read_text())
-
+        input_text = args.input_file.read_text()
+        preprocessed_text = remove_links(input_text, args.ignore_image_refs, args.ignore_link_refs)
         load_env()
 
         bundler = txt2stixBundler(args.name, args.use_identity, args.tlp_level, input_text, args.confidence, args.all_extractors, args.labels, created=args.created, report_id=args.report_id, external_references=args.external_refs)
@@ -246,9 +252,9 @@ def main():
 
         # ai_extractor_session = args.ai_model[0](args.ai_model[1])
         if args.use_extractions.get("ai"):
-            validate_token_count(int(os.environ["INPUT_TOKEN_LIMIT"]), input_text, args.ai_settings_extractions)
+            validate_token_count(int(os.environ["INPUT_TOKEN_LIMIT"]), preprocessed_text, args.ai_settings_extractions)
         if args.relationship_mode == "ai":
-            validate_token_count(int(os.environ["INPUT_TOKEN_LIMIT"]), input_text, [args.ai_settings_relationships])
+            validate_token_count(int(os.environ["INPUT_TOKEN_LIMIT"]), preprocessed_text, [args.ai_settings_relationships])
 
         all_extracts = extract_all(bundler, args.use_extractions, input_text, ai_extractors=args.ai_settings_extractions)
         extracted_relationships = None
