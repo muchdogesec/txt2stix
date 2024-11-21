@@ -1,5 +1,181 @@
 # ====== AI EXTRACTIONS =====
 
+####### IPv4 extractions #######
+
+ai_ipv4_address_only:
+  type: ai
+  name: 'IPv4 Address Only'
+  description: 'Extracts IPv4 addresses'
+  notes: 'pattern_ipv4_address_only legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all IPv4 addresses from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_ipv4_address_only
+  stix_mapping: ipv4-addr
+
+ai_ipv4_address_cidr:
+  type: ai
+  name: 'IPv4 Address with CIDR'
+  description: 'Extracts IPv4 addresses with CIDRs'
+  notes: 'pattern_ipv4_address_cidr legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all IPv4 addresses with a port from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: ipv4_address_cidr
+  stix_mapping: ipv4-addr
+
+ai_ipv4_address_port:
+  type: ai
+  name: 'IPv4 Address with Port'
+  description: 'Extracts IPv4 addresses with Port'
+  notes: 'pattern_ipv4_address_port legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all IPv4 addresses with a CIDR from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: ipv4_address_port
+  stix_mapping: ipv4-addr-port
+
+####### IPv6 extractions #######
+
+ai_ipv6_address_only:
+  type: ai
+  name: 'IPv6 Address Only'
+  description: 'Extracts IPv6 addresses, but not with CIDR or Ports'
+  notes: 'pattern_ipv6_address_only legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all IPv6 addresses from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_ipv6_address_only
+  stix_mapping: ipv6-addr
+
+ai_ipv6_address_cidr:
+  type: ai
+  name: 'IPv6 Address with CIDR'
+  description: 'Extracts IPv6 addresses with CIDRs'
+  notes: 'pattern_ipv6_address_cidr legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all IPv6 addresses with a port from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_ipv6_address_cidr
+  stix_mapping: ipv6-addr
+
+ai_ipv6_address_port:
+  type: ai
+  name: 'IPv6 Address with Port'
+  description: 'Extracts IPv6 addresses with Port'
+  notes: 'pattern_ipv6_address_port legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all IPv6 addresses with a CIDR from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_ipv6_address_port
+  stix_mapping: ipv6-addr-port
+
+####### Domain name extractions #######
+
+ai_domain_name_only:
+  type: ai
+  name: 'Domain name only'
+  description: 'Extracts domains, but not subdomains or IPv4 addresses. Must have a valid TLD.'
+  notes: 'pattern_domain_name_only legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all valid root domain names from the text. Do not extract subdomains.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_domain_name_only
+  stix_mapping: domain-name
+
+ai_domain_name_subdomain:
+  type: ai
+  name: 'Subdomain name only'
+  description: 'Extracts subdomains, but not root domains or IPv4 addresses. Must have a valid TLD.'
+  notes: 'pattern_domain_name_subdomain legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all valid subdomain names from the text. Do not extract root domains.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_domain_name_subdomain
+  stix_mapping: domain-name
+
+####### URL extractions #######
+
+ai_url:
+  type: ai
+  name: 'URL Only'
+  description: 'Extracts base URLs (can be IPs) with no path/file extension. If the sub/domain part is not an IP, then it must have a valid TLD.'
+  notes: 'pattern_url legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all URLs with no path/file extension from the text. If the sub/domain part is not an IP, then it must have a valid TLD.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_url
+  stix_mapping: url
+
+ai_url_file:
+  type: ai
+  name: 'URL with file extension'
+  description: 'Extracts URLs with file extension in path. If the sub/domain part is not an IP, then it must have a valid TLD. Filetype must also match valid filetype. Similar to pattern_url except checks for URL with path to file'
+  notes: 'pattern_url_file legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all URLs with file extension in path from the text. If the sub/domain part is not an IP, then it must have a valid TLD. The file must match valid filetype.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_url_file
+  stix_mapping: url
+
+ai_url_path:
+  type: ai
+  name: 'URL path'
+  description: 'Extracts URLs without file extension in path. If the sub/domain part is not an IP, then it must have a valid TLD. Similar to pattern_url except checks for URL with path but without file'
+  notes: 'pattern_url_path legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all URLs without a file extension in their path from the text. If the sub/domain part is not an IP, then it must have a valid TLD.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_url_path
+  stix_mapping: url
+
+
+
+
 ####### Cryptocurrency extractions #######
 
 ai_cryptocurrency_btc_wallet:
@@ -12,11 +188,9 @@ ai_cryptocurrency_btc_wallet:
   created_by: DOGESEC
   version: 1.0.0
   prompt_base: 'Extract all Bitcoin Wallet hashes from the text.'
-  prompt_helper:
+  prompt_helper: ''
   prompt_conversion: ''
   test_cases: generic_cryptocurrency_btc_wallet
-  ignore_extractions:
-    -
   stix_mapping: cryptocurrency-wallet
 
 ai_cryptocurrency_btc_transaction:
@@ -29,11 +203,9 @@ ai_cryptocurrency_btc_transaction:
   created_by: DOGESEC
   version: 1.0.0
   prompt_base: 'Extract all Cryptocurrency Bitcoin Transaction hashes from the text.'
-  prompt_helper:
+  prompt_helper: ''
   prompt_conversion: ''
   test_cases: generic_cryptocurrency_btc_transaction
-  ignore_extractions:
-    -
   stix_mapping: cryptocurrency-transaction
 
 ####### Phone number Extractions #######
@@ -48,7 +220,7 @@ ai_phone_number:
   created_by: DOGESEC
   version: 1.0.0
   prompt_base: 'Extract all phone numbers from the text.'
-  prompt_helper:
+  prompt_helper: ''
   prompt_conversion: 'If possible, please convert the number to the E.164 standard with the correct country code. Remove any whitespace from the final value.'
   test_cases: generic_phone_number
   stix_mapping: phone-number

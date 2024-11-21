@@ -6,7 +6,7 @@ pattern_ipv4_address_only:
   type: pattern
   name: 'IPv4 Address Only'
   description: 'Extracts IPv4 addresses'
-  notes: 'The logic for this is covered in the Python Validators library: https://validators.readthedocs.io/en/latest/#module-validators.ip_address. A good description of IPv4/IPv6 formats can be read here: https://www.ibm.com/docs/en/ts4500-tape-library?topic=functionality-ipv4-ipv6-address-formats.'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_ipv4_address_only'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -18,7 +18,7 @@ pattern_ipv4_address_cidr:
   type: pattern
   name: 'IPv4 Address with CIDR'
   description: 'Extracts IPv4 addresses with CIDRs'
-  notes: 'The pattern_ipv4_address_only base extration is used, in addition to logic to detect a port. Port numbers must be within the range 0-65535.'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_ipv4_address_cidr'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -30,7 +30,7 @@ pattern_ipv4_address_port:
   type: pattern
   name: 'IPv4 Address with Port'
   description: 'Extracts IPv4 addresses with Port'
-  notes: 'The pattern_ipv4_address_only base extration is used, in addition to logic to detect a CIDR. CIDR are always within the range 1-32.'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_ipv4_address_port'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -44,7 +44,7 @@ pattern_ipv6_address_only:
   type: pattern
   name: 'IPv6 Address Only'
   description: 'Extracts IPv6 addresses, but not with CIDR or Ports'
-  notes: 'The logic for this is covered in the Python Validators library: https://validators.readthedocs.io/en/latest/#module-validators.ip_address. A good description of IPv4/IPv6 formats can be read here: https://www.ibm.com/docs/en/ts4500-tape-library?topic=functionality-ipv4-ipv6-address-formats. txt2stix only supports full (and NOT partial) ipv6 strings only in pattern mode. e.g. `::1234:5678` is a valid ipv6 address, but will not be extracted at present (use AI mode as a workaround).'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_ipv6_address_only'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -56,7 +56,7 @@ pattern_ipv6_address_cidr:
   type: pattern
   name: 'IPv6 Address with CIDR'
   description: 'Extracts IPv6 addresses with CIDRs'
-  notes: 'The pattern_ipv6_address_only base extration is used, in addition to logic to detect a port. Port numbers must be within the range 0-65535.'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_ipv6_address_cidr'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -68,7 +68,7 @@ pattern_ipv6_address_port:
   type: pattern
   name: 'IPv6 Address with Port'
   description: 'Extracts IPv6 addresses with Port'
-  notes: 'The pattern_ipv6_address_only base extration is used, in addition to logic to detect a CIDR. CIDR are always within the range 1-32. When a port is written for IPv6 addressed the IPv6 part is wrapped in square brackets.'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_ipv6_address_port'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -82,7 +82,7 @@ pattern_domain_name_only:
   type: pattern
   name: 'Domain name only'
   description: 'Extracts domains, but not subdomains or IPv4 addresses. Must have a valid TLD.'
-  notes: 'Part of the logic for this is covered in the Python Validators library. However, this does not check for a valid TLD, which is important as domains can easily be confused with filenames. Therefore the extraction is then also validated to ensure the end of the domain has a valid TLD, using the TLD Python lib.'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_domain_name_only'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -94,7 +94,7 @@ pattern_domain_name_subdomain:
   type: pattern
   name: 'Subdomain name only'
   description: 'Extracts subdomains, but not root domains or IPv4 addresses. Must have a valid TLD.'
-  notes: 'Same as pattern_domain_name_only, however will extract subdomain present. Subdomains can have an unlimited number nested subdomains.'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_domain_name_subdomain'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -108,7 +108,7 @@ pattern_url:
   type: pattern
   name: 'URL Only'
   description: 'Extracts base URLs (can be IPs) with no path/file extension. If the sub/domain part is not an IP, then it must have a valid TLD.'
-  notes: 'Part of the logic for this is covered in the Python Validators library. However, this does not check for a valid TLD, which is important as domains can easily be confused with filenames. Therefore the extraction is then also validated to ensure the end of the domain has a valid TLD, using the TLD Python lib. IP addresses can also be captured by this extraction, ignoring TLDs.'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_pattern_url'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -119,8 +119,8 @@ pattern_url:
 pattern_url_file:
   type: pattern
   name: 'URL with file extension'
-  description: 'Extracts URLs with file extension in path. If the sub/domain part is not an IP, then it must have a valid TLD. Filetype must also match valid filetype.'
-  notes: 'Similar to pattern_url except checks for URL with path to file'
+  description: 'Extracts URLs with file extension in path. If the sub/domain part is not an IP, then it must have a valid TLD. Filetype must also match valid filetype. Similar to pattern_url except checks for URL with path to file'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_url_file'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -131,8 +131,8 @@ pattern_url_file:
 pattern_url_path:
   type: pattern
   name: 'URL path'
-  description: 'Extracts URLs without file extension in path. If the sub/domain part is not an IP, then it must have a valid TLD.'
-  notes: 'Similar to pattern_url except checks for URL with path but without file'
+  description: 'Extracts URLs without file extension in path. If the sub/domain part is not an IP, then it must have a valid TLD. Similar to pattern_url except checks for URL with path but without file'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_url_path'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -145,8 +145,8 @@ pattern_url_path:
 pattern_host_name:
   type: pattern
   name: 'Hostname extractions'
-  description: 'Extracts hostnames that fail domain TLD validation'
-  notes: 'Captures data that fails pattern_domain_name TLD validation.'
+  description: 'Extracts hostnames that fail domain TLD validation. Captures data that fails pattern_domain_name TLD validation.'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_host_name'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -157,8 +157,8 @@ pattern_host_name:
 pattern_host_name_subdomain:
   type: pattern
   name: 'Hostname extractions'
-  description: 'Extracts hostnames that fail subdomain TLD validation'
-  notes: 'Captures data that fails pattern_domain_name_subdomain TLD validation.'
+  description: 'Extracts hostnames that fail subdomain TLD validation. Captures data that fails pattern_domain_name_subdomain TLD validation.'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_host_name_subdomain'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -169,8 +169,8 @@ pattern_host_name_subdomain:
 pattern_host_name_url:
   type: pattern
   name: 'Hostname extractions inside URL'
-  description: 'Extracts hostnames/sub hostnames with full URLs that fail subdomain TLD validation'
-  notes: 'Captures data that fails pattern_url TLD validation.'
+  description: 'Extracts hostnames/sub hostnames with full URLs that fail subdomain TLD validation. Captures data that fails pattern_url TLD validation.'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_host_name_url'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -181,8 +181,8 @@ pattern_host_name_url:
 pattern_host_name_file:
   type: pattern
   name: 'Hostname with file extension'
-  description: 'Extracts hostnames/sub hostnames with full URLs with file extension in path.'
-  notes: 'Captures data that fails pattern_url_file TLD validation.'
+  description: 'Extracts hostnames/sub hostnames with full URLs with file extension in path. Captures data that fails pattern_url_file TLD validation.'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_host_name_file'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -193,8 +193,8 @@ pattern_host_name_file:
 pattern_host_name_path:
   type: pattern
   name: 'Hostname path'
-  description: 'Extracts hostnames/sub hostnames with full URLs without file extension in path.'
-  notes: 'Captures data that fails pattern_url_path TLD validation.'
+  description: 'Extracts hostnames/sub hostnames with full URLs without file extension in path. Captures data that fails pattern_url_path TLD validation.'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_host_name_path'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -202,27 +202,13 @@ pattern_host_name_path:
   test_cases: generic_host_name_path
   stix_mapping: url
 
-####### File name extractions #######
-
-pattern_file_name:
-  type: pattern
-  name: File name
-  description: 'Extracts filename. The file extension must match a valid file extension.'
-  notes: 'filenames have three parts `<NAME>.<EXTENSION>`. Filetypes only contain a single `.`. Note, the `.` and `<EXTENSION>` part are required, but `<NAME>` is optional (because hidden files can be in format like; `.DS_Store`). Uses helpers/mimetype_filename_extension_list.csv to check valid file extension.'
-  created: 2020-01-01
-  modified:  2020-01-01
-  created_by: DOGESEC
-  version: 1.0.0
-  test_cases: generic_file_name
-  stix_mapping: file
-
 ####### Directory path extractions #######
 
 pattern_directory_windows:
   type: pattern
   name: Windows Directory
-  description: 'Extracts a Windows directory path'
-  notes: 'The .net docs provide a good overview to Windows paths: https://github.com/dotnet/docs/blob/main/docs/standard/io/file-path-formats.md#file-path-formats-on-windows-systems'
+  description: 'Extracts a Windows directory path. The .net docs provide a good overview to Windows paths: https://github.com/dotnet/docs/blob/main/docs/standard/io/file-path-formats.md#file-path-formats-on-windows-systems'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use directory_windows'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -266,7 +252,19 @@ pattern_directory_unix_file:
   test_cases: generic_directory_unix_file
   stix_mapping: directory-file
 
-####### File hash extractions #######
+####### File extractions #######
+
+pattern_file_name:
+  type: pattern
+  name: File name
+  description: 'Extracts filename. The file extension must match a valid file extension. filenames have three parts `<NAME>.<EXTENSION>`. Filetypes only contain a single `.`. Note, the `.` and `<EXTENSION>` part are required, but `<NAME>` is optional (because hidden files can be in format like; `.DS_Store`). Uses helpers/mimetype_filename_extension_list.csv to check valid file extension.'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_file_name'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_file_name
+  stix_mapping: file
 
 pattern_file_hash_md5:
   type: pattern
