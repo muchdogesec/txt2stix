@@ -2,8 +2,6 @@
 
 CWE-1023
 CWE-102
-Destructor
+Use of Redundant Code
+Insufficient Encapsulation
 
-====Bad====
-
-CWE-999

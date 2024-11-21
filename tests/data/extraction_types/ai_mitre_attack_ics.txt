@@ -1,8 +1,6 @@
 ====Good====
 
 TA0111
-Privilege Escalation
+Scripting
+Program Upload
 
-====Bad====
-
-P1174

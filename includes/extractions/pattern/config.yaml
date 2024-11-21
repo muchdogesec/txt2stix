@@ -390,7 +390,7 @@ pattern_cryptocurrency_btc_wallet:
   type: pattern
   name: 'Cryptocurrency Bitcoin Wallet'
   description: 'Will extract bitcoin wallet hashes and create STIX cryptocurrency-wallet objects for them'
-  notes: 'Uses the Python validators library.'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_cryptocurrency_btc_wallet'
   created: 2020-01-01
   modified: 2020-01-01
   created_by: DOGESEC
@@ -402,7 +402,7 @@ pattern_cryptocurrency_btc_wallet_transaction:
   type: pattern
   name: 'Cryptocurrency Bitcoin Wallet And Transaction'
   description: 'Will extract bitcoin wallet hashes and lookup all transactions the extracted wallets have been seen in. Will create a cryptocurrency-wallet object for the wallet extracted, will create cryptocurrency-transaction objects for all transactions the wallet is found in. Use either pattern_cryptocurrency_btc_wallet_transaction or pattern_cryptocurrency_btc_transaction but not both in same extraction'
-  notes: ''
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_cryptocurrency_btc_wallet_transaction'
   created: 2020-01-01
   modified: 2020-01-01
   created_by: DOGESEC
@@ -414,7 +414,7 @@ pattern_cryptocurrency_btc_transaction:
   type: pattern
   name: 'Cryptocurrency Bitcoin Transaction'
   description: 'Will extract bitcoin transaction hashes. Will create a cryptocurrency-transaction object for the transaction extracted and will create cryptocurrency-wallet objects for all wallets seen in the input or output of the transaction. Use either pattern_cryptocurrency_btc_wallet_transaction or pattern_cryptocurrency_btc_transaction but not both in same extraction'
-  notes: ''
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_cryptocurrency_btc_transaction'
   created: 2020-01-01
   modified: 2020-01-01
   created_by: DOGESEC
@@ -427,8 +427,8 @@ pattern_cryptocurrency_btc_transaction:
 pattern_cve_id:
   type: pattern
   name: 'CVE'
-  description:
-  notes: 'CVEs IDs always take the format; `CVE-YYYY-NNNNN` (e.g. `CVE-2022-29098`) or `CVE-YYYY-NNNN` (e.g. `CVE-1999-0007`).' 
+  description: 'CVEs IDs always take the format; `CVE-YYYY-NNNNN` (e.g. `CVE-2022-29098`) or `CVE-YYYY-NNNN` (e.g. `CVE-1999-0007`).'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_cve_id'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -441,8 +441,8 @@ pattern_cve_id:
 pattern_cpe_uri:
   type: pattern
   name: 'CPE'
-  description: ''
-  notes: 'CPE URIs always start with `cpe:2.3` and have 13 parts (or 12 `:` characters)'
+  description: 'CPE URIs always start with `cpe:2.3` and have 13 parts (or 12 `:` characters)'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_cpe_uri'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -455,8 +455,8 @@ pattern_cpe_uri:
 pattern_bank_card_mastercard:
   type: pattern
   name: 'Bank Card Mastercard'
-  description: ''
-  notes: 'Uses the Python validators library.'
+  description: 'Will also enrich card information if BIN List API key set'
+  notes: 'Also available: ai_bank_card_mastercard'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -467,8 +467,8 @@ pattern_bank_card_mastercard:
 pattern_bank_card_visa:
   type: pattern
   name: 'Bank Card Visa'
-  description: ''
-  notes: 'Uses the Python validators library.'
+  description: 'Will also enrich card information if BIN List API key set'
+  notes: 'Also available: Use ai_bank_card_visa'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -479,8 +479,8 @@ pattern_bank_card_visa:
 pattern_bank_card_amex:
   type: pattern
   name: 'Bank Card American Express'
-  description: ''
-  notes: 'Uses the Python validators library.'
+  description: 'Will also enrich card information if BIN List API key set'
+  notes: 'Also available: Use ai_bank_card_amex'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -491,8 +491,8 @@ pattern_bank_card_amex:
 pattern_bank_card_union_pay:
   type: pattern
   name: 'Bank Card Union Pay'
-  description: ''
-  notes: 'Uses the Python validators library.'
+  description: 'Will also enrich card information if BIN List API key set'
+  notes: 'Also available: Use ai_bank_card_union_pay'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -503,8 +503,8 @@ pattern_bank_card_union_pay:
 pattern_bank_card_diners:
   type: pattern
   name: 'Bank Card Diners'
-  description: ''
-  notes: 'Uses the Python validators library.'
+  description: 'Will also enrich card information if BIN List API key set'
+  notes: 'Also available: Use ai_bank_card_diners'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -515,8 +515,8 @@ pattern_bank_card_diners:
 pattern_bank_card_jcb:
   type: pattern
   name: 'Bank Card JCB'
-  description: ''
-  notes: 'Uses the Python validators library.'
+  description: 'Will also enrich card information if BIN List API key set'
+  notes: 'Also available: Use ai_bank_card_jcb'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -527,8 +527,8 @@ pattern_bank_card_jcb:
 pattern_bank_card_discover:
   type: pattern
   name: 'Bank Card Discover'
-  description: ''
-  notes: 'Uses the Python validators library.'
+  description: 'Will also enrich card information if BIN List API key set'
+  notes: 'Also available: Use ai_bank_card_discover'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -542,7 +542,7 @@ pattern_iban_number:
   type: pattern
   name: 'IBAN'
   description: ''
-  notes: 'Covered in the Python Validators library.'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_iban_number'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
@@ -556,7 +556,7 @@ pattern_phone_number:
   type: pattern
   name: 'Phone number'
   description: ''
-  notes: 'Uses the phonenumbers python library'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_phone_number'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC

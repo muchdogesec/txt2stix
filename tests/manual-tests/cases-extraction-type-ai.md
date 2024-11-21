@@ -1,3 +1,5 @@
+## AI extractions with pattern versions too
+
 ### IPv4
 
 #### ai_ipv4_address_only
@@ -362,10 +364,87 @@ python3 txt2stix.py \
 	--report_id bea70032-f6fe-4261-8aad-e11ca3a89c50
 ```
 
+### Email address
 
+#### ai_email_address
 
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_email_address.txt \
+	--name 'ai_email_address' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_email_address \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id f07f175f-b1ac-404e-b555-14c613ba9f0f
+```
 
+### MAC address
 
+#### ai_mac_address
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_mac_address.txt \
+	--name 'ai_mac_address' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_mac_address \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id c24a75f5-7a7d-4db8-9f9a-1b20176f9ea6
+```
+
+### Windows Registry Key
+
+#### ai_windows_registry_key
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_windows_registry_key.txt \
+	--name 'ai_windows_registry_key' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_windows_registry_key \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id aeb4c001-a6d0-44cf-8a8e-1ee17cf38247
+```
+
+### User agent
+
+#### ai_user_agent
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_user_agent.txt \
+	--name 'ai_user_agent' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_user_agent \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id 58b2a7e5-60a5-43cf-86cf-e6d1ed0d5a48
+```
+
+### ASN
+
+#### ai_autonomous_system_number
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_autonomous_system_number.txt \
+	--name 'ai_autonomous_system_number' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_autonomous_system_number \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id 1bfdedb9-b3c1-44b9-bebb-8371651350d7
+```
+
+### Cryptocurrency
 
 #### ai_cryptocurrency_btc_wallet
 
@@ -378,7 +457,21 @@ python3 txt2stix.py \
 	--confidence 100 \
 	--use_extractions ai_cryptocurrency_btc_wallet \
 	--ai_settings_extractions openai:gpt-4o \
-	--report_id 5e7330c0-aa1f-48a4-8792-9e656eed397f
+	--report_id 61c32b8c-f901-46b9-b684-119e61b27f9a
+```
+
+#### ai_cryptocurrency_btc_wallet_transaction
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_cryptocurrency_btc_wallet.txt \
+	--name 'ai_cryptocurrency_btc_wallet_transaction' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_cryptocurrency_btc_wallet_transaction \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id 52d2146c-798a-440f-942f-6fe039fb8995
 ```
 
 #### ai_cryptocurrency_btc_transaction
@@ -392,64 +485,176 @@ python3 txt2stix.py \
 	--confidence 100 \
 	--use_extractions ai_cryptocurrency_btc_transaction \
 	--ai_settings_extractions openai:gpt-4o \
-	--report_id 61db085c-ec03-44d9-bcdf-0bd4c4f54360
+	--report_id cbb2a5f9-2f30-48c0-a45d-aa51974f84a3
 ```
 
-#### ai_cryptocurrency_eth_wallet
+### CVE
+
+#### ai_cve_id
+
+_Ensure this CVE exists in your Vulmatch install and Vulmatch host set_
 
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/data/extraction_types/generic_cryptocurrency_eth_wallet.txt \
-	--name 'ai_cryptocurrency_eth_wallet' \
+	--input_file tests/data/extraction_types/generic_cve_id.txt \
+	--name 'ai_cve_id' \
 	--tlp_level clear \
 	--confidence 100 \
-	--use_extractions ai_cryptocurrency_eth_wallet \
+	--use_extractions ai_cve_id \
 	--ai_settings_extractions openai:gpt-4o \
-	--report_id de602a36-352e-4177-855f-5b8be50abd80
+	--report_id bd97c631-a992-4a83-9ee1-7c911b23cea2
 ```
 
-#### ai_cryptocurrency_eth_transaction
+### CPE
+
+#### ai_cpe_uri
+
+_Ensure this CVE exists in your Vulmatch install and Vulmatch host set_
 
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/data/extraction_types/generic_cryptocurrency_eth_transaction.txt \
-	--name 'ai_cryptocurrency_eth_transaction' \
+	--input_file tests/data/extraction_types/generic_cpe_uri.txt \
+	--name 'ai_cpe_uri' \
 	--tlp_level clear \
 	--confidence 100 \
-	--use_extractions ai_cryptocurrency_eth_transaction \
+	--use_extractions ai_cpe_uri \
 	--ai_settings_extractions openai:gpt-4o \
-	--report_id 5696aaba-f3a4-4a69-bb5c-cb4f69c5a88b
+	--report_id 71483c72-ee15-4213-aff5-61fba6f67067
 ```
 
-#### ai_cryptocurrency_xmr_wallet
+### Bank cards
+
+#### ai_bank_card_mastercard
+
+_Ensure this BIN List API key set_
 
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/data/extraction_types/generic_cryptocurrency_xmr_wallet.txt \
-	--name 'ai_cryptocurrency_xmr_wallet' \
+	--input_file tests/data/extraction_types/generic_bank_card_mastercard.txt \
+	--name 'ai_bank_card_mastercard' \
 	--tlp_level clear \
 	--confidence 100 \
-	--use_extractions ai_cryptocurrency_xmr_wallet \
+	--use_extractions ai_bank_card_mastercard \
 	--ai_settings_extractions openai:gpt-4o \
-	--report_id db42c522-ad2c-4f8d-8cc2-836775e5d387
+	--report_id dbde8394-c094-46c5-b5cc-f0e58f3f257c
 ```
 
-#### ai_cryptocurrency_xmr_transaction
+#### ai_bank_card_visa
+
+_Ensure this BIN List API key set_
 
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/data/extraction_types/generic_cryptocurrency_xmr_transaction.txt \
-	--name 'ai_cryptocurrency_xmr_transaction' \
+	--input_file tests/data/extraction_types/generic_bank_card_visa.txt \
+	--name 'ai_bank_card_visa' \
 	--tlp_level clear \
 	--confidence 100 \
-	--use_extractions ai_cryptocurrency_xmr_transaction \
+	--use_extractions ai_bank_card_visa \
 	--ai_settings_extractions openai:gpt-4o \
-	--report_id ce176710-435f-4490-893e-f034e8847e88
+	--report_id ad935ada-a993-4631-ab0b-57015a36880a
 ```
+
+#### ai_bank_card_amex
+
+_Ensure this BIN List API key set_
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_bank_card_amex.txt \
+	--name 'ai_bank_card_amex' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_bank_card_amex \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id 84f0f6f8-86f3-439b-b905-ef38ddcea262
+```
+
+#### ai_bank_card_union_pay
+
+_Ensure this BIN List API key set_
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_bank_card_union_pay.txt \
+	--name 'ai_bank_card_union_pay' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_bank_card_union_pay \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id 16e8eafa-423d-4b7a-84f0-e32f224bb302
+```
+
+#### ai_bank_card_diners
+
+_Ensure this BIN List API key set_
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_bank_card_diners.txt \
+	--name 'ai_bank_card_diners' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_bank_card_diners \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id ddf3f977-823a-42da-9c3a-878b0d1c0d16
+```
+
+#### ai_bank_card_jcb
+
+_Ensure this BIN List API key set_
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_bank_card_jcb.txt \
+	--name 'ai_bank_card_jcb' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_bank_card_jcb \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id c85d2cea-0d36-418f-8a41-9e5a1fb8b6da
+```
+
+#### ai_bank_card_discover
+
+_Ensure this BIN List API key set_
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_bank_card_discover.txt \
+	--name 'ai_bank_card_discover' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_bank_card_discover \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id a6f61277-847c-4c4a-a251-3723aa41772b
+```
+
+### IBAN
+
+#### ai_iban_number
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_iban_number.txt \
+	--name 'ai_iban_number' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_iban_number \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id ecb21127-4f17-49d0-a335-cb76aa5a9440
+```
+
+### Phone number
 
 #### ai_phone_number
 
@@ -462,19 +667,21 @@ python3 txt2stix.py \
 	--confidence 100 \
 	--use_extractions ai_phone_number \
 	--ai_settings_extractions openai:gpt-4o \
-	--report_id 1d78821c-b07a-4498-8174-791cf196f962
+	--report_id 5e177e1f-a747-41c6-878a-5983d120323a
 ```
 
-#### ai_country_alpha2
+## AI extractions with lookup versions too
+
+#### ai_country
 
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/data/extraction_types/ai_country_alpha2.txt \
+	--input_file tests/data/extraction_types/ai_country.txt \
 	--name 'ai_country_alpha2' \
 	--tlp_level clear \
 	--confidence 100 \
-	--use_extractions ai_country_alpha2 \
+	--use_extractions ai_country \
 	--ai_settings_extractions openai:gpt-4o \
 	--report_id 256f89fe-ad21-4604-9d6d-b8b5335f4657
 ```
