@@ -270,3 +270,55 @@ python3 txt2stix.py \
 	--use_extractions pattern_ipv4_address_only \
 	--external_refs key=value source=id
 ```
+
+### ignore image refs
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/manually_generated_reports/embedded_img_ignore.txt \
+	--name 'ignore image refs true' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions pattern_domain_name_only,pattern_url \
+	--ignore_image_refs true \
+	--report_id 649da017-4090-48b2-97da-b24d37418ee6
+```
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/manually_generated_reports/embedded_img_ignore.txt \
+	--name 'ignore image refs false' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions pattern_domain_name_only,pattern_url \
+	--ignore_image_refs false \
+	--report_id 669f7663-18e0-4381-90c8-6622c06b16ec
+```
+
+### ignore link refs
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/manually_generated_reports/embedded_link_ignore.txt \
+	--name 'ignore link refs true' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions pattern_domain_name_only,pattern_url \
+	--ignore_link_refs true \
+	--report_id 8854f8c9-f231-4f4b-8145-4db95b1d13cf
+```
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/manually_generated_reports/embedded_link_ignore.txt \
+	--name 'ignore link refs false' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions pattern_domain_name_only,pattern_url \
+	--ignore_link_refs false \
+	--report_id 8cf2590e-f7b8-40c6-99cd-4aad9fbdc8bd
+```
