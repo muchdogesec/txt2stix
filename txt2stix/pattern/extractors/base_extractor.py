@@ -3,6 +3,7 @@
 """
 import re
 import logging
+from typing import Iterable
 
 logger = logging.getLogger(__name__)
 
@@ -11,14 +12,14 @@ ALL_EXTRACTORS = {}
 class BaseExtractor:
     name = None
     extraction_regex = None
-    stripe_on_line = False
     extraction_function = None
     common_strip_elements = "\"'.,:"
     filter_function = None # further filter the extracted values
     meta_extractor = None
     version = None
     stix_mapping = None
-    invalid_characters = ['.', ',', '!', '`', '(', ')', '{', '}', '"', '````', ' ']
+    invalid_characters = ['.', ',', '!', '`', '(', ')', '{', '}', '"', '````', ' ', '[', ']']
+    SPLITS_FINDER = re.compile(r'[\'"<\(\{\[\s].*?[\)\s\]\}\)>"\']') #split on boundary characters instead of ' ' only
 
 
     @classmethod
@@ -39,7 +40,7 @@ class BaseExtractor:
         start_index = 0
         if cls.extraction_regex is not None:
             if cls.extraction_regex.startswith("^") or cls.extraction_regex.endswith("$"):
-                for word in text.split():
+                for word in cls.split_all(text):
                     end_index = start_index + len(word) - 1
                     match = re.match(cls.extraction_regex, word)
                     if match:
@@ -63,10 +64,8 @@ class BaseExtractor:
         elif cls.extraction_function is not None:
 
             start_index = 0
-            if cls.stripe_on_line:
-                words = text.splitlines()
-            else:
-                words = text.split()
+            
+            words = cls.SPLITS_FINDER.findall(text)
             for word in words:
                 end_index = start_index + len(word) - 1
 
@@ -119,13 +118,11 @@ class BaseExtractor:
         positions_only = [pos for kw, pos in keyword_positions]
         return keyword, positions_only
 
-    @staticmethod
-    def trim_invalid_characters(keyword, characters):
-        if keyword[-1] in characters:
-            keyword = keyword[:-1]
+    @classmethod
+    def split_all(cls, text):
+        for word in cls.SPLITS_FINDER.findall(text):
+            yield cls.trim_invalid_characters(word, cls.invalid_characters)
 
-        if len(keyword) > 0:
-            if keyword[0] in characters:
-                keyword = keyword[1:]
-
-        return keyword
+    @classmethod
+    def trim_invalid_characters(cls, keyword: str, characters: Iterable):
+        return keyword.strip(''.join(characters))

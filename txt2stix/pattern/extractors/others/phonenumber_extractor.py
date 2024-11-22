@@ -12,7 +12,7 @@ class PhoneNumberExtractor(BaseExtractor):
     """
 
     name = "pattern_phone_number"
-    extraction_regex = r'(\+\d{1,3}\s?\d{1,4}\s?\d{1,4}\s?\d{1,4})'
+    extraction_regex = r'((\+|00)\d{1,3}\s?\d{1,4}\s?\d{1,4}\s?\d{1,4})'
 
     @staticmethod
     def validate_phone_number(regex, phone_number):
