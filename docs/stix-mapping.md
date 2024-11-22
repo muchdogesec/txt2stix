@@ -1714,6 +1714,14 @@ Takes the extracted name and passes it to;
 GET CTIBUTLER_HOST/api/v1/attack-enterprise/objects/?name=<VALUE>
 ```
 
+### stix-mapping: `ctibutler-mitre-attack-enterprise-alias`
+
+Takes the extracted alias and passes it to;
+
+```shell
+GET CTIBUTLER_HOST/api/v1/attack-enterprise/objects/?alias=<VALUE>
+```
+
 ### stix-mapping: `ctibutler-mitre-attack-mobile-id`
 
 Takes the extracted ID and passes it to
@@ -1735,6 +1743,14 @@ Takes the extracted name and passes it to;
 
 ```shell
 GET CTIBUTLER_HOST/api/v1/attack-mobile/objects/?name=<VALUE>
+```
+
+### stix-mapping: `ctibutler-mitre-attack-mobile-alias`
+
+Takes the extracted alias and passes it to;
+
+```shell
+GET CTIBUTLER_HOST/api/v1/attack-mobile/objects/?alias=<VALUE>
 ```
 
 ### stix-mapping: `ctibutler-mitre-attack-ics-id`
@@ -1760,6 +1776,14 @@ Takes the extracted name and passes it to;
 
 ```shell
 GET CTIBUTLER_HOST/api/v1/attack-ics/objects/?name=<VALUE>
+```
+
+### stix-mapping: `ctibutler-mitre-attack-ics-alias`
+
+Takes the extracted alias and passes it to;
+
+```shell
+GET CTIBUTLER_HOST/api/v1/attack-ics/objects/?alias=<VALUE>
 ```
 
 ### stix-mapping: `ctibutler-mitre-capec-id`

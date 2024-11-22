@@ -483,6 +483,15 @@ generic_mitre_attack_enterprise_name:
   test_negative_examples:
     - 'TA0006' # is id
 
+generic_mitre_attack_enterprise_aliases:
+  test_positive_examples:
+    - 'Operation Sharpshooter'
+    - 'Operation Spalax'
+  test_negative_examples:
+    - 'TA0006' # is id
+    - 'Rundll32' # is a name
+    - 'OS Credential Dumping' # is a name
+
 ai_mitre_attack_enterprise:
   test_positive_examples:
     - 'T1174' # course-of-action--00d7d21b-69d6-4797-88a2-c86f3fc97651 , attack-pattern--b8c5c9dd-a662-479d-9428-ae745872537c
@@ -494,8 +503,10 @@ ai_mitre_attack_enterprise:
     - 'TA0003' # x-mitre-tactic--5bc1d813-693e-4823-9961-abf9af4b0e92
     - 'Rundll32' # attack-pattern--045d0922-2310-4e60-b5e4-3302302cb3c5
     - 'OS Credential Dumping' # attack-pattern--0a3ead4e-6d47-4ccb-854c-a6a4f9d96b22
+    - 'Operation Sharpshooter'
+    - 'Operation Spalax'
   test_negative_examples:
-    - 
+    - ''
 
 generic_mitre_attack_mobile:
   test_positive_examples:
@@ -514,6 +525,15 @@ generic_mitre_attack_mobile_name:
   test_negative_examples:
     - 'M1013' # is id
 
+generic_mitre_attack_mobile_aliases:
+  test_positive_examples:
+    - 'Storm-0875'
+    - 'Octo Tempest'
+  test_negative_examples:
+    - 'M1013' # is id
+    - 'Impair Defenses' # is a name
+    - 'Call Log' # is a name
+
 ai_mitre_attack_mobile:
   test_positive_examples:
     - 'M1013' # course-of-action--25dc1ce8-eb55-4333-ae30-a7cb4f5894a1
@@ -522,8 +542,10 @@ ai_mitre_attack_mobile:
     - 'TA0029' # x-mitre-tactic--3e962de5-3280-43b7-bc10-334fbc1d6fa8
     - 'Impair Defenses' # attack-pattern--20b0931a-8952-42ca-975f-775bad295f1a
     - 'Call Log' # attack-pattern--1d1b1558-c833-482e-aabb-d07ef6eae63d
+    - 'Storm-0875'
+    - 'Octo Tempest'
   test_negative_examples:
-    - 
+    - ''
 
 generic_mitre_attack_ics:
   test_positive_examples:
@@ -538,12 +560,24 @@ generic_mitre_attack_ics_name:
   test_negative_examples:
     - 'TA0111' # is id
 
+generic_mitre_attack_ics_aliases:
+  test_positive_examples:
+    - 'Energetic Bear'
+    - 'BROMINE'
+  test_negative_examples:
+    - 'TA0111' # is id
+    - 'Scripting' # is name
+    - 'Program Upload' # is name
+
 ai_mitre_attack_ics:
   test_positive_examples:
     - 'TA0111' # x-mitre-tactic--33752ae7-f875-4f43-bdb6-d8d02d341046
     - 'Scripting' # attack-pattern--2dc2b567-8821-49f9-9045-8740f3d0b958
     - 'Program Upload' # attack-pattern--3067b85e-271e-4bc5-81ad-ab1a81d411e3
+    - 'Energetic Bear'
+    - 'BROMINE'
   test_negative_examples:
+    - ''
 
 ####### MITRE CAPEC #######
 ### YOU NEED TO ENSURE POSITIVE TESTS EXIST IN YOUR CTIBUTLER INSTALL

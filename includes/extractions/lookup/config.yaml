@@ -43,6 +43,19 @@ lookup_mitre_attack_enterprise_name:
   test_cases: generic_mitre_attack_enterprise_name
   stix_mapping: ctibutler-mitre-attack-enterprise-name
 
+lookup_mitre_attack_enterprise_alias:
+  type: lookup
+  name: 'MITRE ATT&CK Enterprise alias'
+  description: 'Extracts MITRE ATT&CK Enterprise aliases from text. See lookup name for version used.'
+  notes: 'ai_mitre_attack_enterprise also exists but beware of hallucinations'
+  file: 'lookups/mitre_attack_enterprise_aliases_v16_0.txt'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_mitre_attack_enterprise_aliases
+  stix_mapping: ctibutler-mitre-attack-enterprise-aliases
+
 lookup_mitre_attack_mobile_id:
   type: lookup
   name: 'MITRE ATT&CK Mobile IDs'
@@ -69,6 +82,19 @@ lookup_mitre_attack_mobile_name:
   test_cases: generic_mitre_attack_mobile_name
   stix_mapping: ctibutler-mitre-attack-mobile-name
 
+lookup_mitre_attack_mobile_alias:
+  type: lookup
+  name: 'MITRE ATT&CK Mobile alias'
+  description: 'Extracts MITRE ATT&CK Mobile aliases from text. See lookup name for version used.'
+  notes: 'ai_mitre_attack_mobile also exists but beware of hallucinations'
+  file: 'lookups/mitre_attack_mobile_aliases_v16_0.txt'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_mitre_attack_mobile_aliases
+  stix_mapping: ctibutler-mitre-attack-mobile-aliases
+
 lookup_mitre_attack_ics_id:
   type: lookup
   name: 'MITRE ATT&CK ICS IDs'
@@ -94,6 +120,19 @@ lookup_mitre_attack_ics_name:
   version: 1.0.0
   test_cases: generic_mitre_attack_ics_name
   stix_mapping: ctibutler-mitre-attack-ics-name
+
+lookup_mitre_attack_ics_alias:
+  type: lookup
+  name: 'MITRE ATT&CK ICS alias'
+  description: 'Extracts MITRE ATT&CK ICS aliases from text. See lookup name for version used.'
+  notes: 'ai_mitre_attack_ics also exists but beware of hallucinations'
+  file: 'lookups/mitre_attack_ics_aliases_v16_0.txt'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_mitre_attack_ics_aliases
+  stix_mapping: ctibutler-mitre-attack-ics-aliases
 
 ####### MITRE CAPEC #######
 

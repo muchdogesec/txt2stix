@@ -82,6 +82,18 @@ python3 txt2stix.py \
 	--use_extractions lookup_mitre_attack_enterprise_name
 ```
 
+#### lookup_mitre_attack_enterprise_alias
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_mitre_attack_enterprise_aliases.txt \
+	--name 'lookup_mitre_attack_enterprise_alias' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions lookup_mitre_attack_enterprise_alias
+```
+
 #### lookup_mitre_attack_mobile_id
 
 ```shell
@@ -106,6 +118,18 @@ python3 txt2stix.py \
 	--use_extractions lookup_mitre_attack_mobile_name
 ```
 
+#### lookup_mitre_attack_mobile_alias
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_mitre_attack_mobile_aliases.txt \
+	--name 'lookup_mitre_attack_mobile_alias' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions lookup_mitre_attack_mobile_alias
+```
+
 #### lookup_mitre_attack_ics_id
 
 ```shell
@@ -128,6 +152,18 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions lookup_mitre_attack_ics_name
+```
+
+#### lookup_mitre_attack_ics_alias
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_mitre_attack_ics_aliases.txt \
+	--name 'lookup_mitre_attack_ics_alias' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions lookup_mitre_attack_ics_alias
 ```
 
 #### lookup_mitre_capec_id
