@@ -1,12 +1,27 @@
 # ====== LOOKUP EXTRACTIONS =====
 
+####### County extractions #######
+
+lookup_country_alpha2:
+  type: lookup
+  name: 'Country Alpha2'
+  description: 'Extracts countries using ISO 3166-1 alpha2 codes'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_country'
+  file: 'lookups/country_iso3166_alpha2.txt'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_country_alpha2
+  stix_mapping: ctibutler-location
+
 ####### MITRE ATT&CK #######
 
 lookup_mitre_attack_enterprise_id:
   type: lookup
   name: 'MITRE ATT&CK Enterprise IDs'
-  description: 'Extracts MITRE ATT&CK Enterprise IDs from text.'
-  notes: 'Currently uses v15.1'
+  description: 'Extracts MITRE ATT&CK Enterprise IDs from text. Currently uses v16.0'
+  notes: 'ai_mitre_attack_enterprise also exists but beware of hallucinations'
   file: 'lookups/mitre_attack_enterprise_id.txt'
   created: 2020-01-01
   modified:  2020-01-01
@@ -18,8 +33,8 @@ lookup_mitre_attack_enterprise_id:
 lookup_mitre_attack_enterprise_name:
   type: lookup
   name: 'MITRE ATT&CK Enterprise names'
-  description: 'Extracts MITRE ATT&CK Enterprise names from text.'
-  notes: 'Currently uses v15.1'
+  description: 'Extracts MITRE ATT&CK Enterprise names from text. Currently uses v16.0'
+  notes: 'ai_mitre_attack_enterprise also exists but beware of hallucinations'
   file: 'lookups/mitre_attack_enterprise_name.txt'
   created: 2020-01-01
   modified:  2020-01-01
@@ -31,8 +46,8 @@ lookup_mitre_attack_enterprise_name:
 lookup_mitre_attack_mobile_id:
   type: lookup
   name: 'MITRE ATT&CK Mobile IDs'
-  description: 'Extracts MITRE ATT&CK Mobile IDs from text.'
-  notes: 'Currently uses v15.1'
+  description: 'Extracts MITRE ATT&CK Mobile IDs from text. Currently uses v16.0'
+  notes: 'ai_mitre_attack_mobile also exists but beware of hallucinations'
   file: 'lookups/mitre_attack_mobile_id.txt'
   created: 2020-01-01
   modified:  2020-01-01
@@ -44,8 +59,8 @@ lookup_mitre_attack_mobile_id:
 lookup_mitre_attack_mobile_name:
   type: lookup
   name: 'MITRE ATT&CK Mobile names'
-  description: 'Extracts MITRE ATT&CK Mobile names from text.'
-  notes: 'Currently uses v15.1'
+  description: 'Extracts MITRE ATT&CK Mobile names from text. Currently uses v16.0'
+  notes: 'ai_mitre_attack_mobile also exists but beware of hallucinations'
   file: 'lookups/mitre_attack_mobile_name.txt'
   created: 2020-01-01
   modified:  2020-01-01
@@ -57,8 +72,8 @@ lookup_mitre_attack_mobile_name:
 lookup_mitre_attack_ics_id:
   type: lookup
   name: 'MITRE ATT&CK ICS IDs'
-  description: 'Extracts MITRE ATT&CK ICS IDs from text.'
-  notes: 'Currently uses v15.1'
+  description: 'Extracts MITRE ATT&CK ICS names from text. Currently uses v16.0'
+  notes: 'ai_mitre_attack_ics also exists but beware of hallucinations'
   file: 'lookups/mitre_attack_ics_id.txt'
   created: 2020-01-01
   modified:  2020-01-01
@@ -70,8 +85,8 @@ lookup_mitre_attack_ics_id:
 lookup_mitre_attack_ics_name:
   type: lookup
   name: 'MITRE ATT&CK ICS names'
-  description: 'Extracts MITRE ATT&CK ICS names from text.'
-  notes: 'Currently uses v15.1'
+  description: 'Extracts MITRE ATT&CK ICS names from text. Currently uses v16.0'
+  notes: 'ai_mitre_attack_ics also exists but beware of hallucinations'
   file: 'lookups/mitre_attack_ics_name.txt'
   created: 2020-01-01
   modified:  2020-01-01
@@ -85,8 +100,8 @@ lookup_mitre_attack_ics_name:
 lookup_mitre_capec_id:
   type: lookup
   name: 'MITRE CAPEC IDs'
-  description: 'Extracts MITRE CAPEC IDs from text.'
-  notes: 'Currently uses v3.9'
+  description: 'Extracts MITRE CAPEC IDs from text. Currently uses v3.9'
+  notes: 'ai_mitre_capec also exists but beware of hallucinations'
   file: 'lookups/mitre_capec_id.txt'
   created: 2020-01-01
   modified:  2020-01-01
@@ -98,8 +113,8 @@ lookup_mitre_capec_id:
 lookup_mitre_capec_name:
   type: lookup
   name: 'MITRE CAPEC names'
-  description: 'Extracts MITRE CAPEC names from text.'
-  notes: 'Currently uses v3.9'
+  description: 'Extracts MITRE CAPEC names from text. Currently uses v3.9'
+  notes: 'ai_mitre_capec also exists but beware of hallucinations'
   file: 'lookups/mitre_capec_name.txt'
   created: 2020-01-01
   modified:  2020-01-01
@@ -113,8 +128,8 @@ lookup_mitre_capec_name:
 lookup_mitre_cwe_id:
   type: lookup
   name: MITRE CWE IDs
-  description: 'Extracts MITRE CWE IDs from text.'
-  notes: 'Currently uses v4.15'
+  description: 'Extracts MITRE CWE IDs from text. Currently uses v4.15'
+  notes: 'ai_mitre_cwe also exists but beware of hallucinations'
   file: 'lookups/mitre_cwe_id.txt'
   created: 2020-01-01
   modified:  2020-01-01
@@ -126,8 +141,8 @@ lookup_mitre_cwe_id:
 lookup_mitre_cwe_name:
   type: lookup
   name: MITRE CWE names
-  description: 'Extracts MITRE CWE names from text.'
-  notes: 'Currently uses v4.15'
+  description: 'Extracts MITRE CWE names from text. Currently uses v4.15'
+  notes: 'ai_mitre_cwe also exists but beware of hallucinations'
   file: 'lookups/mitre_cwe_name.txt'
   created: 2020-01-01
   modified:  2020-01-01
@@ -141,8 +156,8 @@ lookup_mitre_cwe_name:
 lookup_mitre_atlas_id:
   type: lookup
   name: MITRE ATLAS IDs
-  description: 'Extracts MITRE ATLAS IDs from text.'
-  notes: 'Currently uses v4.5.2'
+  description: 'Extracts MITRE ATLAS IDs from text. Currently uses v4.5.2'
+  notes: 'No corresponding AI version yet due to poor AI performance'
   file: 'lookups/mitre_atlas_id.txt'
   created: 2020-01-01
   modified:  2020-01-01
@@ -154,8 +169,8 @@ lookup_mitre_atlas_id:
 lookup_mitre_atlas_name:
   type: lookup
   name: MITRE ATLAS names
-  description: 'Extracts MITRE ATLAS names from text.'
-  notes: 'Currently uses v4.5.2'
+  description: 'Extracts MITRE ATLAS names from text. Currently uses v4.5.2'
+  notes: 'No corresponding AI version yet due to poor AI performance'
   file: 'lookups/mitre_atlas_name.txt'
   created: 2020-01-01
   modified:  2020-01-01
@@ -169,8 +184,8 @@ lookup_mitre_atlas_name:
 lookup_disarm_id:
   type: lookup
   name: DISARM IDs
-  description: 'Extracts DISARM IDs from text.'
-  notes: 'Currently uses v1.5'
+  description: 'Extracts DISARM IDs from text. Currently uses v1.5'
+  notes: 'No corresponding AI version yet due to poor AI performance'
   file: 'lookups/disarm_id.txt'
   created: 2020-01-01
   modified:  2020-01-01
@@ -182,8 +197,8 @@ lookup_disarm_id:
 lookup_disarm_name:
   type: lookup
   name: DISARM IDs
-  description: 'Extracts DISARM names from text.'
-  notes: 'Currently uses v1.5'
+  description: 'Extracts DISARM names from text. Currently uses v1.5'
+  notes: 'No corresponding AI version yet due to poor AI performance'
   file: 'lookups/disarm_name.txt'
   created: 2020-01-01
   modified:  2020-01-01
@@ -192,22 +207,7 @@ lookup_disarm_name:
   test_cases: generic_disarm_name
   stix_mapping: ctibutler-disarm-name
 
-####### County extractions #######
-
-lookup_country_alpha2:
-  type: lookup
-  name: 'Country Alpha2'
-  description: 'Extracts countries using ISO 3166-1 alpha2 codes'
-  notes: ''
-  file: 'lookups/country_iso3166_alpha2.txt'
-  created: 2020-01-01
-  modified:  2020-01-01
-  created_by: DOGESEC
-  version: 1.0.0
-  test_cases: generic_country_alpha2
-  stix_mapping: ctibutler-location
-
-####### Misc STIX Objects #######
+####### Generic Extractions #######
 
 lookup_attack_pattern:
   type: lookup

@@ -121,6 +121,21 @@ T1040
 TA0003
 Rundll32
 OS Credential Dumping
+T1174
+TA0006
+TA0011
+G1006
+T1053.005
+T1040
+TA0003
+Rundll32
+OS Credential Dumping
+M1013
+S0505
+T1630.001
+TA0029
+Impair Defenses
+Call Log
 M1013
 S0505
 T1630.001
@@ -130,9 +145,19 @@ Call Log
 TA0111
 Scripting
 Program Upload
+TA0111
+Scripting
+Program Upload
 CAPEC-110
 Clickjacking
 Overflow Buffers
+CAPEC-110
+Clickjacking
+Overflow Buffers
+CWE-1023
+CWE-102
+Use of Redundant Code
+Insufficient Encapsulation
 CWE-1023
 CWE-102
 Use of Redundant Code

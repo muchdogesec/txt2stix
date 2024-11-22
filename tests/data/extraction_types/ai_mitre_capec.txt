@@ -1,8 +1,9 @@
 ====Good====
 
 CAPEC-110
-Brute Force
+Clickjacking
+Overflow Buffers
 
 ====Bad====
 
-CAPEC-999
+None

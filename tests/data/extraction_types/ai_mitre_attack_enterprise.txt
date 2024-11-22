@@ -7,8 +7,9 @@ G1006
 T1053.005
 T1040
 TA0003
-SolarWinds Compromise
+Rundll32
+OS Credential Dumping
 
 ====Bad====
 
-P1174
+None

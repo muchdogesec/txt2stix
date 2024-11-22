@@ -1,40 +1,682 @@
 # ====== AI EXTRACTIONS =====
 
+####### IPv4 extractions #######
+
+ai_ipv4_address_only:
+  type: ai
+  name: 'IPv4 Address Only'
+  description: 'Extracts IPv4 addresses'
+  notes: 'pattern_ipv4_address_only legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all IPv4 addresses from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_ipv4_address_only
+  stix_mapping: ipv4-addr
+
+ai_ipv4_address_cidr:
+  type: ai
+  name: 'IPv4 Address with CIDR'
+  description: 'Extracts IPv4 addresses with CIDRs'
+  notes: 'pattern_ipv4_address_cidr legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all IPv4 addresses with a port from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: ipv4_address_cidr
+  stix_mapping: ipv4-addr
+
+ai_ipv4_address_port:
+  type: ai
+  name: 'IPv4 Address with Port'
+  description: 'Extracts IPv4 addresses with Port'
+  notes: 'pattern_ipv4_address_port legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all IPv4 addresses with a CIDR from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: ipv4_address_port
+  stix_mapping: ipv4-addr-port
+
+####### IPv6 extractions #######
+
+ai_ipv6_address_only:
+  type: ai
+  name: 'IPv6 Address Only'
+  description: 'Extracts IPv6 addresses, but not with CIDR or Ports'
+  notes: 'pattern_ipv6_address_only legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all IPv6 addresses from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_ipv6_address_only
+  stix_mapping: ipv6-addr
+
+ai_ipv6_address_cidr:
+  type: ai
+  name: 'IPv6 Address with CIDR'
+  description: 'Extracts IPv6 addresses with CIDRs'
+  notes: 'pattern_ipv6_address_cidr legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all IPv6 addresses with a port from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_ipv6_address_cidr
+  stix_mapping: ipv6-addr
+
+ai_ipv6_address_port:
+  type: ai
+  name: 'IPv6 Address with Port'
+  description: 'Extracts IPv6 addresses with Port'
+  notes: 'pattern_ipv6_address_port legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all IPv6 addresses with a CIDR from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_ipv6_address_port
+  stix_mapping: ipv6-addr-port
+
+####### Domain name extractions #######
+
+ai_domain_name_only:
+  type: ai
+  name: 'Domain name only'
+  description: 'Extracts domains, but not subdomains or IPv4 addresses. Must have a valid TLD.'
+  notes: 'pattern_domain_name_only legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all valid root domain names from the text. Do not extract subdomains.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_domain_name_only
+  stix_mapping: domain-name
+
+ai_domain_name_subdomain:
+  type: ai
+  name: 'Subdomain name only'
+  description: 'Extracts subdomains, but not root domains or IPv4 addresses. Must have a valid TLD.'
+  notes: 'pattern_domain_name_subdomain legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all valid subdomain names from the text. Do not extract root domains.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_domain_name_subdomain
+  stix_mapping: domain-name
+
+####### URL extractions #######
+
+ai_url:
+  type: ai
+  name: 'URL Only'
+  description: 'Extracts base URLs (can be IPs) with no path/file extension. If the sub/domain part is not an IP, then it must have a valid TLD.'
+  notes: 'pattern_url legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all URLs with no path/file extension from the text. If the sub/domain part is not an IP, then it must have a valid TLD.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_url
+  stix_mapping: url
+
+ai_url_file:
+  type: ai
+  name: 'URL with file extension'
+  description: 'Extracts URLs with file extension in path. If the sub/domain part is not an IP, then it must have a valid TLD. Filetype must also match valid filetype. Similar to pattern_url except checks for URL with path to file'
+  notes: 'pattern_url_file legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all URLs with file extension in path from the text. If the sub/domain part is not an IP, then it must have a valid TLD. The file must match valid filetype.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_url_file
+  stix_mapping: url
+
+ai_url_path:
+  type: ai
+  name: 'URL path'
+  description: 'Extracts URLs without file extension in path. If the sub/domain part is not an IP, then it must have a valid TLD. Similar to pattern_url except checks for URL with path but without file'
+  notes: 'pattern_url_path legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all URLs without a file extension in their path from the text. If the sub/domain part is not an IP, then it must have a valid TLD.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_url_path
+  stix_mapping: url
+
+####### Hostname extractions #######
+
+ai_host_name:
+  type: ai
+  name: 'Hostname extractions'
+  description: 'Extracts hostnames that fail domain TLD validation. Captures data that fails pattern_domain_name TLD validation.'
+  notes: 'pattern_host_name legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all hostnames from the text. Hostnames should not have a valid TLD extension (these are domains).'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_host_name
+  stix_mapping: domain-name
+
+ai_host_name_subdomain:
+  type: ai
+  name: 'Hostname extractions'
+  description: 'Extracts hostnames that fail subdomain TLD validation. Captures data that fails pattern_domain_name_subdomain TLD validation.'
+  notes: 'pattern_host_name_subdomain legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all sub-hostnames from the text. Sub-hostnames should not have a valid TLD extension.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_host_name_subdomain
+  stix_mapping: domain-name
+
+ai_host_name_url:
+  type: ai
+  name: 'Hostname extractions inside URL'
+  description: 'Extracts hostnames/sub hostnames with full URLs that fail subdomain TLD validation. Captures data that fails pattern_url TLD validation.'
+  notes: 'pattern_host_name_url legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all hostnames / sub-hostnames with full URLs from the text. All extractions should not have a valid TLD extension.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_host_name_url
+  stix_mapping: url
+
+ai_host_name_file:
+  type: ai
+  name: 'Hostname with file extension'
+  description: 'Extracts hostnames/sub hostnames with full URLs with file extension in path. Captures data that fails pattern_url_file TLD validation.'
+  notes: 'pattern_host_name_file legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all hostnames / sub-hostnames with full URLs from the text that contain a path to a valid file extension. All extractions should not have a valid TLD extension. All file extensions should be valid file extensions.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_host_name_file
+  stix_mapping: url
+
+ai_host_name_path:
+  type: ai
+  name: 'Hostname path'
+  description: 'Extracts hostnames/sub hostnames with full URLs without file extension in path. Captures data that fails pattern_url_path TLD validation.'
+  notes: 'pattern_host_name_path legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all hostnames / sub-hostnames with full URLs (but do not contain a path to a file) from the text that. All extractions should not have a valid TLD extension. All file extensions should be valid file extensions.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_host_name_path
+  stix_mapping: url
+
+####### Directory path extractions #######
+
+ai_directory_windows:
+  type: ai
+  name: 'Windows Directory'
+  description: 'Extracts a Windows directory path. The .net docs provide a good overview to Windows paths: https://github.com/dotnet/docs/blob/main/docs/standard/io/file-path-formats.md#file-path-formats-on-windows-systems'
+  notes: 'pattern_directory_windows legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all Windows directory paths from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_directory_windows
+  stix_mapping: directory
+
+ai_directory_windows_with_file:
+  type: ai
+  name: 'Windows Directory with file reported'
+  description: 'Similar to pattern_directory_windows, but captures paths that include the file printed.'
+  notes: 'pattern_directory_windows_with_file legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all Windows directory paths from the text that contain a path to a file.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_directory_windows_with_file
+  stix_mapping: directory-file
+
+ai_directory_unix:
+  type: ai
+  name: 'UNIX Directory'
+  description: 'Extracts a UNIX directory path'
+  notes: 'pattern_directory_unix legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all UNIX directory paths from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_directory_unix
+  stix_mapping: directory
+
+ai_directory_unix_file:
+  type: ai
+  name: 'UNIX Directory with file'
+  description: 'Similar to pattern_directory_unix, but captures paths that include the file printed.'
+  notes: 'pattern_directory_unix_file legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all UNIX directory paths from the text that contain a path to a file.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_directory_unix_file
+  stix_mapping: directory-file
+
+####### File extractions #######
+
+ai_file_name:
+  type: ai
+  name: 'File name'
+  description: 'Extracts filename. The file extension must match a valid file extension. filenames have three parts `<NAME>.<EXTENSION>`. Filetypes only contain a single `.`. Note, the `.` and `<EXTENSION>` part are required, but `<NAME>` is optional (because hidden files can be in format like; `.DS_Store`). Uses helpers/mimetype_filename_extension_list.csv to check valid file extension.'
+  notes: 'pattern_file_name legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all file names from the text. All the extensions must be valid file extensions.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_file_name
+  stix_mapping: file
+
+ai_file_hash_md5:
+  type: ai
+  name: 'MD5'
+  description: 'Extracts MD5 file hashes'
+  notes: 'pattern_file_hash_md5 legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all MD5 hashes from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_file_hash_md5
+  stix_mapping: file-hash
+
+ai_file_hash_sha_1:
+  type: ai
+  name: 'SHA-1'
+  description: 'Extracts SHA-1 file hashes'
+  notes: 'pattern_file_hash_sha_1 legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all SHA-1 hashes from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_file_hash_sha_1
+  stix_mapping: file-hash
+
+ai_file_hash_sha_256:
+  type: ai
+  name: 'SHA-256'
+  description: 'Extracts SHA-256 file hashes'
+  notes: 'pattern_file_hash_sha_256 legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all SHA-256 hashes from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_file_hash_sha_256
+  stix_mapping: file-hash
+
+ai_file_hash_sha_512:
+  type: ai
+  name: 'SHA-512'
+  description: 'Extracts SHA-512 file hashes'
+  notes: 'pattern_file_hash_sha_512 legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all SHA-512 hashes from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_file_hash_sha_512
+  stix_mapping: file-hash
+
+####### Email address extractions #######
+
+ai_email_address:
+  type: ai
+  name: 'Email addresses'
+  description: 'Extracts emails with valid TLDs'
+  notes: 'pattern_email_address legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all email addresses from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_email_address
+  stix_mapping: email-addr
+
+####### MAC address extractions #######
+
+ai_mac_address:
+  type: ai
+  name: 'MAC Addresses'
+  description: 'Extracts MAC addresses with either `-` or `:` seperators.'
+  notes: 'pattern_mac_address legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all MAC addresses from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_mac_address
+  stix_mapping: mac-addr
+
+####### Windows registry key extractions #######
+
+ai_windows_registry_key:
+  type: ai
+  name: 'Windows Registry Key'
+  description: 'Must start with a valid prefix as defined in /includes/helpers/windows_registry_key_prefix.txt'
+  notes: 'pattern_windows_registry_key legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all Windows Registry Keys from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_windows_registry_key
+  stix_mapping: windows-registry-key
+
+####### User agent extractions #######
+
+ai_user_agent:
+  type: ai
+  name: 'User Agent'
+  description: 'Will capture a string that looks like a user agent. User Agents should follow: https://www.rfc-editor.org/rfc/rfc7231#section-5.5.3 . The problem here is that there is no defined prefix for user agent strings, they can be anything. txt2stix follows a similar approach to: https://regex101.com/r/nXKYBB/3'
+  notes: 'pattern_user_agent legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all user agents from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_user_agent
+  stix_mapping: user-agent
+
+####### ASN extractions #######
+
+ai_autonomous_system_number:
+  type: ai
+  name: 'Autonomous System Numbers (ASN)'
+  description: 'Always follow the formats: `ASN XXXXX` (e.g  `ASN15139`), `ASNXXXXX` (e.g  `ASN 15139`), `AS XXXXX` (e.g  `AS15139`), or `ASXXXXX` (e.g  `AS 15139`)'
+  notes: 'pattern_user_agent legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Autonomous System Numbers (ASN)'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_autonomous_system_number
+  stix_mapping: autonomous-system
+
 ####### Cryptocurrency extractions #######
 
 ai_cryptocurrency_btc_wallet:
   type: ai
   name: 'Cryptocurrency Bitcoin Wallet'
   description: ''
-  notes: ''
+  notes: 'pattern_cryptocurrency_btc_wallet legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified: 2020-01-01
   created_by: DOGESEC
   version: 1.0.0
   prompt_base: 'Extract all Bitcoin Wallet hashes from the text.'
-  prompt_helper:
+  prompt_helper: ''
   prompt_conversion: ''
   test_cases: generic_cryptocurrency_btc_wallet
-  ignore_extractions:
-    -
   stix_mapping: cryptocurrency-wallet
 
-ai_cryptocurrency_btc_transaction:
+ai_cryptocurrency_btc_wallet_transaction:
   type: ai
-  name: 'Cryptocurrency Bitcoin Transaction'
-  description: ''
-  notes: ''
+  name: 'Cryptocurrency Bitcoin Wallet And Transaction'
+  description: 'Will extract bitcoin wallet hashes and lookup all transactions the extracted wallets have been seen in. Will create a cryptocurrency-wallet object for the wallet extracted, will create cryptocurrency-transaction objects for all transactions the wallet is found in. Use either ai_cryptocurrency_btc_wallet_transaction or ai_cryptocurrency_btc_transaction but not both in same extraction.'
+  notes: 'pattern_cryptocurrency_btc_wallet_transaction legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified: 2020-01-01
   created_by: DOGESEC
   version: 1.0.0
-  prompt_base: 'Extract all Cryptocurrency Bitcoin Transaction hashes from the text.'
-  prompt_helper:
+  prompt_base: 'Extract all Bitcoin transaction hashes from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_cryptocurrency_btc_wallet
+  stix_mapping: cryptocurrency-wallet-with-transaction
+
+ai_cryptocurrency_btc_transaction:
+  type: ai
+  name: 'Cryptocurrency Bitcoin Transaction'
+  description: 'Will extract bitcoin transaction hashes. Will create a cryptocurrency-transaction object for the transaction extracted and will create cryptocurrency-wallet objects for all wallets seen in the input or output of the transaction. Use either ai_cryptocurrency_btc_wallet_transaction or ai_cryptocurrency_btc_transaction but not both in same extraction.'
+  notes: 'pattern_cryptocurrency_btc_transaction legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified: 2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all Bitcoin transaction hashes from the text.'
+  prompt_helper: ''
   prompt_conversion: ''
   test_cases: generic_cryptocurrency_btc_transaction
-  ignore_extractions:
-    -
   stix_mapping: cryptocurrency-transaction
+
+####### CVE extractions #######
+
+ai_cve_id:
+  type: ai
+  name: 'CVE'
+  description: 'CVEs IDs always take the format; `CVE-YYYY-NNNNN` (e.g. `CVE-2022-29098`) or `CVE-YYYY-NNNN` (e.g. `CVE-1999-0007`).'
+  notes: 'pattern_cve_id legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all CVE IDs from the text.'
+  prompt_helper: ''
+  prompt_conversion: 'If needed, you can read more about CVEs here: https://nvd.nist.gov/vuln'
+  test_cases: generic_cve_id
+  stix_mapping: vulmatch-cve-id
+
+####### CPE extractions #######
+
+ai_cpe_uri:
+  type: ai
+  name: 'CPE'
+  description: 'CPE URIs always start with `cpe:2.3` and have 13 parts (or 12 `:` characters)'
+  notes: 'pattern_cpe_uri legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all CPEs match strings from the text.'
+  prompt_helper: ''
+  prompt_conversion: 'If needed, you can read more about CVEs here: https://nvd.nist.gov/products'
+  test_cases: generic_cpe_uri
+  stix_mapping: vulmatch-cpe-id
+
+####### Bank card extractions #######
+
+ai_bank_card_mastercard:
+  type: ai
+  name: 'Bank Card Mastercard'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use pattern_bank_card_mastercard (AI can be unpredictable with sensitive data)'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all Mastercard card numbers from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_bank_card_mastercard
+  stix_mapping: bank-card
+
+ai_bank_card_visa:
+  type: ai
+  name: 'Bank Card Visa'
+  description: 'Will also enrich card information if BIN List API key set'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use pattern_bank_card_visa (AI can be unpredictable with sensitive data)'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all Visa card numbers from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_bank_card_visa
+  stix_mapping: bank-card
+
+ai_bank_card_amex:
+  type: ai
+  name: 'Bank Card American Express'
+  description: 'Will also enrich card information if BIN List API key set'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use pattern_bank_card_amex (AI can be unpredictable with sensitive data)'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all American Express card numbers from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_bank_card_amex
+  stix_mapping: bank-card
+
+ai_bank_card_union_pay:
+  type: ai
+  name: 'Bank Card Union Pay'
+  description: 'Will also enrich card information if BIN List API key set'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use pattern_bank_card_union_pay (AI can be unpredictable with sensitive data)'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all Union Pay card numbers from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_bank_card_union_pay
+  stix_mapping: bank-card
+
+ai_bank_card_diners:
+  type: ai
+  name: 'Bank Card Diners'
+  description: 'Will also enrich card information if BIN List API key set'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use pattern_bank_card_diners (AI can be unpredictable with sensitive data)'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all Diners card numbers from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_bank_card_diners
+  stix_mapping: bank-card
+
+ai_bank_card_jcb:
+  type: ai
+  name: 'Bank Card JCB'
+  description: 'Will also enrich card information if BIN List API key set'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use pattern_bank_card_jcb (AI can be unpredictable with sensitive data)'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all JCB card numbers from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_bank_card_jcb
+  stix_mapping: bank-card
+
+ai_bank_card_discover:
+  type: ai
+  name: 'Bank Card Discover'
+  description: 'Will also enrich card information if BIN List API key set'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use pattern_bank_card_discover (AI can be unpredictable with sensitive data)'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all Discover card numbers from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: generic_bank_card_discover
+  stix_mapping: bank-card
+
+####### IBAN Extractions #######
+
+ai_iban_number:
+  type: ai
+  name: 'IBAN'
+  description: ''
+  notes: 'pattern_iban_number legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all International Bank Account Numbers (IBAN) from the text.'
+  prompt_helper: 'If needed, you can read more about IBAN numbers with examples here: https://www.iban.com/structure'
+  prompt_conversion: ''
+  test_cases: generic_iban_number
+  stix_mapping: bank-account
 
 ####### Phone number Extractions #######
 
@@ -42,24 +684,24 @@ ai_phone_number:
   type: ai
   name: 'Phone number'
   description: ''
-  notes: ''
+  notes: 'pattern_phone_number legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified: 2020-01-01
   created_by: DOGESEC
   version: 1.0.0
   prompt_base: 'Extract all phone numbers from the text.'
-  prompt_helper:
-  prompt_conversion: 'If possible, please convert the number to the E.164 standard with the correct country code. Remove any whitespace from the final value.'
+  prompt_helper: 'If needed, you can read more about the E.164 standard with examples here: https://en.wikipedia.org/wiki/E.164'
+  prompt_conversion: 'Please convert the number to the E.164 standard with the correct country code. Remove any whitespace from the final value.'
   test_cases: generic_phone_number
   stix_mapping: phone-number
 
 ####### County extractions #######
 
-ai_country_alpha2:
+ai_country:
   type: ai
-  name: 'Country Alpha2'
+  name: 'Country'
   description: ''
-  notes: ''
+  notes: 'lookup_country_alpha2 legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified: 2020-01-01
   created_by: DOGESEC
@@ -67,8 +709,8 @@ ai_country_alpha2:
   prompt_base: 'Extract all countries described in the text, including countries printed as IS0-3166 Alpha2 and Alpha3 codes.'
   prompt_helper: 'If you are unsure, you can read more about the standard here: https://www.iso.org/iso-3166-country-codes.html'
   prompt_conversion: 'Convert all country extractions to their corresponding IS0-3166 Alpha2 codes.'
-  test_cases: ai_country_alpha2
-  stix_mapping: location
+  test_cases: ai_country
+  stix_mapping: ctibutler-location
 
 ####### MITRE ATT&CK #######
 
@@ -76,7 +718,7 @@ ai_mitre_attack_enterprise:
   type: ai
   name: 'MITRE ATT&CK Enterprise'
   description: ''
-  notes: ''
+  notes: 'lookup_mitre_attack_enterprise_id and lookup_mitre_attack_enterprise_name legacy extractions also exists if you cannot use AI'
   created: 2020-01-01
   modified: 2020-01-01
   created_by: DOGESEC
@@ -84,14 +726,14 @@ ai_mitre_attack_enterprise:
   prompt_base: 'Extract all references to MITRE ATT&CK Enterprise tactics, techniques, groups, data sources, mitigations, software, and campaigns described in the text. These references may not be explicit in the text so you should be careful to account for the natural language of the text your analysis. Do not include MITRE ATT&CK ICS or MITRE ATT&CK Mobile in the results.'
   prompt_helper: 'If you are unsure, you can learn more about MITRE ATT&CK Enterprise here: https://attack.mitre.org/matrices/enterprise/'
   prompt_conversion: 'Convert all extractions into the corresponding ATT&CK ID.'
-  test_cases: generic_mitre_attack_enterprise
+  test_cases: ai_mitre_attack_enterprise
   stix_mapping: ctibutler-mitre-attack-enterprise-id
 
 ai_mitre_attack_mobile:
   type: ai
   name: 'MITRE ATT&CK Mobile'
   description: ''
-  notes: ''
+  notes: 'lookup_mitre_attack_mobile_id and lookup_mitre_attack_mobile_name legacy extractions also exists if you cannot use AI'
   created: 2020-01-01
   modified: 2020-01-01
   created_by: DOGESEC
@@ -99,14 +741,14 @@ ai_mitre_attack_mobile:
   prompt_base: 'Extract all references to MITRE ATT&CK Mobile tactics, techniques, groups, data sources, mitigations, software, and campaigns described in the text. These references may not be explicit in the text so you should be careful to account for the natural language of the text your analysis. Do not include MITRE ATT&CK ICS or MITRE ATT&CK Enterprise in the results.'
   prompt_helper: 'If you are unsure, you can learn more about MITRE ATT&CK Enterprise here: https://attack.mitre.org/matrices/mobile/'
   prompt_conversion: 'Convert all extractions into the corresponding ATT&CK ID.'
-  test_cases: generic_mitre_attack_mobile
+  test_cases: ai_mitre_attack_mobile
   stix_mapping: ctibutler-mitre-attack-mobile-id
 
 ai_mitre_attack_ics:
   type: ai
   name: 'MITRE ATT&CK ICS'
   description: ''
-  notes: ''
+  notes: 'lookup_mitre_attack_ics_id and lookup_mitre_attack_ics_name legacy extractions also exists if you cannot use AI'
   created: 2020-01-01
   modified: 2020-01-01
   created_by: DOGESEC
@@ -114,7 +756,7 @@ ai_mitre_attack_ics:
   prompt_base: 'Extract all references to MITRE ATT&CK ICS tactics, techniques, groups, data sources, mitigations, software, and campaigns described in the text. These references may not be explicit in the text so you should be careful to account for the natural language of the text your analysis. Do not include MITRE ATT&CK Mobile or MITRE ATT&CK Enterprise in the results.'
   prompt_helper: 'If you are unsure, you can learn more about MITRE ATT&CK Enterprise here: https://attack.mitre.org/matrices/ics/'
   prompt_conversion: 'Convert all extractions into the corresponding ATT&CK ID.'
-  test_cases: generic_mitre_attack_ics
+  test_cases: ai_mitre_attack_ics
   stix_mapping: ctibutler-mitre-attack-ics-id
 
 ####### MITRE CAPEC #######
@@ -123,15 +765,15 @@ ai_mitre_capec:
   type: ai
   name: 'MITRE CAPEC ID'
   description: ''
-  notes: ''
+  notes: 'lookup_mitre_capec_id and lookup_mitre_capec_name legacy extractions also exists if you cannot use AI'
   created: 2020-01-01
   modified: 2020-01-01
   created_by: DOGESEC
   version: 1.0.0
-  prompt_base: 'Extract all references to a MITRE CAPEC object.'
+  prompt_base: 'Extract all references to a MITRE CAPEC object from the text.'
   prompt_helper: 'If you are unsure, you can learn more about MITRE CAPEC here: https://capec.mitre.org/'
   prompt_conversion: 'Convert all extractions into the corresponding CAPEC ID in the format `CAPEC-ID`'
-  test_cases: generic_mitre_capec
+  test_cases: ai_mitre_capec
   stix_mapping: ctibutler-mitre-capec-id
 
 ####### MITRE CWE #######
@@ -140,13 +782,60 @@ ai_mitre_cwe:
   type: ai
   name: 'MITRE CWE'
   description: ''
-  notes: ''
+  notes: 'lookup_mitre_cwe_id and lookup_mitre_cwe_name legacy extractions also exists if you cannot use AI'
   created: 2020-01-01
   modified: 2020-01-01
   created_by: DOGESEC
   version: 1.0.0
-  prompt_base: 'Extract all references to a MITRE CWE object.'
+  prompt_base: 'Extract all references to a MITRE CWE object from the text.'
   prompt_helper: 'If you are unsure, you can learn more about MITRE CAPEC here: https://cwe.mitre.org/'
   prompt_conversion: 'Convert all extractions into the corresponding CWE ID in the format `CWE-ID`'
-  test_cases: generic_mitre_cwe
+  test_cases: ai_mitre_cwe
   stix_mapping: ctibutler-mitre-cwe-id
+
+####### Generic Extractions #######
+
+ai_malware:
+  type: ai
+  name: 'Malware'
+  description: ''
+  notes: 'lookup_malware legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all Malware names from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: lookup_malware
+  stix_mapping: malware
+
+ai_threat_actor:
+  type: ai
+  name: 'Threat Actor'
+  description: ''
+  notes: 'lookup_threat_actor legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all Threat Actor names from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: lookup_threat_actor
+  stix_mapping: threat-actor
+
+ai_tool:
+  type: ai
+  name: 'Tool'
+  description: ''
+  notes: 'lookup_tool legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all Software names from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: lookup_tool
+  stix_mapping: tool

@@ -4,8 +4,9 @@ M1013
 S0505
 T1630.001
 TA0029
-Use Recent OS Version
+Impair Defenses
+Call Log
 
 ====Bad====
 
-P1174
+None
