@@ -1,4 +1,16 @@
-### lookup_mitre_atlas_id
+#### lookup_country_alpha2
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_country_alpha2.txt \
+	--name 'lookup_country_alpha2' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions lookup_country_alpha2
+```
+
+#### lookup_mitre_atlas_id
 
 ```shell
 python3 txt2stix.py \
@@ -10,7 +22,7 @@ python3 txt2stix.py \
 	--use_extractions lookup_mitre_atlas_id
 ```
 
-### lookup_mitre_atlas_name
+#### lookup_mitre_atlas_name
 
 ```shell
 python3 txt2stix.py \
@@ -22,7 +34,7 @@ python3 txt2stix.py \
 	--use_extractions lookup_mitre_atlas_name
 ```
 
-### lookup_disarm_id
+#### lookup_disarm_id
 
 ```shell
 python3 txt2stix.py \
@@ -34,7 +46,7 @@ python3 txt2stix.py \
 	--use_extractions lookup_disarm_id
 ```
 
-### lookup_disarm_name
+#### lookup_disarm_name
 
 ```shell
 python3 txt2stix.py \
@@ -46,7 +58,7 @@ python3 txt2stix.py \
 	--use_extractions lookup_disarm_name
 ```
 
-### lookup_mitre_attack_enterprise_id
+#### lookup_mitre_attack_enterprise_id
 
 ```shell
 python3 txt2stix.py \
@@ -58,7 +70,7 @@ python3 txt2stix.py \
 	--use_extractions lookup_mitre_attack_enterprise_id
 ```
 
-### lookup_mitre_attack_enterprise_name
+#### lookup_mitre_attack_enterprise_name
 
 ```shell
 python3 txt2stix.py \
@@ -70,7 +82,7 @@ python3 txt2stix.py \
 	--use_extractions lookup_mitre_attack_enterprise_name
 ```
 
-### lookup_mitre_attack_mobile_id
+#### lookup_mitre_attack_mobile_id
 
 ```shell
 python3 txt2stix.py \
@@ -82,7 +94,7 @@ python3 txt2stix.py \
 	--use_extractions lookup_mitre_attack_mobile_id
 ```
 
-### lookup_mitre_attack_mobile_name
+#### lookup_mitre_attack_mobile_name
 
 ```shell
 python3 txt2stix.py \
@@ -94,7 +106,7 @@ python3 txt2stix.py \
 	--use_extractions lookup_mitre_attack_mobile_name
 ```
 
-### lookup_mitre_attack_ics_id
+#### lookup_mitre_attack_ics_id
 
 ```shell
 python3 txt2stix.py \
@@ -106,7 +118,7 @@ python3 txt2stix.py \
 	--use_extractions lookup_mitre_attack_ics_id
 ```
 
-### lookup_mitre_attack_ics_name
+#### lookup_mitre_attack_ics_name
 
 ```shell
 python3 txt2stix.py \
@@ -118,7 +130,7 @@ python3 txt2stix.py \
 	--use_extractions lookup_mitre_attack_ics_name
 ```
 
-### lookup_mitre_capec_id
+#### lookup_mitre_capec_id
 
 ```shell
 python3 txt2stix.py \
@@ -130,7 +142,7 @@ python3 txt2stix.py \
 	--use_extractions lookup_mitre_capec_id
 ```
 
-### lookup_mitre_capec_name
+#### lookup_mitre_capec_name
 
 ```shell
 python3 txt2stix.py \
@@ -142,7 +154,7 @@ python3 txt2stix.py \
 	--use_extractions lookup_mitre_capec_name
 ```
 
-### lookup_mitre_cwe_id
+#### lookup_mitre_cwe_id
 
 ```shell
 python3 txt2stix.py \
@@ -154,7 +166,7 @@ python3 txt2stix.py \
 	--use_extractions lookup_mitre_cwe_id
 ```
 
-### lookup_mitre_cwe_name
+#### lookup_mitre_cwe_name
 
 ```shell
 python3 txt2stix.py \
@@ -166,7 +178,7 @@ python3 txt2stix.py \
 	--use_extractions lookup_mitre_cwe_name
 ```
 
-### lookup_attack_pattern
+#### lookup_attack_pattern
 
 ```shell
 python3 txt2stix.py \
@@ -178,7 +190,7 @@ python3 txt2stix.py \
 	--use_extractions lookup_attack_pattern
 ```
 
-### lookup_campaign
+#### lookup_campaign
 
 ```shell
 python3 txt2stix.py \
@@ -190,7 +202,7 @@ python3 txt2stix.py \
 	--use_extractions lookup_campaign
 ```
 
-### lookup_course_of_action
+#### lookup_course_of_action
 
 ```shell
 python3 txt2stix.py \
@@ -202,7 +214,7 @@ python3 txt2stix.py \
 	--use_extractions lookup_course_of_action
 ```
 
-### lookup_identity
+#### lookup_identity
 
 ```shell
 python3 txt2stix.py \
@@ -214,7 +226,7 @@ python3 txt2stix.py \
 	--use_extractions lookup_identity
 ```
 
-### lookup_infrastructure
+#### lookup_infrastructure
 
 ```shell
 python3 txt2stix.py \
@@ -226,7 +238,7 @@ python3 txt2stix.py \
 	--use_extractions lookup_infrastructure
 ```
 
-### lookup_intrusion_set
+#### lookup_intrusion_set
 
 ```shell
 python3 txt2stix.py \
@@ -238,7 +250,7 @@ python3 txt2stix.py \
 	--use_extractions lookup_intrusion_set
 ```
 
-### lookup_malware
+#### lookup_malware
 
 ```shell
 python3 txt2stix.py \
@@ -250,7 +262,7 @@ python3 txt2stix.py \
 	--use_extractions lookup_malware
 ```
 
-### lookup_threat_actor
+#### lookup_threat_actor
 
 ```shell
 python3 txt2stix.py \
@@ -262,7 +274,7 @@ python3 txt2stix.py \
 	--use_extractions lookup_threat_actor
 ```
 
-### lookup_tool
+#### lookup_tool
 
 ```shell
 python3 txt2stix.py \
@@ -272,16 +284,4 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions lookup_tool
-```
-
-### lookup_country_alpha2
-
-```shell
-python3 txt2stix.py \
-	--relationship_mode standard \
-	--input_file tests/data/extraction_types/generic_country_alpha2.txt \
-	--name 'lookup_country_alpha2' \
-	--tlp_level clear \
-	--confidence 100 \
-	--use_extractions lookup_country_alpha2
 ```

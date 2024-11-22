@@ -1,5 +1,20 @@
 # ====== LOOKUP EXTRACTIONS =====
 
+####### County extractions #######
+
+lookup_country_alpha2:
+  type: lookup
+  name: 'Country Alpha2'
+  description: 'Extracts countries using ISO 3166-1 alpha2 codes'
+  notes: ''
+  file: 'lookups/country_iso3166_alpha2.txt'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  test_cases: generic_country_alpha2
+  stix_mapping: ctibutler-location
+
 ####### MITRE ATT&CK #######
 
 lookup_mitre_attack_enterprise_id:
@@ -192,22 +207,7 @@ lookup_disarm_name:
   test_cases: generic_disarm_name
   stix_mapping: ctibutler-disarm-name
 
-####### County extractions #######
-
-lookup_country_alpha2:
-  type: lookup
-  name: 'Country Alpha2'
-  description: 'Extracts countries using ISO 3166-1 alpha2 codes'
-  notes: ''
-  file: 'lookups/country_iso3166_alpha2.txt'
-  created: 2020-01-01
-  modified:  2020-01-01
-  created_by: DOGESEC
-  version: 1.0.0
-  test_cases: generic_country_alpha2
-  stix_mapping: ctibutler-location
-
-####### Misc STIX Objects #######
+####### Generic Extractions #######
 
 lookup_attack_pattern:
   type: lookup

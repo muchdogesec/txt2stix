@@ -755,3 +755,45 @@ python3 txt2stix.py \
 	--ai_settings_extractions openai:gpt-4o \
 	--report_id 6ba5c857-86be-4016-9490-7b83b2d18105
 ```
+
+### ai_malware
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/lookup_malware.txt \
+	--name 'ai_malware' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_malware \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id 67457a27-6f9c-4dea-9289-2cd4345de918
+```
+
+### ai_threat_actor
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/lookup_threat_actor.txt \
+	--name 'ai_threat_actor' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_threat_actor \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id 5fa6d228-149b-4f7f-8f7f-f5b430c7b9b9
+```
+
+### ai_tool
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/lookup_tool.txt \
+	--name 'ai_tool' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_tool \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id 30dde76b-12da-42c7-afe4-97389e47fcaa
+```

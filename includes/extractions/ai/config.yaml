@@ -718,7 +718,7 @@ ai_mitre_attack_enterprise:
   type: ai
   name: 'MITRE ATT&CK Enterprise'
   description: ''
-  notes: 'lookup_mitre_attack_enterprise_id and lookup_mitre_attack_enterprise_name legacy extraction also exists if you cannot use AI'
+  notes: 'lookup_mitre_attack_enterprise_id and lookup_mitre_attack_enterprise_name legacy extractions also exists if you cannot use AI'
   created: 2020-01-01
   modified: 2020-01-01
   created_by: DOGESEC
@@ -733,7 +733,7 @@ ai_mitre_attack_mobile:
   type: ai
   name: 'MITRE ATT&CK Mobile'
   description: ''
-  notes: 'lookup_mitre_attack_mobile_id and lookup_mitre_attack_mobile_name legacy extraction also exists if you cannot use AI'
+  notes: 'lookup_mitre_attack_mobile_id and lookup_mitre_attack_mobile_name legacy extractions also exists if you cannot use AI'
   created: 2020-01-01
   modified: 2020-01-01
   created_by: DOGESEC
@@ -748,7 +748,7 @@ ai_mitre_attack_ics:
   type: ai
   name: 'MITRE ATT&CK ICS'
   description: ''
-  notes: 'lookup_mitre_attack_ics_id and lookup_mitre_attack_ics_name legacy extraction also exists if you cannot use AI'
+  notes: 'lookup_mitre_attack_ics_id and lookup_mitre_attack_ics_name legacy extractions also exists if you cannot use AI'
   created: 2020-01-01
   modified: 2020-01-01
   created_by: DOGESEC
@@ -765,12 +765,12 @@ ai_mitre_capec:
   type: ai
   name: 'MITRE CAPEC ID'
   description: ''
-  notes: 'lookup_mitre_capec_id and lookup_mitre_capec_name legacy extraction also exists if you cannot use AI'
+  notes: 'lookup_mitre_capec_id and lookup_mitre_capec_name legacy extractions also exists if you cannot use AI'
   created: 2020-01-01
   modified: 2020-01-01
   created_by: DOGESEC
   version: 1.0.0
-  prompt_base: 'Extract all references to a MITRE CAPEC object.'
+  prompt_base: 'Extract all references to a MITRE CAPEC object from the text.'
   prompt_helper: 'If you are unsure, you can learn more about MITRE CAPEC here: https://capec.mitre.org/'
   prompt_conversion: 'Convert all extractions into the corresponding CAPEC ID in the format `CAPEC-ID`'
   test_cases: ai_mitre_capec
@@ -782,13 +782,60 @@ ai_mitre_cwe:
   type: ai
   name: 'MITRE CWE'
   description: ''
-  notes: 'lookup_mitre_cwe_id and lookup_mitre_cwe_name legacy extraction also exists if you cannot use AI'
+  notes: 'lookup_mitre_cwe_id and lookup_mitre_cwe_name legacy extractions also exists if you cannot use AI'
   created: 2020-01-01
   modified: 2020-01-01
   created_by: DOGESEC
   version: 1.0.0
-  prompt_base: 'Extract all references to a MITRE CWE object.'
+  prompt_base: 'Extract all references to a MITRE CWE object from the text.'
   prompt_helper: 'If you are unsure, you can learn more about MITRE CAPEC here: https://cwe.mitre.org/'
   prompt_conversion: 'Convert all extractions into the corresponding CWE ID in the format `CWE-ID`'
   test_cases: ai_mitre_cwe
   stix_mapping: ctibutler-mitre-cwe-id
+
+####### Generic Extractions #######
+
+ai_malware:
+  type: ai
+  name: 'Malware'
+  description: ''
+  notes: 'lookup_malware legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all Malware names from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: lookup_malware
+  stix_mapping: malware
+
+ai_threat_actor:
+  type: ai
+  name: 'Threat Actor'
+  description: ''
+  notes: 'lookup_threat_actor legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all Threat Actor names from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: lookup_threat_actor
+  stix_mapping: threat-actor
+
+ai_tool:
+  type: ai
+  name: 'Tool'
+  description: ''
+  notes: 'lookup_tool legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all Software names from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: lookup_tool
+  stix_mapping: tool
