@@ -3,16 +3,16 @@ from arango import ArangoClient
 
 # Connect to ArangoDB
 client = ArangoClient()
-db = client.db('cti_knowledge_base_store_database', username='root', password='')
+db = client.db('ctibutler_database', username='root', password='')
 
 # Get the directory where the script is located
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Define queries and output files
 queries = {
-    "mitre_cwe_id.txt": """
+    "mitre_cwe_id_v4_15.txt": """
         FOR doc IN mitre_cwe_vertex_collection
-          FILTER doc._stix2arango_note == "v4.15"
+          FILTER doc._stix2arango_note == "version=4_15"
           AND IS_ARRAY(doc.external_references)
           AND doc.x_mitre_deprecated != true
           AND doc.revoked != true
@@ -21,18 +21,18 @@ queries = {
             SORT reference.external_id ASC
             RETURN reference.external_id
     """,
-    "mitre_cwe_name.txt": """
+    "mitre_cwe_name_v4_15.txt": """
         FOR doc IN mitre_cwe_vertex_collection
-          FILTER doc._stix2arango_note == "v4.15"
+          FILTER doc._stix2arango_note == "version=4_15"
           AND IS_ARRAY(doc.external_references)
           AND doc.x_mitre_deprecated != true
           AND doc.revoked != true
           AND doc.type == "weakness"
           RETURN doc.name
     """,
-    "mitre_capec_id.txt": """
+    "mitre_capec_id_v3_9.txt": """
         FOR doc IN mitre_capec_vertex_collection
-          FILTER doc._stix2arango_note == "v3.9"
+          FILTER doc._stix2arango_note == "version=3_9"
           AND doc.x_mitre_deprecated != true
           AND doc.revoked != true
           AND IS_ARRAY(doc.external_references)
@@ -41,17 +41,17 @@ queries = {
             SORT reference.external_id ASC
             RETURN reference.external_id
     """,
-    "mitre_capec_name.txt": """
+    "mitre_capec_name_v3_9.txt": """
         FOR doc IN mitre_capec_vertex_collection
-          FILTER doc._stix2arango_note == "v3.9"
+          FILTER doc._stix2arango_note == "version=3_9"
           AND doc.x_mitre_deprecated != true
           AND doc.revoked != true
           AND doc.type != "course-of-action"
           RETURN doc.name
     """,
-    "mitre_attack_enterprise_id.txt": """
+    "mitre_attack_enterprise_id_v16_0.txt": """
         FOR doc IN mitre_attack_enterprise_vertex_collection
-          FILTER doc._stix2arango_note == "v15.1"
+          FILTER doc._stix2arango_note == "version=16_0"
           AND doc.type != "x-mitre-matrix"
           AND doc.x_mitre_deprecated != true
           AND doc.revoked != true
@@ -61,20 +61,19 @@ queries = {
             SORT reference.external_id ASC
             RETURN reference.external_id
     """,
-    "mitre_attack_enterprise_name.txt": """
+    "mitre_attack_enterprise_name_v16_0.txt": """
         FOR doc IN mitre_attack_enterprise_vertex_collection
-          FILTER doc._stix2arango_note == "v15.1"
+          FILTER doc._stix2arango_note == "version=16_0"
           AND doc.type != "x-mitre-matrix"
           AND doc.x_mitre_deprecated != true
           AND doc.revoked != true
           RETURN doc.name
     """,
-    "mitre_attack_enterprise_aliases.txt": """
+    "mitre_attack_enterprise_aliases_v16_0.txt": """
         FOR alias IN UNIQUE(
           FLATTEN(
             FOR doc IN mitre_attack_enterprise_vertex_collection
-              
-FILTER doc._stix2arango_note == "v15.1"
+              FILTER doc._stix2arango_note == "version=16_0"
               AND doc.type != "x-mitre-matrix"
               AND doc.x_mitre_deprecated != true
               AND doc.revoked != true
@@ -84,9 +83,9 @@ FILTER doc._stix2arango_note == "v15.1"
         )
         RETURN alias
     """,
-    "mitre_attack_ics_id.txt": """
+    "mitre_attack_ics_id_v16_0.txt": """
         FOR doc IN mitre_attack_ics_vertex_collection
-          FILTER doc._stix2arango_note == "v15.1"
+          FILTER doc._stix2arango_note == "version=16_0"
           AND doc.type != "x-mitre-matrix"
           AND doc.x_mitre_deprecated != true
           AND doc.revoked != true
@@ -96,11 +95,11 @@ FILTER doc._stix2arango_note == "v15.1"
             SORT reference.external_id ASC
             RETURN reference.external_id
     """,
-    "mitre_attack_ics_aliases.txt": """
+    "mitre_attack_ics_aliases_v16_0.txt": """
         FOR alias IN UNIQUE(
           FLATTEN(
             FOR doc IN mitre_attack_ics_vertex_collection
-              FILTER doc._stix2arango_note == "v15.1"
+              FILTER doc._stix2arango_note == "version=16_0"
               AND doc.type != "x-mitre-matrix"
               AND doc.x_mitre_deprecated != true
               AND doc.revoked != true
@@ -110,17 +109,17 @@ FILTER doc._stix2arango_note == "v15.1"
         )
         RETURN alias
     """,
-    "mitre_attack_ics_name.txt": """
+    "mitre_attack_ics_name_v16_0.txt": """
         FOR doc IN mitre_attack_ics_vertex_collection
-          FILTER doc._stix2arango_note == "v15.1"
+          FILTER doc._stix2arango_note == "version=16_0"
           AND doc.type != "x-mitre-matrix"
           AND doc.x_mitre_deprecated != true
           AND doc.revoked != true
           RETURN doc.name
     """,
-    "mitre_attack_mobile_id.txt": """
+    "mitre_attack_mobile_id_v16_0.txt": """
         FOR doc IN mitre_attack_mobile_vertex_collection
-          FILTER doc._stix2arango_note == "v15.1"
+          FILTER doc._stix2arango_note == "version=16_0"
           AND doc.type != "x-mitre-matrix"
           AND doc.x_mitre_deprecated != true
           AND doc.revoked != true
@@ -130,17 +129,17 @@ FILTER doc._stix2arango_note == "v15.1"
             SORT reference.external_id ASC
             RETURN reference.external_id
     """,
-    "mitre_attack_mobile_name.txt": """
+    "mitre_attack_mobile_name_v16_0.txt": """
         FOR doc IN mitre_attack_mobile_vertex_collection
-          FILTER doc._stix2arango_note == "v15.1"
+          FILTER doc._stix2arango_note == "version=16_0"
           AND doc.type != "x-mitre-matrix"
           AND doc.x_mitre_deprecated != true
           AND doc.revoked != true
           RETURN doc.name
     """,
-    "mitre_atlas_id.txt": """
+    "mitre_atlas_id_v4_5_2.txt": """
         FOR doc IN mitre_atlas_vertex_collection
-          FILTER doc._stix2arango_note == "v4.5.2"
+          FILTER doc._stix2arango_note == "version=4_5_2"
           AND doc.type != "x-mitre-matrix"
           AND doc.x_mitre_deprecated != true
           AND doc.revoked != true
@@ -150,17 +149,17 @@ FILTER doc._stix2arango_note == "v15.1"
             SORT reference.external_id ASC
             RETURN reference.external_id
     """,
-    "mitre_atlas_name.txt": """
+    "mitre_atlas_name_v4_5_2.txt": """
         FOR doc IN mitre_atlas_vertex_collection
-          FILTER doc._stix2arango_note == "v4.5.2"
+          FILTER doc._stix2arango_note == "version=4_5_2"
           AND doc.type != "x-mitre-matrix"
           AND doc.x_mitre_deprecated != true
           AND doc.revoked != true
           RETURN doc.name
     """,
-    "disarm_id.txt": """
+    "disarm_id_v1_5.txt": """
         FOR doc IN disarm_vertex_collection
-          FILTER doc._stix2arango_note == "v1.5"
+          FILTER doc._stix2arango_note == "version=1_5"
           AND doc.type != "x-mitre-matrix"
           AND doc.x_mitre_deprecated != true
           AND doc.revoked != true
@@ -170,9 +169,9 @@ FILTER doc._stix2arango_note == "v15.1"
             SORT reference.external_id ASC
             RETURN reference.external_id
     """,
-    "disarm_name.txt": """
+    "disarm_name_v1_5.txt": """
         FOR doc IN disarm_vertex_collection
-          FILTER doc._stix2arango_note == "v1.5"
+          FILTER doc._stix2arango_note == "version=1_5"
           AND doc.type != "x-mitre-matrix"
           AND doc.x_mitre_deprecated != true
           AND doc.revoked != true

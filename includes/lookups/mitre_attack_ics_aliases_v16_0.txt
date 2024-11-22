@@ -30,6 +30,7 @@ WCry
 Triton
 TRISIS
 HatMan
+Fuxnet
 Ryuk
 ACAD/Medre.A
 REvil

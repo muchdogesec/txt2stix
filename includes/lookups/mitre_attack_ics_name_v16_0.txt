@@ -169,6 +169,7 @@ Duqu
 Industroyer2
 WannaCry
 Triton
+Fuxnet
 Ryuk
 ACAD/Medre.A
 REvil

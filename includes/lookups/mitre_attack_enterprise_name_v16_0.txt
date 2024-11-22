@@ -35,6 +35,7 @@ Path Interception by PATH Environment Variable
 Sharepoint
 Direct Volume Access
 Artificial Intelligence
+Modify Cloud Resource Hierarchy
 Email Hiding Rules
 External Defacement
 Encrypted/Encoded File
@@ -44,6 +45,7 @@ Rootkit
 PowerShell Profile
 JavaScript
 DNS
+Lifecycle-Triggered Deletion
 Audio Capture
 Create or Modify System Process
 External Remote Services
@@ -53,6 +55,7 @@ Container Orchestration Job
 Domain Generation Algorithms
 Double File Extension
 Bypass User Account Control
+SMS Pumping
 Internet Connection Discovery
 Sudo and Sudo Caching
 Archive via Custom Method
@@ -101,6 +104,7 @@ Hide Artifacts
 Dynamic Data Exchange
 Malicious File
 Identify Business Tempo
+Publish/Subscribe Protocols
 Hardware
 Taint Shared Content
 Trust Modification
@@ -165,6 +169,7 @@ Browser Extensions
 Service Exhaustion Flood
 Compromise Hardware Supply Chain
 Native API
+Ccache Files
 Clear Network Connection History and Configurations
 AS-REP Roasting
 Virtual Private Server
@@ -179,6 +184,7 @@ Outlook Rules
 Impair Defenses
 Cloud Accounts
 Email Accounts
+Additional Local or Domain Groups
 Upload Malware
 Supply Chain Compromise
 Exploit Public-Facing Application
@@ -202,8 +208,10 @@ Traffic Signaling
 Direct Cloud VM Connections
 System Binary Proxy Execution
 Timestomp
+Evil Twin
 Reflective Code Loading
 Wi-Fi Discovery
+Mutual Exclusion
 Ignore Process Interrupts
 Escape to Host
 Shortcut Modification
@@ -295,6 +303,7 @@ Delete Cloud Instance
 Code Repositories
 Executable Installer File Permissions Weakness
 Accessibility Features
+Bandwidth Hijacking
 Account Discovery
 Proxy
 Command and Scripting Interpreter
@@ -378,6 +387,7 @@ Network Provider DLL
 Windows Management Instrumentation Event Subscription
 CDNs
 User Activity Based Checks
+Cloud Service Hijacking
 Cloud Accounts
 Software Deployment Tools
 Exfiltration Over C2 Channel
@@ -415,6 +425,7 @@ Systemd Timers
 Phishing
 ROMMONkit
 Compiled HTML File
+Compute Hijacking
 Network Share Connection Removal
 Multi-hop Proxy
 Brute Force
@@ -428,6 +439,7 @@ Data from Network Shared Drive
 Web Services
 Modify System Image
 Hijack Execution Flow
+Lua
 Indicator Removal from Tools
 Malicious Image
 Container Service
@@ -445,6 +457,7 @@ Remote Email Collection
 IIS Components
 Invalid Code Signature
 Run Virtual Instance
+Polymorphic Code
 Password Policy Discovery
 Event Triggered Execution
 Unix Shell Configuration Modification
@@ -464,6 +477,7 @@ Input Capture
 Spearphishing Voice
 Exploits
 Social Media
+Customer Relationship Management Software
 Component Object Model Hijacking
 Credentials
 Compromise Software Supply Chain
@@ -483,7 +497,7 @@ System Language Discovery
 Non-Application Layer Protocol
 Steganography
 DNS Server
-Protocol Impersonation
+Protocol or Service Impersonation
 Query Registry
 Data Transfer Size Limits
 Web Session Cookie
@@ -504,7 +518,9 @@ ARP Cache Poisoning
 Disable or Modify Cloud Logs
 Security Software Discovery
 Hidden Window
+ClickOnce
 Python
+Relocate Malware
 Identify Roles
 Data Encoding
 AppInit DLLs
@@ -529,6 +545,7 @@ Silver Ticket
 Data from Information Repositories
 Clear Persistence
 Windows Credential Manager
+Masquerade Account Name
 Hardware Additions
 Server Software Component
 Data Destruction
@@ -611,6 +628,7 @@ At
 Dynamic-link Library Injection
 Exploits
 Modify Authentication Process
+Udev Rules
 Credential API Hooking
 Firmware Corruption
 Inhibit System Recovery
@@ -626,6 +644,7 @@ Domains
 SQL Stored Procedures
 Network Device Authentication
 Disk Content Wipe
+Messaging Applications
 Exfiltration Over Unencrypted Non-C2 Protocol
 Dylib Hijacking
 Downgrade System Image
@@ -637,6 +656,7 @@ MMC
 Process Argument Spoofing
 COR_PROFILER
 Operation Dream Job
+KV Botnet Activity
 Frankenstein
 Operation Sharpshooter
 Operation Honeybee
@@ -646,17 +666,22 @@ Operation Dust Storm
 Operation Spalax
 Cutting Edge
 C0018
+Water Curupira Pikabot Distribution
 C0021
 C0015
 Operation Ghost
+HomeLand Justice
 C0032
 SolarWinds Compromise
+Pikabot Distribution February 2024
 FunnyDream
 Operation CuckooBees
 C0033
 2016 Ukraine Electric Power Attack
 C0010
+APT41 DUST
 Night Dragon
+Versa Director Zero Day Exploitation
 Operation Wocao
 C0011
 C0017
@@ -687,6 +712,7 @@ Do Not Mitigate
 Pre-compromise
 SSL/TLS Inspection
 Boot Integrity
+Out-of-Band Communications Channel
 Network Segmentation
 Threat Intelligence Program
 Password Policies
@@ -720,6 +746,7 @@ Mustard Tempest
 GCMAN
 Kimsuky
 EXOTIC LILY
+TA577
 admin@338
 Volt Typhoon
 Patchwork
@@ -770,6 +797,7 @@ Aoqin Dragon
 Ferocious Kitten
 The White Company
 Ke3chang
+Saint Bear
 APT1
 DarkHydrus
 Confucius
@@ -778,12 +806,14 @@ Leviathan
 MoustachedBouncer
 Group5
 Blue Mockingbird
+Winter Vivern
 SilverTerrier
 Turla
 Poseidon Group
 TA505
 BITTER
 DarkVishnya
+RedCurl
 APT-C-23
 FIN5
 Mofang
@@ -800,8 +830,10 @@ TA551
 TEMP.Veles
 Equation
 BackdoorDiplomacy
+Star Blizzard
 Darkhotel
 Axiom
+TA578
 Deep Panda
 Ember Bear
 LazyScripter
@@ -810,6 +842,7 @@ Volatile Cedar
 ToddyCat
 Whitefly
 LuminousMoth
+Agrius
 APT28
 Malteiro
 Metador
@@ -823,6 +856,7 @@ Winnti Group
 Tonto Team
 GOLD SOUTHFIELD
 Lazarus Group
+INC Ransom
 Earth Lusca
 FIN4
 Silence
@@ -838,11 +872,14 @@ Wizard Spider
 Molerats
 Transparent Tribe
 IndigoZebra
+Moonstone Sleet
 Inception
+Play
 PROMETHIUM
 APT30
 HEXANE
 DragonOK
+Daggerfly
 Rancor
 WIRTE
 PLATINUM
@@ -862,6 +899,7 @@ PowerDuke
 EKANS
 BLINDINGCAN
 Ninja
+Pikabot
 Wiarp
 RCSession
 Spark
@@ -890,6 +928,7 @@ Get2
 POWRUNER
 KOPILUWAK
 RobbinHood
+VersaMem
 Power Loader
 TDTESS
 Chinoxy
@@ -939,6 +978,7 @@ AuditCred
 Lurid
 Kasidet
 OceanSalt
+Playcrypt
 Brave Prince
 RainyDay
 Ecipekac
@@ -958,6 +998,7 @@ CosmicDuke
 EvilGrab
 EnvyScout
 SslMM
+IMAPLoader
 GreyEnergy
 Aria-body
 Emotet
@@ -966,13 +1007,16 @@ Olympic Destroyer
 Crimson
 Tomiris
 TEARDROP
+DUSTTRAP
 Turian
 BADHATCH
 Machete
 PowerLess
 Action RAT
 Avenger
+DUSTPAN
 Prikormka
+Gootloader
 PingPull
 WellMess
 Dacls
@@ -999,15 +1043,18 @@ Rifdoor
 SUGARUSH
 LoFiSe
 HOPLIGHT
+Cuckoo Stealer
 GuLoader
 MobileOrder
 WastedLocker
 RegDuke
 ProLock
+Moneybird
 InvisiMole
 P.A.S. Webshell
 QUIETEXIT
 Naid
+Apostle
 Volgmer
 WINERACK
 WhisperGate
@@ -1023,6 +1070,7 @@ Bonadan
 SamSam
 Neoichor
 Conti
+Raspberry Robin
 Mispadu
 RemoteCMD
 Diavol
@@ -1035,6 +1083,7 @@ Fysbis
 IcedID
 VERMIN
 UBoatRAT
+Nightdoor
 MarkiRAT
 PowerShower
 Kazuar
@@ -1043,6 +1092,7 @@ DarkComet
 NETEAGLE
 POORAIM
 HUI Loader
+CHIMNEYSWEEP
 Ragnar Locker
 FatDuke
 Lucifer
@@ -1090,16 +1140,19 @@ DarkTortilla
 ROKRAT
 CORESHELL
 RunningRAT
+VPNFilter
 Babuk
 DarkWatchman
 Dyre
 BlackMould
 Javali
 PACEMAKER
+LunarLoader
 BBSRAT
 PlugX
 Reaver
 Bisonal
+MultiLayer Wiper
 S-Type
 SeaDuke
 BS2005
@@ -1141,6 +1194,7 @@ USBferry
 WannaCry
 Gazer
 TSCookie
+Latrodectus
 Saint Bot
 Pay2Key
 Chaes
@@ -1162,6 +1216,7 @@ Royal
 BendyBear
 Uroburos
 Metamorfo
+Spica
 Trojan.Karagany
 Bandook
 PipeMon
@@ -1187,7 +1242,9 @@ Micropsia
 Kerrdown
 RARSTONE
 VBShower
+BPFDoor
 Black Basta
+ZeroCleare
 Catchamas
 StoneDrill
 OopsIE
@@ -1241,11 +1298,13 @@ ABK
 Pysa
 Wiper
 Final1stspy
+MgBot
 ccf32
 Zebrocy
 Pandora
 FinFisher
 SpeakUp
+LunarMail
 WARPWIRE
 CrossRAT
 OwaAuth
@@ -1283,6 +1342,8 @@ NativeZone
 NanoCore
 TajMahal
 PLEAD
+Raccoon Stealer
+IPsec Helper
 Daserf
 GoldFinder
 Carbon
@@ -1306,6 +1367,7 @@ TrailBlazer
 Revenge RAT
 MacMa
 FunnyDream
+ROADSWEEP
 SUNSPOT
 More_eggs
 SysUpdate
@@ -1352,6 +1414,7 @@ Winnti for Windows
 PowerPunch
 BONDUPDATER
 BLACKCOFFEE
+BFG Agonizer
 Ebury
 Kinsing
 PITSTOP
@@ -1365,6 +1428,7 @@ TURNEDUP
 ChChes
 PowerStallion
 ANDROMEDA
+Manjusaka
 IceApple
 JPIN
 metaMain
@@ -1375,6 +1439,7 @@ Psylo
 Heyoka Backdoor
 HTTPBrowser
 Mis-Type
+LunarWeb
 XCSSET
 Disco
 Dipsind
@@ -1415,6 +1480,8 @@ BBK
 Komplex
 OSX/Shlayer
 Denis
+INC Ransomware
+DEADWOOD
 GLOOXMAIL
 Dok
 Waterbear
@@ -1451,6 +1518,8 @@ HermeticWizard
 None
 Net
 RemoteUtilities
+Covenant
+NPPSPY
 BloodHound
 certutil
 at
@@ -1471,6 +1540,7 @@ Arp
 spwebmember
 Empire
 ifconfig
+FRP
 dsquery
 PcShare
 RawDisk
