@@ -8,6 +8,7 @@ EKANS
 SNAKEHOSE
 BLINDINGCAN
 Ninja
+Pikabot
 Wiarp
 RCSession
 Spark
@@ -40,6 +41,7 @@ Get2
 POWRUNER
 KOPILUWAK
 RobbinHood
+VersaMem
 TDTESS
 Chinoxy
 SharpStage
@@ -67,6 +69,7 @@ ThreatNeedle
 ZLib
 RedLeaves
 BUGJUICE
+Miner-C
 POWERSOURCE
 DNSMessenger
 LITTLELAMB.WOOLTEA
@@ -84,6 +87,7 @@ Bankshot
 Trojan Manuscript
 SharpDisco
 StrongPity
+HAPPYWORK
 xCaon
 PLAINTEE
 Pony
@@ -96,6 +100,8 @@ Lurid
 Enfal
 Kasidet
 OceanSalt
+Playcrypt
+Play
 Brave Prince
 RainyDay
 Ecipekac
@@ -126,6 +132,7 @@ NemesisGemina
 EvilGrab
 EnvyScout
 SslMM
+IMAPLoader
 GreyEnergy
 Aria-body
 Emotet
@@ -136,6 +143,7 @@ Crimson
 MSIL/Crimson
 Tomiris
 TEARDROP
+DUSTTRAP
 Turian
 BADHATCH
 Machete
@@ -143,7 +151,9 @@ Pyark
 PowerLess
 Action RAT
 Avenger
+DUSTPAN
 Prikormka
+Gootloader
 PingPull
 WellMess
 Dacls
@@ -159,6 +169,7 @@ AuTo Stealer
 Hildegard
 Agent.btz
 SLOWDRIFT
+SHUTTERSPEED
 SombRAT
 FlawedGrace
 FLASHFLOOD
@@ -170,16 +181,20 @@ Rifdoor
 SUGARUSH
 LoFiSe
 HOPLIGHT
+Cuckoo Stealer
 GuLoader
 WastedLocker
 RegDuke
 ProLock
+Moneybird
 InvisiMole
 P.A.S. Webshell
 Fobushell
 QUIETEXIT
 Naid
+Apostle
 Volgmer
+WINERACK
 WhisperGate
 FruitFly
 ZeroT
@@ -195,6 +210,7 @@ SamSam
 Samas
 Neoichor
 Conti
+Raspberry Robin
 Mispadu
 RemoteCMD
 Diavol
@@ -209,6 +225,7 @@ Fysbis
 IcedID
 VERMIN
 UBoatRAT
+Nightdoor
 MarkiRAT
 PowerShower
 Kazuar
@@ -221,6 +238,7 @@ FYNLOS
 NETEAGLE
 POORAIM
 HUI Loader
+CHIMNEYSWEEP
 Ragnar Locker
 FatDuke
 Lucifer
@@ -286,6 +304,7 @@ CORESHELL
 Sofacy
 SOURFACE
 RunningRAT
+VPNFilter
 Babuk
 Babyk
 Vasa Locker
@@ -296,6 +315,7 @@ Dyreza
 BlackMould
 Javali
 PACEMAKER
+LunarLoader
 BBSRAT
 PlugX
 Thoper
@@ -306,6 +326,7 @@ Kaba
 Korplug
 Reaver
 Bisonal
+MultiLayer Wiper
 S-Type
 SeaDuke
 SeaDaddy
@@ -379,6 +400,10 @@ WCry
 Gazer
 WhiteBear
 TSCookie
+Latrodectus
+IceNova
+Unidentified 111
+Saint Bot
 Pay2Key
 Chaes
 Briba
@@ -404,6 +429,7 @@ Uroburos
 Snake
 Metamorfo
 Casbaneiro
+Spica
 Trojan.Karagany
 xFrost
 Karagany
@@ -440,7 +466,13 @@ Micropsia
 Kerrdown
 RARSTONE
 VBShower
+BPFDoor
+JustForFun
+Backdoor.Linux.BPFDOOR
+Backdoor.Solaris.BPFDOOR.ZAJE
 Black Basta
+ZeroCleare
+ZEROCLEAR
 Catchamas
 StoneDrill
 DROPSHOT
@@ -511,6 +543,7 @@ ABK
 Pysa
 Mespinoza
 Final1stspy
+MgBot
 ccf32
 Zebrocy
 Zekapab
@@ -518,6 +551,7 @@ Pandora
 FinFisher
 FinSpy
 SpeakUp
+LunarMail
 WARPWIRE
 CrossRAT
 OwaAuth
@@ -566,6 +600,8 @@ NativeZone
 NanoCore
 TajMahal
 PLEAD
+Raccoon Stealer
+IPsec Helper
 Daserf
 Muirim
 Nioupale
@@ -593,6 +629,7 @@ MacMa
 OSX.CDDS
 DazzleSpy
 FunnyDream
+ROADSWEEP
 SUNSPOT
 More_eggs
 SKID
@@ -602,6 +639,7 @@ HyperSSL
 Soldier
 FOCUSFJORD
 TinyZBot
+OutSteel
 BackConfig
 PowGoop
 Kwampirs
@@ -645,10 +683,12 @@ Sensocode
 SLIGHTPULSE
 NDiskMonitor
 CoinTicker
+DDKONG
 Penquin
 Penquin 2.0
 Penquin_x64
 BabyShark
+LATEOP
 Cannon
 CreepySnail
 build_downer
@@ -657,6 +697,7 @@ Winnti for Windows
 PowerPunch
 BONDUPDATER
 BLACKCOFFEE
+BFG Agonizer
 Ebury
 Kinsing
 PITSTOP
@@ -675,6 +716,7 @@ Scorpion
 HAYMAKER
 PowerStallion
 ANDROMEDA
+Manjusaka
 IceApple
 JPIN
 metaMain
@@ -687,6 +729,7 @@ HTTPBrowser
 Token Control
 HttpDump
 Mis-Type
+LunarWeb
 XCSSET
 OSX.DubRobber
 Disco
@@ -762,6 +805,8 @@ OSX/Shlayer
 Zshlayer
 Crossrider
 Denis
+INC Ransomware
+DEADWOOD
 GLOOXMAIL
 Trojan.GTALK
 Dok
@@ -820,6 +865,8 @@ HermeticWizard
 Net
 net.exe
 RemoteUtilities
+Covenant
+NPPSPY
 BloodHound
 certutil
 certutil.exe
@@ -844,6 +891,7 @@ spwebmember
 Empire
 EmPyre
 PowerShell Empire
+FRP
 dsquery
 dsquery.exe
 PcShare
@@ -871,6 +919,7 @@ ConnectWise
 ScreenConnect
 Imminent Monitor
 Ruler
+Winexe
 MCMD
 Nltest
 MailSniper

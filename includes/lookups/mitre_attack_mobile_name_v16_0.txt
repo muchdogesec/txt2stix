@@ -253,7 +253,6 @@ Adups
 SimBad
 Android/AdDisplay.Ashas
 Phenakite
-Marcher
 TianySpy
 Sunbird
 DressCode
