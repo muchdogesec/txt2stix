@@ -30,6 +30,9 @@ class STIXObjectRetriever:
     def get_objects_by_name(self, name, type):
         return self._retrieve_objects(urljoin(self.api_root, f"/api/v1/{type}/objects/?name={name}"))
     
+    def get_objects_by_alias(self, alias, type):
+        return self._retrieve_objects(urljoin(self.api_root, f"/api/v1/{type}/objects/?alias={alias}"))
+    
     def _retrieve_objects(self, endpoint, key='objects'):
         s = requests.Session()
         s.headers.update({
@@ -58,12 +61,15 @@ def retrieve_stix_objects(stix_mapping: str, id, host=None):
             host, stix_mapping = stix_mapping.split('-', 1)
         retreiver = STIXObjectRetriever(host)
         match stix_mapping:
+            ### ATT&CK by ID
             case 'mitre-attack-ics-id':
                 return retreiver.get_attack_objects('ics', id)
             case 'mitre-attack-mobile-id':
                 return retreiver.get_attack_objects('mobile', id)
             case 'mitre-attack-enterprise-id':
                 return retreiver.get_attack_objects('enterprise', id)
+            
+            ### Others by ID
             case "mitre-capec-id":
                 return retreiver.get_objects_by_id(id, 'capec')
             case "mitre-atlas-id":
@@ -78,12 +84,24 @@ def retrieve_stix_objects(stix_mapping: str, id, host=None):
                 return retreiver.get_objects_by_id(id, 'cpe')
             case "location":
                 return retreiver.get_location_objects(id)
+            
+            ### ATT&CK by Name
             case "mitre-attack-enterprise-name":
                 return retreiver.get_objects_by_name(id, 'attack-enterprise')
             case "mitre-attack-mobile-name":
                 return retreiver.get_objects_by_name(id, 'attack-mobile')
             case "mitre-attack-ics-name":
                 return retreiver.get_objects_by_name(id, 'attack-ics')
+            
+            ### ATT&CK by Alias
+            case "mitre-attack-enterprise-aliases":
+                return retreiver.get_objects_by_alias(id, 'attack-enterprise')
+            case "mitre-attack-mobile-aliases":
+                return retreiver.get_objects_by_alias(id, 'attack-mobile')
+            case "mitre-attack-ics-aliases":
+                return retreiver.get_objects_by_alias(id, 'attack-ics')
+            
+            ### OTHERS by Name
             case "mitre-capec-name":
                 return retreiver.get_objects_by_name(id, 'capec')
             case "mitre-cwe-name":
