@@ -117,7 +117,6 @@ ASP.NET Misconfiguration: Improper Model Validation
 Inefficient CPU Computation
 Use of Prohibited Code
 Incorrect Access of Indexable Resource ('Range Error')
-DEPRECATED: Use of Uninitialized Resource
 Initialization of a Resource with an Insecure Default
 Improper Isolation of Shared Resources on System-on-a-Chip (SoC)
 Improper Restriction of Operations within the Bounds of a Memory Buffer
@@ -230,12 +229,10 @@ Fabric-Address Map Allows Programming of Unwarranted Overlaps of Protected and U
 Improper Access Control in Fabric Bridge
 Missing Support for Security Features in On-chip Fabrics or Buses
 Improper Protection against Electromagnetic Fault Injection (EM-FI)
-DEPRECATED: Miscalculated Null Termination
 Improper Protection for Outbound Error Messages and Alert Signals
 Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution')
 Use of Blocking Code in Single-threaded, Non-blocking Context
 Improper Management of Sensitive Trace Data
-DEPRECATED: Sensitive Information Accessible by Physical Probing of JTAG Interface
 Improperly Controlled Sequential Memory Allocation
 Missing Immutable Root of Trust in Hardware
 Binding to an Unrestricted IP Address
@@ -348,9 +345,6 @@ Improper Removal of Sensitive Information Before Storage or Transfer
 Exposure of Sensitive Information Due to Incompatible Policies
 Invocation of Process Using Visible Sensitive Information
 Insertion of Sensitive Information Into Debugging Code
-DEPRECATED: Containment Errors (Container Errors)
-DEPRECATED: Failure to Protect Stored Data from Modification
-DEPRECATED: Failure to provide confidentiality for stored data
 Storage of File with Sensitive Data Under Web Root
 Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')
 Storage of File With Sensitive Data Under FTP Root
@@ -358,7 +352,6 @@ Information Loss or Omission
 Truncation of Security-relevant Information
 Omission of Security-relevant Information
 Obscured Security-relevant Information by Alternate Name
-DEPRECATED: General Information Management Problems
 Sensitive Information in Resource Not Removed Before Reuse
 Improper Handling of Syntactically Invalid Structure
 Improper Handling of Values
@@ -381,9 +374,7 @@ Creation of chroot Jail Without Changing Working Directory
 Improper Clearing of Heap Memory Before Release ('Heap Inspection')
 J2EE Bad Practices: Direct Management of Connections
 J2EE Bad Practices: Direct Use of Sockets
-DEPRECATED: Reliance on DNS Lookups in a Security Decision
 Uncaught Exception
-DEPRECATED: Often Misused: Path Manipulation
 Path Traversal: '/../filedir'
 Execution with Unnecessary Privileges
 Unchecked Return Value
@@ -425,7 +416,6 @@ Authentication Bypass by Alternate Name
 Path Traversal: '\..\filename'
 Authentication Bypass by Spoofing
 Reliance on IP Address for Authentication
-DEPRECATED: Trusting Self-reported DNS Name
 Using Referer Field for Authentication
 Authentication Bypass by Capture-replay
 Improper Certificate Validation
@@ -501,7 +491,6 @@ Trust of System Event Data
 Concurrent Execution using Shared Resource with Improper Synchronization ('Race Condition')
 Race Condition Enabling Link Following
 Signal Handler Race Condition
-DEPRECATED: Race Condition in Switch
 Race Condition within a Thread
 Time-of-check Time-of-use (TOCTOU) Race Condition
 Context Switching Race Condition
@@ -509,7 +498,6 @@ Divide By Zero
 Path Traversal: '/absolute/pathname/here'
 Missing Check for Certificate Revocation after Initial Check
 Incomplete Internal State Distinction
-DEPRECATED: State Synchronization Error
 Passing Mutable Objects to an Untrusted Method
 Returning a Mutable Object to an Untrusted Caller
 Insecure Temporary File
@@ -553,7 +541,6 @@ Path Equivalence: 'filename.' (Trailing Dot)
 Unprotected Alternate Channel
 Race Condition During Access to Alternate Channel
 Unprotected Windows Messaging Channel ('Shatter')
-DEPRECATED: Proxied Trusted Channel
 Improper Protection of Alternate Path
 Direct Request ('Forced Browsing')
 Untrusted Search Path
@@ -572,7 +559,6 @@ Behavioral Change in New Version or Environment
 Path Equivalence: 'file.name' (Internal Dot)
 Expected Behavior Violation
 Unintended Proxy or Intermediary ('Confused Deputy')
-DEPRECATED: HTTP response splitting
 Inconsistent Interpretation of HTTP Requests ('HTTP Request/Response Smuggling')
 UI Discrepancy for Security Feature
 Unimplemented or Unsupported Feature in UI
@@ -586,7 +572,6 @@ External Initialization of Trusted Variables or Data Stores
 Non-exit on Failed Initialization
 Missing Initialization of a Variable
 Use of Uninitialized Variable
-DEPRECATED: Incorrect Initialization
 Incomplete Cleanup
 Path Equivalence: 'filename ' (Trailing Space)
 Improper Cleanup on Thrown Exception
@@ -643,7 +628,6 @@ Logic/Time Bomb
 Spyware
 Covert Channel
 Covert Storage Channel
-DEPRECATED: Covert Timing Channel
 Path Equivalence: '/multiple/trailing/slash//'
 .NET Misconfiguration: Use of Impersonation
 Weak Password Requirements
@@ -659,8 +643,6 @@ Path Equivalence: '\multiple\\internal\backslash'
 Exposure of Backup File to an Unauthorized Control Sphere
 Inclusion of Sensitive Information in Test Code
 Insertion of Sensitive Information into Log File
-DEPRECATED: Information Exposure Through Server Log Files
-DEPRECATED: Information Exposure Through Debug Log Files
 Exposure of Information Through Shell Error Message
 Servlet Runtime Error Message Containing Sensitive Information
 Java Runtime Error Message Containing Sensitive Information
@@ -669,10 +651,8 @@ Use of Persistent Cookies Containing Sensitive Information
 Path Equivalence: 'filedir\' (Trailing Backslash)
 Inclusion of Sensitive Information in Source Code
 Inclusion of Sensitive Information in an Include File
-DEPRECATED: Information Exposure Through Cleanup Log Files
 Use of Singleton Pattern Without Synchronization in a Multithreaded Context
 Missing Standardized Error Handling Mechanism
-DEPRECATED: Use of Dynamic Class Loading
 Suspicious Comment
 Use of Hard-coded, Security-relevant Constants
 Exposure of Information Through Directory Listing
@@ -721,11 +701,9 @@ Call to Non-ubiquitous API
 Improper Link Resolution Before File Access ('Link Following')
 Free of Memory not on the Heap
 Sensitive Data Storage in Improperly Locked Memory
-DEPRECATED: Authentication Bypass Issues
 Authentication Bypass: OpenSSL CTX Object Modified after SSL Objects are Created
 J2EE Framework: Saving Unserializable Objects to Disk
 Comparison of Object References Instead of Object Contents
-DEPRECATED: Incorrect Semantic Object Comparison
 Use of Wrong Operator in String Comparison
 Use of GET Request Method With Sensitive Query Strings
 Missing Validation of OpenSSL Certificate
@@ -828,7 +806,6 @@ Incorrect Control Flow Scoping
 Use of Incorrectly-Resolved Name or Reference
 Improper Neutralization
 Incorrect Ownership Assignment
-DEPRECATED: Apple '.DS_Store'
 Improper Adherence to Coding Standards
 Improper Handling of Apple HFS+ Alternate Data Stream Path
 External Control of File Name or Path
@@ -853,7 +830,6 @@ Multiple Unlocks of a Critical Resource
 Critical Data Element Declared Public
 Access to Critical Private Variable via Public Method
 Incorrect Short Circuit Evaluation
-DEPRECATED: Uncontrolled File Descriptor Consumption
 Improper Neutralization of Special Elements used in a Command ('Command Injection')
 Allocation of Resources Without Limits or Throttling
 Missing Reference to Active Allocated Resource
@@ -941,7 +917,6 @@ Improperly Controlled Modification of Dynamically-Determined Object Attributes
 Use of Password Hash With Insufficient Computational Effort
 Improper Neutralization of Special Elements used in an Expression Language Statement ('Expression Language Injection')
 Server-Side Request Forgery (SSRF)
-DEPRECATED: Improper Sanitization of Custom Special Characters
 Improper Restriction of Power Consumption
 Storage of Sensitive Data in a Mechanism without Access Control
 Insecure Storage of Sensitive Information
