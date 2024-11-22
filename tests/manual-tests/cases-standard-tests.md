@@ -320,3 +320,17 @@ python3 txt2stix.py \
 	--ignore_link_refs false \
 	--report_id 8cf2590e-f7b8-40c6-99cd-4aad9fbdc8bd
 ```
+
+### disarm demo
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode ai \
+	--ai_settings_relationships openai:gpt-4o \
+	--input_file tests/data/manually_generated_reports/disarm_demo.txt \
+	--name 'DISARM demo' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions lookup_disarm_name \
+	--report_id 8cb2dbf0-136f-4ecb-995c-095496e22abc
+```
