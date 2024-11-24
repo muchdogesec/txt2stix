@@ -256,10 +256,10 @@ def main():
         if args.relationship_mode == "ai":
             validate_token_count(int(os.environ["INPUT_TOKEN_LIMIT"]), preprocessed_text, [args.ai_settings_relationships])
 
-        all_extracts = extract_all(bundler, args.use_extractions, input_text, ai_extractors=args.ai_settings_extractions)
+        all_extracts = extract_all(bundler, args.use_extractions, preprocessed_text, ai_extractors=args.ai_settings_extractions)
         extracted_relationships = None
         if args.relationship_mode == "ai" and sum(map(lambda x: len(x), all_extracts.values())):
-            extracted_relationships = extract_relationships_with_ai(bundler, input_text, all_extracts, args.ai_settings_relationships)
+            extracted_relationships = extract_relationships_with_ai(bundler, preprocessed_text, all_extracts, args.ai_settings_relationships)
             
         # convo_str = ai_extractor_session.get_conversation() if ai_extractor_session and ai_extractor_session.initialized else ""
             
