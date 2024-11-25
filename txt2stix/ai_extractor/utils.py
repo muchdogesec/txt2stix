@@ -54,7 +54,7 @@ def get_extractors_str(extractors):
         if extractor.prompt_positive_examples:
             print(f"- Here are some examples of what SHOULD be extracted for {extractor.name} extractions: {json.dumps(extractor.prompt_positive_examples)}", file=buffer)
         if extractor.prompt_negative_examples:
-            print(f"- Here are some examples of what SHOULD NOT be extracted for {extractor.name} extractions: {json.dumps(extractor.prompt_positive_examples)}", file=buffer)
+            print(f"- Here are some examples of what SHOULD NOT be extracted for {extractor.name} extractions: {json.dumps(extractor.prompt_negative_examples)}", file=buffer)
         print("</extractor>", file=buffer)
         print("\n"*2, file=buffer)
 
