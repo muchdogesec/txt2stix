@@ -1,0 +1,10 @@
+====Good====
+
+Operation Sharpshooter
+Operation Spalax
+
+====Bad====
+
+TA0006
+Rundll32
+OS Credential Dumping
