@@ -9,9 +9,7 @@ T1040
 TA0003
 Rundll32
 OS Credential Dumping
-Operation Sharpshooter
-Operation Spalax
 
 ====Bad====
 
-
+None

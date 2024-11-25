@@ -48,7 +48,7 @@ def parse_extraction_config(include_path: Path):
     return {k: Extractor(k, v, include_path, test_cases=test_cases.get(v.get('test_cases'))) for k, v in config.items()}
 
 def load_test_cases_config(include_path: Path) -> dict[str, dict[str, list[str]]]:
-    config_file = include_path/'test_cases.yaml'
+    config_file = include_path/'tests/test_cases.yaml'
     if not config_file.exists():
         return {}
     return yaml.safe_load(config_file.open())

@@ -121,8 +121,6 @@ T1040
 TA0003
 Rundll32
 OS Credential Dumping
-Operation Sharpshooter
-Operation Spalax
 T1174
 TA0006
 TA0011
@@ -132,34 +130,24 @@ T1040
 TA0003
 Rundll32
 OS Credential Dumping
-Operation Sharpshooter
-Operation Spalax
 M1013
 S0505
 T1630.001
 TA0029
 Impair Defenses
 Call Log
-Storm-0875
-Octo Tempest
 M1013
 S0505
 T1630.001
 TA0029
 Impair Defenses
 Call Log
-Storm-0875
-Octo Tempest
 TA0111
 Scripting
 Program Upload
-Energetic Bear
-BROMINE
 TA0111
 Scripting
 Program Upload
-Energetic Bear
-BROMINE
 CAPEC-110
 Clickjacking
 Overflow Buffers
