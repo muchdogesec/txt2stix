@@ -16,12 +16,12 @@ class ImageLinkRemover(MarkdownRenderer):
 
     def image(self, token: dict[str, dict], state: mistune.BlockState) -> str:
         if self.remove_images:
-            return ''
+            token['attrs']['url'] = ''
         return super().image(token, state)
 
     def link(self, token: dict[str, dict], state: mistune.BlockState) -> str:
         if self.remove_links and token.get('type') != 'image':
-            return self.render_children(token, state)
+            token['attrs']['url'] = ''
         return super().link(token, state)
     
     def codespan(self, token: dict[str, dict], state: mistune.BlockState) -> str:
@@ -40,7 +40,7 @@ class ImageLinkRemover(MarkdownRenderer):
                 del a['href']
         if self.remove_images:
             for img in soup.find_all('img'):
-                img.decompose()
+                del img['src']
         return soup.decode()
 
 import tldextract
