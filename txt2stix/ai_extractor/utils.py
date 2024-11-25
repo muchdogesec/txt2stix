@@ -1,4 +1,5 @@
 import io
+import json
 import logging
 
 import dotenv
@@ -22,11 +23,11 @@ class Relationship(BaseModel):
     relationship_type: str = Field(description='is a description of the relationship between target and source.')
 
 class ExtractionList(BaseModel):
-    extractions: list[Extraction]
+    extractions: list[Extraction] = Field(default_factory=list)
     success: bool
 
 class RelationshipList(BaseModel):
-    relationships: list[Relationship]
+    relationships: list[Relationship] = Field(default_factory=list)
     success: bool
 
 
@@ -50,8 +51,16 @@ def get_extractors_str(extractors):
             print(f"- {extractor.prompt_helper}", file=buffer)
         if extractor.prompt_conversion:
             print(f"- {extractor.prompt_conversion}", file=buffer)
+        if extractor.prompt_positive_examples:
+            print(f"- Here are some examples of what SHOULD be extracted for {extractor.name} extractions: {json.dumps(extractor.prompt_positive_examples)}", file=buffer)
+        if extractor.prompt_negative_examples:
+            print(f"- Here are some examples of what SHOULD NOT be extracted for {extractor.name} extractions: {json.dumps(extractor.prompt_negative_examples)}", file=buffer)
         print("</extractor>", file=buffer)
         print("\n"*2, file=buffer)
+
+    logging.debug("========   extractors   ======")
+    logging.debug(buffer.getvalue())
+    logging.debug("======== extractors end ======")
     return buffer.getvalue()
 
 
