@@ -10,10 +10,10 @@ class STIXObjectRetriever:
     def __init__(self, host="ctibutler") -> None:
         if host == "ctibutler":
             self.api_root = os.environ['CTIBUTLER_HOST']
-            self.api_key = os.environ.get('CTIBUTLER_APIKEY')
+            self.api_key = os.environ.get('CTIBUTLER_API_KEY')
         elif host == "vulmatch":
             self.api_root = os.environ['VULMATCH_HOST']
-            self.api_key = os.environ.get('VULMATCH_APIKEY')
+            self.api_key = os.environ.get('VULMATCH_API_KEY')
         else:
             raise NotImplementedError("The type `%s` is not supported", host)
 
@@ -36,7 +36,7 @@ class STIXObjectRetriever:
     def _retrieve_objects(self, endpoint, key='objects'):
         s = requests.Session()
         s.headers.update({
-            "Authority": f"Bearer {self.api_key}"
+            "API-KEY": self.api_key,
         })
         data = []
         page = 1
