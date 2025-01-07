@@ -160,8 +160,8 @@ def parse_args():
 
 REQUIRED_ENV_VARIABLES = [
     "INPUT_TOKEN_LIMIT",
-    "CTIBUTLER_HOST",
-    "VULMATCH_HOST",
+    "CTIBUTLER_BASE_URL",
+    "VULMATCH_BASE_URL",
 ]
 def load_env():
     dotenv.load_dotenv()
