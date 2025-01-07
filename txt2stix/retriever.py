@@ -18,20 +18,20 @@ class STIXObjectRetriever:
             raise NotImplementedError("The type `%s` is not supported", host)
 
     def get_attack_objects(self, matrix, attack_id):
-        endpoint = urljoin(self.api_root, f"/v1/attack-{matrix}/objects/{attack_id}/")
+        endpoint = urljoin(self.api_root, f"v1/attack-{matrix}/objects/{attack_id}/")
         return self._retrieve_objects(endpoint)
     
     def get_objects_by_id(self, id, type):
-        return self._retrieve_objects(urljoin(self.api_root, f"/v1/{type}/objects/{id}/"))
+        return self._retrieve_objects(urljoin(self.api_root, f"v1/{type}/objects/{id}/"))
     
     def get_location_objects(self, id):
-        return self._retrieve_objects(urljoin(self.api_root, f"/v1/location/objects/?alpha2_code={id}"))
+        return self._retrieve_objects(urljoin(self.api_root, f"v1/location/objects/?alpha2_code={id}"))
     
     def get_objects_by_name(self, name, type):
-        return self._retrieve_objects(urljoin(self.api_root, f"/v1/{type}/objects/?name={name}"))
+        return self._retrieve_objects(urljoin(self.api_root, f"v1/{type}/objects/?name={name}"))
     
     def get_objects_by_alias(self, alias, type):
-        return self._retrieve_objects(urljoin(self.api_root, f"/v1/{type}/objects/?alias={alias}"))
+        return self._retrieve_objects(urljoin(self.api_root, f"v1/{type}/objects/?alias={alias}"))
     
     def _retrieve_objects(self, endpoint, key='objects'):
         s = requests.Session()
