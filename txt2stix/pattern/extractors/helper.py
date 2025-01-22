@@ -72,7 +72,19 @@ def extract_all(extractors :list[Extractor], input_text):
         load_extractor(extractor)
         extracts = extractor.pattern_extractor().extract_extraction_from_text(input_text)
         pattern_extracts.extend(extracts)
-    return pattern_extracts
+
+    pattern_extracts.sort(key=lambda ex: (ex['start_index'], len(ex['value'])))
+    retval = {}
+    end = 0
+    for raw_extract in pattern_extracts:
+        start_index = raw_extract['start_index']
+        key = (raw_extract['type'], raw_extract['value'])
+        if start_index >= end:
+            extraction = retval.setdefault(key, {**raw_extract, "start_index":[start_index]})
+            if start_index not in extraction['start_index']:
+                extraction['start_index'].append(start_index)
+            end = start_index + len(raw_extract['value'])
+    return list(retval.values())
 
 
 FILE_EXTENSION = read_included_file('lookups/extensions.txt')

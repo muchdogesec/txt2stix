@@ -19,7 +19,7 @@ class BaseExtractor:
     version = None
     stix_mapping = None
     invalid_characters = ['.', ',', '!', '`', '(', ')', '{', '}', '"', '````', ' ', '[', ']']
-    SPLITS_FINDER = re.compile(r'[\'"<\(\{\[\s].*?[\)\s\]\}\)>"\']') #split on boundary characters instead of ' ' only
+    SPLITS_FINDER = re.compile(r'[\'"<\(\{\[\s](?P<item>.*?)[\)\s\]\}\)>"\']') #split on boundary characters instead of ' ' only
 
 
     @classmethod
@@ -40,43 +40,40 @@ class BaseExtractor:
         start_index = 0
         if cls.extraction_regex is not None:
             if cls.extraction_regex.startswith("^") or cls.extraction_regex.endswith("$"):
-                for word in cls.split_all(text):
-                    end_index = start_index + len(word) - 1
+                for matchsplit in cls.SPLITS_FINDER.finditer(text):
+                    word = matchsplit.group('item')
+                    start_index = matchsplit.start('item')
                     match = re.match(cls.extraction_regex, word)
                     if match:
-                        extracted_observables.append((match.group(0), start_index))
+                        extracted_observables.append((match.group(0), match.start()+start_index))
                     else:
                         stripped_word = word.strip(cls.common_strip_elements)
                         match = re.match(cls.extraction_regex, stripped_word)
                         if match:
-                            extracted_observables.append((match.group(0), start_index))
-                    start_index = end_index + 2  # Adding 1 for the space and 1 for the next word's starting index
+                            extracted_observables.append((match.group(0), start_index + word.index(stripped_word)))
             else:
                 # Find regex in the entire text (including whitespace)
                 for match in re.finditer(cls.extraction_regex, text):
-                    match = match.group().strip('\n')
-                    end_index = start_index + len(match) - 1
+                    match_value = match.group().strip('\n')
+                    start_index, end_index = match.span()
                 
-                    extracted_observables.append((match, start_index))
-                    start_index = end_index + 2  # Adding 1 for the space and 1 for the next word's starting index
+                    extracted_observables.append((match_value, start_index))
 
         # If extraction_function is not None, then find matches that don't throw exception when
         elif cls.extraction_function is not None:
 
             start_index = 0
             
-            words = cls.SPLITS_FINDER.findall(text)
-            for word in words:
+            for match in cls.SPLITS_FINDER.finditer(text):
+                word = match.group('item')
                 end_index = start_index + len(word) - 1
 
                 word = BaseExtractor.trim_invalid_characters(word, cls.invalid_characters)
                 try:
                     if cls.extraction_function(word):
-                        extracted_observables.append((word, start_index))
+                        extracted_observables.append((word, match.start('item')))
                 except Exception as error:
                     pass
-
-                start_index = end_index + 2  # Adding 1 for the space and 1 for the next word's starting index
 
         else:
             raise ValueError("Both extraction_regex and extraction_function can't be None.")
@@ -93,15 +90,25 @@ class BaseExtractor:
 
         response = []
 
-        for extraction, positions in string_positions.items():
+        # for extraction, positions in string_positions.items():
+        #     response.append({
+        #         "value": extraction,
+        #         "type": cls.name,
+        #         "version": cls.version,
+        #         "stix_mapping": cls.stix_mapping,
+        #         "start_index": positions,
+        #     })
+
+        for position, (string, pos) in enumerate(extracted_observables, 1):
+            if cls.filter_function and not cls.filter_function(string):
+                continue
             response.append({
-                "value": extraction,
+                "value": string,
                 "type": cls.name,
                 "version": cls.version,
                 "stix_mapping": cls.stix_mapping,
-                "start_index": positions,
+                "start_index": pos,
             })
-
         return response
 
     @staticmethod

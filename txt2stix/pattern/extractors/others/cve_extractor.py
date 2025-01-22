@@ -11,4 +11,4 @@ class CVEExtractor(BaseExtractor):
     """
 
     name = "pattern_cve_id"
-    extraction_regex = r'^CVE-\d{4}-(?:\d{4}|\d{5})$'
+    extraction_regex = r'^CVE-\d{4}-(?:\d{4,6})$'
