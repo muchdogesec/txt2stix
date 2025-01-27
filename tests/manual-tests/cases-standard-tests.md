@@ -321,6 +321,35 @@ python3 txt2stix.py \
 	--report_id 8cf2590e-f7b8-40c6-99cd-4aad9fbdc8bd
 ```
 
+### extraction boundary tests
+
+Should create `pattern_url_file` extraction as boundary observed
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/manually_generated_reports/test_extraction_boundary.txt \
+	--name 'extraction boundary tests 1' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions pattern_domain_name_only,pattern_domain_name_subdomain,pattern_url,pattern_file_name,pattern_url_file \
+	--report_id f6d8800b-9708-4c74-aa1b-7a59d3c79d79
+```
+
+Should create all extractions;
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/manually_generated_reports/test_extraction_boundary.txt \
+	--name 'extraction boundary tests 1' \
+	--tlp_level clear \
+	--confidence 100 \
+	--ignore_extraction_boundary true \
+	--use_extractions pattern_domain_name_only,pattern_domain_name_subdomain,pattern_url,pattern_file_name,pattern_url_file \
+	--report_id 0f5b1afd-c468-49a2-9896-6910b7f124dd
+```
+
 ### disarm demo
 
 ```shell
@@ -334,3 +363,6 @@ python3 txt2stix.py \
 	--use_extractions lookup_disarm_name \
 	--report_id 8cb2dbf0-136f-4ecb-995c-095496e22abc
 ```
+
+
+

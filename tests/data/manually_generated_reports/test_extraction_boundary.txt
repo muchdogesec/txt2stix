@@ -1,0 +1,1 @@
+https://subdomain.google.com/file.txt
