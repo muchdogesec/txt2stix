@@ -65,7 +65,7 @@ def load_extractor(extractor):
     extractor.pattern_extractor.stix_mapping = extractor.stix_mapping
 
 
-def extract_all(extractors :list[Extractor], input_text):
+def extract_all(extractors :list[Extractor], input_text, ignore_extraction_boundary=False):
     logging.info("using pattern extractors")
     pattern_extracts = []
     for extractor in extractors:
@@ -79,7 +79,7 @@ def extract_all(extractors :list[Extractor], input_text):
     for raw_extract in pattern_extracts:
         start_index = raw_extract['start_index']
         key = (raw_extract['type'], raw_extract['value'])
-        if start_index >= end:
+        if ignore_extraction_boundary or start_index >= end:
             extraction = retval.setdefault(key, {**raw_extract, "start_index":[start_index]})
             if start_index not in extraction['start_index']:
                 extraction['start_index'].append(start_index)

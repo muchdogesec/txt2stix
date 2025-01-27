@@ -141,6 +141,7 @@ def parse_args():
     parser.add_argument("--external_refs", type=parse_ref, help="pass additional `external_references` entry (or entries) to the report object created. e.g --external_ref author=dogesec link=https://dkjjadhdaj.net", default=[], metavar="{source_name}={external_id}", action="extend", nargs='+')
     parser.add_argument('--ignore_image_refs', default=True, type=parse_bool)
     parser.add_argument('--ignore_link_refs', default=True, type=parse_bool)
+    parser.add_argument("--ignore_extraction_boundary", default=False, type=parse_bool, help="default if not passed is `false`, but if set to `true` will ignore boundary capture logic for extractions")
 
     args = parser.parse_args()
     if not args.input_file.exists():
@@ -176,7 +177,7 @@ def log_notes(content, type):
     logging.debug(json.dumps(content, sort_keys=True, indent=4))
     logging.debug(f" ========================= {'-'*len(type)} ========================= ")
 
-def extract_all(bundler: txt2stixBundler, extractors_map, text_content, ai_extractors: list[BaseAIExtractor]=[]):
+def extract_all(bundler: txt2stixBundler, extractors_map, text_content, ai_extractors: list[BaseAIExtractor]=[], **kwargs):
     assert ai_extractors or not extractors_map.get("ai"), "There should be at least one AI extractor in ai_extractors"
 
     all_extracts = dict()
@@ -191,7 +192,7 @@ def extract_all(bundler: txt2stixBundler, extractors_map, text_content, ai_extra
     if extractors_map.get("pattern"):
         try:
             logging.info("using pattern extractors")
-            pattern_extracts = pattern.extract_all(extractors_map["pattern"].values(), text_content)
+            pattern_extracts = pattern.extract_all(extractors_map["pattern"].values(), text_content, ignore_extraction_boundary=kwargs.get('ignore_extraction_boundary', False))
             bundler.process_observables(pattern_extracts)
             all_extracts["pattern"] = pattern_extracts
         except BaseException as e:
@@ -256,7 +257,7 @@ def main():
         if args.relationship_mode == "ai":
             validate_token_count(int(os.environ["INPUT_TOKEN_LIMIT"]), preprocessed_text, [args.ai_settings_relationships])
 
-        all_extracts = extract_all(bundler, args.use_extractions, preprocessed_text, ai_extractors=args.ai_settings_extractions)
+        all_extracts = extract_all(bundler, args.use_extractions, preprocessed_text, ai_extractors=args.ai_settings_extractions, ignore_extraction_boundary=args.ignore_extraction_boundary)
         extracted_relationships = None
         if args.relationship_mode == "ai" and sum(map(lambda x: len(x), all_extracts.values())):
             extracted_relationships = extract_relationships_with_ai(bundler, preprocessed_text, all_extracts, args.ai_settings_relationships)
