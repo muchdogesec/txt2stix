@@ -1,5 +1,5 @@
 from ..base_extractor import BaseExtractor
-from ..helper import TLD
+from ..helper import TLDs
 
 
 class EmailAddressExtractor(BaseExtractor):
@@ -17,5 +17,5 @@ class EmailAddressExtractor(BaseExtractor):
     def filter_function(email):
         x = email.split("@")
         domain = x[-1].split(".")[-1]
-        if domain in TLD:
+        if domain in TLDs:
             return True

@@ -58,7 +58,7 @@ def read_included_file(path):
     
 def validate_tld(domain):
     extracted_domain = tldextract.extract(domain)
-    return extracted_domain.suffix in TLDS
+    return extracted_domain.suffix in TLDs
 
 def validate_reg_key(reg_key):
     reg_key = reg_key.lower()
@@ -71,6 +71,6 @@ def validate_file_mimetype(file_name):
     _, ext = os.path.splitext(file_name)
     return FILE_EXTENSIONS.get(ext)
 
-TLDS = [tld.lower() for tld in read_included_file('helpers/tlds.txt').splitlines()]
+TLDs = [tld.lower() for tld in read_included_file('helpers/tlds.txt').splitlines()]
 REGISTRY_PREFIXES = [key.lower() for key in read_included_file('helpers/windows_registry_key_prefix.txt').splitlines()]
 FILE_EXTENSIONS = dict(line.lower().split(',') for line in read_included_file('helpers/mimetype_filename_extension_list.csv').splitlines())

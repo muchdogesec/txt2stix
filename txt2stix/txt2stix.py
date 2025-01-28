@@ -180,6 +180,7 @@ def log_notes(content, type):
 def extract_all(bundler: txt2stixBundler, extractors_map, text_content, ai_extractors: list[BaseAIExtractor]=[], **kwargs):
     assert ai_extractors or not extractors_map.get("ai"), "There should be at least one AI extractor in ai_extractors"
 
+    text_content = "\n"+text_content+"\n"
     all_extracts = dict()
     if extractors_map.get("lookup"):
         try:

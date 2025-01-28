@@ -8,7 +8,8 @@ import sys
 from .base_extractor import ALL_EXTRACTORS
 
 from ...extractions import Extractor
-from ...utils import read_included_file
+from ...utils import FILE_EXTENSIONS, read_included_file, TLDs
+
 
 
 def read_text_file(file_path):
@@ -48,7 +49,7 @@ def check_false_positive_domain(domain):
         bool: True if the domain is not a false positive, False otherwise.
     """
     file_extension = domain.split(".")[-1]
-    if file_extension in FILE_EXTENSION:
+    if file_extension in FILE_EXTENSIONS:
         return False
     else:
         return True
@@ -87,5 +88,5 @@ def extract_all(extractors :list[Extractor], input_text, ignore_extraction_bound
     return list(retval.values())
 
 
-FILE_EXTENSION = read_included_file('lookups/extensions.txt')
-TLD = read_included_file('lookups/tld.txt')
+# FILE_EXTENSION = read_included_file('lookups/extensions.txt')
+# TLD = read_included_file('lookups/tld.txt')

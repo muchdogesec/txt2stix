@@ -1,5 +1,8 @@
 from tld import get_tld
 
+from txt2stix.utils import validate_file_mimetype
+from ..helper import TLDs
+
 from ..base_extractor import BaseExtractor
 
 
@@ -29,5 +32,5 @@ class HostnameBaseExtractor(BaseExtractor):
         if domain.count('.') <= 1:
             tld = get_tld(domain, fix_protocol=True, fail_silently=True)
             if not tld:
-                return True
+                return not validate_file_mimetype(domain)
         return False

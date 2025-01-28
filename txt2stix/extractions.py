@@ -1,6 +1,10 @@
-from typing import Any
+from typing import Any, Type
 import yaml
 from pathlib import Path
+
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    import txt2stix.pattern.extractors.base_extractor
 from .common import NamedDict
 
 class Extractor(NamedDict):
@@ -19,6 +23,7 @@ class Extractor(NamedDict):
     prompt_negative_examples = None
     stix_mapping = None
     prompt_extraction_extra = None
+    pattern_extractor : 'Type[txt2stix.pattern.extractors.base_extractor.BaseExtractor]' = None
 
 
     def __init__(self, key, dct, include_path=None, test_cases: dict[str, list[str]]=None):
