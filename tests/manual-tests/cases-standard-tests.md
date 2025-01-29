@@ -332,7 +332,7 @@ python3 txt2stix.py \
 	--name 'extraction boundary tests 1' \
 	--tlp_level clear \
 	--confidence 100 \
-	--use_extractions pattern_domain_name_only,pattern_domain_name_subdomain,pattern_url,pattern_file_name,pattern_url_file \
+	--use_extractions 'pattern_*' \
 	--report_id f6d8800b-9708-4c74-aa1b-7a59d3c79d79
 ```
 
@@ -346,7 +346,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--ignore_extraction_boundary true \
-	--use_extractions pattern_domain_name_only,pattern_domain_name_subdomain,pattern_url,pattern_file_name,pattern_url_file \
+	--use_extractions 'pattern_*' \
 	--report_id 0f5b1afd-c468-49a2-9896-6910b7f124dd
 ```
 
@@ -363,6 +363,3 @@ python3 txt2stix.py \
 	--use_extractions lookup_disarm_name \
 	--report_id 8cb2dbf0-136f-4ecb-995c-095496e22abc
 ```
-
-
-
