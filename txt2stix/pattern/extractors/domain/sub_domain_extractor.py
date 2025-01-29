@@ -1,5 +1,8 @@
 from tld import get_tld
 
+from txt2stix.utils import validate_file_mimetype
+from ..helper import TLDs
+
 from ..base_extractor import BaseExtractor
 
 
@@ -39,4 +42,8 @@ class SubDomainExtractor(BaseExtractor):
 
 class HostNameSubdomainExtractor(SubDomainExtractor):
     name = "pattern_host_name_subdomain"
-    filter_function = lambda domain: domain.count('.') >= 2
+    filter_function = lambda domain: domain.count('.') >= 2 and get_tld(domain, fail_silently=True) not in TLDs
+
+    def filter_function(domain):
+        tld =  get_tld(domain, fail_silently=True, fix_protocol=True)
+        return domain.count('.') >= 2 and not tld and not validate_file_mimetype(domain)
