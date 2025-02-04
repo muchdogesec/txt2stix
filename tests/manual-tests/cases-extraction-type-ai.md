@@ -4,16 +4,60 @@
 
 #### ai_ipv4_address_only
 
+OpenAI via OpenRouter
+
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
 	--input_file tests/data/extraction_types/generic_ipv4_address_only.txt \
-	--name 'ai_ipv4_address_only' \
+	--name 'OpenRouter OpenAI ai_ipv4_address_only' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_ipv4_address_only \
+	--ai_settings_extractions openrouter:openai/gpt-4o \
+	--report_id a1d5642c-6eb6-498c-b469-6a064ae0cca1
+```
+
+OpenAI direct
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_ipv4_address_only.txt \
+	--name 'OpenAI ai_ipv4_address_only' \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_ipv4_address_only \
 	--ai_settings_extractions openai:gpt-4o \
 	--report_id 38b19704-7a8c-4105-9bc5-39cceb65ed7f
+```
+
+Anthropic direct
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_ipv4_address_only.txt \
+	--name 'Anthropic ai_ipv4_address_only' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_ipv4_address_only \
+	--ai_settings_extractions anthropic:claude-3-5-sonnet-latest \
+	--report_id 0ebd9ecb-44c6-42e2-b957-52ffa94a8ac2
+```
+
+Google Gemini direct
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_ipv4_address_only.txt \
+	--name 'Google Gemini ai_ipv4_address_only' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_ipv4_address_only \
+	--ai_settings_extractions gemini:models/gemini-1.5-pro-latest \
+	--report_id 20464aab-3ba7-4459-829f-5d179df01179
 ```
 
 #### ai_ipv4_address_cidr

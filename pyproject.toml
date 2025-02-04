@@ -32,6 +32,9 @@ dependencies = [
   'llama-index-llms-anthropic==0.6.3',
   'llama-index-llms-gemini==0.4.2',
   'llama-index-llms-openai==0.3.11',
+  'llama-index-llms-openai-like==0.3.3',
+  'llama-index-llms-deepseek==0.1.1',
+  'llama-index-llms-openrouter==0.3.1',
   'mistune==3.0.2',
   'beautifulsoup4>=4.12.3',
 ]

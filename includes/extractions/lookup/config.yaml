@@ -6,7 +6,7 @@ lookup_country_alpha2:
   type: lookup
   name: 'Country Alpha2'
   description: 'Extracts countries using ISO 3166-1 alpha2 codes'
-  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_country'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_country. This extractor is very dumb e.g the words `is` and `in` will result in extractions for Iceland and India'
   file: 'lookups/country_iso3166_alpha2.txt'
   created: 2020-01-01
   modified:  2020-01-01
