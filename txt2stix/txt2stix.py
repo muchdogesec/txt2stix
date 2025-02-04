@@ -19,7 +19,7 @@ from .import extractions, lookups, pattern
 from types import SimpleNamespace
 import functools
 from fnmatch import filter
-from .ai_extractor import ALL_AI_EXTRACTORS, BaseAIExtractor
+from .ai_extractor import ALL_AI_EXTRACTORS, BaseAIExtractor, ModelError
 
 import json, logging
 
@@ -109,12 +109,15 @@ def parse_model(value: str):
     splits = value.split(':', 1)
     provider = splits[0]
     if provider not in ALL_AI_EXTRACTORS:
-        raise argparse.ArgumentTypeError(f"invalid AI provider in `{value}`, must be one of [{list(ALL_AI_EXTRACTORS)}]")
+        raise argparse.ArgumentTypeError(f"invalid AI provider in `{value}`, must be one of {list(ALL_AI_EXTRACTORS)}")
     provider = ALL_AI_EXTRACTORS[provider]
 
-    if len(splits) == 2:
-        return provider(model=splits[1])
-    return provider()
+    try:
+        if len(splits) == 2:
+            return provider(model=splits[1])
+        return provider()
+    except Exception as e:
+        raise ModelError(f"Unable to initialize model `{value}`") from e
 
 def parse_bool(value: str):
     value = value.lower()
