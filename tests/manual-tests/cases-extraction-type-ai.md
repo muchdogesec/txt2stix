@@ -4,6 +4,22 @@
 
 #### ai_ipv4_address_only
 
+OpenAI via OpenRouter
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_ipv4_address_only.txt \
+	--name 'ai_ipv4_address_only' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_ipv4_address_only \
+	--ai_settings_extractions openrouter:openai/gpt-4o \
+	--report_id a1d5642c-6eb6-498c-b469-6a064ae0cca1
+```
+
+OpenAI direct
+
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \

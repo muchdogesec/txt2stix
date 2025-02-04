@@ -98,7 +98,7 @@ How the extractions are performed
 If any AI extractions, or AI relationship mode is set, you must set the following accordingly
 
 * `--ai_settings_extractions`:
-	* defines the `provider:model` to be used for extractions. You can supply more than one provider. Seperate with a space (e.g. `gpt-4o claude-3-opus-latest`) If more than one provider passed, txt2stix will take extractions from all models, de-dupelicate them, and them package them in the output. Currently supports:
+	* defines the `provider:model` to be used for extractions. You can supply more than one provider. Seperate with a space (e.g. `openrouter:openai/gpt-4o` `openrouter:deepseek/deepseek-chat`) If more than one provider passed, txt2stix will take extractions from all models, de-dupelicate them, and them package them in the output. Currently supports:
 		* Provider (env var required `OPENROUTER_API_KEY`): `openrouter:`, providers/models `openai/gpt-4o`, `deepseek/deepseek-chat` ([More here](https://openrouter.ai/models))
 		* Provider (env var required `OPENAI_API_KEY`): `openai:`, models e.g.: `gpt-4o`, `gpt-4o-mini`, `gpt-4-turbo`, `gpt-4` ([More here](https://platform.openai.com/docs/models))
 		* Provider (env var required `ANTHROPIC_API_KEY`): `anthropic:`, models e.g.: `claude-3-5-sonnet-latest`, `claude-3-5-haiku-latest`, `claude-3-opus-latest` ([More here](https://docs.anthropic.com/en/docs/about-claude/models))
