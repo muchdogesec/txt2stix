@@ -6,7 +6,7 @@ import textwrap
 from llama_index.core import PromptTemplate
 from llama_index.core.llms.llm import LLM
 
-from txt2stix.ai_extractor.utils import ExtractionList, ParserWithLogging, RelationshipList, get_extractors_str
+from txt2stix.ai_extractor.utils import DescribesIncident, ExtractionList, ParserWithLogging, RelationshipList, get_extractors_str
 from llama_index.core.utils import get_tokenizer
 
 
@@ -139,6 +139,38 @@ class BaseAIExtractor():
         """
         ))
     
+    content_check_template = PromptTemplate("""
+<persona>
+
+You are a cyber security threat intelligence analyst.
+
+Your job is to review report that describe a cyber security incidents.
+
+Examples include malware analysis, APT group reports, data breaches and vulnerabilities.
+
+Some of the documents you are given do not help in this 
+
+I need you to tell me if the text provided is.
+
+
+</persona>
+
+<requirement>
+
+Using the MARKDOWN of the report provided in <document>
+IMPORTANT: the output should be structured as valid JSON.
+IMPORTANT: oudtput should not be in markdown, it must be a plain JSON text without any code block
+IMPORTANT: do not include any comment in the output
+IMPORTANT: output must start with a `{` and end with a `}` and must not contain "```"
+
+</requirement>
+                        
+<document>
+{context_str}
+</document>
+
+""")
+    
     def _get_extraction_program(self):
         return LLMTextCompletionProgram.from_defaults(
             output_parser=ParserWithLogging(ExtractionList),
@@ -154,6 +186,17 @@ class BaseAIExtractor():
             verbose=True,
             llm=self.llm,
         )
+    
+    def _get_content_checker_program(self):
+        return LLMTextCompletionProgram.from_defaults(
+            output_parser=ParserWithLogging(DescribesIncident),
+            prompt=self.content_check_template,
+            verbose=True,
+            llm=self.llm,
+        )
+    
+    def check_content(self, text) -> DescribesIncident:
+        return self._get_content_checker_program()(context_str=text)
 
     def extract_relationships(self, input_text, extractions, relationship_types: list[str]) -> RelationshipList:
         return self._get_relationship_program()(relationship_types=relationship_types, input_file=input_text, extractions=extractions)

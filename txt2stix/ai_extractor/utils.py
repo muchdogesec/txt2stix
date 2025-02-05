@@ -30,6 +30,9 @@ class RelationshipList(BaseModel):
     relationships: list[Relationship] = Field(default_factory=list)
     success: bool
 
+class DescribesIncident(BaseModel):
+    describes_incident: bool = Field(description="does the <document> include malware analysis, APT group reports, data breaches and vulnerabilities?")
+    explanation: str = Field(description="Two or three sentence summary of how it does or does not describes an incident")
 
 
 class ParserWithLogging(PydanticOutputParser):
