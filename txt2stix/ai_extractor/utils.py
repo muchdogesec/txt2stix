@@ -32,7 +32,7 @@ class RelationshipList(BaseModel):
 
 class DescribesIncident(BaseModel):
     describes_incident: bool = Field(description="does the <document> include malware analysis, APT group reports, data breaches and vulnerabilities?")
-    explanation: str = Field(description="Two or three sentence summary of how it does or does not describes an incident")
+    explanation: str = Field(description="Two or three sentence summary of the incidents it describes OR summary of what it describes instead of an incident")
 
 
 class ParserWithLogging(PydanticOutputParser):
