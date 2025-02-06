@@ -1,5 +1,12 @@
 # txt2stix
 
+## Before you begin...
+
+We have build two products on-top of txt2stix that provide more user-friendly experience:
+
+* [Stixify: Extract machine readable cyber threat intelligence from unstructured data](https://github.com/muchdogesec/stixify)
+* [Obstracts: Turn any blog into structured threat intelligence](https://github.com/muchdogesec/obstracts)
+
 ## Overview
 
 ![txt2stix](docs/txt2stix.png)
