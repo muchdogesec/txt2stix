@@ -108,6 +108,8 @@ If any AI extractions, or AI relationship mode is set, you must set the followin
 * `--ai_settings_relationships`:
 	* similar to `ai_settings_extractions` but defines the model used to generate relationships. Only one model can be provided. Passed in same format as `ai_settings_extractions`
 	* See `tests/manual-tests/cases-ai-relationships.md` for some examples
+* `--check_content`:
+	* when batch processing reports it can often be the case many are not related directly to intelligence. For example, marketing material describing a vendors threat intel product. You can get the AI to make a judgement on wether the . For context, we use this in Obstracts and Stixify to allow users to filter reports by those the AI thinks are threat intel to weed out data that has nothing to do with actionable intel.
 
 ## Adding new extractions
 

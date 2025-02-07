@@ -139,37 +139,37 @@ class BaseAIExtractor():
         """
         ))
     
-    content_check_template = PromptTemplate("""
-<persona>
+    content_check_template = PromptTemplate(
+        """
+        <persona>
 
-You are a cyber security threat intelligence analyst.
+        You are a cyber security threat intelligence analyst.
 
-Your job is to review report that describe a cyber security incidents.
+        Your job is to review text from reports that describe threat intelligence.
 
-Examples include malware analysis, APT group reports, data breaches and vulnerabilities.
+        Examples include malware analysis, APT group reports, data breaches, vulnerabilities, and lists of indicators of compromise (e.g. IP addresses).
 
-Some of the documents you are given do not help in this 
+        Some of the documents you are given are not related to such topics. The first part of your job is to figure out wether a report contains threat intelligence.
 
-I need you to tell me if the text provided is.
+        I need you to tell me if the text contains threat intelligence.
 
+        </persona>
 
-</persona>
+        <requirement>
 
-<requirement>
+        Using the MARKDOWN of the report provided in <document>
+        IMPORTANT: the output should be structured as valid JSON.
+        IMPORTANT: output should not be in markdown, it must be a plain JSON text without any code block
+        IMPORTANT: do not include any comment in the output
+        IMPORTANT: output must start with a `{` and end with a `}` and must not contain "```"
 
-Using the MARKDOWN of the report provided in <document>
-IMPORTANT: the output should be structured as valid JSON.
-IMPORTANT: oudtput should not be in markdown, it must be a plain JSON text without any code block
-IMPORTANT: do not include any comment in the output
-IMPORTANT: output must start with a `{` and end with a `}` and must not contain "```"
-
-</requirement>
-                        
-<document>
-{context_str}
-</document>
-
-""")
+        </requirement>
+                                
+        <document>
+        {context_str}
+        </document>
+        """
+    )
     
     def _get_extraction_program(self):
         return LLMTextCompletionProgram.from_defaults(

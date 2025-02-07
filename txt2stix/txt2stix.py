@@ -131,7 +131,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description="File Conversion Tool")
 
     inf_arg  = parser.add_argument("--input_file", "--input-file", required=True, help="The file to be converted. Must be .txt", type=Path)
-    parser.add_argument("--check_content", required=False, type=parse_model, help="check content and exit")
+    parser.add_argument("--check_content", required=False, type=parse_model, help="Use an AI model to check wether the content of the file contains threat intelligence. Paticularly useful to weed out vendor marketing.")
     if (args := parser.parse_known_args()[0]) and args.check_content:
         model : BaseAIExtractor = args.check_content
         value = model.check_content(args.input_file.read_text())
@@ -149,8 +149,8 @@ def parse_args():
     parser.add_argument("--use_extractions", "--use-extractions", default={}, type=functools.partial(parse_extractors_globbed, "extractor", all_extractors),  help="Specify extraction types from the default/local extractions .yaml file", metavar="EXTRACTION1,EXTRACTION2")
     parser.add_argument("--use_identity", "--use-identity", help="Specify an identity file id (e.g., {\"type\":\"identity\",\"name\":\"demo\",\"identity_class\":\"system\"})", metavar="[stix2 identity json]", type=parse_stix)
     parser.add_argument("--external_refs", type=parse_ref, help="pass additional `external_references` entry (or entries) to the report object created. e.g --external_ref author=dogesec link=https://dkjjadhdaj.net", default=[], metavar="{source_name}={external_id}", action="extend", nargs='+')
-    parser.add_argument('--ignore_image_refs', default=True, type=parse_bool)
-    parser.add_argument('--ignore_link_refs', default=True, type=parse_bool)
+    parser.add_argument('--ignore_image_refs', default=True, type=parse_bool, help="Ignore the URLs of img links in a report")
+    parser.add_argument('--ignore_link_refs', default=True, type=parse_bool, help="Ignore the URLs of href links in a report")
     parser.add_argument("--ignore_extraction_boundary", default=False, type=parse_bool, help="default if not passed is `false`, but if set to `true` will ignore boundary capture logic for extractions")
 
     args = parser.parse_args()
