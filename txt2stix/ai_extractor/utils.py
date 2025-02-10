@@ -44,7 +44,7 @@ class AttackFlowItem(BaseModel):
 class AttackFlowList(BaseModel):
     matrix : str = Field(description="one of ics, mobile and enterprise")
     items : list[AttackFlowItem]
-    success: bool = Field(description="return if items are extracted or not")
+    success: bool = Field(description="determines if there's any valid flow in <extractions>")
 
 class ParserWithLogging(PydanticOutputParser):
     def parse(self, text: str):

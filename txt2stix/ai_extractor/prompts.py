@@ -126,7 +126,6 @@ It is possible that the Techniques extracted are not linked to the relevant MITR
 You should also provide a short overview about how this technique is described in the report as the name, and a longer version in description
 
 You should deliver a response in JSON as follows
-IMPORTANT: If there are no attack objects in the <extractions> above, return success: false
 
 [
 {
