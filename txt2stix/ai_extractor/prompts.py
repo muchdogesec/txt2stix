@@ -88,22 +88,36 @@ DEFAULT_RELATIONSHIP_TEMPL = PromptTemplate(textwrap.dedent(
 
 DEFAULT_CONTENT_CHECKER_TEMPL = PromptTemplate("""
 <persona>
-You are a cyber security threat intelligence analyst.
-Your job is to review report that describe a cyber security incidents.
-Examples include malware analysis, APT group reports, data breaches and vulnerabilities.
-Some of the documents you are given do not help in this 
-I need you to tell me if the text provided is.
+    You are a cyber security threat intelligence analyst.
+    Your job is to review report that describe a cyber security incidents.
+    Examples include malware analysis, APT group reports, data breaches and vulnerabilities.
+    Some of the documents you are given do not help in this 
+    I need you to tell me if the text provided is.
 </persona>
 <requirement>
-Using the MARKDOWN of the report provided in <document>
-IMPORTANT: the output should be structured as valid JSON.
-IMPORTANT: oudtput should not be in markdown, it must be a plain JSON text without any code block
-IMPORTANT: do not include any comment in the output
-IMPORTANT: output must start with a `{` and end with a `}` and must not contain "```"
+    Using the MARKDOWN of the report provided in <document>
+    IMPORTANT: the output should be structured as valid JSON.
+    IMPORTANT: oudtput should not be in markdown, it must be a plain JSON text without any code block
+    IMPORTANT: do not include any comment in the output
+    IMPORTANT: output must start with a `{` and end with a `}` and must not contain "```"
 </requirement>
 <document>
 {context_str}
 </document>
+<incident_classification>
+    Possible Incident Classifications are
+    * Other: the report does not fit into any of the following categories
+    * APT Group
+    * Vulnerability
+    * Data Leak
+    * Malware
+    * Ransomware
+    * Infostealer
+    * Threat Actor
+    * Campaign
+    * Exploit
+    * Cyber Crime
+</incident_classification>
 """)
 
 ATTACK_FLOW_PROMPT_TEMPL = ChatPromptTemplate([
