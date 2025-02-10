@@ -135,6 +135,12 @@ def parse_args():
     parser = argparse.ArgumentParser(description="File Conversion Tool")
 
     inf_arg  = parser.add_argument("--input_file", "--input-file", required=True, help="The file to be converted. Must be .txt", type=Path)
+    parser.add_argument("--check_content", required=False, type=parse_model, help="Use an AI model to check wether the content of the file contains threat intelligence. Paticularly useful to weed out vendor marketing.")
+    if (args := parser.parse_known_args()[0]) and args.check_content:
+        model : BaseAIExtractor = args.check_content
+        value = model.check_content(args.input_file.read_text())
+        print("check-content output:", value.model_dump_json())
+        exit(0)
     name_arg = parser.add_argument("--name", required=True, help="Name of the file, max 124 chars", default="stix-out")
     parser.add_argument("--created", required=False, default=datetime.now(), help="Allow user to optionally pass --created time in input, which will hardcode the time used in created times")
     parser.add_argument("--ai_settings_extractions", required=False, type=parse_model, help="(required if AI extraction enabled): passed in format provider:model e.g. openai:gpt4o. Can pass more than one value to get extractions from multiple providers.", metavar="provider[:model]", nargs='+', default=[parse_model('openai')])

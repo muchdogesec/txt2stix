@@ -20,7 +20,7 @@ class BaseAIExtractor():
     relationship_template = DEFAULT_RELATIONSHIP_TEMPL
 
     content_check_template = DEFAULT_CONTENT_CHECKER_TEMPL
-    
+
     def _get_extraction_program(self):
         return LLMTextCompletionProgram.from_defaults(
             output_parser=ParserWithLogging(ExtractionList),
