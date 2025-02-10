@@ -7,7 +7,7 @@ import textwrap
 
 from ..extractions import Extractor
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, RootModel
 from llama_index.core.output_parsers import PydanticOutputParser
 
 class Extraction(BaseModel):
@@ -30,7 +30,21 @@ class RelationshipList(BaseModel):
     relationships: list[Relationship] = Field(default_factory=list)
     success: bool
 
+class DescribesIncident(BaseModel):
+    describes_incident: bool = Field(description="does the <document> include malware analysis, APT group reports, data breaches and vulnerabilities?")
+    explanation: str = Field(description="Two or three sentence summary of the threat intelligence the text describes OR a summary of what it describes instead of threat intelligence")
 
+class AttackFlowItem(BaseModel):
+    position : int = Field(description="order of object starting at 0")
+    attack_tactic_id : str
+    attack_technique_id : str
+    name: str
+    description: str
+
+class AttackFlowList(BaseModel):
+    matrix : str = Field(description="one of ics, mobile and enterprise")
+    items : list[AttackFlowItem]
+    success: bool = Field(description="return if items are extracted or not")
 
 class ParserWithLogging(PydanticOutputParser):
     def parse(self, text: str):

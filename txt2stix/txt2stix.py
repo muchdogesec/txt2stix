@@ -10,6 +10,9 @@ import sys, os
 
 from pydantic import BaseModel
 
+from txt2stix.attack_flow import parse_flow
+
+
 from .utils import remove_links
 
 from .common import UUID_NAMESPACE, FatalException
@@ -20,6 +23,8 @@ from types import SimpleNamespace
 import functools
 from fnmatch import filter
 from .ai_extractor import ALL_AI_EXTRACTORS, BaseAIExtractor, ModelError
+from stix2.serialization import serialize as stix2_serialize
+from stix2 import Bundle
 
 import json, logging
 
@@ -145,6 +150,7 @@ def parse_args():
     parser.add_argument('--ignore_image_refs', default=True, type=parse_bool)
     parser.add_argument('--ignore_link_refs', default=True, type=parse_bool)
     parser.add_argument("--ignore_extraction_boundary", default=False, type=parse_bool, help="default if not passed is `false`, but if set to `true` will ignore boundary capture logic for extractions")
+    parser.add_argument('--create_attack_flow', default=False, action='store_true', help="create attack flow for attack objects in report/bundle")
 
     args = parser.parse_args()
     if not args.input_file.exists():
@@ -155,9 +161,11 @@ def parse_args():
     if args.relationship_mode == 'ai' and not args.ai_settings_relationships:
         parser.error("relationship_mode is set to AI, --ai_settings_relationships is required")
 
+    if args.create_attack_flow and not args.ai_settings_relationships:
+        parser.error("--create_attack_flow requires --ai_settings_relationships")
     #### process --use-extractions 
     if args.use_extractions.get('ai') and not args.ai_settings_extractions:
-        parser.error("ai based extractors are passed, --ai_settings_relationships is required")
+        parser.error("ai based extractors are passed, --ai_settings_extractions is required")
 
     args.all_extractors  = all_extractors
     return args
@@ -246,10 +254,12 @@ def main():
         job_id = args.report_id or str(uuid.uuid4())
         setLogFile(logger, Path(f"logs/logs-{job_id}.log"))
         logger.info(f"Arguments: {json.dumps(sys.argv[1:])}")
+
         
         input_text = args.input_file.read_text()
         preprocessed_text = remove_links(input_text, args.ignore_image_refs, args.ignore_link_refs)
         load_env()
+
 
         bundler = txt2stixBundler(args.name, args.use_identity, args.tlp_level, input_text, args.confidence, args.all_extractors, args.labels, created=args.created, report_id=args.report_id, external_references=args.external_refs)
         log_notes(sys.argv, "Config")
@@ -267,6 +277,13 @@ def main():
             extracted_relationships = extract_relationships_with_ai(bundler, preprocessed_text, all_extracts, args.ai_settings_relationships)
             
         # convo_str = ai_extractor_session.get_conversation() if ai_extractor_session and ai_extractor_session.initialized else ""
+        flow = None
+        if args.create_attack_flow:
+            logging.info("creating attack-flow bundle")
+            ex: BaseAIExtractor = args.ai_settings_relationships
+            flow = ex.extract_attack_flow(input_text, all_extracts, extracted_relationships)
+            bundler.flow_objects = parse_flow(bundler.report, flow)
+
             
 
         out = bundler.to_json()
@@ -276,11 +293,17 @@ def main():
         logger.info(f"Wrote bundle output to `{output_path}`")
         data = {
             "extractions": all_extracts,
-            "relationships": extracted_relationships
+            "relationships": extracted_relationships,
+            "attack-flow": flow.model_dump(),
         }
         data_path = Path(str(output_path).replace('bundle--', 'data--'))
         data_path.write_text(json.dumps(data, indent=4))
         logger.info(f"Wrote data output to `{data_path}`")
+        if flow:
+            flow_path = Path(str(output_path).replace('bundle--', 'attack-flow-bundle--'))
+            flow_bundle = Bundle(objects=bundler.flow_objects, allow_custom=True)
+            flow_path.write_text(stix2_serialize(flow_bundle, indent=4))
+            logger.info(f"Wrote attack-flow bundle to `{flow_path}`")
     except argparse.ArgumentError as e:
         logger.exception(e, exc_info=True)
     except:
