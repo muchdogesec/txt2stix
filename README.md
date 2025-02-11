@@ -90,7 +90,7 @@ The following arguments are available:
 
 How the extractions are performed
 
-* `--use_extractions` (REQUIRED): if you only want to use certain extraction types, you can pass their slug found in either `includes/ai/config.yaml`, `includes/lookup/config.yaml` `includes/pattern/config.yaml` (e.g. `pattern_ipv4_address_only`). Default if not passed, no extractions applied. You can also pass a catch all wildcard `*` which will match all extraction paths (e.g. `pattern_*` would run all extractions starting with `pattern_`)
+* `--use_extractions` (REQUIRED): if you only want to use certain extraction types, you can pass their slug found in either `includes/ai/config.yaml`, `includes/lookup/config.yaml` `includes/pattern/config.yaml` (e.g. `pattern_ipv4_address_only`). Default if not passed, no extractions applied. You can also pass a catch all wildcard `*` which will match all extraction paths (e.g. `'pattern_*'` would run all extractions starting with `pattern_` -- make sure to use quotes when using a wildcard)
 	* Important: if using any AI extractions (`ai_*`), you must set an AI API key in your `.env` file
 	* Important: if you are using any MITRE ATT&CK, CAPEC, CWE, ATLAS or Location extractions you must set `CTIBUTLER` or NVD CPE or CVE extractions you must set `VULMATCH` settings in your `.env` file
 * `--relationship_mode` (REQUIRED): either.
@@ -110,11 +110,12 @@ If any AI extractions, or AI relationship mode is set, you must set the followin
 		* Provider (env var required `OPENAI_API_KEY`): `openai:`, models e.g.: `gpt-4o`, `gpt-4o-mini`, `gpt-4-turbo`, `gpt-4` ([More here](https://platform.openai.com/docs/models))
 		* Provider (env var required `ANTHROPIC_API_KEY`): `anthropic:`, models e.g.: `claude-3-5-sonnet-latest`, `claude-3-5-haiku-latest`, `claude-3-opus-latest` ([More here](https://docs.anthropic.com/en/docs/about-claude/models))
 		* Provider (env var required `GOOGLE_API_KEY`): `gemini:models/`, models: `gemini-1.5-pro-latest`, `gemini-1.5-flash-latest` ([More here](https://ai.google.dev/gemini-api/docs/models/gemini))
-		* Provider (env var required `DEEPSEEK_API_KEY`): `deepseek:`, models `deepseek-chat` ([More here](https://api-docs.deepseek.com/quick_start/pricing))		
+		* Provider (env var required `DEEPSEEK_API_KEY`): `deepseek:`, models `deepseek-chat` ([More here](https://api-docs.deepseek.com/quick_start/pricing))
 	* See `tests/manual-tests/cases-ai-extraction-type.md` for some examples
 * `--ai_settings_relationships`:
 	* similar to `ai_settings_extractions` but defines the model used to generate relationships. Only one model can be provided. Passed in same format as `ai_settings_extractions`
 	* See `tests/manual-tests/cases-ai-relationships.md` for some examples
+* `--ai_check_content`: Passing this flag will get the AI to try and classify the text in the input to 1) determine if it is talking about threat intelligence, and 2) what type of threat intelligence it is talking about. For context, we use this to filter out non-threat intel posts in Obstracts and Stixify.
 
 ## Adding new extractions
 

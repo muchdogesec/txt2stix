@@ -90,14 +90,14 @@ DEFAULT_CONTENT_CHECKER_TEMPL = PromptTemplate("""
 <persona>
     You are a cyber security threat intelligence analyst.
     Your job is to review report that describe a cyber security incidents.
-    Examples include malware analysis, APT group reports, data breaches and vulnerabilities.
+    Examples include malware analysis, APT group reports, data breaches, vulnerabilities, or Indicators of Compromise.
     Some of the documents you are given do not help in this 
     I need you to tell me if the text provided is.
 </persona>
 <requirement>
     Using the MARKDOWN of the report provided in <document>
     IMPORTANT: the output should be structured as valid JSON.
-    IMPORTANT: oudtput should not be in markdown, it must be a plain JSON text without any code block
+    IMPORTANT: output should not be in markdown, it must be a plain JSON text without any code block
     IMPORTANT: do not include any comment in the output
     IMPORTANT: output must start with a `{` and end with a `}` and must not contain "```"
 </requirement>
@@ -117,6 +117,8 @@ DEFAULT_CONTENT_CHECKER_TEMPL = PromptTemplate("""
     * Campaign
     * Exploit
     * Cyber Crime
+    * Indicators of Compromise
+    * TTPs
 </incident_classification>
 """)
 

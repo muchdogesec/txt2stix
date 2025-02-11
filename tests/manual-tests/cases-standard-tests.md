@@ -363,3 +363,19 @@ python3 txt2stix.py \
 	--use_extractions lookup_disarm_name \
 	--report_id 8cb2dbf0-136f-4ecb-995c-095496e22abc
 ```
+
+### ai check content
+
+```shell
+python3 txt2stix.py \
+    --relationship_mode standard \
+    --input_file tests/data/extraction_types/all_cases.txt \
+    --name '0.6.1 All test cases pattern extractions' \
+    --tlp_level clear \
+    --confidence 100 \
+    --use_extractions 'pattern_*' \
+    --ai_content_check \
+
+```
+
+
