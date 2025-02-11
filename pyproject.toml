@@ -23,7 +23,7 @@ dependencies = [
   "requests==2.32.3",
   "python-dotenv>=1.0.1",
   "schwifty>=2024.6.1",
-  "stix2extensions @ https://github.com/muchdogesec/stix2extensions/archive/main.zip",
+  "stix2extensions @ https://github.com/muchdogesec/stix2extensions/archive/attack-flow.zip",
   "tld>=0.13",
   "tldextract>=5.1.2",
   "validators>=0.28.3",
