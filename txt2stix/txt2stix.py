@@ -136,7 +136,7 @@ def parse_args():
 
     inf_arg  = parser.add_argument("--input_file", "--input-file", required=True, help="The file to be converted. Must be .txt", type=Path)
     parser.add_argument("--ai_check_content", required=False, type=parse_model, help="Use an AI model to check wether the content of the file contains threat intelligence. Paticularly useful to weed out vendor marketing.")
-    if (args := parser.parse_known_args()[0]) and args.check_content:
+    if (args := parser.parse_known_args()[0]) and args.ai_check_content:
         model : BaseAIExtractor = args.ai_check_content
         value = model.check_content(args.input_file.read_text())
         print("check-content output:", value.model_dump_json())
