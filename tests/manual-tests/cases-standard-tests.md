@@ -370,12 +370,12 @@ python3 txt2stix.py \
 python3 txt2stix.py \
     --relationship_mode standard \
     --input_file tests/data/extraction_types/all_cases.txt \
-    --name '0.6.1 All test cases pattern extractions' \
+    --name 'Test AI Content check' \
     --tlp_level clear \
     --confidence 100 \
     --use_extractions 'pattern_*' \
-    --ai_content_check \
-
+    --ai_content_check openai:gpt-4o \
+    --report_id 4fa18f2d-278b-4fd4-8470-62a8807d35ad
 ```
 
 
