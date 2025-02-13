@@ -17,8 +17,12 @@ class STIXObjectRetriever:
         else:
             raise NotImplementedError("The type `%s` is not supported", host)
 
-    def get_attack_objects(self, matrix, attack_id):
+    def get_attack_object(self, matrix, attack_id):
         endpoint = urljoin(self.api_root, f"v1/attack-{matrix}/objects/{attack_id}/")
+        return self._retrieve_objects(endpoint)
+    
+    def get_attack_objects(self, matrix, attack_ids):
+        endpoint = urljoin(self.api_root, f"v1/attack-{matrix}/objects/?attack_id={','.join(attack_ids)}")
         return self._retrieve_objects(endpoint)
     
     def get_objects_by_id(self, id, type):
@@ -63,11 +67,11 @@ def retrieve_stix_objects(stix_mapping: str, id, host=None):
         match stix_mapping:
             ### ATT&CK by ID
             case 'mitre-attack-ics-id':
-                return retreiver.get_attack_objects('ics', id)
+                return retreiver.get_attack_object('ics', id)
             case 'mitre-attack-mobile-id':
-                return retreiver.get_attack_objects('mobile', id)
+                return retreiver.get_attack_object('mobile', id)
             case 'mitre-attack-enterprise-id':
-                return retreiver.get_attack_objects('enterprise', id)
+                return retreiver.get_attack_object('enterprise', id)
             
             ### Others by ID
             case "mitre-capec-id":

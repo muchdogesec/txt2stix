@@ -51,7 +51,6 @@ sniffio==1.3.1; python_version >= '3.7'
 sqlalchemy==2.0.30; python_version >= '3.7'
 stix2==3.0.1; python_version >= '3.6'
 stix2-patterns==2.0.0; python_version >= '3.6'
-https://github.com/muchdogesec/stix2extensions/archive/main.zip
 tenacity==8.3.0; python_version >= '3.8'
 tiktoken==0.7.0; python_version >= '3.8'
 tld==0.13; python_version >= '3.7' and python_version < '4'
@@ -64,3 +63,4 @@ yarl==1.9.4; python_version >= '3.7'
 zipp==3.19.1; python_version >= '3.8'
 llama-index==0.10.51; python_version >= '3.8'
 base58>=2.1.1; python_version >= '3.8'
+stix2extensions @ https://github.com/muchdogesec/stix2extensions/releases/download/main-2025-02-12-06-23-37/stix2extensions-0.0.3-py3-none-any.whl
