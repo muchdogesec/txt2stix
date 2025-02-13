@@ -152,6 +152,7 @@ class txt2stixBundler:
     uuid = None
     id_map = dict()
     id_value_map = dict()
+    _flow_objects = []
     # this identity is https://raw.githubusercontent.com/muchdogesec/stix4doge/main/objects/identity/txt2stix.json
     default_identity = Identity(
         type="identity",
@@ -415,3 +416,15 @@ class txt2stixBundler:
         return "indicator--" + str(
             uuid.uuid5(UUID_NAMESPACE, f"txt2stix+{stix_mapping}+{value}")
         )
+    
+    @property
+    def flow_objects(self):
+        return self._flow_objects
+    
+    @flow_objects.setter
+    def flow_objects(self, objects):
+        for obj in objects:
+            if obj['id'] == self.report.id:
+                continue
+            self.add_ref(obj)
+        self._flow_objects = objects
