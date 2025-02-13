@@ -116,7 +116,7 @@ If any AI extractions, or AI relationship mode is set, you must set the followin
 	* similar to `ai_settings_extractions` but defines the model used to generate relationships. Only one model can be provided. Passed in same format as `ai_settings_extractions`
 	* See `tests/manual-tests/cases-ai-relationships.md` for some examples
 * `--ai_check_content`: Passing this flag will get the AI to try and classify the text in the input to 1) determine if it is talking about threat intelligence, and 2) what type of threat intelligence it is talking about. For context, we use this to filter out non-threat intel posts in Obstracts and Stixify. You pass `provider:model` with this flag to determine the AI model you wish to use to perform the check.
-* `--create_attack_flow`: passing this flag will also prompt the AI model (the same entered for `--ai_settings_relationships`) to generate an [Attack Flow](https://center-for-threat-informed-defense.github.io/attack-flow/) for the MITRE ATT&CK extractions to define the logical order in which they are being described. You must pass `--ai_settings_relationships` for this to work.
+* `--ai_create_attack_flow`: passing this flag will also prompt the AI model (the same entered for `--ai_settings_relationships`) to generate an [Attack Flow](https://center-for-threat-informed-defense.github.io/attack-flow/) for the MITRE ATT&CK extractions to define the logical order in which they are being described. You must pass `--ai_settings_relationships` for this to work.
 
 ## Adding new extractions
 
