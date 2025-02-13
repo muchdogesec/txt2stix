@@ -1,0 +1,7 @@
+Victims receive spear phishing emails with  malicious zip files attached.
+
+Due to password protection, the zip files are able to bypass some AV detections.
+
+The zip files are extracted and usually contain a malicious document, such as a .doc, .pdf, or .xls.
+
+The extracted files contain malicious macros.
