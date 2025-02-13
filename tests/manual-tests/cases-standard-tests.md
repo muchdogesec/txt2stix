@@ -384,11 +384,11 @@ python3 txt2stix.py \
 python3 txt2stix.py \
     --relationship_mode standard \
     --ai_settings_relationships openai:gpt-4o \
-    --input_file tests/data/manually_generated_reports/mitre_attack_enterprise_ai_demo.txt \
+    --input_file tests/data/manually_generated_reports/attack_flow_demo.txt \
     --name 'Test MITRE ATT&CK Flow demo' \
     --tlp_level clear \
     --confidence 100 \
     --use_extractions 'ai_mitre_attack_enterprise' \
-    --create_attack_flow \
+    --ai_create_attack_flow \
     --report_id c0fef67c-720b-4184-a62e-ea465b4d89b5
 ```

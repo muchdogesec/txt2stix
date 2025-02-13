@@ -156,7 +156,7 @@ def parse_args():
     parser.add_argument('--ignore_image_refs', default=True, type=parse_bool)
     parser.add_argument('--ignore_link_refs', default=True, type=parse_bool)
     parser.add_argument("--ignore_extraction_boundary", default=False, type=parse_bool, help="default if not passed is `false`, but if set to `true` will ignore boundary capture logic for extractions")
-    parser.add_argument('--create_attack_flow', default=False, action='store_true', help="create attack flow for attack objects in report/bundle")
+    parser.add_argument('--ai_create_attack_flow', default=False, action='store_true', help="create attack flow for attack objects in report/bundle")
 
     args = parser.parse_args()
     if not args.input_file.exists():
@@ -167,8 +167,8 @@ def parse_args():
     if args.relationship_mode == 'ai' and not args.ai_settings_relationships:
         parser.error("relationship_mode is set to AI, --ai_settings_relationships is required")
 
-    if args.create_attack_flow and not args.ai_settings_relationships:
-        parser.error("--create_attack_flow requires --ai_settings_relationships")
+    if args.ai_create_attack_flow and not args.ai_settings_relationships:
+        parser.error("--ai_create_attack_flow requires --ai_settings_relationships")
     #### process --use-extractions 
     if args.use_extractions.get('ai') and not args.ai_settings_extractions:
         parser.error("ai based extractors are passed, --ai_settings_extractions is required")
@@ -284,7 +284,7 @@ def main():
             
         # convo_str = ai_extractor_session.get_conversation() if ai_extractor_session and ai_extractor_session.initialized else ""
         flow = None
-        if args.create_attack_flow:
+        if args.ai_create_attack_flow:
             logging.info("creating attack-flow bundle")
             ex: BaseAIExtractor = args.ai_settings_relationships
             flow = ex.extract_attack_flow(input_text, all_extracts, extracted_relationships)
