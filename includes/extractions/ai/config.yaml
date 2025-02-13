@@ -725,7 +725,7 @@ ai_mitre_attack_enterprise:
   version: 1.0.0
   prompt_base: 'Extract all references to MITRE ATT&CK Enterprise tactics, techniques, groups, data sources, mitigations, software, and campaigns described in the text. These references may not be explicit in the text so you should be careful to account for the natural language of the text your analysis. Do not include MITRE ATT&CK ICS or MITRE ATT&CK Mobile in the results.'
   prompt_helper: 'If you are unsure, you can learn more about MITRE ATT&CK Enterprise here: https://attack.mitre.org/matrices/enterprise/'
-  prompt_conversion: 'Convert all extractions into the corresponding ATT&CK ID.'
+  prompt_conversion: 'You should respond with only the ATT&CK ID.'
   test_cases: ai_mitre_attack_enterprise
   stix_mapping: ctibutler-mitre-attack-enterprise-id
 
@@ -740,7 +740,7 @@ ai_mitre_attack_mobile:
   version: 1.0.0
   prompt_base: 'Extract all references to MITRE ATT&CK Mobile tactics, techniques, groups, data sources, mitigations, software, and campaigns described in the text. These references may not be explicit in the text so you should be careful to account for the natural language of the text your analysis. Do not include MITRE ATT&CK ICS or MITRE ATT&CK Enterprise in the results.'
   prompt_helper: 'If you are unsure, you can learn more about MITRE ATT&CK Enterprise here: https://attack.mitre.org/matrices/mobile/'
-  prompt_conversion: 'Convert all extractions into the corresponding ATT&CK ID.'
+  prompt_conversion: 'You should respond with only the ATT&CK ID.'
   test_cases: ai_mitre_attack_mobile
   stix_mapping: ctibutler-mitre-attack-mobile-id
 
@@ -755,7 +755,7 @@ ai_mitre_attack_ics:
   version: 1.0.0
   prompt_base: 'Extract all references to MITRE ATT&CK ICS tactics, techniques, groups, data sources, mitigations, software, and campaigns described in the text. These references may not be explicit in the text so you should be careful to account for the natural language of the text your analysis. Do not include MITRE ATT&CK Mobile or MITRE ATT&CK Enterprise in the results.'
   prompt_helper: 'If you are unsure, you can learn more about MITRE ATT&CK Enterprise here: https://attack.mitre.org/matrices/ics/'
-  prompt_conversion: 'Convert all extractions into the corresponding ATT&CK ID.'
+  prompt_conversion: 'You should respond with only the ATT&CK ID.'
   test_cases: ai_mitre_attack_ics
   stix_mapping: ctibutler-mitre-attack-ics-id
 
@@ -772,7 +772,7 @@ ai_mitre_capec:
   version: 1.0.0
   prompt_base: 'Extract all references to a MITRE CAPEC object from the text.'
   prompt_helper: 'If you are unsure, you can learn more about MITRE CAPEC here: https://capec.mitre.org/'
-  prompt_conversion: 'Convert all extractions into the corresponding CAPEC ID in the format `CAPEC-ID`'
+  prompt_conversion: 'You should respond with only the CAPEC ID.'
   test_cases: ai_mitre_capec
   stix_mapping: ctibutler-mitre-capec-id
 
@@ -789,7 +789,7 @@ ai_mitre_cwe:
   version: 1.0.0
   prompt_base: 'Extract all references to a MITRE CWE object from the text.'
   prompt_helper: 'If you are unsure, you can learn more about MITRE CAPEC here: https://cwe.mitre.org/'
-  prompt_conversion: 'Convert all extractions into the corresponding CWE ID in the format `CWE-ID`'
+  prompt_conversion: 'You should respond with only the CWE ID.'
   test_cases: ai_mitre_cwe
   stix_mapping: ctibutler-mitre-cwe-id
 

@@ -137,9 +137,11 @@ Examples include malware analysis, APT group reports, data breaches and vulnerab
 
 Now I need you to logically define the order of ATT&CK Tactics/Techniques as they are executed in the incident described in the report.
 
-It is possible that the Techniques extracted are not linked to the relevant MITRE ATT&CK Tactic. You should also assign the correct Tactic to a Technique where a Technique belongs to many ATT&CK Tactics in the ATT&CK Matrix.
+It is possible that the Techniques extracted are not linked to the relevant MITRE ATT&CK Tactic. You should also assign the correct Tactic to a Technique where a Technique belongs to many ATT&CK Tactics in the ATT&CK Matrix if that can correctly be inferred.
 
-You should also provide a short overview about how this technique is described in the report as the name, and a longer version in description
+You should also provide a short overview about how this technique is described in the report as the name, and a longer version in description.
+
+IMPORTANT: only include the ATT&CK IDs extracted already, do not add any new extractions.
 
 You should deliver a response in JSON as follows
 
