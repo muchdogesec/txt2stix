@@ -1,11 +1,13 @@
+import logging
 import uuid
 from stix2 import Relationship
 
 from txt2stix.retriever import STIXObjectRetriever
 from stix2extensions.attack_action import AttackAction, AttackFlow
 from stix2extensions._extensions import attack_flow_ExtensionDefinitionSMO
+from .utils import AttackFlowList
 
-def parse_flow(report, flow):
+def parse_flow(report, flow: AttackFlowList):
     attack_objects = STIXObjectRetriever().get_attack_objects(
         flow.matrix,
         [item.attack_tactic_id for item in flow.items]
@@ -19,23 +21,21 @@ def parse_flow(report, flow):
     for i, item in enumerate(flow.items):
         try:
             tactic_obj = attack_objects[item.attack_tactic_id]
-            technique_obj = attack_objects[item.attack_tactic_id]
+            technique_obj = attack_objects[item.attack_technique_id]
             action_obj = AttackAction(
                 **{
                     "id": f"attack-action--{str(uuid.uuid4())}",
                     "effect_refs": [f"attack-action--{str(uuid.uuid4())}"],
                     "technique_id": item.attack_technique_id,
-                    "technique_ref": tactic_obj["id"],
-                    "tactic_id": item.attack_technique_id,
-                    "tactic_ref": technique_obj["id"],
+                    "technique_ref": technique_obj["id"],
+                    "tactic_id": item.attack_tactic_id,
+                    "tactic_ref": tactic_obj["id"],
                     "name": item.name,
                     "description": item.description,
                 },
                 allow_custom=True,
             )
             action_obj.effect_refs.clear()
-            flow_objects.append(tactic_obj)
-            flow_objects.append(technique_obj)
             if i == 0:
                 flow_obj = {
                     "type": "attack-flow",
@@ -70,9 +70,14 @@ def parse_flow(report, flow):
                 )
             else:
                 last_action["effect_refs"].append(action_obj["id"])
+            flow_objects.append(tactic_obj)
+            flow_objects.append(technique_obj)
             flow_objects.append(action_obj)
             last_action = action_obj
         except:
-            pass
+            if flow_objects == 0:
+                logging.exception("FATAL: create attack flow object failed")
+                return []
+            logging.debug("create attack-action failed", exc_info=True)
 
     return flow_objects
