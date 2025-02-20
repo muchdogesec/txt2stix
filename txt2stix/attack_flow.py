@@ -8,6 +8,9 @@ from stix2extensions._extensions import attack_flow_ExtensionDefinitionSMO
 from .utils import AttackFlowList
 
 def parse_flow(report, flow: AttackFlowList):
+    logging.info(f"flow.success = {flow.success}")
+    if not flow.success:
+        return []
     attack_objects = STIXObjectRetriever().get_attack_objects(
         flow.matrix,
         [item.attack_tactic_id for item in flow.items]
