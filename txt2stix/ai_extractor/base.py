@@ -56,7 +56,7 @@ class BaseAIExtractor():
             llm=self.llm,
         )
     
-    def extract_attack_flow(self, input_text, extractions, relationships):
+    def extract_attack_flow(self, input_text, extractions, relationships) -> AttackFlowList:
         return self._get_attack_flow_program()(document=input_text, extractions=extractions, relationships=relationships)
 
     def extract_relationships(self, input_text, extractions, relationship_types: list[str]) -> RelationshipList:
@@ -81,3 +81,7 @@ class BaseAIExtractor():
     @property
     def extractor_name(self):
         return f"{self.provider}:{self.llm.model}"
+    
+
+    def __hash__(self):
+        return hash(self.extractor_name)
