@@ -10,10 +10,11 @@ import sys, os
 
 from pydantic import BaseModel
 
+from txt2stix.ai_extractor.utils import DescribesIncident
 from txt2stix.attack_flow import parse_flow
 
 
-from .utils import remove_links
+from .utils import Txt2StixData, remove_links
 
 from .common import UUID_NAMESPACE, FatalException
 
@@ -135,10 +136,10 @@ def parse_args():
     parser = argparse.ArgumentParser(description="File Conversion Tool")
 
     inf_arg  = parser.add_argument("--input_file", "--input-file", required=True, help="The file to be converted. Must be .txt", type=Path)
-    parser.add_argument("--ai_check_content", required=False, type=parse_model, help="Use an AI model to check wether the content of the file contains threat intelligence. Paticularly useful to weed out vendor marketing.")
+    parser.add_argument("--ai_content_check_provider", required=False, type=parse_model, help="Use an AI model to check wether the content of the file contains threat intelligence. Paticularly useful to weed out vendor marketing.")
     name_arg = parser.add_argument("--name", required=True, help="Name of the file, max 124 chars", default="stix-out")
     parser.add_argument("--created", required=False, default=datetime.now(), help="Allow user to optionally pass --created time in input, which will hardcode the time used in created times")
-    parser.add_argument("--ai_settings_extractions", required=False, type=parse_model, help="(required if AI extraction enabled): passed in format provider:model e.g. openai:gpt4o. Can pass more than one value to get extractions from multiple providers.", metavar="provider[:model]", nargs='+', default=[parse_model('openai')])
+    parser.add_argument("--ai_settings_extractions", required=False, type=parse_model, help="(required if AI extraction enabled): passed in format provider:model e.g. openai:gpt4o. Can pass more than one value to get extractions from multiple providers.", metavar="provider[:model]", nargs='+')
     parser.add_argument("--ai_settings_relationships", required=False, type=parse_model, help="(required if AI relationship enabled): passed in format `provider:model`. Can only pass one model at this time.", metavar="provider[:model]")
     parser.add_argument("--labels", type=parse_labels)
     parser.add_argument("--relationship_mode", choices=["ai", "standard"], required=True)
@@ -243,10 +244,55 @@ def extract_relationships_with_ai(bundler: txt2stixBundler, text_content, all_ex
 def validate_token_count(max_tokens, input, extractors: list[BaseAIExtractor]):
     logging.info('INPUT_TOKEN_LIMIT = %d', max_tokens)
     for extractor in extractors:
-        token_count = extractor.count_tokens(input)
-        logging.info('TOKEN COUNT FOR %s: %d', extractor.extractor_name, token_count)
+        token_count = _count_token(extractor, input)
         if  token_count > max_tokens:
             raise FatalException(f"{extractor.extractor_name}: input_file token count ({token_count}) exceeds INPUT_TOKEN_LIMIT ({max_tokens})")
+    
+
+@functools.lru_cache
+def _count_token(extractor: BaseAIExtractor, input: str):
+    return extractor.count_tokens(input)
+        
+def run_txt2stix(bundler: txt2stixBundler, preprocessed_text: str, extractors_map: dict,
+                ai_content_check_provider=None,
+                ai_create_attack_flow=None,
+                input_token_limit=10,
+                ai_settings_extractions=None,
+                ai_settings_relationships=None,
+                relationship_mode="standard",
+                ignore_extraction_boundary=False,
+
+                **kwargs
+        ) -> Txt2StixData:
+    should_extract = True
+    retval = Txt2StixData.model_construct()
+    retval.extractions = retval.attack_flow = retval.relationships = None
+    if ai_content_check_provider:
+        logging.info("checking content")
+        model : BaseAIExtractor = ai_content_check_provider
+        validate_token_count(input_token_limit, preprocessed_text, [model])
+        retval.content_check = model.check_content(preprocessed_text)
+        should_extract = retval.content_check.describes_incident
+        logging.info("=== ai-check-content output ====")
+        logging.info(retval.content_check.model_dump_json())
+
+    if should_extract:
+        if extractors_map.get("ai"):
+            validate_token_count(input_token_limit, preprocessed_text, ai_settings_extractions)
+        if relationship_mode == "ai":
+            validate_token_count(input_token_limit, preprocessed_text, [ai_settings_relationships])
+
+        retval.extractions = extract_all(bundler, extractors_map, preprocessed_text, ai_extractors=ai_settings_extractions, ignore_extraction_boundary=ignore_extraction_boundary)
+        if relationship_mode == "ai" and sum(map(lambda x: len(x), retval.extractions.values())):
+            retval.relationships = extract_relationships_with_ai(bundler, preprocessed_text, retval.extractions, ai_settings_relationships)
+            
+        if ai_create_attack_flow:
+            logging.info("creating attack-flow bundle")
+            ex: BaseAIExtractor = ai_settings_relationships
+            retval.attack_flow = ex.extract_attack_flow(preprocessed_text, retval.extractions, retval.relationships)
+            bundler.flow_objects = parse_flow(bundler.report, retval.attack_flow)
+
+    return retval
 
 def main():
     logger = newLogger("txt2stix")
@@ -261,62 +307,26 @@ def main():
         preprocessed_text = remove_links(input_text, args.ignore_image_refs, args.ignore_link_refs)
         load_env()
 
-        should_extract = True
-        content_check_output = None
-
-        if args.ai_check_content:
-            logging.info("checking content")
-            model : BaseAIExtractor = args.ai_check_content
-            content_check_output = model.check_content(args.input_file.read_text())
-            should_extract = content_check_output.describes_incident
-            logging.info("=== ai-check-content output ====")
-            logging.info(content_check_output.model_dump_json())
-
 
         bundler = txt2stixBundler(args.name, args.use_identity, args.tlp_level, input_text, args.confidence, args.all_extractors, args.labels, created=args.created, report_id=args.report_id, external_references=args.external_refs)
         log_notes(sys.argv, "Config")
         convo_str = None
 
-        # ai_extractor_session = args.ai_model[0](args.ai_model[1])
+        data = run_txt2stix(
+            bundler, preprocessed_text, args.use_extractions,
+            input_token_limit=int(os.environ['INPUT_TOKEN_LIMIT']),
+            **args.__dict__,
+        )
 
-        
-        all_extracts = flow = extracted_relationships = None
-        if should_extract:
-            if args.use_extractions.get("ai"):
-                validate_token_count(int(os.environ["INPUT_TOKEN_LIMIT"]), preprocessed_text, args.ai_settings_extractions)
-            if args.relationship_mode == "ai":
-                validate_token_count(int(os.environ["INPUT_TOKEN_LIMIT"]), preprocessed_text, [args.ai_settings_relationships])
-            all_extracts = extract_all(bundler, args.use_extractions, preprocessed_text, ai_extractors=args.ai_settings_extractions, ignore_extraction_boundary=args.ignore_extraction_boundary)
-            if args.relationship_mode == "ai" and sum(map(lambda x: len(x), all_extracts.values())):
-                extracted_relationships = extract_relationships_with_ai(bundler, preprocessed_text, all_extracts, args.ai_settings_relationships)
-                
-            if args.ai_create_attack_flow:
-                logging.info("creating attack-flow bundle")
-                ex: BaseAIExtractor = args.ai_settings_relationships
-                flow = ex.extract_attack_flow(input_text, all_extracts, extracted_relationships)
-                bundler.flow_objects = parse_flow(bundler.report, flow)
-
-            
-
+        ## write outputs
         out = bundler.to_json()
         output_path = Path("./output")/f"{bundler.bundle.id}.json"
         output_path.parent.mkdir(exist_ok=True)
         output_path.write_text(out)
         logger.info(f"Wrote bundle output to `{output_path}`")
-        data = {
-            "content-check": content_check_output and content_check_output.model_dump(),
-            "extractions": all_extracts,
-            "relationships": extracted_relationships,
-            "attack-flow": flow and flow.model_dump(),
-        }
         data_path = Path(str(output_path).replace('bundle--', 'data--'))
-        data_path.write_text(json.dumps(data, indent=4))
+        data_path.write_text(data.model_dump_json(indent=4))
         logger.info(f"Wrote data output to `{data_path}`")
-        if flow:
-            flow_path = Path(str(output_path).replace('bundle--', 'attack-flow-bundle--'))
-            flow_bundle = Bundle(objects=bundler.flow_objects, allow_custom=True)
-            flow_path.write_text(stix2_serialize(flow_bundle, indent=4))
-            logger.info(f"Wrote attack-flow bundle to `{flow_path}`")
     except argparse.ArgumentError as e:
         logger.exception(e, exc_info=True)
     except:

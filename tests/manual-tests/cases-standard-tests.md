@@ -374,7 +374,7 @@ python3 txt2stix.py \
     --tlp_level clear \
     --confidence 100 \
     --use_extractions 'pattern_*' \
-    --ai_content_check openai:gpt-4o \
+    --ai_content_check_provider openai:gpt-4o \
     --report_id 4fa18f2d-278b-4fd4-8470-62a8807d35ad
 ```
 
@@ -384,13 +384,15 @@ no indicators
 
 ```shell
 python3 txt2stix.py \
-    --relationship_mode standard \
+    --relationship_mode ai \
     --ai_settings_relationships openai:gpt-4o \
     --input_file tests/data/manually_generated_reports/attack_flow_demo.txt \
     --name 'Test MITRE ATT&CK Flow demo' \
     --tlp_level clear \
     --confidence 100 \
     --use_extractions 'ai_mitre_attack_enterprise' \
+    --ai_settings_extractions openai:gpt-4o \
+    --ai_content_check_provider openai:gpt-4o \
     --ai_create_attack_flow \
     --report_id c0fef67c-720b-4184-a62e-ea465b4d89b5
 ```

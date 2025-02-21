@@ -3,11 +3,13 @@ import pkgutil
 import re
 from pathlib import Path
 from typing import Dict
-
+from pydantic import BaseModel
 import bs4
 import mistune
 from mistune.renderers.markdown import MarkdownRenderer
 from mistune.util import unescape
+
+from txt2stix.ai_extractor.utils import AttackFlowList, DescribesIncident
 class ImageLinkRemover(MarkdownRenderer):
     def __init__(self, remove_links: bool=False, remove_images: bool=False):
         self.remove_links = remove_links
@@ -44,6 +46,13 @@ class ImageLinkRemover(MarkdownRenderer):
         return soup.decode()
 
 import tldextract
+
+
+class Txt2StixData(BaseModel):
+    content_check: DescribesIncident
+    extractions: dict
+    relationships: list[dict]
+    attack_flow: AttackFlowList
 
 
 def remove_links(input_text: str, remove_images: bool, remove_anchors: bool):
