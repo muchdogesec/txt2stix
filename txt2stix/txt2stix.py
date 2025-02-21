@@ -314,6 +314,7 @@ def main():
 
         data = run_txt2stix(
             bundler, preprocessed_text, args.use_extractions,
+            input_token_limit=int(os.environ['INPUT_TOKEN_LIMIT']),
             **args.__dict__,
         )
 
