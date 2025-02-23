@@ -135,10 +135,10 @@ This documentation is paticularly helpful to read for those of you wanting to ad
 
 ## Useful supporting tools
 
-* [Python Validators](https://validators.readthedocs.io/en/latest/#)
-* [STIX 2](https://pypi.org/project/stix2/): APIs for serializing and de-serializing STIX2 JSON content
+* [A Quick Start Guide to txt2stix](https://www.dogesec.com/blog/txt2stix_quickstart_guide/)
+* [An example of how to use txt2stix with Attack Flows](https://www.dogesec.com/blog/understading_structure_attack_flows/)
+* [STIX2 Python Library](https://pypi.org/project/stix2/): APIs for serializing and de-serializing STIX2 JSON content
 * [STIX 2 Pattern Validator](https://pypi.org/project/stix2-patterns/): a tool for checking the syntax of the Cyber Threat Intelligence (CTI) STIX Pattern expressions
-* [MISP Warning Lists](https://github.com/MISP/misp-warninglists): Warning lists to inform users of MISP about potential false-positives or other information in indicators
 * [STIX Viewer](https://github.com/traut/stixview): Quickly load bundles produced from your report
 
 ## Support

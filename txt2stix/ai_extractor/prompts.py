@@ -106,19 +106,19 @@ DEFAULT_CONTENT_CHECKER_TEMPL = PromptTemplate("""
 </document>
 <incident_classification>
     Possible Incident Classifications are
-    * Other: the report does not fit into any of the following categories
-    * APT Group
-    * Vulnerability
-    * Data Leak
-    * Malware
-    * Ransomware
-    * Infostealer
-    * Threat Actor
-    * Campaign
-    * Exploit
-    * Cyber Crime
-    * Indicators of Compromise
-    * TTPs
+    * `other` (the report does not fit into any of the following categories)
+    * `apt_group`
+    * `vulnerability`
+    * `data_leak`
+    * `malware`
+    * `ransomware`
+    * `infostealer`
+    * `threat_actor`
+    * `campaign`
+    * `exploit`
+    * `cyber_crime`
+    * `indicator_of_compromise`
+    * `ttp`
 </incident_classification>
 """)
 
