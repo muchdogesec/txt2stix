@@ -240,6 +240,7 @@ class txt2stixBundler:
             confidence=confidence,
         )
         self.report.object_refs.clear()  # clear object refs
+        self.added_objects = set()
         self.set_defaults()
 
     def set_defaults(self):
@@ -264,18 +265,20 @@ class txt2stixBundler:
             logger.info(f'getting extension definition for "{_type}" from `{url}`')
             self.EXTENSION_MAPPING[_type] = self.load_object_from_json(url)
             extension = self.EXTENSION_MAPPING[_type]
-            self.add_ref(extension)
+            self.add_ref(extension, is_report_object=False)
 
     @staticmethod
     def load_object_from_json(url):
         resp = requests.get(url)
         return dict_to_stix2(resp.json())
     
-    def add_ref(self, sdo):
+    def add_ref(self, sdo, is_report_object=True):
         self.add_extension(sdo)
         sdo_id = sdo["id"]
-        if sdo_id not in self.report.object_refs:
-            self.report.object_refs.append(sdo_id)
+        if sdo_id not in self.added_objects:
+            self.added_objects.add(sdo_id)
+            if is_report_object:
+                self.report.object_refs.append(sdo_id)
             self.bundle.objects.append(sdo)
 
         sdo_value = ""
@@ -426,5 +429,6 @@ class txt2stixBundler:
         for obj in objects:
             if obj['id'] == self.report.id:
                 continue
-            self.add_ref(obj)
+            is_report_object = obj['type'] != "extension-definition"
+            self.add_ref(obj, is_report_object=is_report_object)
         self._flow_objects = objects
