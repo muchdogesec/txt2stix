@@ -3,7 +3,7 @@ import pkgutil
 import re
 from pathlib import Path
 from typing import Dict
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 import bs4
 import mistune
 from mistune.renderers.markdown import MarkdownRenderer
@@ -49,10 +49,10 @@ import tldextract
 
 
 class Txt2StixData(BaseModel):
-    content_check: DescribesIncident
-    extractions: dict
-    relationships: list[dict]
-    attack_flow: AttackFlowList
+    content_check: DescribesIncident = Field(default=None)
+    extractions: dict = Field(default=None)
+    relationships: list[dict] = Field(default_factory=list)
+    attack_flow: AttackFlowList = Field(default=None)
 
 
 def remove_links(input_text: str, remove_images: bool, remove_anchors: bool):
