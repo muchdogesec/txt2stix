@@ -1,6 +1,7 @@
 import re
 from ..base_extractor import BaseExtractor
 from ipaddress import IPv4Interface
+import validators
 
 
 class IPv4Extractor(BaseExtractor):
@@ -14,25 +15,4 @@ class IPv4Extractor(BaseExtractor):
     """
 
     name = "pattern_ipv4_address_only"
-    extraction_function = lambda x: IPv4Extractor.validate_ipv4(x)
-
-    @staticmethod
-    def validate_ipv4(ipaddress: str):
-        """
-        Custom extraction function to validate if the provided string is a valid IPv4 address.
-
-        Args:
-            ipaddress (str): The string to be checked.
-
-        Returns:
-            bool: True if the string is a valid IPv4 address, False otherwise.
-        """
-        try:
-            if len(ipaddress) >= 7 and ':' not in ipaddress:
-                # Validate the IPv4 address using the IPv4Interface class.
-                IPv4Interface(ipaddress)
-                if '/' in ipaddress or ':' in ipaddress:
-                    return False
-                return True
-        except Exception as ex:
-            return False
+    extraction_function = lambda ipaddress: validators.ipv4(ipaddress, strict=True, cidr=False)

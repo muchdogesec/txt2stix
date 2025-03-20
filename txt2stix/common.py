@@ -19,5 +19,5 @@ class NamedDict(dict):
 
 class FatalException(Exception):
     pass
-class MinorExcption(Exception):
+class MinorException(Exception):
     pass

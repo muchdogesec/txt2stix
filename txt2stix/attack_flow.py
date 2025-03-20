@@ -2,10 +2,12 @@ import logging
 import uuid
 from stix2 import Relationship
 
+from txt2stix.common import UUID_NAMESPACE
 from txt2stix.retriever import STIXObjectRetriever
 from stix2extensions.attack_action import AttackAction, AttackFlow
 from stix2extensions._extensions import attack_flow_ExtensionDefinitionSMO
 from .utils import AttackFlowList
+
 
 def parse_flow(report, flow: AttackFlowList):
     logging.info(f"flow.success = {flow.success}")
@@ -27,7 +29,9 @@ def parse_flow(report, flow: AttackFlowList):
             technique_obj = attack_objects[item.attack_technique_id]
             action_obj = AttackAction(
                 **{
-                    "id": f"attack-action--{str(uuid.uuid4())}",
+                    "id": flow_id(
+                        report["id"], item.attack_technique_id, item.attack_tactic_id
+                    ),
                     "effect_refs": [f"attack-action--{str(uuid.uuid4())}"],
                     "technique_id": item.attack_technique_id,
                     "technique_ref": technique_obj["id"],
@@ -59,14 +63,15 @@ def parse_flow(report, flow: AttackFlowList):
                     Relationship(
                         type="relationship",
                         spec_version="2.1",
-                        # id="relationship--<UUID V5>",
+                        id="relationship--"
+                        + str(uuid.uuid5(UUID_NAMESPACE, f"attack-flow+{report.id}")),
                         created_by_ref=report.created_by_ref,
                         created=report.created,
                         modified=report.modified,
                         relationship_type="attack-flow",
                         description=f"Attack Flow for {report.name}",
                         source_ref=report.id,
-                        target_ref=flow_obj['id'],
+                        target_ref=flow_obj["id"],
                         external_references=report.external_references,
                         object_marking_refs=report.object_marking_refs,
                     )
@@ -77,10 +82,20 @@ def parse_flow(report, flow: AttackFlowList):
             flow_objects.append(technique_obj)
             flow_objects.append(action_obj)
             last_action = action_obj
-        except:
-            if flow_objects == 0:
+        except Exception as e:
+            if flow_objects == 2:
                 logging.exception("FATAL: create attack flow object failed")
                 return []
             logging.debug("create attack-action failed", exc_info=True)
+            raise
 
     return flow_objects
+
+
+def flow_id(report_id, technique_id, tactic_id):
+    return "attack-action--" + str(
+        uuid.uuid5(
+            uuid.UUID(report_id.split("--")[-1]),
+            f"{report_id}+{technique_id}+{tactic_id}",
+        )
+    )

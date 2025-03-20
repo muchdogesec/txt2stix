@@ -13,5 +13,6 @@ class WindowsRegistryKeyExtractor(BaseExtractor):
     """
 
     name = "pattern_windows_registry_key"
-    lookups = ['HKEY_CLASSES_ROOT', 'HKCR', 'HKEY_CURRENT_USER', 'HKCU', 'HKEY_LOCAL_MACHINE', 'HKLM', 'HKEY_USERS', 'HKU', 'HKEY_CURRENT_CONFIG', 'HKCC', 'HKEY_PERFORMANCE_DATA', 'HKEY_DYN_DATA']
-    extraction_regex = r'(?:' + '|'.join(re.escape(item) for item in lookups) + r')\\.+'
+    valid_root_keys = ['HKEY_CLASSES_ROOT', 'HKCR', 'HKEY_CURRENT_USER', 'HKCU', 'HKEY_LOCAL_MACHINE', 'HKLM', 'HKEY_USERS', 'HKU', 'HKEY_CURRENT_CONFIG', 'HKCC', 'HKEY_PERFORMANCE_DATA', 'HKEY_DYN_DATA']
+    prefix_regex = r'(?:' + '|'.join(re.escape(item) for item in valid_root_keys) + r')'
+    extraction_regex = rf'\b({prefix_regex}[\\\w]+)\b'

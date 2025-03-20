@@ -19,7 +19,7 @@ class BaseExtractor:
     version = None
     stix_mapping = None
     invalid_characters = ['.', ',', '!', '`', '(', ')', '{', '}', '"', '````', ' ', '[', ']']
-    SPLITS_FINDER = re.compile(r'[\'"<\(\{\[\s](?P<item>.*?)[\)\s\]\}\)>"\']') #split on boundary characters instead of ' ' only
+    SPLITS_FINDER = re.compile(r'(?<=[\'"<\(\{\[\s])(?P<item>.*?)(?=[\s\]\}\)>"\'])') #split on boundary characters instead of ' ' only
 
 
     @classmethod
@@ -64,14 +64,14 @@ class BaseExtractor:
 
             start_index = 0
             
-            for match in cls.SPLITS_FINDER.finditer(text):
-                word = match.group('item')
-                end_index = start_index + len(word) - 1
+            for index, word in tokenize(text):
+                # word = match.group('item')
+                # end_index = start_index + len(word) - 1
 
-                word = BaseExtractor.trim_invalid_characters(word, cls.invalid_characters)
+                # word = BaseExtractor.trim_invalid_characters(word, cls.invalid_characters)
                 try:
                     if cls.extraction_function(word):
-                        extracted_observables.append((word, match.start('item')))
+                        extracted_observables.append((word, index))
                 except Exception as error:
                     pass
 
@@ -133,3 +133,49 @@ class BaseExtractor:
     @classmethod
     def trim_invalid_characters(cls, keyword: str, characters: Iterable):
         return keyword.strip(''.join(characters))
+
+def tokenize(text):
+    # Define pairs of boundary characters as a list of tuples
+    boundary_pairs = [
+        ('(', ')'),
+        ('[', ']'),
+        ('{', '}'),
+        ('"', '"'),
+        ("'", "'"),
+        (' ', ' '),  # Spaces as general separators
+        ('\n', ' '), 
+        ('\n', '\n'), 
+        (' ', '\n'), 
+    ]
+    
+    # Define additional closing boundary characters
+    additional_closers = {"!", ";", ".", ","}
+    
+    tokens = []
+    words = text.split()
+    
+    # Capture individual words with their starting index
+    index = 0
+    for word in words:
+        start_index = text.find(word, index)
+        cleaned_word = word.strip("()[]{}'\".,;!:")
+        if cleaned_word:
+            tokens.append((start_index, cleaned_word))
+        index = start_index + len(word)
+    
+    # Capture nested structures with their starting index
+    for i in range(len(text)):
+        for opener, closer in boundary_pairs:
+            if text[i] == opener:
+                token = text[i]
+                for j in range(i + 1, len(text)):
+                    token += text[j]
+                    if text[j] == closer:
+                        if token.startswith(opener):
+                            token = token[1:]
+                        if token.endswith(closer):
+                            token = token[:-1]
+                        tokens.append((i, token))
+                        break
+    
+    return tokens

@@ -1,0 +1,51 @@
+name: Run Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    environment: txt2stix_tests
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+    
+          
+      - name: Set .env testing purpose
+        run: |
+            echo > .env
+            echo "CTIBUTLER_BASE_URL=${{ secrets.CTIBUTLER_BASE_URL }}" >> .env
+            echo "CTIBUTLER_API_KEY=${{ secrets.CTIBUTLER_API_KEY }}" >> .env
+            echo "VULMATCH_BASE_URL=${{ secrets.VULMATCH_BASE_URL }}" >> .env
+            echo "VULMATCH_API_KEY=${{ secrets.VULMATCH_API_KEY }}" >> .env
+            echo "TEST_AI_MODEL=${{ secrets.TEST_AI_MODEL }}" >> .env
+            echo "INPUT_TOKEN_LIMIT=1000"  >> .env
+
+            echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY}}" >> .env
+            echo "ANTHROPIC_API_KEY=${{ secrets.ANTHROPIC_API_KEY}}" >> .env
+            echo "GOOGLE_API_KEY=${{ secrets.GOOGLE_API_KEY}}" >> .env
+            echo "OPENROUTER_API_KEY=${{ secrets.OPENROUTER_API_KEY}}" >> .env
+
+            echo "BIN_LIST_API_KEY=${{ secrets.BIN_LIST_API_KEY }}" >> .env
+
+      - name: test all
+        id: test-endpoints
+        run: |
+          set -a; 
+          source .env;
+          set +a;
+          pip install -r tests/src/requirements.txt .
+
+          pytest tests/src/test_run_txt2stix.py

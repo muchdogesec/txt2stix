@@ -30,9 +30,9 @@ class Extractor(NamedDict):
         super().__init__(dct)
         self.extraction_key = key
         self.slug = key
-        if test_cases:
-            self.prompt_negative_examples = test_cases.get('test_negative_examples', [])
-            self.prompt_positive_examples = test_cases.get('test_positive_examples', [])
+        test_cases = test_cases or dict()
+        self.prompt_negative_examples = test_cases.get('test_negative_examples') or []
+        self.prompt_positive_examples = test_cases.get('test_positive_examples') or []
         if self.file and not Path(self.file).is_absolute() and include_path:
             self.file = Path(include_path) / self.file
 

@@ -1,3 +1,4 @@
+from txt2stix import extractions
 from .stix import txt2stixBundler
 from .txt2stix import extract_all
 from pathlib import Path
@@ -23,6 +24,9 @@ def get_include_path():
 def set_include_path(path):
     global INCLUDES_PATH
     INCLUDES_PATH = path
+
+def get_all_extractors(include_path=None):
+    return extractions.parse_extraction_config(include_path or get_include_path())
 
 
 __all__ = [

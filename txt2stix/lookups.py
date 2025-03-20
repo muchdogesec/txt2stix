@@ -26,23 +26,23 @@ def find_all(extractor, input_str, start_id=0):
     return retval
 
 
-def merge_lookups(extractors) -> list[tuple[str, Extractor]]:
+def merge_lookups(extractors: list[Extractor]) -> list[tuple[str, str, str]]:
     retval = []
     for ex in extractors:
         load_lookup(ex)
-        retval.extend(zip(ex.terms, [ex]*len(ex.terms)))
+        retval.extend([(term, ex.stix_mapping, ex.slug) for term in ex.terms])
     return sorted(retval, key=lambda kv: len(kv[0]), reverse=True)
 
 def extract_all(extractors, input_str):
-    terms_ex:list[tuple[str, Extractor]] = merge_lookups(extractors)
+    terms_ex:list[tuple[str, str, str]] = merge_lookups(extractors)
     seen_indexes = set()
     retval = []
-    for term, extractor in terms_ex:
+    for term, stix_mapping, slug in terms_ex:
         indexes = set(find_get_indexes_re(term, input_str))
         difference = list(indexes.difference(seen_indexes))
         seen_indexes.update(difference)
         if difference:
-            retval.append({"value": term, "start_index":difference, "stix_mapping": extractor.stix_mapping, "type": extractor.slug})
+            retval.append({"value": term, "start_index":difference, "stix_mapping": stix_mapping, "type": slug})
     return retval
 
 def find_get_indexes(term, input_str):
@@ -54,7 +54,7 @@ def find_get_indexes(term, input_str):
         yield idx
 
 def find_get_indexes_re(term, input_str):
-
+    input_str = " "+input_str+" "
     re_i = re.escape(term)
     rexp = []
     for right in [r"\s", r"\.", r",", r"!\s"]:
@@ -65,6 +65,4 @@ def find_get_indexes_re(term, input_str):
     r = re.compile(rexp, flags=re.IGNORECASE)
     for match in r.finditer(input_str):
         left, right = match.span()
-        yield left+1
-
-    
+        yield left

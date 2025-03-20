@@ -1,38 +1,22 @@
 import enum
 import logging
 from stix2 import (
-    Indicator,
     Report,
     Identity,
-    Note,
     MarkingDefinition,
     Relationship,
     Bundle,
 )
 from stix2.parsing import dict_to_stix2, parse as parse_stix
 from stix2.serialization import serialize
-import codecs, base64
 import hashlib
 from stix2 import (
-    NetworkTraffic,
-    IPv4Address,
-    IPv6Address,
-    Indicator,
-    File,
-    DomainName,
-    URL,
-    Directory,
-    EmailAddress,
-    WindowsRegistryKey,
-    AutonomousSystem,
     v21,
 )
 import requests
 
-from pathlib import Path
 
-from .common import UUID_NAMESPACE, MinorExcption
-from . import extractions
+from .common import UUID_NAMESPACE, MinorException
 from datetime import datetime as dt
 import uuid
 import json
@@ -303,6 +287,29 @@ class txt2stixBundler:
         extracted_id = extracted_dict["id"]
 
 
+        indicator = self.new_indicator(extractor, stix_mapping, extracted_value)
+        # set id so it doesn''t need to be created in build_observables
+        if extracted_dict.get("indexes"):
+            indicator["external_references"].append(
+                dict(
+                    source_name="indexes",
+                    description=json.dumps(extracted_dict["indexes"]),
+                )
+            )
+        objects, related_refs = build_observables(
+            self, stix_mapping, indicator, extracted_dict['value'], extractor
+        )
+        if not objects:
+            raise MinorException(
+                f"build observable returns {objects} from extraction: {extracted_dict}"
+            )
+        self.id_map[extracted_id] = related_refs
+
+        for sdo in objects:
+            sdo = parse_stix(sdo, allow_custom=True)
+            self.add_ref(sdo)
+
+    def new_indicator(self, extractor, stix_mapping, extracted_value):
         indicator = {
             "type": "indicator",
             "id": self.indicator_id_from_value(extracted_value, stix_mapping),
@@ -327,26 +334,8 @@ class txt2stixBundler:
                 },
             ],
         }
-        # set id so it doesn''t need to be created in build_observables
-        if extracted_dict.get("indexes"):
-            indicator["external_references"].append(
-                dict(
-                    source_name="indexes",
-                    description=json.dumps(extracted_dict["indexes"]),
-                )
-            )
-        objects, related_refs = build_observables(
-            self, stix_mapping, indicator, extracted_dict, extractor
-        )
-        if not objects:
-            raise MinorExcption(
-                f"build observable returns {objects} from extraction: {extracted_dict}"
-            )
-        self.id_map[extracted_id] = related_refs
-
-        for sdo in objects:
-            sdo = parse_stix(sdo, allow_custom=True)
-            self.add_ref(sdo)
+        
+        return indicator
 
     def add_ai_relationship(self, gpt_out):
         for source_ref in self.id_map.get(gpt_out["source_ref"], []):
