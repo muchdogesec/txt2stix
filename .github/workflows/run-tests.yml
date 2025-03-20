@@ -48,4 +48,4 @@ jobs:
           set +a;
           pip install -r tests/src/requirements.txt .
 
-          pytest tests/src/test_run_txt2stix.py
+          pytest tests/src/
