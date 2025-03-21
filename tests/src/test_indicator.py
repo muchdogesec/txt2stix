@@ -353,6 +353,7 @@ all_extractors = get_all_extractors()
                 "bank-card--e19f1547-2b5f-5f3d-82dc-817c7ba15405",
                 "indicator--538fafbc-a2d0-5728-97d5-a464ce158b3a",
                 "relationship--11811543-770e-5ee2-811c-57815d0d16a9",
+                'identity--672e6dbb-e4a0-5b81-8035-c06a1961c796', #issuer_identity
             },
             {
                 "bank-card--e19f1547-2b5f-5f3d-82dc-817c7ba15405",
