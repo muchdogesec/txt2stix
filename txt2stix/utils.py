@@ -65,14 +65,14 @@ def read_included_file(path):
     except:
         return (Path("includes")/path).read_text()
     
-def validate_tld(domain):
-    extracted_domain = tldextract.extract(domain)
-    return extracted_domain.suffix in TLDs
+def validate_tld(domain: str):
+    _, _, suffix = domain.lower().rpartition('.')
+    return suffix in TLDs
 
-def validate_reg_key(reg_key):
+def validate_reg_key(reg_key: str):
     reg_key = reg_key.lower()
     for prefix in REGISTRY_PREFIXES:
-        if reg_key.starts_with(prefix):
+        if reg_key.startswith(prefix):
             return True
     return False
 

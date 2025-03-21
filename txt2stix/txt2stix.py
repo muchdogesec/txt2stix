@@ -62,7 +62,7 @@ except:
     pass
 
 def split_comma(s: str) -> list[str]:
-    return s.split(",")
+    return [ss for ss in s.split(",") if ss]
 
 def range_type(min, max):
     def fn(astr):
@@ -178,7 +178,6 @@ REQUIRED_ENV_VARIABLES = [
     "VULMATCH_BASE_URL",
 ]
 def load_env():
-    dotenv.load_dotenv()
     for env in REQUIRED_ENV_VARIABLES:
         if not os.getenv(env):
             raise FatalException(f"env variable `{env}` required")
@@ -295,6 +294,7 @@ def run_txt2stix(bundler: txt2stixBundler, preprocessed_text: str, extractors_ma
     return retval
 
 def main():
+    dotenv.load_dotenv()
     logger = newLogger("txt2stix")
     try:
         args = parse_args()

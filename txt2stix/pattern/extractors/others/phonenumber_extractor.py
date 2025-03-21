@@ -1,4 +1,6 @@
 import re
+
+import phonenumbers
 from ..base_extractor import BaseExtractor
 
 
@@ -12,7 +14,7 @@ class PhoneNumberExtractor(BaseExtractor):
     """
 
     name = "pattern_phone_number"
-    extraction_regex = r'((\+|00)\d{1,3}\s?\d{1,4}\s?\d{1,4}\s?\d{1,4})'
+    extraction_regex = r'((\+|00)\d{1,3}[ \-]?\d{1,5}[ \-]?\d{1,5}[ \-]?\d{1,5})'
 
     @staticmethod
     def validate_phone_number(regex, phone_number):
@@ -22,8 +24,18 @@ class PhoneNumberExtractor(BaseExtractor):
     @staticmethod
     def filter_function(input_string):
         input_string = input_string.replace(" ", "")
-        pattern = re.compile(r"(\+\d{1,3})?\s?\(?\d{1,4}\)?[\s.-]?\d{3,4}[\s.-]?\d{4}")
         if len(input_string) >= 15 or len(input_string) <= 7:
             return False
-        return PhoneNumberExtractor.validate_phone_number(pattern, input_string)
+        return PhoneNumberExtractor.parse_phone_number(input_string)
+    
+    @staticmethod
+    def parse_phone_number(phone_number: str):
+        try:
+            phone_number = '+' + phone_number.replace(' ', '').removeprefix('00').removeprefix('+')
+            phone = phonenumbers.parse(phone_number, None)
+            if not phonenumbers.is_valid_number(phone):
+                return None
+            return phone
+        except:
+            return None
 

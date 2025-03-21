@@ -11,4 +11,4 @@ class ASNExtractor(BaseExtractor):
     """
 
     name = "pattern_autonomous_system_number"
-    extraction_regex = r"(?:ASN?)(?: )?(\d+)"
+    extraction_regex = r"\b(?:ASN?)(?: )?(\d{1,5})\b"

@@ -27,13 +27,15 @@ class IPv6WithPortExtractor(BaseExtractor):
         """
         if ":" in x:
             # Use regex to extract the IPv6 address and port.
-            match = re.search(r"\[(.*)\]:(.*)", x)
+            match = re.match(r"\[(.*)\]:(.*)", x)
+            print([x, match])
             if match:
                 ip_address, port = match.groups()
 
                 try:
                     # Validate the IPv6 address part.
-                    IPv6Address(ip_address)
+                    ip = IPv6Address(ip_address)
+                    print("yes", ip.exploded)
 
                     # Validate the port part.
                     if 1 <= int(port) <= 65535:

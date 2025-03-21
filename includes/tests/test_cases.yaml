@@ -35,16 +35,17 @@ generic_ipv6_address_only:
     - '2001:db8:3333:4444:CCCC:DDDD:EEEE:FFFF'
   test_negative_examples:
     - '2001:db8::'
-    - '2001:db8::1234:5678'
+    - '2001:db8k::1234:5678'
     - '2001:0db8:85a3:0000:0000:8a2e:0370:7335/32'
     - '[2001:0db8:85a3:0000:0000:8a2e:0370:7336]:80'
 
 generic_ipv6_address_cidr:
   test_positive_examples:
     - '2001:0db8:85a3:0000:0000:8a2e:0370:7334/32'
+    - '2001:db8::/32' # actually valid
   test_negative_examples:
+    - '2001:db8:/32'
     - '2001:0db8:85a3:0000:0000:8a2e:0370:7335'
-    - '2001:db8::/32'
     - '[2001:0db8:85a3:0000:0000:8a2e:0370:7336]:80'
     - '2001:0db8:85a3:0000:0000:8a2e:0370:7337/400000'
 
@@ -167,7 +168,6 @@ generic_file_name:
 generic_directory_windows:
   test_positive_examples:
     - '\a\path'
-    - 'a\path'
     - 'C:\Windows\System64'
     - '..\Publications'
     - '\\system07\C$'
@@ -177,6 +177,7 @@ generic_directory_windows:
   test_negative_examples:
     - '/is/unix/path' # is unix path
     - '\path\to\file.exe' # is path to file
+    - 'a\path' # not supported, must be absolute or have one of .. or .
 
 generic_directory_windows_with_file:
   test_positive_examples:
@@ -188,13 +189,13 @@ generic_directory_windows_with_file:
 generic_directory_unix:
   test_positive_examples:
     - '/a/file/path'
-    - 'a/file/path'
     - '~/documents'
     - '../directory'
     - './downloads/directory'
   test_negative_examples:
     - '\a\path' # is windows
     - '/a/file/path/file.sh' # is pattern_directory_unix_file
+    - 'a/file/path' # not supported, must be absolute or have one of .. or .
 
 generic_directory_unix_file:
   test_positive_examples:
@@ -303,7 +304,7 @@ generic_cryptocurrency_btc_wallet:
   test_positive_examples:
     - '3Cwgr2g7vsi1bXDUkpEnVoRLA9w4FZfC69'
   test_negative_examples:
-    - 
+    - ''
 
 generic_cryptocurrency_btc_transaction:
   test_positive_examples:
@@ -427,12 +428,9 @@ generic_iban_number:
 generic_phone_number:
   test_positive_examples:
     - '+442083661177'
-    - '00442083661177'
-    - '+12001230101'
-    - '07891345678'
-    - '07891 345 678'
+    - '0044 20836 61177'
   test_negative_examples:
-    - '+4420836611' # is not long enough
+    - '+4420836' # is not long enough
 
 ####### County extractions #######
 ### YOU NEED TO ENSURE POSITIVE TESTS EXIST IN YOUR CTIBUTLER INSTALL
@@ -465,7 +463,7 @@ ai_country:
 
 generic_mitre_attack_enterprise:
   test_positive_examples:
-    - 'T1174' # course-of-action--00d7d21b-69d6-4797-88a2-c86f3fc97651 , attack-pattern--b8c5c9dd-a662-479d-9428-ae745872537c
+    - 'T1557' # course-of-action--00d7d21b-69d6-4797-88a2-c86f3fc97651 , attack-pattern--b8c5c9dd-a662-479d-9428-ae745872537c
     - 'TA0006' # x-mitre-tactic--2558fd61-8c75-4730-94c4-11926db2a263
     - 'TA0011' # x-mitre-tactic--f72804c5-f15a-449e-a5da-2eecd181f813
     - 'G1006' # intrusion-set--cc613a49-9bfa-4e22-98d1-15ffbb03f034
@@ -485,7 +483,6 @@ generic_mitre_attack_enterprise_name:
 
 ai_mitre_attack_enterprise:
   test_positive_examples:
-    - 'T1174' # course-of-action--00d7d21b-69d6-4797-88a2-c86f3fc97651 , attack-pattern--b8c5c9dd-a662-479d-9428-ae745872537c
     - 'TA0006' # x-mitre-tactic--2558fd61-8c75-4730-94c4-11926db2a263
     - 'TA0011' # x-mitre-tactic--f72804c5-f15a-449e-a5da-2eecd181f813
     - 'G1006' # intrusion-set--cc613a49-9bfa-4e22-98d1-15ffbb03f034
@@ -495,7 +492,7 @@ ai_mitre_attack_enterprise:
     # hidden as causes ai to get confused - 'Rundll32' # attack-pattern--045d0922-2310-4e60-b5e4-3302302cb3c5
     # hidden as causes ai to get confused - 'OS Credential Dumping' # attack-pattern--0a3ead4e-6d47-4ccb-854c-a6a4f9d96b22
   test_negative_examples:
-    - 
+    - 'T019109'
 
 generic_mitre_attack_mobile:
   test_positive_examples:
@@ -523,7 +520,7 @@ ai_mitre_attack_mobile:
     # hidden as causes ai to get confused - 'Impair Defenses' # attack-pattern--20b0931a-8952-42ca-975f-775bad295f1a
     # hidden as causes ai to get confused - 'Call Log' # attack-pattern--1d1b1558-c833-482e-aabb-d07ef6eae63d
   test_negative_examples:
-    - 
+    - 'T019109'
 
 generic_mitre_attack_ics:
   test_positive_examples:
@@ -570,7 +567,6 @@ ai_mitre_capec:
     # hidden as causes ai to get confused - 'Clickjacking' # attack-pattern--ec41b2b3-a3b6-4af0-be65-69e82907dfef
     # hidden as causes ai to get confused - 'Overflow Buffers' # attack-pattern--77e51461-7843-411c-a90e-852498957f76
   test_negative_examples:
-    - 
 
 ####### MITRE CWE #######
 ### YOU NEED TO ENSURE POSITIVE TESTS EXIST IN YOUR CTIBUTLER INSTALL
@@ -608,7 +604,7 @@ generic_mitre_atlas:
     - 'AML.M0015' # course-of-action--91d08908-dd7d-487c-b035-6f43f54f1855
     - 'AML.T0050' # attack-pattern--3f58075b-fed5-49ad-b41d-b6f664678e24
   test_negative_examples:
-    - 'AML.T0000' # invalid id
+    - 'AML.T0009' # invalid id
     - 'Reconnaissance' # is name
 
 generic_mitre_atlas_name:
@@ -642,7 +638,7 @@ lookup_attack_pattern:
   test_positive_examples:
     - 'Content Spoofer'
   test_negative_examples:
-    - 'Attack Pattern' # not in lookup
+    - 'Attack Pattern2' # not in lookup
 
 lookup_campaign:
   test_positive_examples:

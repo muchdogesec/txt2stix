@@ -25,5 +25,5 @@ class CPEExtractor(BaseExtractor):
             bool: True if the CPE string is valid, False otherwise.
         """
 
-        if cpe_string[:4] == 'cpe:' and cpe_string.count(':') >= 2:
+        if cpe_string.startswith('cpe:') and cpe_string.count(':') == 12:
             return True

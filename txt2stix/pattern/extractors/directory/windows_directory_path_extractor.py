@@ -37,6 +37,9 @@ class WindowDirectoryExtractor(BaseExtractor):
             if directory_path.startswith(str(prefix)):
                 flag = True
                 break
+        start, _, _ = directory_path.partition('\\')
+        if start.startswith('%') and start.endswith('%'):
+            flag = True
         if flag:
             check = is_valid_filepath(directory_path, platform="Windows")
             if not validate_file_extension(directory_path) and check:
