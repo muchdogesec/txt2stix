@@ -197,6 +197,8 @@ class txt2stixBundler:
                 uuid.uuid5(UUID_NAMESPACE, f"{self.identity.id}+{self.created}+{name}")
             )
         external_references = external_references or []
+        labels = labels or []
+        labels.append('txt2stix')
 
         self.job_id = f"report--{self.uuid}"
         self.report = Report(
