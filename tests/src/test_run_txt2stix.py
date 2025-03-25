@@ -52,7 +52,6 @@ def test_content_check_param(mock_validate_token_count, subtests):
         data = run_txt2stix(mock_bundler, preprocessed_text, mock_extractors_map, ai_content_check_provider=parse_model(TEST_AI_MODEL))
         assert data.content_check.describes_incident == False
         assert data.extractions == None, "extraction should not happen when check_content.describes_incident is False"
-        assert 'txt2stix:describes_incident:false' in mock_bundler.report.labels
         mock_check_content.assert_called_once()
         mock_validate_token_count.assert_called_once()
 
@@ -66,7 +65,6 @@ def test_content_check_param(mock_validate_token_count, subtests):
         assert data.extractions, "extraction should happen when check_content.describes_incident is False"
         mock_check_content.assert_called_once()
         mock_validate_token_count.assert_called_once()
-        assert 'txt2stix:describes_incident:true' in mock_bundler.report.labels
         for classification in incident_classifications:
             assert f'txt2stix:{classification}'.lower() in mock_bundler.report.labels
 

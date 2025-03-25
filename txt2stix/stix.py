@@ -198,7 +198,7 @@ class txt2stixBundler:
             )
         external_references = external_references or []
         labels = labels or []
-        labels.append('txt2stix')
+        labels.append('placeholder_label')
 
         self.job_id = f"report--{self.uuid}"
         self.report = Report(
@@ -226,6 +226,7 @@ class txt2stixBundler:
             confidence=confidence,
         )
         self.report.object_refs.clear()  # clear object refs
+        self.report.labels.pop(-1) # remove txt2stix placeholder
         self.added_objects = set()
         self.set_defaults()
 
