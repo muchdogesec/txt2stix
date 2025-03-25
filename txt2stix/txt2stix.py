@@ -260,6 +260,7 @@ def run_txt2stix(bundler: txt2stixBundler, preprocessed_text: str, extractors_ma
                 ai_settings_relationships=None,
                 relationship_mode="standard",
                 ignore_extraction_boundary=False,
+                always_extract=False, # continue even if ai_content_check fails
 
                 **kwargs
         ) -> Txt2StixData:
@@ -277,7 +278,7 @@ def run_txt2stix(bundler: txt2stixBundler, preprocessed_text: str, extractors_ma
         for classification in retval.content_check.incident_classification:
             bundler.report.labels.append(f'txt2stix:{classification}'.lower())
 
-    if should_extract:
+    if should_extract or always_extract:
         if extractors_map.get("ai"):
             validate_token_count(input_token_limit, preprocessed_text, ai_settings_extractions)
         if relationship_mode == "ai":
