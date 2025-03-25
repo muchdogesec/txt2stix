@@ -1,13 +1,20 @@
+## Tests
 
-Generate test cases
+### Manual tests
+
+We have manual tests (see `manual-tests/` for cases)
+
+To generate the test cases (`includes/test_cases.yaml`) to run these tests;
 
 ```shell
 python3 tests/scripts/generate_simple_extraction_test_cases_txt_files.py
 ```
 
-Create secrets 
+### Automated tests (run as Github actons)
 
-```
+You must set the following in a Github environment called `txt2stix_tests`
+
+```txt
 ## This section is required
 CTIBUTLER_BASE_URL=
 CTIBUTLER_API_KEY=

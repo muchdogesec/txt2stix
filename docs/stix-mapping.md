@@ -57,7 +57,7 @@ All files uploaded are represented as a unique [STIX Report SDO](https://docs.oa
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
     ],
     "labels": [
-        "<LABELS ADDED BY USER>"
+        "<LABELS ADDED BY USER>", "<CLASSIFICATION TAGS IF AI CONTENT CHECK PROVIDER SET>"
     ],
     "external_references": [
         {
