@@ -47,8 +47,7 @@ class STIXObjectRetriever:
         page = 1
         while True:
             resp = s.get(endpoint, params=dict(page=page, page_size=50))
-            if resp.status_code != 200:
-                break
+            resp.raise_for_status()
             d = resp.json()
             if len(d[key]) == 0:
                 break
