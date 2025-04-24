@@ -610,7 +610,7 @@ generic_mitre_atlas:
 generic_mitre_atlas_name:
   test_positive_examples:
     - 'Defense Evasion' # x-mitre-tactic--45d9ba3e-1656-4de1-b132-e9faa8f8c969
-    - 'ML Attack Staging' # x-mitre-tactic--483cda0b-e5d6-45e6-a87e-06f5986a39e4
+    - 'Active Scanning' # attack-pattern--c3a26e3e-3220-422c-b4b4-3913820fe6cf
   test_negative_examples:
     - 'AML.T0050' # is id
 
