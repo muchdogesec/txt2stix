@@ -191,6 +191,8 @@ python3 txt2stix.py \
 
 #### 0.1.6 Created time
 
+when created is passed, modified and created should be the same.
+
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
