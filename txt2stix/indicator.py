@@ -677,7 +677,7 @@ def _build_observables(
             dict_to_stix2(
                 {
                     "type": "attack-pattern",
-                    "id": "attack-pattern--"+ uuid.uuid5(UUID_NAMESPACE, extracted_value),
+                    "id": "attack-pattern--"+ str(uuid.uuid5(UUID_NAMESPACE, extracted_value)),
                     "spec_version": "2.1",
                     "created_by_ref": indicator["created_by_ref"],
                     "created": indicator["created"],
@@ -693,7 +693,7 @@ def _build_observables(
             dict_to_stix2(
                 {
                     "type": "campaign",
-                    "id": "campaign--"+ uuid.uuid5(UUID_NAMESPACE, extracted_value),
+                    "id": "campaign--"+ str(uuid.uuid5(UUID_NAMESPACE, extracted_value)),
                     "spec_version": "2.1",
                     "created_by_ref": indicator["created_by_ref"],
                     "created": indicator["created"],
@@ -710,7 +710,7 @@ def _build_observables(
             dict_to_stix2(
                 {
                     "type": "course-of-action",
-                    "id": "course-of-action--"+ uuid.uuid5(UUID_NAMESPACE, extracted_value),
+                    "id": "course-of-action--"+ str(uuid.uuid5(UUID_NAMESPACE, extracted_value)),
                     "spec_version": "2.1",
                     "created_by_ref": indicator["created_by_ref"],
                     "created": indicator["created"],
@@ -727,7 +727,7 @@ def _build_observables(
             dict_to_stix2(
                 {
                     "type": "infrastructure",
-                    "id": "infrastructure--"+ uuid.uuid5(UUID_NAMESPACE, extracted_value),
+                    "id": "infrastructure--"+ str(uuid.uuid5(UUID_NAMESPACE, extracted_value)),
                     "spec_version": "2.1",
                     "created_by_ref": indicator["created_by_ref"],
                     "created": indicator["created"],
@@ -745,7 +745,7 @@ def _build_observables(
             dict_to_stix2(
                 {
                     "type": "intrusion-set",
-                    "id": "intrusion-set--"+ uuid.uuid5(UUID_NAMESPACE, extracted_value),
+                    "id": "intrusion-set--"+ str(uuid.uuid5(UUID_NAMESPACE, extracted_value)),
                     "spec_version": "2.1",
                     "created_by_ref": indicator["created_by_ref"],
                     "created": indicator["created"],
@@ -762,7 +762,7 @@ def _build_observables(
             dict_to_stix2(
                 {
                     "type": "malware",
-                    "id": "malware--"+ uuid.uuid5(UUID_NAMESPACE, extracted_value),
+                    "id": "malware--"+ str(uuid.uuid5(UUID_NAMESPACE, extracted_value)),
                     "spec_version": "2.1",
                     "created_by_ref": indicator["created_by_ref"],
                     "created": indicator["created"],
@@ -781,7 +781,7 @@ def _build_observables(
             dict_to_stix2(
                 {
                     "type": "threat-actor",
-                    "id": "threat-actor--"+ uuid.uuid5(UUID_NAMESPACE, extracted_value),
+                    "id": "threat-actor--"+ str(uuid.uuid5(UUID_NAMESPACE, extracted_value)),
                     "spec_version": "2.1",
                     "created_by_ref": indicator["created_by_ref"],
                     "created": indicator["created"],
@@ -799,7 +799,7 @@ def _build_observables(
             dict_to_stix2(
                 {
                     "type": "tool",
-                    "id": "tool--"+ uuid.uuid5(UUID_NAMESPACE, extracted_value),
+                    "id": "tool--"+ str(uuid.uuid5(UUID_NAMESPACE, extracted_value)),
                     "spec_version": "2.1",
                     "created_by_ref": indicator["created_by_ref"],
                     "created": indicator["created"],
@@ -817,7 +817,7 @@ def _build_observables(
             dict_to_stix2(
                 {
                     "type": "identity",
-                    "id": "identity--"+ uuid.uuid5(UUID_NAMESPACE, extracted_value),
+                    "id": "identity--"+ str(uuid.uuid5(UUID_NAMESPACE, extracted_value)),
                     "spec_version": "2.1",
                     "created_by_ref": indicator["created_by_ref"],
                     "created": indicator["created"],
