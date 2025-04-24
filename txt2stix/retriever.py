@@ -1,3 +1,4 @@
+import logging
 from urllib.parse import urljoin
 import dotenv, os
 import stix2
@@ -62,9 +63,9 @@ def retrieve_stix_objects(stix_mapping: str, id, host=None):
         if stix_mapping in ['location']:
             host = 'ctibutler'
         if not host:
-            host, stix_mapping = stix_mapping.split('-', 1)
+            host, object_path = stix_mapping.split('-', 1)
         retreiver = STIXObjectRetriever(host)
-        match stix_mapping:
+        match object_path:
             ### ATT&CK by ID
             case 'mitre-attack-ics-id':
                 return retreiver.get_attack_object('ics', id)
@@ -115,7 +116,11 @@ def retrieve_stix_objects(stix_mapping: str, id, host=None):
             case "disarm-name":
                 return retreiver.get_objects_by_name(id, 'disarm')
             case _:
-                raise NotImplementedError(f"pair {(host, stix_mapping)=} not implemented")
-    except Exception as e:
+                raise NotImplementedError(f"pair {(host, object_path)=} not implemented")
+    except NotImplementedError:
         pass
+    except Exception as e:
+        msg = f"failed to get {object_path} for {id} from {host}"
+        logging.info(msg)
+        logging.debug(msg, exc_info=True)
     return None
