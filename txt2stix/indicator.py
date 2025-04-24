@@ -1,6 +1,7 @@
 from __future__ import annotations
 import os
 import re
+import uuid
 from stix2.parsing import dict_to_stix2
 from stix2 import HashConstant
 from stix2.v21.vocab import HASHING_ALGORITHM
@@ -23,7 +24,7 @@ if TYPE_CHECKING:
 
 # from schwifty import IBAN
 
-from .common import MinorException
+from .common import UUID_NAMESPACE, MinorException
 
 from .retriever import retrieve_stix_objects
 
@@ -676,6 +677,7 @@ def _build_observables(
             dict_to_stix2(
                 {
                     "type": "attack-pattern",
+                    "id": "attack-pattern--"+ uuid.uuid5(UUID_NAMESPACE, extracted_value),
                     "spec_version": "2.1",
                     "created_by_ref": indicator["created_by_ref"],
                     "created": indicator["created"],
@@ -691,6 +693,7 @@ def _build_observables(
             dict_to_stix2(
                 {
                     "type": "campaign",
+                    "id": "campaign--"+ uuid.uuid5(UUID_NAMESPACE, extracted_value),
                     "spec_version": "2.1",
                     "created_by_ref": indicator["created_by_ref"],
                     "created": indicator["created"],
@@ -707,6 +710,7 @@ def _build_observables(
             dict_to_stix2(
                 {
                     "type": "course-of-action",
+                    "id": "course-of-action--"+ uuid.uuid5(UUID_NAMESPACE, extracted_value),
                     "spec_version": "2.1",
                     "created_by_ref": indicator["created_by_ref"],
                     "created": indicator["created"],
@@ -723,6 +727,7 @@ def _build_observables(
             dict_to_stix2(
                 {
                     "type": "infrastructure",
+                    "id": "infrastructure--"+ uuid.uuid5(UUID_NAMESPACE, extracted_value),
                     "spec_version": "2.1",
                     "created_by_ref": indicator["created_by_ref"],
                     "created": indicator["created"],
@@ -740,6 +745,7 @@ def _build_observables(
             dict_to_stix2(
                 {
                     "type": "intrusion-set",
+                    "id": "intrusion-set--"+ uuid.uuid5(UUID_NAMESPACE, extracted_value),
                     "spec_version": "2.1",
                     "created_by_ref": indicator["created_by_ref"],
                     "created": indicator["created"],
@@ -756,6 +762,7 @@ def _build_observables(
             dict_to_stix2(
                 {
                     "type": "malware",
+                    "id": "malware--"+ uuid.uuid5(UUID_NAMESPACE, extracted_value),
                     "spec_version": "2.1",
                     "created_by_ref": indicator["created_by_ref"],
                     "created": indicator["created"],
@@ -774,6 +781,7 @@ def _build_observables(
             dict_to_stix2(
                 {
                     "type": "threat-actor",
+                    "id": "threat-actor--"+ uuid.uuid5(UUID_NAMESPACE, extracted_value),
                     "spec_version": "2.1",
                     "created_by_ref": indicator["created_by_ref"],
                     "created": indicator["created"],
@@ -791,6 +799,7 @@ def _build_observables(
             dict_to_stix2(
                 {
                     "type": "tool",
+                    "id": "tool--"+ uuid.uuid5(UUID_NAMESPACE, extracted_value),
                     "spec_version": "2.1",
                     "created_by_ref": indicator["created_by_ref"],
                     "created": indicator["created"],
@@ -808,6 +817,7 @@ def _build_observables(
             dict_to_stix2(
                 {
                     "type": "identity",
+                    "id": "identity--"+ uuid.uuid5(UUID_NAMESPACE, extracted_value),
                     "spec_version": "2.1",
                     "created_by_ref": indicator["created_by_ref"],
                     "created": indicator["created"],
