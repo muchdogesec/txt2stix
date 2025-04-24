@@ -59,6 +59,7 @@ class STIXObjectRetriever:
     
 def retrieve_stix_objects(stix_mapping: str, id, host=None):
     try:
+        object_path = stix_mapping
         if stix_mapping in ['location']:
             host = 'ctibutler'
         if not host:
@@ -116,7 +117,7 @@ def retrieve_stix_objects(stix_mapping: str, id, host=None):
                 return retreiver.get_objects_by_name(id, 'disarm')
             case _:
                 raise NotImplementedError(f"pair {(host, object_path)=} not implemented")
-    except NotImplementedError:
+    except (NotImplementedError, ValueError):
         pass
     except Exception as e:
         msg = f"failed to get {object_path} for {id} from {host}"
