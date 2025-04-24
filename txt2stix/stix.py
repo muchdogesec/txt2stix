@@ -183,7 +183,8 @@ class txt2stixBundler:
         labels,
         report_id=None,
         created=None,
-        external_references=None
+        external_references=None,
+        modified=None,
     ) -> None:
         self.observables_processed = 0
         self.created = created or dt.now()
@@ -210,6 +211,7 @@ class txt2stixBundler:
                 f"note--{self.uuid}"
             ],  # won't allow creation with empty object_refs
             created=self.created,
+            modified=modified or self.created,
             object_marking_refs=[self.tlp_level.value.id],
             labels=labels,
             published=dt.now(),

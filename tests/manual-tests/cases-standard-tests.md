@@ -157,7 +157,8 @@ python3 txt2stix.py \
 	--name 'Test 0.1.4 File too many chars' \
 	--tlp_level amber \
 	--confidence 100 \
-	--use_extractions pattern_ipv4_address_only
+	--use_extractions ai_ipv4_address_only \
+	--ai_settings_extractions openai
 ```
 
 #### 0.1.5 Labels
@@ -189,6 +190,8 @@ python3 txt2stix.py \
 ```
 
 #### 0.1.6 Created time
+
+when created is passed, modified and created should be the same.
 
 ```shell
 python3 txt2stix.py \
