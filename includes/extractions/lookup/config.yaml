@@ -251,7 +251,7 @@ lookup_disarm_name:
 lookup_attack_pattern:
   type: lookup
   name: 'Attack Patterns'
-  description: ''
+  description: 'Will extract all Attack Pattern entries found in the lookup file.'
   notes: ''
   file: 'lookups/attack_pattern.txt'
   created: 2020-01-01
@@ -264,7 +264,7 @@ lookup_attack_pattern:
 lookup_campaign:
   type: lookup
   name: 'Campaign'
-  description: ''
+  description: 'Will extract all Campaign entries found in the lookup file.'
   notes: ''
   file: 'lookups/campaign.txt'
   created: 2020-01-01
@@ -277,7 +277,7 @@ lookup_campaign:
 lookup_course_of_action:
   type: lookup
   name: 'Course of Action'
-  description: ''
+  description: 'Will extract all Course of Action entries found in the lookup file.'
   notes: ''
   file: 'lookups/course_of_action.txt'
   created: 2020-01-01
@@ -290,7 +290,7 @@ lookup_course_of_action:
 lookup_identity:
   type: lookup
   name: 'Identity'
-  description: ''
+  description: 'Will extract all Identity entries found in the lookup file.'
   notes: ''
   file: 'lookups/identity.txt'
   created: 2020-01-01
@@ -299,12 +299,11 @@ lookup_identity:
   version: 1.0.0
   test_cases: lookup_identity
   stix_mapping: identity
-  identity: lookups/identity.txt
 
 lookup_infrastructure:
   type: lookup
   name: 'Infrastructure'
-  description: ''
+  description: 'Will extract all Infrastructure entries found in the lookup file.'
   notes: ''
   file: 'lookups/infrastructure.txt'
   created: 2020-01-01
@@ -317,7 +316,7 @@ lookup_infrastructure:
 lookup_intrusion_set:
   type: lookup
   name: 'Intrustion Set'
-  description: ''
+  description: 'Will extract all Intrustion Set entries found in the lookup file.'
   notes: ''
   file: 'lookups/intrusion_set.txt'
   created: 2020-01-01
@@ -330,7 +329,7 @@ lookup_intrusion_set:
 lookup_malware:
   type: lookup
   name: 'Malware'
-  description: ''
+  description: 'Will extract all Malware entries found in the lookup file.'
   notes: ''
   file: 'lookups/malware.txt'
   created: 2020-01-01
@@ -343,7 +342,7 @@ lookup_malware:
 lookup_threat_actor:
   type: lookup
   name: 'Threat Actor'
-  description: ''
+  description: 'Will extract all Threat Actor entries found in the lookup file.'
   notes: ''
   file: 'lookups/threat_actor.txt'
   created: 2020-01-01
@@ -356,7 +355,7 @@ lookup_threat_actor:
 lookup_tool:
   type: lookup
   name: 'Tool'
-  description: ''
+  description: 'Will extract all Tool entries found in the lookup file.'
   notes: ''
   file: 'lookups/tool.txt'
   created: 2020-01-01

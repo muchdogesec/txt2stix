@@ -156,7 +156,7 @@ pattern_host_name:
 
 pattern_host_name_subdomain:
   type: pattern
-  name: 'Hostname extractions'
+  name: 'Hostname (subdomain) extractions'
   description: 'Extracts hostnames that fail subdomain TLD validation. Captures data that fails pattern_domain_name_subdomain TLD validation.'
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_host_name_subdomain'
   created: 2020-01-01
@@ -375,7 +375,7 @@ pattern_user_agent:
 pattern_autonomous_system_number:
   type: pattern
   name: 'Autonomous System Numbers (ASN)'
-  description: 'Always follow the formats: `ASN XXXXX` (e.g  `ASN15139`), `ASNXXXXX` (e.g  `ASN 15139`), `AS XXXXX` (e.g  `AS15139`), or `ASXXXXX` (e.g  `AS 15139`)'
+  description: 'Will create automomous-system objects. Always follow the formats: `ASN XXXXX` (e.g  `ASN15139`), `ASNXXXXX` (e.g  `ASN 15139`), `AS XXXXX` (e.g  `AS15139`), or `ASXXXXX` (e.g  `AS 15139`)'
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_autonomous_system_number'
   created: 2020-01-01
   modified:  2020-01-01
@@ -427,7 +427,7 @@ pattern_cryptocurrency_btc_transaction:
 pattern_cve_id:
   type: pattern
   name: 'CVE'
-  description: 'CVEs IDs always take the format; `CVE-YYYY-NNNNN` (e.g. `CVE-2022-29098`) or `CVE-YYYY-NNNN` (e.g. `CVE-1999-0007`).'
+  description: 'Will create a vulnerability object. CVEs IDs always take the format; `CVE-YYYY-NNNNN` (e.g. `CVE-2022-29098`) or `CVE-YYYY-NNNN` (e.g. `CVE-1999-0007`).'
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_cve_id'
   created: 2020-01-01
   modified:  2020-01-01
@@ -441,7 +441,7 @@ pattern_cve_id:
 pattern_cpe_uri:
   type: pattern
   name: 'CPE'
-  description: 'CPE URIs always start with `cpe:2.3` and have 13 parts (or 12 `:` characters)'
+  description: 'Will create a software object. CPE URIs always start with `cpe:2.3` and have 13 parts (or 12 `:` characters)'
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_cpe_uri'
   created: 2020-01-01
   modified:  2020-01-01
@@ -455,7 +455,7 @@ pattern_cpe_uri:
 pattern_bank_card_mastercard:
   type: pattern
   name: 'Bank Card Mastercard'
-  description: 'Will also enrich card information if BIN List API key set'
+  description: 'Will extract card numbers and create a bank-card object. Will also enrich card information if BIN List API key set'
   notes: 'Also available: ai_bank_card_mastercard'
   created: 2020-01-01
   modified:  2020-01-01
@@ -467,7 +467,7 @@ pattern_bank_card_mastercard:
 pattern_bank_card_visa:
   type: pattern
   name: 'Bank Card Visa'
-  description: 'Will also enrich card information if BIN List API key set'
+  description: 'Will extract card numbers and create a bank-card object. Will also enrich card information if BIN List API key set'
   notes: 'Also available: ai_bank_card_visa'
   created: 2020-01-01
   modified:  2020-01-01
@@ -479,7 +479,7 @@ pattern_bank_card_visa:
 pattern_bank_card_amex:
   type: pattern
   name: 'Bank Card American Express'
-  description: 'Will also enrich card information if BIN List API key set'
+  description: 'Will extract card numbers and create a bank-card object. Will also enrich card information if BIN List API key set'
   notes: 'Also available: ai_bank_card_amex'
   created: 2020-01-01
   modified:  2020-01-01
@@ -491,7 +491,7 @@ pattern_bank_card_amex:
 pattern_bank_card_union_pay:
   type: pattern
   name: 'Bank Card Union Pay'
-  description: 'Will also enrich card information if BIN List API key set'
+  description: 'Will extract card numbers and create a bank-card object. Will also enrich card information if BIN List API key set'
   notes: 'Also available: ai_bank_card_union_pay'
   created: 2020-01-01
   modified:  2020-01-01
@@ -503,7 +503,7 @@ pattern_bank_card_union_pay:
 pattern_bank_card_diners:
   type: pattern
   name: 'Bank Card Diners'
-  description: 'Will also enrich card information if BIN List API key set'
+  description: 'Will extract card numbers and create a bank-card object. Will also enrich card information if BIN List API key set'
   notes: 'Also available: ai_bank_card_diners'
   created: 2020-01-01
   modified:  2020-01-01
@@ -515,7 +515,7 @@ pattern_bank_card_diners:
 pattern_bank_card_jcb:
   type: pattern
   name: 'Bank Card JCB'
-  description: 'Will also enrich card information if BIN List API key set'
+  description: 'Will extract card numbers and create a bank-card object. Will also enrich card information if BIN List API key set'
   notes: 'Also available: ai_bank_card_jcb'
   created: 2020-01-01
   modified:  2020-01-01
@@ -527,7 +527,7 @@ pattern_bank_card_jcb:
 pattern_bank_card_discover:
   type: pattern
   name: 'Bank Card Discover'
-  description: 'Will also enrich card information if BIN List API key set'
+  description: 'Will extract card numbers and create a bank-card object. Will also enrich card information if BIN List API key set'
   notes: 'Also available: ai_bank_card_discover'
   created: 2020-01-01
   modified:  2020-01-01
@@ -541,7 +541,7 @@ pattern_bank_card_discover:
 pattern_iban_number:
   type: pattern
   name: 'IBAN'
-  description: ''
+  description: 'Will extract IBAN numbers and create a bank-account object'
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_iban_number'
   created: 2020-01-01
   modified:  2020-01-01
@@ -555,7 +555,7 @@ pattern_iban_number:
 pattern_phone_number:
   type: pattern
   name: 'Phone number'
-  description: ''
+  description: 'Will extract phone numbers and create a phone-number object'
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_phone_number'
   created: 2020-01-01
   modified:  2020-01-01
