@@ -800,7 +800,94 @@ python3 txt2stix.py \
 	--report_id 6ba5c857-86be-4016-9490-7b83b2d18105
 ```
 
-### ai_malware
+
+## Generic STIX lookups
+
+#### ai_attack_pattern
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/lookup_attack_pattern.txt \
+	--name 'ai_attack_pattern' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_attack_pattern \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id 9ec6d60f-76a8-4428-8923-646e176eab0b
+```
+
+#### ai_campaign
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/lookup_campaign.txt \
+	--name 'ai_campaign' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_campaign \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id 7ff6f6c3-8246-4a54-8055-bd53f59fb436
+```
+
+#### ai_course_of_action
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/lookup_course_of_action.txt \
+	--name 'ai_course_of_action' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_course_of_action \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id 29e17725-c6fc-4618-8584-841eb8402fd4
+```
+
+#### ai_identity
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/lookup_identity.txt \
+	--name 'ai_identity' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_identity \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id 6c66109c-565e-454a-9244-793bf59ca3bb
+```
+
+#### ai_infrastructure
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/lookup_infrastructure.txt \
+	--name 'ai_infrastructure' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_infrastructure \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id faeb013a-e09e-4ab8-b892-362ce00ff581
+```
+
+#### ai_intrusion_set
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/lookup_intrusion_set.txt \
+	--name 'ai_intrusion_set' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_intrusion_set \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id 5a2ed151-96eb-482c-b0f3-0ce268b193d5
+```
+
+#### ai_malware
 
 ```shell
 python3 txt2stix.py \
@@ -814,7 +901,7 @@ python3 txt2stix.py \
 	--report_id 67457a27-6f9c-4dea-9289-2cd4345de918
 ```
 
-### ai_threat_actor
+#### ai_threat_actor
 
 ```shell
 python3 txt2stix.py \
@@ -828,7 +915,7 @@ python3 txt2stix.py \
 	--report_id 5fa6d228-149b-4f7f-8f7f-f5b430c7b9b9
 ```
 
-### ai_tool
+#### ai_tool
 
 ```shell
 python3 txt2stix.py \

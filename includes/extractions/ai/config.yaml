@@ -192,7 +192,7 @@ ai_host_name:
 
 ai_host_name_subdomain:
   type: ai
-  name: 'Hostname extractions'
+  name: 'Hostname (subdomain) extractions'
   description: 'Extracts hostnames that fail subdomain TLD validation. Captures data that fails pattern_domain_name_subdomain TLD validation.'
   notes: 'pattern_host_name_subdomain legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
@@ -479,7 +479,7 @@ ai_autonomous_system_number:
 ai_cryptocurrency_btc_wallet:
   type: ai
   name: 'Cryptocurrency Bitcoin Wallet'
-  description: ''
+  description: 'Will extract bitcoin wallet hashes and create a crytocurrency-wallet object'
   notes: 'pattern_cryptocurrency_btc_wallet legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified: 2020-01-01
@@ -666,7 +666,7 @@ ai_bank_card_discover:
 ai_iban_number:
   type: ai
   name: 'IBAN'
-  description: ''
+  description: 'Will extract IBAN numbers and create a bank-account object'
   notes: 'pattern_iban_number legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
@@ -683,7 +683,7 @@ ai_iban_number:
 ai_phone_number:
   type: ai
   name: 'Phone number'
-  description: ''
+  description: 'Will extract phone numbers and create a phone-number object'
   notes: 'pattern_phone_number legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified: 2020-01-01
@@ -700,7 +700,7 @@ ai_phone_number:
 ai_country:
   type: ai
   name: 'Country'
-  description: ''
+  description: 'Will extract countries, turn into two digit country codes, and import location object from CTI Butler.'
   notes: 'lookup_country_alpha2 legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified: 2020-01-01
@@ -717,7 +717,7 @@ ai_country:
 ai_mitre_attack_enterprise:
   type: ai
   name: 'MITRE ATT&CK Enterprise'
-  description: ''
+  description: 'Will extract references to MITRE ATT&CK Enterprise objects, convert to ID, and import object from CTI Butler.'
   notes: 'lookup_mitre_attack_enterprise_id and lookup_mitre_attack_enterprise_name legacy extractions also exists if you cannot use AI'
   created: 2020-01-01
   modified: 2020-01-01
@@ -732,7 +732,7 @@ ai_mitre_attack_enterprise:
 ai_mitre_attack_mobile:
   type: ai
   name: 'MITRE ATT&CK Mobile'
-  description: ''
+  description: 'Will extract references to MITRE ATT&CK Mobile objects, convert to ID, and import object from CTI Butler.'
   notes: 'lookup_mitre_attack_mobile_id and lookup_mitre_attack_mobile_name legacy extractions also exists if you cannot use AI'
   created: 2020-01-01
   modified: 2020-01-01
@@ -747,7 +747,7 @@ ai_mitre_attack_mobile:
 ai_mitre_attack_ics:
   type: ai
   name: 'MITRE ATT&CK ICS'
-  description: ''
+  description: 'Will extract references to MITRE ATT&CK ICS objects, convert to ID, and import object from CTI Butler.'
   notes: 'lookup_mitre_attack_ics_id and lookup_mitre_attack_ics_name legacy extractions also exists if you cannot use AI'
   created: 2020-01-01
   modified: 2020-01-01
@@ -764,7 +764,7 @@ ai_mitre_attack_ics:
 ai_mitre_capec:
   type: ai
   name: 'MITRE CAPEC ID'
-  description: ''
+  description: 'Will extract references to MITRE CAPEC objects, convert to ID, and import object from CTI Butler.'
   notes: 'lookup_mitre_capec_id and lookup_mitre_capec_name legacy extractions also exists if you cannot use AI'
   created: 2020-01-01
   modified: 2020-01-01
@@ -781,7 +781,7 @@ ai_mitre_capec:
 ai_mitre_cwe:
   type: ai
   name: 'MITRE CWE'
-  description: ''
+  description: 'Will extract references to MITRE CWE objects, convert to ID, and import object from CTI Butler.'
   notes: 'lookup_mitre_cwe_id and lookup_mitre_cwe_name legacy extractions also exists if you cannot use AI'
   created: 2020-01-01
   modified: 2020-01-01
@@ -795,17 +795,107 @@ ai_mitre_cwe:
 
 ####### Generic Extractions #######
 
+ai_attack_pattern:
+  type: ai
+  name: 'Attack Pattern'
+  description: 'Will extract all Attack Pattern references'
+  notes: 'lookup_attack_pattern legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all Attack Patterns from the text.'
+  prompt_helper: 'Attack Patterns are a type of TTP that describe ways that adversaries attempt to compromise targets. Attack Patterns are used to help categorize attacks, generalize specific attacks to the patterns that they follow, and provide detailed information about how attacks are performed. An example of an attack pattern is "spear phishing": a common type of attack where an attacker sends a carefully crafted e-mail message to a party with the intent of getting them to click a link or open an attachment to deliver malware.'
+  prompt_conversion: ''
+  test_cases: lookup_attack_pattern
+  stix_mapping: attack-pattern
+
+ai_campaign:
+  type: ai
+  name: 'Campaign'
+  description: 'Will extract all Campaign references'
+  notes: 'lookup_campaign legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all Campaigns from the text.'
+  prompt_helper: 'A Campaign is a grouping of adversarial behaviors that describes a set of malicious activities or attacks (sometimes called waves) that occur over a period of time against a specific set of targets. Campaigns usually have well defined objectives and may be part of an Intrusion Set. Campaigns are often attributed to an intrusion set and threat actors. The threat actors may reuse known infrastructure from the intrusion set or may set up new infrastructure specific for conducting that campaign. Campaigns can be characterized by their objectives and the incidents they cause, people or resources they target, and the resources (infrastructure, intelligence, Malware, Tools, etc.) they use.'
+  prompt_conversion: ''
+  test_cases: lookup_campaign
+  stix_mapping: campaign
+
+ai_course_of_action:
+  type: ai
+  name: 'Course of Action'
+  description: 'Will extract all Course of Action references'
+  notes: 'lookup_course_of_action legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all Course of Actions from the text.'
+  prompt_helper: 'A Course of Action (CoA) is a recommendation from a producer of intelligence to a consumer on the actions that they might take in response to that intelligence. The CoA may be preventative to deter exploitation or corrective to counter its potential impact. The CoA may describe automatable actions (applying patches, configuring firewalls, etc.), manual processes, or a combination of the two. For example, a CoA that describes how to remediate a vulnerability could describe how to apply the patch that removes that vulnerability.'
+  prompt_conversion: ''
+  test_cases: lookup_course_of_action
+  stix_mapping: course-of-action
+
+ai_identity:
+  type: ai
+  name: 'Identity'
+  description: 'Will extract all Identity references'
+  notes: 'lookup_identity legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all Identities from the text.'
+  prompt_helper: 'Identities can represent actual individuals, organizations, or groups (e.g., ACME, Inc.) as well as classes of individuals, organizations, systems or groups (e.g., the finance sector).'
+  prompt_conversion: ''
+  test_cases: lookup_identity
+  stix_mapping: identity
+
+ai_infrastructure:
+  type: ai
+  name: 'Infrastructure'
+  description: 'Will extract all Infrastructure references'
+  notes: 'lookup_infrastructure legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all Infrastructure from the text.'
+  prompt_helper: 'The Infrastructure SDO represents a type of TTP and describes any systems, software services and any associated physical or virtual resources intended to support some purpose (e.g., C2 servers used as part of an attack, device or server that are part of defence, database servers targeted by an attack, etc.). While elements of an attack can be represented by other SDOs or SCOs, the Infrastructure SDO represents a named group of related data that constitutes the infrastructure.'
+  prompt_conversion: ''
+  test_cases: lookup_infrastructure
+  stix_mapping: infrastructure
+
+ai_intrusion_set:
+  type: ai
+  name: 'Intrusion Set'
+  description: 'Will extract all Intrusion Set references'
+  notes: 'lookup_intrusion_set legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: DOGESEC
+  version: 1.0.0
+  prompt_base: 'Extract all Intrusion Sets from the text.'
+  prompt_helper: 'An Intrusion Set is a grouped set of adversarial behaviors and resources with common properties that is believed to be orchestrated by a single organization. An Intrusion Set may capture multiple Campaigns or other activities that are all tied together by shared attributes indicating a common known or unknown Threat Actor. New activity can be attributed to an Intrusion Set even if the Threat Actors behind the attack are not known. Threat Actors can move from supporting one Intrusion Set to supporting another, or they may support multiple Intrusion Sets.'
+  prompt_conversion: ''
+  test_cases: lookup_intrusion_set
+  stix_mapping: intrusion_set
+
 ai_malware:
   type: ai
   name: 'Malware'
-  description: ''
+  description: 'Will extract all Malware references'
   notes: 'lookup_malware legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
   version: 1.0.0
   prompt_base: 'Extract all Malware names from the text.'
-  prompt_helper: ''
+  prompt_helper: 'Malware is a type of TTP that represents malicious code. It generally refers to a program that is inserted into a system, usually covertly. The intent is to compromise the confidentiality, integrity, or availability of the victims data, applications, or operating system (OS) or otherwise annoy or disrupt the victim. The Malware SDO characterizes, identifies, and categorizes malware instances and families from data that may be derived from analysis. This SDO captures detailed information about how the malware works and what it does. This SDO captures contextual data relevant to sharing Malware data without requiring the full analysis provided by the Malware Analysis SDO.'
   prompt_conversion: ''
   test_cases: lookup_malware
   stix_mapping: malware
@@ -813,14 +903,14 @@ ai_malware:
 ai_threat_actor:
   type: ai
   name: 'Threat Actor'
-  description: ''
+  description: 'Will extract all Threat Actor references'
   notes: 'lookup_threat_actor legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
   version: 1.0.0
   prompt_base: 'Extract all Threat Actor names from the text.'
-  prompt_helper: ''
+  prompt_helper: 'Threat Actors are actual individuals, groups, or organizations believed to be operating with malicious intent. A Threat Actor is not an Intrusion Set but may support or be affiliated with various Intrusion Sets, groups, or organizations over time. Threat Actors leverage their resources, and possibly the resources of an Intrusion Set, to conduct attacks and run Campaigns against targets. Threat Actors can be characterized by their motives, capabilities, goals, sophistication level, past activities, resources they have access to, and their role in the organization.'
   prompt_conversion: ''
   test_cases: lookup_threat_actor
   stix_mapping: threat-actor
@@ -828,14 +918,14 @@ ai_threat_actor:
 ai_tool:
   type: ai
   name: 'Tool'
-  description: ''
+  description: 'Will extract all Tool references'
   notes: 'lookup_tool legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
   version: 1.0.0
   prompt_base: 'Extract all Software names from the text.'
-  prompt_helper: ''
+  prompt_helper: 'Tools are legitimate software that can be used by threat actors to perform attacks. Knowing how and when threat actors use such tools can be important for understanding how campaigns are executed. Unlike malware, these tools or software packages are often found on a system and have legitimate purposes for power users, system administrators, network administrators, or even normal users. Remote access tools (e.g., RDP) and network scanning tools (e.g., Nmap) are examples of Tools that may be used by a Threat Actor during an attack. The Tool SDO characterizes the properties of these software tools and can be used as a basis for making an assertion about how a Threat Actor uses them during an attack. It contains properties to name and describe the tool, a list of Kill Chain Phases the tool can be used to carry out, and the version of the tool.'
   prompt_conversion: ''
   test_cases: lookup_tool
   stix_mapping: tool
