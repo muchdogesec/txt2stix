@@ -324,6 +324,42 @@ python3 txt2stix.py \
 	--report_id 8cf2590e-f7b8-40c6-99cd-4aad9fbdc8bd
 ```
 
+### Report UUIDs
+
+Ip1
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/manually_generated_reports/ip1.txt \
+	--name 'ip1' \
+	--use_extractions pattern_ipv4_address_only \
+	--report_id c36664ff-be15-455e-9dea-8d1161f67feb
+```
+
+Ip2 same IP as Ip1, but slightly different MD5
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/manually_generated_reports/ip2.txt \
+	--name 'ip2' \
+	--use_extractions pattern_ipv4_address_only \
+	--report_id e0a7ea6f-e61a-4fbf-b61e-00bab0d20e50
+```
+
+IP2 but with identity
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/manually_generated_reports/ip2.txt \
+	--name 'ip2 with ID' \
+	--use_identity '{"type":"identity","spec_version":"2.1","id":"identity--d2916708-57b9-5636-8689-62f049e9f727","created_by_ref":"identity--aae8eb2d-ea6c-56d6-a606-cc9f755e2dd3","created":"2020-01-01T00:00:00.000Z","modified":"2020-01-01T00:00:00.000Z","name":"signalscorps-demo","description":"https://github.com/signalscorps/","identity_class":"organization","sectors":["technology"],"contact_information":"https://www.signalscorps.com/contact/","object_marking_refs":["marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9","marking-definition--3f588e96-e413-57b5-b735-f0ec6c3a8771"]}' \
+	--use_extractions pattern_ipv4_address_only \
+	--report_id b7bca3c9-5577-4794-96c4-4e4715b5fde7
+```
+
 ### extraction boundary tests
 
 Should create `pattern_url_file` extraction as boundary observed
