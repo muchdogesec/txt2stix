@@ -411,7 +411,7 @@ class txt2stixBundler:
 
     def indicator_id_from_value(self, value, stix_mapping):
         return "indicator--" + str(
-            uuid.uuid5(UUID_NAMESPACE, f"txt2stix+{self.report_md5}+{stix_mapping}+{value}")
+            uuid.uuid5(UUID_NAMESPACE, f"txt2stix+{self.identity['id']}+{self.report_md5}+{stix_mapping}+{value}")
         )
     
     @property
