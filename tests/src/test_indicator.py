@@ -114,8 +114,8 @@ all_extractors = get_all_extractors()
             "pattern_ipv4_address_only",
             {
                 "ipv4-addr--679c6c82-b4be-52e2-9c7a-198689f6f77b",
-                "indicator--e2fdd3e3-f28f-5429-844f-6f7ee6e33354",
-                "relationship--f0fc8f9b-6bf8-5d68-9dd2-0894de179346",
+                "indicator--a07184da-7d33-5b13-b877-66baa3584a7b",
+                "relationship--ebee86fd-def4-5ba4-9f7d-01e8d858d14c",
             },
             {"ipv4-addr--679c6c82-b4be-52e2-9c7a-198689f6f77b"},
         ],
@@ -124,8 +124,8 @@ all_extractors = get_all_extractors()
             "pattern_ipv4_address_port",
             {
                 "ipv4-addr--679c6c82-b4be-52e2-9c7a-198689f6f77b",
-                "indicator--50bf1229-1886-527b-830e-b4decaca8fff",
-                "relationship--54f4d24a-e819-5f07-82ce-3e768aed3ebf",
+                "indicator--f06eba73-0dc3-5b4c-a4b2-b8cdcbbb1092",
+                "relationship--a69f0136-208b-5cd5-926b-b3672835d6e2",
                 "network-traffic--bc4336c7-af88-5853-a21b-f319938f9aac",
             },
             {"ipv4-addr--679c6c82-b4be-52e2-9c7a-198689f6f77b"},
@@ -135,8 +135,8 @@ all_extractors = get_all_extractors()
             "pattern_ipv4_address_cidr",
             {
                 "ipv4-addr--31e0d7f3-97af-5dce-a98a-d9f7a06ea485",
-                "relationship--742fc563-499f-52a3-9021-6ef12b96e676",
-                "indicator--9a5c317c-69b9-5264-9be2-c2565cfc89f3",
+                "relationship--47dbbaa3-8d12-5f83-95b4-7bb726918609",
+                "indicator--f47753fc-5f96-5e2c-b798-38c34f0664dd",
             },
             {"ipv4-addr--31e0d7f3-97af-5dce-a98a-d9f7a06ea485"},
         ],
@@ -145,8 +145,8 @@ all_extractors = get_all_extractors()
             "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
             "pattern_ipv6_address_only",
             {
-                "indicator--2d2c0ef2-27db-5be0-be0d-519bc626991b",
-                "relationship--a1c3c9cd-0194-5158-8612-fb4bd6ad8f55",
+                "relationship--29b5f001-5134-5cd2-aeb0-ef8bd55d844f",
+                "indicator--d06f2f5b-168a-5b73-8cca-237b44e94ed1",
                 "ipv6-addr--85a85a8c-ee99-5722-946d-3c3a3270fc6f",
             },
             {"ipv6-addr--85a85a8c-ee99-5722-946d-3c3a3270fc6f"},
@@ -157,8 +157,8 @@ all_extractors = get_all_extractors()
             {
                 "ipv6-addr--85a85a8c-ee99-5722-946d-3c3a3270fc6f",
                 "network-traffic--d7f1aefc-12ba-53d6-a2c8-c54d7b956e39",
-                "indicator--90651196-ef6c-5d37-88dc-f3ec8d086139",
-                "relationship--1a92e99f-8ba1-5623-8c0a-f04901019789",
+                "indicator--d3cffad2-d934-5f1f-829c-342fd8956b74",
+                "relationship--fa0d2483-2945-51c8-80eb-7476e1332dfb",
             },
             {"ipv6-addr--85a85a8c-ee99-5722-946d-3c3a3270fc6f"},
         ],
@@ -167,9 +167,9 @@ all_extractors = get_all_extractors()
             "localhost",
             "pattern_host_name",
             [
-                "indicator--b191e1b9-6557-5aaf-aa67-101513a1c262",
+                "relationship--b0eef578-e3eb-510b-9aa7-2c15b28e01b5",
                 "domain-name--b54e23fc-08b6-5d8e-b593-bf0dfc0a49d5",
-                "relationship--fb949e5a-1aca-504b-9f1e-9b771c3bd1b3",
+                "indicator--03057a6b-18bf-5ab9-95e4-844198c060bb",
             ],
             [
                 "domain-name--b54e23fc-08b6-5d8e-b593-bf0dfc0a49d5",
@@ -179,8 +179,8 @@ all_extractors = get_all_extractors()
             "somewebsite.gg",
             "pattern_host_name",
             [
-                "indicator--3438c8cc-d5be-5a10-90d5-fc016f8d5dcb",
-                "relationship--d9f1c8c6-79b7-5afd-af5c-04f38452eb21",
+                "relationship--753bccf7-ba02-5cf2-a57f-18784376e475",
+                "indicator--b71ed37a-8095-5590-aa39-9056b6ecc722",
                 "domain-name--6b8b0382-6675-5d04-8442-5a1e2d9e903f",
             ],
             [
@@ -192,9 +192,9 @@ all_extractors = get_all_extractors()
             "http://localhost:123/die",
             "pattern_url",
             [
-                "relationship--e39bdd84-ebb3-5114-b8e5-25d2516ca4f9",
+                "indicator--d10d08c7-71a8-53ec-aacd-7b06b51fe38b",
                 "url--b427c195-2f31-55c4-a41e-ce2beb48cf01",
-                "indicator--6cb54bc9-a7ed-546c-9ff7-28f67514228d",
+                "relationship--10151382-60ec-5d82-ae23-6ce97b0a24de",
             ],
             [
                 "url--b427c195-2f31-55c4-a41e-ce2beb48cf01",
@@ -205,8 +205,8 @@ all_extractors = get_all_extractors()
             "file.jpg",
             "pattern_file_name",
             [
-                "indicator--02cef367-08f9-527c-ba46-bb31f1688f73",
-                "relationship--99e465b0-bb35-5552-9131-c0c3dc301269",
+                "indicator--b161ae03-688d-5cf3-ab7e-ad7ccc07cc9a",
+                "relationship--058f1b3c-76c2-535f-9d76-9af66a18d52b",
                 "file--a525dace-961b-5749-b9c3-3e2feba0034c",
             ],
             [
@@ -221,8 +221,8 @@ all_extractors = get_all_extractors()
                 "relationship--53204f97-f4c3-59ca-9158-f0c973efd8d9",
                 "file--7dbeff1a-48b6-5060-a637-04fa55f93c9a",
                 "directory--1377fe61-b48b-5250-985b-db5ff7f97200",
-                "relationship--83ff7176-d5eb-52a0-bd4d-abc2d63969d3",
-                "indicator--af70d360-db9a-57c7-87c7-913db53fbdbb",
+                "indicator--8dfdfdcc-0136-5528-90ca-75b32960a63a",
+                "relationship--836ea44f-01b5-5289-92da-78d187fb446e",
             ],
             [
                 "directory--1377fe61-b48b-5250-985b-db5ff7f97200",
@@ -233,9 +233,9 @@ all_extractors = get_all_extractors()
             "86F7E437FAA5A7FCE15D1DDCB9EAEAEA377667B8",
             "pattern_file_hash_sha_1",
             {
-                "indicator--cd379332-8625-5dac-a014-c756e36d7e8e",
+                "indicator--0f78e264-e09c-529a-a0eb-d9361fe6d834",
                 "file--109eb6b5-7257-568b-8a3a-146e343ac867",
-                "relationship--c68979cd-f565-5881-bd8a-9e470abf64b9",
+                "relationship--b00a63f9-0fbc-53ee-a834-6928c2f0ea47",
             },
             {
                 "file--109eb6b5-7257-568b-8a3a-146e343ac867",
@@ -246,9 +246,9 @@ all_extractors = get_all_extractors()
             "goo@gmail.com",
             "pattern_email_address",
             {
-                "indicator--53e4ac19-8b6e-5af9-90a0-a0873ea6eadb",
+                "indicator--e2d8050a-70d4-5771-9eff-3e74b4f7cfbe",
                 "email-addr--c582f4d4-bea6-5dec-951e-5b5e249f8fc5",
-                "relationship--de1a930e-86ed-51f4-9073-cc940cd551df",
+                "relationship--90f13460-c196-58cc-881b-d7722402cc03",
             },
             {
                 "email-addr--c582f4d4-bea6-5dec-951e-5b5e249f8fc5",
@@ -259,8 +259,8 @@ all_extractors = get_all_extractors()
             "d2:fb:49:24:37:18",
             "pattern_mac_address",
             {
-                "indicator--c6ee6505-d411-501d-89a3-32c516300245",
-                "relationship--46174b25-21d5-5905-ac72-5293f523df51",
+                "indicator--46587123-5b01-53f0-aa5f-3fdd863b8286",
+                "relationship--f89ad49c-c2fc-531e-b443-dc4bed8a37f6",
                 "mac-addr--757b1725-9903-54f5-a855-1240691d7659",
             },
             {
@@ -272,8 +272,8 @@ all_extractors = get_all_extractors()
             r"HKLM\Short\\Name",
             "pattern_windows_registry_key",
             {
-                "indicator--f1ec43d2-3695-59dd-a56b-40fcf57b3ab4",
-                "relationship--4a07d23d-13f7-50b2-a6f6-86bd9e4b774b",
+                "relationship--bae5abb6-a073-5995-ac00-0b16bc840af2",
+                "indicator--5b176858-f869-52d3-b04b-326fd434766f",
                 "windows-registry-key--3be35eea-0b2d-5316-8f7d-46daf6b5029e",
             },
             {
@@ -285,9 +285,9 @@ all_extractors = get_all_extractors()
             "ASN15139",
             "pattern_autonomous_system_number",
             {
-                "relationship--88d47e95-9871-53a8-ad15-8ecd967b3973",
+                "indicator--de09fba1-dc47-5cf5-a461-53aba2228fe6",
                 "autonomous-system--3aa27478-50b5-5ab8-9da9-cdc12b657fff",
-                "indicator--7d4fba9e-cd24-5c75-a0ee-65f8128d5f90",
+                "relationship--62692c31-7fd3-5f5b-8906-bbda95261600",
             },
             {
                 "autonomous-system--3aa27478-50b5-5ab8-9da9-cdc12b657fff",
@@ -299,8 +299,8 @@ all_extractors = get_all_extractors()
             "pattern_user_agent",
             {
                 "user-agent--b71ac3f9-2e75-5f59-ada4-71e8a2514ec3",
-                "indicator--6f93a665-a15c-512a-b4fa-c774fd1338c4",
-                "relationship--189db81b-52c3-5e76-95ec-8bf51dc34bde",
+                "indicator--0eb12807-33c5-5d5a-b465-164ef424bd9a",
+                "relationship--9961afd0-fc4b-5a9f-96fa-129434422337",
             },
             {
                 "user-agent--b71ac3f9-2e75-5f59-ada4-71e8a2514ec3",
@@ -311,9 +311,9 @@ all_extractors = get_all_extractors()
             "3Cwgr2g7vsi1bXDUkpEnVoRLA9w4FZfC69",
             "pattern_cryptocurrency_btc_wallet",
             {
-                "indicator--d202ac23-ed4c-5639-be04-e4cca4556185",
+                "indicator--b8374546-ecf1-51e5-b4f3-f0e021af8f4d",
                 "cryptocurrency-wallet--6e43ef66-8082-5552-80f2-95f5a44f60aa",
-                "relationship--6cf35051-4d19-5b7d-a63d-ba0e7b2b46e2",
+                "relationship--547c0e2c-01b7-5bea-8611-9c5ced2c347c",
             },
             {
                 "cryptocurrency-wallet--6e43ef66-8082-5552-80f2-95f5a44f60aa",
@@ -325,8 +325,8 @@ all_extractors = get_all_extractors()
             "pattern_iban_number",
             {
                 "bank-account--4c1507ea-fdde-556b-87c9-f8ef702a0d8a",
-                "indicator--ad568fa2-4589-5cf2-b586-a5430d356c88",
-                "relationship--8fc1207b-9321-57ce-b73a-75d699fd10d7",
+                "indicator--816dfb00-4107-5dd0-be00-4607400f4df3",
+                "relationship--c932782d-f9fa-5b84-9804-17403a91e074",
             },
             {
                 "bank-account--4c1507ea-fdde-556b-87c9-f8ef702a0d8a",
@@ -338,8 +338,8 @@ all_extractors = get_all_extractors()
             "pattern_phone_number",
             {
                 "phone-number--9c0e11b8-10e5-5384-96ae-b3fe7799eb5e",
-                "relationship--bdf64ea4-408b-5dfe-818a-8455f8a9d07b",
-                "indicator--f3e9e2ad-8cec-50d0-a085-14fbace10e6c",
+                "relationship--ef574e75-7d5a-5406-a7b6-720266cfcae9",
+                "indicator--c955785e-d762-5e11-8e0d-27e255361669",
             },
             {
                 "phone-number--9c0e11b8-10e5-5384-96ae-b3fe7799eb5e",
@@ -351,9 +351,9 @@ all_extractors = get_all_extractors()
             "pattern_bank_card_amex",
             {
                 "bank-card--e19f1547-2b5f-5f3d-82dc-817c7ba15405",
-                "indicator--538fafbc-a2d0-5728-97d5-a464ce158b3a",
-                "relationship--11811543-770e-5ee2-811c-57815d0d16a9",
-                'identity--672e6dbb-e4a0-5b81-8035-c06a1961c796', #issuer_identity
+                "indicator--5a5a66de-62f3-5262-8c29-2f314c6ce738",
+                "relationship--2bf39b70-e24d-5275-80bb-7de015e93f23",
+                "identity--672e6dbb-e4a0-5b81-8035-c06a1961c796",  # issuer_identity
             },
             {
                 "bank-card--e19f1547-2b5f-5f3d-82dc-817c7ba15405",

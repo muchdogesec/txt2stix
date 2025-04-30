@@ -202,6 +202,7 @@ class txt2stixBundler:
         labels.append('placeholder_label')
 
         self.job_id = f"report--{self.uuid}"
+        self.report_md5 = hashlib.md5(description.encode()).hexdigest()
         self.report = Report(
             created_by_ref=self.identity.id,
             name=name,
@@ -222,7 +223,7 @@ class txt2stixBundler:
                 },
                 {
                     "source_name": "txt2stix Report MD5",
-                    "description": hashlib.md5(description.encode()).hexdigest(),
+                    "description": self.report_md5,
                 },
             ] + external_references,
             confidence=confidence,
@@ -408,10 +409,9 @@ class txt2stixBundler:
                     stack_info=True,
                 )
 
-    @staticmethod
-    def indicator_id_from_value(value, stix_mapping):
+    def indicator_id_from_value(self, value, stix_mapping):
         return "indicator--" + str(
-            uuid.uuid5(UUID_NAMESPACE, f"txt2stix+{stix_mapping}+{value}")
+            uuid.uuid5(UUID_NAMESPACE, f"txt2stix+{self.identity['id']}+{self.report_md5}+{stix_mapping}+{value}")
         )
     
     @property
