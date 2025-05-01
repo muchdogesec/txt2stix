@@ -89,10 +89,10 @@ DEFAULT_RELATIONSHIP_TEMPL = PromptTemplate(textwrap.dedent(
 DEFAULT_CONTENT_CHECKER_TEMPL = PromptTemplate("""
 <persona>
     You are a cyber security threat intelligence analyst.
-    Your job is to review report that describe a cyber security incidents.
+    Your job is to review reports that describe a cyber security incidents and/or threat intelligence.
     Examples include malware analysis, APT group reports, data breaches, vulnerabilities, or Indicators of Compromise.
-    Some of the documents you are given do not help in this 
-    I need you to tell me if the text provided is.
+    Some of the documents you are given will not be this type of report.
+    I need you to tell me if the text provided does match the type of report you are expecting.
 </persona>
 <requirement>
     Using the MARKDOWN of the report provided in <document>
