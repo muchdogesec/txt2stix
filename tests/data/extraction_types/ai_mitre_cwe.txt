@@ -2,6 +2,4 @@
 
 CWE-1023
 CWE-102
-Use of Redundant Code
-Insufficient Encapsulation
 

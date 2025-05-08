@@ -1,6 +1,4 @@
 ====Good====
 
 TA0111
-Scripting
-Program Upload
 

@@ -4,6 +4,7 @@
 
 lookup_country_alpha2:
   type: lookup
+  dogesec_web: false
   name: 'Country Alpha2'
   description: 'Extracts countries using ISO 3166-1 alpha2 codes'
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_country. This extractor is very dumb e.g the words `is` and `in` will result in extractions for Iceland and India'
@@ -19,6 +20,7 @@ lookup_country_alpha2:
 
 lookup_mitre_attack_enterprise_id:
   type: lookup
+  dogesec_web: false
   name: 'MITRE ATT&CK Enterprise IDs'
   description: 'Extracts MITRE ATT&CK Enterprise IDs from text. See lookup name for version used.'
   notes: 'ai_mitre_attack_enterprise also exists but beware of hallucinations'
@@ -32,6 +34,7 @@ lookup_mitre_attack_enterprise_id:
 
 lookup_mitre_attack_enterprise_name:
   type: lookup
+  dogesec_web: false
   name: 'MITRE ATT&CK Enterprise names'
   description: 'Extracts MITRE ATT&CK Enterprise names from text. See lookup name for version used.'
   notes: 'ai_mitre_attack_enterprise also exists but beware of hallucinations'
@@ -45,6 +48,7 @@ lookup_mitre_attack_enterprise_name:
 
 lookup_mitre_attack_enterprise_alias:
   type: lookup
+  dogesec_web: false
   name: 'MITRE ATT&CK Enterprise alias'
   description: 'Extracts MITRE ATT&CK Enterprise aliases from text. See lookup name for version used.'
   notes: 'ai_mitre_attack_enterprise also exists but beware of hallucinations'
@@ -58,6 +62,7 @@ lookup_mitre_attack_enterprise_alias:
 
 lookup_mitre_attack_mobile_id:
   type: lookup
+  dogesec_web: false
   name: 'MITRE ATT&CK Mobile IDs'
   description: 'Extracts MITRE ATT&CK Mobile IDs from text. See lookup name for version used.'
   notes: 'ai_mitre_attack_mobile also exists but beware of hallucinations'
@@ -71,6 +76,7 @@ lookup_mitre_attack_mobile_id:
 
 lookup_mitre_attack_mobile_name:
   type: lookup
+  dogesec_web: false
   name: 'MITRE ATT&CK Mobile names'
   description: 'Extracts MITRE ATT&CK Mobile names from text. See lookup name for version used.'
   notes: 'ai_mitre_attack_mobile also exists but beware of hallucinations'
@@ -84,6 +90,7 @@ lookup_mitre_attack_mobile_name:
 
 lookup_mitre_attack_mobile_alias:
   type: lookup
+  dogesec_web: false
   name: 'MITRE ATT&CK Mobile alias'
   description: 'Extracts MITRE ATT&CK Mobile aliases from text. See lookup name for version used.'
   notes: 'ai_mitre_attack_mobile also exists but beware of hallucinations'
@@ -97,6 +104,7 @@ lookup_mitre_attack_mobile_alias:
 
 lookup_mitre_attack_ics_id:
   type: lookup
+  dogesec_web: false
   name: 'MITRE ATT&CK ICS IDs'
   description: 'Extracts MITRE ATT&CK ICS names from text. See lookup name for version used.'
   notes: 'ai_mitre_attack_ics also exists but beware of hallucinations'
@@ -110,6 +118,7 @@ lookup_mitre_attack_ics_id:
 
 lookup_mitre_attack_ics_name:
   type: lookup
+  dogesec_web: false
   name: 'MITRE ATT&CK ICS names'
   description: 'Extracts MITRE ATT&CK ICS names from text. See lookup name for version used.'
   notes: 'ai_mitre_attack_ics also exists but beware of hallucinations'
@@ -123,6 +132,7 @@ lookup_mitre_attack_ics_name:
 
 lookup_mitre_attack_ics_alias:
   type: lookup
+  dogesec_web: false
   name: 'MITRE ATT&CK ICS alias'
   description: 'Extracts MITRE ATT&CK ICS aliases from text. See lookup name for version used.'
   notes: 'ai_mitre_attack_ics also exists but beware of hallucinations'
@@ -138,6 +148,7 @@ lookup_mitre_attack_ics_alias:
 
 lookup_mitre_capec_id:
   type: lookup
+  dogesec_web: false
   name: 'MITRE CAPEC IDs'
   description: 'Extracts MITRE CAPEC IDs from text. See lookup name for version used.'
   notes: 'ai_mitre_capec also exists but beware of hallucinations'
@@ -151,6 +162,7 @@ lookup_mitre_capec_id:
 
 lookup_mitre_capec_name:
   type: lookup
+  dogesec_web: false
   name: 'MITRE CAPEC names'
   description: 'Extracts MITRE CAPEC names from text. See lookup name for version used.'
   notes: 'ai_mitre_capec also exists but beware of hallucinations'
@@ -166,6 +178,7 @@ lookup_mitre_capec_name:
 
 lookup_mitre_cwe_id:
   type: lookup
+  dogesec_web: false
   name: MITRE CWE IDs
   description: 'Extracts MITRE CWE IDs from text. See lookup name for version used.'
   notes: 'ai_mitre_cwe also exists but beware of hallucinations'
@@ -179,6 +192,7 @@ lookup_mitre_cwe_id:
 
 lookup_mitre_cwe_name:
   type: lookup
+  dogesec_web: false
   name: MITRE CWE names
   description: 'Extracts MITRE CWE names from text. See lookup name for version used.'
   notes: 'ai_mitre_cwe also exists but beware of hallucinations'
@@ -194,6 +208,7 @@ lookup_mitre_cwe_name:
 
 lookup_mitre_atlas_id:
   type: lookup
+  dogesec_web: false
   name: MITRE ATLAS IDs
   description: 'Extracts MITRE ATLAS IDs from text. See lookup name for version used.'
   notes: 'No corresponding AI version yet due to poor AI performance'
@@ -207,6 +222,7 @@ lookup_mitre_atlas_id:
 
 lookup_mitre_atlas_name:
   type: lookup
+  dogesec_web: false
   name: MITRE ATLAS names
   description: 'Extracts MITRE ATLAS names from text. See lookup name for version used.'
   notes: 'No corresponding AI version yet due to poor AI performance'
@@ -222,6 +238,7 @@ lookup_mitre_atlas_name:
 
 lookup_disarm_id:
   type: lookup
+  dogesec_web: false
   name: DISARM IDs
   description: 'Extracts DISARM IDs from text. See lookup name for version used.'
   notes: 'No corresponding AI version yet due to poor AI performance'
@@ -235,6 +252,7 @@ lookup_disarm_id:
 
 lookup_disarm_name:
   type: lookup
+  dogesec_web: false
   name: DISARM IDs
   description: 'Extracts DISARM names from text. See lookup name for version used.'
   notes: 'No corresponding AI version yet due to poor AI performance'
@@ -250,6 +268,7 @@ lookup_disarm_name:
 
 lookup_attack_pattern:
   type: lookup
+  dogesec_web: false
   name: 'Attack Patterns'
   description: 'Will extract all Attack Pattern entries found in the lookup file.'
   notes: ''
@@ -263,6 +282,7 @@ lookup_attack_pattern:
 
 lookup_campaign:
   type: lookup
+  dogesec_web: false
   name: 'Campaign'
   description: 'Will extract all Campaign entries found in the lookup file.'
   notes: ''
@@ -276,6 +296,7 @@ lookup_campaign:
 
 lookup_course_of_action:
   type: lookup
+  dogesec_web: false
   name: 'Course of Action'
   description: 'Will extract all Course of Action entries found in the lookup file.'
   notes: ''
@@ -289,6 +310,7 @@ lookup_course_of_action:
 
 lookup_identity:
   type: lookup
+  dogesec_web: false
   name: 'Identity'
   description: 'Will extract all Identity entries found in the lookup file.'
   notes: ''
@@ -302,6 +324,7 @@ lookup_identity:
 
 lookup_infrastructure:
   type: lookup
+  dogesec_web: false
   name: 'Infrastructure'
   description: 'Will extract all Infrastructure entries found in the lookup file.'
   notes: ''
@@ -315,6 +338,7 @@ lookup_infrastructure:
 
 lookup_intrusion_set:
   type: lookup
+  dogesec_web: false
   name: 'Intrustion Set'
   description: 'Will extract all Intrustion Set entries found in the lookup file.'
   notes: ''
@@ -328,6 +352,7 @@ lookup_intrusion_set:
 
 lookup_malware:
   type: lookup
+  dogesec_web: false
   name: 'Malware'
   description: 'Will extract all Malware entries found in the lookup file.'
   notes: ''
@@ -341,6 +366,7 @@ lookup_malware:
 
 lookup_threat_actor:
   type: lookup
+  dogesec_web: false
   name: 'Threat Actor'
   description: 'Will extract all Threat Actor entries found in the lookup file.'
   notes: ''
@@ -354,6 +380,7 @@ lookup_threat_actor:
 
 lookup_tool:
   type: lookup
+  dogesec_web: false
   name: 'Tool'
   description: 'Will extract all Tool entries found in the lookup file.'
   notes: ''

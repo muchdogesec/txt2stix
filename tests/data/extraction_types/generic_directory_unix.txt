@@ -1,7 +1,6 @@
 ====Good====
 
 /a/file/path
-a/file/path
 ~/documents
 ../directory
 ./downloads/directory
@@ -10,3 +9,4 @@ a/file/path
 
 \a\path
 /a/file/path/file.sh
+a/file/path

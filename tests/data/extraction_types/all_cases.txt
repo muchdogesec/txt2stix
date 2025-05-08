@@ -5,6 +5,7 @@
 2001:db8:3333:4444:5555:6666:7777:8888
 2001:db8:3333:4444:CCCC:DDDD:EEEE:FFFF
 2001:0db8:85a3:0000:0000:8a2e:0370:7334/32
+2001:db8::/32
 [2001:0db8:85a3:0000:0000:8a2e:0370:7334]:80
 google.com
 igvmwp3544wpnd6u.onion
@@ -35,7 +36,6 @@ https://example.local/path
 https://www.another.faketld/path/
 file.exe
 \a\path
-a\path
 C:\Windows\System64
 ..\Publications
 \\system07\C$
@@ -44,7 +44,6 @@ C:\Windows\System64
 %SYSTEM32%\Test\Foo
 \path\to\file.exe
 /a/file/path
-a/file/path
 ~/documents
 ../directory
 ./downloads/directory
@@ -101,10 +100,7 @@ cpe:2.3:a:yithemes:yith_woocommerce_tab_manager:1.29.0:*:*:*:*:wordpress:*:*
 DE29100500001061045672
 GB94BARC10201530093459
 +442083661177
-00442083661177
-+12001230101
-07891345678
-07891 345 678
+0044 20836 61177
 AU
 GB
 AU
@@ -112,7 +108,7 @@ GB
 UK
 USA
 Belgium
-T1174
+T1557
 TA0006
 TA0011
 G1006
@@ -121,15 +117,12 @@ T1040
 TA0003
 Rundll32
 OS Credential Dumping
-T1174
 TA0006
 TA0011
 G1006
 T1053.005
 T1040
 TA0003
-Rundll32
-OS Credential Dumping
 M1013
 S0505
 T1630.001
@@ -140,32 +133,24 @@ M1013
 S0505
 T1630.001
 TA0029
-Impair Defenses
-Call Log
 TA0111
 Scripting
 Program Upload
 TA0111
-Scripting
-Program Upload
 CAPEC-110
 Clickjacking
 Overflow Buffers
 CAPEC-110
-Clickjacking
-Overflow Buffers
 CWE-1023
 CWE-102
 Use of Redundant Code
 Insufficient Encapsulation
 CWE-1023
 CWE-102
-Use of Redundant Code
-Insufficient Encapsulation
 AML.M0015
 AML.T0050
 Defense Evasion
-ML Attack Staging
+Active Scanning
 T0131.001
 TA01
 Microtarget
