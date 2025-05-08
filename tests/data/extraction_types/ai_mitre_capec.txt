@@ -1,9 +1,4 @@
 ====Good====
 
 CAPEC-110
-Clickjacking
-Overflow Buffers
 
-====Bad====
-
-None

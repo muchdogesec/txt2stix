@@ -132,37 +132,21 @@ python3 txt2stix.py \
 	--report_id 85edd875-f3eb-4530-8604-74aa93842450
 ```
 
-### Domain
-
-#### ai_domain_name_only
-
-```shell
-python3 txt2stix.py \
-	--relationship_mode standard \
-	--input_file tests/data/extraction_types/generic_domain_name_only.txt \
-	--name 'ai_domain_name_only' \
-	--tlp_level clear \
-	--confidence 100 \
-	--use_extractions ai_domain_name_only \
-	--ai_settings_extractions openai:gpt-4o \
-	--report_id 0804ff04-f3ef-41b0-998c-7e699a4ce916
-```
-
-#### pattern_domain_name_subdomain
-
-```shell
-python3 txt2stix.py \
-	--relationship_mode standard \
-	--input_file tests/data/extraction_types/generic_domain_name_subdomain.txt \
-	--name 'ai_domain_name_subdomain' \
-	--tlp_level clear \
-	--confidence 100 \
-	--use_extractions ai_domain_name_subdomain \
-	--ai_settings_extractions openai:gpt-4o \
-	--report_id 19d948c9-9c33-48ef-b6df-7197119a4bd1
-```
-
 ### URL
+
+#### ai_url_all
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_url_all.txt \
+	--name 'ai_url_all' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_url_all \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id bcd05fa3-d219-4151-9bbe-76a2eb1f77ca
+```
 
 #### ai_url
 
@@ -204,6 +188,36 @@ python3 txt2stix.py \
 	--use_extractions ai_url_path \
 	--ai_settings_extractions openai:gpt-4o \
 	--report_id a7e94479-b79a-4bd6-9fa8-1a4a0c43f973
+```
+
+### Domain
+
+#### ai_domain_name_only
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_domain_name_only.txt \
+	--name 'ai_domain_name_only' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_domain_name_only \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id 0804ff04-f3ef-41b0-998c-7e699a4ce916
+```
+
+#### pattern_domain_name_subdomain
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_domain_name_subdomain.txt \
+	--name 'ai_domain_name_subdomain' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_domain_name_subdomain \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id 19d948c9-9c33-48ef-b6df-7197119a4bd1
 ```
 
 ### Hostname
