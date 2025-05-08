@@ -154,7 +154,7 @@ ai_url:
 
 ai_url_file:
   type: ai
-  dogesec_web:
+  dogesec_web: true
   name: 'URL with file extension'
   description: 'Extracts URLs with file extension in path. If the sub/domain part is not an IP, then it must have a valid TLD. Filetype must also match valid filetype. Similar to pattern_url except checks for URL with path to file'
   notes: 'pattern_url_file legacy extraction also exists if you cannot use AI'
@@ -170,7 +170,7 @@ ai_url_file:
 
 ai_url_path:
   type: ai
-  dogesec_web:
+  dogesec_web: true
   name: 'URL path'
   description: 'Extracts URLs without file extension in path. If the sub/domain part is not an IP, then it must have a valid TLD. Similar to pattern_url except checks for URL with path but without file'
   notes: 'pattern_url_path legacy extraction also exists if you cannot use AI'
@@ -707,7 +707,7 @@ ai_bank_card_discover:
 
 ai_iban_number:
   type: ai
-  dogesec_web:
+  dogesec_web: true
   name: 'IBAN'
   description: 'Will extract IBAN numbers and create a bank-account object'
   notes: 'pattern_iban_number legacy extraction also exists if you cannot use AI'
