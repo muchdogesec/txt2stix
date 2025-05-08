@@ -134,20 +134,6 @@ python3 txt2stix.py \
 
 ### URL
 
-#### ai_url_all
-
-```shell
-python3 txt2stix.py \
-	--relationship_mode standard \
-	--input_file tests/data/extraction_types/generic_url_all.txt \
-	--name 'ai_url_all' \
-	--tlp_level clear \
-	--confidence 100 \
-	--use_extractions ai_url_all \
-	--ai_settings_extractions openai:gpt-4o \
-	--report_id bcd05fa3-d219-4151-9bbe-76a2eb1f77ca
-```
-
 #### ai_url
 
 ```shell
