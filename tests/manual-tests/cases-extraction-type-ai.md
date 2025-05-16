@@ -570,6 +570,22 @@ python3 txt2stix.py \
 
 ### Bank cards
 
+#### ai_bank_card_all
+
+_Ensure this BIN List API key set_
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_bank_card_all.txt \
+	--name 'ai_bank_card_all' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_bank_card_all \
+	--ai_settings_extractions openai:gpt-4o \
+	--report_id 323eb995-d181-4b96-9c3e-c175a83a0782
+```
+
 #### ai_bank_card_mastercard
 
 _Ensure this BIN List API key set_
