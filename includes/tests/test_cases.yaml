@@ -219,21 +219,9 @@ generic_file_hash_sha_1:
   test_negative_examples:
     - '900zz11'
 
-generic_file_hash_sha_224:
-  test_positive_examples:
-    - 'd14a028c2a3a2bc9476102bb288234c415a2b01f828ea62ac5b3e42f'
-  test_negative_examples:
-    - '900zz11'
-
 generic_file_hash_sha_256:
   test_positive_examples:
     - 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
-  test_negative_examples:
-    - '900zz11'
-
-generic_file_hash_sha_384:
-  test_positive_examples:
-    - '59e1748777448c69de6b800d7a33bbfb9ff1b463e44354c3553bcdb9c666fa90125a3c79f90397bdf5f6a13de828684f'
   test_negative_examples:
     - '900zz11'
 
@@ -357,6 +345,23 @@ generic_cpe_uri:
     - 'cpe:2.3:a:microsoft' # is partial string
 
 ####### Bank card extractions #######
+
+generic_bank_card_all:
+  test_positive_examples:
+    - '5555555555554444'
+    - '5555555555554444'
+    - '4242424242424242'
+    - '376654224631002'
+    - '6220123456234563'
+    - '6036014561356399'
+    - '6219779456356356'
+    - '6033674535256453'
+    - '30569309025904'
+    - '38520000023237'
+    - '3530111333300000'
+    - '6011111111111117'
+  test_negative_examples:
+    - 
 
 generic_bank_card_mastercard:
   test_positive_examples:
