@@ -63,4 +63,4 @@ yarl==1.9.4; python_version >= '3.7'
 zipp==3.19.1; python_version >= '3.8'
 llama-index==0.12.9; python_version >= '3.8'
 base58>=2.1.1; python_version >= '3.8'
-stix2extensions @ https://github.com/muchdogesec/stix2extensions/releases/download/main-2025-04-24-09-25-47/stix2extensions-0.0.3-py3-none-any.whl
+stix2extensions @ https://github.com/muchdogesec/stix2extensions/releases/download/main-2025-05-18-12-56-37/stix2extensions-0.0.3-py3-none-any.whl
