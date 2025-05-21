@@ -108,8 +108,8 @@ all_extractors = get_all_extractors()
 @pytest.mark.parametrize(
     ["value", "extractor_name", "expected_objects", "expected_rels"],
     [
-        ### ipv4
-        [
+        ## ipv4
+        pytest.param(
             "127.0.0.1",
             "pattern_ipv4_address_only",
             {
@@ -118,8 +118,9 @@ all_extractors = get_all_extractors()
                 "relationship--ebee86fd-def4-5ba4-9f7d-01e8d858d14c",
             },
             {"ipv4-addr--679c6c82-b4be-52e2-9c7a-198689f6f77b"},
-        ],
-        [
+            id="ipv4 address_only",
+        ),
+        pytest.param(
             "127.0.0.1:8080",
             "pattern_ipv4_address_port",
             {
@@ -129,8 +130,9 @@ all_extractors = get_all_extractors()
                 "network-traffic--bc4336c7-af88-5853-a21b-f319938f9aac",
             },
             {"ipv4-addr--679c6c82-b4be-52e2-9c7a-198689f6f77b"},
-        ],
-        [
+            id="ipv4 address_port",
+        ),
+        pytest.param(
             "127.0.0.1/16",
             "pattern_ipv4_address_cidr",
             {
@@ -139,9 +141,9 @@ all_extractors = get_all_extractors()
                 "indicator--f47753fc-5f96-5e2c-b798-38c34f0664dd",
             },
             {"ipv4-addr--31e0d7f3-97af-5dce-a98a-d9f7a06ea485"},
-        ],
-        ### ipv6
-        [
+            id="ipv4 address_cidr",
+        ),
+        pytest.param(
             "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
             "pattern_ipv6_address_only",
             {
@@ -150,8 +152,9 @@ all_extractors = get_all_extractors()
                 "ipv6-addr--85a85a8c-ee99-5722-946d-3c3a3270fc6f",
             },
             {"ipv6-addr--85a85a8c-ee99-5722-946d-3c3a3270fc6f"},
-        ],
-        [
+            id="ipv6 address_only",
+        ),
+        pytest.param(
             "[2001:0db8:85a3:0000:0000:8a2e:0370:7334]:8080",
             "pattern_ipv6_address_port",
             {
@@ -161,9 +164,10 @@ all_extractors = get_all_extractors()
                 "relationship--fa0d2483-2945-51c8-80eb-7476e1332dfb",
             },
             {"ipv6-addr--85a85a8c-ee99-5722-946d-3c3a3270fc6f"},
-        ],
+            id="ipv6 address_port",
+        ),
         ## domain-name
-        [
+        pytest.param(
             "localhost",
             "pattern_host_name",
             [
@@ -174,8 +178,9 @@ all_extractors = get_all_extractors()
             [
                 "domain-name--b54e23fc-08b6-5d8e-b593-bf0dfc0a49d5",
             ],
-        ],
-        [
+            id="domain-name host_name",
+        ),
+        pytest.param(
             "somewebsite.gg",
             "pattern_host_name",
             [
@@ -186,9 +191,10 @@ all_extractors = get_all_extractors()
             [
                 "domain-name--6b8b0382-6675-5d04-8442-5a1e2d9e903f",
             ],
-        ],
+            id="domain-name 2",
+        ),
         ## url
-        [
+        pytest.param(
             "http://localhost:123/die",
             "pattern_url",
             [
@@ -199,9 +205,10 @@ all_extractors = get_all_extractors()
             [
                 "url--b427c195-2f31-55c4-a41e-ce2beb48cf01",
             ],
-        ],
+            id="url",
+        ),
         ## file
-        [
+        pytest.param(
             "file.jpg",
             "pattern_file_name",
             [
@@ -212,9 +219,10 @@ all_extractors = get_all_extractors()
             [
                 "file--a525dace-961b-5749-b9c3-3e2feba0034c",
             ],
-        ],
+            id="file",
+        ),
         ## directory-file
-        [
+        pytest.param(
             "/path/to/dir/die.exe",
             "pattern_directory_unix_file",
             [
@@ -227,9 +235,10 @@ all_extractors = get_all_extractors()
             [
                 "directory--1377fe61-b48b-5250-985b-db5ff7f97200",
             ],
-        ],
+            id="directory-file",
+        ),
         ## file-hash
-        [
+        pytest.param(
             "86F7E437FAA5A7FCE15D1DDCB9EAEAEA377667B8",
             "pattern_file_hash_sha_1",
             {
@@ -240,9 +249,10 @@ all_extractors = get_all_extractors()
             {
                 "file--109eb6b5-7257-568b-8a3a-146e343ac867",
             },
-        ],
+            id="file-hash",
+        ),
         ## email-addr
-        [
+        pytest.param(
             "goo@gmail.com",
             "pattern_email_address",
             {
@@ -253,9 +263,10 @@ all_extractors = get_all_extractors()
             {
                 "email-addr--c582f4d4-bea6-5dec-951e-5b5e249f8fc5",
             },
-        ],
+            id="email-addr",
+        ),
         ## mac-addr
-        [
+        pytest.param(
             "d2:fb:49:24:37:18",
             "pattern_mac_address",
             {
@@ -266,9 +277,10 @@ all_extractors = get_all_extractors()
             {
                 "mac-addr--757b1725-9903-54f5-a855-1240691d7659",
             },
-        ],
+            id="mac-addr",
+        ),
         ## windows-registry-key
-        [
+        pytest.param(
             r"HKLM\Short\\Name",
             "pattern_windows_registry_key",
             {
@@ -279,9 +291,10 @@ all_extractors = get_all_extractors()
             {
                 "windows-registry-key--3be35eea-0b2d-5316-8f7d-46daf6b5029e",
             },
-        ],
+            id="windows-registry-key",
+        ),
         ## autonomous-system
-        [
+        pytest.param(
             "ASN15139",
             "pattern_autonomous_system_number",
             {
@@ -292,9 +305,10 @@ all_extractors = get_all_extractors()
             {
                 "autonomous-system--3aa27478-50b5-5ab8-9da9-cdc12b657fff",
             },
-        ],
+            id="autonomous-system",
+        ),
         ## user-agent
-        [
+        pytest.param(
             "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.6) Gecko/20040113",
             "pattern_user_agent",
             {
@@ -305,9 +319,10 @@ all_extractors = get_all_extractors()
             {
                 "user-agent--b71ac3f9-2e75-5f59-ada4-71e8a2514ec3",
             },
-        ],
+            id="user-agent",
+        ),
         ## cryptocurrency-wallet
-        [
+        pytest.param(
             "3Cwgr2g7vsi1bXDUkpEnVoRLA9w4FZfC69",
             "pattern_cryptocurrency_btc_wallet",
             {
@@ -318,7 +333,8 @@ all_extractors = get_all_extractors()
             {
                 "cryptocurrency-wallet--6e43ef66-8082-5552-80f2-95f5a44f60aa",
             },
-        ],
+            id="cryptocurrency-wallet",
+        ),
         ## bank-account
         [
             "DE29100500001061045672",
@@ -345,20 +361,36 @@ all_extractors = get_all_extractors()
                 "phone-number--9c0e11b8-10e5-5384-96ae-b3fe7799eb5e",
             },
         ],
-        ## bank-card
-        [
+        ## bank-card, with issuer-name
+        pytest.param(
+            "5555555555554444",
+            "pattern_bank_card_mastercard",
+            {
+                "bank-card--fb992b79-5bd1-5aa9-bc7e-a785b28f4338",
+                "indicator--3dfe8be8-cb89-5872-a162-329be05ddfb7",
+                "identity--868572ea-db58-592a-a426-2cd243d748b6",
+                "relationship--ad2fa28f-0fc0-5a23-acc4-4326849b620b",  # issuer_identity, with name
+            },
+            {
+                "bank-card--fb992b79-5bd1-5aa9-bc7e-a785b28f4338",
+            },
+            id="bank-card, with issuer-name",
+        ),
+        ## bank-card, no issuer-name
+        pytest.param(
             "376654224631002",
             "pattern_bank_card_amex",
             {
                 "bank-card--e19f1547-2b5f-5f3d-82dc-817c7ba15405",
                 "indicator--5a5a66de-62f3-5262-8c29-2f314c6ce738",
                 "relationship--2bf39b70-e24d-5275-80bb-7de015e93f23",
-                "identity--672e6dbb-e4a0-5b81-8035-c06a1961c796",  # issuer_identity
+                "identity--643246fc-9204-5b4b-976d-2e605b355c24",  # issuer_identity, no name
             },
             {
                 "bank-card--e19f1547-2b5f-5f3d-82dc-817c7ba15405",
             },
-        ],
+            id="bank-card, no issuer-name",
+        ),
     ],
 )
 def test_build_observables(value, extractor_name, expected_objects, expected_rels):
