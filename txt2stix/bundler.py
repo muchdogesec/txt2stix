@@ -17,7 +17,7 @@ import requests
 
 
 from .common import UUID_NAMESPACE, MinorException
-from datetime import datetime as dt
+from datetime import UTC, datetime as dt
 import uuid
 import json
 from .indicator import build_observables
@@ -187,7 +187,7 @@ class txt2stixBundler:
         modified=None,
     ) -> None:
         self.observables_processed = 0
-        self.created = created or dt.now()
+        self.created = created or dt.now(tz=UTC)
         self.all_extractors = extractors
         self.identity = identity or self.default_identity
         self.tlp_level = TLP_LEVEL.get(tlp_level)
@@ -215,7 +215,7 @@ class txt2stixBundler:
             modified=modified or self.created,
             object_marking_refs=[self.tlp_level.value.id],
             labels=labels,
-            published=dt.now(),
+            published=self.created,
             external_references=[
                 {
                     "source_name": "txt2stix_report_id",
@@ -253,12 +253,12 @@ class txt2stixBundler:
                     f"Unknown custom object object.type = {_type}, {type(object)=}"
                 )
             logger.info(f'getting extension definition for "{_type}" from `{url}`')
-            self.EXTENSION_MAPPING[_type] = self.load_object_from_json(url)
+            self.EXTENSION_MAPPING[_type] = self.load_stix_object_from_url(url)
             extension = self.EXTENSION_MAPPING[_type]
             self.add_ref(extension, is_report_object=False)
 
     @staticmethod
-    def load_object_from_json(url):
+    def load_stix_object_from_url(url):
         resp = requests.get(url)
         return dict_to_stix2(resp.json())
     
