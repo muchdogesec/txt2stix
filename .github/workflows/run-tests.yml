@@ -46,7 +46,8 @@ jobs:
           set -a; 
           source .env;
           set +a;
-          pip install -r tests/src/requirements.txt .
+          pip install -r tests/src/requirements.txt
+          pip install -e .
 
           pytest --cov --cov-branch --cov-report=xml --junitxml=junit.xml -o junit_family=legacy
 
