@@ -41,7 +41,7 @@ class STIXObjectRetriever:
     def _retrieve_objects(self, endpoint, key='objects'):
         s = requests.Session()
         s.headers.update({
-            "API-KEY": self.api_key,
+            "Authorization": "Bearer " + self.api_key,
         })
         data = []
         page = 1
