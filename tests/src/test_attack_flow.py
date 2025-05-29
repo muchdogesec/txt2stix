@@ -14,7 +14,7 @@ from txt2stix.ai_extractor.utils import (
     DescribesIncident,
 )
 from txt2stix.attack_flow import parse_flow
-from txt2stix.stix import txt2stixBundler
+from txt2stix.bundler import txt2stixBundler
 from txt2stix.txt2stix import (
     parse_args,
     parse_extractors_globbed,

@@ -10,34 +10,6 @@ from .base_extractor import ALL_EXTRACTORS
 from ...extractions import Extractor
 from ...utils import FILE_EXTENSIONS, read_included_file, TLDs
 
-
-
-def read_text_file(file_path):
-    """
-    Read the content of a text file line by line.
-
-    Args:
-        file_path (str): Path to the text file.
-
-    Returns:
-        list: List containing each line of the text file as stripped strings.
-    """
-    lines_list = []
-
-    try:
-        # Open the file in read mode
-        with open(file_path, 'r') as file:
-            # Read each line from the file and append it to the list
-            for line in file:
-                lines_list.append(line.strip())
-
-    except FileNotFoundError:
-        logging.error(f"File not found: {file_path}")
-    except IOError as e:
-        logging.error(f"Error reading the file: {file_path} - {e}")
-
-    return lines_list
-
 def check_false_positive_domain(domain):
     """
     Check if a domain is a false positive based on its file extension.

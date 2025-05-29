@@ -18,7 +18,7 @@ from txt2stix.pattern.extractors.others.phonenumber_extractor import PhoneNumber
 from txt2stix.utils import validate_file_mimetype, validate_reg_key
 
 if TYPE_CHECKING:
-    from .stix import txt2stixBundler
+    from .bundler import txt2stixBundler
 
 # from schwifty import IBAN
 

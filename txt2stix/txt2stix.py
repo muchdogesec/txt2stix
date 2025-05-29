@@ -18,7 +18,7 @@ from .utils import Txt2StixData, remove_links
 
 from .common import UUID_NAMESPACE, FatalException
 
-from .stix import txt2stixBundler, parse_stix, TLP_LEVEL
+from .bundler import txt2stixBundler, parse_stix, TLP_LEVEL
 from .import extractions, lookups, pattern
 from types import SimpleNamespace
 import functools

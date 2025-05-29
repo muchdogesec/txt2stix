@@ -8,7 +8,7 @@ import os
 
 from txt2stix import get_all_extractors
 from txt2stix.ai_extractor.utils import DescribesIncident
-from txt2stix.stix import txt2stixBundler
+from txt2stix.bundler import txt2stixBundler
 from txt2stix.txt2stix import (
     parse_args, parse_extractors_globbed, parse_model, run_txt2stix, split_comma, range_type, parse_labels, load_env,
     # run_txt2stix,

@@ -1,8 +1,8 @@
 from txt2stix import extractions
-from .stix import txt2stixBundler
+from .bundler import txt2stixBundler
 from .txt2stix import extract_all
 from pathlib import Path
-
+from . import bundler as stix
 
 INCLUDES_PATH = None
 def get_include_path():

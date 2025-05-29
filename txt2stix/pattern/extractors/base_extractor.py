@@ -111,20 +111,6 @@ class BaseExtractor:
             })
         return response
 
-    @staticmethod
-    def search_keyword_positions(input_string, keyword):
-        keyword_positions = []
-        start = 0
-        while start < len(input_string):
-            index = input_string.find(keyword, start)
-            if index == -1:
-                break
-            keyword_positions.append((keyword, index))
-            start = index + len(keyword)
-
-        positions_only = [pos for kw, pos in keyword_positions]
-        return keyword, positions_only
-
     @classmethod
     def split_all(cls, text):
         for word in cls.SPLITS_FINDER.findall(text):
