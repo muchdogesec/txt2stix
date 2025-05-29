@@ -1,5 +1,7 @@
 # txt2stix
 
+[![codecov](https://codecov.io/gh/muchdogesec/txt2stix/graph/badge.svg?token=KTHAIYBH1I)](https://codecov.io/gh/muchdogesec/txt2stix)
+
 ## Before you begin...
 
 We have build two products on-top of txt2stix that provide more user-friendly experience:
