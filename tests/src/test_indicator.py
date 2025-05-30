@@ -13,7 +13,7 @@ from txt2stix.indicator import (
 )
 from stix2 import HashConstant
 
-from txt2stix.stix import txt2stixBundler
+from txt2stix.bundler import txt2stixBundler
 from datetime import datetime
 
 
@@ -464,4 +464,3 @@ def test_build_observables_with_extractor_cases(extractor_name, subtests):
                 v = build_observables(
                     mock_bundler, extractor.stix_mapping, indicator, value, extractor
                 )
-                assert False, len(v[0])

@@ -40,12 +40,25 @@ jobs:
 
             echo "BIN_LIST_API_KEY=${{ secrets.BIN_LIST_API_KEY }}" >> .env
 
-      - name: test all
-        id: test-endpoints
+      - name: unit tests
+        id: unit-test
         run: |
           set -a; 
           source .env;
           set +a;
-          pip install -r tests/src/requirements.txt .
+          pip install -r tests/src/requirements.txt
+          pip install -e .
 
-          pytest tests/src/
+          pytest --cov --cov-branch --cov-report=xml --junitxml=junit.xml -o junit_family=legacy
+
+      - name: Upload coverage reports to Codecov
+        if: ${{ !cancelled() }}
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Upload test results to Codecov
+        if: ${{ !cancelled() }}
+        uses: codecov/test-results-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}

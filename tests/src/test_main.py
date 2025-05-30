@@ -1,4 +1,5 @@
 from datetime import datetime
+import uuid
 import pytest
 from unittest import mock
 from unittest.mock import MagicMock
@@ -6,11 +7,15 @@ from pathlib import Path
 import sys
 import os
 
+from txt2stix.utils import remove_links
+from . import utils
+
 from txt2stix import get_all_extractors
+from txt2stix.ai_extractor.openai import OpenAIExtractor
 from txt2stix.ai_extractor.utils import DescribesIncident
-from txt2stix.stix import txt2stixBundler
+from txt2stix.bundler import txt2stixBundler
 from txt2stix.txt2stix import (
-    parse_args, run_txt2stix, split_comma, range_type, parse_labels, load_env,
+    main, parse_args, parse_model, parse_ref, run_txt2stix, split_comma, range_type, parse_labels, load_env,
     # run_txt2stix,
       extract_all, extract_relationships_with_ai
 )
@@ -35,6 +40,17 @@ def mock_environment():
 
     # restore original env
     os.environ.update(envs)
+
+
+def test_parse_ref():
+    assert parse_ref('ref1=ref2d') == dict(source_name='ref1', external_id='ref2d')
+    with pytest.raises(argparse.ArgumentTypeError):
+        parse_ref('invalid ref')
+
+def test_parse_model():
+    assert isinstance(parse_model('openai'), OpenAIExtractor)
+    with pytest.raises(argparse.ArgumentTypeError):
+        parse_model('invalid:model')
 
 
 def test_split_comma():
@@ -95,3 +111,26 @@ def test_extract_all():
         result = mock_lookups(mock_bundler, mock_extractors_map, text_content, ai_extractors=ai_extractors)
         assert isinstance(result, dict)
         mock_lookups.assert_called_once()
+
+def test_main_func():
+    input_text = "fake input text"
+    processed_text = "processed input text"
+    with mock.patch("txt2stix.txt2stix.parse_args") as mock_parse_args, \
+         mock.patch("txt2stix.txt2stix.setLogFile") as mock_set_log_file, \
+         mock.patch("txt2stix.txt2stix.remove_links", wraps=remove_links, return_value=processed_text) as mock_remove_links, \
+         mock.patch("txt2stix.txt2stix.load_env") as mock_load_env_fn, \
+         mock.patch("txt2stix.txt2stix.txt2stixBundler") as mock_bundler_cls, \
+         mock.patch("txt2stix.txt2stix.run_txt2stix") as mock_run_txt2stix, \
+         mock.patch("txt2stix.txt2stix.Path.write_text") as mock_write_text:
+        mock_parse_args.return_value.input_file.read_text.return_value = input_text
+        main()
+
+        mock_set_log_file.assert_called_once()
+        mock_parse_args.assert_called_once()
+        mock_run_txt2stix.assert_called_once_with(
+            mock_bundler_cls.return_value, processed_text, mock_parse_args.return_value.use_extractions,
+            input_token_limit=int(os.environ['INPUT_TOKEN_LIMIT']),
+            **mock_parse_args.return_value.__dict__,
+        )
+        mock_bundler_cls.return_value.to_json.assert_called()
+        mock_write_text.assert_called()
