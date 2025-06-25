@@ -405,38 +405,9 @@ def test_build_observables(value, extractor_name, expected_objects, expected_rel
 
 @pytest.mark.parametrize(
     "extractor_name",
-    {
-        v.test_cases: k
-        for k, v in all_extractors.items()
-        if (
-            v.test_cases
-            not in [
-                "ai_country",
-                "generic_cryptocurrency_btc_wallet",  # deferred until stix2extension#11
-                "generic_cryptocurrency_btc_transaction",  # deferred until stix2extension#11
-                "generic_cve_id",  # deferred until vulmatch is live
-                "generic_cpe_uri",  # deferred until vulmatch is live
-            ]
-            and not v.test_cases.startswith("generic_bank")  # binapi not working
-            and v.stix_mapping
-            not in [
-                "url",
-                "domain-name",
-                "ipv4-addr",
-                "ipv6-addr",
-                "directory",
-                "directory-file",
-                "user-agent",
-            ]
-            and not (
-                # can't test in post
-                v.test_cases.startswith("lookup")
-                and not v.stix_mapping.startswith("ctibutler")
-            )
-        )
-    }.values(),
+    {v.test_cases: k for k, v in all_extractors.items()}.values(),
 )
-def test_build_observables_with_extractor_cases(extractor_name, subtests):
+def test_build_observables_with_extractor_cases__positive(extractor_name, subtests):
     extractor = all_extractors[extractor_name]
 
     for value in extractor.prompt_positive_examples:
@@ -452,6 +423,29 @@ def test_build_observables_with_extractor_cases(extractor_name, subtests):
             )
             assert objects, "positive test case must return objects"
 
+
+@pytest.mark.parametrize(
+    "extractor_name",
+    {
+        v.test_cases: k
+        for k, v in all_extractors.items()
+        if (
+            not v.test_cases.startswith("generic_bank")
+            and v.stix_mapping
+            not in [
+                "url",
+                "domain-name",
+                "ipv4-addr",
+                "ipv6-addr",
+                "directory",
+                "directory-file",
+                "user-agent",
+            ]
+        )
+    }.values(),
+)
+def test_build_observables_with_extractor_cases__negative(extractor_name, subtests):
+    extractor = all_extractors[extractor_name]
     for value in extractor.prompt_negative_examples:
         indicator = mock_bundler.new_indicator(extractor, extractor.stix_mapping, value)
         with subtests.test(
