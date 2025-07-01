@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "txt2stix"
-version = "0.0.3rc0"
+version = "0.0.4"
 authors = [{ name = "DOGESEC", email = "support@dogesec.com" }]
 description = "txt2stix is a Python script that is designed to identify and extract IoCs and TTPs from text files, identify the relationships between them, convert them to STIX 2.1 objects, and output as a STIX 2.1 bundle."
 readme = "README.md"
@@ -23,7 +23,7 @@ dependencies = [
   "requests>=2.32.4",
   "python-dotenv>=1.0.1",
   "schwifty>=2024.6.1",
-  "stix2extensions @ https://github.com/muchdogesec/stix2extensions/releases/download/main-2025-05-19-15-30-06/stix2extensions-0.0.3-py3-none-any.whl",
+  "stix2extensions",
   "tld>=0.13",
   "tldextract>=5.1.2",
   "validators>=0.28.3",
@@ -53,3 +53,11 @@ stix2arango = "txt2stix.txt2stix:main"
 
 [tool.hatch.build.targets.wheel.force-include]
 "includes" = "txt2stix/includes"
+
+[project.optional-dependencies]
+tests = [
+"pytest",
+"requests",
+"pytest-subtests",
+"pytest-cov",
+]
