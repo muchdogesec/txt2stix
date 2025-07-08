@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "txt2stix"
-version = "1.0.1"
+version = "1.0.1-1"
 authors = [
   { name = "dogesec" }
 ]
