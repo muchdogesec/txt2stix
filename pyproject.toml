@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "txt2stix"
-version = "1.0.1"
+version = "1.0.1-1"
 authors = [
   { name = "dogesec" }
 ]
@@ -34,11 +34,7 @@ dependencies = [
   "validators>=0.28.3",
   "base58>=2.1.1",
   "llama-index-core>=0.12.42",
-  'llama-index-llms-anthropic>=0.7.2',
-  'llama-index-llms-gemini>=0.5.0',
   'llama-index-llms-openai>=0.4.5',
-  'llama-index-llms-deepseek>=0.1.2',
-  'llama-index-llms-openrouter>=0.3.2',
   'mistune>=3.0.2',
   'beautifulsoup4>=4.12.3',
 ]
@@ -59,6 +55,12 @@ stix2arango = "txt2stix.txt2stix:main"
 "includes" = "txt2stix/includes"
 
 [project.optional-dependencies]
+full = [
+  'llama-index-llms-anthropic>=0.7.2',
+  'llama-index-llms-gemini>=0.5.0',
+  'llama-index-llms-deepseek>=0.1.2',
+  'llama-index-llms-openrouter>=0.3.2',
+]
 tests = [
 "pytest",
 "requests",
