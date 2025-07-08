@@ -14,7 +14,7 @@ from txt2stix.ai_extractor.utils import DescribesIncident
 from txt2stix.attack_flow import parse_flow
 
 
-from .utils import Txt2StixData, remove_links
+from .utils import RELATIONSHIP_TYPES, Txt2StixData, remove_links
 
 from .common import UUID_NAMESPACE, FatalException
 
@@ -99,8 +99,6 @@ def parse_extractors_globbed(type, all_extractors, names):
                 pattern.load_extractor(extractor)
             filtered_extractors[extractor.type] =  extraction_processor
             extraction_processor[extractor_name] = extractor
-        except KeyError:
-            raise argparse.ArgumentTypeError(f"no such {type} slug `{extractor_name}`")
         except BaseException as e:
             raise argparse.ArgumentTypeError(f"{type} `{extractor_name}`: {e}")
     return filtered_extractors
@@ -137,22 +135,23 @@ def parse_args():
 
     inf_arg  = parser.add_argument("--input_file", "--input-file", required=True, help="The file to be converted. Must be .txt", type=Path)
     parser.add_argument("--ai_content_check_provider", required=False, type=parse_model, help="Use an AI model to check wether the content of the file contains threat intelligence. Paticularly useful to weed out vendor marketing.")
+    parser.add_argument("--always_extract", default=True, type=parse_bool, help="Whether to always extract or not depending on output of ai_content_check_provider. Default, extracts even when content_check returns describes_incident=False")
     name_arg = parser.add_argument("--name", required=True, help="Name of the file, max 124 chars", default="stix-out")
     parser.add_argument("--created", required=False, default=datetime.now(), help="Allow user to optionally pass --created time in input, which will hardcode the time used in created times")
     parser.add_argument("--ai_settings_extractions", required=False, type=parse_model, help="(required if AI extraction enabled): passed in format provider:model e.g. openai:gpt4o. Can pass more than one value to get extractions from multiple providers.", metavar="provider[:model]", nargs='+')
     parser.add_argument("--ai_settings_relationships", required=False, type=parse_model, help="(required if AI relationship enabled): passed in format `provider:model`. Can only pass one model at this time.", metavar="provider[:model]")
     parser.add_argument("--labels", type=parse_labels)
-    parser.add_argument("--relationship_mode", choices=["ai", "standard"], required=True)
+    rmode_arg = parser.add_argument("--relationship_mode", choices=["ai", "standard"], required=True)
     parser.add_argument("--report_id", type=uuid.UUID, required=False, help="id to use instead of automatically generated `{name}+{created}`", metavar="VALID_UUID")
     parser.add_argument("--confidence", type=range_type(0,100), default=None, help="value between 0-100. Default if not passed is null.", metavar="[0-100]")
     parser.add_argument("--tlp_level", "--tlp-level", choices=TLP_LEVEL.levels().keys(), default="clear", help="TLP level, default is clear")
-    parser.add_argument("--use_extractions", "--use-extractions", default={}, type=functools.partial(parse_extractors_globbed, "extractor", all_extractors),  help="Specify extraction types from the default/local extractions .yaml file", metavar="EXTRACTION1,EXTRACTION2")
+    extractions_arg = parser.add_argument("--use_extractions", "--use-extractions", default={}, type=functools.partial(parse_extractors_globbed, "extractor", all_extractors),  help="Specify extraction types from the default/local extractions .yaml file", metavar="EXTRACTION1,EXTRACTION2")
     parser.add_argument("--use_identity", "--use-identity", help="Specify an identity file id (e.g., {\"type\":\"identity\",\"name\":\"demo\",\"identity_class\":\"system\"})", metavar="[stix2 identity json]", type=parse_stix)
     parser.add_argument("--external_refs", type=parse_ref, help="pass additional `external_references` entry (or entries) to the report object created. e.g --external_ref author=dogesec link=https://dkjjadhdaj.net", default=[], metavar="{source_name}={external_id}", action="extend", nargs='+')
     parser.add_argument('--ignore_image_refs', default=True, type=parse_bool)
     parser.add_argument('--ignore_link_refs', default=True, type=parse_bool)
     parser.add_argument("--ignore_extraction_boundary", default=False, type=parse_bool, help="default if not passed is `false`, but if set to `true` will ignore boundary capture logic for extractions")
-    parser.add_argument('--ai_create_attack_flow', default=False, action='store_true', help="create attack flow for attack objects in report/bundle")
+    aflow_arg = parser.add_argument('--ai_create_attack_flow', default=False, action='store_true', help="create attack flow for attack objects in report/bundle")
 
     args = parser.parse_args()
     if not args.input_file.exists():
@@ -161,13 +160,13 @@ def parse_args():
         raise argparse.ArgumentError(name_arg, "max 124 characters")
 
     if args.relationship_mode == 'ai' and not args.ai_settings_relationships:
-        parser.error("relationship_mode is set to AI, --ai_settings_relationships is required")
+        raise argparse.ArgumentError(rmode_arg, "relationship_mode is set to AI, --ai_settings_relationships is required")
 
     if args.ai_create_attack_flow and not args.ai_settings_relationships:
-        parser.error("--ai_create_attack_flow requires --ai_settings_relationships")
+        raise argparse.ArgumentError(aflow_arg, "--ai_create_attack_flow requires --ai_settings_relationships")
     #### process --use-extractions 
     if args.use_extractions.get('ai') and not args.ai_settings_extractions:
-        parser.error("ai based extractors are passed, --ai_settings_extractions is required")
+        raise argparse.ArgumentError(extractions_arg, "ai based extractors are passed, --ai_settings_extractions is required")
 
     args.all_extractors  = all_extractors
     return args
@@ -218,7 +217,6 @@ def extract_all(bundler: txt2stixBundler, extractors_map, text_content, ai_extra
             logging.info("running extractor: %s", extractor.extractor_name)
             try:
                 ai_extracts = extractor.extract_objects(text_content, extractors_map["ai"].values())
-                ai_extracts = ai_extracts.model_dump().get('extractions', [])
                 bundler.process_observables(ai_extracts)
                 all_extracts[f"ai-{extractor.extractor_name}"] = ai_extracts
             except BaseException as e:
@@ -231,8 +229,7 @@ def extract_relationships_with_ai(bundler: txt2stixBundler, text_content, all_ex
     relationships = None
     try:
         all_extracts = list(itertools.chain(*all_extracts.values()))
-        relationship_types = (INCLUDES_PATH/"helpers/stix_relationship_types.txt").read_text().splitlines()
-        relationships = ai_extractor_session.extract_relationships(text_content, all_extracts, relationship_types)
+        relationships = ai_extractor_session.extract_relationships(text_content, all_extracts, RELATIONSHIP_TYPES)
         relationships = relationships.model_dump()
         log_notes(relationships, "Relationships")
         bundler.process_relationships(relationships['relationships'])
@@ -277,6 +274,7 @@ def run_txt2stix(bundler: txt2stixBundler, preprocessed_text: str, extractors_ma
         logging.info(retval.content_check.model_dump_json())
         for classification in retval.content_check.incident_classification:
             bundler.report.labels.append(f'txt2stix:{classification}'.lower())
+        bundler.add_summary(retval.content_check.summary, model.extractor_name)
 
     if should_extract or always_extract:
         if extractors_map.get("ai"):
@@ -313,7 +311,6 @@ def main():
 
         bundler = txt2stixBundler(args.name, args.use_identity, args.tlp_level, input_text, args.confidence, args.all_extractors, args.labels, created=args.created, report_id=args.report_id, external_references=args.external_refs)
         log_notes(sys.argv, "Config")
-        convo_str = None
 
         data = run_txt2stix(
             bundler, preprocessed_text, args.use_extractions,

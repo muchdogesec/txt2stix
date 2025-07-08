@@ -10,6 +10,15 @@ mock_text = """
 ![Image](https://example.com/image.png)
 Some text content.
 """
+mock_text_with_inline_html = """
+Some other text content
+<div>
+    <a href='https://example.com'>Click here to continue</a>
+    <a href='https://example2.com'/>
+    <img src='https://example.com/image.png' alt='image-alt'/>
+In-HTML text content.
+</div>
+"""
 
 def test_remove_links_images_only():
     result = remove_links(mock_text, remove_images=True, remove_anchors=False)
@@ -30,6 +39,16 @@ def test_remove_links_anchors_and_images():
     assert "https://example.com" not in result
     assert "https://example.com/image.png" not in result
     assert "Some text content" in result
+
+def test_remove_images_and_anchors__inline_html():
+    result = remove_links(mock_text_with_inline_html, remove_images=True, remove_anchors=True)
+    assert "https://example.com" not in result
+    assert "https://example2.com" not in result
+    assert "https://example.com/image.png" not in result
+    assert "In-HTML text content." in result
+    assert "Some other text content" in result
+    assert "Click here to continue" in result
+    assert 'image-alt' in result
 
 
 

@@ -34,6 +34,7 @@ class DescribesIncident(BaseModel):
     describes_incident: bool = Field(description="does the <document> include malware analysis, APT group reports, data breaches and vulnerabilities?")
     explanation: str = Field(description="Two or three sentence summary of the incidents it describes OR summary of what it describes instead of an incident")
     incident_classification : list[str] = Field(description="All the valid incident classifications that describe this document/report")
+    summary: str = Field(description="executive summary of the document containing no more than one paragraphs.")
 
 class AttackFlowItem(BaseModel):
     position : int = Field(description="order of object starting at 0")

@@ -6,6 +6,7 @@ from stix2 import (
     MarkingDefinition,
     Relationship,
     Bundle,
+    Note,
 )
 from stix2.parsing import dict_to_stix2, parse as parse_stix
 from stix2.serialization import serialize
@@ -110,6 +111,8 @@ class TLP_LEVEL(enum.Enum):
 
     @classmethod
     def get(cls, level):
+        if isinstance(level, str):
+            level = level.replace('-', '_').replace('+', '_')
         if isinstance(level, cls):
             return level
         return cls.levels()[level]
@@ -261,7 +264,7 @@ class txt2stixBundler:
     def load_stix_object_from_url(url):
         resp = requests.get(url)
         return dict_to_stix2(resp.json())
-    
+
     def add_ref(self, sdo, is_report_object=True):
         self.add_extension(sdo)
         sdo_id = sdo["id"]
@@ -277,21 +280,18 @@ class txt2stixBundler:
                 sdo_value = v
                 break
         else:
-            if refs := sdo.get('external_references', []):
-                sdo_value = refs[0]['external_id']
+            if refs := sdo.get("external_references", []):
+                sdo_value = refs[0]["external_id"]
             else:
                 sdo_value = "{NOTEXTRACTED}"
 
-
         self.id_value_map[sdo_id] = sdo_value
-
 
     def add_indicator(self, extracted_dict, add_standard_relationship):
         extractor = self.all_extractors[extracted_dict["type"]]
         stix_mapping = extractor.stix_mapping
         extracted_value = extracted_dict["value"]
         extracted_id = extracted_dict["id"]
-
 
         indicator = self.new_indicator(extractor, stix_mapping, extracted_value)
         # set id so it doesn''t need to be created in build_observables
@@ -340,7 +340,7 @@ class txt2stixBundler:
                 },
             ],
         }
-        
+
         return indicator
 
     def add_ai_relationship(self, gpt_out):
@@ -413,11 +413,44 @@ class txt2stixBundler:
         return "indicator--" + str(
             uuid.uuid5(UUID_NAMESPACE, f"txt2stix+{self.identity['id']}+{self.report_md5}+{stix_mapping}+{value}")
         )
-    
+
+    def add_summary(self, summary, ai_summary_provider):
+        summary_note_obj = Note(
+            type="note",
+            spec_version="2.1",
+            id=self.report.id.replace("report", "note"),
+            created=self.report.created,
+            modified=self.report.modified,
+            created_by_ref=self.report.created_by_ref,
+            external_references=[
+                {
+                    "source_name": "txt2stix_ai_summary_provider",
+                    "external_id": ai_summary_provider,
+                },
+            ],
+            abstract=f"AI Summary: {self.report.name}",
+            content=summary,
+            object_refs=[self.report.id],
+            object_marking_refs=self.report.object_marking_refs,
+            labels=self.report.get('labels'),
+            confidence=self.report.get('confidence')
+        )
+
+        self.add_ref(summary_note_obj)
+        self.add_ref(
+            self.new_relationship(
+                summary_note_obj["id"],
+                self.report.id,
+                relationship_type="summary-of",
+                description=f"AI generated summary for {self.report.name}",
+                external_references=summary_note_obj["external_references"],
+            )
+        )
+
     @property
     def flow_objects(self):
         return self._flow_objects
-    
+
     @flow_objects.setter
     def flow_objects(self, objects):
         for obj in objects:
