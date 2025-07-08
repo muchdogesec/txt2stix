@@ -1,6 +1,5 @@
 import os
 import pkgutil
-import re
 from pathlib import Path
 from typing import Dict
 from pydantic import BaseModel, Field
@@ -45,7 +44,6 @@ class ImageLinkRemover(MarkdownRenderer):
                 del img['src']
         return soup.decode()
 
-import tldextract
 
 
 class Txt2StixData(BaseModel):
@@ -81,6 +79,9 @@ def validate_file_mimetype(file_name):
     return FILE_EXTENSIONS.get(ext)
 
 
+
+
 TLDs = [tld.lower() for tld in read_included_file('helpers/tlds.txt').splitlines()]
 REGISTRY_PREFIXES = [key.lower() for key in read_included_file('helpers/windows_registry_key_prefix.txt').splitlines()]
 FILE_EXTENSIONS = dict(line.lower().split(',') for line in read_included_file('helpers/mimetype_filename_extension_list.csv').splitlines())
+RELATIONSHIP_TYPES = [x for x in read_included_file('helpers/stix_relationship_types.txt').splitlines() if x and not x.startswith('#')]

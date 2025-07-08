@@ -86,7 +86,7 @@ DEFAULT_RELATIONSHIP_TEMPL = PromptTemplate(textwrap.dedent(
 """
 ))
 
-DEFAULT_CONTENT_CHECKER_TEMPL = PromptTemplate("""
+DEFAULT_CONTENT_CHECKER_WITH_SUMMARY_TEMPL = PromptTemplate("""
 <persona>
     You are a cyber security threat intelligence analyst.
     Your job is to review reports that describe a cyber security incidents and/or threat intelligence.
@@ -120,6 +120,12 @@ DEFAULT_CONTENT_CHECKER_TEMPL = PromptTemplate("""
     * `indicator_of_compromise`
     * `ttp`
 </incident_classification>
+<summary>
+    Using the MARKDOWN of the report provided in <document>, provide an executive summary of it containing no more than one paragraphs.
+    IMPORTANT: the output should be structured as markdown text.
+    IMPORTANT: This `summary` is different from explanation.
+    IMPORTANT: You are to simplify the long intelligence reports into concise summaries for other to quickly understand the contents.
+</summary>
 """)
 
 ATTACK_FLOW_PROMPT_TEMPL = ChatPromptTemplate([

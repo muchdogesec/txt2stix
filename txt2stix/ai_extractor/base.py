@@ -6,7 +6,7 @@ import textwrap
 from llama_index.core import PromptTemplate
 from llama_index.core.llms.llm import LLM
 
-from txt2stix.ai_extractor.prompts import DEFAULT_CONTENT_CHECKER_TEMPL, DEFAULT_EXTRACTION_TEMPL, DEFAULT_RELATIONSHIP_TEMPL, DEFAULT_SYSTEM_PROMPT, ATTACK_FLOW_PROMPT_TEMPL
+from txt2stix.ai_extractor.prompts import DEFAULT_CONTENT_CHECKER_WITH_SUMMARY_TEMPL, DEFAULT_EXTRACTION_TEMPL, DEFAULT_RELATIONSHIP_TEMPL, DEFAULT_SYSTEM_PROMPT, ATTACK_FLOW_PROMPT_TEMPL
 from txt2stix.ai_extractor.utils import AttackFlowList, DescribesIncident, ExtractionList, ParserWithLogging, RelationshipList, get_extractors_str
 from llama_index.core.utils import get_tokenizer
 
@@ -19,7 +19,7 @@ class BaseAIExtractor():
 
     relationship_template = DEFAULT_RELATIONSHIP_TEMPL
 
-    content_check_template = DEFAULT_CONTENT_CHECKER_TEMPL
+    content_check_template = DEFAULT_CONTENT_CHECKER_WITH_SUMMARY_TEMPL
 
     def _get_extraction_program(self):
         return LLMTextCompletionProgram.from_defaults(
@@ -63,7 +63,8 @@ class BaseAIExtractor():
         return self._get_relationship_program()(relationship_types=relationship_types, input_file=input_text, extractions=extractions)
     
     def extract_objects(self, input_text, extractors) -> ExtractionList:
-        return self._get_extraction_program()(extractors=get_extractors_str(extractors), input_file=input_text)
+        extraction_list = self._get_extraction_program()(extractors=get_extractors_str(extractors), input_file=input_text)
+        return extraction_list.model_dump().get('extractions', [])
     
     def __init__(self, *args, **kwargs) -> None:
         pass
