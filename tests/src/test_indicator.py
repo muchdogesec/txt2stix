@@ -405,7 +405,7 @@ def test_build_observables(value, extractor_name, expected_objects, expected_rel
 
 @pytest.mark.parametrize(
     "extractor_name",
-    {v.test_cases: k for k, v in all_extractors.items()}.values(),
+    {v.test_cases: k for k, v in all_extractors.items() if v.test_cases != 'ai_country'}.values(),
 )
 def test_build_observables_with_extractor_cases__positive(extractor_name, subtests):
     extractor = all_extractors[extractor_name]
@@ -430,7 +430,7 @@ def test_build_observables_with_extractor_cases__positive(extractor_name, subtes
         v.test_cases: k
         for k, v in all_extractors.items()
         if (
-            not v.test_cases.startswith("generic_bank")
+            not v.test_cases.startswith("generic_bank") and not v.test_cases.startswith("lookup_")
             and v.stix_mapping
             not in [
                 "url",

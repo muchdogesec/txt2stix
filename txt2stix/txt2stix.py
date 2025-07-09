@@ -38,7 +38,7 @@ def newLogger(name: str) -> logging.Logger:
         level=logging.DEBUG,  # Set the desired logging level
         format=f"%(asctime)s [{name}] [%(levelname)s] %(message)s",
         handlers=[stream_handler],
-        datefmt='%d-%b-%y %H:%M:%S'
+        datefmt='%d-%b-%y %H:%M:%S',
     )
 
     return logging.root
@@ -127,31 +127,122 @@ def parse_bool(value: str):
     value = value.lower()
     return value in ["yes", "y", "true", "1"]
 
+
 def parse_args():
-    EXTRACTORS_PATH = INCLUDES_PATH/"extractions"
+    EXTRACTORS_PATH = INCLUDES_PATH / "extractions"
     all_extractors = extractions.parse_extraction_config(INCLUDES_PATH)
-    
+
     parser = argparse.ArgumentParser(description="File Conversion Tool")
 
-    inf_arg  = parser.add_argument("--input_file", "--input-file", required=True, help="The file to be converted. Must be .txt", type=Path)
-    parser.add_argument("--ai_content_check_provider", required=False, type=parse_model, help="Use an AI model to check wether the content of the file contains threat intelligence. Paticularly useful to weed out vendor marketing.")
-    parser.add_argument("--always_extract", default=True, type=parse_bool, help="Whether to always extract or not depending on output of ai_content_check_provider. Default, extracts even when content_check returns describes_incident=False")
-    name_arg = parser.add_argument("--name", required=True, help="Name of the file, max 124 chars", default="stix-out")
-    parser.add_argument("--created", required=False, default=datetime.now(), help="Allow user to optionally pass --created time in input, which will hardcode the time used in created times")
-    parser.add_argument("--ai_settings_extractions", required=False, type=parse_model, help="(required if AI extraction enabled): passed in format provider:model e.g. openai:gpt4o. Can pass more than one value to get extractions from multiple providers.", metavar="provider[:model]", nargs='+')
-    parser.add_argument("--ai_settings_relationships", required=False, type=parse_model, help="(required if AI relationship enabled): passed in format `provider:model`. Can only pass one model at this time.", metavar="provider[:model]")
+    inf_arg = parser.add_argument(
+        "--input_file",
+        "--input-file",
+        required=True,
+        help="The file to be converted. Must be .txt",
+        type=Path,
+    )
+    parser.add_argument(
+        "--ai_content_check_provider",
+        required=False,
+        type=parse_model,
+        help="Use an AI model to check wether the content of the file contains threat intelligence. Paticularly useful to weed out vendor marketing.",
+    )
+    parser.add_argument(
+        "--ai_extract_if_no_incidence",
+        default=True,
+        type=parse_bool,
+        help="if content check decides the report is not related to cyber security intelligence (e.g. vendor marketing), then you can use this setting to decide wether or not script should proceed. Setting to `false` will stop processing. It is designed to save AI tokens processing unknown content at scale in an automated way.",
+    )
+    name_arg = parser.add_argument(
+        "--name",
+        required=True,
+        help="Name of the file, max 124 chars",
+        default="stix-out",
+    )
+    parser.add_argument(
+        "--created",
+        required=False,
+        default=datetime.now(),
+        help="Allow user to optionally pass --created time in input, which will hardcode the time used in created times",
+    )
+    parser.add_argument(
+        "--ai_settings_extractions",
+        required=False,
+        type=parse_model,
+        help="(required if AI extraction enabled): passed in format provider:model e.g. openai:gpt4o. Can pass more than one value to get extractions from multiple providers.",
+        metavar="provider[:model]",
+        nargs="+",
+    )
+    parser.add_argument(
+        "--ai_settings_relationships",
+        required=False,
+        type=parse_model,
+        help="(required if AI relationship enabled): passed in format `provider:model`. Can only pass one model at this time.",
+        metavar="provider[:model]",
+    )
     parser.add_argument("--labels", type=parse_labels)
-    rmode_arg = parser.add_argument("--relationship_mode", choices=["ai", "standard"], required=True)
-    parser.add_argument("--report_id", type=uuid.UUID, required=False, help="id to use instead of automatically generated `{name}+{created}`", metavar="VALID_UUID")
-    parser.add_argument("--confidence", type=range_type(0,100), default=None, help="value between 0-100. Default if not passed is null.", metavar="[0-100]")
-    parser.add_argument("--tlp_level", "--tlp-level", choices=TLP_LEVEL.levels().keys(), default="clear", help="TLP level, default is clear")
-    extractions_arg = parser.add_argument("--use_extractions", "--use-extractions", default={}, type=functools.partial(parse_extractors_globbed, "extractor", all_extractors),  help="Specify extraction types from the default/local extractions .yaml file", metavar="EXTRACTION1,EXTRACTION2")
-    parser.add_argument("--use_identity", "--use-identity", help="Specify an identity file id (e.g., {\"type\":\"identity\",\"name\":\"demo\",\"identity_class\":\"system\"})", metavar="[stix2 identity json]", type=parse_stix)
-    parser.add_argument("--external_refs", type=parse_ref, help="pass additional `external_references` entry (or entries) to the report object created. e.g --external_ref author=dogesec link=https://dkjjadhdaj.net", default=[], metavar="{source_name}={external_id}", action="extend", nargs='+')
-    parser.add_argument('--ignore_image_refs', default=True, type=parse_bool)
-    parser.add_argument('--ignore_link_refs', default=True, type=parse_bool)
-    parser.add_argument("--ignore_extraction_boundary", default=False, type=parse_bool, help="default if not passed is `false`, but if set to `true` will ignore boundary capture logic for extractions")
-    aflow_arg = parser.add_argument('--ai_create_attack_flow', default=False, action='store_true', help="create attack flow for attack objects in report/bundle")
+    rmode_arg = parser.add_argument(
+        "--relationship_mode", choices=["ai", "standard"], required=True
+    )
+    parser.add_argument(
+        "--report_id",
+        type=uuid.UUID,
+        required=False,
+        help="id to use instead of automatically generated `{name}+{created}`",
+        metavar="VALID_UUID",
+    )
+    parser.add_argument(
+        "--confidence",
+        type=range_type(0, 100),
+        default=None,
+        help="value between 0-100. Default if not passed is null.",
+        metavar="[0-100]",
+    )
+    parser.add_argument(
+        "--tlp_level",
+        "--tlp-level",
+        choices=TLP_LEVEL.levels().keys(),
+        default="clear",
+        help="TLP level, default is clear",
+    )
+    extractions_arg = parser.add_argument(
+        "--use_extractions",
+        "--use-extractions",
+        default={},
+        type=functools.partial(parse_extractors_globbed, "extractor", all_extractors),
+        help="Specify extraction types from the default/local extractions .yaml file",
+        metavar="EXTRACTION1,EXTRACTION2",
+    )
+    parser.add_argument(
+        "--use_identity",
+        "--use-identity",
+        help='Specify an identity file id (e.g., {"type":"identity","name":"demo","identity_class":"system"})',
+        metavar="[stix2 identity json]",
+        type=parse_stix,
+    )
+    parser.add_argument(
+        "--external_refs",
+        type=parse_ref,
+        help="pass additional `external_references` entry (or entries) to the report object created. e.g --external_ref author=dogesec link=https://dkjjadhdaj.net",
+        default=[],
+        metavar="{source_name}={external_id}",
+        action="extend",
+        nargs="+",
+    )
+    parser.add_argument("--ignore_image_refs", default=True, type=parse_bool)
+    parser.add_argument("--ignore_link_refs", default=True, type=parse_bool)
+    parser.add_argument(
+        "--ignore_extraction_boundary",
+        default=False,
+        type=parse_bool,
+        help="default if not passed is `false`, but if set to `true` will ignore boundary capture logic for extractions",
+    )
+    aflow_arg = parser.add_argument(
+        "--ai_create_attack_flow",
+        default=False,
+        action="store_true",
+        help="create attack flow for attack objects in report/bundle",
+    )
 
     args = parser.parse_args()
     if not args.input_file.exists():
@@ -159,17 +250,26 @@ def parse_args():
     if len(args.name) > 124:
         raise argparse.ArgumentError(name_arg, "max 124 characters")
 
-    if args.relationship_mode == 'ai' and not args.ai_settings_relationships:
-        raise argparse.ArgumentError(rmode_arg, "relationship_mode is set to AI, --ai_settings_relationships is required")
+    if args.relationship_mode == "ai" and not args.ai_settings_relationships:
+        raise argparse.ArgumentError(
+            rmode_arg,
+            "relationship_mode is set to AI, --ai_settings_relationships is required",
+        )
 
     if args.ai_create_attack_flow and not args.ai_settings_relationships:
-        raise argparse.ArgumentError(aflow_arg, "--ai_create_attack_flow requires --ai_settings_relationships")
-    #### process --use-extractions 
-    if args.use_extractions.get('ai') and not args.ai_settings_extractions:
-        raise argparse.ArgumentError(extractions_arg, "ai based extractors are passed, --ai_settings_extractions is required")
+        raise argparse.ArgumentError(
+            aflow_arg, "--ai_create_attack_flow requires --ai_settings_relationships"
+        )
+    #### process --use-extractions
+    if args.use_extractions.get("ai") and not args.ai_settings_extractions:
+        raise argparse.ArgumentError(
+            extractions_arg,
+            "ai based extractors are passed, --ai_settings_extractions is required",
+        )
 
-    args.all_extractors  = all_extractors
+    args.all_extractors = all_extractors
     return args
+
 
 REQUIRED_ENV_VARIABLES = [
     "INPUT_TOKEN_LIMIT",
@@ -243,12 +343,12 @@ def validate_token_count(max_tokens, input, extractors: list[BaseAIExtractor]):
         token_count = _count_token(extractor, input)
         if  token_count > max_tokens:
             raise FatalException(f"{extractor.extractor_name}: input_file token count ({token_count}) exceeds INPUT_TOKEN_LIMIT ({max_tokens})")
-    
+
 
 @functools.lru_cache
 def _count_token(extractor: BaseAIExtractor, input: str):
     return extractor.count_tokens(input)
-        
+
 def run_txt2stix(bundler: txt2stixBundler, preprocessed_text: str, extractors_map: dict,
                 ai_content_check_provider=None,
                 ai_create_attack_flow=None,
@@ -257,7 +357,7 @@ def run_txt2stix(bundler: txt2stixBundler, preprocessed_text: str, extractors_ma
                 ai_settings_relationships=None,
                 relationship_mode="standard",
                 ignore_extraction_boundary=False,
-                always_extract=False, # continue even if ai_content_check fails
+                ai_extract_if_no_incidence=True, # continue even if ai_content_check fails
 
                 **kwargs
         ) -> Txt2StixData:
@@ -276,7 +376,7 @@ def run_txt2stix(bundler: txt2stixBundler, preprocessed_text: str, extractors_ma
             bundler.report.labels.append(f'txt2stix:{classification}'.lower())
         bundler.add_summary(retval.content_check.summary, model.extractor_name)
 
-    if should_extract or always_extract:
+    if should_extract or ai_extract_if_no_incidence:
         if extractors_map.get("ai"):
             validate_token_count(input_token_limit, preprocessed_text, ai_settings_extractions)
         if relationship_mode == "ai":

@@ -43,7 +43,7 @@ def test_content_check_param(mock_validate_token_count, subtests):
     incident_classifications = ["Class 1", "Class 2", "class 3"]
 
     with (
-        subtests.test("check_content", describes_incident=False),
+        subtests.test("check_content", ai_extract_if_no_incidence=False, describes_incident=False),
         mock.patch(
             "txt2stix.ai_extractor.base.BaseAIExtractor.check_content"
         ) as mock_check_content,
@@ -56,6 +56,7 @@ def test_content_check_param(mock_validate_token_count, subtests):
             preprocessed_text,
             mock_extractors_map,
             ai_content_check_provider=parse_model(TEST_AI_MODEL),
+            ai_extract_if_no_incidence=False,
         )
         assert data.content_check.describes_incident == False
         assert (
@@ -67,7 +68,7 @@ def test_content_check_param(mock_validate_token_count, subtests):
     mock_validate_token_count.reset_mock()
 
     with (
-        subtests.test("check_content", describes_incident=False, always_extract=True),
+        subtests.test("check_content", describes_incident=False, ai_extract_if_no_incidence=True),
         mock.patch(
             "txt2stix.ai_extractor.base.BaseAIExtractor.check_content"
         ) as mock_check_content,
@@ -84,12 +85,12 @@ def test_content_check_param(mock_validate_token_count, subtests):
             preprocessed_text,
             mock_extractors_map,
             ai_content_check_provider=parse_model(TEST_AI_MODEL),
-            always_extract=True,
+            ai_extract_if_no_incidence=True,
         )
         assert data.content_check.describes_incident == False
         assert (
             data.extractions
-        ), "extraction should happen when check_content.describes_incident is False but always_extract is True"
+        ), "extraction should happen when check_content.describes_incident is False but ai_extract_if_no_incidence is True"
         mock_check_content.assert_called_once()
         mock_validate_token_count.assert_called_once()
         mock_bundle__add_summary.assert_called_once_with("The summary", parse_model(TEST_AI_MODEL).extractor_name)
