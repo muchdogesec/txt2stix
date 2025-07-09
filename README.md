@@ -49,10 +49,10 @@ source txt2stix-venv/bin/activate
 pip3 install txt2stix
 ```
 
-Note, by default txt2stix will install OpenAI to use as the AI provider. You can also use Anthropic, Gemini, or Deepseek. You need to install these manually if you plan to use them as follows (remove those that don't apply)
+Note, by default txt2stix will install OpenAI to use as the AI provider. You can also use Anthropic, Gemini, OpenRouter or Deepseek. You need to install these manually if you plan to use them as follows (remove those that don't apply)
 
 ```shell
-pip3 install txt2stix[deepseek,gemini,anthropic]
+pip3 install txt2stix[deepseek,gemini,anthropic,openrouter]
 ```
 
 ### Set variables

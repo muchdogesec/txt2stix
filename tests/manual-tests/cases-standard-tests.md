@@ -417,6 +417,22 @@ python3 txt2stix.py \
     --report_id 4fa18f2d-278b-4fd4-8470-62a8807d35ad
 ```
 
+The following should not be passed to AI (not security content)
+
+```shell
+python3 txt2stix.py \
+    --relationship_mode standard \
+    --input_file tests/data/manually_generated_reports/not_security_content.txt \
+    --name 'Test AI Content check failure' \
+    --tlp_level clear \
+    --confidence 100 \
+	--use_extractions ai_ipv4_address_only \
+	--ai_settings_extractions openai:gpt-4o \
+    --ai_content_check_provider openai:gpt-4o \
+    --ai_extract_if_no_incidence false \
+    --report_id ed6039d6-699c-44f0-9bf0-957d4d0ff99f
+```
+
 ### attack flow demo
 
 no indicators
