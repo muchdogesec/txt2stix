@@ -126,14 +126,6 @@ If any AI extractions, or AI relationship mode is set, you must set the followin
 * `--ai_extract_if_no_incidence` (boolean, default `true`) if content check decides the report is not related to cyber security intelligence (e.g. vendor marketing), then you can use this setting to decide wether or not script should proceed. Setting to `false` will stop processing. It is designed to save AI tokens processing unknown content at scale in an automated way.
 * `--ai_create_attack_flow` (boolean): passing this flag will also prompt the AI model (the same entered for `--ai_settings_relationships`) to generate an [Attack Flow](https://center-for-threat-informed-defense.github.io/attack-flow/) for the MITRE ATT&CK extractions to define the logical order in which they are being described. You must pass `--ai_settings_relationships` for this to work.
 
-
-ai_content_check_provider: this model is used for both summary and old content_check. if set, summary is always retrieved
-ai_extract_if_no_incidence: boolean, defaults to True
-if ai_extract_if_no_incidence is True, it'll extract even if describes_incident is False.
-if ai_extract_if_no_incidence is False, it stops execution if describes_incident is False. (edited) 
-
-
-
 ## Adding new extractions
 
 It is very likely you'll want to extend txt2stix to include new extractions to;
