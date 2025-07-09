@@ -31,8 +31,9 @@ class Extractor(NamedDict):
         self.extraction_key = key
         self.slug = key
         test_cases = test_cases or dict()
-        self.prompt_negative_examples = test_cases.get('test_negative_examples') or []
-        self.prompt_positive_examples = test_cases.get('test_positive_examples') or []
+        
+        self.prompt_negative_examples = remove_empty(test_cases.get('test_negative_examples') or [])
+        self.prompt_positive_examples = remove_empty(test_cases.get('test_positive_examples') or [])
         if self.file and not Path(self.file).is_absolute() and include_path:
             self.file = Path(include_path) / self.file
 
@@ -43,6 +44,9 @@ class Extractor(NamedDict):
             file = Path(self.file)
             for line in file.read_text().splitlines():
                 self.lookups.add(line.strip())
+
+def remove_empty(iterable: list):
+    return [it for it in iterable if it]
 
 def parse_extraction_config(include_path: Path):
     config = {}
