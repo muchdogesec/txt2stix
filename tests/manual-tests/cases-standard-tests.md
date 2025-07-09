@@ -442,7 +442,8 @@ python3 txt2stix.py \
     --name 'Test AI Content check failure' \
     --tlp_level clear \
     --confidence 100 \
-    --use_extractions 'pattern_*' \
+	--use_extractions ai_ipv4_address_only \
+	--ai_settings_extractions openai:gpt-4o \
     --tlp_level clear \
     --confidence 100 \
 	--use_extractions ai_ipv4_address_only \
