@@ -151,7 +151,7 @@ def parse_args():
         "--ai_extract_if_no_incidence",
         default=True,
         type=parse_bool,
-        help="if content check decides the report is not related to cyber security intelligence (e.g. vendor marketing), then you can use this setting to decide wether or not script should proceed. Setting to `true` will stop processing. It is designed to save AI tokens processing unknown content at scale in an automated way.",
+        help="if content check decides the report is not related to cyber security intelligence (e.g. vendor marketing), then you can use this setting to decide wether or not script should proceed. Setting to `false` will stop processing. It is designed to save AI tokens processing unknown content at scale in an automated way.",
     )
     name_arg = parser.add_argument(
         "--name",
