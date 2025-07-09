@@ -46,7 +46,13 @@ cd txt2stix
 python3 -m venv txt2stix-venv
 source txt2stix-venv/bin/activate
 # install requirements
-pip3 install .
+pip3 install txt2stix
+```
+
+Note, by default txt2stix will install OpenAI to use as the AI provider. You can also use Anthropic, Gemini, or Deepseek. You need to install these manually if you plan to use them as follows (remove those that don't apply)
+
+```shell
+pip3 install txt2stix[deepseek,gemini,anthropic]
 ```
 
 ### Set variables
@@ -117,8 +123,6 @@ If any AI extractions, or AI relationship mode is set, you must set the followin
 * `--ai_settings_relationships` (`model:provider`, required if AI relationship mode set):
 	* similar to `ai_settings_extractions` but defines the model used to generate relationships. Only one model can be provided. Passed in same format as `ai_settings_extractions`
 	* See `tests/manual-tests/cases-ai-relationships.md` for some examples
-
-
 
 #### Other AI related settings
 
