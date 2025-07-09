@@ -433,6 +433,24 @@ python3 txt2stix.py \
     --report_id ed6039d6-699c-44f0-9bf0-957d4d0ff99f
 ```
 
+ Will pass but still process, as `ai_content_check_provider` is omitted
+
+```shell
+python3 txt2stix.py \
+    --relationship_mode standard \
+    --input_file tests/data/extraction_types/all_cases.txt \
+    --name 'Test AI Content check failure' \
+    --tlp_level clear \
+    --confidence 100 \
+    --use_extractions 'pattern_*' \
+    --tlp_level clear \
+    --confidence 100 \
+	--use_extractions ai_ipv4_address_only \
+	--ai_settings_extractions openai:gpt-4o \
+	--ai_extract_if_no_incidence false \
+    --report_id 2880d1c1-0211-45b6-8565-befe596ff81f
+```
+
 ### attack flow demo
 
 no indicators
