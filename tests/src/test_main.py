@@ -276,12 +276,11 @@ def test_main_func():
 
 
 def test_setLogFile():
-    tmp = tempfile.NamedTemporaryFile(prefix='setlogfile', delete_on_close=False)
+    tmp = tempfile.NamedTemporaryFile(prefix='setlogfile')
     p = Path(tmp.name)
     logger = newLogger("txt2stix")
     setLogFile(logger, p)
-    tmp.flush()
-    tmp.close()
+    assert p.exists(), "log file should be created"
 
 def named_ai_extractor_mock(name, retval):
     m = MagicMock()
