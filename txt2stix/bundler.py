@@ -194,6 +194,7 @@ class txt2stixBundler:
         self.all_extractors = extractors
         self.identity = identity or self.default_identity
         self.tlp_level = TLP_LEVEL.get(tlp_level)
+        self.summary = ""
         if report_id:
             self.uuid = report_id
         else:
@@ -415,6 +416,7 @@ class txt2stixBundler:
         )
 
     def add_summary(self, summary, ai_summary_provider):
+        self.summary = summary
         summary_note_obj = Note(
             type="note",
             spec_version="2.1",

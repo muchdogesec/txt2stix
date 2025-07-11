@@ -11,7 +11,7 @@ import sys, os
 from pydantic import BaseModel
 
 from txt2stix.ai_extractor.utils import DescribesIncident
-from txt2stix.attack_flow import parse_flow
+from txt2stix import attack_flow
 
 
 from .utils import RELATIONSHIP_TYPES, Txt2StixData, remove_links
@@ -244,6 +244,14 @@ def parse_args():
         help="create attack flow for attack objects in report/bundle",
     )
 
+    anav_arg = parser.add_argument(
+        "--ai_create_attack_navigator_layer",
+        default=False,
+        action="store_true",
+        help="create attack flow for attack objects in report/bundle",
+    )
+
+
     args = parser.parse_args()
     if not args.input_file.exists():
         raise argparse.ArgumentError(inf_arg, "cannot open file")
@@ -258,7 +266,11 @@ def parse_args():
 
     if args.ai_create_attack_flow and not args.ai_settings_relationships:
         raise argparse.ArgumentError(
-            aflow_arg, "--ai_create_attack_flow requires --ai_settings_relationships"
+            aflow_arg, "--ai_settings_relationships must be set"
+        )
+    if args.ai_create_attack_navigator_layer and not args.ai_settings_relationships:
+        raise argparse.ArgumentError(
+            anav_arg, "--ai_settings_relationships must be set"
         )
     #### process --use-extractions
     if args.use_extractions.get("ai") and not args.ai_settings_extractions:
@@ -352,6 +364,7 @@ def _count_token(extractor: BaseAIExtractor, input: str):
 def run_txt2stix(bundler: txt2stixBundler, preprocessed_text: str, extractors_map: dict,
                 ai_content_check_provider=None,
                 ai_create_attack_flow=None,
+                ai_create_attack_navigator_layer=None,
                 input_token_limit=10,
                 ai_settings_extractions=None,
                 ai_settings_relationships=None,
@@ -385,14 +398,12 @@ def run_txt2stix(bundler: txt2stixBundler, preprocessed_text: str, extractors_ma
         retval.extractions = extract_all(bundler, extractors_map, preprocessed_text, ai_extractors=ai_settings_extractions, ignore_extraction_boundary=ignore_extraction_boundary)
         if relationship_mode == "ai" and sum(map(lambda x: len(x), retval.extractions.values())):
             retval.relationships = extract_relationships_with_ai(bundler, preprocessed_text, retval.extractions, ai_settings_relationships)
-            
-        if ai_create_attack_flow:
-            logging.info("creating attack-flow bundle")
-            ex: BaseAIExtractor = ai_settings_relationships
-            retval.attack_flow = ex.extract_attack_flow(preprocessed_text, retval.extractions, retval.relationships)
-            bundler.flow_objects = parse_flow(bundler.report, retval.attack_flow)
-
+        
+        if ai_create_attack_flow or ai_create_attack_navigator_layer:
+            retval.attack_flow, retval.navigator_layer = attack_flow.extract_attack_flow_and_navigator(bundler, preprocessed_text, ai_create_attack_flow, ai_create_attack_navigator_layer, ai_settings_relationships)
     return retval
+
+
 
 def main():
     dotenv.load_dotenv()
@@ -427,6 +438,10 @@ def main():
         data_path = Path(str(output_path).replace('bundle--', 'data--'))
         data_path.write_text(data.model_dump_json(indent=4))
         logger.info(f"Wrote data output to `{data_path}`")
+        if data.navigator_layer:
+            nav_path = Path(str(output_path).replace('bundle--', 'navigator--'))
+            nav_path.write_text(json.dumps(data.navigator_layer, indent=4))
+            logger.info(f"Wrote navigator output to `{nav_path}`")
     except argparse.ArgumentError as e:
         logger.exception(e, exc_info=True)
     except:

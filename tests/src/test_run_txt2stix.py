@@ -149,21 +149,45 @@ def test_content_check_param(mock_validate_token_count, subtests):
         mock_validate_token_count.assert_not_called()
 
 
-@mock.patch('txt2stix.ai_extractor.base.BaseAIExtractor.extract_attack_flow')
-def test_attack_flow(mock_extract_attack_flow, subtests):
-    preprocessed_text = "192.168.0.1"
-    mock_extract_attack_flow.return_value =  AttackFlowList(success=False, items=[], matrix='enterprise')
-    mock_extractors_map = parse_extractors_globbed("extractor", all_extractors, "pattern_ipv4_address_only,pattern_domain_name_only")
 
-    with subtests.test('without_ai_create_attack_flow'):
+@mock.patch('txt2stix.txt2stix.attack_flow.extract_attack_flow_and_navigator')
+def test_attack_flow_or_nav(mock_extract_attack_flow, subtests):
+    preprocessed_text = "192.168.0.1"
+    mock_extractors_map = parse_extractors_globbed("extractor", all_extractors, "pattern_ipv4_address_only,pattern_domain_name_only")
+    extractor = parse_model(TEST_AI_MODEL)
+    mock_extract_attack_flow.return_value = "a", "b"
+
+
+    with subtests.test("neither true"):
         retval = run_txt2stix(mock_bundler, preprocessed_text, mock_extractors_map, ai_settings_relationships=parse_model(TEST_AI_MODEL))
         mock_extract_attack_flow.assert_not_called()
-        assert retval.attack_flow == None, "attack_flow should not run"
+        assert retval.attack_flow == None, "attack_flow should not run"    
 
-    with subtests.test('with_ai_create_attack_flow'):
-        retval = run_txt2stix(mock_bundler, preprocessed_text, mock_extractors_map, ai_create_attack_flow=True, ai_settings_relationships=parse_model(TEST_AI_MODEL))
-        mock_extract_attack_flow.assert_called_once()
-        assert retval.attack_flow, "attack_flow should run"
+    
+    with subtests.test("both true", ai_create_attack_flow=True, ai_create_attack_navigator_layer=True):
+        retval = run_txt2stix(mock_bundler, preprocessed_text, mock_extractors_map, ai_settings_relationships=extractor, ai_create_attack_flow=True, ai_create_attack_navigator_layer=True)
+        mock_extract_attack_flow.assert_called_once_with(mock_bundler, preprocessed_text, True, True, extractor)
+        assert retval.attack_flow == "a"
+        assert retval.navigator_layer == "b"
+
+    mock_extract_attack_flow.reset_mock()
+    
+    
+    with subtests.test("only flow", ai_create_attack_flow=True, ai_create_attack_navigator_layer=False):
+        retval = run_txt2stix(mock_bundler, preprocessed_text, mock_extractors_map, ai_settings_relationships=extractor, ai_create_attack_flow=True, ai_create_attack_navigator_layer=False)
+        mock_extract_attack_flow.assert_called_once_with(mock_bundler, preprocessed_text, True, False, extractor)
+        assert retval.attack_flow == "a"
+        assert retval.navigator_layer == "b"
+
+    mock_extract_attack_flow.reset_mock()
+    
+    
+    with subtests.test("only nav", ai_create_attack_flow=False, ai_create_attack_navigator_layer=True):
+        retval = run_txt2stix(mock_bundler, preprocessed_text, mock_extractors_map, ai_settings_relationships=extractor, ai_create_attack_flow=False, ai_create_attack_navigator_layer=True)
+        mock_extract_attack_flow.assert_called_once_with(mock_bundler, preprocessed_text, False, True, extractor)
+        assert retval.attack_flow == "a"
+        assert retval.navigator_layer == "b"
+
 
 
 @mock.patch('txt2stix.txt2stix.extract_relationships_with_ai')

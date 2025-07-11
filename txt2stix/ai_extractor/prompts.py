@@ -128,43 +128,58 @@ DEFAULT_CONTENT_CHECKER_WITH_SUMMARY_TEMPL = PromptTemplate("""
 </summary>
 """)
 
+
 ATTACK_FLOW_PROMPT_TEMPL = ChatPromptTemplate([
-    ChatMessage.from_str("""You are a cyber security threat intelligence analyst.
-Your job is to review report that describe a cyber security incidents.
-Examples include malware analysis, APT group reports, data breaches and vulnerabilities.""", MessageRole.SYSTEM),
-    ChatMessage.from_str("Hi, What <document> would you like me to process for you? the message below must contain the document and the document only", MessageRole.ASSISTANT),
+    ChatMessage.from_str("""You are a cybersecurity threat intelligence analyst.
+
+Your task is to analyze structured intelligence reports describing cybersecurity incidents. These reports may include malware analysis, APT campaigns, data breaches, or vulnerabilities.
+
+You will help interpret and organize MITRE ATT&CK techniques found in these incidents.""", MessageRole.SYSTEM),
+
+    ChatMessage.from_str("Hello. Please provide the document for analysis. Only include the full document text in your response.", MessageRole.ASSISTANT),
+
     ChatMessage.from_str("{document}", MessageRole.USER),
-    ChatMessage.from_str("What are the objects that have been extracted (<extractions>) from the document above?", MessageRole.ASSISTANT),
-    ChatMessage.from_str("{extractions}", MessageRole.USER),
-    ChatMessage.from_str("What are the relationships that have been extracted (<relationships>) between the documents?", MessageRole.USER),
-    ChatMessage.from_str("{relationships}", MessageRole.USER),
-    ChatMessage.from_str("What should I do with all the data that have been provided?", MessageRole.ASSISTANT),
-    ChatMessage.from_str("""Consider all the MITRE ATT&CK Objects extracted from the report and the relationships they have to other objects.
 
-Now I need you to logically define the order of ATT&CK Tactics/Techniques as they are executed in the incident described in the report.
+    ChatMessage.from_str("What ATT&CK techniques and related metadata were extracted from this document?", MessageRole.ASSISTANT),
 
-It is possible that the Techniques extracted are not linked to the relevant MITRE ATT&CK Tactic. You should also assign the correct Tactic to a Technique where a Technique belongs to many ATT&CK Tactics in the ATT&CK Matrix if that can correctly be inferred.
+    ChatMessage.from_str("{extracted_techniques}", MessageRole.USER),
 
-You should also provide a short overview about how this technique is described in the report as the name, and a longer version in description.
+    ChatMessage.from_str("What should I do with the provided techniques and possible tactics?", MessageRole.ASSISTANT),
 
-IMPORTANT: only include the ATT&CK IDs extracted already, do not add any new extractions.
+    ChatMessage.from_str("""Using the provided techniques and their `possible_tactics`, complete the following:
 
-You should deliver a response in JSON as follows
+1. For each technique, select the most appropriate tactic ID from the `possible_tactics` dictionary, using the context in the provided document.
+2. Arrange the technique–tactic pairs in the logical execution order they appear or are used in the incident described in the document.
+3. For each technique:
+   - Assign:
+     - `attack_tactic_id`: the selected tactic ID (from technique.possible_tactics[*])
+     - `attack_technique_id`: the technique ID  (from technique.id)
+   - Determine:
+     - `name`: a short phrase describing how this technique is referred to or used in the document
+     - `description`: a longer explanation describing how the technique is used in the context of the incident, **based strictly on the document content**
 
+⚠️ Only use technique and tactic IDs from the extraction input. Do NOT introduce new IDs.
+
+📤 Return the results in the following JSON format:
+
+```json
 [
-{
-   "position": "<ORDER OF OBJECTS STARTING AT 0",
-   "attack_tactic_id": "<ID>",
-   "attack_technique_id": "<ID>",
-   "name": "<NAME>",
-   "description": "<DESC>"
-},
-{
-   "position": "<ORDER OF OBJECTS STARTING AT 0",
-   "attack_tactic_id": "<ID>",
-   "attack_technique_id": "<ID>",
-   "name": "<NAME>",
-   "description": "<DESC>"
-}
-]""", MessageRole.USER)
+  {
+    "position": 0,
+    "attack_tactic_id": "TAxxxx",
+    "attack_technique_id": "Txxxx",
+    "name": "Short name from document context",
+    "description": "Detailed contextual description from the document"
+  },
+  {
+    "position": 1,
+    "attack_tactic_id": "TAyyyy",
+    "attack_technique_id": "Tyyyy",
+    "name": "Short name from document context",
+    "description": "Detailed contextual description from the document"
+  }
+]
+```
+
+The position value should reflect the logical sequence of steps in the attack, starting from 0.""", MessageRole.USER)
 ])

@@ -22,6 +22,15 @@ class STIXObjectRetriever:
         endpoint = urljoin(self.api_root, f"v1/attack-{matrix}/objects/{attack_id}/")
         return self._retrieve_objects(endpoint)
     
+    def get_attack_tactics(self, matrix):
+        endpoint = urljoin(self.api_root, f"v1/attack-{matrix}/objects/?attack_type=Tactic")
+        tactics = self._retrieve_objects(endpoint)
+        retval = {}
+        for tac in tactics:
+            retval[tac['x_mitre_shortname']] = tac
+            retval[tac['external_references'][0]['external_id']] = tac
+        return retval
+    
     def get_attack_objects(self, matrix, attack_ids):
         endpoint = urljoin(self.api_root, f"v1/attack-{matrix}/objects/?attack_id={','.join(attack_ids)}")
         return self._retrieve_objects(endpoint)

@@ -44,7 +44,6 @@ class AttackFlowItem(BaseModel):
     description: str
 
 class AttackFlowList(BaseModel):
-    matrix : str = Field(description="one of ics, mobile and enterprise")
     items : list[AttackFlowItem]
     success: bool = Field(description="determines if there's any valid flow in <extractions>")
 
