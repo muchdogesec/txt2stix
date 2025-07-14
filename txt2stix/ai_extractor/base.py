@@ -56,11 +56,12 @@ class BaseAIExtractor():
             llm=self.llm,
         )
 
-    def extract_attack_flow(self, input_text, extracted_techniques) -> AttackFlowList:
-        extracted_techniques = [
-            {k: v for k, v in t.items() if k in ("id", "name", "possible_tactics")}
-            for t in extracted_techniques.values()
-        ]
+    def extract_attack_flow(self, input_text, techniques) -> AttackFlowList:
+        extracted_techniques = []
+        for t in techniques.values():
+            extracted_techniques.append(
+                dict(id=t['id'], name=t['name'], possible_tactics=list(t['possible_tactics'].keys()))
+            )
         return self._get_attack_flow_program()(document=input_text, extracted_techniques=extracted_techniques)
 
     def extract_relationships(self, input_text, extractions, relationship_types: list[str]) -> RelationshipList:

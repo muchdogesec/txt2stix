@@ -1,4 +1,6 @@
 import argparse, dotenv
+import contextlib
+import shutil
 from datetime import datetime
 import glob
 import uuid
@@ -431,16 +433,19 @@ def main():
 
         ## write outputs
         out = bundler.to_json()
-        output_path = Path("./output")/f"{bundler.bundle.id}.json"
-        output_path.parent.mkdir(exist_ok=True)
+        output_dir = Path("./output")/str(job_id)
+        with contextlib.suppress(BaseException):
+            shutil.rmtree(output_dir)
+        output_dir.mkdir(exist_ok=True, parents=True)
+        output_path = output_dir/f"{bundler.bundle.id}.json"
         output_path.write_text(out)
         logger.info(f"Wrote bundle output to `{output_path}`")
-        data_path = Path(str(output_path).replace('bundle--', 'data--'))
+        data_path = output_dir/"data.json"
         data_path.write_text(data.model_dump_json(indent=4))
         logger.info(f"Wrote data output to `{data_path}`")
-        if data.navigator_layer:
-            nav_path = Path(str(output_path).replace('bundle--', 'navigator--'))
-            nav_path.write_text(json.dumps(data.navigator_layer, indent=4))
+        for nav_layer in data.navigator_layer or []:
+            nav_path = output_dir/f"navigator-{nav_layer['domain']}.json"
+            nav_path.write_text(json.dumps(nav_layer, indent=4))
             logger.info(f"Wrote navigator output to `{nav_path}`")
     except argparse.ArgumentError as e:
         logger.exception(e, exc_info=True)

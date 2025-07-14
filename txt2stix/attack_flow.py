@@ -1,3 +1,4 @@
+import json
 import logging
 import uuid
 from stix2 import Relationship
@@ -20,17 +21,18 @@ def parse_flow(report, flow: AttackFlowList, techniques, tactics):
     for i, item in enumerate(flow.items):
         try:
             technique = techniques[item.attack_technique_id]
+            tactic_id = technique['possible_tactics'][flow.tactic_mapping[item.attack_technique_id]]
             technique_obj = technique["stix_obj"]
-            tactic_obj = tactics[technique["domain"]][item.attack_tactic_id]
+            tactic_obj = tactics[technique["domain"]][tactic_id]
             action_obj = AttackAction(
                 **{
                     "id": flow_id(
-                        report["id"], item.attack_technique_id, item.attack_tactic_id
+                        report["id"], item.attack_technique_id, tactic_id
                     ),
                     "effect_refs": [f"attack-action--{str(uuid.uuid4())}"],
                     "technique_id": item.attack_technique_id,
                     "technique_ref": technique_obj["id"],
-                    "tactic_id": item.attack_tactic_id,
+                    "tactic_id": tactic_id,
                     "tactic_ref": tactic_obj["id"],
                     "name": item.name,
                     "description": item.description,
@@ -140,18 +142,20 @@ def get_techniques_from_extracted_objects(objects: dict, tactics: dict):
                 tactic_name = phase["phase_name"]
                 tactic_obj = tactics[domain][tactic_name]
                 tactic_id = tactic_obj["external_references"][0]["external_id"]
-                technique["possible_tactics"][tactic_id] = tactic_name
+                technique["possible_tactics"][tactic_name] = tactic_id
             techniques[technique["id"]] = technique
     return techniques
 
 
 def create_navigator_layer(report, summary, flow: AttackFlowList, techniques):
-    technique_mapping = {f.attack_technique_id: f.attack_tactic_id for f in flow.items}
     domains = {}
     for technique in techniques.values():
         domain_techniques = domains.setdefault(technique["domain"], [])
+        technique_id = technique["id"]
+        if technique_id not in flow.tactic_mapping:
+            continue
         domain_techniques.append(
-            dict(techniqueID=technique["id"], tactic=technique['possible_tactics'][technique_mapping[technique["id"]]])
+            dict(techniqueID=technique_id, tactic=flow.tactic_mapping[technique_id])
         )
 
     retval = []
@@ -187,6 +191,11 @@ def extract_attack_flow_and_navigator(
     ex: BaseAIExtractor = ai_settings_relationships
     tactics = get_all_tactics()
     techniques = get_techniques_from_extracted_objects(bundler.bundle.objects, tactics)
+    logged_techniques = [
+            {k: v for k, v in t.items() if k != "stix_obj"}
+            for t in techniques.values()
+        ]
+    logging.debug(f"parsed techniques: {json.dumps(logged_techniques, indent=4)}")
 
     flow = ex.extract_attack_flow(preprocessed_text, techniques)
     navigator = None

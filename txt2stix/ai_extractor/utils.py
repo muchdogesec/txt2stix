@@ -38,14 +38,22 @@ class DescribesIncident(BaseModel):
 
 class AttackFlowItem(BaseModel):
     position : int = Field(description="order of object starting at 0")
-    attack_tactic_id : str
     attack_technique_id : str
     name: str
     description: str
 
 class AttackFlowList(BaseModel):
+    tactic_selection: list[tuple[str, str]] = Field(description="attack technique id to attack tactic id mapping using possible_tactics")
+    # additional_tactic_mapping: list[tuple[str, str]] = Field(description="the rest of tactic_mapping")
     items : list[AttackFlowItem]
     success: bool = Field(description="determines if there's any valid flow in <extractions>")
+
+    def model_post_init(self, context):
+        return super().model_post_init(context)
+    
+    @property
+    def tactic_mapping(self):
+        return dict(self.tactic_selection)
 
 class ParserWithLogging(PydanticOutputParser):
     def parse(self, text: str):

@@ -129,12 +129,11 @@ DEFAULT_CONTENT_CHECKER_WITH_SUMMARY_TEMPL = PromptTemplate("""
 """)
 
 
+
 ATTACK_FLOW_PROMPT_TEMPL = ChatPromptTemplate([
     ChatMessage.from_str("""You are a cybersecurity threat intelligence analyst.
 
-Your task is to analyze structured intelligence reports describing cybersecurity incidents. These reports may include malware analysis, APT campaigns, data breaches, or vulnerabilities.
-
-You will help interpret and organize MITRE ATT&CK techniques found in these incidents.""", MessageRole.SYSTEM),
+Your task is to analyze structured cybersecurity incident reports (e.g., malware analysis, APTs, data breaches, vulnerabilities) and extract and organize MITRE ATT&CK techniques as part of an attack flow analysis. This analysis helps defenders understand adversary behavior using the MITRE Attack Flow model maintained by the MITRE Center for Threat-Informed Defense.""", MessageRole.SYSTEM),
 
     ChatMessage.from_str("Hello. Please provide the document for analysis. Only include the full document text in your response.", MessageRole.ASSISTANT),
 
@@ -142,44 +141,98 @@ You will help interpret and organize MITRE ATT&CK techniques found in these inci
 
     ChatMessage.from_str("What ATT&CK techniques and related metadata were extracted from this document?", MessageRole.ASSISTANT),
 
-    ChatMessage.from_str("{extracted_techniques}", MessageRole.USER),
+    ChatMessage.from_str("<extracted_techniques>\n\n{extracted_techniques}\n\n</extracted_techniques>", MessageRole.USER),
 
-    ChatMessage.from_str("What should I do with the provided techniques and possible tactics?", MessageRole.ASSISTANT),
+    ChatMessage.from_str("Let's begin with tactic selection. What should I do with the techniques and possible tactics?", MessageRole.ASSISTANT),
 
-    ChatMessage.from_str("""Using the provided techniques and their `possible_tactics`, complete the following:
+    # PART 1: Tactic Selection Phase
+    ChatMessage.from_str("""
+PART 1: TACTIC SELECTION
 
-1. For each technique, select the most appropriate tactic ID from the `possible_tactics` dictionary, using the context in the provided document.
-2. Arrange the technique–tactic pairs in the logical execution order they appear or are used in the incident described in the document.
-3. For each technique:
-   - Assign:
-     - `attack_tactic_id`: the selected tactic ID (from technique.possible_tactics[*])
-     - `attack_technique_id`: the technique ID  (from technique.id)
-   - Determine:
-     - `name`: a short phrase describing how this technique is referred to or used in the document
-     - `description`: a longer explanation describing how the technique is used in the context of the incident, **based strictly on the document content**
+For each of the technique in `<extracted_techniques>`, return [technique_id, tactic_name], where
+- technique id = `technique.id`
+- tactic_name = choice from `technique.possible_tactics`, where choice is selected based on the **most contextually appropriate** tactic name for each technique based on how it's used in the document.
 
-⚠️ Only use technique and tactic IDs from the extraction input. Do NOT introduce new IDs.
+📌 Output only the tactic assignments in this format:
+<code>
+{
+  "tactic_selection": [
+    ["Txxxx", "impact"],
+    ["Tyyyy", "discovery"],
+    ...
+  ]
+}
+</code>
 
-📤 Return the results in the following JSON format:
+⚠️ Constraints:
+- Use **only** the `possible_tactics` provided with each technique.
+- Do **not** invent or infer any technique or tactic name beyond what’s given in <extracted_techniques>.
+- Ensure **every** technique in `<extracted_techniques>` appears in `tactic_selection`, even if uncertain — choose the best fit.
+- Technique IDs in `tactic_selection` must match exactly from <extracted_techniques> (e.g., `T1059` must match `T1059` and not `T1059.005`, `T1001.001` must match `T1001.001` and not `T1001`).
+- Must include every technique in `<extracted_techniques>`
+""", MessageRole.USER),
 
-```json
-[
-  {
-    "position": 0,
-    "attack_tactic_id": "TAxxxx",
-    "attack_technique_id": "Txxxx",
-    "name": "Short name from document context",
-    "description": "Detailed contextual description from the document"
-  },
-  {
-    "position": 1,
-    "attack_tactic_id": "TAyyyy",
-    "attack_technique_id": "Tyyyy",
-    "name": "Short name from document context",
-    "description": "Detailed contextual description from the document"
-  }
-]
-```
+    ChatMessage.from_str("Thanks. Now let's continue with the attack flow. How should I proceed?", MessageRole.ASSISTANT),
 
-The position value should reflect the logical sequence of steps in the attack, starting from 0.""", MessageRole.USER)
+    # PART 2: Attack Flow Construction Phase
+    ChatMessage.from_str("""
+PART 2: ATTACK FLOW CONSTRUCTION
+
+Using the `<extracted_techniques>` and the incident details in the document, construct a sequence of MITRE ATT&CK techniques that represent the adversary’s logical progression through the attack.
+
+For each technique:
+- Use the `technique.id` exactly as provided
+- Assign:
+  - `name`: a short, context-based phrase describing how the technique is used
+  - `description`: a longer explanation of how the technique operates in this specific incident, based only on the document
+  - `position`: the step in the logical or chronological attack sequence (starting at 0)
+
+⚠️ Constraints:
+- Use **only** technique IDs provided in `<extracted_techniques>` — do **not** invent or infer new ones
+- Ensure all included technique IDs exactly match `technique.id` from `<extracted_techniques>` (e.g., `T1059` must match `T1059` and not `T1059.005`, `T1001.001` must match `T1001.001` and not `T1001`).
+
+📤 Output Format:
+<code>
+{
+  "items": [
+    {
+      "position": 0,
+      "attack_technique_id": "Txxxx",
+      "name": "Short contextual name",
+      "description": "Detailed contextual explanation"
+    },
+    ...
+  ],
+  "success": true
+}
+</code>
+
+Your goal is to tell the story of how the adversary moved through the attack using the extracted ATT&CK techniques, in the correct sequence, with clear context for defenders.
+""", MessageRole.USER),
+    # PART 3: Combination phase
+    ChatMessage.from_str("""
+📤 Final Output Format:
+<code>
+{
+  "tactic_selection": [...],  // Use your previous output
+  "items": [
+    {
+      "position": 0,
+      "attack_technique_id": "Txxxx",
+      "name": "Short contextual name",
+      "description": "Detailed contextual explanation"
+    },
+    ...
+  ],
+  "success": true
+}
+</code>
+
+⚠️ Constraints:
+- All `attack_technique_id` values in `items` must come from `<extracted_techniques>`
+- The `position` field should reflect the **chronological or logical** execution order of the attack
+- Do **not** introduce new technique IDs
+
+✅ Your goal is to build a realistic, document-based attack flow using MITRE ATT&CK technique–tactic pairs.
+""", MessageRole.USER)
 ])
