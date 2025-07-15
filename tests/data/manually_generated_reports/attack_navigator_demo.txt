@@ -1,0 +1,9 @@
+Enterprise
+
+Active Scanning is used during Reconnaissance.
+
+Malware is then used to Obtain Capabilities.
+
+Mobile
+
+SIM Card Swapping is used for initial access to achieve Remote Device Management Services

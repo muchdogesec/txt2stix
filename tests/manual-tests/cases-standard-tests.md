@@ -485,3 +485,38 @@ python3 txt2stix.py \
     --ai_create_attack_flow \
     --report_id 3b160a8d-12dd-4e7c-aee8-5af6e371b425
 ```
+
+### attack navigator demo
+
+```shell
+python3 txt2stix.py \
+    --relationship_mode ai \
+    --ai_settings_relationships openai:gpt-4o \
+    --input_file tests/data/manually_generated_reports/attack_navigator_demo.txt \
+    --name 'Test MITRE ATT&CK Navigator' \
+    --tlp_level clear \
+    --confidence 100 \
+    --use_extractions 'ai_mitre_attack_*' \
+    --ai_settings_extractions openai:gpt-4o \
+    --ai_create_attack_navigator_layer \
+    --report_id b599f044-f22c-4e38-a2ed-3ef43442ccd2
+```
+
+### attack navigator and attack flow
+
+used to check prompts only sent once
+
+```shell
+python3 txt2stix.py \
+    --relationship_mode ai \
+    --ai_settings_relationships openai:gpt-4o \
+    --input_file tests/data/manually_generated_reports/attack_flow_demo.txt \
+    --name 'Test MITRE ATT&CK Flow and Navigator' \
+    --tlp_level clear \
+    --confidence 100 \
+    --use_extractions 'ai_mitre_attack_enterprise' \
+    --ai_settings_extractions openai:gpt-4o \
+    --ai_create_attack_flow \
+    --ai_create_attack_navigator_layer \
+    --report_id c0d48262-1d9f-42d2-aa29-f0cba1bfa2e0
+```
