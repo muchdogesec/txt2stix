@@ -1,9 +1,9 @@
 Enterprise
 
-Active Scanning is used during Reconnaissance.
+T1595 is used during TA0043
 
-Malware is then used to Obtain Capabilities.
+T1587.001 is then used to T1587.
 
 Mobile
 
-SIM Card Swapping is used for initial access to achieve Remote Device Management Services
+T1451 is used for TA0027 to achieve T1662

@@ -499,8 +499,11 @@ python3 txt2stix.py \
     --use_extractions 'ai_mitre_attack_*' \
     --ai_settings_extractions openai:gpt-4o \
     --ai_create_attack_navigator_layer \
+    --ai_content_check_provider openai:gpt-4o \
     --report_id b599f044-f22c-4e38-a2ed-3ef43442ccd2
 ```
+
+`ai_content_check_provider` checked to ensure summary is used as description
 
 ### attack navigator and attack flow
 
@@ -510,7 +513,7 @@ used to check prompts only sent once
 python3 txt2stix.py \
     --relationship_mode ai \
     --ai_settings_relationships openai:gpt-4o \
-    --input_file tests/data/manually_generated_reports/attack_flow_demo.txt \
+    --input_file tests/data/manually_generated_reports/attack_navigator_demo.txt \
     --name 'Test MITRE ATT&CK Flow and Navigator' \
     --tlp_level clear \
     --confidence 100 \
