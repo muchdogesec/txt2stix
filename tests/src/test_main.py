@@ -146,7 +146,21 @@ def test_parse_args_fails(monkeypatch):
         "standard",
         "--ai_create_attack_flow",
     ])
-    with pytest.raises(argparse.ArgumentError, match="--ai_create_attack_flow requires --ai_settings_relationships"):
+    with pytest.raises(argparse.ArgumentError, match="argument --ai_create_attack_flow: --ai_settings_relationships must be set"):
+        parse_args()
+
+
+    monkeypatch.setattr(sys, 'argv', [
+        "program",
+        "--input-file",
+        tmp.name,
+        "--name",
+        "a",
+        "--relationship_mode",
+        "standard",
+        "--ai_create_attack_navigator_layer",
+    ])
+    with pytest.raises(argparse.ArgumentError, match="argument --ai_create_attack_navigator_layer: --ai_settings_relationships must be set"):
         parse_args()
 
     monkeypatch.setattr(sys, 'argv', [
