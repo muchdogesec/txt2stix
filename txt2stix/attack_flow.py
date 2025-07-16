@@ -21,14 +21,14 @@ def parse_flow(report, flow: AttackFlowList, techniques, tactics):
     for i, item in enumerate(flow.items):
         try:
             technique = techniques[item.attack_technique_id]
-            tactic_id = technique['possible_tactics'][flow.tactic_mapping[item.attack_technique_id]]
+            tactic_id = technique["possible_tactics"][
+                flow.tactic_mapping[item.attack_technique_id]
+            ]
             technique_obj = technique["stix_obj"]
             tactic_obj = tactics[technique["domain"]][tactic_id]
             action_obj = AttackAction(
                 **{
-                    "id": flow_id(
-                        report["id"], item.attack_technique_id, tactic_id
-                    ),
+                    "id": flow_id(report["id"], item.attack_technique_id, tactic_id),
                     "effect_refs": [f"attack-action--{str(uuid.uuid4())}"],
                     "technique_id": item.attack_technique_id,
                     "technique_ref": technique_obj["id"],
@@ -149,14 +149,21 @@ def get_techniques_from_extracted_objects(objects: dict, tactics: dict):
 
 def create_navigator_layer(report, summary, flow: AttackFlowList, techniques):
     domains = {}
+    comments = {item.attack_technique_id: item.description for item in flow.items}
     for technique in techniques.values():
         domain_techniques = domains.setdefault(technique["domain"], [])
         technique_id = technique["id"]
         if technique_id not in flow.tactic_mapping:
             continue
-        domain_techniques.append(
-            dict(techniqueID=technique_id, tactic=flow.tactic_mapping[technique_id])
+        technique_item = dict(
+            techniqueID=technique_id,
+            tactic=flow.tactic_mapping[technique_id],
+            score=100,
+            showSubtechniques=True,
         )
+        if comment := comments.get(technique_id):
+            technique_item["comment"] = comment
+        domain_techniques.append(technique_item)
 
     retval = []
 
@@ -174,7 +181,13 @@ def create_navigator_layer(report, summary, flow: AttackFlowList, techniques):
                     "maxValue": 100,
                 },
                 "legendItems": [],
-                "metadata": [],
+                "metadata": [{"name": "report_id", "value": report.id}],
+                "links": [
+                    {
+                        "label": "Generated using txt2stix",
+                        "url": "https://github.com/muchdogesec/txt2stix/",
+                    }
+                ],
                 "layout": {"layout": "side"},
             }
         )
@@ -192,9 +205,8 @@ def extract_attack_flow_and_navigator(
     tactics = get_all_tactics()
     techniques = get_techniques_from_extracted_objects(bundler.bundle.objects, tactics)
     logged_techniques = [
-            {k: v for k, v in t.items() if k != "stix_obj"}
-            for t in techniques.values()
-        ]
+        {k: v for k, v in t.items() if k != "stix_obj"} for t in techniques.values()
+    ]
     logging.debug(f"parsed techniques: {json.dumps(logged_techniques, indent=4)}")
 
     flow = ex.extract_attack_flow(preprocessed_text, techniques)
@@ -204,5 +216,7 @@ def extract_attack_flow_and_navigator(
         bundler.flow_objects = parse_flow(bundler.report, flow, techniques, tactics)
 
     if ai_create_attack_navigator_layer:
-        navigator = create_navigator_layer(bundler.report, bundler.summary, flow, techniques)
+        navigator = create_navigator_layer(
+            bundler.report, bundler.summary, flow, techniques
+        )
     return flow, navigator
