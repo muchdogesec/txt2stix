@@ -1,3 +1,5 @@
+## IMPORTANT: if using CTI Butler database locally in arangodb (i.e is not app.ctibutler.com in .env) you need to follow these steps to import the data needed to populate these lookups: https://github.com/muchdogesec/stix2arango/blob/main/utilities/arango_cti_processor/README.md (use `--database ctibutler_database` in the s2a script or change it in this script)
+
 import os
 from arango import ArangoClient
 

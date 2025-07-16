@@ -1,0 +1,9 @@
+Enterprise
+
+T1595 is used during TA0043
+
+T1587.001 is then used to T1587.
+
+Mobile
+
+T1451 is used for TA0027 to achieve T1662

@@ -1,87 +1,587 @@
-from datetime import datetime
+from types import SimpleNamespace
 import pytest
-from unittest import mock
-from unittest.mock import MagicMock
-from pathlib import Path
-import sys
-import os
+from unittest.mock import MagicMock, patch
 from stix2extensions._extensions import attack_flow_ExtensionDefinitionSMO
 
-from txt2stix import get_all_extractors
 from txt2stix.ai_extractor.utils import (
-    AttackFlowItem,
     AttackFlowList,
-    DescribesIncident,
 )
-from txt2stix.attack_flow import parse_flow
-from txt2stix.bundler import txt2stixBundler
-from txt2stix.txt2stix import (
-    parse_args,
-    parse_extractors_globbed,
-    parse_model,
-    run_txt2stix,
-    split_comma,
-    range_type,
-    parse_labels,
-    load_env,
-    # run_txt2stix,
-    extract_all,
-    extract_relationships_with_ai,
+from txt2stix.attack_flow import (
+    create_navigator_layer,
+    get_all_tactics,
+    get_techniques_from_extracted_objects,
+    parse_flow,
+    extract_attack_flow_and_navigator,
 )
 from stix2 import Report
-from txt2stix.common import FatalException
-import argparse
+
+from txt2stix.txt2stix import parse_model
 
 
-def get_flow_items(items):
-    retval = []
-    for pos, (tactic_id, tecnique_id) in enumerate(items):
-        retval.append(
-            AttackFlowItem(
-                position=pos,
-                attack_tactic_id=tactic_id,
-                attack_technique_id=tecnique_id,
-                name=f"{tactic_id}+{tecnique_id}",
-                description=f"Tactic ID is {tactic_id} and Technique ID is {tecnique_id}",
-            )
+def test_parse_flow(dummy_report, dummy_objects, dummy_flow):
+    tactics = get_all_tactics()
+    techniques = get_techniques_from_extracted_objects(dummy_objects, tactics)
+    flow = dummy_flow
+    report = dummy_report
+    expected_ids = set(
+        [
+            "report--9c88fbcb-8c0d-4124-868b-3dcb1e9b696c",
+            "extension-definition--fb9c968a-745b-4ade-9b25-c324172197f4",
+            "attack-flow--9c88fbcb-8c0d-4124-868b-3dcb1e9b696c",
+            "relationship--6346ead9-49cc-5ede-89e2-449f1c22ed13",
+            "x-mitre-tactic--696af733-728e-49d7-8261-75fdc590f453",
+            "attack-pattern--0fe075d5-beac-4d02-b93e-0f874997db72",
+            "attack-action--51dc1572-cb10-581b-b9ef-9e589615ecaa",
+            "x-mitre-tactic--5bc1d813-693e-4823-9961-abf9af4b0e92",
+            "attack-pattern--f9e9365a-9ca2-4d9c-8e7c-050d73d1101a",
+            "attack-action--e03c89ba-a476-5509-ac0a-049b61514be7",
+            "x-mitre-tactic--298fe907-7931-4fd2-8131-2814dd493134",
+            "attack-pattern--1b22b676-9347-4c55-9a35-ef0dc653db5b",
+            "attack-action--1fd63972-ef98-5da5-81f5-4090c7dfa585",
+            "x-mitre-tactic--2558fd61-8c75-4730-94c4-11926db2a263",
+            "attack-pattern--1a80d097-54df-41d8-9d33-34e755ec5e72",
+            "attack-action--c7e06b10-252d-520d-82eb-e32314bbec34",
+        ]
+    )
+
+    flow_objects = parse_flow(report, flow, techniques, tactics)
+    assert {obj["id"] for obj in flow_objects} == expected_ids
+
+
+def test_parse_flow__no_success(dummy_report):
+    flow_objects = parse_flow(
+        dummy_report,
+        AttackFlowList(
+            success=False,
+            matrix="enterprise",
+            items=[],
+        ),
+        None,
+        None,
+    )
+    assert len(flow_objects) == 0
+
+
+def test_get_techniques_from_extracted_objects(dummy_objects):
+    tactics = get_all_tactics()
+    techniques = get_techniques_from_extracted_objects(dummy_objects, tactics)
+    stix_objects = [v.pop("stix_obj") for v in techniques.values()]
+    assert dummy_objects == stix_objects
+    assert techniques == {
+        "T0814": {
+            "domain": "ics-attack",
+            "name": "Denial of Service",
+            "possible_tactics": {"TA0107": "inhibit-response-function"},
+            "id": "T0814",
+            "platforms": [],
+        },
+        "T0887": {
+            "domain": "ics-attack",
+            "name": "Wireless Sniffing",
+            "possible_tactics": {"TA0102": "discovery" , "TA0100": "collection"},
+            "id": "T0887",
+            "platforms": [],
+        },
+        "T1505.001": {
+            "domain": "enterprise-attack",
+            "name": "SQL Stored Procedures",
+            "possible_tactics": {"TA0003":"persistence"},
+            "id": "T1505.001",
+            "platforms": ["Windows", "Linux"],
+        },
+        "T1555.002": {
+            "domain": "enterprise-attack",
+            "name": "Securityd Memory",
+            "possible_tactics": {"TA0006": "credential-access"},
+            "id": "T1555.002",
+            "platforms": ["Linux", "macOS"],
+        },
+    }
+
+
+# def test_sjhsjh(dummy_report, dummy_objects):
+#     ex = parse_model("openai:gpt-4o")
+#     text = "The attck starts by sniffing with wireshark for packets with source 12155 after which a lot of SQLi requests is sent to the port causing a denial of service and then another method is used to bypass Securityd"
+
+#     tactics = get_all_tactics()
+#     techniques = get_techniques_from_extracted_objects(dummy_objects, tactics)
+
+#     flow = ex.extract_attack_flow(text, techniques)
+
+#     flow_objects = parse_flow(dummy_report, flow, techniques, tactics)
+
+
+def test_extract_attack_flow_and_navigator(dummy_objects, dummy_report):
+    bundler = MagicMock()
+    bundler.report = dummy_report
+    bundler.bundle.objects = dummy_objects
+    ai_extractor = MagicMock()
+    mock_extract_flow = ai_extractor.extract_attack_flow
+    text = "My awesome text"
+
+    tactics = get_all_tactics()
+    techniques = get_techniques_from_extracted_objects(bundler.bundle.objects, tactics)
+
+    with (
+        patch("txt2stix.attack_flow.parse_flow") as mock_parse_flow,
+        patch(
+            "txt2stix.attack_flow.create_navigator_layer"
+        ) as mock_create_navigator_layer,
+    ):
+        ## Both flow and navigator
+        flow, nav = extract_attack_flow_and_navigator(
+            bundler, text, True, True, ai_extractor
         )
-    return retval
+        assert bundler.flow_objects == mock_parse_flow.return_value
+        assert (flow, nav) == (
+            mock_extract_flow.return_value,
+            mock_create_navigator_layer.return_value,
+        )
+        mock_parse_flow.assert_called_once_with(
+            bundler.report, mock_extract_flow.return_value, techniques, tactics
+        )
+        mock_extract_flow.assert_called_once_with(text, techniques)
+
+        mock_create_navigator_layer.assert_called_once_with(
+            bundler.report, bundler.summary, mock_extract_flow.return_value, techniques
+        )
+
+        ### reset mocks
+        mock_parse_flow.reset_mock()
+        mock_create_navigator_layer.reset_mock()
+        mock_extract_flow.reset_mock()
+
+        ## only flow
+        flow, nav = extract_attack_flow_and_navigator(
+            bundler, text, True, False, ai_extractor
+        )
+        assert bundler.flow_objects == mock_parse_flow.return_value
+        assert (flow, nav) == (mock_extract_flow.return_value, None)
+        mock_parse_flow.assert_called_once_with(
+            bundler.report, mock_extract_flow.return_value, techniques, tactics
+        )
+        mock_extract_flow.assert_called_once_with(text, techniques)
+
+        mock_create_navigator_layer.assert_not_called()
+
+        ### reset mocks
+        mock_parse_flow.reset_mock()
+        mock_create_navigator_layer.reset_mock()
+        mock_extract_flow.reset_mock()
+
+        ## only navigator
+        flow, nav = extract_attack_flow_and_navigator(
+            bundler, text, False, True, ai_extractor
+        )
+        assert bundler.flow_objects == mock_parse_flow.return_value
+        mock_extract_flow.assert_called_once_with(text, techniques)
+        assert (flow, nav) == (
+            mock_extract_flow.return_value,
+            mock_create_navigator_layer.return_value,
+        )
+        mock_parse_flow.assert_not_called()
+
+        mock_create_navigator_layer.assert_called_once_with(
+            bundler.report, bundler.summary, mock_extract_flow.return_value, techniques
+        )
 
 
-@pytest.mark.parametrize(
-    ["flow", "expected_ids"],
-    [
-        [
-            AttackFlowList(
-                success=True,
-                matrix="enterprise",
-                items=get_flow_items([("TA0009", "T1653"), ("TA0040", "T1027")]),
-            ),
-            [
-                "relationship--6346ead9-49cc-5ede-89e2-449f1c22ed13",
-                "attack-action--a3920f17-1d1f-5ace-982f-235a65d53611",
-                "x-mitre-tactic--5569339b-94c2-49ee-afb3-2222936582c8",
-                "attack-action--34ae999a-5eaa-568b-a584-863080211b14",
-                "attack-pattern--ea071aa0-8f17-416f-ab0d-2bab7e79003d",
-                "x-mitre-tactic--d108ce10-2419-4cf9-a774-46161d6c6cfe",
-                "attack-pattern--b3d682b6-98f2-4fb0-aa3b-b4df007ca70a",
-                "attack-flow--9c88fbcb-8c0d-4124-868b-3dcb1e9b696c",
+def test_create_navigator_layer(dummy_report):
+    summary = "this is a summary"
+    flow = MagicMock()
+    tactics_1 = {
+        "TA01": "initial-access",
+        "TA02": "lateral-movement",
+        "TA03": "command-and-control",
+    }
+    tactics_2 = {
+        "TA11": "initial-access",
+        "TA12": "lateral-movement",
+        "TA25": "command-and-control",
+        "TA123": "persistence",
+        "TA91": "exfiltration",
+    }
+    flow.items = [
+        SimpleNamespace(attack_technique_id="T0001", attack_tactic_id="TA01"),
+        SimpleNamespace(attack_technique_id="T0002", attack_tactic_id="TA02"),
+        SimpleNamespace(attack_technique_id="T0003", attack_tactic_id="TA03"),
+        SimpleNamespace(attack_technique_id="T1001", attack_tactic_id="TA11"),
+        SimpleNamespace(attack_technique_id="T1002", attack_tactic_id="TA12"),
+        SimpleNamespace(attack_technique_id="T1003", attack_tactic_id="TA25"),
+        SimpleNamespace(attack_technique_id="T2001", attack_tactic_id="TA11"),
+        SimpleNamespace(attack_technique_id="T2002", attack_tactic_id="TA123"),
+        SimpleNamespace(attack_technique_id="T2003", attack_tactic_id="TA91"),
+    ]
+    techniques = {
+        "T0001": dict(
+            id="T0001", domain="enterprise-attack", possible_tactics=tactics_1
+        ),
+        "T0002": dict(
+            id="T0002", domain="enterprise-attack", possible_tactics=tactics_1
+        ),
+        "T0003": dict(
+            id="T0003", domain="enterprise-attack", possible_tactics=tactics_1
+        ),
+        "T1001": dict(id="T1001", domain="ics-attack", possible_tactics=tactics_2),
+        "T1002": dict(id="T1002", domain="ics-attack", possible_tactics=tactics_2),
+        "T1003": dict(id="T1003", domain="ics-attack", possible_tactics=tactics_2),
+        "T2001": dict(id="T2001", domain="mobile-attack", possible_tactics=tactics_2),
+        "T2002": dict(id="T2002", domain="mobile-attack", possible_tactics=tactics_2),
+        "T2003": dict(id="T2003", domain="mobile-attack", possible_tactics=tactics_2),
+    }
+
+    retval = create_navigator_layer(dummy_report, summary, flow, techniques)
+    assert len(retval) == 3
+    print(retval)
+    assert retval == [
+        {
+            "version": "4.5",
+            "name": "some markdown document",
+            "domain": "enterprise-attack",
+            "description": "this is a summary",
+            "techniques": [
+                {"techniqueID": "T0001", "tactic": "initial-access"},
+                {"techniqueID": "T0002", "tactic": "lateral-movement"},
+                {"techniqueID": "T0003", "tactic": "command-and-control"},
             ],
-        ],
-        [
-            AttackFlowList(
-                success=False,
-                matrix="enterprise",
-                items=get_flow_items([("TA0009", "T1653"), ("TA0040", "T1027")]),
-            ),
-            [
+            "gradient": {
+                "colors": ["#ffffff", "#ff6666"],
+                "minValue": 0,
+                "maxValue": 100,
+            },
+            "legendItems": [],
+            "metadata": [],
+            "layout": {"layout": "side"},
+        },
+        {
+            "version": "4.5",
+            "name": "some markdown document",
+            "domain": "ics-attack",
+            "description": "this is a summary",
+            "techniques": [
+                {"techniqueID": "T1001", "tactic": "initial-access"},
+                {"techniqueID": "T1002", "tactic": "lateral-movement"},
+                {"techniqueID": "T1003", "tactic": "command-and-control"},
             ],
-        ],
-        
-    ],
-)
-def test_parse_flow(flow: AttackFlowList, expected_ids):
-    report = Report(
+            "gradient": {
+                "colors": ["#ffffff", "#ff6666"],
+                "minValue": 0,
+                "maxValue": 100,
+            },
+            "legendItems": [],
+            "metadata": [],
+            "layout": {"layout": "side"},
+        },
+        {
+            "version": "4.5",
+            "name": "some markdown document",
+            "domain": "mobile-attack",
+            "description": "this is a summary",
+            "techniques": [
+                {"techniqueID": "T2001", "tactic": "initial-access"},
+                {"techniqueID": "T2002", "tactic": "persistence"},
+                {"techniqueID": "T2003", "tactic": "exfiltration"},
+            ],
+            "gradient": {
+                "colors": ["#ffffff", "#ff6666"],
+                "minValue": 0,
+                "maxValue": 100,
+            },
+            "legendItems": [],
+            "metadata": [],
+            "layout": {"layout": "side"},
+        },
+    ]
+
+
+def test_create_navigator_layer__real_flow(dummy_report, dummy_flow, dummy_objects):
+    tactics = get_all_tactics()
+    techniques = get_techniques_from_extracted_objects(dummy_objects, tactics)
+    retval = create_navigator_layer(dummy_report, "a summary", dummy_flow, techniques)
+    assert len(retval) == 2
+    print(retval)
+    assert retval == [
+        {
+            "version": "4.5",
+            "name": "some markdown document",
+            "domain": "ics-attack",
+            "description": "a summary",
+            "techniques": [
+                {"techniqueID": "T0814", "tactic": "inhibit-response-function"},
+                {"techniqueID": "T0887", "tactic": "discovery"},
+            ],
+            "gradient": {
+                "colors": ["#ffffff", "#ff6666"],
+                "minValue": 0,
+                "maxValue": 100,
+            },
+            "legendItems": [],
+            "metadata": [],
+            "layout": {"layout": "side"},
+        },
+        {
+            "version": "4.5",
+            "name": "some markdown document",
+            "domain": "enterprise-attack",
+            "description": "a summary",
+            "techniques": [
+                {"techniqueID": "T1505.001", "tactic": "persistence"},
+                {"techniqueID": "T1555.002", "tactic": "credential-access"},
+            ],
+            "gradient": {
+                "colors": ["#ffffff", "#ff6666"],
+                "minValue": 0,
+                "maxValue": 100,
+            },
+            "legendItems": [],
+            "metadata": [],
+            "layout": {"layout": "side"},
+        },
+    ]
+
+
+@pytest.fixture
+def dummy_objects():
+    return [
+        # 2 ics objects
+        {
+            "created": "2020-05-21T17:43:26.506Z",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "description": "Adversaries may perform Denial-of-Service (DoS) attacks to disrupt expected device functionality. Examples of DoS attacks include overwhelming the target device with a high volume of requests in a short time period and sending the target device a request it does not know how to handle. Disrupting device state may temporarily render it unresponsive, possibly lasting until a reboot can occur. When placed in this state, devices may be unable to send and receive requests, and may not perform expected response functions in reaction to other events in the environment. \n\nSome ICS devices are particularly sensitive to DoS events, and may become unresponsive in reaction to even a simple ping sweep. Adversaries may also attempt to execute a Permanent Denial-of-Service (PDoS) against certain devices, such as in the case of the BrickerBot malware. (Citation: ICS-CERT April 2017) \n\nAdversaries may exploit a software vulnerability to cause a denial of service by taking advantage of a programming error in a program, service, or within the operating system software or kernel itself to execute adversary-controlled code. Vulnerabilities may exist in software that can be used to cause a denial of service condition. \n\nAdversaries may have prior knowledge about industrial protocols or control devices used in the environment through [Remote System Information Discovery](https://attack.mitre.org/techniques/T0888). There are examples of adversaries remotely causing a [Device Restart/Shutdown](https://attack.mitre.org/techniques/T0816) by exploiting a vulnerability that induces uncontrolled resource consumption. (Citation: ICS-CERT August 2018) (Citation: Common Weakness Enumeration January 2019) (Citation: MITRE March 2018) ",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "url": "https://attack.mitre.org/techniques/T0814",
+                    "external_id": "T0814",
+                },
+                {
+                    "source_name": "Common Weakness Enumeration January 2019",
+                    "description": "Common Weakness Enumeration 2019, January 03 CWE-400: Uncontrolled Resource Consumption Retrieved. 2019/03/14 ",
+                    "url": "http://cwe.mitre.org/data/definitions/400.html",
+                },
+                {
+                    "source_name": "ICS-CERT April 2017",
+                    "description": "ICS-CERT 2017, April 18 CS Alert (ICS-ALERT-17-102-01A) BrickerBot Permanent Denial-of-Service Attack Retrieved. 2019/10/24 ",
+                    "url": "https://www.us-cert.gov/ics/alerts/ICS-ALERT-17-102-01A",
+                },
+                {
+                    "source_name": "ICS-CERT August 2018",
+                    "description": "ICS-CERT 2018, August 27 Advisory (ICSA-15-202-01) - Siemens SIPROTEC Denial-of-Service Vulnerability Retrieved. 2019/03/14 ",
+                    "url": "https://ics-cert.us-cert.gov/advisories/ICSA-15-202-01",
+                },
+                {
+                    "source_name": "MITRE March 2018",
+                    "description": "MITRE 2018, March 22 CVE-2015-5374 Retrieved. 2019/03/14 ",
+                    "url": "https://nvd.nist.gov/vuln/detail/CVE-2015-5374",
+                },
+            ],
+            "id": "attack-pattern--1b22b676-9347-4c55-9a35-ef0dc653db5b",
+            "kill_chain_phases": [
+                {
+                    "kill_chain_name": "mitre-ics-attack",
+                    "phase_name": "inhibit-response-function",
+                }
+            ],
+            "modified": "2024-10-14T19:00:55.006Z",
+            "name": "Denial of Service",
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ],
+            "revoked": False,
+            "spec_version": "2.1",
+            "type": "attack-pattern",
+            "x_mitre_attack_spec_version": "3.2.0",
+            "x_mitre_data_sources": [
+                "Network Traffic: Network Traffic Content",
+                "Network Traffic: Network Traffic Flow",
+                "Application Log: Application Log Content",
+                "Operational Databases: Process History/Live Data",
+            ],
+            "x_mitre_deprecated": False,
+            "x_mitre_detection": "",
+            "x_mitre_domains": ["ics-attack"],
+            "x_mitre_is_subtechnique": False,
+            "x_mitre_modified_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "x_mitre_platforms": ["None"],
+            "x_mitre_version": "1.1",
+        },
+        {
+            "created": "2020-05-21T17:43:26.506Z",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "description": "Adversaries may seek to capture radio frequency (RF) communication used for remote control and reporting in distributed environments. RF communication frequencies vary between 3 kHz to 300 GHz, although are commonly between 300 MHz to 6 GHz. (Citation: Candell, R., Hany, M., Lee, K. B., Liu,Y., Quimby, J., Remley, K. April 2018)  The wavelength and frequency of the signal affect how the signal propagates through open air, obstacles (e.g. walls and trees) and the type of radio required to capture them. These characteristics are often standardized in the protocol and hardware and may have an effect on how the signal is captured. Some examples of wireless protocols that may be found in cyber-physical environments are: WirelessHART, Zigbee, WIA-FA, and 700 MHz Public Safety Spectrum. \n\nAdversaries may capture RF communications by using specialized hardware, such as software defined radio (SDR), handheld radio, or a computer with radio demodulator tuned to the communication frequency. (Citation: Bastille April 2017) Information transmitted over a wireless medium may be captured in-transit whether the sniffing device is the intended destination or not. This technique may be particularly useful to an adversary when the communications are not encrypted. (Citation: Gallagher, S. April 2017) \n\nIn the 2017 Dallas Siren incident, it is suspected that adversaries likely captured wireless command message broadcasts on a 700 MHz frequency during a regular test of the system. These messages were later replayed to trigger the alarm systems. (Citation: Gallagher, S. April 2017)",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "url": "https://attack.mitre.org/techniques/T0887",
+                    "external_id": "T0887",
+                },
+                {
+                    "source_name": "Bastille April 2017",
+                    "description": "Bastille 2017, April 17 Dallas Siren Attack Retrieved. 2020/11/06 ",
+                    "url": "https://www.bastille.net/blogs/2017/4/17/dallas-siren-attack",
+                },
+                {
+                    "source_name": "Candell, R., Hany, M., Lee, K. B., Liu,Y., Quimby, J., Remley, K. April 2018",
+                    "description": "Candell, R., Hany, M., Lee, K. B., Liu,Y., Quimby, J., Remley, K. 2018, April Guide to Industrial Wireless Systems Deployments Retrieved. 2020/12/01 ",
+                    "url": "https://nvlpubs.nist.gov/nistpubs/ams/NIST.AMS.300-4.pdf",
+                },
+                {
+                    "source_name": "Gallagher, S. April 2017",
+                    "description": "Gallagher, S. 2017, April 12 Pirate radio: Signal spoof set off Dallas emergency sirens, not network hack Retrieved. 2020/12/01 ",
+                    "url": "https://arstechnica.com/information-technology/2017/04/dallas-siren-hack-used-radio-signals-to-spoof-alarm-says-city-manager/",
+                },
+            ],
+            "id": "attack-pattern--0fe075d5-beac-4d02-b93e-0f874997db72",
+            "kill_chain_phases": [
+                {"kill_chain_name": "mitre-ics-attack", "phase_name": "discovery"},
+                {"kill_chain_name": "mitre-ics-attack", "phase_name": "collection"},
+            ],
+            "modified": "2023-10-13T17:56:59.193Z",
+            "name": "Wireless Sniffing",
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ],
+            "revoked": False,
+            "spec_version": "2.1",
+            "type": "attack-pattern",
+            "x_mitre_attack_spec_version": "2.1.0",
+            "x_mitre_contributors": ["ICSCoE Japan"],
+            "x_mitre_data_sources": ["Network Traffic: Network Traffic Flow"],
+            "x_mitre_deprecated": False,
+            "x_mitre_detection": "",
+            "x_mitre_domains": ["ics-attack"],
+            "x_mitre_is_subtechnique": False,
+            "x_mitre_modified_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "x_mitre_platforms": ["None"],
+            "x_mitre_version": "1.1",
+        },
+        # 1 enterprise object
+        {
+            "created": "2019-12-12T14:59:58.168Z",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "description": "Adversaries may abuse SQL stored procedures to establish persistent access to systems. SQL Stored Procedures are code that can be saved and reused so that database users do not waste time rewriting frequently used SQL queries. Stored procedures can be invoked via SQL statements to the database using the procedure name or via defined events (e.g. when a SQL server application is started/restarted).\n\nAdversaries may craft malicious stored procedures that can provide a persistence mechanism in SQL database servers.(Citation: NetSPI Startup Stored Procedures)(Citation: Kaspersky MSSQL Aug 2019) To execute operating system commands through SQL syntax the adversary may have to enable additional functionality, such as xp_cmdshell for MSSQL Server.(Citation: NetSPI Startup Stored Procedures)(Citation: Kaspersky MSSQL Aug 2019)(Citation: Microsoft xp_cmdshell 2017) \n\nMicrosoft SQL Server can enable common language runtime (CLR) integration. With CLR integration enabled, application developers can write stored procedures using any .NET framework language (e.g. VB .NET, C#, etc.).(Citation: Microsoft CLR Integration 2017) Adversaries may craft or modify CLR assemblies that are linked to stored procedures since these CLR assemblies can be made to execute arbitrary commands.(Citation: NetSPI SQL Server CLR) ",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "url": "https://attack.mitre.org/techniques/T1505/001",
+                    "external_id": "T1505.001",
+                },
+                {
+                    "source_name": "Microsoft CLR Integration 2017",
+                    "description": "Microsoft. (2017, June 19). Common Language Runtime Integration. Retrieved July 8, 2019.",
+                    "url": "https://docs.microsoft.com/en-us/sql/relational-databases/clr-integration/common-language-runtime-integration-overview?view=sql-server-2017",
+                },
+                {
+                    "source_name": "Microsoft xp_cmdshell 2017",
+                    "description": "Microsoft. (2017, March 15). xp_cmdshell (Transact-SQL). Retrieved September 9, 2019.",
+                    "url": "https://docs.microsoft.com/en-us/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql?view=sql-server-2017",
+                },
+                {
+                    "source_name": "Kaspersky MSSQL Aug 2019",
+                    "description": "Plakhov, A., Sitchikhin, D. (2019, August 22). Agent 1433: remote attack on Microsoft SQL Server. Retrieved September 4, 2019.",
+                    "url": "https://securelist.com/malicious-tasks-in-ms-sql-server/92167/",
+                },
+                {
+                    "source_name": "NetSPI Startup Stored Procedures",
+                    "description": "Sutherland, S. (2016, March 7). Maintaining Persistence via SQL Server – Part 1: Startup Stored Procedures. Retrieved September 12, 2024.",
+                    "url": "https://www.netspi.com/blog/technical-blog/network-penetration-testing/sql-server-persistence-part-1-startup-stored-procedures/",
+                },
+                {
+                    "source_name": "NetSPI SQL Server CLR",
+                    "description": "Sutherland, S. (2017, July 13). Attacking SQL Server CLR Assemblies. Retrieved September 12, 2024.",
+                    "url": "https://www.netspi.com/blog/technical-blog/adversary-simulation/attacking-sql-server-clr-assemblies/",
+                },
+            ],
+            "id": "attack-pattern--f9e9365a-9ca2-4d9c-8e7c-050d73d1101a",
+            "kill_chain_phases": [
+                {"kill_chain_name": "mitre-attack", "phase_name": "persistence"}
+            ],
+            "modified": "2024-10-15T16:05:24.007Z",
+            "name": "SQL Stored Procedures",
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ],
+            "revoked": False,
+            "spec_version": "2.1",
+            "type": "attack-pattern",
+            "x_mitre_attack_spec_version": "3.2.0",
+            "x_mitre_contributors": [
+                "Carlos Borges, @huntingneo, CIP",
+                "Lucas da Silva Pereira, @vulcanunsec, CIP",
+                "Kaspersky",
+            ],
+            "x_mitre_data_sources": ["Application Log: Application Log Content"],
+            "x_mitre_deprecated": False,
+            "x_mitre_detection": "On a MSSQL Server, consider monitoring for xp_cmdshell usage.(Citation: NetSPI Startup Stored Procedures) Consider enabling audit features that can log malicious startup activities.",
+            "x_mitre_domains": ["enterprise-attack"],
+            "x_mitre_is_subtechnique": True,
+            "x_mitre_modified_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "x_mitre_platforms": ["Windows", "Linux"],
+            "x_mitre_version": "1.1",
+        },
+        # 1 mobile object
+        {
+            "created": "2020-02-12T18:56:31.051Z",
+            "created_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "description": "An adversary with root access may gather credentials by reading `securityd`’s memory. `securityd` is a service/daemon responsible for implementing security protocols such as encryption and authorization.(Citation: Apple Dev SecurityD) A privileged adversary may be able to scan through `securityd`'s memory to find the correct sequence of keys to decrypt the user’s logon keychain. This may provide the adversary with various plaintext passwords, such as those for users, WiFi, mail, browsers, certificates, secure notes, etc.(Citation: OS X Keychain)(Citation: OSX Keydnap malware)\n\nIn OS X prior to El Capitan, users with root access can read plaintext keychain passwords of logged-in users because Apple’s keychain implementation allows these credentials to be cached so that users are not repeatedly prompted for passwords.(Citation: OS X Keychain)(Citation: External to DA, the OS X Way) Apple’s `securityd` utility takes the user’s logon password, encrypts it with PBKDF2, and stores this master key in memory. Apple also uses a set of keys and algorithms to encrypt the user’s password, but once the master key is found, an adversary need only iterate over the other values to unlock the final password.(Citation: OS X Keychain)",
+            "external_references": [
+                {
+                    "source_name": "mitre-attack",
+                    "url": "https://attack.mitre.org/techniques/T1555/002",
+                    "external_id": "T1555.002",
+                },
+                {
+                    "source_name": "External to DA, the OS X Way",
+                    "description": "Alex Rymdeko-Harvey, Steve Borosh. (2016, May 14). External to DA, the OS X Way. Retrieved September 12, 2024.",
+                    "url": "https://www.slideshare.net/slideshow/external-to-da-the-os-x-way/62021418",
+                },
+                {
+                    "source_name": "Apple Dev SecurityD",
+                    "description": "Apple. (n.d.). Security Server and Security Agent. Retrieved March 29, 2024.",
+                    "url": "https://developer.apple.com/library/archive/documentation/Security/Conceptual/Security_Overview/Architecture/Architecture.html",
+                },
+                {
+                    "source_name": "OS X Keychain",
+                    "description": "Juuso Salonen. (2012, September 5). Breaking into the OS X keychain. Retrieved July 15, 2017.",
+                    "url": "http://juusosalonen.com/post/30923743427/breaking-into-the-os-x-keychain",
+                },
+                {
+                    "source_name": "OSX Keydnap malware",
+                    "description": "Marc-Etienne M.Leveille. (2016, July 6). New OSX/Keydnap malware is hungry for credentials. Retrieved July 3, 2017.",
+                    "url": "https://www.welivesecurity.com/2016/07/06/new-osxkeydnap-malware-hungry-credentials/",
+                },
+            ],
+            "id": "attack-pattern--1a80d097-54df-41d8-9d33-34e755ec5e72",
+            "kill_chain_phases": [
+                {"kill_chain_name": "mitre-attack", "phase_name": "credential-access"}
+            ],
+            "modified": "2024-10-15T16:41:18.638Z",
+            "name": "Securityd Memory",
+            "object_marking_refs": [
+                "marking-definition--fa42a846-8d90-4e51-bc29-71d5b4802168"
+            ],
+            "revoked": False,
+            "spec_version": "2.1",
+            "type": "attack-pattern",
+            "x_mitre_attack_spec_version": "3.2.0",
+            "x_mitre_data_sources": [
+                "Command: Command Execution",
+                "Process: Process Access",
+            ],
+            "x_mitre_deprecated": False,
+            "x_mitre_detection": "Monitor processes and command-line arguments for activity surrounded users searching for credentials or using automated tools to scan memory for passwords.",
+            "x_mitre_domains": ["enterprise-attack"],
+            "x_mitre_is_subtechnique": True,
+            "x_mitre_modified_by_ref": "identity--c78cb6e5-0c4b-4611-8297-d1b8b55e40b5",
+            "x_mitre_platforms": ["Linux", "macOS"],
+            "x_mitre_version": "1.2",
+        },
+    ]
+
+
+@pytest.fixture
+def dummy_report():
+    return Report(
         **{
             "confidence": 0,
             "created": "2025-03-10T15:06:31.567505Z",
@@ -114,22 +614,42 @@ def test_parse_flow(flow: AttackFlowList, expected_ids):
             "type": "report",
         },
     )
-    expected_ids = set(expected_ids)
-    expected_ids.add(report.id)
-    expected_ids.add(attack_flow_ExtensionDefinitionSMO.id)
-
-    flow_objects = parse_flow(report, flow)
-    if not flow.success:
-        assert len(flow_objects) == 0
-        return
-    assert expected_ids == {obj["id"] for obj in flow_objects}
 
 
-# test_parse_flow(
-#     AttackFlowList(
-#         success=True,
-#         matrix="enterprise",
-#         items=get_flow_items([("TA0009", "T1653"), ("TA0040", "T1027")]),
-#     ),
-#     [],
-# )
+@pytest.fixture
+def dummy_flow():
+    return AttackFlowList.model_validate(
+        {
+            "items": [
+                {
+                    "position": 0,
+                    "attack_tactic_id": "TA0102",
+                    "attack_technique_id": "T0887",
+                    "name": "Packet Sniffing with Wireshark",
+                    "description": "The attack begins by using Wireshark to sniff network packets with a specific source, indicating a reconnaissance or discovery phase to gather information about the network traffic.",
+                },
+                {
+                    "position": 1,
+                    "attack_tactic_id": "TA0003",
+                    "attack_technique_id": "T1505.001",
+                    "name": "SQL Injection for Persistence",
+                    "description": "A series of SQL injection requests are sent to a specific port, potentially to establish persistence or manipulate database operations.",
+                },
+                {
+                    "position": 2,
+                    "attack_tactic_id": "TA0107",
+                    "attack_technique_id": "T0814",
+                    "name": "Denial of Service via SQLi",
+                    "description": "The SQL injection requests lead to a denial of service condition, disrupting the availability of the targeted service.",
+                },
+                {
+                    "position": 3,
+                    "attack_tactic_id": "TA0006",
+                    "attack_technique_id": "T1555.002",
+                    "name": "Bypassing Securityd",
+                    "description": "An additional method is employed to bypass Securityd, likely to gain unauthorized access to credentials or sensitive information.",
+                },
+            ],
+            "success": True,
+        }
+    )
