@@ -3,9 +3,7 @@ import pytest
 from unittest.mock import MagicMock, patch
 from stix2extensions._extensions import attack_flow_ExtensionDefinitionSMO
 
-from txt2stix.ai_extractor.utils import (
-    AttackFlowList,
-)
+from txt2stix.ai_extractor.utils import AttackFlowList, AttackFlowItem
 from txt2stix.attack_flow import (
     create_navigator_layer,
     get_all_tactics,
@@ -55,6 +53,7 @@ def test_parse_flow__no_success(dummy_report):
             success=False,
             matrix="enterprise",
             items=[],
+            tactic_selection=[],
         ),
         None,
         None,
@@ -71,28 +70,28 @@ def test_get_techniques_from_extracted_objects(dummy_objects):
         "T0814": {
             "domain": "ics-attack",
             "name": "Denial of Service",
-            "possible_tactics": {"TA0107": "inhibit-response-function"},
+            "possible_tactics": {"inhibit-response-function": "TA0107"},
             "id": "T0814",
             "platforms": [],
         },
         "T0887": {
             "domain": "ics-attack",
             "name": "Wireless Sniffing",
-            "possible_tactics": {"TA0102": "discovery" , "TA0100": "collection"},
+            "possible_tactics": {"discovery": "TA0102", "collection": "TA0100"},
             "id": "T0887",
             "platforms": [],
         },
         "T1505.001": {
             "domain": "enterprise-attack",
             "name": "SQL Stored Procedures",
-            "possible_tactics": {"TA0003":"persistence"},
+            "possible_tactics": {"persistence": "TA0003"},
             "id": "T1505.001",
             "platforms": ["Windows", "Linux"],
         },
         "T1555.002": {
             "domain": "enterprise-attack",
             "name": "Securityd Memory",
-            "possible_tactics": {"TA0006": "credential-access"},
+            "possible_tactics": {"credential-access": "TA0006"},
             "id": "T1555.002",
             "platforms": ["Linux", "macOS"],
         },
@@ -202,15 +201,36 @@ def test_create_navigator_layer(dummy_report):
         "TA91": "exfiltration",
     }
     flow.items = [
-        SimpleNamespace(attack_technique_id="T0001", attack_tactic_id="TA01"),
-        SimpleNamespace(attack_technique_id="T0002", attack_tactic_id="TA02"),
-        SimpleNamespace(attack_technique_id="T0003", attack_tactic_id="TA03"),
-        SimpleNamespace(attack_technique_id="T1001", attack_tactic_id="TA11"),
-        SimpleNamespace(attack_technique_id="T1002", attack_tactic_id="TA12"),
-        SimpleNamespace(attack_technique_id="T1003", attack_tactic_id="TA25"),
-        SimpleNamespace(attack_technique_id="T2001", attack_tactic_id="TA11"),
-        SimpleNamespace(attack_technique_id="T2002", attack_tactic_id="TA123"),
-        SimpleNamespace(attack_technique_id="T2003", attack_tactic_id="TA91"),
+        SimpleNamespace(
+            attack_technique_id="T0001",
+            attack_tactic_id="TA01",
+            description="description 1",
+        ),
+        SimpleNamespace(
+            attack_technique_id="T0003",
+            attack_tactic_id="TA03",
+            description="description 2",
+        ),
+        SimpleNamespace(
+            attack_technique_id="T1001",
+            attack_tactic_id="TA11",
+            description="description 3",
+        ),
+        SimpleNamespace(
+            attack_technique_id="T1002",
+            attack_tactic_id="TA12",
+            description="description 4",
+        ),
+        SimpleNamespace(
+            attack_technique_id="T2001",
+            attack_tactic_id="TA11",
+            description="description 28jhsjhs",
+        ),
+        SimpleNamespace(
+            attack_technique_id="T2003",
+            attack_tactic_id="TA91",
+            description="description sasa",
+        ),
     ]
     techniques = {
         "T0001": dict(
@@ -239,18 +259,25 @@ def test_create_navigator_layer(dummy_report):
             "name": "some markdown document",
             "domain": "enterprise-attack",
             "description": "this is a summary",
-            "techniques": [
-                {"techniqueID": "T0001", "tactic": "initial-access"},
-                {"techniqueID": "T0002", "tactic": "lateral-movement"},
-                {"techniqueID": "T0003", "tactic": "command-and-control"},
-            ],
+            "techniques": [],
             "gradient": {
                 "colors": ["#ffffff", "#ff6666"],
                 "minValue": 0,
                 "maxValue": 100,
             },
             "legendItems": [],
-            "metadata": [],
+            "metadata": [
+                {
+                    "name": "report_id",
+                    "value": "report--9c88fbcb-8c0d-4124-868b-3dcb1e9b696c",
+                }
+            ],
+            "links": [
+                {
+                    "label": "Generated using txt2stix",
+                    "url": "https://github.com/muchdogesec/txt2stix/",
+                }
+            ],
             "layout": {"layout": "side"},
         },
         {
@@ -258,18 +285,25 @@ def test_create_navigator_layer(dummy_report):
             "name": "some markdown document",
             "domain": "ics-attack",
             "description": "this is a summary",
-            "techniques": [
-                {"techniqueID": "T1001", "tactic": "initial-access"},
-                {"techniqueID": "T1002", "tactic": "lateral-movement"},
-                {"techniqueID": "T1003", "tactic": "command-and-control"},
-            ],
+            "techniques": [],
             "gradient": {
                 "colors": ["#ffffff", "#ff6666"],
                 "minValue": 0,
                 "maxValue": 100,
             },
             "legendItems": [],
-            "metadata": [],
+            "metadata": [
+                {
+                    "name": "report_id",
+                    "value": "report--9c88fbcb-8c0d-4124-868b-3dcb1e9b696c",
+                }
+            ],
+            "links": [
+                {
+                    "label": "Generated using txt2stix",
+                    "url": "https://github.com/muchdogesec/txt2stix/",
+                }
+            ],
             "layout": {"layout": "side"},
         },
         {
@@ -277,18 +311,25 @@ def test_create_navigator_layer(dummy_report):
             "name": "some markdown document",
             "domain": "mobile-attack",
             "description": "this is a summary",
-            "techniques": [
-                {"techniqueID": "T2001", "tactic": "initial-access"},
-                {"techniqueID": "T2002", "tactic": "persistence"},
-                {"techniqueID": "T2003", "tactic": "exfiltration"},
-            ],
+            "techniques": [],
             "gradient": {
                 "colors": ["#ffffff", "#ff6666"],
                 "minValue": 0,
                 "maxValue": 100,
             },
             "legendItems": [],
-            "metadata": [],
+            "metadata": [
+                {
+                    "name": "report_id",
+                    "value": "report--9c88fbcb-8c0d-4124-868b-3dcb1e9b696c",
+                }
+            ],
+            "links": [
+                {
+                    "label": "Generated using txt2stix",
+                    "url": "https://github.com/muchdogesec/txt2stix/",
+                }
+            ],
             "layout": {"layout": "side"},
         },
     ]
@@ -307,8 +348,20 @@ def test_create_navigator_layer__real_flow(dummy_report, dummy_flow, dummy_objec
             "domain": "ics-attack",
             "description": "a summary",
             "techniques": [
-                {"techniqueID": "T0814", "tactic": "inhibit-response-function"},
-                {"techniqueID": "T0887", "tactic": "discovery"},
+                {
+                    "techniqueID": "T0814",
+                    "tactic": "inhibit-response-function",
+                    "score": 100,
+                    "showSubtechniques": True,
+                    "comment": "The SQL injection requests lead to a denial of service condition, disrupting the availability of the targeted service.",
+                },
+                {
+                    "techniqueID": "T0887",
+                    "tactic": "discovery",
+                    "score": 100,
+                    "showSubtechniques": True,
+                    "comment": "The attack begins by using Wireshark to sniff network packets with a specific source, indicating a reconnaissance or discovery phase to gather information about the network traffic.",
+                },
             ],
             "gradient": {
                 "colors": ["#ffffff", "#ff6666"],
@@ -316,7 +369,18 @@ def test_create_navigator_layer__real_flow(dummy_report, dummy_flow, dummy_objec
                 "maxValue": 100,
             },
             "legendItems": [],
-            "metadata": [],
+            "metadata": [
+                {
+                    "name": "report_id",
+                    "value": "report--9c88fbcb-8c0d-4124-868b-3dcb1e9b696c",
+                }
+            ],
+            "links": [
+                {
+                    "label": "Generated using txt2stix",
+                    "url": "https://github.com/muchdogesec/txt2stix/",
+                }
+            ],
             "layout": {"layout": "side"},
         },
         {
@@ -325,8 +389,20 @@ def test_create_navigator_layer__real_flow(dummy_report, dummy_flow, dummy_objec
             "domain": "enterprise-attack",
             "description": "a summary",
             "techniques": [
-                {"techniqueID": "T1505.001", "tactic": "persistence"},
-                {"techniqueID": "T1555.002", "tactic": "credential-access"},
+                {
+                    "techniqueID": "T1505.001",
+                    "tactic": "persistence",
+                    "score": 100,
+                    "showSubtechniques": True,
+                    "comment": "A series of SQL injection requests are sent to a specific port, potentially to establish persistence or manipulate database operations.",
+                },
+                {
+                    "techniqueID": "T1555.002",
+                    "tactic": "credential-access",
+                    "score": 100,
+                    "showSubtechniques": True,
+                    "comment": "An additional method is employed to bypass Securityd, likely to gain unauthorized access to credentials or sensitive information.",
+                },
             ],
             "gradient": {
                 "colors": ["#ffffff", "#ff6666"],
@@ -334,7 +410,18 @@ def test_create_navigator_layer__real_flow(dummy_report, dummy_flow, dummy_objec
                 "maxValue": 100,
             },
             "legendItems": [],
-            "metadata": [],
+            "metadata": [
+                {
+                    "name": "report_id",
+                    "value": "report--9c88fbcb-8c0d-4124-868b-3dcb1e9b696c",
+                }
+            ],
+            "links": [
+                {
+                    "label": "Generated using txt2stix",
+                    "url": "https://github.com/muchdogesec/txt2stix/",
+                }
+            ],
             "layout": {"layout": "side"},
         },
     ]
@@ -623,33 +710,35 @@ def dummy_flow():
             "items": [
                 {
                     "position": 0,
-                    "attack_tactic_id": "TA0102",
                     "attack_technique_id": "T0887",
                     "name": "Packet Sniffing with Wireshark",
                     "description": "The attack begins by using Wireshark to sniff network packets with a specific source, indicating a reconnaissance or discovery phase to gather information about the network traffic.",
                 },
                 {
                     "position": 1,
-                    "attack_tactic_id": "TA0003",
                     "attack_technique_id": "T1505.001",
                     "name": "SQL Injection for Persistence",
                     "description": "A series of SQL injection requests are sent to a specific port, potentially to establish persistence or manipulate database operations.",
                 },
                 {
                     "position": 2,
-                    "attack_tactic_id": "TA0107",
                     "attack_technique_id": "T0814",
                     "name": "Denial of Service via SQLi",
                     "description": "The SQL injection requests lead to a denial of service condition, disrupting the availability of the targeted service.",
                 },
                 {
                     "position": 3,
-                    "attack_tactic_id": "TA0006",
                     "attack_technique_id": "T1555.002",
                     "name": "Bypassing Securityd",
                     "description": "An additional method is employed to bypass Securityd, likely to gain unauthorized access to credentials or sensitive information.",
                 },
             ],
             "success": True,
+            "tactic_selection": [
+                ("T0887", "discovery"),
+                ("T1505.001", "persistence"),
+                ("T0814", "inhibit-response-function"),
+                ("T1555.002", "credential-access"),
+            ],
         }
     )
