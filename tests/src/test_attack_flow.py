@@ -127,7 +127,7 @@ def test_extract_attack_flow_and_navigator(dummy_objects, dummy_report):
             "txt2stix.attack_flow.create_navigator_layer"
         ) as mock_create_navigator_layer,
     ):
-        ## Both flow and navigator
+        # ================= Both flow and navigator ===================
         flow, nav = extract_attack_flow_and_navigator(
             bundler, text, True, True, ai_extractor
         )
@@ -150,7 +150,7 @@ def test_extract_attack_flow_and_navigator(dummy_objects, dummy_report):
         mock_create_navigator_layer.reset_mock()
         mock_extract_flow.reset_mock()
 
-        ## only flow
+        # ================= only flow ===================
         flow, nav = extract_attack_flow_and_navigator(
             bundler, text, True, False, ai_extractor
         )
@@ -168,7 +168,7 @@ def test_extract_attack_flow_and_navigator(dummy_objects, dummy_report):
         mock_create_navigator_layer.reset_mock()
         mock_extract_flow.reset_mock()
 
-        ## only navigator
+        # ================= only navigator ===================
         flow, nav = extract_attack_flow_and_navigator(
             bundler, text, False, True, ai_extractor
         )
@@ -183,6 +183,21 @@ def test_extract_attack_flow_and_navigator(dummy_objects, dummy_report):
         mock_create_navigator_layer.assert_called_once_with(
             bundler.report, bundler.summary, mock_extract_flow.return_value, techniques
         )
+
+        ### reset mocks
+        mock_parse_flow.reset_mock()
+        mock_create_navigator_layer.reset_mock()
+        mock_extract_flow.reset_mock()
+        # ============ no technique object ============
+        bundler.bundle.objects = []
+        flow, nav = extract_attack_flow_and_navigator(
+            bundler, text, True, True, ai_extractor
+        )
+        mock_extract_flow.assert_not_called()
+        assert (flow, nav) == (None, None)
+        mock_parse_flow.assert_not_called()
+
+        mock_create_navigator_layer.assert_not_called()
 
 
 def test_create_navigator_layer(dummy_report):
@@ -252,7 +267,6 @@ def test_create_navigator_layer(dummy_report):
 
     retval = create_navigator_layer(dummy_report, summary, flow, techniques)
     assert len(retval) == 3
-    print(retval)
     assert retval == [
         {
             "version": "4.5",
