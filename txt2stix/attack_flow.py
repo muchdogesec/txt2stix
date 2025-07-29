@@ -204,6 +204,9 @@ def extract_attack_flow_and_navigator(
     ex: BaseAIExtractor = ai_settings_relationships
     tactics = get_all_tactics()
     techniques = get_techniques_from_extracted_objects(bundler.bundle.objects, tactics)
+    if not techniques:
+        return None, None
+    
     logged_techniques = [
         {k: v for k, v in t.items() if k != "stix_obj"} for t in techniques.values()
     ]
