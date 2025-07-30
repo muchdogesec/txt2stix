@@ -1,15 +1,19 @@
 name: Run Tests
 
+permissions:
+  contents: read
+
 on:
   push:
     branches:
       - main
   pull_request:
-permissions:
-  contents: read
+    types:
+      - opened
+      - synchronize
 
 jobs:
-  run-tests:
+  test-pipeline:
     runs-on: ubuntu-latest
     environment: txt2stix_tests
     
@@ -24,8 +28,8 @@ jobs:
         with:
           python-version: "3.11"
     
-          
-      - name: Set .env testing purpose
+      - name: Setup environment
+        id: setup_environment
         run: |
             echo > .env
             echo "CTIBUTLER_BASE_URL=${{ secrets.CTIBUTLER_BASE_URL }}" >> .env
@@ -34,31 +38,30 @@ jobs:
             echo "VULMATCH_API_KEY=${{ secrets.VULMATCH_API_KEY }}" >> .env
             echo "TEST_AI_MODEL=${{ secrets.TEST_AI_MODEL }}" >> .env
             echo "INPUT_TOKEN_LIMIT=1000"  >> .env
-
             echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY}}" >> .env
             echo "ANTHROPIC_API_KEY=${{ secrets.ANTHROPIC_API_KEY}}" >> .env
             echo "GOOGLE_API_KEY=${{ secrets.GOOGLE_API_KEY}}" >> .env
             echo "OPENROUTER_API_KEY=${{ secrets.OPENROUTER_API_KEY}}" >> .env
-
             echo "BIN_LIST_API_KEY=${{ secrets.BIN_LIST_API_KEY }}" >> .env
 
-      - name: unit tests
-        id: unit-test
+      - name: Unit tests
+        id: unit_tests
         run: |
           set -a; 
           source .env;
           set +a;
           pip install -e .[tests]
-
           pytest --cov --cov-branch --cov-report=xml --junitxml=junit.xml -o junit_family=legacy
 
       - name: Upload coverage reports to Codecov
+        id: upload_unit_test_coverage
         if: ${{ !cancelled() }}
         uses: codecov/codecov-action@v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Upload test results to Codecov
+        id: upload_unit_test_results
         if: ${{ !cancelled() }}
         uses: codecov/test-results-action@v1
         with:
