@@ -90,3 +90,13 @@ class BaseAIExtractor():
 
     def __hash__(self):
         return hash(self.extractor_name)
+    
+    def check_credential(self):
+        try:
+            return "authorized" if self._check_credential() else "unauthorized"
+        except:
+            return "unknown"
+        
+    def _check_credential(self):
+        self.llm.complete("say 'hi'")
+        return True

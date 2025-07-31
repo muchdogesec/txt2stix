@@ -17,6 +17,10 @@ class STIXObjectRetriever:
             self.api_key = os.environ.get('VULMATCH_API_KEY')
         else:
             raise NotImplementedError("The type `%s` is not supported", host)
+        self.session = requests.Session()
+        self.session.headers.update({
+            "API-KEY":  self.api_key,
+        })
 
     def get_attack_object(self, matrix, attack_id):
         endpoint = urljoin(self.api_root, f"v1/attack-{matrix}/objects/{attack_id}/")
@@ -48,14 +52,10 @@ class STIXObjectRetriever:
         return self._retrieve_objects(urljoin(self.api_root, f"v1/{type}/objects/?alias={alias}"))
     
     def _retrieve_objects(self, endpoint, key='objects'):
-        s = requests.Session()
-        s.headers.update({
-            "API-KEY":  self.api_key,
-        })
         data = []
         page = 1
         while True:
-            resp = s.get(endpoint, params=dict(page=page, page_size=50))
+            resp = self.session.get(endpoint, params=dict(page=page, page_size=50))
             resp.raise_for_status()
             d = resp.json()
             if len(d[key]) == 0:

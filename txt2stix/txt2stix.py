@@ -13,7 +13,7 @@ import sys, os
 from pydantic import BaseModel
 
 from txt2stix.ai_extractor.utils import DescribesIncident
-from txt2stix import attack_flow
+from txt2stix import attack_flow, credential_checker
 
 
 from .utils import RELATIONSHIP_TYPES, Txt2StixData, remove_links
@@ -135,6 +135,12 @@ def parse_args():
     all_extractors = extractions.parse_extraction_config(INCLUDES_PATH)
 
     parser = argparse.ArgumentParser(description="File Conversion Tool")
+    parser.add_argument('--check_credentials', "--check-credentials", action="store_true", help="Print the validity of the credentials and exit")
+    args, _ = parser.parse_known_args()
+    if args.check_credentials:
+        statuses = credential_checker.check_statuses(test_llms=True)
+        credential_checker.format_statuses(statuses)
+        sys.exit(0)
 
     inf_arg = parser.add_argument(
         "--input_file",
