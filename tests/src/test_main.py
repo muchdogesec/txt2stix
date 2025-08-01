@@ -349,3 +349,12 @@ def test_extract_relationships_with_ai():
 
     mock_ai_session.extract_relationships.side_effect = Exception
     assert extract_relationships_with_ai(mock_bundler, text, all_extracts, mock_ai_session) == None
+
+
+def test_check_credentials(monkeypatch):
+    monkeypatch.setattr(sys, 'argv', [
+        "program",
+        "--check_credentials"
+    ])
+    with pytest.raises(SystemExit):
+        parse_args()

@@ -67,6 +67,31 @@ cp .env.example .env
 
 To see more information about how to set the variables, and what they do, read the `.env.markdown` file.
 
+Then test your configoration
+
+```shell
+python3 txt2stix.py \
+	--check-credentials
+```
+
+It will return a response to show what API keys are working
+
+```txt
+============= Service Statuses ===============
+  ctibutler   : authorized      ✔
+  vulmatch    : authorized      ✔
+  binlist     : authorized      ✔
+
+  LLMS:
+    openai      : authorized      ✔
+    deepseek    : unsupported     –
+    gemini      : unsupported     –
+    openrouter  : unsupported     –
+    anthropic   : unsupported     –
+```
+
+Not all services need to be configured, if you have no intention of using them.
+
 ### Usage
 
 ```shell
