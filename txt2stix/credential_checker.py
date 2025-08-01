@@ -30,8 +30,8 @@ def check_llms():
 def check_ctibutler_vulmatch(service):
     retriever = STIXObjectRetriever(service)
     path = dict(
-        ctibutler="/v1/location/versions/available/",
-        vulmatch="/v1/cve/objects/vulnerability--f552f6f4-39da-48dc-8717-323772c99588/",
+        ctibutler="v1/location/versions/available/",
+        vulmatch="v1/cve/objects/vulnerability--f552f6f4-39da-48dc-8717-323772c99588/",
     )[service]
     try:
         resp = retriever.session.get(urljoin(retriever.api_root, path))
