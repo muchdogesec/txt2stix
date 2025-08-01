@@ -2,6 +2,7 @@ import argparse
 import os
 import random
 from urllib.parse import urljoin
+import requests
 from stix2extensions.tools import creditcard2stix
 from txt2stix.retriever import STIXObjectRetriever
 
@@ -45,12 +46,26 @@ def check_ctibutler_vulmatch(service):
     except:
         return "offline"
 
+def check_btcscan():
+    url = "https://btcscan.org/api/blocks/tip/height"
+    try:
+        resp = requests.get(url)
+        match resp.status_code:
+            case 401 | 403:
+                return "unauthorized"
+            case 200:
+                return "authorized"
+            case _:
+                return "unknown"
+    except:
+        return "offline"
 
 def check_statuses(test_llms=False):
     statuses = dict(
         ctibutler=check_ctibutler_vulmatch("ctibutler"),
         vulmatch=check_ctibutler_vulmatch("vulmatch"),
         binlist=check_binlist(),
+        btcscan=check_btcscan(),
     )
     if test_llms:
         statuses.update(llms=check_llms())
