@@ -80,9 +80,9 @@ def f():
         ),
         (
             "ctibutler-location",
-            "Africa",
+            "NG",
             (
-                "location--ccb963ba-9370-5eeb-80e3-c8d8738275ed",
+                "location--6dbe266a-c149-5ba3-8b39-74f1b5063312",
             ),
         ),
         (
