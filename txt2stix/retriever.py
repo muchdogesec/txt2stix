@@ -28,8 +28,9 @@ class STIXObjectRetriever:
     
     def get_attack_tactics(self, matrix):
         endpoint = urljoin(self.api_root, f"v1/attack-{matrix}/objects/?attack_type=Tactic")
+        version_url = urljoin(self.api_root, f'v1/attack-{matrix}/versions/installed/')
         tactics = self._retrieve_objects(endpoint)
-        retval = {}
+        retval = dict(version=self.session.get(version_url).json()['latest'])
         for tac in tactics:
             retval[tac['x_mitre_shortname']] = tac
             retval[tac['external_references'][0]['external_id']] = tac
