@@ -147,7 +147,7 @@ def get_techniques_from_extracted_objects(objects: dict, tactics: dict):
     return techniques
 
 
-def create_navigator_layer(report, summary, flow: AttackFlowList, techniques):
+def create_navigator_layer(report, summary, flow: AttackFlowList, techniques, tactics):
     domains = {}
     comments = {item.attack_technique_id: item.description for item in flow.items}
     for technique in techniques.values():
@@ -170,7 +170,11 @@ def create_navigator_layer(report, summary, flow: AttackFlowList, techniques):
     for domain, domain_techniques in domains.items():
         retval.append(
             {
-                "version": "4.5",
+                "versions": {
+                    "layer": "4.5",
+                    "attack": tactics[domain]['version'],
+                    "navigator": "5.1.0"
+                },
                 "name": report.name,
                 "domain": domain,
                 "description": summary,
@@ -220,6 +224,6 @@ def extract_attack_flow_and_navigator(
 
     if ai_create_attack_navigator_layer:
         navigator = create_navigator_layer(
-            bundler.report, bundler.summary, flow, techniques
+            bundler.report, bundler.summary, flow, techniques, tactics
         )
     return flow, navigator

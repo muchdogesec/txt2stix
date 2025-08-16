@@ -142,7 +142,7 @@ def test_extract_attack_flow_and_navigator(dummy_objects, dummy_report):
         mock_extract_flow.assert_called_once_with(text, techniques)
 
         mock_create_navigator_layer.assert_called_once_with(
-            bundler.report, bundler.summary, mock_extract_flow.return_value, techniques
+            bundler.report, bundler.summary, mock_extract_flow.return_value, techniques, tactics
         )
 
         ### reset mocks
@@ -181,7 +181,7 @@ def test_extract_attack_flow_and_navigator(dummy_objects, dummy_report):
         mock_parse_flow.assert_not_called()
 
         mock_create_navigator_layer.assert_called_once_with(
-            bundler.report, bundler.summary, mock_extract_flow.return_value, techniques
+            bundler.report, bundler.summary, mock_extract_flow.return_value, techniques, tactics
         )
 
         ### reset mocks
@@ -265,11 +265,25 @@ def test_create_navigator_layer(dummy_report):
         "T2003": dict(id="T2003", domain="mobile-attack", possible_tactics=tactics_2),
     }
 
-    retval = create_navigator_layer(dummy_report, summary, flow, techniques)
+    retval = create_navigator_layer(
+        dummy_report,
+        summary,
+        flow,
+        techniques,
+        tactics={
+            "mobile-attack": {"version": "13.1"},
+            "ics-attack": {"version": "17.0"},
+            "enterprise-attack": {"version": "16.1"},
+        },
+    )
     assert len(retval) == 3
     assert retval == [
         {
-            "version": "4.5",
+            "versions": {
+                "layer": "4.5",
+                "attack": '16.1',
+                "navigator": "5.1.0",
+            },
             "name": "some markdown document",
             "domain": "enterprise-attack",
             "description": "this is a summary",
@@ -295,7 +309,11 @@ def test_create_navigator_layer(dummy_report):
             "layout": {"layout": "side"},
         },
         {
-            "version": "4.5",
+            "versions": {
+                "layer": "4.5",
+                "attack": '17.0',
+                "navigator": "5.1.0",
+            },
             "name": "some markdown document",
             "domain": "ics-attack",
             "description": "this is a summary",
@@ -321,7 +339,11 @@ def test_create_navigator_layer(dummy_report):
             "layout": {"layout": "side"},
         },
         {
-            "version": "4.5",
+            "versions": {
+                "layer": "4.5",
+                "attack": '13.1',
+                "navigator": "5.1.0",
+            },
             "name": "some markdown document",
             "domain": "mobile-attack",
             "description": "this is a summary",
@@ -352,12 +374,17 @@ def test_create_navigator_layer(dummy_report):
 def test_create_navigator_layer__real_flow(dummy_report, dummy_flow, dummy_objects):
     tactics = get_all_tactics()
     techniques = get_techniques_from_extracted_objects(dummy_objects, tactics)
-    retval = create_navigator_layer(dummy_report, "a summary", dummy_flow, techniques)
+    retval = create_navigator_layer(
+        dummy_report, "a summary", dummy_flow, techniques, tactics
+    )
     assert len(retval) == 2
-    print(retval)
     assert retval == [
         {
-            "version": "4.5",
+            "versions": {
+                "layer": "4.5",
+                "attack": tactics["ics-attack"]["version"],
+                "navigator": "5.1.0",
+            },
             "name": "some markdown document",
             "domain": "ics-attack",
             "description": "a summary",
@@ -398,7 +425,11 @@ def test_create_navigator_layer__real_flow(dummy_report, dummy_flow, dummy_objec
             "layout": {"layout": "side"},
         },
         {
-            "version": "4.5",
+            "versions": {
+                "layer": "4.5",
+                "attack": tactics["enterprise-attack"]["version"],
+                "navigator": "5.1.0",
+            },
             "name": "some markdown document",
             "domain": "enterprise-attack",
             "description": "a summary",
