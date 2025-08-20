@@ -16,15 +16,26 @@ def parse_flow(report, flow: AttackFlowList, techniques, tactics):
     logging.info(f"flow.success = {flow.success}")
     if not flow.success:
         return []
-    flow_objects = [report, attack_flow_ExtensionDefinitionSMO]
+    objects = [report, attack_flow_ExtensionDefinitionSMO]
+    for domain in ["enterprise-attack", "mobile-attack", "ics-attack"]:
+        flow_objects = parse_domain_flow(report, flow, techniques, tactics, domain)
+        objects.extend(flow_objects)
+    return objects
+
+def parse_domain_flow(report, flow: AttackFlowList, techniques, tactics, domain):
+    flow_objects = []
+    flow_obj = None
     last_action = None
     for i, item in enumerate(flow.items):
         try:
             technique = techniques[item.attack_technique_id]
+            if technique["domain"] != domain:
+                continue
             tactic_id = technique["possible_tactics"][
                 flow.tactic_mapping[item.attack_technique_id]
             ]
             technique_obj = technique["stix_obj"]
+
             tactic_obj = tactics[technique["domain"]][tactic_id]
             action_obj = AttackAction(
                 **{
@@ -40,16 +51,16 @@ def parse_flow(report, flow: AttackFlowList, techniques, tactics):
                 allow_custom=True,
             )
             action_obj.effect_refs.clear()
-            if i == 0:
+            if not flow_obj:
                 flow_obj = {
                     "type": "attack-flow",
-                    "id": report.id.replace("report", "attack-flow"),
+                    "id": "attack-flow--"+str(uuid.uuid5(UUID_NAMESPACE, f"attack-flow+{domain}+{report.id}")),
                     "spec_version": "2.1",
                     "created": report.created,
                     "modified": report.modified,
                     "created_by_ref": report.created_by_ref,
                     "start_refs": [action_obj["id"]],
-                    "name": report.name,
+                    "name": f"[{domain.split('-')[0].upper()}] {report.name}",
                     "description": report.description,
                     "scope": "malware",
                     "external_references": report.external_references,
@@ -61,7 +72,7 @@ def parse_flow(report, flow: AttackFlowList, techniques, tactics):
                         type="relationship",
                         spec_version="2.1",
                         id="relationship--"
-                        + str(uuid.uuid5(UUID_NAMESPACE, f"attack-flow+{report.id}")),
+                        + str(uuid.uuid5(UUID_NAMESPACE, f"attack-flow+{report.id}+{flow_obj['id']}")),
                         created_by_ref=report.created_by_ref,
                         created=report.created,
                         modified=report.modified,
