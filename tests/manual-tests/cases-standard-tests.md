@@ -486,6 +486,24 @@ python3 txt2stix.py \
     --report_id 3b160a8d-12dd-4e7c-aee8-5af6e371b425
 ```
 
+with two domains
+
+no indicators
+
+```shell
+python3 txt2stix.py \
+    --relationship_mode ai \
+    --ai_settings_relationships openai:gpt-5 \
+    --input_file tests/data/manually_generated_reports/attack_flow_demo.txt \
+    --name 'Test MITRE ATT&CK Flow demo' \
+    --tlp_level clear \
+    --confidence 100 \
+    --use_extractions 'ai_mitre_attack_*' \
+    --ai_settings_extractions openai:gpt-5 \
+    --ai_create_attack_flow \
+    --report_id ccc8c844-6a89-4762-b4e7-77c918fa4b8f
+```
+
 ### attack navigator demo
 
 ```shell
