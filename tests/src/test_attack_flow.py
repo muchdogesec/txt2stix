@@ -8,6 +8,7 @@ from txt2stix.attack_flow import (
     create_navigator_layer,
     get_all_tactics,
     get_techniques_from_extracted_objects,
+    parse_domain_flow,
     parse_flow,
     extract_attack_flow_and_navigator,
 )
@@ -21,30 +22,29 @@ def test_parse_flow(dummy_report, dummy_objects, dummy_flow):
     techniques = get_techniques_from_extracted_objects(dummy_objects, tactics)
     flow = dummy_flow
     report = dummy_report
-    expected_ids = set(
-        [
-            "report--9c88fbcb-8c0d-4124-868b-3dcb1e9b696c",
-            "extension-definition--fb9c968a-745b-4ade-9b25-c324172197f4",
-            "attack-flow--9c88fbcb-8c0d-4124-868b-3dcb1e9b696c",
-            "relationship--6346ead9-49cc-5ede-89e2-449f1c22ed13",
-            "x-mitre-tactic--696af733-728e-49d7-8261-75fdc590f453",
-            "attack-pattern--0fe075d5-beac-4d02-b93e-0f874997db72",
-            "attack-action--51dc1572-cb10-581b-b9ef-9e589615ecaa",
-            "x-mitre-tactic--5bc1d813-693e-4823-9961-abf9af4b0e92",
-            "attack-pattern--f9e9365a-9ca2-4d9c-8e7c-050d73d1101a",
-            "attack-action--e03c89ba-a476-5509-ac0a-049b61514be7",
-            "x-mitre-tactic--298fe907-7931-4fd2-8131-2814dd493134",
-            "attack-pattern--1b22b676-9347-4c55-9a35-ef0dc653db5b",
-            "attack-action--1fd63972-ef98-5da5-81f5-4090c7dfa585",
-            "x-mitre-tactic--2558fd61-8c75-4730-94c4-11926db2a263",
-            "attack-pattern--1a80d097-54df-41d8-9d33-34e755ec5e72",
-            "attack-action--c7e06b10-252d-520d-82eb-e32314bbec34",
-        ]
-    )
+    expected_ids = {
+        "attack-pattern--1b22b676-9347-4c55-9a35-ef0dc653db5b",
+        "x-mitre-tactic--298fe907-7931-4fd2-8131-2814dd493134",
+        "attack-action--1fd63972-ef98-5da5-81f5-4090c7dfa585",
+        "extension-definition--fb9c968a-745b-4ade-9b25-c324172197f4",
+        "attack-pattern--1a80d097-54df-41d8-9d33-34e755ec5e72",
+        "report--9c88fbcb-8c0d-4124-868b-3dcb1e9b696c",
+        "attack-flow--bb21585c-5f82-55cf-b73d-89b5217ef092",
+        "relationship--22e97298-819a-55ac-b57b-2185ffb72c62",
+        "x-mitre-tactic--2558fd61-8c75-4730-94c4-11926db2a263",
+        "attack-action--c7e06b10-252d-520d-82eb-e32314bbec34",
+        "x-mitre-tactic--696af733-728e-49d7-8261-75fdc590f453",
+        "x-mitre-tactic--5bc1d813-693e-4823-9961-abf9af4b0e92",
+        "attack-pattern--f9e9365a-9ca2-4d9c-8e7c-050d73d1101a",
+        "attack-action--51dc1572-cb10-581b-b9ef-9e589615ecaa",
+        "relationship--931f6b0d-5136-534a-93bc-8cce065e04dc",
+        "attack-pattern--0fe075d5-beac-4d02-b93e-0f874997db72",
+        "attack-flow--b48ec5d9-407c-5e4a-a6d0-fe851cd4ea0e",
+        "attack-action--e03c89ba-a476-5509-ac0a-049b61514be7",
+    }
 
     flow_objects = parse_flow(report, flow, techniques, tactics)
     assert {obj["id"] for obj in flow_objects} == expected_ids
-
 
 def test_parse_flow__no_success(dummy_report):
     flow_objects = parse_flow(
@@ -59,6 +59,48 @@ def test_parse_flow__no_success(dummy_report):
         None,
     )
     assert len(flow_objects) == 0
+
+
+@pytest.mark.parametrize(
+    ["domain", "expected_ids"],
+    [
+        ("mobile-attack", set()),
+        [
+            "ics-attack",
+            {
+                "x-mitre-tactic--298fe907-7931-4fd2-8131-2814dd493134",
+                "x-mitre-tactic--696af733-728e-49d7-8261-75fdc590f453",
+                "attack-pattern--1b22b676-9347-4c55-9a35-ef0dc653db5b",
+                "relationship--22e97298-819a-55ac-b57b-2185ffb72c62",
+                "attack-action--1fd63972-ef98-5da5-81f5-4090c7dfa585",
+                "attack-pattern--0fe075d5-beac-4d02-b93e-0f874997db72",
+                "attack-flow--bb21585c-5f82-55cf-b73d-89b5217ef092",
+                "attack-action--51dc1572-cb10-581b-b9ef-9e589615ecaa",
+            },
+        ],
+        [
+            "enterprise-attack",
+            {
+                "attack-action--e03c89ba-a476-5509-ac0a-049b61514be7",
+                "relationship--931f6b0d-5136-534a-93bc-8cce065e04dc",
+                "attack-flow--b48ec5d9-407c-5e4a-a6d0-fe851cd4ea0e",
+                "attack-pattern--f9e9365a-9ca2-4d9c-8e7c-050d73d1101a",
+                "x-mitre-tactic--2558fd61-8c75-4730-94c4-11926db2a263",
+                "attack-pattern--1a80d097-54df-41d8-9d33-34e755ec5e72",
+                "x-mitre-tactic--5bc1d813-693e-4823-9961-abf9af4b0e92",
+                "attack-action--c7e06b10-252d-520d-82eb-e32314bbec34",
+            },
+        ],
+    ],
+)
+def test_parse_domain_flow(dummy_report, dummy_objects, dummy_flow, domain, expected_ids):
+    tactics = get_all_tactics()
+    techniques = get_techniques_from_extracted_objects(dummy_objects, tactics)
+    flow = dummy_flow
+    report = dummy_report
+    flow_objects = parse_domain_flow(report, flow, techniques, tactics, domain)
+    print([domain, {obj["id"] for obj in flow_objects}], ",")
+    assert {obj["id"] for obj in flow_objects} == expected_ids
 
 
 def test_get_techniques_from_extracted_objects(dummy_objects):
@@ -142,7 +184,11 @@ def test_extract_attack_flow_and_navigator(dummy_objects, dummy_report):
         mock_extract_flow.assert_called_once_with(text, techniques)
 
         mock_create_navigator_layer.assert_called_once_with(
-            bundler.report, bundler.summary, mock_extract_flow.return_value, techniques, tactics
+            bundler.report,
+            bundler.summary,
+            mock_extract_flow.return_value,
+            techniques,
+            tactics,
         )
 
         ### reset mocks
@@ -181,7 +227,11 @@ def test_extract_attack_flow_and_navigator(dummy_objects, dummy_report):
         mock_parse_flow.assert_not_called()
 
         mock_create_navigator_layer.assert_called_once_with(
-            bundler.report, bundler.summary, mock_extract_flow.return_value, techniques, tactics
+            bundler.report,
+            bundler.summary,
+            mock_extract_flow.return_value,
+            techniques,
+            tactics,
         )
 
         ### reset mocks
@@ -281,7 +331,7 @@ def test_create_navigator_layer(dummy_report):
         {
             "versions": {
                 "layer": "4.5",
-                "attack": '16.1',
+                "attack": "16.1",
                 "navigator": "5.1.0",
             },
             "name": "some markdown document",
@@ -311,7 +361,7 @@ def test_create_navigator_layer(dummy_report):
         {
             "versions": {
                 "layer": "4.5",
-                "attack": '17.0',
+                "attack": "17.0",
                 "navigator": "5.1.0",
             },
             "name": "some markdown document",
@@ -341,7 +391,7 @@ def test_create_navigator_layer(dummy_report):
         {
             "versions": {
                 "layer": "4.5",
-                "attack": '13.1',
+                "attack": "13.1",
                 "navigator": "5.1.0",
             },
             "name": "some markdown document",
