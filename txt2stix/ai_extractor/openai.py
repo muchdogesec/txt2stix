@@ -1,4 +1,5 @@
    
+import logging
 import os
 from txt2stix.ai_extractor.base import BaseAIExtractor
 from llama_index.llms.openai import OpenAI
@@ -11,5 +12,9 @@ class OpenAIExtractor(BaseAIExtractor, provider="openai"):
         super().__init__()
 
     def count_tokens(self, text):
-        return len(self.llm._tokenizer.encode(text))
+        try:
+            return len(self.llm._tokenizer.encode(text))
+        except Exception as e:
+            logging.warning(e)
+            return super().count_tokens(text)
     
