@@ -439,18 +439,18 @@ def main():
 
         ## write outputs
         out = bundler.to_json()
-        output_dir = Path("./output")/str(job_id)
+        output_dir = Path("./output")/str(bundler.uuid)
         with contextlib.suppress(BaseException):
             shutil.rmtree(output_dir)
         output_dir.mkdir(exist_ok=True, parents=True)
         output_path = output_dir/f"{bundler.bundle.id}.json"
         output_path.write_text(out)
         logger.info(f"Wrote bundle output to `{output_path}`")
-        data_path = output_dir/f"data--{args.report_id}.json"
+        data_path = output_dir/f"data--{bundler.uuid}.json"
         data_path.write_text(data.model_dump_json(indent=4))
         logger.info(f"Wrote data output to `{data_path}`")
         for nav_layer in data.navigator_layer or []:
-            nav_path = output_dir/f"navigator-{nav_layer['domain']}----{args.report_id}.json"
+            nav_path = output_dir/f"navigator-{nav_layer['domain']}----{bundler.uuid}.json"
             nav_path.write_text(json.dumps(nav_layer, indent=4))
             logger.info(f"Wrote navigator output to `{nav_path}`")
     except argparse.ArgumentError as e:
