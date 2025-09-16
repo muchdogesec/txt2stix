@@ -15,7 +15,8 @@ class Extraction(BaseModel):
     id: str =  Field(description='is the id of the extraction of the format `"ai-%d" %(position in list)`, it should start from 1 (e.g `"ai-1", "ai-2", ..., "ai-n"`)')
     value: str  =  Field(description='is the value extracted from the text')
     original_text: str =  Field(description='is the original text the extraction was made from')
-    # start_index: list[str|int] =  Field(description='a list of the index positions of the first character for each matching extraction. Some documents might capture many extractions where `key` and `value` are the same for many entries. This property allows the user to identify how many extractions happened, and where they are in the document.')
+    start_index: list[str|int] =  Field(default_factory=list, description='no result expected')
+
 
 class Relationship(BaseModel):
     source_ref: str = Field(description='is the id for the source extraction for the relationship (e.g. extraction_1).')
@@ -85,9 +86,3 @@ def get_extractors_str(extractors):
     logging.debug(buffer.getvalue())
     logging.debug("======== extractors end ======")
     return buffer.getvalue()
-
-
-
-if __name__ == '__main__':
-    a = ExtractionList(extractions=[Extraction(type="yes", id="1", value="2", original_text="3")], success=True)
-    print(a.model_dump())

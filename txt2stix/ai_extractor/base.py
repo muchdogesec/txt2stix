@@ -67,8 +67,15 @@ class BaseAIExtractor():
     def extract_relationships(self, input_text, extractions, relationship_types: list[str]) -> RelationshipList:
         return self._get_relationship_program()(relationship_types=relationship_types, input_file=input_text, extractions=extractions)
 
-    def extract_objects(self, input_text, extractors) -> ExtractionList:
-        extraction_list = self._get_extraction_program()(extractors=get_extractors_str(extractors), input_file=input_text)
+    def extract_objects(self, input_text: str, extractors) -> ExtractionList:
+        extraction_list: ExtractionList = self._get_extraction_program()(extractors=get_extractors_str(extractors), input_file=input_text)
+        for extract in extraction_list.extractions:
+            index = input_text.index(extract.original_text)
+            if index > -1:
+                extract.start_index = [index]
+            else:
+                extract.start_index = []
+
         return extraction_list.model_dump().get('extractions', [])
 
     def __init__(self, *args, **kwargs) -> None:
