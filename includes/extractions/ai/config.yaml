@@ -28,7 +28,7 @@ ai_ipv4_address_cidr:
   modified:  2020-01-01
   created_by: DOGESEC
   version: 1.0.0
-  prompt_base: 'Extract all IPv4 addresses with a CIDR from the text.'
+  prompt_base: 'Extract all IPv4 addresses with a CIDR from the text. CIDR part must be >=0 <=32.'
   prompt_helper: 'Do not include any IPs that do not have a CIDR.'
   prompt_conversion: ''
   test_cases: ipv4_address_cidr
@@ -44,8 +44,8 @@ ai_ipv4_address_port:
   modified:  2020-01-01
   created_by: DOGESEC
   version: 1.0.0
-  prompt_base: 'Extract all IPv4 addresses with a port from the text.'
-  prompt_helper: 'Do not include any IPv4s that do not contain a port number'
+  prompt_base: 'Extract all IPv4 addresses with a port from the text. Port number part must be >=0 <=65535.'
+  prompt_helper: 'Do not include any IPv4s that do not contain a port number.'
   prompt_conversion: ''
   test_cases: ipv4_address_port
   stix_mapping: ipv4-addr-port
@@ -72,13 +72,13 @@ ai_ipv6_address_cidr:
   type: ai
   dogesec_web: true
   name: 'IPv6 Address with CIDR'
-  description: 'Extracts IPv6 addresses with CIDRs'
+  description: 'Extracts IPv6 addresses with CIDRs.'
   notes: 'pattern_ipv6_address_cidr legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
   version: 1.0.0
-  prompt_base: 'Extract all IPv6 addresses with a CIDR from the text.'
+  prompt_base: 'Extract all IPv6 addresses with a CIDR from the text. CIDR part must be >=0 <=128.'
   prompt_helper: 'Do not include any IPv6s that do not contain a CIDR'
   prompt_conversion: ''
   test_cases: generic_ipv6_address_cidr
@@ -94,7 +94,7 @@ ai_ipv6_address_port:
   modified:  2020-01-01
   created_by: DOGESEC
   version: 1.0.0
-  prompt_base: 'Extract all IPv6 addresses with a CIDR from the text.'
+  prompt_base: 'Extract all IPv6 addresses with a CIDR from the text. Port number part must be >=0 <=65535.'
   prompt_helper: 'Do not include any IPv6s that do not contain a port number'
   prompt_conversion: ''
   test_cases: generic_ipv6_address_port
