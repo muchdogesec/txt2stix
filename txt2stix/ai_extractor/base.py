@@ -10,6 +10,8 @@ from txt2stix.ai_extractor.prompts import DEFAULT_CONTENT_CHECKER_WITH_SUMMARY_T
 from txt2stix.ai_extractor.utils import AttackFlowList, DescribesIncident, ExtractionList, ParserWithLogging, RelationshipList, get_extractors_str
 from llama_index.core.utils import get_tokenizer
 
+from txt2stix.lookups import find_get_indexes
+
 
 _ai_extractor_registry: dict[str, 'Type[BaseAIExtractor]'] = {}
 class BaseAIExtractor():
@@ -70,11 +72,7 @@ class BaseAIExtractor():
     def extract_objects(self, input_text: str, extractors) -> ExtractionList:
         extraction_list: ExtractionList = self._get_extraction_program()(extractors=get_extractors_str(extractors), input_file=input_text)
         for extract in extraction_list.extractions:
-            index = input_text.index(extract.original_text)
-            if index > -1:
-                extract.start_index = [index]
-            else:
-                extract.start_index = []
+            extract.start_index = list(find_get_indexes(extract.original_text, input_text))
 
         return extraction_list.model_dump().get('extractions', [])
 
