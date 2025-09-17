@@ -554,9 +554,7 @@ python3 txt2stix.py \
     --name 'Extraction index' \
     --tlp_level clear \
     --confidence 100 \
-    --use_extractions 'ai_mitre_attack_enterprise' \
+    --use_extractions 'ai_ipv4_address_only' \
     --ai_settings_extractions openai:gpt-4o \
-    --ai_create_attack_flow \
-    --ai_create_attack_navigator_layer \
-    --report_id c0d48262-1d9f-42d2-aa29-f0cba1bfa2e0
+    --report_id 2b3326b4-dfcf-4391-b550-e91652f9ffcd
 ```
