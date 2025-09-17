@@ -541,3 +541,22 @@ python3 txt2stix.py \
     --ai_create_attack_navigator_layer \
     --report_id c0d48262-1d9f-42d2-aa29-f0cba1bfa2e0
 ```
+
+### test AI extraction position
+
+same extraction twice in doc
+
+```shell
+python3 txt2stix.py \
+    --relationship_mode ai \
+    --ai_settings_relationships openai:gpt-4o \
+    --input_file tests/data/manually_generated_reports/ai_index_position.txt \
+    --name 'Extraction index' \
+    --tlp_level clear \
+    --confidence 100 \
+    --use_extractions 'ai_mitre_attack_enterprise' \
+    --ai_settings_extractions openai:gpt-4o \
+    --ai_create_attack_flow \
+    --ai_create_attack_navigator_layer \
+    --report_id c0d48262-1d9f-42d2-aa29-f0cba1bfa2e0
+```
