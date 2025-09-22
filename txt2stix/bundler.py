@@ -10,6 +10,7 @@ from stix2 import (
 )
 from stix2.parsing import dict_to_stix2, parse as parse_stix
 from stix2.serialization import serialize
+from stix2validator.v21.shoulds import relationships_strict
 import hashlib
 from stix2 import (
     v21,
@@ -359,13 +360,15 @@ class txt2stixBundler:
         ))
 
     def new_relationship(self, source_ref, target_ref, relationship_type, description=None, external_references=None):
-        return Relationship(
+        relationship = dict(
             id="relationship--"
             + str(
                 uuid.uuid5(
                     UUID_NAMESPACE, f"{relationship_type}+{source_ref}+{target_ref}"
                 )
             ),
+            type='relationship',
+            spec_version='2.1',
             source_ref=source_ref,
             target_ref=target_ref,
             relationship_type=relationship_type,
@@ -374,7 +377,6 @@ class txt2stixBundler:
             description=description,
             modified=self.report.modified,
             object_marking_refs=self.report.object_marking_refs,
-            allow_custom=True,
             external_references=external_references or [
                 {
                     "source_name": "txt2stix_report_id",
@@ -382,6 +384,12 @@ class txt2stixBundler:
                 }
             ],
         )
+        try:
+            relationships_strict(relationship)
+        except Exception as e:
+            relationship['relationship_type'] = 'related-to'
+            logger.debug(e)
+        return parse_stix(relationship, allow_custom=True)
 
     def to_json(self):
         return serialize(self.bundle, indent=4)
@@ -396,8 +404,8 @@ class txt2stixBundler:
                 self.add_indicator(ex, add_standard_relationship)
             except BaseException as e:
                 logger.debug(
-                    f"ran into exception while processing observable `{ex}`",
-                    stack_info=True,
+                    f"ran into exception while processing observable `{ex}`. {e}",
+                    exc_info=True,
                 )
                 ex['error'] = str(e)
 
