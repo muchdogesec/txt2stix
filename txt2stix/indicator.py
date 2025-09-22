@@ -24,7 +24,7 @@ if TYPE_CHECKING:
 
 from .common import MinorException
 
-from .retriever import retrieve_stix_objects
+from .retriever import _retrieve_stix_objects, retrieve_stix_objects
 
 logger = logging.getLogger("txt2stix.indicator")
 
@@ -93,7 +93,7 @@ def build_observables(
     except BadDataException:
         raise
     except BaseException as e:
-        raise BadDataException("unknown data error") from e
+        raise BadDataException(f"unknown data error: {e}") from e
 
 
 def _build_observables(
@@ -102,13 +102,6 @@ def _build_observables(
     retrieved_objects = retrieve_stix_objects(stix_mapping, extracted_value)
     if retrieved_objects:
         return retrieved_objects, [sdo["id"] for sdo in retrieved_objects]
-    if retrieved_objects == []:
-        logger.warning(
-            f"could not find `{stix_mapping}` with id=`{extracted_value}` in remote"
-        )
-        raise BadDataException(
-            f"could not find `{stix_mapping}` with id=`{extracted_value}` in remote"
-        )
 
     stix_objects = [indicator]
 

@@ -399,6 +399,7 @@ class txt2stixBundler:
                     f"ran into exception while processing observable `{ex}`",
                     stack_info=True,
                 )
+                ex['error'] = str(e)
 
     def process_relationships(self, observables):
         for relationship in observables:

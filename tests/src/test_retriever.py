@@ -1,5 +1,5 @@
 import pytest
-from txt2stix.retriever import retrieve_stix_objects
+from txt2stix.retriever import _retrieve_stix_objects, retrieve_stix_objects
 
 
 @pytest.fixture(scope="session")
