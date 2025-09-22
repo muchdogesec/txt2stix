@@ -425,38 +425,15 @@ class txt2stixBundler:
         )
 
     def add_summary(self, summary, ai_summary_provider):
-        self.summary = summary
-        summary_note_obj = Note(
-            type="note",
-            spec_version="2.1",
-            id=self.report.id.replace("report", "note"),
-            created=self.report.created,
-            modified=self.report.modified,
-            created_by_ref=self.report.created_by_ref,
-            external_references=[
-                {
-                    "source_name": "txt2stix_ai_summary_provider",
-                    "external_id": ai_summary_provider,
-                },
-            ],
-            abstract=f"AI Summary: {self.report.name}",
-            content=summary,
-            object_refs=[self.report.id],
-            object_marking_refs=self.report.object_marking_refs,
-            labels=self.report.get('labels'),
-            confidence=self.report.get('confidence')
-        )
-
-        self.add_ref(summary_note_obj)
-        self.add_ref(
-            self.new_relationship(
-                summary_note_obj["id"],
-                self.report.id,
-                relationship_type="summary-of",
-                description=f"AI generated summary for {self.report.name}",
-                external_references=summary_note_obj["external_references"],
+        self.report.external_references.append(
+            dict(
+                source_name='txt2stix_ai_summary',
+                external_id=ai_summary_provider,
+                description=summary
             )
         )
+        self.summary = summary
+        
 
     @property
     def flow_objects(self):

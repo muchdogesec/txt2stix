@@ -241,17 +241,8 @@ def test_add_summary():
     summary = "This is a summary"
     bundler.add_summary(summary, "some-random-ai-provider")
     assert bundler.summary == summary
-    assert 'note--d9f3b306-e7fe-4074-b89a-33ce54280718' in bundler.added_objects
-    assert 'relationship--fc73fe53-9487-540f-bd65-582d9d2d1b54' in bundler.added_objects
-    note_obj = [obj for obj in bundler.bundle.objects if obj['id'] == 'note--d9f3b306-e7fe-4074-b89a-33ce54280718'][0]
-    assert note_obj.content == summary
-    assert note_obj.object_refs == ["report--d9f3b306-e7fe-4074-b89a-33ce54280718"]
-    for k in ['created', 'modified', 'created_by_ref', 'object_marking_refs', 'labels', 'confidence']:
-        assert bundler.report[k] == note_obj[k]
+    assert dict(external_id="some-random-ai-provider", source_name='txt2stix_ai_summary', description=summary) in bundler.report.external_references
 
-    ref_obj = [obj for obj in bundler.bundle.objects if obj['id'] == 'relationship--fc73fe53-9487-540f-bd65-582d9d2d1b54'][0]
-    assert ref_obj.description == "AI generated summary for Test"
-    assert ref_obj.external_references == note_obj.external_references
     
     
 def test_process_observables_and_process_relationships():
