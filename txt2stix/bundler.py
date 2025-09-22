@@ -227,7 +227,7 @@ class txt2stixBundler:
                     "external_id": self.uuid,
                 },
                 {
-                    "source_name": "txt2stix Report MD5",
+                    "source_name": "txt2stix_report_md5",
                     "description": self.report_md5,
                 },
             ] + external_references,
@@ -433,7 +433,7 @@ class txt2stixBundler:
             )
         )
         self.summary = summary
-        
+
 
     @property
     def flow_objects(self):
