@@ -113,7 +113,7 @@ def f():
         (
             "vulmatch-cpe-id",
             "cpe:2.3:h:qualcomm:sd821:-:*:*:*:*:*:*:*",
-            ["software--0028c970-9268-5988-b941-f6bfc050300a"],
+            ["software--4e0ea65d-90b0-5582-a1d6-b69d5472fbb2"],
         ),
     ],
 )
