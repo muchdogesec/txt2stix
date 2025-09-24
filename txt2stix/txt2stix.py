@@ -394,7 +394,7 @@ def run_txt2stix(bundler: txt2stixBundler, preprocessed_text: str, extractors_ma
         logging.info("=== ai-check-content output ====")
         logging.info(retval.content_check.model_dump_json())
         for classification in retval.content_check.incident_classification:
-            bundler.report.labels.append(f'txt2stix:{classification}'.lower())
+            bundler.report.labels.append(f'classification.{classification}'.lower())
         bundler.add_summary(retval.content_check.summary, model.extractor_name)
 
     if should_extract or ai_extract_if_no_incidence:

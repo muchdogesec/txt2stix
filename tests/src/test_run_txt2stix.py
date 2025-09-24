@@ -124,7 +124,7 @@ def test_content_check_param(mock_validate_token_count, subtests):
         mock_check_content.assert_called_once()
         mock_validate_token_count.assert_called_once()
         for classification in incident_classifications:
-            assert f"txt2stix:{classification}".lower() in mock_bundler.report.labels
+            assert f"classification.{classification}".lower() in mock_bundler.report.labels
         mock_bundle__add_summary.assert_called_once_with("The summary", parse_model(TEST_AI_MODEL).extractor_name)
 
     mock_validate_token_count.reset_mock()
