@@ -558,3 +558,23 @@ python3 txt2stix.py \
     --ai_settings_extractions openai:gpt-4o \
     --report_id 2b3326b4-dfcf-4391-b550-e91652f9ffcd
 ```
+
+### test vulmatch lookup failure behaviour
+
+(should create no objects)
+
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/manually_generated_reports/bad_vulmatch_lookups.txt \
+	--name 'test vulmatch lookup failure behaviour' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions pattern_cve_id,pattern_cpe_uri \
+	--report_id c0766db1-0748-429b-8e4c-f1a3a9fd1a3a
+```
+
+
+
+
