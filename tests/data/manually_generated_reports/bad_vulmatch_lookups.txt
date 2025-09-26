@@ -1,0 +1,2 @@
+cpe:2.3:a:appcheap:app_builder:500000:*:*:*:*:wordpress:*:*
+CVE-2026-99999

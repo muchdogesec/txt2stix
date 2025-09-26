@@ -241,17 +241,8 @@ def test_add_summary():
     summary = "This is a summary"
     bundler.add_summary(summary, "some-random-ai-provider")
     assert bundler.summary == summary
-    assert 'note--d9f3b306-e7fe-4074-b89a-33ce54280718' in bundler.added_objects
-    assert 'relationship--fc73fe53-9487-540f-bd65-582d9d2d1b54' in bundler.added_objects
-    note_obj = [obj for obj in bundler.bundle.objects if obj['id'] == 'note--d9f3b306-e7fe-4074-b89a-33ce54280718'][0]
-    assert note_obj.content == summary
-    assert note_obj.object_refs == ["report--d9f3b306-e7fe-4074-b89a-33ce54280718"]
-    for k in ['created', 'modified', 'created_by_ref', 'object_marking_refs', 'labels', 'confidence']:
-        assert bundler.report[k] == note_obj[k]
+    assert dict(external_id="some-random-ai-provider", source_name='txt2stix_ai_summary', description=summary) in bundler.report.external_references
 
-    ref_obj = [obj for obj in bundler.bundle.objects if obj['id'] == 'relationship--fc73fe53-9487-540f-bd65-582d9d2d1b54'][0]
-    assert ref_obj.description == "AI generated summary for Test"
-    assert ref_obj.external_references == note_obj.external_references
     
     
 def test_process_observables_and_process_relationships():
@@ -282,6 +273,30 @@ def test_process_observables_and_process_relationships():
     with patch.object(bundler, "add_standard_relationship") as mock_add_rel:
         bundler.process_relationships([{"source_ref": "ai_src", "target_ref": "ai_tgt", "relationship_type": "controls"}])
         mock_add_rel.assert_called_once_with("a", "b", "controls")
+
+def test_process_observables__records_error():
+    extractor = MagicMock()
+    extractor.stix_mapping = "domain-name"
+    extractor.slug = "testslug"
+    extractor.version = "1.0"
+
+    bundler = txt2stixBundler(
+        name="Test Process",
+        identity=None,
+        tlp_level="amber_strict",
+        description="desc",
+        confidence=90,
+        extractors={"domain": extractor},
+        labels=[]
+    )
+
+    data1 = {"type": "domain", "value": "foo.com"}
+    data2 = {"type": "domain", "value": "foo.bar"}
+    input_data = [data1, data2]
+    with patch.object(txt2stixBundler, "add_indicator", side_effect=[Exception, lambda x: x]) as mock_build:
+        bundler.process_observables(input_data)
+        assert 'error' in data1
+        assert 'error' not in data2
 
 def test_tlp_level_values():
     values = TLP_LEVEL.values()
