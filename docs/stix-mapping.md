@@ -65,7 +65,7 @@ All files uploaded are represented as a unique [STIX Report SDO](https://docs.oa
             "external_id": "<UUID OF REPORT OBJECT>"
         },
         {
-            "source_name": "txt2stix Report MD5",
+            "source_name": "txt2stix_report_md5",
             "external_id": "<MD5 HASH OF DESCRIPTION FIELD>"
         }   
     ],
@@ -93,12 +93,7 @@ Objects always created:
 
 * `indicator`
 * `ipv4-addr`
-* `relationship` (`ipv4-addr` -> `indicator`)
-
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: `indicator` `extracted-from` `report`
-* AI mode relationship SROs: ipv4-addr is connected as `source_ref` or `target_ref` to 0 or more objects based on AI analysis
+* `relationship` (`indicator` -> `ipv4-addr`)
 
 ```json
 {
@@ -147,13 +142,8 @@ Objects always created:
 
 * `indicator`
 * `ipv4-addr` 
-* `relationship` (`ipv4-addr` -> `indicator`)
+* `relationship` (`indicator` -> `ipv4-addr`)
 * `network-traffic`
-
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: `indicator` `extracted-from` `report`
-* AI mode relationship SROs: ipv4-addr is connected as `source_ref` or `target_ref` to 0 or more objects based on AI analysis
 
 ```json
 {
@@ -219,12 +209,7 @@ Objects always created:
 
 * `indicator`
 * `ipv6-addr`
-* `relationship` (`ipv6-addr` -> `indicator`)
-
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: `indicator` `extracted-from` `report`
-* AI mode relationship SROs: ipv6-addr is connected as `source_ref` or `target_ref` to 0 or more objects based on AI analysis
+* `relationship` (`indicator` -> `ipv6-addr`)
 
 ```json
 {
@@ -273,13 +258,8 @@ Objects always created:
 
 * `indicator`
 * `ipv6-addr`
-* `relationship` (`ipv6-addr` -> `indicator`)
+* `relationship` (`indicator` -> `ipv6-addr`)
 * `network-traffic`
-
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: `indicator` `extracted-from` `report`
-* AI mode relationship SROs: ipv6-addr is connected as `source_ref` or `target_ref` to 0 or more objects based on AI analysis
 
 ```json
 {
@@ -341,12 +321,7 @@ Objects always created:
 
 * `indicator`
 * `domain-name`
-* `relationship` (`domain-name` -> `indicator`)
-
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: `indicator` `extracted-from` `report`
-* AI mode relationship SROs: domain-name is connected as `source_ref` or `target_ref` to 0 or more objects based on AI analysis
+* `relationship` (`indicator` -> `domain-name`)
 
 ```json
 {
@@ -395,12 +370,7 @@ Objects always created:
 
 * `indicator`
 * `url`
-* `relationship` (`url` -> `indicator`)
-
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: `indicator` `extracted-from` `report`
-* AI mode relationship SROs: url is connected as `source_ref` or `target_ref` to 0 or more objects based on AI analysis
+* `relationship` (`indicator` -> `url`)
 
 ```json
 {
@@ -449,12 +419,7 @@ Objects always created:
 
 * `indicator`
 * `file`
-* `relationship` (`file` -> `indicator`)
-
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: `indicator` `extracted-from` `report`
-* AI mode relationship SROs: file is connected as `source_ref` or `target_ref` to 0 or more objects based on AI analysis
+* `relationship` (`indicator` -> `file`)
 
 ```json
 {
@@ -503,12 +468,7 @@ Objects always created:
 
 * `indicator`
 * `directory`
-* `relationship` (`directory` -> `indicator`)
-
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO:`indicator` `extracted-from` `report`
-* AI mode relationship SROs: directory is connected as `source_ref` or `target_ref` to 0 or more objects based on AI analysis
+* `relationship` (`indicator` -> `directory`)
 
 ```json
 {
@@ -557,13 +517,8 @@ Objects always created:
 
 * `indicator`
 * `directory`
-* `relationship` (`directory` -> `indicator`)
+* `relationship` (`indicator` -> `directory`)
 * `file`
-
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: `indicator` `extracted-from` `report`
-* AI mode relationship SROs: directory is connected as `source_ref` or `target_ref` to 0 or more objects based on AI analysis
 
 ```json
 {
@@ -653,12 +608,7 @@ Objects always created:
 
 * `indicator`
 * `file`
-* `relationship` (`file` -> `indicator`)
-
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: `indicator` `extracted-from` `report`
-* AI mode relationship SROs: file is connected as `source_ref` or `target_ref` to 0 or more objects based on AI analysis
+* `relationship` (`indicator` -> `file`)
 
 ```json
 {
@@ -709,12 +659,7 @@ Objects always created:
 
 * `indicator`
 * `email-addr`
-* `relationship` (`email-addr` -> `indicator`)
-
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: `indicator` `extracted-from` `report`
-* AI mode relationship SROs: email-addr is connected as `source_ref` or `target_ref` to 0 or more objects based on AI analysis
+* `relationship` (`indicator` -> `email-addr`)
 
 ```json
 {
@@ -763,12 +708,7 @@ Objects always created:
 
 * `indicator`
 * `mac-addr`
-* `relationship` (`mac-addr` -> `indicator`)
-
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: `indicator` `extracted-from` `report`
-* AI mode relationship SROs: mac-addr is connected as `source_ref` or `target_ref` to 0 or more objects based on AI analysis
+* `relationship` (`indicator` -> `mac-addr`)
 
 ```json
 {
@@ -817,12 +757,7 @@ Objects always created:
 
 * `indicator`
 * `windows-registry-key`
-* `relationship` (`windows-registry-key` -> `indicator`)
-
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: `indicator` `extracted-from` `report`
-* AI mode relationship SROs: windows-registry-key is connected as `source_ref` or `target_ref` to 0 or more objects based on AI analysis
+* `relationship` (`indicator` -> `windows-registry-key`)
 
 ```json
 {
@@ -871,12 +806,7 @@ Objects always created:
 
 * `indicator`
 * `autonomous-system`
-* `relationship` (`autonomous-system` -> `indicator`)
-
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: `indicator` `extracted-from` `report`
-* AI mode relationship SROs: autonomous-system is connected as `source_ref` or `target_ref` to 0 or more objects based on AI analysis
+* `relationship` (`indicator` -> `autonomous-system`)
 
 ```json
 {
@@ -925,13 +855,8 @@ Objects always created:
 
 * `indicator`
 * `user-agent`
-* `relationship` (`user-agent` -> `indicator`)
+* `relationship` (`indicator` -> `user-agent`)
 * `extensions-definition`: https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/extension-definitions/scos/user-agent.json
-
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: `indicator` `extracted-from` `report`
-* AI mode relationship SROs: user-agent is connected as `source_ref` or `target_ref` to 0 or more objects based on AI analysis
 
 ```json
 {
@@ -985,13 +910,8 @@ Objects always created:
 
 * `indicator`
 * `cryptocurrency-wallet`
-* `relationship` (`cryptocurrency-wallet` -> `indicator`)
+* `relationship` (`indicator` -> `cryptocurrency-wallet`)
 * `extensions-definition`: https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/extension-definitions/scos/cryptocurrency-wallet.json
-
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: `indicator` `extracted-from` `report`
-* AI mode relationship SROs: cryptocurrency-wallet is connected as `source_ref` or `target_ref` to 0 or more objects based on AI analysis
 
 ```json
   {
@@ -1041,15 +961,10 @@ Objects always created:
 
 * `indicator`
 * `cryptocurrency-wallet`
-* `relationship` (`cryptocurrency-wallet` -> `indicator`)
+* `relationship` (`indicator` -> `cryptocurrency-wallet`)
 * `cryptocurrency-transaction` for all crypto transactions that exist related to the wallet (is not always generated if lookup unsuccessful)
 * `extensions-definition`: https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/extension-definitions/scos/cryptocurrency-wallet.json
 * `extensions-definition`: https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/extension-definitions/scos/cryptocurrency-transaction.json
-
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: `indicator` `extracted-from` `report`
-* AI mode relationship SROs: cryptocurrency-wallet is connected as `source_ref` or `target_ref` to 0 or more objects based on AI analysis
 
 ```json
   {
@@ -1099,15 +1014,10 @@ Objects always created:
 
 * `indicator`
 * `cryptocurrency-transaction`
-* `relationship` (`cryptocurrency-transaction` -> `indicator`)
+* `relationship` (`indicator` -> `cryptocurrency-transaction`)
 * `cryptocurrency-wallet` for wallets seen in transaction identified by crypto2stix (is not always generated if lookup unsuccessful)
 * `extensions-definition`: https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/extension-definitions/scos/cryptocurrency-transaction.json
 * `extensions-definition`: https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/extension-definitions/scos/cryptocurrency-wallet.json
-
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: `indicator` `extracted-from` `report`
-* AI mode relationship SROs: cryptocurrency-transaction is connected as `source_ref` or `target_ref` to 0 or more objects based on AI analysis
 
 ```json
   {
@@ -1172,15 +1082,10 @@ This will also generate all `cryptocurrency-wallets` seen in the transaction.
 Objects always created:
 
 * `indicator`
-* `bank-card` (with `relationship` to `indicator`)
-* `relationship` (`bank-card` -> `indicator`)
+* `bank-card`
+* `relationship` (`indicator` -> `bank-card`)
 * `identity` (with `relationship` to `bank-card`) generated by creditcard2stix (is not always generated if lookup unsuccessful)
 * `extension-definition`: https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/extension-definitions/scos/bank-card.json
-
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: `indicator` `extracted-from` `report`
-* AI mode relationship SROs: bank-card is connected as `source_ref` or `target_ref` to 0 or more objects based on AI analysis
 
 ```json
 {
@@ -1222,13 +1127,8 @@ Objects always created:
 
 * `indicator`
 * `bank-account`
-* `relationship` (`bank-card` -> `indicator`)
+* `relationship` (`indicator` -> `bank-card`)
 * `extension-definition`: https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/extension-definitions/scos/bank-account.json
-
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: `indicator` `extracted-from` `report`
-* AI mode relationship SROs: bank-card is connected as `source_ref` or `target_ref` to 0 or more objects based on AI analysis
 
 ```json
 {
@@ -1287,13 +1187,8 @@ Objects always created:
 
 * `indicator`
 * `phone-number`
-* `relationship` (`phone-number` -> `indicator`)
+* `relationship` (`indicator` -> `phone-number`)
 * `extension-definition`: https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/extension-definitions/scos/phone-number.json
-
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: `indicator` `extracted-from` `report`
-* AI mode relationship SROs: phone-number is connected as `source_ref` or `target_ref` to 0 or more objects based on AI analysis
 
 ```json
 {
@@ -1352,11 +1247,6 @@ Objects created:
 
 * `attack-pattern`
 
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: `attack-pattern` `extracted-from` `report`
-* AI mode relationship SROs: attack-pattern is connected as `source_ref` or `target_ref` to 0 or more objects based on AI analysis
-
 ```json
 {
     "type": "attack-pattern",
@@ -1388,11 +1278,6 @@ Relationship mode object generation behaviour:
 Objects created:
 
 * `campaign`
-
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: `campaign` `extracted-from` `report`
-* AI mode relationship SROs: campaign is connected as `source_ref` or `target_ref` to 0 or more objects based on AI analysis
 
 ```json
 {
@@ -1426,11 +1311,6 @@ Objects created:
 
 * `course-of-action`
 
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: `course-of-action` `extracted-from` `report`
-* AI mode relationship SROs: course-of-action is connected as `source_ref` or `target_ref` to 0 or more objects based on AI analysis
-
 ```json
 {
     "type": "course-of-action",
@@ -1462,11 +1342,6 @@ Relationship mode object generation behaviour:
 Objects created:
 
 * `infrastructure`
-
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: `infrastructure` `extracted-from` `report`
-* AI mode relationship SROs: infrastructure is connected as `source_ref` or `target_ref` to 0 or more objects based on AI analysis
 
 ```json
 {
@@ -1501,11 +1376,6 @@ Objects created:
 
 * `intrusion-set`
 
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: `intrusion-set` `extracted-from` `report`
-* AI mode relationship SROs: intrusion-set is connected as `source_ref` or `target_ref` to 0 or more objects based on AI analysis
-
 ```json
 {
     "type": "intrusion-set",
@@ -1537,11 +1407,6 @@ Relationship mode object generation behaviour:
 Objects created:
 
 * `malware`
-
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: `malware` `extracted-from` `report`
-* AI mode relationship SROs: malware is connected as `source_ref` or `target_ref` to 0 or more objects based on AI analysis
 
 ```json
 {
@@ -1577,11 +1442,6 @@ Objects created:
 
 * `threat-actor`
 
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: `threat-actor` `extracted-from` `report`
-* AI mode relationship SROs: threat-actor is connected as `source_ref` or `target_ref` to 0 or more objects based on AI analysis
-
 ```json
 {
     "type": "threat-actor",
@@ -1614,11 +1474,6 @@ Relationship mode object generation behaviour:
 Objects created:
 
 * `tool`
-
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: `tool` `extracted-from` `report`
-* AI mode relationship SROs: tool is connected as `source_ref` or `target_ref` to 0 or more objects based on AI analysis
 
 ```json
 {
@@ -1653,11 +1508,6 @@ Objects created:
 
 * `identity`
 
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: `identity` `extracted-from` `report`
-* AI mode relationship SROs: identity is connected as `source_ref` or `target_ref` to 0 or more objects based on AI analysis
-
 ```json
 {
     "type": "identity",
@@ -1685,7 +1535,7 @@ Relationship mode object generation behaviour:
 }
 ```
 
-## STIX Mapping (remote created objects)
+## STIX Mapping (remotely created objects)
 
 Some objects created for extractions do not need to be generated by txt2stix, they can be looked up from an external databases.
 
@@ -1701,10 +1551,7 @@ GET CTIBUTLER_BASE_URL/v1/attack-enterprise/objects/:attack_id/
 
 All the objects returned are imported.
 
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: Imported object(s) is (`source_ref`) object connected to Report with type `extracted-from`
-* AI mode relationship SROs: all imported objects are connected as source or target object (depending on if extraction is source or target)
+If no objects are returned by an extraction, you will see an error in the logs and data file/
 
 ### stix-mapping: `ctibutler-mitre-attack-enterprise-name`
 
@@ -1732,10 +1579,7 @@ GET CTIBUTLER_BASE_URL/v1/attack-mobile/objects/:attack_id/
 
 All the objects returned are imported.
 
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: Imported object(s) is (`source_ref`) object connected to Report with type `extracted-from`
-* AI mode relationship SROs: all imported objects are connected as source or target object (depending on if extraction is source or target)
+If no objects are returned by an extraction, you will see an error in the logs and data file/
 
 ### stix-mapping: `ctibutler-mitre-attack-mobile-name`
 
@@ -1765,10 +1609,7 @@ GET CTIBUTLER_BASE_URL/v1/attack-ics/objects/:attack_id/
 
 All the objects returned are imported.
 
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: Imported object(s) is (`source_ref`) object connected to Report with type `extracted-from`
-* AI mode relationship SROs: all imported objects are connected as source or target object (depending on if extraction is source or target)
+If no objects are returned by an extraction, you will see an error in the logs and data file/
 
 ### stix-mapping: `ctibutler-mitre-attack-ics-name`
 
@@ -1798,10 +1639,7 @@ GET CTIBUTLER_BASE_URL/v1/capec/objects/:capec_id/
 
 All the objects returned are imported.
 
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: Imported object(s) is (`source_ref`) object connected to Report with type `extracted-from`
-* AI mode relationship SROs: all imported `course-of-action` / `attack-pattern` objects are connected as source or target object (depending on if extraction is source or target)
+If no objects are returned by an extraction, you will see an error in the logs and data file/
 
 ### stix-mapping: `ctibutler-mitre-capec-name`
 
@@ -1821,10 +1659,7 @@ GET CTIBUTLER_BASE_URL/v1/cwe/objects/:cwe_id/
 
 `CTIBUTLER_APIKEY` in request passed if set.
 
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: Imported `weakness` object is (`source_ref`) object connected to Report
-* AI mode relationship SROs: all imported objects are connected as source or target object (depending on if extraction is source or target)
+If no objects are returned by an extraction, you will see an error in the logs and data file/
 
 ### stix-mapping: `ctibutler-mitre-cwe-name`
 
@@ -1846,10 +1681,7 @@ GET CTIBUTLER_BASE_URL/v1/atlas/objects/:atlas_id/
 
 All the objects returned are imported.
 
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: Imported object(s) is (`source_ref`) object connected to Report with type `extracted-from`
-* AI mode relationship SROs: all imported objects are connected as source or target object (depending on if extraction is source or target)
+If no objects are returned by an extraction, you will see an error in the logs and data file/
 
 ### stix-mapping: `ctibutler-mitre-atlas-name`
 
@@ -1871,10 +1703,7 @@ GET CTIBUTLER_BASE_URL/v1/disarm/objects/:disarm_id/
 
 All the objects returned are imported.
 
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: Imported object(s) is (`source_ref`) object connected to Report with type `extracted-from`
-* AI mode relationship SROs: all imported objects are connected as source or target object (depending on if extraction is source or target)
+If no objects are returned by an extraction, you will see an error in the logs and data file/
 
 ### stix-mapping: `ctibutler-mitre-atlas-name`
 
@@ -1896,10 +1725,7 @@ GET CTIBUTLER_BASE_URL/v1/location/objects/?alpha2_code=ID
 
 All the objects returned are imported.
 
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: `location` `extracted-from` `report`
-* AI mode relationship SROs: location is connected as `source_ref` or `target_ref` to 0 or more objects based on AI analysis
+If no objects are returned by an extraction, you will see an error in the logs and data file/
 
 ### stix-mapping: `vulmatch-cve-id`
 
@@ -1911,10 +1737,7 @@ GET VULMATCH_BASE_URL/v1/cve/objects/:cve_id/
 
 `VULMATCH_APIKEY` in request passed if set.
 
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: Imported `vulnerability` object is (`source_ref`) object connected to Report
-* AI mode relationship SROs: all imported objects are connected as source or target object (depending on if extraction is source or target)
+If no objects are returned by an extraction, you will see an error in the logs and data file/
 
 ### stix-mapping: `vulmatch-cpe-id`
 
@@ -1926,16 +1749,13 @@ GET VULMATCH_BASE_URL/v1/cpe/objects/:cpe_id/
 
 `VULMATCH_APIKEY` in request passed if set.
 
-Relationship mode object generation behaviour:
-
-* Standard relationship SRO: Imported `software` object is (`source_ref`) object connected to Report
-* AI mode relationship SROs: all imported objects are connected as source or target object (depending on if extraction is source or target)
+If no objects are returned by an extraction, you will see an error in the logs and data file/
 
 ## Relationship objects
 
-### Fixed SCO to Indicator relationships for extractions
+### Fixed Indicator -> SRO relationships for extractions
 
-In some extractions, SROs are created to link extractions (SCO linked to Indicator)
+In some extractions, SROs are created to link extractions (Indicator -> SCO)
 
 These relationships are modelled as follows;
 
@@ -1948,42 +1768,9 @@ These relationships are modelled as follows;
     "created": "<REPORT CREATED DATE>",
     "modified": "<REPORT CREATED DATE>",
     "relationship_type": "<DEFINED BY EXTRACTION>",
-    "source_ref": "<SCO ID>",
-    "target_ref": "indicator--<ID>",
-    "description": "<SOURCE OBJECT NAME> is found in <REPORT NAME>",
-    "object_marking_refs": [
-        "marking-definition--<TLP LEVEL SET>"
-        "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
-    ],
-    "external_references": [
-        {
-            "source_name": "txt2stix_report_id",
-            "external_id": "<UUID OF REPORT OBJECT>"
-        },
-        {
-            "source_name": "txt2stix_extraction_type",
-            "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
-        }
-    ]
-}
-```
-
-### Relationships generated in `standard` relationship mode
-
-In standard mode, one SRO is created for each extraction back to the source report object created for the job. 
-
-```json
-{
-    "type": "relationship",
-    "spec_version": "2.1",
-    "id": "relationship--<GENERATED BY STIX2 LIBRARY>",
-    "created_by_ref": "identity--<DEFAULT/CUSTOM IDENTITY ID>",
-    "created": "<REPORT CREATED DATE>",
-    "modified": "<REPORT CREATED DATE>",
-    "relationship_type": "extracted-from",
-    "source_ref": "<SOURCE OBJECT ID AS DEFINED BY STIX EXTRACTION>",
-    "target_ref": "report--<REPORT OBJECT ID CREATED FOR JOB>",
-    "description": "<SOURCE OBJECT NAME> is found in <REPORT NAME>",
+    "source_ref": "indicator--<ID>",
+    "target_ref": "<SCO ID>",
+    "description": "STIX pattern contains <SCO VALUE>",
     "object_marking_refs": [
         "marking-definition--<TLP LEVEL SET>"
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"

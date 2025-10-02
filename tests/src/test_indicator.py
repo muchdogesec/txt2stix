@@ -104,7 +104,6 @@ mock_bundler = txt2stixBundler(
 )
 all_extractors = get_all_extractors()
 
-
 @pytest.mark.parametrize(
     ["value", "extractor_name", "expected_objects", "expected_rels"],
     [
@@ -113,9 +112,9 @@ all_extractors = get_all_extractors()
             "127.0.0.1",
             "pattern_ipv4_address_only",
             {
-                "ipv4-addr--679c6c82-b4be-52e2-9c7a-198689f6f77b",
                 "indicator--a07184da-7d33-5b13-b877-66baa3584a7b",
-                "relationship--ebee86fd-def4-5ba4-9f7d-01e8d858d14c",
+                "ipv4-addr--679c6c82-b4be-52e2-9c7a-198689f6f77b",
+                "relationship--453f41f2-9b4b-5bee-ac6b-d87a9bed49d2",
             },
             {"ipv4-addr--679c6c82-b4be-52e2-9c7a-198689f6f77b"},
             id="ipv4 address_only",
@@ -124,9 +123,9 @@ all_extractors = get_all_extractors()
             "127.0.0.1:8080",
             "pattern_ipv4_address_port",
             {
-                "ipv4-addr--679c6c82-b4be-52e2-9c7a-198689f6f77b",
                 "indicator--f06eba73-0dc3-5b4c-a4b2-b8cdcbbb1092",
-                "relationship--a69f0136-208b-5cd5-926b-b3672835d6e2",
+                "ipv4-addr--679c6c82-b4be-52e2-9c7a-198689f6f77b",
+                "relationship--913dfcb5-171e-5590-8f8b-bd352eb8300f",
                 "network-traffic--bc4336c7-af88-5853-a21b-f319938f9aac",
             },
             {"ipv4-addr--679c6c82-b4be-52e2-9c7a-198689f6f77b"},
@@ -136,9 +135,9 @@ all_extractors = get_all_extractors()
             "127.0.0.1/16",
             "pattern_ipv4_address_cidr",
             {
-                "ipv4-addr--31e0d7f3-97af-5dce-a98a-d9f7a06ea485",
-                "relationship--47dbbaa3-8d12-5f83-95b4-7bb726918609",
                 "indicator--f47753fc-5f96-5e2c-b798-38c34f0664dd",
+                "ipv4-addr--31e0d7f3-97af-5dce-a98a-d9f7a06ea485",
+                "relationship--a0eaec93-7b0e-5e4d-93f8-5be37003e6f6",
             },
             {"ipv4-addr--31e0d7f3-97af-5dce-a98a-d9f7a06ea485"},
             id="ipv4 address_cidr",
@@ -147,9 +146,9 @@ all_extractors = get_all_extractors()
             "2001:0db8:85a3:0000:0000:8a2e:0370:7334",
             "pattern_ipv6_address_only",
             {
-                "relationship--29b5f001-5134-5cd2-aeb0-ef8bd55d844f",
                 "indicator--d06f2f5b-168a-5b73-8cca-237b44e94ed1",
                 "ipv6-addr--85a85a8c-ee99-5722-946d-3c3a3270fc6f",
+                "relationship--d26c2e27-e958-5167-b9f2-371a16198666",
             },
             {"ipv6-addr--85a85a8c-ee99-5722-946d-3c3a3270fc6f"},
             id="ipv6 address_only",
@@ -158,10 +157,10 @@ all_extractors = get_all_extractors()
             "[2001:0db8:85a3:0000:0000:8a2e:0370:7334]:8080",
             "pattern_ipv6_address_port",
             {
-                "ipv6-addr--85a85a8c-ee99-5722-946d-3c3a3270fc6f",
-                "network-traffic--d7f1aefc-12ba-53d6-a2c8-c54d7b956e39",
                 "indicator--d3cffad2-d934-5f1f-829c-342fd8956b74",
-                "relationship--fa0d2483-2945-51c8-80eb-7476e1332dfb",
+                "ipv6-addr--85a85a8c-ee99-5722-946d-3c3a3270fc6f",
+                "relationship--20d02821-de20-5768-b381-be3de55a292d",
+                "network-traffic--d7f1aefc-12ba-53d6-a2c8-c54d7b956e39",
             },
             {"ipv6-addr--85a85a8c-ee99-5722-946d-3c3a3270fc6f"},
             id="ipv6 address_port",
@@ -170,11 +169,11 @@ all_extractors = get_all_extractors()
         pytest.param(
             "localhost",
             "pattern_host_name",
-            [
-                "relationship--b0eef578-e3eb-510b-9aa7-2c15b28e01b5",
-                "domain-name--b54e23fc-08b6-5d8e-b593-bf0dfc0a49d5",
+            {
                 "indicator--03057a6b-18bf-5ab9-95e4-844198c060bb",
-            ],
+                "domain-name--b54e23fc-08b6-5d8e-b593-bf0dfc0a49d5",
+                "relationship--85afb679-5915-54c2-9d08-2375e95b76bf",
+            },
             [
                 "domain-name--b54e23fc-08b6-5d8e-b593-bf0dfc0a49d5",
             ],
@@ -183,11 +182,11 @@ all_extractors = get_all_extractors()
         pytest.param(
             "somewebsite.gg",
             "pattern_host_name",
-            [
-                "relationship--753bccf7-ba02-5cf2-a57f-18784376e475",
+            {
                 "indicator--b71ed37a-8095-5590-aa39-9056b6ecc722",
                 "domain-name--6b8b0382-6675-5d04-8442-5a1e2d9e903f",
-            ],
+                "relationship--8e1d2945-d2d5-5868-9dac-1a8bf6a65639",
+            },
             [
                 "domain-name--6b8b0382-6675-5d04-8442-5a1e2d9e903f",
             ],
@@ -197,11 +196,11 @@ all_extractors = get_all_extractors()
         pytest.param(
             "http://localhost:123/die",
             "pattern_url",
-            [
+            {
                 "indicator--d10d08c7-71a8-53ec-aacd-7b06b51fe38b",
                 "url--b427c195-2f31-55c4-a41e-ce2beb48cf01",
-                "relationship--10151382-60ec-5d82-ae23-6ce97b0a24de",
-            ],
+                "relationship--c71a6941-e1e1-5863-a99b-aa296459ebac",
+            },
             [
                 "url--b427c195-2f31-55c4-a41e-ce2beb48cf01",
             ],
@@ -211,11 +210,11 @@ all_extractors = get_all_extractors()
         pytest.param(
             "file.jpg",
             "pattern_file_name",
-            [
+            {
                 "indicator--b161ae03-688d-5cf3-ab7e-ad7ccc07cc9a",
-                "relationship--058f1b3c-76c2-535f-9d76-9af66a18d52b",
                 "file--a525dace-961b-5749-b9c3-3e2feba0034c",
-            ],
+                "relationship--92627fe0-92dd-5d6b-917f-a57bd5af9af6",
+            },
             [
                 "file--a525dace-961b-5749-b9c3-3e2feba0034c",
             ],
@@ -225,15 +224,14 @@ all_extractors = get_all_extractors()
         pytest.param(
             "/path/to/dir/die.exe",
             "pattern_directory_unix_file",
-            [
-                "relationship--53204f97-f4c3-59ca-9158-f0c973efd8d9",
-                "file--7dbeff1a-48b6-5060-a637-04fa55f93c9a",
-                "directory--1377fe61-b48b-5250-985b-db5ff7f97200",
+            {
                 "indicator--8dfdfdcc-0136-5528-90ca-75b32960a63a",
-                "relationship--836ea44f-01b5-5289-92da-78d187fb446e",
-            ],
-            [
                 "directory--1377fe61-b48b-5250-985b-db5ff7f97200",
+                "file--68fbb6e6-6111-54ef-b3dc-850a8e91d3d8",
+                "relationship--85af7eb4-14ba-5bce-b207-5eac43bc844f",
+            },
+            [
+                "file--68fbb6e6-6111-54ef-b3dc-850a8e91d3d8",
             ],
             id="directory-file",
         ),
@@ -244,7 +242,7 @@ all_extractors = get_all_extractors()
             {
                 "indicator--0f78e264-e09c-529a-a0eb-d9361fe6d834",
                 "file--109eb6b5-7257-568b-8a3a-146e343ac867",
-                "relationship--b00a63f9-0fbc-53ee-a834-6928c2f0ea47",
+                "relationship--04024c50-4a29-5cbc-8f29-50d2795bc1fb",
             },
             {
                 "file--109eb6b5-7257-568b-8a3a-146e343ac867",
@@ -258,7 +256,7 @@ all_extractors = get_all_extractors()
             {
                 "indicator--e2d8050a-70d4-5771-9eff-3e74b4f7cfbe",
                 "email-addr--c582f4d4-bea6-5dec-951e-5b5e249f8fc5",
-                "relationship--90f13460-c196-58cc-881b-d7722402cc03",
+                "relationship--56bb515e-9cc1-5462-ae0b-ab8f97594af7",
             },
             {
                 "email-addr--c582f4d4-bea6-5dec-951e-5b5e249f8fc5",
@@ -271,8 +269,8 @@ all_extractors = get_all_extractors()
             "pattern_mac_address",
             {
                 "indicator--46587123-5b01-53f0-aa5f-3fdd863b8286",
-                "relationship--f89ad49c-c2fc-531e-b443-dc4bed8a37f6",
                 "mac-addr--757b1725-9903-54f5-a855-1240691d7659",
+                "relationship--0af3497f-6c7d-584e-b60c-14e678835d65",
             },
             {
                 "mac-addr--757b1725-9903-54f5-a855-1240691d7659",
@@ -284,9 +282,9 @@ all_extractors = get_all_extractors()
             r"HKLM\Short\\Name",
             "pattern_windows_registry_key",
             {
-                "relationship--bae5abb6-a073-5995-ac00-0b16bc840af2",
                 "indicator--5b176858-f869-52d3-b04b-326fd434766f",
                 "windows-registry-key--3be35eea-0b2d-5316-8f7d-46daf6b5029e",
+                "relationship--b89375ea-e3ed-519c-9961-3d8fa0cc0739",
             },
             {
                 "windows-registry-key--3be35eea-0b2d-5316-8f7d-46daf6b5029e",
@@ -300,7 +298,7 @@ all_extractors = get_all_extractors()
             {
                 "indicator--de09fba1-dc47-5cf5-a461-53aba2228fe6",
                 "autonomous-system--3aa27478-50b5-5ab8-9da9-cdc12b657fff",
-                "relationship--62692c31-7fd3-5f5b-8906-bbda95261600",
+                "relationship--af53acfb-3325-59bd-bcf8-de633e16531a",
             },
             {
                 "autonomous-system--3aa27478-50b5-5ab8-9da9-cdc12b657fff",
@@ -312,9 +310,9 @@ all_extractors = get_all_extractors()
             "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.6) Gecko/20040113",
             "pattern_user_agent",
             {
-                "user-agent--b71ac3f9-2e75-5f59-ada4-71e8a2514ec3",
                 "indicator--0eb12807-33c5-5d5a-b465-164ef424bd9a",
-                "relationship--9961afd0-fc4b-5a9f-96fa-129434422337",
+                "user-agent--b71ac3f9-2e75-5f59-ada4-71e8a2514ec3",
+                "relationship--1dccc75d-d7e5-50a5-8939-4658d9ff7681",
             },
             {
                 "user-agent--b71ac3f9-2e75-5f59-ada4-71e8a2514ec3",
@@ -328,7 +326,7 @@ all_extractors = get_all_extractors()
             {
                 "indicator--b8374546-ecf1-51e5-b4f3-f0e021af8f4d",
                 "cryptocurrency-wallet--6e43ef66-8082-5552-80f2-95f5a44f60aa",
-                "relationship--547c0e2c-01b7-5bea-8611-9c5ced2c347c",
+                "relationship--609089aa-6160-5f75-b6fa-e9c6399f8ec4",
             },
             {
                 "cryptocurrency-wallet--6e43ef66-8082-5552-80f2-95f5a44f60aa",
@@ -342,7 +340,7 @@ all_extractors = get_all_extractors()
             {
                 "bank-account--4c1507ea-fdde-556b-87c9-f8ef702a0d8a",
                 "indicator--816dfb00-4107-5dd0-be00-4607400f4df3",
-                "relationship--c932782d-f9fa-5b84-9804-17403a91e074",
+                "relationship--7a25889e-294b-553d-b917-661b0b6a6d7f",
             },
             {
                 "bank-account--4c1507ea-fdde-556b-87c9-f8ef702a0d8a",
@@ -354,7 +352,7 @@ all_extractors = get_all_extractors()
             "pattern_phone_number",
             {
                 "phone-number--9c0e11b8-10e5-5384-96ae-b3fe7799eb5e",
-                "relationship--ef574e75-7d5a-5406-a7b6-720266cfcae9",
+                "relationship--321a6bab-67be-5eae-8300-e2a986c3cf87",
                 "indicator--c955785e-d762-5e11-8e0d-27e255361669",
             },
             {
@@ -366,10 +364,10 @@ all_extractors = get_all_extractors()
             "5555555555554444",
             "pattern_bank_card_mastercard",
             {
-                "bank-card--fb992b79-5bd1-5aa9-bc7e-a785b28f4338",
                 "indicator--3dfe8be8-cb89-5872-a162-329be05ddfb7",
+                "bank-card--fb992b79-5bd1-5aa9-bc7e-a785b28f4338",
                 "identity--868572ea-db58-592a-a426-2cd243d748b6",
-                "relationship--ad2fa28f-0fc0-5a23-acc4-4326849b620b",  # issuer_identity, with name
+                "relationship--a62ca85c-dd01-5eac-a4b3-550be65f0566",
             },
             {
                 "bank-card--fb992b79-5bd1-5aa9-bc7e-a785b28f4338",
@@ -381,10 +379,10 @@ all_extractors = get_all_extractors()
             "376654224631002",
             "pattern_bank_card_amex",
             {
-                "bank-card--e19f1547-2b5f-5f3d-82dc-817c7ba15405",
                 "indicator--5a5a66de-62f3-5262-8c29-2f314c6ce738",
-                "relationship--2bf39b70-e24d-5275-80bb-7de015e93f23",
-                "identity--643246fc-9204-5b4b-976d-2e605b355c24",  # issuer_identity, no name
+                "bank-card--e19f1547-2b5f-5f3d-82dc-817c7ba15405",
+                "identity--643246fc-9204-5b4b-976d-2e605b355c24",
+                "relationship--20b1a83a-ff05-592d-96b9-3c93549f89d4",
             },
             {
                 "bank-card--e19f1547-2b5f-5f3d-82dc-817c7ba15405",
@@ -401,7 +399,6 @@ def test_build_observables(value, extractor_name, expected_objects, expected_rel
     )
     assert {obj["id"] for obj in objects} == set(expected_objects)
     assert {id for id in relationships} == set(expected_rels)
-
 
 @pytest.mark.parametrize(
     "extractor_name",

@@ -117,10 +117,10 @@ def _build_observables(
 
         stix_objects.append(
             bundler.new_relationship(
-                stix_objects[1].id,
                 indicator["id"],
-                "detected-using",
-                description=f"{stix_objects[1]['value']} can be detected in the STIX pattern {indicator['name']}",
+                stix_objects[1].id,
+                "related-to",
+                description=f"STIX pattern contains {stix_objects[1]['value']}",
                 external_references=indicator["external_references"],
             )
         )
@@ -138,10 +138,10 @@ def _build_observables(
         id = stix_objects[-1].id
         stix_objects.append(
             bundler.new_relationship(
-                stix_objects[1].id,
                 indicator["id"],
-                "detected-using",
-                description=f"{stix_objects[1]['value']} can be detected in the STIX pattern {indicator['name']}",
+                stix_objects[1].id,
+                "related-to",
+                description=f"STIX pattern contains {stix_objects[1]['value']}",
             )
         )
 
@@ -168,10 +168,10 @@ def _build_observables(
         )
         stix_objects.append(
             bundler.new_relationship(
-                stix_objects[1].id,
                 indicator["id"],
-                "detected-using",
-                description=f"{stix_objects[1]['value']} can be detected in the STIX pattern {indicator['name']}",
+                stix_objects[1].id,
+                "related-to",
+                description=f"STIX pattern contains {stix_objects[1]['value']}",
                 external_references=indicator["external_references"],
             )
         )
@@ -189,10 +189,10 @@ def _build_observables(
         id = stix_objects[-1].id
         stix_objects.append(
             bundler.new_relationship(
-                stix_objects[1].id,
                 indicator["id"],
-                "detected-using",
-                description=f"{stix_objects[1]['value']} can be detected in the STIX pattern {indicator['name']}",
+                stix_objects[1].id,
+                "related-to",
+                description=f"STIX pattern contains {stix_objects[1]['value']}",
                 external_references=indicator["external_references"],
             )
         )
@@ -229,10 +229,10 @@ def _build_observables(
         )
         stix_objects.append(
             bundler.new_relationship(
-                stix_objects[1].id,
                 indicator["id"],
-                "detected-using",
-                description=f"{extracted_value} can be detected in the STIX pattern {indicator['name']}",
+                stix_objects[1].id,
+                "related-to",
+                description=f"STIX pattern contains {extracted_value}",
                 external_references=indicator["external_references"],
             )
         )
@@ -251,10 +251,10 @@ def _build_observables(
         )
         stix_objects.append(
             bundler.new_relationship(
-                stix_objects[1].id,
                 indicator["id"],
-                "detected-using",
-                description=f"{extracted_value} can be detected in the STIX pattern {indicator['name']}",
+                stix_objects[1].id,
+                "related-to",
+                description=f"STIX pattern contains {extracted_value}",
                 external_references=indicator["external_references"],
             )
         )
@@ -263,6 +263,8 @@ def _build_observables(
     if stix_mapping in ["file", "directory-file"]:
         if not mimetype:
             raise BadDataException(f"invalid file extension in `{extracted_value}`")
+
+    if stix_mapping == "file":
         file = dict_to_stix2(
             {
                 "type": "file",
@@ -271,18 +273,16 @@ def _build_observables(
                 "mime_type": mimetype,
             }
         )
-
-    if stix_mapping == "file":
         indicator["name"] = f"File name: {extracted_value}"
         indicator["pattern"] = f"[ file:name = { repr(extracted_value) } ]"
 
         stix_objects.append(file)
         stix_objects.append(
             bundler.new_relationship(
-                stix_objects[1].id,
                 indicator["id"],
-                "detected-using",
-                description=f"{extracted_value} can be detected in the STIX pattern {indicator['name']}",
+                stix_objects[1].id,
+                "related-to",
+                description=f"STIX pattern contains {extracted_value}",
                 external_references=indicator["external_references"],
             )
         )
@@ -298,46 +298,43 @@ def _build_observables(
         )
         stix_objects.append(
             bundler.new_relationship(
-                stix_objects[1].id,
                 indicator["id"],
-                "detected-using",
-                description=f"{extracted_value} can be detected in the STIX pattern {indicator['name']}",
+                stix_objects[1].id,
+                "related-to",
+                description=f"STIX pattern contains {extracted_value}",
                 external_references=indicator["external_references"],
             )
         )
 
     if stix_mapping == "directory-file":
         path = parse_path(extracted_value)
-        extracted_value = str(path.parent)
-        indicator["name"] = f"Directory: {extracted_value}"
-        indicator["pattern"] = f"[ directory:path = { repr(extracted_value) } ]"
-
         dir_obj = dict_to_stix2(
-            {"type": "directory", "spec_version": "2.1", "path": extracted_value}
+            {"type": "directory", "spec_version": "2.1", "path": str(path.parent)}
         )
-        stix_objects.append(dir_obj)
-        dir = stix_objects[-1]
-        stix_objects.append(
-            bundler.new_relationship(
-                stix_objects[1].id,
-                indicator["id"],
-                "detected-using",
-                description=f"{extracted_value} can be detected in the STIX pattern {indicator['name']}",
-                external_references=indicator["external_references"],
-            )
+        file = dict_to_stix2(
+            {
+                "type": "file",
+                "spec_version": "2.1",
+                "name": path.name,
+                "mime_type": mimetype,
+                "parent_directory_ref": dir_obj.id,
+            }
         )
+        indicator["name"] = f"Directory File: {extracted_value}"
+        indicator["pattern"] = f"[ directory:path = { repr(dir_obj.path) }  OR file:name = {repr(file.name)}]"
 
+        stix_objects.append(dir_obj)
         stix_objects.append(file)
         stix_objects.append(
             bundler.new_relationship(
+                indicator["id"],
                 file.id,
-                dir.id,
-                "directory",
-                description=f"{extracted_value} directory {indicator['name']}",
+                "related-to",
+                description=f"STIX pattern contains {extracted_value}",
                 external_references=indicator["external_references"],
             )
         )
-        return stix_objects, [dir_obj.id]
+        return stix_objects, [file.id]
 
     if stix_mapping == "file-hash":
         file_hash_type = (
@@ -362,10 +359,10 @@ def _build_observables(
         )
         stix_objects.append(
             bundler.new_relationship(
-                stix_objects[1].id,
                 indicator["id"],
-                "detected-using",
-                description=f"{extracted_value} can be detected in the STIX pattern {indicator['name']}",
+                stix_objects[1].id,
+                "related-to",
+                description=f"STIX pattern contains {extracted_value}",
                 external_references=indicator["external_references"],
             )
         )
@@ -384,10 +381,10 @@ def _build_observables(
         )
         stix_objects.append(
             bundler.new_relationship(
-                stix_objects[1].id,
                 indicator["id"],
-                "detected-using",
-                description=f"{extracted_value} can be detected in the STIX pattern {indicator['name']}",
+                stix_objects[1].id,
+                "related-to",
+                description=f"STIX pattern contains {extracted_value}",
                 external_references=indicator["external_references"],
             )
         )
@@ -406,10 +403,10 @@ def _build_observables(
         )
         stix_objects.append(
             bundler.new_relationship(
-                stix_objects[1].id,
                 indicator["id"],
-                "detected-using",
-                description=f"{extracted_value} can be detected in the STIX pattern {indicator['name']}",
+                stix_objects[1].id,
+                "related-to",
+                description=f"STIX pattern contains {extracted_value}",
                 external_references=indicator["external_references"],
             )
         )
@@ -433,10 +430,10 @@ def _build_observables(
         )
         stix_objects.append(
             bundler.new_relationship(
-                stix_objects[1].id,
                 indicator["id"],
-                "detected-using",
-                description=f"{extracted_value} can be detected in the STIX pattern {indicator['name']}",
+                stix_objects[1].id,
+                "related-to",
+                description=f"STIX pattern contains {extracted_value}",
                 external_references=indicator["external_references"],
             )
         )
@@ -452,10 +449,10 @@ def _build_observables(
         )
         stix_objects.append(
             bundler.new_relationship(
-                stix_objects[1].id,
                 indicator["id"],
-                "detected-using",
-                description=f"{extracted_value} can be detected in the STIX pattern {indicator['name']}",
+                stix_objects[1].id,
+                "related-to",
+                description=f"STIX pattern contains {extracted_value}",
                 external_references=indicator["external_references"],
             )
         )
@@ -484,10 +481,10 @@ def _build_observables(
         )
         stix_objects.append(
             bundler.new_relationship(
-                stix_objects[1].id,
                 indicator["id"],
-                "detected-using",
-                description=f"{extracted_value} can be detected in the STIX pattern {indicator['name']}",
+                stix_objects[1].id,
+                "related-to",
+                description=f"STIX pattern contains {extracted_value}",
                 external_references=indicator["external_references"],
             )
         )
@@ -510,10 +507,10 @@ def _build_observables(
         stix_objects.extend(other_objects)
         stix_objects.append(
             bundler.new_relationship(
-                wallet_obj.id,
                 indicator["id"],
-                "detected-using",
-                description=f"{extracted_value} can be detected in the STIX pattern {indicator['name']}",
+                wallet_obj.id,
+                "related-to",
+                description=f"STIX pattern contains {extracted_value}",
                 external_references=indicator["external_references"],
             )
         )
@@ -534,10 +531,10 @@ def _build_observables(
         stix_objects.extend(other_objects)
         stix_objects.append(
             bundler.new_relationship(
-                txn_object.id,
                 indicator["id"],
-                "detected-using",
-                description=f"{extracted_value} can be detected in the STIX pattern {indicator['name']}",
+                txn_object.id,
+                "related-to",
+                description=f"STIX pattern contains {extracted_value}",
                 external_references=indicator["external_references"],
             )
         )
@@ -562,10 +559,10 @@ def _build_observables(
         stix_objects.extend(other_objects)
         stix_objects.append(
             bundler.new_relationship(
-                wallet_obj.id,
                 indicator["id"],
-                "detected-using",
-                description=f"{extracted_value} can be detected in the STIX pattern {indicator['name']}",
+                wallet_obj.id,
+                "related-to",
+                description=f"STIX pattern contains {extracted_value}",
                 external_references=indicator["external_references"],
             )
         )
@@ -592,10 +589,10 @@ def _build_observables(
 
         stix_objects.append(
             bundler.new_relationship(
-                card_object["id"],
                 indicator["id"],
-                "detected-using",
-                description=f"{extracted_value} can be detected in the STIX pattern {indicator['name']}",
+                card_object["id"],
+                "related-to",
+                description=f"STIX pattern contains {extracted_value}",
                 external_references=indicator["external_references"],
             )
         )
@@ -625,10 +622,10 @@ def _build_observables(
         )
         stix_objects.append(
             bundler.new_relationship(
-                stix_objects[1].id,
                 indicator["id"],
-                "detected-using",
-                description=f"{extracted_value} can be detected in the STIX pattern {indicator['name']}",
+                stix_objects[1].id,
+                "related-to",
+                description=f"STIX pattern contains {extracted_value}",
                 external_references=indicator["external_references"],
             )
         )
@@ -655,10 +652,10 @@ def _build_observables(
         )
         stix_objects.append(
             bundler.new_relationship(
-                stix_objects[1].id,
                 indicator["id"],
-                "detected-using",
-                description=f"{extracted_value} can be detected in the STIX pattern {indicator['name']}",
+                stix_objects[1].id,
+                "related-to",
+                description=f"STIX pattern contains {extracted_value}",
                 external_references=indicator["external_references"],
             )
         )
