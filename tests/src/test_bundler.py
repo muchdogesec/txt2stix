@@ -157,7 +157,6 @@ def test_add_indicator_raises_minor_exception():
         bundler.add_indicator(extracted, add_standard_relationship=False)
 
 
-
 def test_flow_objects():
     bundler = txt2stixBundler(
         name="FlowTest",
@@ -175,8 +174,6 @@ def test_flow_objects():
     assert "indicator--123" in bundler.id_value_map
     assert obj in bundler.bundle.objects
     assert bundler.flow_objects == [obj, bundler.report]
-
-
 
 
 def test_add_standard_relationship():
@@ -226,7 +223,6 @@ def test_add_ai_relationship():
         mock_add_standard_relationship.assert_any_call("indicator--401855b2-bd7a-444f-95b1-723efbdba33b", "identity--6493ad42-ec4d-4260-b2e9-3f3a1110193c", "in-use-by")
 
 
-
 def test_add_summary():
     bundler = txt2stixBundler(
         name="Test",
@@ -243,8 +239,7 @@ def test_add_summary():
     assert bundler.summary == summary
     assert dict(external_id="some-random-ai-provider", source_name='txt2stix_ai_summary', description=summary) in bundler.report.external_references
 
-    
-    
+
 def test_process_observables_and_process_relationships():
     extractor = MagicMock()
     extractor.stix_mapping = "domain-name"
@@ -311,3 +306,24 @@ def test_tlp_level_get_by_string():
     assert TLP_LEVEL.get("amber_strict") == TLP_LEVEL.AMBER_STRICT
     assert TLP_LEVEL.get("amber+strict") == TLP_LEVEL.AMBER_STRICT
     assert TLP_LEVEL.get("amber-strict") == TLP_LEVEL.AMBER_STRICT
+
+
+def test_relationship_types():
+    bundler = utils.dummy_bundler()
+
+    relationship = bundler.new_relationship(
+        "email-addr--b2e7528e-0693-57c1-8f2c-5cc679fb61fc",
+        "domain-name--8f17bb97-632c-57ca-8856-879a3fd651ce",
+        "sent-from",
+    )
+    assert (
+        relationship["relationship_type"] == "related-to"
+    ), "unsupported relationship type must be fallback to `related-to`"
+    relationship = bundler.new_relationship(
+        "domain-name--8f17bb97-632c-57ca-8856-879a3fd651ce",
+        "ipv4-addr--b2e7528e-0693-57c1-8f2c-5cc679fb61fc",
+        "resolves-to",
+    )
+    assert (
+        relationship["relationship_type"] == "resolves-to"
+    ), "relationship type is supported"
