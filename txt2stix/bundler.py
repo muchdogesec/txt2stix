@@ -384,11 +384,10 @@ class txt2stixBundler:
                 }
             ],
         )
-        try:
-            relationships_strict(relationship)
-        except Exception as e:
+        error = relationships_strict(relationship)
+        if error:
             relationship['relationship_type'] = 'related-to'
-            logger.debug(e)
+            logger.debug(error)
         return parse_stix(relationship, allow_custom=True)
 
     def to_json(self):
