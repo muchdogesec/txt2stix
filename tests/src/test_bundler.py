@@ -80,15 +80,13 @@ def test_constructor(tlp_level, identity, created, modified):
         BankCard(number="1234567891011"),
     ],
 )
-def test_add_ref(obj):
-    bundler = utils.dummy_bundler()
+def test_add_ref(bundler, obj):
     bundler.add_ref(obj)
     assert obj in bundler.bundle.objects
     assert obj.id in bundler.added_objects
 
 
-def test_add_indicator():
-    bundler = utils.dummy_bundler()
+def test_add_indicator(bundler):
     mocked_extractor = MagicMock()
     bundler.all_extractors = dict(placeholder_extractor=mocked_extractor)
     mocked_related_refs = MagicMock()
@@ -157,16 +155,7 @@ def test_add_indicator_raises_minor_exception():
         bundler.add_indicator(extracted, add_standard_relationship=False)
 
 
-def test_flow_objects():
-    bundler = txt2stixBundler(
-        name="FlowTest",
-        identity=None,
-        tlp_level="clear",
-        description="desc",
-        confidence=10,
-        extractors={},
-        labels=[]
-    )
+def test_flow_objects(bundler):
 
     obj = {"id": "indicator--123", "type": "indicator", "name": "x"}
     bundler.flow_objects = [obj, bundler.report]
@@ -176,17 +165,7 @@ def test_flow_objects():
     assert bundler.flow_objects == [obj, bundler.report]
 
 
-def test_add_standard_relationship():
-    bundler = txt2stixBundler(
-        name="Test",
-        identity=None,
-        tlp_level="amber",
-        description="desc",
-        confidence=30,
-        extractors={},
-        labels=[],
-        report_id="d9f3b306-e7fe-4074-b89a-33ce54280718"
-    )
+def test_add_standard_relationship(bundler):
 
     bundler.id_value_map["identity--6493ad42-ec4d-4260-b2e9-3f3a1110193c"] = "valA"
     bundler.id_value_map["phone-number--8764871f-6521-4401-bbf2-a17538435f49"] = "valB"
@@ -197,12 +176,13 @@ def test_add_standard_relationship():
 
     found = [obj for obj in bundler.bundle.objects if obj['id'] == "relationship--290e1319-7a95-5f51-b2c5-463f896cb35a"][0]
     assert found.description == "valA xx related to valB"
-    assert found.relationship_type == "xx-related-to"
+    assert found.relationship_type == "related-to" #renamed cause invalid
     assert found.source_ref == "identity--6493ad42-ec4d-4260-b2e9-3f3a1110193c"
     assert found.target_ref == "phone-number--8764871f-6521-4401-bbf2-a17538435f49"
 
-def test_add_ai_relationship():
-    bundler = txt2stixBundler(
+@pytest.fixture
+def bundler():
+    return txt2stixBundler(
         name="Test",
         identity=None,
         tlp_level="amber",
@@ -212,6 +192,8 @@ def test_add_ai_relationship():
         labels=[],
         report_id="d9f3b306-e7fe-4074-b89a-33ce54280718"
     )
+
+def test_add_ai_relationship(bundler):
     bundler.id_map['ex1'] = ["phone-number--8764871f-6521-4401-bbf2-a17538435f49", "indicator--401855b2-bd7a-444f-95b1-723efbdba33b"]
     bundler.id_map['ex2'] = ["identity--6493ad42-ec4d-4260-b2e9-3f3a1110193c"]
     bundler.id_value_map["identity--6493ad42-ec4d-4260-b2e9-3f3a1110193c"] = "valA"
@@ -223,17 +205,7 @@ def test_add_ai_relationship():
         mock_add_standard_relationship.assert_any_call("indicator--401855b2-bd7a-444f-95b1-723efbdba33b", "identity--6493ad42-ec4d-4260-b2e9-3f3a1110193c", "in-use-by")
 
 
-def test_add_summary():
-    bundler = txt2stixBundler(
-        name="Test",
-        identity=None,
-        tlp_level="amber",
-        description="desc",
-        confidence=30,
-        extractors={},
-        labels=['report-label1'],
-        report_id="d9f3b306-e7fe-4074-b89a-33ce54280718"
-    )
+def test_add_summary(bundler):
     summary = "This is a summary"
     bundler.add_summary(summary, "some-random-ai-provider")
     assert bundler.summary == summary
@@ -308,9 +280,7 @@ def test_tlp_level_get_by_string():
     assert TLP_LEVEL.get("amber-strict") == TLP_LEVEL.AMBER_STRICT
 
 
-def test_relationship_types():
-    bundler = utils.dummy_bundler()
-
+def test_relationship_types(bundler):
     relationship = bundler.new_relationship(
         "email-addr--b2e7528e-0693-57c1-8f2c-5cc679fb61fc",
         "domain-name--8f17bb97-632c-57ca-8856-879a3fd651ce",
