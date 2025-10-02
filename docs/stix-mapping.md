@@ -65,7 +65,7 @@ All files uploaded are represented as a unique [STIX Report SDO](https://docs.oa
             "external_id": "<UUID OF REPORT OBJECT>"
         },
         {
-            "source_name": "txt2stix Report MD5",
+            "source_name": "txt2stix_report_md5",
             "external_id": "<MD5 HASH OF DESCRIPTION FIELD>"
         }   
     ],
