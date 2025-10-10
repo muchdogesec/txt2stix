@@ -51,7 +51,7 @@ jobs:
           source .env;
           set +a;
           pip install -e .[tests]
-          pip install https://github.com/muchdogesec/stix2extensions/archive/249f1513465b76704d91e8bfff57f60a46023176.zip
+          pip install https://github.com/muchdogesec/stix2extensions/archive/57f4de51220bcfb101ee6308047ace543a8390f1.zip
           pytest --cov --cov-branch --cov-report=xml --junitxml=junit.xml -o junit_family=legacy
 
       - name: Upload coverage reports to Codecov
