@@ -1,7 +1,6 @@
 from types import SimpleNamespace
 import pytest
 from unittest.mock import MagicMock, patch
-from stix2extensions._extensions import attack_flow_ExtensionDefinitionSMO
 
 from txt2stix.ai_extractor.utils import AttackFlowList, AttackFlowItem
 from txt2stix.attack_flow import (
@@ -26,7 +25,6 @@ def test_parse_flow(dummy_report, dummy_objects, dummy_flow):
         "attack-pattern--1b22b676-9347-4c55-9a35-ef0dc653db5b",
         "x-mitre-tactic--298fe907-7931-4fd2-8131-2814dd493134",
         "attack-action--1fd63972-ef98-5da5-81f5-4090c7dfa585",
-        "extension-definition--fb9c968a-745b-4ade-9b25-c324172197f4",
         "attack-pattern--1a80d097-54df-41d8-9d33-34e755ec5e72",
         "report--9c88fbcb-8c0d-4124-868b-3dcb1e9b696c",
         "attack-flow--bb21585c-5f82-55cf-b73d-89b5217ef092",
@@ -790,7 +788,7 @@ def dummy_report():
                 "marking-definition--e828b379-4e03-4974-9ac4-e53a884c97c1",
                 "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5",
             ],
-            "object_refs": [attack_flow_ExtensionDefinitionSMO.id],
+            "object_refs": ["identity--e828b379-4e03-4974-9ac4-e53a884c97c1"],
             "published": "2025-03-10T15:06:34.423036Z",
             "spec_version": "2.1",
             "type": "report",

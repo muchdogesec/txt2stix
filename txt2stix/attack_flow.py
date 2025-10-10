@@ -8,15 +8,13 @@ from txt2stix.ai_extractor.base import BaseAIExtractor
 from txt2stix.common import UUID_NAMESPACE
 from txt2stix.retriever import STIXObjectRetriever
 from stix2extensions.attack_action import AttackAction, AttackFlow
-from stix2extensions._extensions import attack_flow_ExtensionDefinitionSMO
 from .utils import AttackFlowList
-
 
 def parse_flow(report, flow: AttackFlowList, techniques, tactics):
     logging.info(f"flow.success = {flow.success}")
     if not flow.success:
         return []
-    objects = [report, attack_flow_ExtensionDefinitionSMO]
+    objects = [report]
     for domain in ["enterprise-attack", "mobile-attack", "ics-attack"]:
         flow_objects = parse_domain_flow(report, flow, techniques, tactics, domain)
         objects.extend(flow_objects)

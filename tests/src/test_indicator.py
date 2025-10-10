@@ -104,6 +104,7 @@ mock_bundler = txt2stixBundler(
 )
 all_extractors = get_all_extractors()
 
+
 @pytest.mark.parametrize(
     ["value", "extractor_name", "expected_objects", "expected_rels"],
     [
@@ -324,12 +325,12 @@ all_extractors = get_all_extractors()
             "3Cwgr2g7vsi1bXDUkpEnVoRLA9w4FZfC69",
             "pattern_cryptocurrency_btc_wallet",
             {
+                "cryptocurrency-wallet--201124c3-52c3-5f89-8a48-94deb554c6c6",
+                "relationship--14e27f6d-d938-5199-b89d-d7cecb22539a",
                 "indicator--b8374546-ecf1-51e5-b4f3-f0e021af8f4d",
-                "cryptocurrency-wallet--6e43ef66-8082-5552-80f2-95f5a44f60aa",
-                "relationship--609089aa-6160-5f75-b6fa-e9c6399f8ec4",
             },
             {
-                "cryptocurrency-wallet--6e43ef66-8082-5552-80f2-95f5a44f60aa",
+                "cryptocurrency-wallet--201124c3-52c3-5f89-8a48-94deb554c6c6",
             },
             id="cryptocurrency-wallet",
         ),
@@ -338,12 +339,12 @@ all_extractors = get_all_extractors()
             "DE29100500001061045672",
             "pattern_iban_number",
             {
-                "bank-account--4c1507ea-fdde-556b-87c9-f8ef702a0d8a",
                 "indicator--816dfb00-4107-5dd0-be00-4607400f4df3",
-                "relationship--7a25889e-294b-553d-b917-661b0b6a6d7f",
+                "bank-account--4e351d05-b4f5-5d7e-b51e-66e92021ba5a",
+                "relationship--97947636-acc1-5a2f-971f-cfeee373e75e",
             },
             {
-                "bank-account--4c1507ea-fdde-556b-87c9-f8ef702a0d8a",
+                "bank-account--4e351d05-b4f5-5d7e-b51e-66e92021ba5a",
             },
         ],
         ## phone-number
@@ -351,12 +352,12 @@ all_extractors = get_all_extractors()
             "+442083661177",
             "pattern_phone_number",
             {
-                "phone-number--9c0e11b8-10e5-5384-96ae-b3fe7799eb5e",
-                "relationship--321a6bab-67be-5eae-8300-e2a986c3cf87",
                 "indicator--c955785e-d762-5e11-8e0d-27e255361669",
+                "phone-number--f3ea8fdf-ef0f-5711-a105-7fcb1c289dc6",
+                "relationship--706c4917-4481-592d-aadc-28e0b28ee4e1",
             },
             {
-                "phone-number--9c0e11b8-10e5-5384-96ae-b3fe7799eb5e",
+                "phone-number--f3ea8fdf-ef0f-5711-a105-7fcb1c289dc6",
             },
         ],
         ## bank-card, with issuer-name
@@ -364,13 +365,15 @@ all_extractors = get_all_extractors()
             "5555555555554444",
             "pattern_bank_card_mastercard",
             {
+                "identity--7d46a822-1e99-5c73-ac5e-dec6400977ab",
+                "relationship--1de7fbdc-3796-5d42-9efa-5bcdf2bb01cd",
+                "relationship--03a31907-32ae-5f83-80a7-37dbe0ed61c2",
                 "indicator--3dfe8be8-cb89-5872-a162-329be05ddfb7",
-                "bank-card--fb992b79-5bd1-5aa9-bc7e-a785b28f4338",
-                "identity--868572ea-db58-592a-a426-2cd243d748b6",
-                "relationship--a62ca85c-dd01-5eac-a4b3-550be65f0566",
+                "location--24ff45f2-9cd3-554c-a53c-2ed70bb17cb8",
+                "payment-card--45b2fea7-587b-5ccf-a9b2-e0fa748d6423",
             },
             {
-                "bank-card--fb992b79-5bd1-5aa9-bc7e-a785b28f4338",
+                "payment-card--45b2fea7-587b-5ccf-a9b2-e0fa748d6423",
             },
             id="bank-card, with issuer-name",
         ),
@@ -380,12 +383,12 @@ all_extractors = get_all_extractors()
             "pattern_bank_card_amex",
             {
                 "indicator--5a5a66de-62f3-5262-8c29-2f314c6ce738",
-                "bank-card--e19f1547-2b5f-5f3d-82dc-817c7ba15405",
+                "relationship--b5d9a3fc-9fb0-5c45-acbe-acf88d70b17b",
                 "identity--643246fc-9204-5b4b-976d-2e605b355c24",
-                "relationship--20b1a83a-ff05-592d-96b9-3c93549f89d4",
+                "payment-card--683af74c-c39f-5ca1-8366-7781f8ac7685",
             },
             {
-                "bank-card--e19f1547-2b5f-5f3d-82dc-817c7ba15405",
+                "payment-card--683af74c-c39f-5ca1-8366-7781f8ac7685",
             },
             id="bank-card, no issuer-name",
         ),
@@ -397,12 +400,18 @@ def test_build_observables(value, extractor_name, expected_objects, expected_rel
     objects, relationships = build_observables(
         mock_bundler, extractor.stix_mapping, indicator, value, extractor
     )
+    print({obj["id"] for obj in objects})
     assert {obj["id"] for obj in objects} == set(expected_objects)
     assert {id for id in relationships} == set(expected_rels)
 
+
 @pytest.mark.parametrize(
     "extractor_name",
-    {v.test_cases: k for k, v in all_extractors.items() if v.test_cases != 'ai_country'}.values(),
+    {
+        v.test_cases: k
+        for k, v in all_extractors.items()
+        if v.test_cases != "ai_country"
+    }.values(),
 )
 def test_build_observables_with_extractor_cases__positive(extractor_name, subtests):
     extractor = all_extractors[extractor_name]
@@ -427,7 +436,8 @@ def test_build_observables_with_extractor_cases__positive(extractor_name, subtes
         v.test_cases: k
         for k, v in all_extractors.items()
         if (
-            not v.test_cases.startswith("generic_bank") and not v.test_cases.startswith("lookup_")
+            not v.test_cases.startswith("generic_bank")
+            and not v.test_cases.startswith("lookup_")
             and v.stix_mapping
             not in [
                 "url",

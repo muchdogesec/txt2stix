@@ -2,7 +2,7 @@ from __future__ import annotations
 import os
 import re
 from stix2.parsing import dict_to_stix2
-from stix2 import HashConstant
+from stix2 import HashConstant, File
 from stix2.v21.vocab import HASHING_ALGORITHM
 from stix2.patterns import _HASH_REGEX as HASHING_ALGORITHM_2
 from ipaddress import ip_address
@@ -14,7 +14,9 @@ from typing import TYPE_CHECKING
 
 import validators
 
-from txt2stix.pattern.extractors.others.phonenumber_extractor import PhoneNumberExtractor
+from txt2stix.pattern.extractors.others.phonenumber_extractor import (
+    PhoneNumberExtractor,
+)
 from txt2stix.utils import validate_file_mimetype, validate_reg_key
 
 if TYPE_CHECKING:
@@ -24,7 +26,7 @@ if TYPE_CHECKING:
 
 from .common import MinorException
 
-from .retriever import _retrieve_stix_objects, retrieve_stix_objects
+from .retriever import retrieve_stix_objects
 
 logger = logging.getLogger("txt2stix.indicator")
 
@@ -71,12 +73,13 @@ def split_ip_port(ip_port: str):
 
     return ip.exploded, int(port)
 
+
 def get_country_code(number: str) -> str:
     phone = PhoneNumberExtractor.parse_phone_number(number)
     if phone:
         return geocoder.region_codes_for_country_code(phone.country_code)[0]
     else:
-        raise BadDataException('bad phone number')
+        raise BadDataException("bad phone number")
 
 
 def get_iban_details(number) -> tuple[str, str]:
@@ -93,7 +96,7 @@ def build_observables(
     except BadDataException:
         raise
     except BaseException as e:
-        raise BadDataException(f"unknown data error: {e}") from e
+        raise BadDataException("unknown data error") from e
 
 
 def _build_observables(
@@ -102,6 +105,13 @@ def _build_observables(
     retrieved_objects = retrieve_stix_objects(stix_mapping, extracted_value)
     if retrieved_objects:
         return retrieved_objects, [sdo["id"] for sdo in retrieved_objects]
+    if retrieved_objects == []:
+        logger.warning(
+            f"could not find `{stix_mapping}` with id=`{extracted_value}` in remote"
+        )
+        raise BadDataException(
+            f"could not find `{stix_mapping}` with id=`{extracted_value}` in remote"
+        )
 
     stix_objects = [indicator]
 
@@ -321,7 +331,9 @@ def _build_observables(
             }
         )
         indicator["name"] = f"Directory File: {extracted_value}"
-        indicator["pattern"] = f"[ directory:path = { repr(dir_obj.path) }  OR file:name = {repr(file.name)}]"
+        indicator["pattern"] = (
+            f"[ directory:path = { repr(dir_obj.path) }  OR file:name = {repr(file.name)}]"
+        )
 
         stix_objects.append(dir_obj)
         stix_objects.append(file)
@@ -464,7 +476,9 @@ def _build_observables(
                 f"AS Number must contain a number, got `{extracted_value}`"
             )
         extracted_value = int(match.group(0))
-        assert extracted_value >= 1 and extracted_value <= 65535, "AS Number must be between 1 and 65535"
+        assert (
+            extracted_value >= 1 and extracted_value <= 65535
+        ), "AS Number must be between 1 and 65535"
         indicator["name"] = f"AS{extracted_value}"
         indicator["pattern"] = (
             f"[ autonomous-system:number = { repr(extracted_value) } ]"
@@ -601,10 +615,10 @@ def _build_observables(
     if stix_mapping == "bank-account":
         q = validators.iban(extracted_value)
         if q != True:
-            raise BadDataException('invalid iban number') from q
+            raise BadDataException("invalid iban number") from q
         indicator["name"] = f"Bank account: {extracted_value}"
         indicator["pattern"] = (
-            f"[ bank-account:iban_number = { repr(extracted_value) } ]"
+            f"[ bank-account:iban = { repr(extracted_value) } ]"
         )
         extracted_value = extracted_value.replace("-", "").replace(" ", "")
 
@@ -615,7 +629,7 @@ def _build_observables(
                 {
                     "type": "bank-account",
                     "spec_version": "2.1",
-                    "iban_number": extracted_value,
+                    "iban": extracted_value,
                     "country": country_code,
                 }
             )
@@ -633,9 +647,9 @@ def _build_observables(
     if stix_mapping == "phone-number":
         country_code = get_country_code(extracted_value)
         if not country_code:
-            raise BadDataException('parse phone number failed')
+            raise BadDataException("parse phone number failed")
         indicator["name"] = f"Phone Number: {extracted_value}"
-        indicator["pattern"] = f"[ phone-number:number = { repr(extracted_value) }"
+        indicator["pattern"] = f"[ phone-number:value = { repr(extracted_value) }"
         if country_code:
             indicator["pattern"] += f" AND phone-number:country = '{country_code}' "
         indicator["pattern"] += " ]"
@@ -645,7 +659,7 @@ def _build_observables(
                 {
                     "type": "phone-number",
                     "spec_version": "2.1",
-                    "number": extracted_value,
+                    "value": extracted_value,
                     "country": country_code,
                 }
             )
