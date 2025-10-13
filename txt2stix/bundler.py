@@ -113,7 +113,7 @@ class TLP_LEVEL(enum.Enum):
     @classmethod
     def get(cls, level):
         if isinstance(level, str):
-            level = level.replace('-', '_').replace('+', '_')
+            level = level.replace("-", "_").replace("+", "_")
         if isinstance(level, cls):
             return level
         return cls.levels()[level]
@@ -134,6 +134,7 @@ class txt2stixBundler:
         "weakness": None,
     }
     EXTENSION_DEFINITION_BASE_URL = "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/extension-definitions"
+    ATTACK_FLOW_SMO_URL = "https://github.com/muchdogesec/stix2extensions/raw/refs/heads/update-credit-card-generation/remote-definitions/attack-flow.json"
     report = None
     identity = None
     object_marking_refs = []
@@ -204,7 +205,7 @@ class txt2stixBundler:
             )
         external_references = external_references or []
         labels = labels or []
-        labels.append('placeholder_label')
+        labels.append("placeholder_label")
 
         self.job_id = f"report--{self.uuid}"
         self.report_md5 = hashlib.md5(description.encode()).hexdigest()
@@ -230,11 +231,12 @@ class txt2stixBundler:
                     "source_name": "txt2stix_report_md5",
                     "description": self.report_md5,
                 },
-            ] + external_references,
+            ]
+            + external_references,
             confidence=confidence,
         )
         self.report.object_refs.clear()  # clear object refs
-        self.report.labels.pop(-1) # remove txt2stix placeholder
+        self.report.labels.pop(-1)  # remove txt2stix placeholder
         self.added_objects = set()
         self.set_defaults()
 
@@ -277,7 +279,17 @@ class txt2stixBundler:
             self.bundle.objects.append(sdo)
 
         sdo_value = ""
-        for key in ['name', 'value', 'path', 'key', 'string', 'number', 'iban_number', 'address', 'hashes']:
+        for key in [
+            "name",
+            "value",
+            "path",
+            "key",
+            "string",
+            "number",
+            "iban_number",
+            "address",
+            "hashes",
+        ]:
             if v := sdo.get(key):
                 sdo_value = v
                 break
@@ -305,7 +317,7 @@ class txt2stixBundler:
                 )
             )
         objects, related_refs = build_observables(
-            self, stix_mapping, indicator, extracted_dict['value'], extractor
+            self, stix_mapping, indicator, extracted_dict["value"], extractor
         )
         if not objects:
             raise MinorException(
@@ -349,17 +361,30 @@ class txt2stixBundler:
         for source_ref in self.id_map.get(gpt_out["source_ref"], []):
             for target_ref in self.id_map.get(gpt_out["target_ref"], []):
                 self.add_standard_relationship(
-                    source_ref, target_ref, gpt_out["relationship_type"],
+                    source_ref,
+                    target_ref,
+                    gpt_out["relationship_type"],
                 )
 
     def add_standard_relationship(self, source_ref, target_ref, relationship_type):
-        descriptor = ' '.join(relationship_type.split('-'))
-        self.add_ref(self.new_relationship(
-            source_ref, target_ref, relationship_type,
-            description=f"{self.id_value_map.get(source_ref, source_ref)} {descriptor} {self.id_value_map.get(target_ref, target_ref)}"
-        ))
+        descriptor = " ".join(relationship_type.split("-"))
+        self.add_ref(
+            self.new_relationship(
+                source_ref,
+                target_ref,
+                relationship_type,
+                description=f"{self.id_value_map.get(source_ref, source_ref)} {descriptor} {self.id_value_map.get(target_ref, target_ref)}",
+            )
+        )
 
-    def new_relationship(self, source_ref, target_ref, relationship_type, description=None, external_references=None):
+    def new_relationship(
+        self,
+        source_ref,
+        target_ref,
+        relationship_type,
+        description=None,
+        external_references=None,
+    ):
         relationship = dict(
             id="relationship--"
             + str(
@@ -367,8 +392,8 @@ class txt2stixBundler:
                     UUID_NAMESPACE, f"{relationship_type}+{source_ref}+{target_ref}"
                 )
             ),
-            type='relationship',
-            spec_version='2.1',
+            type="relationship",
+            spec_version="2.1",
             source_ref=source_ref,
             target_ref=target_ref,
             relationship_type=relationship_type,
@@ -377,7 +402,8 @@ class txt2stixBundler:
             description=description,
             modified=self.report.modified,
             object_marking_refs=self.report.object_marking_refs,
-            external_references=external_references or [
+            external_references=external_references
+            or [
                 {
                     "source_name": "txt2stix_report_id",
                     "external_id": self.uuid,
@@ -386,7 +412,7 @@ class txt2stixBundler:
         )
         error = relationships_strict(relationship)
         if error:
-            relationship['relationship_type'] = 'related-to'
+            relationship["relationship_type"] = "related-to"
             logger.debug(error)
         return parse_stix(relationship, allow_custom=True)
 
@@ -396,7 +422,9 @@ class txt2stixBundler:
     def process_observables(self, extractions, add_standard_relationship=False):
         for ex in extractions:
             try:
-                if ex.get('id', '').startswith('ai'): #so id is distinct across multiple AIExtractors
+                if ex.get("id", "").startswith(
+                    "ai"
+                ):  # so id is distinct across multiple AIExtractors
                     ex["id"] = f'{ex["id"]}_{self.observables_processed}'
                 ex["id"] = ex.get("id", f"ex_{self.observables_processed}")
                 self.observables_processed += 1
@@ -406,7 +434,7 @@ class txt2stixBundler:
                     f"ran into exception while processing observable `{ex}`. {e}",
                     exc_info=True,
                 )
-                ex['error'] = str(e)
+                ex["error"] = str(e)
 
     def process_relationships(self, observables):
         for relationship in observables:
@@ -420,19 +448,21 @@ class txt2stixBundler:
 
     def indicator_id_from_value(self, value, stix_mapping):
         return "indicator--" + str(
-            uuid.uuid5(UUID_NAMESPACE, f"txt2stix+{self.identity['id']}+{self.report_md5}+{stix_mapping}+{value}")
+            uuid.uuid5(
+                UUID_NAMESPACE,
+                f"txt2stix+{self.identity['id']}+{self.report_md5}+{stix_mapping}+{value}",
+            )
         )
 
     def add_summary(self, summary, ai_summary_provider):
         self.report.external_references.append(
             dict(
-                source_name='txt2stix_ai_summary',
+                source_name="txt2stix_ai_summary",
                 external_id=ai_summary_provider,
-                description=summary
+                description=summary,
             )
         )
         self.summary = summary
-
 
     @property
     def flow_objects(self):
@@ -440,9 +470,11 @@ class txt2stixBundler:
 
     @flow_objects.setter
     def flow_objects(self, objects):
+        smo_objects = self.load_stix_object_from_url(self.ATTACK_FLOW_SMO_URL)["objects"]
+        objects.extend(smo_objects)
         for obj in objects:
-            if obj['id'] == self.report.id:
+            if obj["id"] == self.report.id:
                 continue
-            is_report_object = obj['type'] != "extension-definition"
+            is_report_object = obj["type"] not in ["extension-definition", "identity"]
             self.add_ref(obj, is_report_object=is_report_object)
         self._flow_objects = objects

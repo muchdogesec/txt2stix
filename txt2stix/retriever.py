@@ -58,6 +58,12 @@ class STIXObjectRetriever:
         return self._retrieve_objects(
             urljoin(self.api_root, f"v1/{type}/objects/{id}/")
         )
+    
+    def retrieve_object_by_id(self, id, type):
+        endpoint = urljoin(self.api_root, f"v1/{type}/objects/{id}/")
+        resp = self.session.get(endpoint)
+        resp.raise_for_status()
+        return [resp.json()]
 
     def get_location_objects(self, id):
         return self._retrieve_objects(
@@ -111,9 +117,9 @@ def _retrieve_stix_objects(host, knowledge_base, filter_value):
         case "mitre-cwe-id":
             return retreiver.get_objects_by_id(filter_value, "cwe")
         case "cve-id":
-            return retreiver.get_objects_by_id(filter_value, "cve")
+            return retreiver.retrieve_object_by_id(filter_value, "cve")
         case "cpe-id":
-            return retreiver.get_objects_by_id(filter_value, "cpe")
+            return retreiver.retrieve_object_by_id(filter_value, "cpe")
         case "location":
             return retreiver.get_location_objects(filter_value)
 
