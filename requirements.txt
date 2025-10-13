@@ -185,7 +185,7 @@ stix2==3.0.1
     # via stix2extensions
 stix2-patterns==2.0.0
     # via stix2
-stix2extensions==1.1.14
+stix2extensions==1.2.0
     # via txt2stix (pyproject.toml)
 tenacity==9.1.2
     # via llama-index-core
