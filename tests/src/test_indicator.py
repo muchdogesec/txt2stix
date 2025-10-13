@@ -311,12 +311,12 @@ all_extractors = get_all_extractors()
             "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.6) Gecko/20040113",
             "pattern_user_agent",
             {
+                "relationship--59c6db15-3532-57ad-a68f-95449632e64e",
+                "user-agent--8694f63c-3c89-5157-9ab8-3d316ebf8990",
                 "indicator--0eb12807-33c5-5d5a-b465-164ef424bd9a",
-                "user-agent--b71ac3f9-2e75-5f59-ada4-71e8a2514ec3",
-                "relationship--1dccc75d-d7e5-50a5-8939-4658d9ff7681",
             },
             {
-                "user-agent--b71ac3f9-2e75-5f59-ada4-71e8a2514ec3",
+                "user-agent--fbbe9033-d12b-420f-878a-d87d9eb88c87",
             },
             id="user-agent",
         ),
@@ -335,18 +335,20 @@ all_extractors = get_all_extractors()
             id="cryptocurrency-wallet",
         ),
         ## bank-account
-        [
+        pytest.param(
             "DE29100500001061045672",
             "pattern_iban_number",
             {
+                "bank-account--bedcfd65-c65b-5ded-9fa0-c9bfe17d57d0",
                 "indicator--816dfb00-4107-5dd0-be00-4607400f4df3",
-                "bank-account--4e351d05-b4f5-5d7e-b51e-66e92021ba5a",
-                "relationship--97947636-acc1-5a2f-971f-cfeee373e75e",
+                "relationship--78a4214c-9cb2-5efb-b581-30f1f18c0671",
+                "location--8d8abee9-2855-57ea-9df9-5251079802e6",
             },
             {
-                "bank-account--4e351d05-b4f5-5d7e-b51e-66e92021ba5a",
+                "bank-account--bedcfd65-c65b-5ded-9fa0-c9bfe17d57d0",
             },
-        ],
+            id="bank-account",
+        ),
         ## phone-number
         [
             "+442083661177",
@@ -365,12 +367,12 @@ all_extractors = get_all_extractors()
             "5555555555554444",
             "pattern_bank_card_mastercard",
             {
-                "identity--7d46a822-1e99-5c73-ac5e-dec6400977ab",
-                "relationship--1de7fbdc-3796-5d42-9efa-5bcdf2bb01cd",
-                "relationship--03a31907-32ae-5f83-80a7-37dbe0ed61c2",
-                "indicator--3dfe8be8-cb89-5872-a162-329be05ddfb7",
                 "location--24ff45f2-9cd3-554c-a53c-2ed70bb17cb8",
                 "payment-card--45b2fea7-587b-5ccf-a9b2-e0fa748d6423",
+                "relationship--03a31907-32ae-5f83-80a7-37dbe0ed61c2",
+                "indicator--d85b6d0d-116d-5518-8b59-dd018d060bda",
+                "relationship--174da36f-c5d9-5eea-b024-8fcdba87ce56",
+                "identity--7d46a822-1e99-5c73-ac5e-dec6400977ab",
             },
             {
                 "payment-card--45b2fea7-587b-5ccf-a9b2-e0fa748d6423",
@@ -382,10 +384,10 @@ all_extractors = get_all_extractors()
             "376654224631002",
             "pattern_bank_card_amex",
             {
-                "indicator--5a5a66de-62f3-5262-8c29-2f314c6ce738",
-                "relationship--b5d9a3fc-9fb0-5c45-acbe-acf88d70b17b",
                 "identity--643246fc-9204-5b4b-976d-2e605b355c24",
                 "payment-card--683af74c-c39f-5ca1-8366-7781f8ac7685",
+                "relationship--57b4a9eb-2e8c-5826-b11f-add6a436d203",
+                "indicator--ce0cb0ba-608e-52fa-9c98-9bff146caef8",
             },
             {
                 "payment-card--683af74c-c39f-5ca1-8366-7781f8ac7685",
