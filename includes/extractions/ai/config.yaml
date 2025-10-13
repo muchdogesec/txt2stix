@@ -622,7 +622,7 @@ ai_bank_card_all:
   prompt_helper: ''
   prompt_conversion: ''
   test_cases: generic_bank_card_mastercard
-  stix_mapping: bank-card
+  stix_mapping: payment-card
 
 ai_bank_card_mastercard:
   type: ai
@@ -638,7 +638,7 @@ ai_bank_card_mastercard:
   prompt_helper: ''
   prompt_conversion: ''
   test_cases: generic_bank_card_mastercard
-  stix_mapping: bank-card
+  stix_mapping: payment-card
 
 ai_bank_card_visa:
   type: ai
@@ -654,7 +654,7 @@ ai_bank_card_visa:
   prompt_helper: ''
   prompt_conversion: ''
   test_cases: generic_bank_card_visa
-  stix_mapping: bank-card
+  stix_mapping: payment-card
 
 ai_bank_card_amex:
   type: ai
@@ -670,7 +670,7 @@ ai_bank_card_amex:
   prompt_helper: ''
   prompt_conversion: ''
   test_cases: generic_bank_card_amex
-  stix_mapping: bank-card
+  stix_mapping: payment-card
 
 ai_bank_card_union_pay:
   type: ai
@@ -686,7 +686,7 @@ ai_bank_card_union_pay:
   prompt_helper: ''
   prompt_conversion: ''
   test_cases: generic_bank_card_union_pay
-  stix_mapping: bank-card
+  stix_mapping: payment-card
 
 ai_bank_card_diners:
   type: ai
@@ -702,7 +702,7 @@ ai_bank_card_diners:
   prompt_helper: ''
   prompt_conversion: ''
   test_cases: generic_bank_card_diners
-  stix_mapping: bank-card
+  stix_mapping: payment-card
 
 ai_bank_card_jcb:
   type: ai
@@ -718,7 +718,7 @@ ai_bank_card_jcb:
   prompt_helper: ''
   prompt_conversion: ''
   test_cases: generic_bank_card_jcb
-  stix_mapping: bank-card
+  stix_mapping: payment-card
 
 ai_bank_card_discover:
   type: ai
@@ -734,7 +734,7 @@ ai_bank_card_discover:
   prompt_helper: ''
   prompt_conversion: ''
   test_cases: generic_bank_card_discover
-  stix_mapping: bank-card
+  stix_mapping: payment-card
 
 ####### IBAN Extractions #######
 

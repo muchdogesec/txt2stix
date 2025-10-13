@@ -128,13 +128,13 @@ class txt2stixBundler:
         "user-agent": None,
         "cryptocurrency-wallet": None,
         "cryptocurrency-transaction": None,
-        "bank-card": None,
+        "payment-card": None,
         "bank-account": None,
         "phone-number": None,
         "weakness": None,
     }
     EXTENSION_DEFINITION_BASE_URL = "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/extension-definitions"
-    ATTACK_FLOW_SMO_URL = "https://github.com/muchdogesec/stix2extensions/raw/refs/heads/update-credit-card-generation/remote-definitions/attack-flow.json"
+    ATTACK_FLOW_SMO_URL = "https://github.com/muchdogesec/stix2extensions/raw/refs/heads/main/remote-definitions/attack-flow.json"
     report = None
     identity = None
     object_marking_refs = []

@@ -511,7 +511,7 @@ def _build_observables(
         btc2stix = crypto2stix.BTC2Stix()
         indicator["name"] = f"{currency_symbol} Wallet: {extracted_value}"
         indicator["pattern"] = (
-            f"[ cryptocurrency-wallet:address = { repr(extracted_value) } ]"
+            f"[ cryptocurrency-wallet:value = { repr(extracted_value) } ]"
         )
         wallet_obj, *other_objects = btc2stix.process_wallet(
             extracted_value, wallet_only=True, transactions_only=False
@@ -538,7 +538,7 @@ def _build_observables(
         txn_object, *other_objects = btc2stix.process_transaction(extracted_value)
         indicator["name"] = f"{currency_symbol} Transaction: {extracted_value}"
         indicator["pattern"] = (
-            f"[ cryptocurrency-transaction:hash = { repr(extracted_value) } ]"
+            f"[ cryptocurrency-transaction:value = { repr(extracted_value) } ]"
         )
 
         stix_objects.append(txn_object)
@@ -563,7 +563,7 @@ def _build_observables(
         btc2stix = crypto2stix.BTC2Stix()
         indicator["name"] = f"{currency_symbol} Wallet: {extracted_value}"
         indicator["pattern"] = (
-            f"[ cryptocurrency-wallet:address = { repr(extracted_value) } ]"
+            f"[ cryptocurrency-wallet:value = { repr(extracted_value) } ]"
         )
         wallet_obj, *other_objects = btc2stix.process_wallet(
             extracted_value, wallet_only=False, transactions_only=True
@@ -581,7 +581,7 @@ def _build_observables(
             )
         )
         return stix_objects, [wallet_obj.id]
-    if stix_mapping == "bank-card":
+    if stix_mapping == "payment-card":
         # TODO
         card_type = extractor.name
         if "Bank Card" in extractor.name:
@@ -599,7 +599,7 @@ def _build_observables(
             card_type = card_object["scheme"]
 
         indicator["name"] = f"{card_type}: {extracted_value}"
-        indicator["pattern"] = f"[ bank-card:number = { repr(extracted_value) } ]"
+        indicator["pattern"] = f"[ payment-card:value = { repr(extracted_value) } ]"
 
         stix_objects.append(
             bundler.new_relationship(
@@ -839,7 +839,7 @@ def _build_observables(
         "user-agent",
         "cryptocurrency-wallet",
         "cryptocurrency-transaction",
-        "bank-card",
+        "payment-card",
         "bank-account",
         "phone-number",
         "attack-pattern",

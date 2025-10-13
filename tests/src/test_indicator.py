@@ -360,7 +360,7 @@ all_extractors = get_all_extractors()
                 "phone-number--f3ea8fdf-ef0f-5711-a105-7fcb1c289dc6",
             },
         ],
-        ## bank-card, with issuer-name
+        ## payment-card, with issuer-name
         pytest.param(
             "5555555555554444",
             "pattern_bank_card_mastercard",
@@ -375,9 +375,9 @@ all_extractors = get_all_extractors()
             {
                 "payment-card--45b2fea7-587b-5ccf-a9b2-e0fa748d6423",
             },
-            id="bank-card, with issuer-name",
+            id="payment-card, with issuer-name",
         ),
-        ## bank-card, no issuer-name
+        ## payment-card, no issuer-name
         pytest.param(
             "376654224631002",
             "pattern_bank_card_amex",
@@ -390,7 +390,7 @@ all_extractors = get_all_extractors()
             {
                 "payment-card--683af74c-c39f-5ca1-8366-7781f8ac7685",
             },
-            id="bank-card, no issuer-name",
+            id="payment-card, no issuer-name",
         ),
     ],
 )
