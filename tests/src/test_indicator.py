@@ -316,7 +316,7 @@ all_extractors = get_all_extractors()
                 "indicator--0eb12807-33c5-5d5a-b465-164ef424bd9a",
             },
             {
-                "user-agent--fbbe9033-d12b-420f-878a-d87d9eb88c87",
+                "user-agent--8694f63c-3c89-5157-9ab8-3d316ebf8990",
             },
             id="user-agent",
         ),
