@@ -51,7 +51,7 @@ jobs:
           source .env;
           set +a;
           pip install -e .[tests]
-          pip install stix2extensions
+          pip install --force-reinstall https://github.com/muchdogesec/stix2extensions/archive/5258ee81355699b86c1e9ba670bf53fe3c37bcbc.zip
           pytest --cov --cov-branch --cov-report=xml --junitxml=junit.xml -o junit_family=legacy
 
       - name: Upload coverage reports to Codecov

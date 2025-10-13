@@ -7,7 +7,7 @@ class BankCardDiscoverExtractor(BaseExtractor):
     A class for extracting Discover credit card numbers from text using regular expressions.
 
     Attributes:
-        name (str): The name of the extractor, set to "bank-card-discover".
+        name (str): The name of the extractor, set to "payment-card-discover".
         extraction_regex (str): The regular expression pattern used for extracting Discover credit card numbers.
     """
 

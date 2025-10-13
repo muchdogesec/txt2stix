@@ -452,11 +452,11 @@ def _build_observables(
 
     if stix_mapping == "user-agent":
         indicator["name"] = f"User Agent: {extracted_value}"
-        indicator["pattern"] = f"[ user-agent:string = { repr(extracted_value) } ]"
+        indicator["pattern"] = f"[ user-agent:value = { repr(extracted_value) } ]"
 
         stix_objects.append(
             dict_to_stix2(
-                {"type": "user-agent", "spec_version": "2.1", "string": extracted_value}
+                {"type": "user-agent", "spec_version": "2.1", "value": extracted_value}
             )
         )
         stix_objects.append(
@@ -511,7 +511,7 @@ def _build_observables(
         btc2stix = crypto2stix.BTC2Stix()
         indicator["name"] = f"{currency_symbol} Wallet: {extracted_value}"
         indicator["pattern"] = (
-            f"[ cryptocurrency-wallet:address = { repr(extracted_value) } ]"
+            f"[ cryptocurrency-wallet:value = { repr(extracted_value) } ]"
         )
         wallet_obj, *other_objects = btc2stix.process_wallet(
             extracted_value, wallet_only=True, transactions_only=False
@@ -538,7 +538,7 @@ def _build_observables(
         txn_object, *other_objects = btc2stix.process_transaction(extracted_value)
         indicator["name"] = f"{currency_symbol} Transaction: {extracted_value}"
         indicator["pattern"] = (
-            f"[ cryptocurrency-transaction:hash = { repr(extracted_value) } ]"
+            f"[ cryptocurrency-transaction:value = { repr(extracted_value) } ]"
         )
 
         stix_objects.append(txn_object)
@@ -563,7 +563,7 @@ def _build_observables(
         btc2stix = crypto2stix.BTC2Stix()
         indicator["name"] = f"{currency_symbol} Wallet: {extracted_value}"
         indicator["pattern"] = (
-            f"[ cryptocurrency-wallet:address = { repr(extracted_value) } ]"
+            f"[ cryptocurrency-wallet:value = { repr(extracted_value) } ]"
         )
         wallet_obj, *other_objects = btc2stix.process_wallet(
             extracted_value, wallet_only=False, transactions_only=True
@@ -581,7 +581,7 @@ def _build_observables(
             )
         )
         return stix_objects, [wallet_obj.id]
-    if stix_mapping == "bank-card":
+    if stix_mapping == "payment-card":
         # TODO
         card_type = extractor.name
         if "Bank Card" in extractor.name:
@@ -599,7 +599,7 @@ def _build_observables(
             card_type = card_object["scheme"]
 
         indicator["name"] = f"{card_type}: {extracted_value}"
-        indicator["pattern"] = f"[ bank-card:number = { repr(extracted_value) } ]"
+        indicator["pattern"] = f"[ payment-card:value = { repr(extracted_value) } ]"
 
         stix_objects.append(
             bundler.new_relationship(
@@ -617,32 +617,33 @@ def _build_observables(
         if q != True:
             raise BadDataException("invalid iban number") from q
         indicator["name"] = f"Bank account: {extracted_value}"
-        indicator["pattern"] = (
-            f"[ bank-account:iban = { repr(extracted_value) } ]"
-        )
+        indicator["pattern"] = f"[ bank-account:iban = { repr(extracted_value) } ]"
         extracted_value = extracted_value.replace("-", "").replace(" ", "")
 
         country_code, bank_code = get_iban_details(extracted_value)
+        location = retrieve_stix_objects("location", country_code)[0]
+        stix_objects.append(location)
 
-        stix_objects.append(
-            dict_to_stix2(
-                {
-                    "type": "bank-account",
-                    "spec_version": "2.1",
-                    "iban": extracted_value,
-                    "country": country_code,
-                }
-            )
+        bank_acc = dict_to_stix2(
+            {
+                "type": "bank-account",
+                "spec_version": "2.1",
+                "iban": extracted_value,
+                "country_ref": location["id"],
+            }
         )
+
+        stix_objects.append(bank_acc)
         stix_objects.append(
             bundler.new_relationship(
                 indicator["id"],
-                stix_objects[1].id,
+                bank_acc.id,
                 "related-to",
                 description=f"STIX pattern contains {extracted_value}",
                 external_references=indicator["external_references"],
             )
         )
+        return stix_objects, [bank_acc.id]
 
     if stix_mapping == "phone-number":
         country_code = get_country_code(extracted_value)
@@ -839,7 +840,7 @@ def _build_observables(
         "user-agent",
         "cryptocurrency-wallet",
         "cryptocurrency-transaction",
-        "bank-card",
+        "payment-card",
         "bank-account",
         "phone-number",
         "attack-pattern",

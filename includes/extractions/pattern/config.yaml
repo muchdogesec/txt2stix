@@ -491,92 +491,92 @@ pattern_bank_card_mastercard:
   type: pattern
   dogesec_web: true
   name: 'Bank Card Mastercard'
-  description: 'Will extract card numbers and create a bank-card object. Will also enrich card information if BIN List API key set'
+  description: 'Will extract card numbers and create a payment-card object. Will also enrich card information if BIN List API key set'
   notes: 'Also available: ai_bank_card_mastercard'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_bank_card_mastercard
-  stix_mapping: bank-card
+  stix_mapping: payment-card
 
 pattern_bank_card_visa:
   type: pattern
   dogesec_web: true
   name: 'Bank Card Visa'
-  description: 'Will extract card numbers and create a bank-card object. Will also enrich card information if BIN List API key set'
+  description: 'Will extract card numbers and create a payment-card object. Will also enrich card information if BIN List API key set'
   notes: 'Also available: ai_bank_card_visa'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_bank_card_visa
-  stix_mapping: bank-card
+  stix_mapping: payment-card
 
 pattern_bank_card_amex:
   type: pattern
   dogesec_web: true
   name: 'Bank Card American Express'
-  description: 'Will extract card numbers and create a bank-card object. Will also enrich card information if BIN List API key set'
+  description: 'Will extract card numbers and create a payment-card object. Will also enrich card information if BIN List API key set'
   notes: 'Also available: ai_bank_card_amex'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_bank_card_amex
-  stix_mapping: bank-card
+  stix_mapping: payment-card
 
 pattern_bank_card_union_pay:
   type: pattern
   dogesec_web: true
   name: 'Bank Card Union Pay'
-  description: 'Will extract card numbers and create a bank-card object. Will also enrich card information if BIN List API key set'
+  description: 'Will extract card numbers and create a payment-card object. Will also enrich card information if BIN List API key set'
   notes: 'Also available: ai_bank_card_union_pay'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_bank_card_union_pay
-  stix_mapping: bank-card
+  stix_mapping: payment-card
 
 pattern_bank_card_diners:
   type: pattern
   dogesec_web: true
   name: 'Bank Card Diners'
-  description: 'Will extract card numbers and create a bank-card object. Will also enrich card information if BIN List API key set'
+  description: 'Will extract card numbers and create a payment-card object. Will also enrich card information if BIN List API key set'
   notes: 'Also available: ai_bank_card_diners'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_bank_card_diners
-  stix_mapping: bank-card
+  stix_mapping: payment-card
 
 pattern_bank_card_jcb:
   type: pattern
   dogesec_web: true
   name: 'Bank Card JCB'
-  description: 'Will extract card numbers and create a bank-card object. Will also enrich card information if BIN List API key set'
+  description: 'Will extract card numbers and create a payment-card object. Will also enrich card information if BIN List API key set'
   notes: 'Also available: ai_bank_card_jcb'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_bank_card_jcb
-  stix_mapping: bank-card
+  stix_mapping: payment-card
 
 pattern_bank_card_discover:
   type: pattern
   dogesec_web: true
   name: 'Bank Card Discover'
-  description: 'Will extract card numbers and create a bank-card object. Will also enrich card information if BIN List API key set'
+  description: 'Will extract card numbers and create a payment-card object. Will also enrich card information if BIN List API key set'
   notes: 'Also available: ai_bank_card_discover'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: DOGESEC
   version: 1.0.0
   test_cases: generic_bank_card_discover
-  stix_mapping: bank-card
+  stix_mapping: payment-card
 
 ####### IBAN Extractions #######
 
