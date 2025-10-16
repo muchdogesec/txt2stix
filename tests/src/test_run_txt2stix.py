@@ -94,6 +94,7 @@ def test_content_check_param(mock_validate_token_count, subtests):
         mock_check_content.assert_called_once()
         mock_validate_token_count.assert_called_once()
         mock_bundle__add_summary.assert_called_once_with("The summary", parse_model(TEST_AI_MODEL).extractor_name)
+        assert {'source_name': 'txt2stix_describes_incident', 'description': 'false'} in mock_bundler.report.external_references
 
     mock_validate_token_count.reset_mock()
 
@@ -126,6 +127,7 @@ def test_content_check_param(mock_validate_token_count, subtests):
         for classification in incident_classifications:
             assert f"classification.{classification}".lower() in mock_bundler.report.labels
         mock_bundle__add_summary.assert_called_once_with("The summary", parse_model(TEST_AI_MODEL).extractor_name)
+        assert {'source_name': 'txt2stix_describes_incident', 'description': 'true'} in mock_bundler.report.external_references
 
     mock_validate_token_count.reset_mock()
 
@@ -147,6 +149,7 @@ def test_content_check_param(mock_validate_token_count, subtests):
         ), "extraction should happen when check_content is disabled"
         mock_check_content.assert_not_called()
         mock_validate_token_count.assert_not_called()
+        assert {'source_name': 'txt2stix_describes_incident', 'description': 'true'} in mock_bundler.report.external_references
 
 
 
