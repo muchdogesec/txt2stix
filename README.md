@@ -26,12 +26,6 @@ In short txt2stix;
 5. converts extracted relationships to STIX 2.1 SRO objects
 6. outputs a STIX 2.1 bundle
 
-## tl;dr
-
-[![txt2stix](https://img.youtube.com/vi/TWVGCou9oGk/0.jpg)](https://www.youtube.com/watch?v=TWVGCou9oGk)
-
-[Watch the demo](https://www.youtube.com/watch?v=TWVGCou9oGk).
-
 ## Usage
 
 ### Setup
