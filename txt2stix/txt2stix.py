@@ -393,7 +393,7 @@ def run_txt2stix(bundler: txt2stixBundler, preprocessed_text: str, extractors_ma
         should_extract = retval.content_check.describes_incident
         logging.info("=== ai-check-content output ====")
         logging.info(retval.content_check.model_dump_json())
-        bundler.report.external_references.append(dict(source_name='txt2stix_describes_incident', description=str(should_extract).lower()))
+        bundler.report.external_references.append(dict(source_name='txt2stix_describes_incident', description=str(should_extract).lower(), external_id=model.extractor_name))
         for classification in retval.content_check.incident_classification:
             bundler.report.labels.append(f'classification.{classification}'.lower())
         bundler.add_summary(retval.content_check.summary, model.extractor_name)
