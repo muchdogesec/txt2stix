@@ -11,7 +11,7 @@ lookup_country_alpha2:
   file: 'lookups/country_iso3166_alpha2.txt'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_country_alpha2
   stix_mapping: ctibutler-location
@@ -27,7 +27,7 @@ lookup_mitre_attack_enterprise_id:
   file: 'lookups/mitre_attack_enterprise_id_v16_0.txt'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_mitre_attack_enterprise
   stix_mapping: ctibutler-mitre-attack-enterprise-id
@@ -41,7 +41,7 @@ lookup_mitre_attack_enterprise_name:
   file: 'lookups/mitre_attack_enterprise_name_v16_0.txt'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_mitre_attack_enterprise_name
   stix_mapping: ctibutler-mitre-attack-enterprise-name
@@ -55,7 +55,7 @@ lookup_mitre_attack_enterprise_alias:
   file: 'lookups/mitre_attack_enterprise_aliases_v16_0.txt'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_mitre_attack_enterprise_aliases
   stix_mapping: ctibutler-mitre-attack-enterprise-aliases
@@ -69,7 +69,7 @@ lookup_mitre_attack_mobile_id:
   file: 'lookups/mitre_attack_mobile_id_v16_0.txt'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_mitre_attack_mobile
   stix_mapping: ctibutler-mitre-attack-mobile-id
@@ -83,7 +83,7 @@ lookup_mitre_attack_mobile_name:
   file: 'lookups/mitre_attack_mobile_name_v16_0.txt'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_mitre_attack_mobile_name
   stix_mapping: ctibutler-mitre-attack-mobile-name
@@ -97,7 +97,7 @@ lookup_mitre_attack_mobile_alias:
   file: 'lookups/mitre_attack_mobile_aliases_v16_0.txt'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_mitre_attack_mobile_aliases
   stix_mapping: ctibutler-mitre-attack-mobile-aliases
@@ -111,7 +111,7 @@ lookup_mitre_attack_ics_id:
   file: 'lookups/mitre_attack_ics_id_v16_0.txt'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_mitre_attack_ics
   stix_mapping: ctibutler-mitre-attack-ics-id
@@ -125,7 +125,7 @@ lookup_mitre_attack_ics_name:
   file: 'lookups/mitre_attack_ics_name_v16_0.txt'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_mitre_attack_ics_name
   stix_mapping: ctibutler-mitre-attack-ics-name
@@ -139,7 +139,7 @@ lookup_mitre_attack_ics_alias:
   file: 'lookups/mitre_attack_ics_aliases_v16_0.txt'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_mitre_attack_ics_aliases
   stix_mapping: ctibutler-mitre-attack-ics-aliases
@@ -155,7 +155,7 @@ lookup_mitre_capec_id:
   file: 'lookups/mitre_capec_id_v3_9.txt'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_mitre_capec
   stix_mapping: ctibutler-mitre-capec-id
@@ -169,7 +169,7 @@ lookup_mitre_capec_name:
   file: 'lookups/mitre_capec_name_v3_9.txt'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_mitre_capec_name
   stix_mapping: ctibutler-mitre-capec-name
@@ -185,7 +185,7 @@ lookup_mitre_cwe_id:
   file: 'lookups/mitre_cwe_id_v4_15.txt'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_mitre_cwe
   stix_mapping: ctibutler-mitre-cwe-id
@@ -199,7 +199,7 @@ lookup_mitre_cwe_name:
   file: 'lookups/mitre_cwe_name_v4_15.txt'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_mitre_cwe_name
   stix_mapping: ctibutler-mitre-cwe-name
@@ -215,7 +215,7 @@ lookup_mitre_atlas_id:
   file: 'lookups/mitre_atlas_id_v4_5_2.txt'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_mitre_atlas
   stix_mapping: ctibutler-mitre-atlas-id
@@ -229,7 +229,7 @@ lookup_mitre_atlas_name:
   file: 'lookups/mitre_atlas_name_v4_5_2.txt'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_mitre_atlas_name
   stix_mapping: ctibutler-mitre-atlas-name
@@ -245,7 +245,7 @@ lookup_disarm_id:
   file: 'lookups/disarm_id_v1_5.txt'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_disarm
   stix_mapping: ctibutler-disarm-id
@@ -259,7 +259,7 @@ lookup_disarm_name:
   file: 'lookups/disarm_name_v1_5.txt'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_disarm_name
   stix_mapping: ctibutler-disarm-name
@@ -275,7 +275,7 @@ lookup_attack_pattern:
   file: 'lookups/attack_pattern.txt'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: lookup_attack_pattern
   stix_mapping: attack-pattern
@@ -289,7 +289,7 @@ lookup_campaign:
   file: 'lookups/campaign.txt'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: lookup_campaign
   stix_mapping: campaign
@@ -303,7 +303,7 @@ lookup_course_of_action:
   file: 'lookups/course_of_action.txt'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: lookup_course_of_action
   stix_mapping: course-of-action
@@ -317,7 +317,7 @@ lookup_identity:
   file: 'lookups/identity.txt'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: lookup_identity
   stix_mapping: identity
@@ -331,7 +331,7 @@ lookup_infrastructure:
   file: 'lookups/infrastructure.txt'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: lookup_infrastructure
   stix_mapping: infrastructure
@@ -345,7 +345,7 @@ lookup_intrusion_set:
   file: 'lookups/intrusion_set.txt'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: lookup_intrusion_set
   stix_mapping: intrusion-set
@@ -359,7 +359,7 @@ lookup_malware:
   file: 'lookups/malware.txt'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: lookup_malware
   stix_mapping: malware
@@ -373,7 +373,7 @@ lookup_threat_actor:
   file: 'lookups/threat_actor.txt'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: lookup_threat_actor
   stix_mapping: threat-actor
@@ -387,7 +387,7 @@ lookup_tool:
   file: 'lookups/tool.txt'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: lookup_tool
   stix_mapping: tool
