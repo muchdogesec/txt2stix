@@ -10,7 +10,7 @@ pattern_ipv4_address_only:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_ipv4_address_only'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_ipv4_address_only
   stix_mapping: ipv4-addr
@@ -23,7 +23,7 @@ pattern_ipv4_address_cidr:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_ipv4_address_cidr'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: ipv4_address_cidr
   stix_mapping: ipv4-addr
@@ -36,7 +36,7 @@ pattern_ipv4_address_port:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_ipv4_address_port'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: ipv4_address_port
   stix_mapping: ipv4-addr-port
@@ -51,7 +51,7 @@ pattern_ipv6_address_only:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_ipv6_address_only'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_ipv6_address_only
   stix_mapping: ipv6-addr
@@ -64,7 +64,7 @@ pattern_ipv6_address_cidr:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_ipv6_address_cidr'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_ipv6_address_cidr
   stix_mapping: ipv6-addr
@@ -77,7 +77,7 @@ pattern_ipv6_address_port:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_ipv6_address_port'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_ipv6_address_port
   stix_mapping: ipv6-addr-port
@@ -92,7 +92,7 @@ pattern_domain_name_only:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_domain_name_only'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_domain_name_only
   stix_mapping: domain-name
@@ -105,7 +105,7 @@ pattern_domain_name_subdomain:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_domain_name_subdomain'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_domain_name_subdomain
   stix_mapping: domain-name
@@ -120,7 +120,7 @@ pattern_url:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_pattern_url'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_url
   stix_mapping: url
@@ -133,7 +133,7 @@ pattern_url_file:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_url_file'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_url_file
   stix_mapping: url
@@ -146,7 +146,7 @@ pattern_url_path:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_url_path'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_url_path
   stix_mapping: url
@@ -161,7 +161,7 @@ pattern_host_name:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_host_name'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_host_name
   stix_mapping: domain-name
@@ -174,7 +174,7 @@ pattern_host_name_subdomain:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_host_name_subdomain'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_host_name_subdomain
   stix_mapping: domain-name
@@ -187,7 +187,7 @@ pattern_host_name_url:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_host_name_url'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_host_name_url
   stix_mapping: url
@@ -200,7 +200,7 @@ pattern_host_name_file:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_host_name_file'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_host_name_file
   stix_mapping: url
@@ -213,7 +213,7 @@ pattern_host_name_path:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_host_name_path'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_host_name_path
   stix_mapping: url
@@ -228,7 +228,7 @@ pattern_directory_windows:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_directory_windows'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_directory_windows
   stix_mapping: directory
@@ -241,7 +241,7 @@ pattern_directory_windows_with_file:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_directory_windows_with_file'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_directory_windows_with_file
   stix_mapping: directory-file
@@ -254,7 +254,7 @@ pattern_directory_unix:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_directory_unix'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_directory_unix
   stix_mapping: directory
@@ -267,7 +267,7 @@ pattern_directory_unix_file:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_directory_unix_file'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_directory_unix_file
   stix_mapping: directory-file
@@ -282,7 +282,7 @@ pattern_file_name:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_file_name'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_file_name
   stix_mapping: file
@@ -295,7 +295,7 @@ pattern_file_hash_md5:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_file_hash_md5'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_file_hash_md5
   stix_mapping: file-hash
@@ -308,7 +308,7 @@ pattern_file_hash_sha_1:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_file_hash_sha_1'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_file_hash_sha_1
   stix_mapping: file-hash
@@ -321,7 +321,7 @@ pattern_file_hash_sha_256:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_file_hash_sha_256'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_file_hash_sha_256
   stix_mapping: file-hash
@@ -334,7 +334,7 @@ pattern_file_hash_sha_512:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_file_hash_sha_512'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_file_hash_sha_512
   stix_mapping: file-hash
@@ -349,7 +349,7 @@ pattern_email_address:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_email_address'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_email_address
   stix_mapping: email-addr
@@ -364,7 +364,7 @@ pattern_mac_address:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_mac_address'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_mac_address
   stix_mapping: mac-addr
@@ -379,7 +379,7 @@ pattern_windows_registry_key:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_windows_registry_key'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_windows_registry_key
   stix_mapping: windows-registry-key
@@ -394,7 +394,7 @@ pattern_user_agent:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_user_agent'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_user_agent
   stix_mapping: user-agent
@@ -409,7 +409,7 @@ pattern_autonomous_system_number:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_autonomous_system_number'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_autonomous_system_number
   stix_mapping: autonomous-system
@@ -424,7 +424,7 @@ pattern_cryptocurrency_btc_wallet:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_cryptocurrency_btc_wallet'
   created: 2020-01-01
   modified: 2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_cryptocurrency_btc_wallet
   stix_mapping: cryptocurrency-wallet
@@ -437,7 +437,7 @@ pattern_cryptocurrency_btc_wallet_transaction:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_cryptocurrency_btc_wallet_transaction'
   created: 2020-01-01
   modified: 2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_cryptocurrency_btc_wallet
   stix_mapping: cryptocurrency-wallet-with-transaction
@@ -450,7 +450,7 @@ pattern_cryptocurrency_btc_transaction:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_cryptocurrency_btc_transaction'
   created: 2020-01-01
   modified: 2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_cryptocurrency_btc_transaction
   stix_mapping: cryptocurrency-transaction
@@ -465,7 +465,7 @@ pattern_cve_id:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_cve_id'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_cve_id
   stix_mapping: vulmatch-cve-id
@@ -480,7 +480,7 @@ pattern_cpe_uri:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_cpe_uri'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_cpe_uri
   stix_mapping: vulmatch-cpe-id
@@ -495,7 +495,7 @@ pattern_bank_card_mastercard:
   notes: 'Also available: ai_bank_card_mastercard'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_bank_card_mastercard
   stix_mapping: payment-card
@@ -508,7 +508,7 @@ pattern_bank_card_visa:
   notes: 'Also available: ai_bank_card_visa'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_bank_card_visa
   stix_mapping: payment-card
@@ -521,7 +521,7 @@ pattern_bank_card_amex:
   notes: 'Also available: ai_bank_card_amex'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_bank_card_amex
   stix_mapping: payment-card
@@ -534,7 +534,7 @@ pattern_bank_card_union_pay:
   notes: 'Also available: ai_bank_card_union_pay'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_bank_card_union_pay
   stix_mapping: payment-card
@@ -547,7 +547,7 @@ pattern_bank_card_diners:
   notes: 'Also available: ai_bank_card_diners'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_bank_card_diners
   stix_mapping: payment-card
@@ -560,7 +560,7 @@ pattern_bank_card_jcb:
   notes: 'Also available: ai_bank_card_jcb'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_bank_card_jcb
   stix_mapping: payment-card
@@ -573,7 +573,7 @@ pattern_bank_card_discover:
   notes: 'Also available: ai_bank_card_discover'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_bank_card_discover
   stix_mapping: payment-card
@@ -588,7 +588,7 @@ pattern_iban_number:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_iban_number'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_iban_number
   stix_mapping: bank-account
@@ -603,7 +603,7 @@ pattern_phone_number:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_phone_number'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   test_cases: generic_phone_number
   stix_mapping: phone-number

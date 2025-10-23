@@ -10,7 +10,7 @@ ai_ipv4_address_only:
   notes: 'pattern_ipv4_address_only legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all IPv4 addresses from the text.'
   prompt_helper: 'Do not include any IPv4s that contain a port or CIDR.'
@@ -26,7 +26,7 @@ ai_ipv4_address_cidr:
   notes: 'pattern_ipv4_address_cidr legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all IPv4 addresses with a CIDR from the text. CIDR part must be >=0 <=32.'
   prompt_helper: 'Do not include any IPs that do not have a CIDR.'
@@ -42,7 +42,7 @@ ai_ipv4_address_port:
   notes: 'pattern_ipv4_address_port legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all IPv4 addresses with a port from the text. Port number part must be >=0 <=65535.'
   prompt_helper: 'Do not include any IPv4s that do not contain a port number.'
@@ -60,7 +60,7 @@ ai_ipv6_address_only:
   notes: 'pattern_ipv6_address_only legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all IPv6 addresses from the text.'
   prompt_helper: 'Do not include any IPv6s that contain a port or CIDR.'
@@ -76,7 +76,7 @@ ai_ipv6_address_cidr:
   notes: 'pattern_ipv6_address_cidr legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all IPv6 addresses with a CIDR from the text. CIDR part must be >=0 <=128.'
   prompt_helper: 'Do not include any IPv6s that do not contain a CIDR'
@@ -92,7 +92,7 @@ ai_ipv6_address_port:
   notes: 'pattern_ipv6_address_port legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all IPv6 addresses with a CIDR from the text. Port number part must be >=0 <=65535.'
   prompt_helper: 'Do not include any IPv6s that do not contain a port number'
@@ -110,7 +110,7 @@ ai_domain_name_only:
   notes: 'pattern_domain_name_only legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all valid root domain names from the text. Do not extract subdomains.'
   prompt_helper: ''
@@ -126,7 +126,7 @@ ai_domain_name_subdomain:
   notes: 'pattern_domain_name_subdomain legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all valid subdomain names from the text. Do not extract root domains.'
   prompt_helper: ''
@@ -144,7 +144,7 @@ ai_url:
   notes: 'pattern_url legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all URLs with no path/file extension from the text. If the sub/domain part is not an IP, then it must have a valid TLD.'
   prompt_helper: ''
@@ -160,7 +160,7 @@ ai_url_file:
   notes: 'pattern_url_file legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all URLs with file extension in path from the text. If the sub/domain part is not an IP, then it must have a valid TLD. The file must match valid filetype.'
   prompt_helper: ''
@@ -176,7 +176,7 @@ ai_url_path:
   notes: 'pattern_url_path legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all URLs without a file extension in their path from the text. If the sub/domain part is not an IP, then it must have a valid TLD.'
   prompt_helper: ''
@@ -194,7 +194,7 @@ ai_host_name:
   notes: 'pattern_host_name legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all hostnames from the text. Hostnames should not have a valid TLD extension (these are domains).'
   prompt_helper: ''
@@ -210,7 +210,7 @@ ai_host_name_subdomain:
   notes: 'pattern_host_name_subdomain legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all sub-hostnames from the text. Sub-hostnames should not have a valid TLD extension.'
   prompt_helper: ''
@@ -226,7 +226,7 @@ ai_host_name_url:
   notes: 'pattern_host_name_url legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all hostnames / sub-hostnames with full URLs from the text. All extractions should not have a valid TLD extension.'
   prompt_helper: ''
@@ -242,7 +242,7 @@ ai_host_name_file:
   notes: 'pattern_host_name_file legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all hostnames / sub-hostnames with full URLs from the text that contain a path to a valid file extension. All extractions should not have a valid TLD extension. All file extensions should be valid file extensions.'
   prompt_helper: ''
@@ -258,7 +258,7 @@ ai_host_name_path:
   notes: 'pattern_host_name_path legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all hostnames / sub-hostnames with full URLs (but do not contain a path to a file) from the text that. All extractions should not have a valid TLD extension. All file extensions should be valid file extensions.'
   prompt_helper: ''
@@ -276,7 +276,7 @@ ai_directory_windows:
   notes: 'pattern_directory_windows legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all Windows directory paths from the text.'
   prompt_helper: ''
@@ -292,7 +292,7 @@ ai_directory_windows_with_file:
   notes: 'pattern_directory_windows_with_file legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all Windows directory paths from the text that contain a path to a file. Ensure the file type extension is valid.'
   prompt_helper: ''
@@ -308,7 +308,7 @@ ai_directory_unix:
   notes: 'pattern_directory_unix legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all UNIX directory paths from the text.'
   prompt_helper: ''
@@ -324,7 +324,7 @@ ai_directory_unix_file:
   notes: 'pattern_directory_unix_file legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all UNIX directory paths from the text that contain a path to a file. Ensure the file type extension is valid.'
   prompt_helper: ''
@@ -342,7 +342,7 @@ ai_file_name:
   notes: 'pattern_file_name legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all file names from the text. Ensure the file type extension is valid.'
   prompt_helper: ''
@@ -358,7 +358,7 @@ ai_file_hash_all:
   notes: ''
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all MD5, SHA-1, SHA-224, SHA-256, SHA-384 and SHA-512 file hashes from the text.'
   prompt_helper: ''
@@ -374,7 +374,7 @@ ai_file_hash_md5:
   notes: 'pattern_file_hash_md5 legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all MD5 hashes from the text.'
   prompt_helper: ''
@@ -390,7 +390,7 @@ ai_file_hash_sha_1:
   notes: 'pattern_file_hash_sha_1 legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all SHA-1 hashes from the text.'
   prompt_helper: ''
@@ -406,7 +406,7 @@ ai_file_hash_sha_256:
   notes: 'pattern_file_hash_sha_256 legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all SHA-256 hashes from the text.'
   prompt_helper: ''
@@ -422,7 +422,7 @@ ai_file_hash_sha_512:
   notes: 'pattern_file_hash_sha_512 legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all SHA-512 hashes from the text.'
   prompt_helper: ''
@@ -440,7 +440,7 @@ ai_email_address:
   notes: 'pattern_email_address legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all email addresses from the text.'
   prompt_helper: ''
@@ -458,7 +458,7 @@ ai_mac_address:
   notes: 'pattern_mac_address legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all MAC addresses from the text.'
   prompt_helper: ''
@@ -476,7 +476,7 @@ ai_windows_registry_key:
   notes: 'pattern_windows_registry_key legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all Windows Registry Keys from the text.'
   prompt_helper: ''
@@ -494,7 +494,7 @@ ai_user_agent:
   notes: 'pattern_user_agent legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all user agents from the text.'
   prompt_helper: ''
@@ -512,7 +512,7 @@ ai_autonomous_system_number:
   notes: 'pattern_user_agent legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Autonomous System Numbers (ASN)'
   prompt_helper: ''
@@ -530,7 +530,7 @@ ai_cryptocurrency_btc_wallet:
   notes: 'pattern_cryptocurrency_btc_wallet legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified: 2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all Bitcoin Wallet hashes from the text.'
   prompt_helper: ''
@@ -546,7 +546,7 @@ ai_cryptocurrency_btc_wallet_transaction:
   notes: 'pattern_cryptocurrency_btc_wallet_transaction legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified: 2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all Bitcoin transaction hashes from the text.'
   prompt_helper: ''
@@ -562,7 +562,7 @@ ai_cryptocurrency_btc_transaction:
   notes: 'pattern_cryptocurrency_btc_transaction legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified: 2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all Bitcoin transaction hashes from the text.'
   prompt_helper: ''
@@ -580,7 +580,7 @@ ai_cve_id:
   notes: 'pattern_cve_id legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all CVE IDs from the text.'
   prompt_helper: ''
@@ -598,7 +598,7 @@ ai_cpe_uri:
   notes: 'pattern_cpe_uri legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all CPEs match strings from the text.'
   prompt_helper: ''
@@ -616,7 +616,7 @@ ai_bank_card_all:
   notes: ''
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all MasterCard, Visa, American Express, Union Pay, Diners, JCB, and Discover bank card numbers from the text.'
   prompt_helper: ''
@@ -632,7 +632,7 @@ ai_bank_card_mastercard:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use pattern_bank_card_mastercard (AI can be unpredictable with sensitive data)'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all MasterCard card numbers from the text.'
   prompt_helper: ''
@@ -648,7 +648,7 @@ ai_bank_card_visa:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use pattern_bank_card_visa (AI can be unpredictable with sensitive data)'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all Visa card numbers from the text.'
   prompt_helper: ''
@@ -664,7 +664,7 @@ ai_bank_card_amex:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use pattern_bank_card_amex (AI can be unpredictable with sensitive data)'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all American Express card numbers from the text.'
   prompt_helper: ''
@@ -680,7 +680,7 @@ ai_bank_card_union_pay:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use pattern_bank_card_union_pay (AI can be unpredictable with sensitive data)'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all Union Pay card numbers from the text.'
   prompt_helper: ''
@@ -696,7 +696,7 @@ ai_bank_card_diners:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use pattern_bank_card_diners (AI can be unpredictable with sensitive data)'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all Diners card numbers from the text.'
   prompt_helper: ''
@@ -712,7 +712,7 @@ ai_bank_card_jcb:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use pattern_bank_card_jcb (AI can be unpredictable with sensitive data)'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all JCB card numbers from the text.'
   prompt_helper: ''
@@ -728,7 +728,7 @@ ai_bank_card_discover:
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use pattern_bank_card_discover (AI can be unpredictable with sensitive data)'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all Discover card numbers from the text.'
   prompt_helper: ''
@@ -746,7 +746,7 @@ ai_iban_number:
   notes: 'pattern_iban_number legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all International Bank Account Numbers (IBAN) from the text.'
   prompt_helper: 'If needed, you can read more about IBAN numbers with examples here: https://www.iban.com/structure'
@@ -764,7 +764,7 @@ ai_phone_number:
   notes: 'pattern_phone_number legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified: 2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all phone numbers from the text.'
   prompt_helper: 'If needed, you can read more about the E.164 standard with examples here: https://en.wikipedia.org/wiki/E.164'
@@ -782,7 +782,7 @@ ai_country:
   notes: 'lookup_country_alpha2 legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified: 2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all countries described in the text, including countries printed as IS0-3166 Alpha2 and Alpha3 codes.'
   prompt_helper: 'If you are unsure, you can read more about the standard here: https://www.iso.org/iso-3166-country-codes.html'
@@ -800,7 +800,7 @@ ai_mitre_attack_enterprise:
   notes: 'lookup_mitre_attack_enterprise_id and lookup_mitre_attack_enterprise_name legacy extractions also exists if you cannot use AI'
   created: 2020-01-01
   modified: 2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all references to MITRE ATT&CK Enterprise tactics, techniques, groups, data sources, mitigations, software, and campaigns described in the text. These references may not be explicit in the text so you should be careful to account for the natural language of the text your analysis. Do not include MITRE ATT&CK ICS or MITRE ATT&CK Mobile in the results.'
   prompt_helper: 'If you are unsure, you can learn more about MITRE ATT&CK Enterprise here: https://attack.mitre.org/matrices/enterprise/'
@@ -816,7 +816,7 @@ ai_mitre_attack_mobile:
   notes: 'lookup_mitre_attack_mobile_id and lookup_mitre_attack_mobile_name legacy extractions also exists if you cannot use AI'
   created: 2020-01-01
   modified: 2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all references to MITRE ATT&CK Mobile tactics, techniques, groups, data sources, mitigations, software, and campaigns described in the text. These references may not be explicit in the text so you should be careful to account for the natural language of the text your analysis. Do not include MITRE ATT&CK ICS or MITRE ATT&CK Enterprise in the results.'
   prompt_helper: 'If you are unsure, you can learn more about MITRE ATT&CK Enterprise here: https://attack.mitre.org/matrices/mobile/'
@@ -832,7 +832,7 @@ ai_mitre_attack_ics:
   notes: 'lookup_mitre_attack_ics_id and lookup_mitre_attack_ics_name legacy extractions also exists if you cannot use AI'
   created: 2020-01-01
   modified: 2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all references to MITRE ATT&CK ICS tactics, techniques, groups, data sources, mitigations, software, and campaigns described in the text. These references may not be explicit in the text so you should be careful to account for the natural language of the text your analysis. Do not include MITRE ATT&CK Mobile or MITRE ATT&CK Enterprise in the results.'
   prompt_helper: 'If you are unsure, you can learn more about MITRE ATT&CK Enterprise here: https://attack.mitre.org/matrices/ics/'
@@ -850,7 +850,7 @@ ai_mitre_capec:
   notes: 'lookup_mitre_capec_id and lookup_mitre_capec_name legacy extractions also exists if you cannot use AI'
   created: 2020-01-01
   modified: 2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all references to a MITRE CAPEC object from the text.'
   prompt_helper: 'If you are unsure, you can learn more about MITRE CAPEC here: https://capec.mitre.org/'
@@ -868,7 +868,7 @@ ai_mitre_cwe:
   notes: 'lookup_mitre_cwe_id and lookup_mitre_cwe_name legacy extractions also exists if you cannot use AI'
   created: 2020-01-01
   modified: 2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all references to a MITRE CWE object from the text.'
   prompt_helper: 'If you are unsure, you can learn more about MITRE CAPEC here: https://cwe.mitre.org/'
@@ -886,7 +886,7 @@ ai_attack_pattern:
   notes: 'lookup_attack_pattern legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all Attack Patterns from the text.'
   prompt_helper: 'Attack Patterns are a type of TTP that describe ways that adversaries attempt to compromise targets. Attack Patterns are used to help categorize attacks, generalize specific attacks to the patterns that they follow, and provide detailed information about how attacks are performed. An example of an attack pattern is "spear phishing": a common type of attack where an attacker sends a carefully crafted e-mail message to a party with the intent of getting them to click a link or open an attachment to deliver malware.'
@@ -902,7 +902,7 @@ ai_campaign:
   notes: 'lookup_campaign legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all Campaigns from the text.'
   prompt_helper: 'A Campaign is a grouping of adversarial behaviors that describes a set of malicious activities or attacks (sometimes called waves) that occur over a period of time against a specific set of targets. Campaigns usually have well defined objectives and may be part of an Intrusion Set. Campaigns are often attributed to an intrusion set and threat actors.'
@@ -918,7 +918,7 @@ ai_course_of_action:
   notes: 'lookup_course_of_action legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all Course of Actions from the text.'
   prompt_helper: 'A Course of Action (CoA) is a recommendation from a producer of intelligence to a consumer on the actions that they might take in response to that intelligence. The CoA may be preventative to deter exploitation or corrective to counter its potential impact. The CoA may describe automatable actions (applying patches, configuring firewalls, etc.), manual processes, or a combination of the two. For example, a CoA that describes how to remediate a vulnerability could describe how to apply the patch that removes that vulnerability.'
@@ -934,7 +934,7 @@ ai_identity:
   notes: 'lookup_identity legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all Identities from the text.'
   prompt_helper: 'Identities can represent actual individuals, organizations, or groups (e.g., ACME, Inc.) as well as classes of individuals, organizations, systems or groups (e.g., the finance sector).'
@@ -950,7 +950,7 @@ ai_infrastructure:
   notes: 'lookup_infrastructure legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all Infrastructure from the text.'
   prompt_helper: 'The Infrastructure SDO represents a type of TTP and describes any systems, software services and any associated physical or virtual resources intended to support some purpose (e.g., C2 servers used as part of an attack, device or server that are part of defence, database servers targeted by an attack, etc.).'
@@ -966,7 +966,7 @@ ai_intrusion_set:
   notes: 'lookup_intrusion_set legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all Intrusion Sets from the text.'
   prompt_helper: 'An Intrusion Set is a grouped set of adversarial behaviors and resources with common properties that is believed to be orchestrated by a single organization. An Intrusion Set may capture multiple Campaigns or other activities that are all tied together by shared attributes indicating a common known or unknown Threat Actor.'
@@ -982,7 +982,7 @@ ai_malware:
   notes: 'lookup_malware legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all Malware names from the text.'
   prompt_helper: 'Malware is a type of TTP that represents malicious code. It generally refers to a program that is inserted into a system, usually covertly. The intent is to compromise the confidentiality, integrity, or availability of the victims data, applications, or operating system (OS) or otherwise annoy or disrupt the victim.'
@@ -998,7 +998,7 @@ ai_threat_actor:
   notes: 'lookup_threat_actor legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all Threat Actor names from the text.'
   prompt_helper: 'Threat Actors are actual individuals, groups, or organizations believed to be operating with malicious intent. A Threat Actor is not an Intrusion Set but may support or be affiliated with various Intrusion Sets, groups, or organizations over time. Threat Actors can be characterized by their motives, capabilities, goals, sophistication level, past activities, resources they have access to, and their role in the organization.'
@@ -1014,7 +1014,7 @@ ai_tool:
   notes: 'lookup_tool legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified:  2020-01-01
-  created_by: DOGESEC
+  created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all Software names from the text.'
   prompt_helper: 'Legitimate software that can be used by threat actors to perform attacks. Unlike malware, these software packages are often found on a system and have legitimate purposes for power users, system administrators, network administrators, or even normal users. Remote access tools (e.g., RDP) and network scanning tools (e.g., Nmap) are examples of software that may be used by a Threat Actor during an attack.'
