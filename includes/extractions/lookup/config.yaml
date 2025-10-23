@@ -239,7 +239,7 @@ lookup_mitre_atlas_name:
 lookup_disarm_id:
   type: lookup
   dogesec_web: false
-  name: DISARM IDs
+  name: DISARM names
   description: 'Extracts DISARM IDs from text. See lookup name for version used.'
   notes: 'No corresponding AI version yet due to poor AI performance'
   file: 'lookups/disarm_id_v1_5.txt'
