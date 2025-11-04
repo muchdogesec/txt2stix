@@ -48,7 +48,10 @@ def f():
         (
             "ctibutler-mitre-attack-mobile-name",
             "Impair Defenses",
-            ["attack-pattern--20b0931a-8952-42ca-975f-775bad295f1a"],
+            [
+                "attack-pattern--20b0931a-8952-42ca-975f-775bad295f1a",
+                "x-mitre-detection-strategy--5560747b-ad67-478e-b3f2-14e55864e532",
+            ],
         ),
         (
             "ctibutler-mitre-attack-mobile-aliases",
@@ -58,7 +61,10 @@ def f():
         (
             "ctibutler-mitre-attack-ics-name",
             "Program Upload",
-            ["attack-pattern--3067b85e-271e-4bc5-81ad-ab1a81d411e3"],
+            [
+                "attack-pattern--3067b85e-271e-4bc5-81ad-ab1a81d411e3",
+                "x-mitre-detection-strategy--6f921aa8-deb3-4286-8101-26a7cbe80c0e",
+            ],
         ),
         (
             "ctibutler-mitre-attack-ics-aliases",
@@ -81,9 +87,7 @@ def f():
         (
             "ctibutler-location",
             "NG",
-            (
-                "location--6dbe266a-c149-5ba3-8b39-74f1b5063312",
-            ),
+            ("location--6dbe266a-c149-5ba3-8b39-74f1b5063312",),
         ),
         (
             "ctibutler-mitre-atlas-id",

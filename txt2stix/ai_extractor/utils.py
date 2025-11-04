@@ -5,6 +5,8 @@ import logging
 import dotenv
 import textwrap
 
+import json_repair
+
 from ..extractions import Extractor
 
 from pydantic import BaseModel, Field, RootModel
@@ -63,7 +65,8 @@ class ParserWithLogging(PydanticOutputParser):
         print(text, file=f)
         print("=================close=================" + "\n"*5, file=f)
         logging.debug(f.getvalue())
-        return super().parse(text)
+        repaired_json = json_repair.repair_json(text)
+        return super().parse(repaired_json)
 
 def get_extractors_str(extractors):
     extractor: Extractor = None
