@@ -264,6 +264,22 @@ lookup_disarm_name:
   test_cases: generic_disarm_name
   stix_mapping: ctibutler-disarm-name
 
+####### Sector #######
+
+lookup_sector_alias:
+  type: lookup
+  dogesec_web: false
+  name: 'Sector names'
+  description: 'Extracts Sector alias from text.'
+  notes: 'ai_mitre_attack_ics also exists but beware of hallucinations'
+  file: 'lookups/sector_aliases_1_0.txt'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: dogesec
+  version: 1.0.0
+  test_cases: generic_sector_aliases
+  stix_mapping: ctibutler-sector-alias
+
 ####### Generic Extractions #######
 
 lookup_attack_pattern:
@@ -391,3 +407,5 @@ lookup_tool:
   version: 1.0.0
   test_cases: lookup_tool
   stix_mapping: tool
+
+

@@ -637,6 +637,14 @@ generic_disarm_name:
   test_negative_examples:
     - 'T0131.001' # is id
 
+####### Sector ########
+generic_sector_aliases:
+  test_positive_examples:
+    - Biotechnology
+    - Diplomatic Organizations
+  test_negative_examples:
+    - Random Company Inc
+
 ####### Misc STIX Objects #######
 
 lookup_attack_pattern:

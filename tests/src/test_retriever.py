@@ -119,6 +119,16 @@ def f():
             "cpe:2.3:h:qualcomm:sd821:-:*:*:*:*:*:*:*",
             ["software--4e0ea65d-90b0-5582-a1d6-b69d5472fbb2"],
         ),
+        (
+            "ctibutler-sector-alias",
+            "High Tech",
+            ["identity--f929f43d-bfa2-5630-aee6-81f3cfcff5fe"],
+        ),
+        (
+            "ctibutler-sector-name",
+            "Healthcare services",
+            ["identity--e3c438a2-8f01-5f3a-b17a-e8c2735f4d18"],
+        ),
     ],
 )
 def test_retrieve_objects(stix_mapping, kb_id, expected_ids, f):
