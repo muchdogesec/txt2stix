@@ -354,7 +354,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode standard \
-	--input_file tests/data/extraction_types/generic_sector_aliasees.txt \
+	--input_file tests/data/extraction_types/generic_sector_aliases.txt \
 	--name 'lookup_sector_alias' \
 	--tlp_level clear \
 	--confidence 100 \
