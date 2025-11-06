@@ -1,7 +1,20 @@
 Operation Dust Storm
 C0033
+Operation Triangulation
 Bouncing Golf
+APT41
+Wicked Panda
+Brass Typhoon
+BARIUM
 UNC788
+MuddyWater
+Earth Vetala
+MERCURY
+Static Kitten
+Seedworm
+TEMP.Zagros
+Mango Sandstorm
+TA450
 Sandworm Team
 ELECTRUM
 Telebots
@@ -17,6 +30,7 @@ Scattered Spider
 Roasted 0ktapus
 Octo Tempest
 Storm-0875
+UNC3944
 Confucius
 Confucius APT
 MoustachedBouncer
@@ -31,6 +45,11 @@ Grey Karkadann
 Big Bang APT
 Two-tailed Scorpion
 Dark Caracal
+Star Blizzard
+SEABORGIUM
+Callisto Group
+TA446
+COLDRIVER
 Windshift
 Bahamut
 APT28
@@ -48,11 +67,15 @@ Threat Group-4127
 TG-4127
 Forest Blizzard
 FROZENLAKE
+GruesomeLarch
 Earth Lusca
 TAG-22
 Charcoal Typhoon
 CHROMIUM
 ControlX
+LAPSUS$
+DEV-0537
+Strawberry Tempest
 PROMETHIUM
 StrongPity
 CarbonSteal
@@ -64,6 +87,7 @@ GoldenEagle
 FlixOnline
 Bread
 Joker
+TriangleDB
 Hornbill
 Gooligan
 Ghost Push
@@ -89,6 +113,7 @@ Corona Updates
 Wabi Music
 Concipit1248
 Skygofree
+CherryBlos
 DoubleAgent
 Twitoor
 Fakecalls
@@ -102,10 +127,13 @@ darkmatter
 HilalRAT
 DEFENSOR ID
 BRATA
+LightSpy
 Ginp
 eSurv
 TangleBot
 Monokle
+RatMilad
+DCHSpy
 Red Alert 2.0
 ViceLeaker
 Triout
@@ -114,6 +142,7 @@ FakeSpy
 SpyDealer
 Pegasus for Android
 Chrysaor
+SpyC23
 FrozenCell
 AndroidOS/MalLocker.B
 SharkBot
@@ -131,6 +160,8 @@ Trojan-SMS.AndroidOS.Smaps
 GPlayed
 EventBot
 HenBox
+Binary Validator
+GodFather
 Riltok
 GolfSpy
 Pallas
@@ -138,6 +169,7 @@ Circles
 Tiktok Pro
 HummingBad
 Exobot
+FjordPhantom
 Android/Chuli.A
 Charger
 Drinik
@@ -146,6 +178,7 @@ WolfRAT
 BusyGasper
 TERRACOTTA
 Escobar
+Android/SpyAgent
 Triada
 Golden Cup
 FluBot

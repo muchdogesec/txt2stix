@@ -24,7 +24,7 @@ lookup_mitre_attack_enterprise_id:
   name: 'MITRE ATT&CK Enterprise IDs'
   description: 'Extracts MITRE ATT&CK Enterprise IDs from text. See lookup name for version used.'
   notes: 'ai_mitre_attack_enterprise also exists but beware of hallucinations'
-  file: 'lookups/mitre_attack_enterprise_id_v16_0.txt'
+  file: 'lookups/mitre_attack_enterprise_id_v18_0.txt'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: dogesec
@@ -38,7 +38,7 @@ lookup_mitre_attack_enterprise_name:
   name: 'MITRE ATT&CK Enterprise names'
   description: 'Extracts MITRE ATT&CK Enterprise names from text. See lookup name for version used.'
   notes: 'ai_mitre_attack_enterprise also exists but beware of hallucinations'
-  file: 'lookups/mitre_attack_enterprise_name_v16_0.txt'
+  file: 'lookups/mitre_attack_enterprise_name_v18_0.txt'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: dogesec
@@ -52,7 +52,7 @@ lookup_mitre_attack_enterprise_alias:
   name: 'MITRE ATT&CK Enterprise alias'
   description: 'Extracts MITRE ATT&CK Enterprise aliases from text. See lookup name for version used.'
   notes: 'ai_mitre_attack_enterprise also exists but beware of hallucinations'
-  file: 'lookups/mitre_attack_enterprise_aliases_v16_0.txt'
+  file: 'lookups/mitre_attack_enterprise_aliases_v18_0.txt'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: dogesec
@@ -66,7 +66,7 @@ lookup_mitre_attack_mobile_id:
   name: 'MITRE ATT&CK Mobile IDs'
   description: 'Extracts MITRE ATT&CK Mobile IDs from text. See lookup name for version used.'
   notes: 'ai_mitre_attack_mobile also exists but beware of hallucinations'
-  file: 'lookups/mitre_attack_mobile_id_v16_0.txt'
+  file: 'lookups/mitre_attack_mobile_id_v18_0.txt'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: dogesec
@@ -80,7 +80,7 @@ lookup_mitre_attack_mobile_name:
   name: 'MITRE ATT&CK Mobile names'
   description: 'Extracts MITRE ATT&CK Mobile names from text. See lookup name for version used.'
   notes: 'ai_mitre_attack_mobile also exists but beware of hallucinations'
-  file: 'lookups/mitre_attack_mobile_name_v16_0.txt'
+  file: 'lookups/mitre_attack_mobile_name_v18_0.txt'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: dogesec
@@ -94,7 +94,7 @@ lookup_mitre_attack_mobile_alias:
   name: 'MITRE ATT&CK Mobile alias'
   description: 'Extracts MITRE ATT&CK Mobile aliases from text. See lookup name for version used.'
   notes: 'ai_mitre_attack_mobile also exists but beware of hallucinations'
-  file: 'lookups/mitre_attack_mobile_aliases_v16_0.txt'
+  file: 'lookups/mitre_attack_mobile_aliases_v18_0.txt'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: dogesec
@@ -108,7 +108,7 @@ lookup_mitre_attack_ics_id:
   name: 'MITRE ATT&CK ICS IDs'
   description: 'Extracts MITRE ATT&CK ICS names from text. See lookup name for version used.'
   notes: 'ai_mitre_attack_ics also exists but beware of hallucinations'
-  file: 'lookups/mitre_attack_ics_id_v16_0.txt'
+  file: 'lookups/mitre_attack_ics_id_v18_0.txt'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: dogesec
@@ -122,7 +122,7 @@ lookup_mitre_attack_ics_name:
   name: 'MITRE ATT&CK ICS names'
   description: 'Extracts MITRE ATT&CK ICS names from text. See lookup name for version used.'
   notes: 'ai_mitre_attack_ics also exists but beware of hallucinations'
-  file: 'lookups/mitre_attack_ics_name_v16_0.txt'
+  file: 'lookups/mitre_attack_ics_name_v18_0.txt'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: dogesec
@@ -136,7 +136,7 @@ lookup_mitre_attack_ics_alias:
   name: 'MITRE ATT&CK ICS alias'
   description: 'Extracts MITRE ATT&CK ICS aliases from text. See lookup name for version used.'
   notes: 'ai_mitre_attack_ics also exists but beware of hallucinations'
-  file: 'lookups/mitre_attack_ics_aliases_v16_0.txt'
+  file: 'lookups/mitre_attack_ics_aliases_v18_0.txt'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: dogesec
@@ -182,7 +182,7 @@ lookup_mitre_cwe_id:
   name: MITRE CWE IDs
   description: 'Extracts MITRE CWE IDs from text. See lookup name for version used.'
   notes: 'ai_mitre_cwe also exists but beware of hallucinations'
-  file: 'lookups/mitre_cwe_id_v4_15.txt'
+  file: 'lookups/mitre_cwe_id_v4_18.txt'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: dogesec
@@ -196,7 +196,7 @@ lookup_mitre_cwe_name:
   name: MITRE CWE names
   description: 'Extracts MITRE CWE names from text. See lookup name for version used.'
   notes: 'ai_mitre_cwe also exists but beware of hallucinations'
-  file: 'lookups/mitre_cwe_name_v4_15.txt'
+  file: 'lookups/mitre_cwe_name_v4_18.txt'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: dogesec
@@ -212,7 +212,7 @@ lookup_mitre_atlas_id:
   name: MITRE ATLAS IDs
   description: 'Extracts MITRE ATLAS IDs from text. See lookup name for version used.'
   notes: 'No corresponding AI version yet due to poor AI performance'
-  file: 'lookups/mitre_atlas_id_v4_5_2.txt'
+  file: 'lookups/mitre_atlas_id_v4_9_0.txt'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: dogesec
@@ -226,7 +226,7 @@ lookup_mitre_atlas_name:
   name: MITRE ATLAS names
   description: 'Extracts MITRE ATLAS names from text. See lookup name for version used.'
   notes: 'No corresponding AI version yet due to poor AI performance'
-  file: 'lookups/mitre_atlas_name_v4_5_2.txt'
+  file: 'lookups/mitre_atlas_name_v4_9_0.txt'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: dogesec
@@ -242,7 +242,7 @@ lookup_disarm_id:
   name: DISARM names
   description: 'Extracts DISARM IDs from text. See lookup name for version used.'
   notes: 'No corresponding AI version yet due to poor AI performance'
-  file: 'lookups/disarm_id_v1_5.txt'
+  file: 'lookups/disarm_id_v1_6.txt'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: dogesec
@@ -256,13 +256,29 @@ lookup_disarm_name:
   name: DISARM IDs
   description: 'Extracts DISARM names from text. See lookup name for version used.'
   notes: 'No corresponding AI version yet due to poor AI performance'
-  file: 'lookups/disarm_name_v1_5.txt'
+  file: 'lookups/disarm_name_v1_6.txt'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: dogesec
   version: 1.0.0
   test_cases: generic_disarm_name
   stix_mapping: ctibutler-disarm-name
+
+####### Sector #######
+
+lookup_sector_alias:
+  type: lookup
+  dogesec_web: false
+  name: 'Sector names'
+  description: 'Extracts Sector alias from text.'
+  notes: 'ai_mitre_attack_ics also exists but beware of hallucinations'
+  file: 'lookups/sector_aliases_v1_0.txt'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: dogesec
+  version: 1.0.0
+  test_cases: generic_sector_aliases
+  stix_mapping: ctibutler-sector-alias
 
 ####### Generic Extractions #######
 
@@ -391,3 +407,5 @@ lookup_tool:
   version: 1.0.0
   test_cases: lookup_tool
   stix_mapping: tool
+
+

@@ -1,0 +1,4295 @@
+Revert Cloud Instance
+Modify Cloud Resource Hierarchy
+PowerShell Profile
+Malvertising
+Weaken Encryption
+Active Setup
+Transport Agent
+AppleScript
+Reduce Key Space
+Indirect Command Execution
+Backup Software Discovery
+Systemctl
+Implant Internal Image
+Threat Intel Vendors
+Rogue Domain Controller
+Defacement
+Unused/Unsupported Cloud Regions
+DHCP Spoofing
+Bind Mounts
+Trap
+Bandwidth Hijacking
+Poisoned Pipeline Execution
+Right-to-Left Override
+Container Administration Command
+Disable Crypto Hardware
+Build Image on Host
+DNS Calculation
+Cloud Storage Object Discovery
+Exfiltration to Code Repository
+Cloud Service Hijacking
+Selective Exclusion
+Internal Spearphishing
+Services File Permissions Weakness
+Remote Access Hardware
+Email Bombing
+Cloud Application Integration
+Python Startup Hooks
+Relocate Malware
+Screensaver
+Hardware Additions
+Exclusive Control
+Email Spoofing
+Space after Filename
+Re-opened Applications
+Serverless Execution
+Create Snapshot
+Firmware Corruption
+Network Device Authentication
+FrostyGoop Incident
+ShadowRay
+SPACEHOP Activity
+Leviathan Australian Intrusions
+Network Intrusion Prevention
+Vulnerability Scanning
+Limit Access to Resource Over Network
+Remote Data Storage
+Filter Network Traffic
+Restrict Web-Based Content
+Limit Software Installation
+Application Developer Guidance
+Limit Hardware Installation
+User Training
+User Account Control
+Operating System Configuration
+Data Backup
+Execution Prevention
+Credential Access Protection
+Code Signing
+Environment Variable Permissions
+Data Loss Prevention
+Privileged Process Integrity
+Do Not Mitigate
+Pre-compromise
+SSL/TLS Inspection
+Boot Integrity
+Out-of-Band Communications Channel
+Network Segmentation
+Threat Intelligence Program
+Password Policies
+Behavior Prevention on Endpoint
+User Account Management
+Restrict File and Directory Permissions
+Privileged Account Management
+Restrict Registry Permissions
+Antivirus/Antimalware
+Multi-factor Authentication
+Software Configuration
+Application Isolation and Sandboxing
+Audit
+Exploit Protection
+Active Directory Configuration
+Update Software
+Restrict Library Loading
+Disable or Remove Feature or Program
+Account Use Policies
+Encrypt Sensitive Information
+NEODYMIUM
+GCMAN
+AppleJeus
+Moafee
+Gallmaker
+ZIRCONIUM
+Rocke
+Winter Vivern
+Poseidon Group
+RedCurl
+APT-C-23
+Stealth Falcon
+Silent Librarian
+Equation
+Darkhotel
+Scarlet Mimic
+FIN4
+BlackOasis
+HDoor
+TrickBot
+cd00r
+PowerDuke
+EKANS
+BLINDINGCAN
+Ninja
+Pikabot
+Wiarp
+RCSession
+Spark
+QuietSieve
+SynAck
+Bumblebee
+MURKYTOP
+AcidRain
+GRIFFON
+Exaramel for Windows
+Amadey
+JumbledPath
+RDFSNIFFER
+NICECURL
+Proxysvc
+Orz
+Torisma
+NOKKI
+yty
+Backdoor.Oldrea
+DOGCALL
+Stuxnet
+Downdelph
+RotaJakiro
+AvosLocker
+SEASHARPEE
+Get2
+POWRUNER
+KOPILUWAK
+RobbinHood
+MEDUSA
+VersaMem
+Power Loader
+TDTESS
+Chinoxy
+SharpStage
+PAKLOG
+COATHANGER
+Sardonic
+Smoke Loader
+HALFBAKED
+WindTail
+Misdat
+reGeorg
+FLIPSIDE
+Linux Rabbit
+adbupd
+Emissary
+Exaramel for Linux
+KEYMARBLE
+BUBBLEWRAP
+HAWKBALL
+TAMECAT
+PS1
+Ursnif
+CASTLETAP
+ThreatNeedle
+RansomHub
+ZLib
+RedLeaves
+Miner-C
+POWERSOURCE
+LITTLELAMB.WOOLTEA
+Felismus
+Zeus Panda
+GeminiDuke
+Havoc
+CARROTBAT
+Matryoshka
+FrameworkPOS
+GravityRAT
+WEBC2
+Prestige
+InvisibleFerret
+Bankshot
+SharpDisco
+StrongPity
+HAPPYWORK
+xCaon
+PLAINTEE
+Pony
+WinMM
+Nebulae
+Janicab
+AuditCred
+Lurid
+TONESHELL
+UPSTYLE
+Kasidet
+Hannotog
+OceanSalt
+Playcrypt
+Brave Prince
+Medusa Ransomware
+RainyDay
+Ecipekac
+AppleSeed
+BUSHWALK
+macOS.OSAMiner
+LOWBALL
+NETWIRE
+TinyTurla
+PyDCrypt
+J-magic
+PowerExchange
+BOOKWORM
+HyperStack
+iKitten
+HAMMERTOSS
+OLDBAIT
+Bad Rabbit
+CosmicDuke
+EvilGrab
+EnvyScout
+SslMM
+STATICPLUGIN
+IMAPLoader
+GreyEnergy
+Gomir
+Aria-body
+Emotet
+SNUGRIDE
+Olympic Destroyer
+BOLDMOVE
+Crimson
+Tomiris
+TEARDROP
+DUSTTRAP
+Turian
+THINCRUST
+BADHATCH
+Machete
+PowerLess
+Action RAT
+Avenger
+DUSTPAN
+Prikormka
+PUBLOAD
+Gootloader
+PingPull
+WellMess
+Dacls
+DropBook
+Woody RAT
+Mafalda
+KARAE
+Squirrelwaffle
+ELMER
+CANONSTAGER
+PolyglotDuke
+HexEval Loader
+Umbreon
+AuTo Stealer
+ShrinkLocker
+Hildegard
+Agent.btz
+SLOWDRIFT
+SHUTTERSPEED
+SombRAT
+ODAgent
+BlackByte 2.0 Ransomware
+FlawedGrace
+FLASHFLOOD
+FlawedAmmyy
+Snip3
+FYAnti
+Rifdoor
+SUGARUSH
+LoFiSe
+HOPLIGHT
+Cuckoo Stealer
+GuLoader
+MobileOrder
+WastedLocker
+RegDuke
+ProLock
+Moneybird
+InvisiMole
+CLAIMLOADER
+P.A.S. Webshell
+QUIETEXIT
+Naid
+Apostle
+Volgmer
+WINERACK
+WhisperGate
+FruitFly
+ZeroT
+Keydnap
+AcidPour
+RDAT
+Hacking Team UEFI Rootkit
+Skidmap
+Okrum
+TRANSLATEXT
+Regin
+Bonadan
+Line Dancer
+SamSam
+Neoichor
+Conti
+Raspberry Robin
+Mispadu
+RemoteCMD
+Megazord
+Diavol
+REPTILE
+Raindrop
+Doki
+TEXTMATE
+Siloscape
+BlackCat
+Fysbis
+IcedID
+VERMIN
+UBoatRAT
+Nightdoor
+MarkiRAT
+PowerShower
+Kazuar
+NavRAT
+DarkComet
+NETEAGLE
+POORAIM
+HUI Loader
+CHIMNEYSWEEP
+Ragnar Locker
+FatDuke
+Lucifer
+BlackEnergy
+zwShell
+Zeroaccess
+GLASSTOKEN
+DCSrv
+DRATzarus
+BOOSTWRITE
+Rising Sun
+ASPXSpy
+NotPetya
+ShimRat
+Chrommme
+BADFLICK
+ObliqueRAT
+SHOTPUT
+Avaddon
+Conficker
+SocGholish
+Flagpro
+Hi-Zor
+SpicyOmelette
+XAgentOSX
+Green Lambert
+China Chopper
+SnappyTCP
+CALENDAR
+LockerGoga
+LightSpy
+Chaos
+ISMInjector
+PUNCHBUGGY
+GoldMax
+HELLOKITTY
+CostaBricks
+Cheerscrypt
+LIGHTWIRE
+KeyBoy
+POSHSPY
+MiniDuke
+HyperBro
+Anchor
+Line Runner
+Pteranodon
+DarkTortilla
+BeaverTail
+ROKRAT
+CORESHELL
+RunningRAT
+VPNFilter
+SplatDropper
+Babuk
+Exbyte
+DarkWatchman
+Dyre
+BlackMould
+Javali
+PACEMAKER
+LunarLoader
+BBSRAT
+PlugX
+Reaver
+Bisonal
+MultiLayer Wiper
+S-Type
+Lumma Stealer
+SeaDuke
+BS2005
+DustySky
+Duqu
+Truvasys
+Remsec
+Industroyer2
+Sykipot
+Explosive
+Xbash
+Rover
+Epic
+LightNeuron
+Peppy
+KEYPLUG
+Cuba
+DEATHRANSOM
+Clambling
+Akira
+DarkGate
+Mongall
+NanHaiShu
+LockBit 3.0
+SVCReady
+ThiefQuest
+FoggyWeb
+NGLite
+Carbanak
+XTunnel
+Hydraq
+SHARPSTATS
+Ferocious
+HOMEFRY
+CreepyDrive
+Caterpillar WebShell
+Netwalker
+Elise
+USBferry
+WannaCry
+Gazer
+TSCookie
+Latrodectus
+Saint Bot
+Pay2Key
+Chaes
+Briba
+CharmPower
+TYPEFRAME
+3PARA RAT
+Bundlore
+P8RAT
+VIRTUALPIE
+EVILNUM
+KOMPROGO
+SMOKEDHAM
+Mori
+QUADAGENT
+Sagerunex
+TAINTEDSCRIBE
+Sys10
+pngdowner
+Royal
+BendyBear
+Uroburos
+Metamorfo
+Spica
+Embargo
+Trojan.Karagany
+Bandook
+PipeMon
+SYNful Knock
+MagicRAT
+TINYTYPHON
+KONNI
+T9000
+Winnti for Linux
+RAPIDPULSE
+gh0st RAT
+Shamoon
+Skeleton Key
+DnsSystem
+MoleNet
+CORALDECK
+JHUHUGIT
+SPACESHIP
+BLUELIGHT
+KGH_SPY
+down_new
+Ixeshe
+Micropsia
+Kerrdown
+RARSTONE
+RedLine Stealer
+VBShower
+BPFDoor
+Black Basta
+ZeroCleare
+Catchamas
+StoneDrill
+OopsIE
+4H RAT
+RogueRobin
+Attor
+DealersChoice
+SQLRat
+LitePower
+MegaCortex
+StreamEx
+BoxCaon
+NightClub
+Crutch
+Akira _v2
+SDBbot
+Mosquito
+RTM
+QUIETCANARY
+Derusbi
+BlackByte Ransomware
+SodaMaster
+Hikit
+StrelaStealer
+Grandoreiro
+WellMail
+LiteDuke
+Starloader
+Sakula
+VaporRage
+RawPOS
+Sibot
+ZxxZ
+Tarrask
+GoBear
+WINDSHIELD
+Drovorub
+Shark
+Bazar
+PULSECHECK
+Kobalos
+BadPatch
+MESSAGETAP
+RATANKBA
+SUGARDUMP
+XLoader
+SOUNDBITE
+BADCALL
+hcdLoader
+Nidiran
+MoonWind
+CorKLOG
+Ryuk
+Cryptoistic
+HermeticWiper
+ABK
+Pysa
+Wiper
+Final1stspy
+MgBot
+ccf32
+Kapeka
+LockBit 2.0
+OilCheck
+Zebrocy
+Pandora
+FinFisher
+SpeakUp
+LunarMail
+WARPWIRE
+CrossRAT
+OwaAuth
+Cadelspy
+Cobalt Strike
+SampleCheck5000
+SUNBURST
+EvilBunny
+Wingbird
+Cobian RAT
+HotCroissant
+ServHelper
+JCry
+Unknown Logger
+REvil
+RIPTIDE
+Valak
+Samurai
+PinchDuke
+Milan
+USBStealer
+OSX_OCEANLOTUS.D
+OilBooster
+CCBkdr
+OnionDuke
+Taidoor
+SHIPSHAPE
+Cherry Picker
+SUPERNOVA
+P2P ZeuS
+Kivars
+CaddyWiper
+Cyclops Blink
+Seasalt
+NativeZone
+NanoCore
+TajMahal
+PLEAD
+Raccoon Stealer
+IPsec Helper
+Daserf
+GoldFinder
+Carbon
+LoJax
+Cardinal RAT
+DanBot
+BISCUIT
+Calisto
+Solar
+Pisloader
+GoldenSpy
+Gold Dragon
+RGDoor
+Ramsay
+Neo-reGeorg
+FakeM
+Carberp
+FRAMESTING
+HARDRAIN
+NKAbuse
+Pillowmint
+TrailBlazer
+Revenge RAT
+MacMa
+FunnyDream
+ROADSWEEP
+SUNSPOT
+MOPSLED
+More_eggs
+SysUpdate
+TinyZBot
+OutSteel
+BackConfig
+PowGoop
+Kwampirs
+Nerex
+BoomBox
+DEADEYE
+PUNCHTRACK
+Proton
+Trojan.Mebromi
+Mango
+InnaputRAT
+WIREFIRE
+Kessel
+GrimAgent
+LookBack
+STEADYPULSE
+Clop
+NetTraveler
+YAHOYAH
+Lokibot
+CallMe
+ROCKBOOT
+CloudDuke
+Egregor
+PoetRAT
+CHOPSTICK
+StealBit
+FELIXROOT
+ZxShell
+RIFLESPINE
+SLIGHTPULSE
+NDiskMonitor
+CoinTicker
+DDKONG
+Penquin
+BabyShark
+Cannon
+CreepySnail
+build_downer
+Melcoz
+Winnti for Windows
+PowerPunch
+BONDUPDATER
+Troll Stealer
+BLACKCOFFEE
+BFG Agonizer
+Ebury
+Kinsing
+PITSTOP
+Meteor
+njRAT
+ZIPLINE
+Maze
+BOOTRASH
+HIUPAN
+ComRAT
+TURNEDUP
+ChChes
+PowerStallion
+ANDROMEDA
+Manjusaka
+IceApple
+JPIN
+VIRTUALPITA
+metaMain
+SideTwist
+KOCTOPUS
+MechaFlounder
+Psylo
+Heyoka Backdoor
+HTTPBrowser
+Mis-Type
+LunarWeb
+XCSSET
+Disco
+Dipsind
+Octopus
+KillDisk
+Qilin
+AppleJeus
+SoreFang
+STARWHALE
+MirageFox
+Industroyer
+DownPaper
+Socksbot
+Pcexter
+HIDEDRV
+CozyCar
+Kevin
+Agent Tesla
+Pasam
+httpclient
+POWERSTATS
+POWERTON
+StarProxy
+ECCENTRICBANDWAGON
+BADNEWS
+Linfo
+Goopy
+ShadowPad
+Remexi
+Astaroth
+QakBot
+SYSCON
+CookieMiner
+Hancitor
+Gelsemium
+jRAT
+Helminth
+Dridex
+BBK
+Komplex
+OSX/Shlayer
+Denis
+INC Ransomware
+DEADWOOD
+GLOOXMAIL
+Dok
+SplatCloak
+Waterbear
+FIVEHANDS
+Comnie
+Vasport
+AutoIt backdoor
+JSS Loader
+PHOREAL
+OSInfo
+MacSpy
+Lizar
+Dtrack
+H1N1
+SLOWPULSE
+Seth-Locker
+LoudMiner
+Azorult
+BitPaymer
+BACKSPACE
+Zox
+UPPERCUT
+ADVSTORESHELL
+StrifeWater
+Mivast
+HiddenWasp
+WarzoneRAT
+Net Crawler
+SLOTHFULMEDIA
+FALLCHILL
+XORIndex Loader
+Small Sieve
+Flame
+HermeticWizard
+Net
+RemoteUtilities
+Covenant
+NPPSPY
+BloodHound
+certutil
+at
+UACMe
+ShimRatReporter
+Sliver
+SILENTTRINITY
+PowerSploit
+Pacu
+Windows Credential Editor
+Impacket
+ipconfig
+AADInternals
+Tasklist
+Lslsass
+Arp
+spwebmember
+Empire
+ifconfig
+FRP
+dsquery
+PcShare
+RawDisk
+netstat
+PoshC2
+Fgdump
+xCmd
+CSPY Downloader
+Rclone
+MimiPenguin
+netsh
+CARROTBALL
+BITSAdmin
+meek
+AsyncRAT
+ROADTools
+Brute Ratel C4
+Peirates
+Remcos
+Systeminfo
+Out1
+ConnectWise
+attrib
+Imminent Monitor
+Ruler
+Forfiles
+Winexe
+MCMD
+Nltest
+MailSniper
+sqlmap
+pwdump
+Responder
+Pass-The-Hash Toolkit
+Donut
+Mimikatz
+gsecdump
+IronNetInjector
+nbtstat
+Invoke-PSImage
+NBTscan
+LaZagne
+Ping
+cmd
+route
+esentutl
+CrackMapExec
+Koadic
+schtasks
+Cachedump
+Expand
+Pupy
+Reg
+ftp
+Mythic
+HTRAN
+SDelete
+QuasarRAT
+cipher.exe
+Rubeus
+Tor
+AdFind
+Wevtutil
+Havij
+Quick Assist
+PsExec
+Analytic 0110
+Analytic 0613
+Analytic 0769
+Analytic 0068
+Analytic 0887
+Analytic 0061
+Analytic 1421
+Analytic 0295
+Analytic 0534
+Analytic 0010
+Analytic 0491
+Analytic 1104
+Analytic 1112
+Analytic 1532
+Analytic 0417
+Analytic 0726
+Analytic 0469
+Analytic 0053
+Analytic 0860
+Analytic 0876
+Analytic 0595
+Analytic 0656
+Analytic 1063
+Analytic 1079
+Analytic 1503
+Analytic 0036
+Analytic 0856
+Analytic 0736
+Analytic 0296
+Analytic 1531
+Analytic 1115
+Analytic 0530
+Analytic 1365
+Analytic 0008
+Analytic 1488
+Analytic 1473
+Analytic 0867
+Analytic 1061
+Analytic 0679
+Analytic 0809
+Analytic 0771
+Analytic 1209
+Analytic 0478
+Analytic 1251
+Analytic 0447
+Analytic 1007
+Analytic 0075
+Analytic 0032
+Analytic 0121
+Analytic 1339
+Analytic 0437
+Analytic 1987
+Analytic 0699
+Analytic 1187
+Analytic 1291
+Analytic 0917
+Analytic 0797
+Analytic 0224
+Analytic 0834
+Analytic 1427
+Analytic 1976
+Analytic 1619
+Analytic 1247
+Analytic 1132
+Analytic 0817
+Analytic 0145
+Analytic 0308
+Analytic 0211
+Analytic 1037
+Analytic 1023
+Analytic 1448
+Analytic 1090
+Analytic 0997
+Analytic 1143
+Analytic 0775
+Analytic 0928
+Analytic 1965
+Analytic 1244
+Analytic 1253
+Analytic 1089
+Analytic 0256
+Analytic 1628
+Analytic 2030
+Analytic 0142
+Analytic 0192
+Analytic 0184
+Analytic 0046
+Analytic 1211
+Analytic 0732
+Analytic 1074
+Analytic 0459
+Analytic 1165
+Analytic 0496
+Analytic 0892
+Analytic 0134
+Analytic 0871
+Analytic 0147
+Analytic 0244
+Analytic 1204
+Analytic 1357
+Analytic 1566
+Analytic 0925
+Analytic 1995
+Analytic 0872
+Analytic 0969
+Analytic 0197
+Analytic 0665
+Analytic 0239
+Analytic 1229
+Analytic 0034
+Analytic 0266
+Analytic 0467
+Analytic 1156
+Analytic 1434
+Analytic 1567
+Analytic 0023
+Analytic 1460
+Analytic 0868
+Analytic 0312
+Analytic 0791
+Analytic 1499
+Analytic 1093
+Analytic 1179
+Analytic 0027
+Analytic 0805
+Analytic 2006
+Analytic 0209
+Analytic 1207
+Analytic 1176
+Analytic 1960
+Analytic 1621
+Analytic 0884
+Analytic 0103
+Analytic 0396
+Analytic 0466
+Analytic 0904
+Analytic 0081
+Analytic 0602
+Analytic 0549
+Analytic 1119
+Analytic 0130
+Analytic 1125
+Analytic 1134
+Analytic 0975
+Analytic 0410
+Analytic 0982
+Analytic 1193
+Analytic 0203
+Analytic 0372
+Analytic 1020
+Analytic 0178
+Analytic 1085
+Analytic 0841
+Analytic 0458
+Analytic 0794
+Analytic 0959
+Analytic 0004
+Analytic 1420
+Analytic 0934
+Analytic 1525
+Analytic 0705
+Analytic 0837
+Analytic 1094
+Analytic 0164
+Analytic 0284
+Analytic 1522
+Analytic 1216
+Analytic 1017
+Analytic 0676
+Analytic 0195
+Analytic 1006
+Analytic 0367
+Analytic 0765
+Analytic 1435
+Analytic 1455
+Analytic 0045
+Analytic 1170
+Analytic 0568
+Analytic 0219
+Analytic 0394
+Analytic 2026
+Analytic 1031
+Analytic 1514
+Analytic 0329
+Analytic 1437
+Analytic 0855
+Analytic 0223
+Analytic 0782
+Analytic 0963
+Analytic 1641
+Analytic 1417
+Analytic 0731
+Analytic 0833
+Analytic 1595
+Analytic 0652
+Analytic 1940
+Analytic 1356
+Analytic 0342
+Analytic 1129
+Analytic 0236
+Analytic 0107
+Analytic 0688
+Analytic 1468
+Analytic 1215
+Analytic 1158
+Analytic 0537
+Analytic 0377
+Analytic 1623
+Analytic 1969
+Analytic 1269
+Analytic 0348
+Analytic 0057
+Analytic 1640
+Analytic 1036
+Analytic 1066
+Analytic 1629
+Analytic 1611
+Analytic 1554
+Analytic 0716
+Analytic 1526
+Analytic 1360
+Analytic 1064
+Analytic 0150
+Analytic 0596
+Analytic 0101
+Analytic 0079
+Analytic 1281
+Analytic 1008
+Analytic 1555
+Analytic 0521
+Analytic 1305
+Analytic 1971
+Analytic 0409
+Analytic 1396
+Analytic 0386
+Analytic 0605
+Analytic 0378
+Analytic 1326
+Analytic 0291
+Analytic 1478
+Analytic 0980
+Analytic 1416
+Analytic 0958
+Analytic 0941
+Analytic 1183
+Analytic 1565
+Analytic 0698
+Analytic 0795
+Analytic 0263
+Analytic 1333
+Analytic 1592
+Analytic 0842
+Analytic 0500
+Analytic 1948
+Analytic 1025
+Analytic 0557
+Analytic 1106
+Analytic 2007
+Analytic 1268
+Analytic 0968
+Analytic 1027
+Analytic 1944
+Analytic 1021
+Analytic 0838
+Analytic 0609
+Analytic 1614
+Analytic 0517
+Analytic 1963
+Analytic 1265
+Analytic 0796
+Analytic 0432
+Analytic 0879
+Analytic 1051
+Analytic 0322
+Analytic 0735
+Analytic 1418
+Analytic 1224
+Analytic 1138
+Analytic 0822
+Analytic 1154
+Analytic 0227
+Analytic 0486
+Analytic 0100
+Analytic 0727
+Analytic 0672
+Analytic 1249
+Analytic 1497
+Analytic 1058
+Analytic 1407
+Analytic 0196
+Analytic 0988
+Analytic 1048
+Analytic 1059
+Analytic 0650
+Analytic 0531
+Analytic 1245
+Analytic 0351
+Analytic 0763
+Analytic 2032
+Analytic 0190
+Analytic 1465
+Analytic 2004
+Analytic 0889
+Analytic 1556
+Analytic 1422
+Analytic 0070
+Analytic 1084
+Analytic 0913
+Analytic 1030
+Analytic 1337
+Analytic 0397
+Analytic 0632
+Analytic 1200
+Analytic 0304
+Analytic 0451
+Analytic 1385
+Analytic 0337
+Analytic 0473
+Analytic 1201
+Analytic 0540
+Analytic 1308
+Analytic 0571
+Analytic 1146
+Analytic 0999
+Analytic 0493
+Analytic 0514
+Analytic 0512
+Analytic 0433
+Analytic 0626
+Analytic 0163
+Analytic 1449
+Analytic 2005
+Analytic 1107
+Analytic 0522
+Analytic 0758
+Analytic 0851
+Analytic 1533
+Analytic 0939
+Analytic 1537
+Analytic 1312
+Analytic 0083
+Analytic 1287
+Analytic 0484
+Analytic 0545
+Analytic 0873
+Analytic 1552
+Analytic 0584
+Analytic 0877
+Analytic 1351
+Analytic 0042
+Analytic 0501
+Analytic 0112
+Analytic 0356
+Analytic 1114
+Analytic 1009
+Analytic 0314
+Analytic 1174
+Analytic 0664
+Analytic 0819
+Analytic 0202
+Analytic 0499
+Analytic 1214
+Analytic 0015
+Analytic 0330
+Analytic 0407
+Analytic 0013
+Analytic 0259
+Analytic 1399
+Analytic 0544
+Analytic 1604
+Analytic 1026
+Analytic 0814
+Analytic 0827
+Analytic 0686
+Analytic 0750
+Analytic 0518
+Analytic 0770
+Analytic 0710
+Analytic 1272
+Analytic 0149
+Analytic 0039
+Analytic 0498
+Analytic 1517
+Analytic 1485
+Analytic 0082
+Analytic 1246
+Analytic 1166
+Analytic 0090
+Analytic 0141
+Analytic 0069
+Analytic 1162
+Analytic 0956
+Analytic 0294
+Analytic 1338
+Analytic 1570
+Analytic 0439
+Analytic 1501
+Analytic 0371
+Analytic 0078
+Analytic 0966
+Analytic 1203
+Analytic 1580
+Analytic 0408
+Analytic 0049
+Analytic 1352
+Analytic 1002
+Analytic 1217
+Analytic 1319
+Analytic 0477
+Analytic 0844
+Analytic 0623
+Analytic 0547
+Analytic 1494
+Analytic 1610
+Analytic 1317
+Analytic 0170
+Analytic 0620
+Analytic 0938
+Analytic 0059
+Analytic 0132
+Analytic 1429
+Analytic 0604
+Analytic 0313
+Analytic 1937
+Analytic 1442
+Analytic 1364
+Analytic 0216
+Analytic 0067
+Analytic 0418
+Analytic 1103
+Analytic 1381
+Analytic 0824
+Analytic 1952
+Analytic 1088
+Analytic 0429
+Analytic 0362
+Analytic 0399
+Analytic 1157
+Analytic 0228
+Analytic 1500
+Analytic 1186
+Analytic 1378
+Analytic 1065
+Analytic 0030
+Analytic 0678
+Analytic 0171
+Analytic 0807
+Analytic 0003
+Analytic 1992
+Analytic 0542
+Analytic 0733
+Analytic 1300
+Analytic 0494
+Analytic 1359
+Analytic 1213
+Analytic 0395
+Analytic 0180
+Analytic 1151
+Analytic 1404
+Analytic 1457
+Analytic 1121
+Analytic 0757
+Analytic 0972
+Analytic 2012
+Analytic 0124
+Analytic 0128
+Analytic 0315
+Analytic 0567
+Analytic 1959
+Analytic 0556
+Analytic 0900
+Analytic 1042
+Analytic 1123
+Analytic 0208
+Analytic 0708
+Analytic 1052
+Analytic 0381
+Analytic 0776
+Analytic 1991
+Analytic 1410
+Analytic 0526
+Analytic 1195
+Analytic 2008
+Analytic 1966
+Analytic 1254
+Analytic 0520
+Analytic 1208
+Analytic 1289
+Analytic 0577
+Analytic 0572
+Analytic 1142
+Analytic 1636
+Analytic 1490
+Analytic 1237
+Analytic 1415
+Analytic 1344
+Analytic 0985
+Analytic 0191
+Analytic 0587
+Analytic 1256
+Analytic 1325
+Analytic 1626
+Analytic 1349
+Analytic 0155
+Analytic 0539
+Analytic 1355
+Analytic 0306
+Analytic 0553
+Analytic 1970
+Analytic 0250
+Analytic 0085
+Analytic 1450
+Analytic 0965
+Analytic 1221
+Analytic 1155
+Analytic 1583
+Analytic 1301
+Analytic 1430
+Analytic 0038
+Analytic 1113
+Analytic 1267
+Analytic 0799
+Analytic 0374
+Analytic 0444
+Analytic 1152
+Analytic 1569
+Analytic 0280
+Analytic 0440
+Analytic 1949
+Analytic 1979
+Analytic 0597
+Analytic 0364
+Analytic 1126
+Analytic 0747
+Analytic 0691
+Analytic 0878
+Analytic 0694
+Analytic 0031
+Analytic 0702
+Analytic 0911
+Analytic 0354
+Analytic 0701
+Analytic 0193
+Analytic 1014
+Analytic 1986
+Analytic 1549
+Analytic 0343
+Analytic 0636
+Analytic 1994
+Analytic 1235
+Analytic 1389
+Analytic 0787
+Analytic 0091
+Analytic 0953
+Analytic 1330
+Analytic 0749
+Analytic 1956
+Analytic 0108
+Analytic 1309
+Analytic 1292
+Analytic 1321
+Analytic 0973
+Analytic 1071
+Analytic 0457
+Analytic 0237
+Analytic 0703
+Analytic 0403
+Analytic 1572
+Analytic 0629
+Analytic 0785
+Analytic 2002
+Analytic 0324
+Analytic 1320
+Analytic 0136
+Analytic 0054
+Analytic 1538
+Analytic 0056
+Analytic 1521
+Analytic 1578
+Analytic 1083
+Analytic 1411
+Analytic 0402
+Analytic 1523
+Analytic 1431
+Analytic 1573
+Analytic 0828
+Analytic 0902
+Analytic 1548
+Analytic 0639
+Analytic 1034
+Analytic 1401
+Analytic 0680
+Analytic 0697
+Analytic 1452
+Analytic 0996
+Analytic 1000
+Analytic 0783
+Analytic 1529
+Analytic 1466
+Analytic 0272
+Analytic 0630
+Analytic 0127
+Analytic 0936
+Analytic 1510
+Analytic 0158
+Analytic 0253
+Analytic 0724
+Analytic 1322
+Analytic 0167
+Analytic 2000
+Analytic 1982
+Analytic 0508
+Analytic 1383
+Analytic 1199
+Analytic 1491
+Analytic 0829
+Analytic 1560
+Analytic 1519
+Analytic 0606
+Analytic 1953
+Analytic 0113
+Analytic 0790
+Analytic 0865
+Analytic 0647
+Analytic 1210
+Analytic 0174
+Analytic 0102
+Analytic 0096
+Analytic 1117
+Analytic 0275
+Analytic 1161
+Analytic 0214
+Analytic 1189
+Analytic 0648
+Analytic 1181
+Analytic 0515
+Analytic 0480
+Analytic 0325
+Analytic 0619
+Analytic 1484
+Analytic 0475
+Analytic 0122
+Analytic 1222
+Analytic 0213
+Analytic 0187
+Analytic 1182
+Analytic 0443
+Analytic 0820
+Analytic 1942
+Analytic 0268
+Analytic 0419
+Analytic 0793
+Analytic 1588
+Analytic 0502
+Analytic 1602
+Analytic 0254
+Analytic 0420
+Analytic 1372
+Analytic 0690
+Analytic 0286
+Analytic 1615
+Analytic 1060
+Analytic 0384
+Analytic 1467
+Analytic 0413
+Analytic 1406
+Analytic 0111
+Analytic 0151
+Analytic 1534
+Analytic 1379
+Analytic 0993
+Analytic 0188
+Analytic 1092
+Analytic 0347
+Analytic 1336
+Analytic 0981
+Analytic 1506
+Analytic 0586
+Analytic 1078
+Analytic 0874
+Analytic 0510
+Analytic 0077
+Analytic 0234
+Analytic 1001
+Analytic 1581
+Analytic 0578
+Analytic 0427
+Analytic 0983
+Analytic 1400
+Analytic 1240
+Analytic 0503
+Analytic 1520
+Analytic 0267
+Analytic 0580
+Analytic 1609
+Analytic 0185
+Analytic 1172
+Analytic 0139
+Analytic 0673
+Analytic 0095
+Analytic 0784
+Analytic 1062
+Analytic 0166
+Analytic 1019
+Analytic 0309
+Analytic 1627
+Analytic 1004
+Analytic 0905
+Analytic 0026
+Analytic 0978
+Analytic 0246
+Analytic 0780
+Analytic 1180
+Analytic 0668
+Analytic 0931
+Analytic 1472
+Analytic 1483
+Analytic 0162
+Analytic 1981
+Analytic 0779
+Analytic 0756
+Analytic 1553
+Analytic 1508
+Analytic 1316
+Analytic 1955
+Analytic 1462
+Analytic 0778
+Analytic 0210
+Analytic 0899
+Analytic 0319
+Analytic 0541
+Analytic 1108
+Analytic 1069
+Analytic 0160
+Analytic 1147
+Analytic 0349
+Analytic 1622
+Analytic 0616
+Analytic 0311
+Analytic 1574
+Analytic 1443
+Analytic 1413
+Analytic 1258
+Analytic 2024
+Analytic 0989
+Analytic 0358
+Analytic 0660
+Analytic 0198
+Analytic 1040
+Analytic 0560
+Analytic 0060
+Analytic 1477
+Analytic 1540
+Analytic 0094
+Analytic 1498
+Analytic 1219
+Analytic 0850
+Analytic 1335
+Analytic 1544
+Analytic 0199
+Analytic 0285
+Analytic 1190
+Analytic 0746
+Analytic 1033
+Analytic 1375
+Analytic 0608
+Analytic 0920
+Analytic 0916
+Analytic 1984
+Analytic 0248
+Analytic 0274
+Analytic 1487
+Analytic 1438
+Analytic 0846
+Analytic 0588
+Analytic 0400
+Analytic 1341
+Analytic 0535
+Analytic 1997
+Analytic 0897
+Analytic 0532
+Analytic 0944
+Analytic 0328
+Analytic 1424
+Analytic 1951
+Analytic 1591
+Analytic 0465
+Analytic 0225
+Analytic 1218
+Analytic 0137
+Analytic 1145
+Analytic 1277
+Analytic 0350
+Analytic 0093
+Analytic 0255
+Analytic 0086
+Analytic 0368
+Analytic 0269
+Analytic 1943
+Analytic 0554
+Analytic 0005
+Analytic 0591
+Analytic 1299
+Analytic 0825
+Analytic 0573
+Analytic 0281
+Analytic 0685
+Analytic 0200
+Analytic 0154
+Analytic 0722
+Analytic 0767
+Analytic 0316
+Analytic 2022
+Analytic 0813
+Analytic 0416
+Analytic 1559
+Analytic 1382
+Analytic 0288
+Analytic 0715
+Analytic 0812
+Analytic 1482
+Analytic 1637
+Analytic 1550
+Analytic 1290
+Analytic 0947
+Analytic 0382
+Analytic 1447
+Analytic 0635
+Analytic 0919
+Analytic 0471
+Analytic 1423
+Analytic 1252
+Analytic 0720
+Analytic 0229
+Analytic 0317
+Analytic 0411
+Analytic 0745
+Analytic 0243
+Analytic 1607
+Analytic 1118
+Analytic 0942
+Analytic 0910
+Analytic 0561
+Analytic 0144
+Analytic 1070
+Analytic 0283
+Analytic 1283
+Analytic 0682
+Analytic 1493
+Analytic 0657
+Analytic 1463
+Analytic 1471
+Analytic 0607
+Analytic 1492
+Analytic 1613
+Analytic 0479
+Analytic 0692
+Analytic 0847
+Analytic 0663
+Analytic 0485
+Analytic 1096
+Analytic 1131
+Analytic 0843
+Analytic 0373
+Analytic 1346
+Analytic 0895
+Analytic 0504
+Analytic 0040
+Analytic 0109
+Analytic 0334
+Analytic 0742
+Analytic 1255
+Analytic 0017
+Analytic 0689
+Analytic 0492
+Analytic 1160
+Analytic 0098
+Analytic 1496
+Analytic 0326
+Analytic 1177
+Analytic 1331
+Analytic 1010
+Analytic 0357
+Analytic 0428
+Analytic 0361
+Analytic 0194
+Analytic 0293
+Analytic 1486
+Analytic 0205
+Analytic 1369
+Analytic 0957
+Analytic 0857
+Analytic 1459
+Analytic 0454
+Analytic 0896
+Analytic 1551
+Analytic 0097
+Analytic 0880
+Analytic 0761
+Analytic 1585
+Analytic 0654
+Analytic 2018
+Analytic 0816
+Analytic 0182
+Analytic 0759
+Analytic 0072
+Analytic 2017
+Analytic 0687
+Analytic 0218
+Analytic 0287
+Analytic 1511
+Analytic 0548
+Analytic 0186
+Analytic 0115
+Analytic 0614
+Analytic 1968
+Analytic 1329
+Analytic 0450
+Analytic 1273
+Analytic 0627
+Analytic 0649
+Analytic 0426
+Analytic 1446
+Analytic 1297
+Analytic 0422
+Analytic 1120
+Analytic 0992
+Analytic 0412
+Analytic 0114
+Analytic 0231
+Analytic 1057
+Analytic 0265
+Analytic 0126
+Analytic 1288
+Analytic 0558
+Analytic 1476
+Analytic 1454
+Analytic 1436
+Analytic 0773
+Analytic 0006
+Analytic 1967
+Analytic 0345
+Analytic 1599
+Analytic 0552
+Analytic 0226
+Analytic 1168
+Analytic 0482
+Analytic 2013
+Analytic 0864
+Analytic 0575
+Analytic 0441
+Analytic 0063
+Analytic 1481
+Analytic 1055
+Analytic 1950
+Analytic 0393
+Analytic 1586
+Analytic 0143
+Analytic 1941
+Analytic 1635
+Analytic 0951
+Analytic 0675
+Analytic 1194
+Analytic 1386
+Analytic 0589
+Analytic 0832
+Analytic 0340
+Analytic 0389
+Analytic 1332
+Analytic 0513
+Analytic 0754
+Analytic 1512
+Analytic 1989
+Analytic 0806
+Analytic 0628
+Analytic 2003
+Analytic 0230
+Analytic 1035
+Analytic 0489
+Analytic 0264
+Analytic 1077
+Analytic 0401
+Analytic 0235
+Analytic 0962
+Analytic 0260
+Analytic 0743
+Analytic 1307
+Analytic 0601
+Analytic 0201
+Analytic 1280
+Analytic 0181
+Analytic 1271
+Analytic 0370
+Analytic 0802
+Analytic 0744
+Analytic 1479
+Analytic 1558
+Analytic 0363
+Analytic 1327
+Analytic 0599
+Analytic 0707
+Analytic 0387
+Analytic 0921
+Analytic 0051
+Analytic 1192
+Analytic 0505
+Analytic 0346
+Analytic 1225
+Analytic 0976
+Analytic 0748
+Analytic 0366
+Analytic 0908
+Analytic 0960
+Analytic 1405
+Analytic 1557
+Analytic 0468
+Analytic 2025
+Analytic 1603
+Analytic 1489
+Analytic 0594
+Analytic 0669
+Analytic 0025
+Analytic 1983
+Analytic 1148
+Analytic 0241
+Analytic 0421
+Analytic 1642
+Analytic 0024
+Analytic 1248
+Analytic 0667
+Analytic 0156
+Analytic 0979
+Analytic 1050
+Analytic 0625
+Analytic 0404
+Analytic 1263
+Analytic 0592
+Analytic 0804
+Analytic 0529
+Analytic 1475
+Analytic 0644
+Analytic 2027
+Analytic 1286
+Analytic 0998
+Analytic 0723
+Analytic 1067
+Analytic 1985
+Analytic 0543
+Analytic 1978
+Analytic 1368
+Analytic 0028
+Analytic 2010
+Analytic 1226
+Analytic 1631
+Analytic 0436
+Analytic 0945
+Analytic 0462
+Analytic 0700
+Analytic 0729
+Analytic 0658
+Analytic 0738
+Analytic 0434
+Analytic 0922
+Analytic 1408
+Analytic 1039
+Analytic 0923
+Analytic 0483
+Analytic 1575
+Analytic 1632
+Analytic 1576
+Analytic 1412
+Analytic 0138
+Analytic 0950
+Analytic 1403
+Analytic 1137
+Analytic 0859
+Analytic 1173
+Analytic 1542
+Analytic 1639
+Analytic 0940
+Analytic 0617
+Analytic 1150
+Analytic 1954
+Analytic 1605
+Analytic 0050
+Analytic 0618
+Analytic 1313
+Analytic 1432
+Analytic 0157
+Analytic 0064
+Analytic 1109
+Analytic 0022
+Analytic 1371
+Analytic 1171
+Analytic 0415
+Analytic 0633
+Analytic 2019
+Analytic 0088
+Analytic 2023
+Analytic 0021
+Analytic 0431
+Analytic 0576
+Analytic 0615
+Analytic 1303
+Analytic 0536
+Analytic 1298
+Analytic 1972
+Analytic 1425
+Analytic 1095
+Analytic 0258
+Analytic 1130
+Analytic 0551
+Analytic 0376
+Analytic 0810
+Analytic 0474
+Analytic 1279
+Analytic 1102
+Analytic 0435
+Analytic 1414
+Analytic 1212
+Analytic 1260
+Analytic 0380
+Analytic 0273
+Analytic 0751
+Analytic 0298
+Analytic 1005
+Analytic 1387
+Analytic 1296
+Analytic 1072
+Analytic 0220
+Analytic 1377
+Analytic 0772
+Analytic 0058
+Analytic 0222
+Analytic 1220
+Analytic 0257
+Analytic 1028
+Analytic 1388
+Analytic 0318
+Analytic 2016
+Analytic 0153
+Analytic 0881
+Analytic 1164
+Analytic 1024
+Analytic 1480
+Analytic 1315
+Analytic 1571
+Analytic 0331
+Analytic 0801
+Analytic 0741
+Analytic 1233
+Analytic 0894
+Analytic 0645
+Analytic 0948
+Analytic 0971
+Analytic 1285
+Analytic 0481
+Analytic 0335
+Analytic 0970
+Analytic 0176
+Analytic 1353
+Analytic 0538
+Analytic 1939
+Analytic 1099
+Analytic 0764
+Analytic 1546
+Analytic 1015
+Analytic 1433
+Analytic 1231
+Analytic 1587
+Analytic 1043
+Analytic 0161
+Analytic 1111
+Analytic 0177
+Analytic 1993
+Analytic 0967
+Analytic 1029
+Analytic 1239
+Analytic 1505
+Analytic 1998
+Analytic 0891
+Analytic 1451
+Analytic 0344
+Analytic 2031
+Analytic 0964
+Analytic 0424
+Analytic 0336
+Analytic 1167
+Analytic 0984
+Analytic 1105
+Analytic 0932
+Analytic 1958
+Analytic 1311
+Analytic 0455
+Analytic 1358
+Analytic 0379
+Analytic 0734
+Analytic 0339
+Analytic 0674
+Analytic 1380
+Analytic 1625
+Analytic 0175
+Analytic 1191
+Analytic 1419
+Analytic 0661
+Analytic 0084
+Analytic 1946
+Analytic 0129
+Analytic 0300
+Analytic 0961
+Analytic 0392
+Analytic 0011
+Analytic 0721
+Analytic 0603
+Analytic 1470
+Analytic 1278
+Analytic 0247
+Analytic 0875
+Analytic 0670
+Analytic 0798
+Analytic 0360
+Analytic 0523
+Analytic 0278
+Analytic 1495
+Analytic 0566
+Analytic 1439
+Analytic 0125
+Analytic 1041
+Analytic 0974
+Analytic 1596
+Analytic 0883
+Analytic 1964
+Analytic 1350
+Analytic 0148
+Analytic 0643
+Analytic 0425
+Analytic 1568
+Analytic 0800
+Analytic 0863
+Analytic 1579
+Analytic 2029
+Analytic 1324
+Analytic 1238
+Analytic 0585
+Analytic 0391
+Analytic 1561
+Analytic 0506
+Analytic 0087
+Analytic 0927
+Analytic 1242
+Analytic 0762
+Analytic 1230
+Analytic 1022
+Analytic 0681
+Analytic 0943
+Analytic 1366
+Analytic 1310
+Analytic 0994
+Analytic 0338
+Analytic 1980
+Analytic 1159
+Analytic 0310
+Analytic 0495
+Analytic 0826
+Analytic 0249
+Analytic 0696
+Analytic 0290
+Analytic 0624
+Analytic 0009
+Analytic 0179
+Analytic 1302
+Analytic 0926
+Analytic 1391
+Analytic 0173
+Analytic 1076
+Analytic 1638
+Analytic 1294
+Analytic 0456
+Analytic 0430
+Analytic 0666
+Analytic 0014
+Analytic 1370
+Analytic 1016
+Analytic 0929
+Analytic 0574
+Analytic 1594
+Analytic 0848
+Analytic 1044
+Analytic 1620
+Analytic 1169
+Analytic 0818
+Analytic 0152
+Analytic 1293
+Analytic 0089
+Analytic 1241
+Analytic 1202
+Analytic 1962
+Analytic 0232
+Analytic 0390
+Analytic 0383
+Analytic 1474
+Analytic 1097
+Analytic 1445
+Analytic 1100
+Analytic 1444
+Analytic 1056
+Analytic 1101
+Analytic 0525
+Analytic 0823
+Analytic 0463
+Analytic 0207
+Analytic 1243
+Analytic 0341
+Analytic 0037
+Analytic 1306
+Analytic 1227
+Analytic 0693
+Analytic 1340
+Analytic 1398
+Analytic 0016
+Analytic 0092
+Analytic 0131
+Analytic 0671
+Analytic 1197
+Analytic 0768
+Analytic 1617
+Analytic 1343
+Analytic 0786
+Analytic 0105
+Analytic 1441
+Analytic 1228
+Analytic 0684
+Analytic 1348
+Analytic 0369
+Analytic 1630
+Analytic 1081
+Analytic 0725
+Analytic 0189
+Analytic 0206
+Analytic 0907
+Analytic 1562
+Analytic 0080
+Analytic 0116
+Analytic 0414
+Analytic 0712
+Analytic 1149
+Analytic 1988
+Analytic 1961
+Analytic 0271
+Analytic 0590
+Analytic 0490
+Analytic 1047
+Analytic 0307
+Analytic 1284
+Analytic 0320
+Analytic 1259
+Analytic 0019
+Analytic 0918
+Analytic 0808
+Analytic 1354
+Analytic 0183
+Analytic 0169
+Analytic 1590
+Analytic 0472
+Analytic 1598
+Analytic 1624
+Analytic 0986
+Analytic 0861
+Analytic 2001
+Analytic 0204
+Analytic 0497
+Analytic 0683
+Analytic 1003
+Analytic 1395
+Analytic 1257
+Analytic 1616
+Analytic 0305
+Analytic 0562
+Analytic 0076
+Analytic 1276
+Analytic 0052
+Analytic 1122
+Analytic 2011
+Analytic 0739
+Analytic 0119
+Analytic 0924
+Analytic 0641
+Analytic 1323
+Analytic 0516
+Analytic 1282
+Analytic 1363
+Analytic 0251
+Analytic 0276
+Analytic 1012
+Analytic 0212
+Analytic 1938
+Analytic 2009
+Analytic 0789
+Analytic 0301
+Analytic 0839
+Analytic 1266
+Analytic 1342
+Analytic 0135
+Analytic 0662
+Analytic 0120
+Analytic 1545
+Analytic 1541
+Analytic 0546
+Analytic 0048
+Analytic 0885
+Analytic 0598
+Analytic 0507
+Analytic 0987
+Analytic 0470
+Analytic 0882
+Analytic 1144
+Analytic 1038
+Analytic 0718
+Analytic 1582
+Analytic 0869
+Analytic 0527
+Analytic 0261
+Analytic 0423
+Analytic 0890
+Analytic 1295
+Analytic 1530
+Analytic 0292
+Analytic 0849
+Analytic 0303
+Analytic 0033
+Analytic 0811
+Analytic 0583
+Analytic 1011
+Analytic 0906
+Analytic 0385
+Analytic 1513
+Analytic 1601
+Analytic 1223
+Analytic 2015
+Analytic 1509
+Analytic 1196
+Analytic 0104
+Analytic 1045
+Analytic 0352
+Analytic 1234
+Analytic 1139
+Analytic 1456
+Analytic 0912
+Analytic 0488
+Analytic 1608
+Analytic 0460
+Analytic 0133
+Analytic 1392
+Analytic 1153
+Analytic 0903
+Analytic 0323
+Analytic 1518
+Analytic 0438
+Analytic 0297
+Analytic 1618
+Analytic 0677
+Analytic 1390
+Analytic 0977
+Analytic 1232
+Analytic 1502
+Analytic 0029
+Analytic 0252
+Analytic 1367
+Analytic 0461
+Analytic 1393
+Analytic 0830
+Analytic 1328
+Analytic 0579
+Analytic 1250
+Analytic 0870
+Analytic 1597
+Analytic 2014
+Analytic 0245
+Analytic 1426
+Analytic 0704
+Analytic 0840
+Analytic 1593
+Analytic 2020
+Analytic 0570
+Analytic 0123
+Analytic 1275
+Analytic 1990
+Analytic 0655
+Analytic 0600
+Analytic 0634
+Analytic 1206
+Analytic 0240
+Analytic 1547
+Analytic 0071
+Analytic 0159
+Analytic 1091
+Analytic 0550
+Analytic 1973
+Analytic 0893
+Analytic 0146
+Analytic 1049
+Analytic 1314
+Analytic 1402
+Analytic 0788
+Analytic 0282
+Analytic 0221
+Analytic 1606
+Analytic 0737
+Analytic 0946
+Analytic 1643
+Analytic 1270
+Analytic 1198
+Analytic 1304
+Analytic 0711
+Analytic 0781
+Analytic 1977
+Analytic 1564
+Analytic 0990
+Analytic 0933
+Analytic 0406
+Analytic 0858
+Analytic 0476
+Analytic 0753
+Analytic 0528
+Analytic 1073
+Analytic 0740
+Analytic 1384
+Analytic 0565
+Analytic 0299
+Analytic 0555
+Analytic 0642
+Analytic 0821
+Analytic 0815
+Analytic 0106
+Analytic 1075
+Analytic 0898
+Analytic 1345
+Analytic 0446
+Analytic 2021
+Analytic 0610
+Analytic 0442
+Analytic 1535
+Analytic 0752
+Analytic 0835
+Analytic 0774
+Analytic 1128
+Analytic 1098
+Analytic 0949
+Analytic 1264
+Analytic 0935
+Analytic 0713
+Analytic 0375
+Analytic 0452
+Analytic 1184
+Analytic 1175
+Analytic 0242
+Analytic 0355
+Analytic 0862
+Analytic 1262
+Analytic 0792
+Analytic 0803
+Analytic 1947
+Analytic 1046
+Analytic 1974
+Analytic 0233
+Analytic 0937
+Analytic 0930
+Analytic 1374
+Analytic 0836
+Analytic 1612
+Analytic 0044
+Analytic 1110
+Analytic 0262
+Analytic 0353
+Analytic 1633
+Analytic 0564
+Analytic 0638
+Analytic 1397
+Analytic 0901
+Analytic 0995
+Analytic 0043
+Analytic 1116
+Analytic 0777
+Analytic 2028
+Analytic 0066
+Analytic 0852
+Analytic 0464
+Analytic 1394
+Analytic 0622
+Analytic 1318
+Analytic 0659
+Analytic 1464
+Analytic 1205
+Analytic 0055
+Analytic 0651
+Analytic 0954
+Analytic 0563
+Analytic 1600
+Analytic 1133
+Analytic 0007
+Analytic 1032
+Analytic 1536
+Analytic 0640
+Analytic 0611
+Analytic 1469
+Analytic 0730
+Analytic 0453
+Analytic 1975
+Analytic 0631
+Analytic 0238
+Analytic 0041
+Analytic 0118
+Analytic 1440
+Analytic 1507
+Analytic 0062
+Analytic 1163
+Analytic 1086
+Analytic 1458
+Analytic 1274
+Analytic 0766
+Analytic 0270
+Analytic 0333
+Analytic 1516
+Analytic 0653
+Analytic 1141
+Analytic 1082
+Analytic 0831
+Analytic 0012
+Analytic 0854
+Analytic 1453
+Analytic 0018
+Analytic 1053
+Analytic 1634
+Analytic 0559
+Analytic 1236
+Analytic 0289
+Analytic 0706
+Analytic 0002
+Analytic 1178
+Analytic 1188
+Analytic 0321
+Analytic 0695
+Analytic 0365
+Analytic 1018
+Analytic 0509
+Analytic 1362
+Analytic 0760
+Analytic 1347
+Analytic 0277
+Analytic 0637
+Analytic 1539
+Analytic 0853
+Analytic 1957
+Analytic 1068
+Analytic 1515
+Analytic 0065
+Analytic 0165
+Analytic 0646
+Analytic 0445
+Analytic 1361
+Analytic 0582
+Analytic 0073
+Analytic 1999
+Analytic 0581
+Analytic 1577
+Analytic 0388
+Analytic 0172
+Analytic 1135
+Analytic 0569
+Analytic 0359
+Analytic 0755
+Analytic 1373
+Analytic 0728
+Analytic 0001
+Analytic 0449
+Analytic 1524
+Analytic 1261
+Analytic 1136
+Analytic 0709
+Analytic 0914
+Analytic 0099
+Analytic 0533
+Analytic 0117
+Analytic 1087
+Analytic 1584
+Analytic 0621
+Analytic 0047
+Analytic 1054
+Analytic 0332
+Analytic 0519
+Analytic 0991
+Analytic 0487
+Analytic 0327
+Analytic 0279
+Analytic 1528
+Analytic 0593
+Analytic 0909
+Analytic 1334
+Analytic 0302
+Analytic 0524
+Analytic 1543
+Analytic 0035
+Analytic 0511
+Analytic 0952
+Analytic 0168
+Analytic 0020
+Analytic 1461
+Analytic 0888
+Analytic 1080
+Analytic 0215
+Analytic 0217
+Analytic 0398
+Analytic 0955
+Analytic 0448
+Analytic 1504
+Analytic 0612
+Analytic 0717
+Analytic 1376
+Analytic 0915
+Analytic 0405
+Analytic 1996
+Analytic 0140
+Analytic 1013
+Analytic 1140
+Analytic 1409
+Analytic 0714
+Analytic 1589
+Analytic 1124
+Analytic 0845
+Analytic 1127
+Analytic 0886
+Analytic 1945
+Analytic 1185
+Analytic 1428
+Analytic 0719
+Analytic 0866
+Analytic 1527
+Analytic 1563
+Analytic 0074
+Active Directory Credential Request
+WMI Creation
+Group Modification
+Image Modification
+Pod Enumeration
+Response Content
+Volume Metadata
+Response Metadata
+Windows Registry Key Deletion
+Instance Stop
+Malware Content
+Snapshot Deletion
+Network Connection Creation
+Process Access
+Active Directory Object Creation
+Certificate Registration
+File Access
+Kernel Module Load
+Instance Enumeration
+File Creation
+Active DNS
+Driver Load
+Network Traffic Content
+Logon Session Metadata
+Volume Deletion
+Process Creation
+Drive Creation
+Snapshot Creation
+Cloud Storage Modification
+Instance Modification
+Instance Metadata
+Cloud Storage Deletion
+Drive Modification
+Pod Creation
+Service Creation
+Cloud Storage Access
+Cloud Storage Creation
+Active Directory Object Modification
+Active Directory Object Access
+Web Credential Creation
+Container Start
+Process Termination
+File Metadata
+Service Modification
+Pod Modification
+Command Execution
+Drive Access
+Firewall Metadata
+Service Metadata
+Instance Deletion
+Scheduled Job Metadata
+Windows Registry Key Creation
+File Modification
+Host Status
+Image Deletion
+Snapshot Metadata
+Cloud Service Enumeration
+Group Metadata
+Group Enumeration
+Social Media
+Active Directory Object Deletion
+Container Enumeration
+Malware Metadata
+OS API Execution
+Application Log Content
+Logon Session Creation
+Script Execution
+Container Creation
+Network Traffic Flow
+User Account Authentication
+Image Creation
+Cloud Service Metadata
+Image Metadata
+Instance Creation
+User Account Metadata
+Named Pipe Metadata
+Firmware Modification
+Firewall Enumeration
+Module Load
+Firewall Disable
+Passive DNS
+User Account Modification
+Firewall Rule Modification
+Volume Modification
+Process Modification
+User Account Deletion
+Windows Registry Key Modification
+Volume Creation
+User Account Creation
+Cloud Storage Metadata
+Cloud Service Modification
+File Deletion
+Cloud Service Disable
+Volume Enumeration
+Windows Registry Key Access
+Process Metadata
+Snapshot Modification
+Scheduled Job Creation
+Network Share Access
+Driver Metadata
+Instance Start
+Scheduled Job Modification
+Cloud Storage Enumeration
+Web Credential Usage
+Domain Registration
+Snapshot Enumeration
+Behavioral Detection of Network Share Connection Removal via CLI and SMB Disconnects
+Detect Abuse of vSphere Installation Bundles (VIBs) for Persistent Access
+Detection of Kernel/User-Level Rootkit Behavior Across Platforms
+Detect Remote Email Collection via Abnormal Login and Programmatic Access
+Detection of Malicious Control Panel Item Execution via control.exe or Rundll32
+Detect Suspicious or Malicious Code Signing Abuse
+Detection of Link Target
+Detection of Botnet
+Detect Archiving and Encryption of Collected Data (T1560)
+Multi-Event Detection for SMB Admin Share Lateral Movement
+Detection Strategy for T1546.016 - Event Triggered Execution via Installer Packages
+Detection of Malware
+Behavioral Detection of User Discovery via Local and Remote Enumeration
+Detection Strategy for Plist File Modification (T1647)
+Detection Strategy for Impair Defenses Indicator Blocking
+Detection Strategy for Accessibility Feature Hijacking via Binary Replacement or Registry Modification
+Detection of Msiexec Abuse for Local, Network, and DLL Execution
+Detection Strategy for Dynamic API Resolution via Hash-Based Function Lookups
+Detection Strategy for Hijack Execution Flow across OS platforms.
+Detection Strategy for Hijack Execution Flow using Executable Installer File Permissions Weakness
+Detection Strategy for Event Triggered Execution via Trap (T1546.005)
+Behavioral Detection of Mailbox Data and Log Deletion for Anti-Forensics
+Detection Strategy for Encrypted Channel across OS Platforms
+Detection Strategy for NTFS File Attribute Abuse (ADS/EAs)
+Detection of Establish Accounts
+User-Initiated Malicious Library Installation via Package Manager (T1204.005)
+Detection Strategy for System Binary Proxy Execution: Regsvr32
+Detecting Steganographic Command and Control via File + Network Correlation
+Behavior-chain detection for T1134.001 Access Token Manipulation: Token Impersonation/Theft on Windows
+User Execution – Malicious Copy & Paste (browser/email → shell with obfuscated one-liner) – T1204.004
+Detect Adversary-in-the-Middle via Network and Configuration Anomalies
+Detection Strategy for Resource Forking on macOS
+Detection of Botnet
+Detection Strategy for SQL Stored Procedures Abuse via T1505.001
+Detecting Malicious Browser Extensions Across Platforms
+Detection of Registry Query for Environmental Discovery
+Detect Compromise of Host Software Binaries
+Detection Strategy for Hidden Windows
+Multi-Platform Cloud Storage Exfiltration Behavior Chain
+Detect Suspicious Access to Windows Credential Manager
+Detection of Data Staging Prior to Exfiltration
+Detection Strategy for Disable or Modify Cloud Firewall
+Detection of Network Topology
+Suspicious Addition to Local or Domain Groups
+Detection Strategy for Exploitation for Credential Access
+Credential Dumping from SAM via Registry Dump and Local File Access
+Brute Force Authentication Failures with Multi-Platform Log Correlation
+Detect LSA Authentication Package Persistence via Registry and LSASS DLL Load
+Detection of Command and Control Over Application Layer Protocols
+Detection Strategy for Lateral Tool Transfer across OS platforms
+Detection of Digital Certificates
+Detection Strategy for Modify Cloud Compute Infrastructure: Create Snapshot
+Masquerading via Space After Filename - Behavioral Detection Strategy
+Behavioral Detection of Publish/Subscribe Protocol Misuse for C2
+Detection of Spearphishing Service
+Detection Strategy for Log Enumeration
+Detection of Social Media Accounts
+Behavioral Detection of System Network Configuration Discovery
+Detection Strategy for Exfiltration Over Web Service
+Detection Strategy for ListPlanting Injection on Windows
+Detection Strategy of Transmitted Data Manipulation
+Credential Access via /etc/passwd and /etc/shadow Parsing
+Behavioral Detection of Windows Command Shell Execution
+Exploitation for Client Execution – cross-platform behavior chain (browser/Office/3rd-party apps)
+Behavioral detection for Supply Chain Compromise (package/update tamper → install → first-run)
+Suspicious Database Access and Dump Activity Across Environments (T1213.006)
+Cross-Platform Behavioral Detection of Python Execution
+Detect Credentials Access from Password Stores
+Detection Strategy for Endpoint DoS via Service Exhaustion Flood
+Detection Strategy for Extra Window Memory (EWM) Injection on Windows
+Detection Strategy for T1218.012 Verclsid Abuse
+Detection Strategy for Disable or Modify Linux Audit System
+Detection Strategy for Exclusive Control
+Detection Strategy for Disk Structure Wipe via Boot/Partition Overwrite
+Detection Strategy for Impersonation
+Traffic Signaling (Port-knock / magic-packet → firewall or service activation) – T1205
+Detection of Code Signing Certificates
+Behavior-chain detection for T1132.001 Data Encoding: Standard Encoding (Base64/Hex/MIME) across Windows, Linux, macOS, ESXi
+Detection of Cloud Accounts
+Detection of File Transfer Protocol-Based C2 (FTP, FTPS, SMB, TFTP)
+Detection Strategy for Junk Code Obfuscation with Suspicious Execution Patterns
+Behavioral Detection of Log File Clearing on Linux and macOS
+Detection of Remote Data Staging Prior to Exfiltration
+Detection Strategy for Reflection Amplification DoS (T1498.002)
+Detection Strategy for Temporary Elevated Cloud Access Abuse (T1548.005)
+Detection Strategy for Network Address Translation Traversal
+Local Account Enumeration Across Host Platforms
+Detection Strategy for Cloud Infrastructure Discovery
+T1136.001 Detection Strategy - Local Account Creation Across Platforms
+Cross-Platform Detection of Data Transfer to Cloud Account
+Detection Strategy for Debugger Evasion (T1622)
+Detection Strategy for Application Shimming via sdbinst.exe and Registry Artifacts (Windows)
+Email Collection via Local Email Access and Auto-Forwarding Behavior
+Behavioral Detection of Internet Connection Discovery
+Endpoint Resource Saturation and Crash Pattern Detection Across Platforms
+Detect Mark-of-the-Web (MOTW) Bypass via Container and Disk Image Files
+Detection Strategy for Dynamic Resolution using Domain Generation Algorithms.
+Detection Strategy for Role Addition to Cloud Accounts
+Container CLI and API Abuse via Docker/Kubernetes (T1059.013)
+Detection of Bluetooth-Based Data Exfiltration
+Detection Strategy for Hijack Execution Flow through Path Interception by Unquoted Path
+Detection of Web Session Cookie Theft via File, Memory, and Network Artifacts
+Detection fo Remote Service Session Hijacking for RDP.
+Detection Strategy for Process Argument Spoofing on Windows
+Detection Strategy for T1505 - Server Software Component
+Internal Proxy Behavior via Lateral Host-to-Host C2 Relay
+Detection Strategy for Endpoint DoS via Application or System Exploitation
+Detection Strategy for Ignore Process Interrupts
+Detection of Phishing for Information
+Multi-Platform Shutdown or Reboot Detection via Execution and Host Status Events
+Behavioral Detection Strategy for Use Alternate Authentication Material (T1550)
+Detection of Non-Application Layer Protocols for C2
+Cross-host C2 via Removable Media Relay
+Defacement via File and Web Content Modification Across Platforms
+Detect LLMNR/NBT-NS Poisoning and SMB Relay on Windows
+Detection Strategy for SNMP (MIB Dump) on Network Devices
+macOS AuthorizationExecuteWithPrivileges Elevation Prompt Detection
+Detection of Digital Certificates
+Detect Network Logon Script Abuse via Multi-Event Correlation on Windows
+Detection Strategy for Container and Resource Discovery
+Detect abuse of Trusted Relationships (third-party and delegated admin access)
+Detection Strategy for Weaken Encryption: Disable Crypto Hardware on Network Devices
+Detection Strategy for T1547.009 – Shortcut Modification (Windows)
+Detection of DNS
+Detection of Adversarial Process Discovery Behavior
+Behavioral Detection Strategy for Abuse of Sudo and Sudo Caching
+Detection of Network Devices
+Unix-like File Permission Manipulation Behavioral Chain Detection Strategy
+Detection of Employee Names
+Detection Strategy for T1505.004 - Malicious IIS Components
+Detection Strategy for Encrypted Channel via Symmetric Cryptography across OS Platforms
+Detection of Email Addresses
+Recursive Enumeration of Files and Directories Across Privilege Contexts
+Behavioral Detection of External Website Defacement across Platforms
+Detection of Domain Trust Discovery via API, Script, and CLI Enumeration
+Detecting Suspicious Access to CRM Data in SaaS Environments
+Detection of Domains
+Detect Kerberos Ticket Theft or Forgery (T1558)
+Behavioral Detection of Native API Invocation via Unusual DLL Loads and Direct Syscalls
+Detection of Local Data Collection Prior to Exfiltration
+Detection of Unauthorized DCSync Operations via Replication API Abuse
+Detection Strategy for Polymorphic Code Mutation and Execution
+Detection Strategy for System Services across OS platforms.
+Detection Strategy for Hijack Execution Flow through the AppDomainManager on Windows.
+Detection of Business Relationships
+Detection Strategy for Disk Content Wipe via Direct Access and Overwrite
+Unauthorized Network Firewall Rule Modification (T1562.013)
+Detect Domain Controller Authentication Process Modification (Skeleton Key)
+Detection of Search Open Websites/Domains
+Detection of Systemd Service Creation or Modification on Linux
+Detection of SEO Poisoning
+Programmatic and Excessive Access to Confluence Documentation
+Detection Strategy for AppCert DLLs Persistence via Registry Injection
+Detection of Local Browser Artifact Access for Reconnaissance
+Detection of Drive-by Target
+Detection of Domain or Tenant Policy Modifications via AD and Identity Provider
+Detection Strategy for Scheduled Transfer and Recurrent Exfiltration Patterns
+IDE Tunneling Detection via Process, File, and Network Behaviors
+Detect Logon Script Modifications and Execution
+Detect Abuse of Dynamic Data Exchange (T1559.002)
+Detection of Search Closed Sources
+Detection Strategy for Hidden Files and Directories
+Detection of Malware Relocation via Suspicious File Movement
+Detection Strategy for Power Settings Abuse
+Multi-hop Proxy Behavior via Relay Node Chaining, Onion Routing, and Network Tunneling
+Behavioral Detection of Masquerading Across Platforms via Metadata and Execution Discrepancy
+Detection Strategy for T1546.017 - Udev Rules (Linux)
+Detection of Malvertising
+Detection Strategy for Runtime Data Manipulation.
+Detection of Serverless
+Application Exhaustion Flood Detection Across Platforms
+Detect malicious IDE extension install/usage and IDE tunneling
+Detection of Firmware
+Resource Hijacking Detection Strategy
+Detection Strategy for Forged Web Credentials
+Detection Strategy for /proc Memory Injection on Linux
+Behavioral Detection of Asynchronous Procedure Call (APC) Injection via Remote Thread Queuing
+Detection Strategy for Dynamic Resolution using Fast Flux DNS
+Detection of Masqueraded Tasks or Services with Suspicious Naming and Execution
+Behavioral Detection of Network History and Configuration Tampering
+Clipboard Data Access with Anomalous Context
+Behavioral Detection of Thread Execution Hijacking via Thread Suspension and Context Switching
+Template Injection Detection - Windows
+Detection Strategy for Compile After Delivery - Source Code to Executable Transformation
+Abuse of Information Repositories for Data Collection
+Detection Strategy for Network Sniffing Across Platforms
+Detect XSL Script Abuse via msxsl and wmic
+Detect Remote Access via USB Hardware (TinyPilot, PiKVM)
+Behavioral Detection of Visual Basic Execution (VBS/VBA/VBScript)
+Behavioral Detection of Unix Shell Execution
+Detection Strategy for Hijack Execution Flow using Path Interception by PATH Environment Variable.
+Detection of Acquire Access
+Detection of Exploits
+Detection of Email Accounts
+Detection of Digital Certificates
+Detect Conditional Access Policy Modification in Identity and Cloud Platforms
+Detection of Purchase Technical Data
+Detection of Launch Agent Creation or Modification on macOS
+Hardware Supply Chain Compromise Detection via Host Status & Boot Integrity Checks
+Detecting Remote Script Proxy Execution via PubPrn.vbs
+Detection of Obtain Capabilities
+Detection Strategy for LC_LOAD_DYLIB Modification in Mach-O Binaries on macOS
+Detection of Credentials
+Domain Account Enumeration Across Platforms
+Detection Strategy for Dynamic Resolution through DNS Calculation
+Detection Strategy for Downgrade System Image on Network Devices
+Detection of Search Victim-Owned Websites
+Detection Strategy for ESXi Hypervisor CLI Abuse
+Detect Persistence via Malicious Office Add-ins
+Behavioral Detection of Remote SSH Logins Followed by Post-Login Execution
+Detection Strategy for Modify System Image on Network Devices
+Detection Strategy for Subvert Trust Controls using SIP and Trust Provider Hijacking.
+Detect User Activity Based Sandbox Evasion via Input & Artifact Probing
+Detection Strategy for Email Hiding Rules
+Detect Network Provider DLL Registration and Credential Capture
+Detection Strategy for T1136 - Create Account across platforms
+Detection Strategy for Hidden Virtual Instance Execution
+Detection of IP Addresses
+Behavioral Detection of Cloud Group Enumeration via API and CLI Access
+Detection of Acquire Infrastructure
+Detection Strategy for T1550.002 - Pass the Hash (Windows)
+Detecting Bulk or Anomalous Access to Private Code Repositories via SaaS Platforms
+Detection of Vulnerability Scanning
+Detection Strategy for T1528 - Steal Application Access Token
+Detection of Determine Physical Locations
+Detection of Stage Capabilities
+Detect persistence via reopened application plist modification (macOS)
+Detect Adversary Deobfuscation or Decoding of Files and Payloads
+Detection of Identify Roles
+Virtualization/Sandbox Evasion via System Checks across Windows, Linux, macOS
+Detection of Malware
+Detect Kerberos Ccache File Theft or Abuse (T1558.005)
+Detection of Proxy Infrastructure Setup and Traffic Bridging
+Detection of Remote Service Session Hijacking
+Behavioral Detection Strategy for Exfiltration Over Symmetric Encrypted Non-C2 Protocol
+Detection Strategy for Multi-Factor Authentication Request Generation (T1621)
+Automated File and API Collection Detection Across Platforms
+Detection Strategy for T1550.003 - Pass the Ticket (Windows)
+Behavior-chain detection strategy for T1127.001 Trusted Developer Utilities Proxy Execution: MSBuild (Windows)
+Detection of Social Media Accounts
+Linux Python Startup Hook Persistence via .pth and Customize Files (T1546.018)
+Detect Default File Association Hijack via Registry & Execution Correlation on Windows
+Detect Access to Cloud Instance Metadata API (IaaS)
+Detecting Code Injection via mavinject.exe (App-V Injector)
+Detection Strategy for Build Image on Host
+Detect Gatekeeper Bypass via Quarantine Flag and Trust Control Manipulation
+Credential Stuffing Detection via Reused Breached Credentials Across Services
+Detect Winlogon Helper DLL Abuse via Registry and Process Artifacts on Windows
+Detect Multi-Stage Command and Control Channels
+Detecting Downgrade Attacks
+Detection Strategy for Exploitation for Privilege Escalation
+Detect Access and Parsing of .bash_history Files for Credential Harvesting
+Account Access Removal via Multi-Platform Audit Correlation
+Behavioral Detection of PE Injection via Remote Memory Mapping
+Detect Ingress Tool Transfers via Behavioral Chain
+Detection Strategy for Addition of Email Delegate Permissions
+Behavior-chain detection strategy for T1127.003 Trusted Developer Utilities Proxy Execution: JamPlus (Windows)
+Multi-Platform File and Directory Permissions Modification Detection Strategy
+Behavioral Detection of Permission Groups Discovery
+Port-knock → rule/daemon change → first successful connect (T1205.001)
+Boot or Logon Initialization Scripts Detection Strategy
+Detect Access and Decryption of Group Policy Preference (GPP) Credentials in SYSVOL
+Detection Strategy for Traffic Duplication via Mirroring in IaaS and Network Devices
+Behavioral Detection of Domain Group Discovery
+Detection of DNS Server
+Detection Strategy for Login Hook Persistence on macOS
+Detection Strategy for Indicator Removal from Tools - Post-AV Evasion Modification
+Detection Strategy for Exfiltration to Text Storage Sites
+Detection of Search Threat Vendor Data
+Registry and LSASS Monitoring for Security Support Provider Abuse
+Detect Hybrid Identity Authentication Process Modification
+Cross-Platform Detection of Cron Job Abuse for Persistence and Execution
+Detection of Server
+Detection Strategy for SVG Smuggling with Script Execution and Delivery Behavior
+Detect Credential Discovery via Windows Registry Enumeration
+Detection Strategy for VBA Stomping
+Cross-Platform Detection of JavaScript Execution Abuse
+Detection Strategy for Email Spoofing
+Detection Strategy for MFA Interception via Input Capture and Smart Card Proxying
+Direct Network Flood Detection across IaaS, Linux, Windows, and macOS
+Detection of Virtual Private Server
+Detection Strategy for Event Triggered Execution: AppInit DLLs (Windows)
+Detection Strategy for Web Service: Dead Drop Resolver
+User Execution – multi-surface behavior chain (documents/links → helper/unpacker → LOLBIN/child → egress)
+Detect Office Startup-Based Persistence via Macros, Forms, and Registry Hooks
+Detection of Web Services
+Behavioral Detection of Indicator Removal Across Platforms
+Multi-event Detection Strategy for RDP-Based Remote Logins and Post-Access Activity
+Password Policy Discovery – cross-platform behavior-chain analytics
+Abuse of PowerShell for Arbitrary Execution
+Detection Strategy for Command Obfuscation
+Detect Subversion of Trust Controls via Certificate, Registry, and Attribute Manipulation
+Detection Strategy for File Creation or Modification of Boot Files
+System Discovery via Native and Remote Utilities
+Detect Persistence via Outlook Custom Forms Triggered by Malicious Email
+Behavioral Detection of Systemd Timer Abuse for Scheduled Execution
+Detect browser session hijacking via privilege, handle access, and remote thread into browsers
+Suspicious Use of Web Services for C2
+Detection Strategy for System Services: Launchctl
+Behavior-chain detection for T1134 Access Token Manipulation on Windows
+Detecting Protocol or Service Impersonation via Anomalous TLS, HTTP Header, and Port Mismatch Correlation
+Compromised software/update chain (installer/write → first-run/child → egress/signature anomaly)
+Detect Forged Kerberos Silver Tickets (T1558.002)
+Windows COM Hijacking Detection via Registry and DLL Load Correlation
+Behavior-chain detection for T1134.002 Create Process with Token (Windows)
+Detection of Credential Dumping from LSASS Memory via Access and Dump Sequence
+Detection Strategy for Data from Network Shared Drive
+Detection Strategy for Content Injection
+Obfuscated Binary Unpacking Detection via Behavioral Patterns
+Detection Strategy for Serverless Execution (T1648)
+Detection of Group Policy Modifications via AD Object Changes and File Activity
+Detection of Data Exfiltration via Removable Media
+Detection Strategy for T1136.003 - Cloud Account Creation across IaaS, IdP, SaaS, Office
+Detection of Develop Capabilities
+Detection Strategy for Steal or Forge Authentication Certificates
+Detection of Active Scanning
+Detection of Selective Exclusion
+Suspicious RoleBinding or ClusterRoleBinding Assignment in Kubernetes
+Detection of System Network Connections Discovery Across Platforms
+Detection Strategy for Hijack Execution Flow through Services File Permissions Weakness.
+Detect Modification of macOS Startup Items
+Detection Strategy for Phishing across platforms.
+Detection Strategy for Hijack Execution Flow through the KernelCallbackTable on Windows.
+Detection of Compromise Infrastructure
+Detection Strategy for T1497 Virtualization/Sandbox Evasion
+Detection of Malicious Code Execution via InstallUtil.exe
+Behavioral Detection of WinRM-Based Remote Access
+Detection of Vulnerabilities
+Detection of Upload Tool
+Detection of Persistence Artifact Removal Across Host Platforms
+Behavioral Detection of T1498 – Network Denial of Service Across Platforms
+Detect persistent or elevated container services via container runtime or cluster manipulation
+Removable Media Execution Chain Detection via File and Process Activity
+Detection Strategy for Hijack Execution Flow using the Windows COR_PROFILER.
+Detection Strategy for Hidden File System Abuse
+Behavioral Detection Strategy for Network Service Discovery Across Platforms
+Remote Desktop Software Execution and Beaconing Detection
+Detection Strategy for Process Doppelgänging on Windows
+Behavioral Detection Strategy for WMI Execution Abuse on Windows
+Detect Persistence via Malicious Outlook Rules
+Detect Suspicious Access to Private Key Files and Export Attempts Across Platforms
+Distributed Password Spraying via Authentication Failures Across Multiple Accounts
+Detection Strategy for Impair Defenses via Impair Command History Logging across OS platforms.
+Behavioral Detection of Command and Scripting Interpreter Abuse
+Detection Strategy for Virtual Machine Discovery
+Detection Strategy for Escape to Host
+Detection of Client Configurations
+Cloud Account Enumeration via API, CLI, and Scripting Interfaces
+Detection Strategy for System Services: Systemctl
+Detect Modification of Network Device Authentication via Patched System Images
+Detection of Script-Based Proxy Execution via Signed Microsoft Utilities
+Detection of Credential Harvesting via Web Portal Modification
+Credential Dumping via Sensitive Memory and Registry Access Correlation
+Detection Strategy for Cloud Application Integration
+Behavior-chain detection for T1132.002 Data Encoding: Non-Standard Encoding across Windows, Linux, macOS, ESXi
+Local Storage Discovery via Drive Enumeration and Filesystem Probing
+Detection Strategy for Safe Mode Boot Abuse
+Detect Abuse of Container APIs for Credential Access
+Detecting Mshta-based Proxy Execution via Suspicious HTA or Script Invocation
+Detect Use of Stolen Web Session Cookies Across Platforms
+Detection Strategy for Netsh Helper DLL Persistence via Registry and Child Process Monitoring (Windows)
+Detection Strategy for Spearphishing Attachment across OS Platforms
+Detection Strategy for Process Hollowing on Windows
+Detection Strategy for Overwritten Process Arguments Masquerading
+Detection Strategy for T1542.005 Pre-OS Boot: TFTP Boot
+Detect Local Email Collection via Outlook Data File Access and Command Line Tooling
+Detect Registry and Startup Folder Persistence (Windows)
+Detect Suspicious Access to Browser Credential Stores
+Detection of Gather Victim Network Information
+Detection Strategy for Hijack Execution Flow using Path Interception by Search Order Hijacking
+Behavioral Detection of Spoofed GUI Credential Prompts
+Detection of Cached Domain Credential Dumping via Local Hash Cache Access
+Detect Time-Based Evasion via Sleep, Timer Loops, and Delayed Execution
+Detection Strategy for T1505.002 - Transport Agent Abuse (Windows/Linux)
+Domain Fronting Behavior via Mismatched TLS SNI and HTTP Host Headers
+Detection of Exfiltration Over Alternate Network Interfaces
+Behavior-chain, platform-aware detection strategy for T1129 Shared Modules
+Detection of WHOIS
+Detection Strategy for Double File Extension Masquerading
+Detecting Odbcconf Proxy Execution of Malicious DLLs
+Detection of Wordlist Scanning
+Detecting Abnormal SharePoint Data Mining by Privileged or Rare Users
+Detection Strategy for Abuse Elevation Control Mechanism (T1548)
+Detection of Software
+Detection of Serverless
+Detect Abuse of Component Object Model (T1559.001)
+Behavioral Detection of Process Injection Across Platforms
+Behavior-chain, platform-aware detection strategy for T1124 System Time Discovery
+Detection Strategy for Dynamic Resolution across OS Platforms
+Detection Strategy for Embedded Payloads
+Behavior-chain detection for T1610 Deploy Container across Docker & Kubernetes control/node planes
+Detect ARP Cache Poisoning Across Linux, Windows, and macOS
+Multi-Platform Execution Guardrails Environmental Validation Detection Strategy
+Detect WMI Event Subscription for Persistence via WmiPrvSE Process and MOF Compilation
+Detection Strategy for Email Bombing
+Detect Malicious Modification of Pluggable Authentication Modules (PAM)
+Detecting .NET COM Registration Abuse via Regsvcs/Regasm
+Detection Strategy for Obfuscated Files or Information: Binary Padding
+Detection Strategy for Resource Hijacking: SMS Pumping via SaaS Application Logs
+Detect Abuse of Windows Time Providers for Persistence
+Detection Strategy for System Language Discovery
+Detection Strategy for System Location Discovery
+Detection of Trust Relationship Modifications in Domain or Tenant Policies
+Detection Strategy for Remote System Enumeration Behavior
+Detect DHCP Spoofing Across Linux, Windows, and macOS
+Detection of Code Repositories
+Drive-by Compromise — Behavior-based, Multi-platform Detection Strategy (T1189)
+Detection Strategy for TLS Callback Injection via PE Memory Modification and Hollowing
+Detection of DNS Server
+Detection of Abused or Compromised Cloud Accounts for Access and Persistence
+Windows DACL Manipulation Behavioral Chain Detection Strategy
+Detection of Compromise Accounts
+Detection of Malicious Kubernetes CronJob Scheduling
+Detection of Impair Defenses through Disabled or Modified Tools across OS Platforms.
+Backup Software Discovery via CLI, Registry, and Process Inspection (T1518.002)
+Detect Archiving via Library (T1560.002)
+Detection Strategy for Hijack Execution Flow through Service Registry Premission Weakness.
+Detection Strategy for T1218.011 Rundll32 Abuse
+Detection Strategy for T1542.002 Pre-OS Boot: Component Firmware
+Detect Unauthorized Access to Password Managers
+Detection Strategy for Steganographic Abuse in File & Script Execution
+Detection of Data Access and Collection from Removable Media
+Environmental Keying Discovery-to-Decryption Behavioral Chain Detection Strategy
+Detection of Valid Account Abuse Across Platforms
+Detection Strategy for T1547.010 – Port Monitor DLL Persistence via spoolsv.exe (Windows)
+Detection of Exfiltration Over Unencrypted Non-C2 Protocol
+Detection Strategy for HTML Smuggling via JavaScript Blob + Dynamic File Drop
+Detect Abuse of XPC Services (T1559.003)
+Detection Strategy for Cloud Service Discovery
+Detection Strategy for AutoHotKey & AutoIT Abuse
+Boot or Logon Autostart Execution Detection Strategy
+Detection of NTDS.dit Credential Dumping from Domain Controllers
+Detect Unsecured Credentials Shared in Chat Messages
+Detect Screen Capture via Commands and API Calls
+T1136.002 Detection Strategy - Domain Account Creation Across Platforms
+Firmware Modification via Flash Tool or Corrupted Firmware Upload
+Web Shell Detection via Server Behavior and File Execution Chains
+Detection Strategy for T1542 Pre-OS Boot
+Detection Strategy for Exfiltration to Code Repository
+Detection of Disabled or Modified System Firewalls across OS Platforms.
+Internal Spearphishing via Trusted Accounts
+Detection of Spoofed User-Agent
+Detection of Install Digital Certificate
+Behavioral Detection for Service Stop across Platforms
+Detection Strategy for LNK Icon Smuggling
+Detection Strategy for Fileless Storage via Registry, WMI, and Shared Memory
+Detection Strategy for Modify Cloud Compute Infrastructure
+Detection of AppleScript-Based Execution on macOS
+Behavioral Detection Strategy for Use Alternate Authentication Material: Application Access Token (T1550.001)
+Detection of Local Account Abuse for Initial Access and Persistence
+Behavioral Detection for T1490 - Inhibit System Recovery
+Detection of Gather Victim Host Information
+Detect Access to Unsecured Credential Files Across Platforms
+Detect Evil Twin Wi-Fi Access Points on Network Devices
+Detect Abuse of Inter-Process Communication (T1559)
+Password Guessing via Multi-Source Authentication Failure Correlation
+Detect Forced SMB/WebDAV Authentication via lure files and outbound NTLM
+Socket-filter trigger → on-host raw-socket activity → reverse connection (T1205.002)
+Detection Strategy for VDSO Hijacking on Linux
+Detection of Gather Victim Identity Information
+Windows Detection Strategy for T1547.012 - Print Processor DLL Persistence
+Detection Strategy for Masquerading via Legitimate Resource Name or Location
+Detection Strategy for Forged SAML Tokens
+Detection Strategy for Bind Mounts on Linux
+Detect Modification of Authentication Process via Reversible Encryption
+Behavioral Detection of Malicious File Deletion
+User Execution – Malicious Link (click → suspicious egress → download/write → follow-on activity)
+Detection Strategy for Hide Infrastructure
+Detecting PowerShell Execution via SyncAppvPublishingServer.vbs Proxy Abuse
+Abuse of Domain Accounts
+Detect Active Setup Persistence via StubPath Execution
+Behavioral Detection of Wi-Fi Discovery Activity
+Detecting Junk Data in C2 Channels via Behavioral Analysis
+Behavioral Detection of Unauthorized VNC Remote Control Sessions
+Suspicious Device Registration via Entra ID or MFA Platform
+Setuid/Setgid Privilege Abuse Detection (Linux/macOS)
+Detection of Mail Protocol-Based C2 Activity (SMTP, IMAP, POP3)
+Detection of Domain Properties
+Detection Strategy for Weaken Encryption: Reduce Key Space on Network Devices
+Detection Strategy for Modify Cloud Compute Infrastructure: Create Cloud Instance
+Detection Strategy for Hidden Artifacts Across Platforms
+Detection Strategy for Hijack Execution Flow for DLLs
+Detection Strategy for SSH Session Hijacking
+Endpoint DoS via OS Exhaustion Flood Detection Strategy
+Multi-Platform Behavioral Detection for Compute Hijacking
+Detection Strategy for Boot or Logon Initialization Scripts: RC Scripts
+Detection Strategy for Lua Scripting Abuse
+Detection Strategy for Exfiltration Over C2 Channel
+External Proxy Behavior via Outbound Relay to Intermediate Infrastructure
+Detection Strategy for T1525 – Implant Internal Image
+Detect Excessive or Unauthorized Bandwidth Usage for Botnet, Proxyjacking, or Scanning Purposes
+Detection Strategy for ESXi Administration Command
+Detection of Malicious Profile Installation via CMSTP.exe
+Renamed Legitimate Utility Execution with Metadata Mismatch and Suspicious Path
+Linux Detection Strategy for T1547.013 - XDG Autostart Entries
+Behavioral Detection of DNS Tunneling and Application Layer Abuse
+Detection Strategy for Ptrace-Based Process Injection on Linux
+Detection of LSA Secrets Dumping via Registry and Memory Extraction
+Detection of Exploits
+Detection of Server
+Detection Strategy for T1542.004 Pre-OS Boot: ROMMONkit
+Right-to-Left Override Masquerading Detection via Filename and Execution Context
+Detection Strategy for Hidden User Accounts
+Detection Strategy for Cloud Storage Object Discovery
+Detection of Data Destruction Across Platforms via Mass Overwrite and Deletion Patterns
+Behavioral Detection of Event Triggered Execution Across Platforms
+Detecting Unauthorized Collection from Messaging Applications in SaaS and Office Environments
+Behavioral Detection Strategy for T1123 Audio Capture Across Windows, Linux, macOS
+Detection of Suspicious Scheduled Task Creation and Execution on Windows
+Detection of Windows Service Creation or Modification
+Detection Strategy for Exfiltration to Cloud Storage
+Detection of Code Signing Certificates
+Internal Website and System Content Defacement via UI or Messaging Modifications
+Behavioral Detection of Input Capture Across Platforms
+Detection of Spearphishing Link
+Detection Strategy for Patch System Image on Network Devices
+Cross-Platform Detection of Scheduled Task/Job Abuse via `at` Utility
+Behavioral Detection of CLI Abuse on Network Devices
+Detection of Scanning IP Blocks
+Detection Strategy for Poisoned Pipeline Execution via SaaS CI/CD Workflows
+Detect Persistence via Office Test Registry DLL Injection
+Detection of Tool
+Detect Forged Kerberos Golden Tickets (T1558.001)
+Detect Access to macOS Keychain for Credential Theft
+Detection Strategy for Non-Standard Ports
+Detection Strategy for Data Manipulation
+Detection Strategy for Additional Cloud Credentials in IaaS/IdP/SaaS
+Detection of Gather Victim Org Information
+Detection of Tainted Content Written to Shared Storage
+Detection of Proxy Execution via Trusted Signed Binaries Across Platforms
+Detection of Spearphishing Voice
+Detection Strategy for Modify Cloud Compute Infrastructure: Delete Cloud Instance
+Detection of Search Engines
+Detection Strategy for SSH Key Injection in Authorized Keys
+Behavior-Based Registry Modification Detection on Windows
+Detection of Virtual Private Server
+Detection of Lifecycle Policy Modifications for Triggered Deletion in IaaS Cloud Storage
+Detect disabled Windows event logging
+Detection of Default Account Abuse Across Platforms
+Detection of Multi-Platform File Encryption for Impact
+Detection of Social Media
+Detection of Exfiltration Over Asymmetric Encrypted Non-C2 Protocol
+Detect Access or Search for Unsecured Credentials Across Platforms
+Detection of Mutex-Based Execution Guardrails Across Platforms
+Detection of Application Window Enumeration via API or Scripting
+Behavior-chain detection for T1134.005 Access Token Manipulation: SID-History Injection (Windows)
+Behavioral Detection Strategy for Remote Service Logins and Post-Access Activity
+Detection of Event Log Clearing on Windows via Behavioral Chain
+Detect Screensaver-Based Persistence via Registry and Execution Chains
+Detecting Electron Application Abuse for Proxy Execution
+Detection Strategy for Modify Cloud Compute Infrastructure: Modify Cloud Compute Configurations
+Detection of Network Trust Dependencies
+Detection of Email Accounts
+Detect Modification of Authentication Processes Across Platforms
+Detection Strategy for IFEO Injection on Windows
+Detection Strategy for T1548.002 – Bypass User Account Control (UAC)
+Detection of Artificial Intelligence
+Account Manipulation Behavior Chain Detection
+Detection of Hardware
+Encrypted or Encoded File Payload Detection Strategy
+Detection Strategy for Data Encoding in C2 Channels
+Detect AS-REP Roasting Attempts (T1558.004)
+Detection of System Service Discovery Commands Across OS Platforms
+Detection Strategy for T1505.005 – Terminal Services DLL Modification (Windows)
+Detection of Credential Harvesting via API Hooking
+Detection Strategy for Data Transfer Size Limits and Chunked Exfiltration
+Behavior‑chain detection for T1134.003 Make and Impersonate Token (Windows)
+Detection Strategy for Subvert Trust Controls via Install Root Certificate.
+Detection Strategy for Disk Wipe via Direct Disk Access and Destructive Commands
+Detection Strategy for Exploitation for Defense Evasion
+Detection Strategy for Hijack Execution Flow: Dynamic Linker Hijacking
+Automated Exfiltration Detection Strategy
+Detection of System Process Creation or Modification Across Platforms
+Multi-Event Behavioral Detection for DCOM-Based Remote Code Execution
+Detecting OS Credential Dumping via /proc Filesystem Access on Linux
+Detection Strategy for Reflective Code Loading
+Detection of Search Open Technical Databases
+Detection Strategy for Launch Daemon Creation or Modification (macOS)
+Detection Strategy for Exfiltration Over Webhook
+Behavioral Detection of Command History Clearing
+Detection of Domains
+Detect Bidirectional Web Service C2 Channels via Process & Network Correlation
+Detection Strategy for Spearphishing via a Service across OS Platforms
+Exploit Public-Facing Application – multi-signal correlation (request → error → post-exploit process/egress)
+Behavioral Detection of Local Group Enumeration Across OS Platforms
+Detection Strategy for Weaken Encryption on Network Devices
+Detect abuse of Windows BITS Jobs for download, execution and persistence
+Detection of Threat Intel Vendors
+Cross-Platform Behavioral Detection of Scheduled Task/Job Abuse
+Detection Strategy for Kernel Modules and Extensions Autostart Execution
+Detection of Cloud Accounts
+Detect Persistence via Office Template Macro Injection or Registry Hijack
+Detect Obfuscated C2 via Network Traffic Analysis
+Detection Strategy for Forged Web Cookies
+User Execution – Malicious File via download/open → spawn chain (T1204.002)
+Security Software Discovery Across Platforms
+Detection of Cloud Service Dashboard Usage via GUI-Based Cloud Access
+Detection Strategy for Masquerading via File Type Modification
+Enumeration of Global Address Lists via Email Account Discovery
+Detection Strategy for Extended Attributes Abuse
+Detect One-Way Web Service Command Channels
+Behavioral Detection of Obfuscated Files or Information
+Detection Strategy for Stored Data Manipulation across OS Platforms.
+Detection Strategy for Stripped Payloads Across Platforms
+Detection Strategy for Encrypted Channel via Asymmetric Cryptography across OS Platforms
+Detect Persistence via Outlook Home Page Exploitation
+Detection strategy for Group Policy Discovery on Windows
+Detection of Spearphishing Attachment
+Detection of Web Protocol-Based C2 Over HTTP, HTTPS, or WebSockets
+Detection Strategy for Financial Theft
+Detection Strategy for Cloud Service Hijacking via SaaS Abuse
+Behavior-chain detection for T1135 Network Share Discovery across Windows, Linux, and macOS
+Detection of DNS/Passive DNS
+Behavioral Detection of Malicious Cloud API Scripting
+Detect Archiving via Utility (T1560.001)
+Detect unauthorized or suspicious Hardware Additions (USB/Thunderbolt/Network)
+Detection Strategy for Impair Defenses Across Platforms
+Detection Strategy for T1542.001 Pre-OS Boot: System Firmware
+Detection of Local Data Staging Prior to Exfiltration
+Behavior-chain detection for T1133 External Remote Services across Windows, Linux, macOS, Containers
+Multi-Platform Detection Strategy for T1678 - Delay Execution
+Detection Strategy for Container Administration Command Abuse
+Behavioral Detection of DLL Injection via Windows API
+Behavior-chain, platform-aware detection strategy for T1125 Video Capture
+Detection of Adversary Abuse of Software Deployment Tools
+Detection of Malicious or Unauthorized Software Extensions
+Behavior-chain detection for T1134.004 Access Token Manipulation: Parent PID Spoofing (Windows)
+Detection Strategy for Spearphishing Voice across OS platforms
+Detection of Adversary Use of Unused or Unsupported Cloud Regions (IaaS)
+Behavior-Chain Detection for Remote Access Tools (Tool-Agnostic)
+Behavior-chain detection strategy for T1127.002 Trusted Developer Utilities Proxy Execution: ClickOnce (Windows)
+Supply-chain tamper in dependencies/dev-tools (manager→write/install→first-run→egress)
+Detection Strategy for Hijack Execution Flow: Dylib Hijacking
+Detect MFA Modification or Disabling Across Platforms
+Detection Strategy for Masquerading via Breaking Process Trees
+Detection Strategy for Spearphishing Links
+Behavioral Detection Strategy for Exfiltration Over Alternative Protocol
+Detection of CDNs
+Detect Archiving via Custom Method (T1560.003)
+Post-Credential Dump Password Cracking Detection via Suspicious File Access and Hash Analysis Tools
+Behavioral Detection of Fallback or Alternate C2 Channels
+Detection of Direct Volume Access for File System Evasion
+Exploitation of Remote Services – multi-platform lateral movement detection
+User Execution – Malicious Image (containers & IaaS) – pull/run → start → anomalous behavior (T1204.003)
+Detect Code Signing Policy Modification (Windows & macOS)
+Detection Strategy for System Services Service Execution
+Detection Strategy for Rogue Domain Controller (DCShadow) Registration and Replication Abuse
+Detection Strategy for Disable or Modify Cloud Logs
+Detect Suspicious Access to securityd Memory for Credential Extraction
+Detect Shell Configuration Modification for Persistence via Event-Triggered Execution
+Detection Strategy for Event Triggered Execution via emond on macOS
+Detection Strategy for Network Boundary Bridging
+Multi-Platform Software Discovery Behavior Chain
+Detection Strategy for Masquerading via Account Name Similarity
+TCC Database Manipulation via Launchctl and Unprotected SIP
+Detect Kerberoasting Attempts (T1558.003)
+Peripheral Device Enumeration via System Utilities and API Calls
+Detection Strategy for PowerShell Profile Persistence via profile.ps1 Modification
+Detection of Web Services
+Detection Strategy for Network Device Configuration Dump via Config Repositories
+Indirect Command Execution – Windows utility abuse behavior chain
+Detection Strategy for T1547.015 – Login Items on macOS
+Detection Strategy for Compressed Payload Creation and Execution
+Detection of Direct VM Console Access via Cloud-Native Methods
+Detecting MMC (.msc) Proxy Execution and Malicious COM Activation
+Behavior-chain, platform-aware detection strategy for T1127 Trusted Developer Utilities Proxy Execution (Windows)
+Detection Strategy for Input Injection
+Detection of Identify Business Tempo
+Detection Strategy for Modify Cloud Compute Infrastructure: Revert Cloud Instance
+Email Forwarding Rule Abuse Detection Across Platforms
+Detect Unauthorized Access to Cloud Secrets Management Stores
+Detection of USB-Based Data Exfiltration
+Behavioral Detection of Remote Cloud Logins via Valid Accounts
+Detect Malicious Password Filter DLL Registration
+Detection Strategy for File/Path Exclusions
+Detection Strategy for Wi-Fi Networks
+Cross-Platform Behavioral Detection of File Timestomping via Metadata Tampering
+Detection of Scan Databases
+Detection of Upload Malware
+Detection of Suspicious Compiled HTML File Execution via hh.exe
+Detection of Network Security Appliances
+Detect unauthorized LSASS driver persistence via LSA plugin abuse (Windows)
+Invalid Code Signature Execution Detection via Metadata and Behavioral Context
+Detection Strategy for Cloud Administration Command
+Detection Strategy for Modify Cloud Resource Hierarchy
+Enumeration of User or Account Information Across Platforms
+Behavioral Detection of Keylogging Activity Across Platforms
+Detection for Spoofing Security Alerting across OS Platforms
+Detection Strategy for Device Driver Discovery
+Detection Strategy for Data from Configuration Repository on Network Devices
+Detection Strategy for Protocol Tunneling accross OS platforms.
+Credential Access
+Execution
+Impact
+Persistence
+Privilege Escalation
+Lateral Movement
+Defense Evasion
+Exfiltration
+Discovery
+Collection
+Resource Development
+Reconnaissance
+Command and Control
+Initial Access
+Extra Window Memory Injection
+Scheduled Task
+Socket Filters
+Archive via Utility
+VNC
+Windows Management Instrumentation
+Screen Capture
+Fileless Storage
+Boot or Logon Initialization Scripts
+Adversary-in-the-Middle
+System Owner/User Discovery
+Acquire Infrastructure
+Rundll32
+Container and Resource Discovery
+Serverless
+Standard Encoding
+Embedded Payloads
+Pluggable Authentication Modules
+Gather Victim Host Information
+Digital Certificates
+Keylogging
+File/Path Exclusions
+Linux and Mac File and Directory Permissions Modification
+Password Guessing
+PubPrn
+Purchase Technical Data
+OS Credential Dumping
+Shared Modules
+Data from Configuration Repository
+Disk Structure Wipe
+Direct Network Flood
+Path Interception by PATH Environment Variable
+Sharepoint
+Direct Volume Access
+Artificial Intelligence
+Email Hiding Rules
+External Defacement
+Encrypted/Encoded File
+IP Addresses
+OS Exhaustion Flood
+Rootkit
+JavaScript
+DNS
+Lifecycle-Triggered Deletion
+Audio Capture
+Create or Modify System Process
+External Remote Services
+LC_LOAD_DYLIB Addition
+Steal Web Session Cookie
+Container Orchestration Job
+Domain Generation Algorithms
+Double File Extension
+Bypass User Account Control
+SMS Pumping
+Internet Connection Discovery
+Sudo and Sudo Caching
+Archive via Custom Method
+Modify Cloud Compute Infrastructure
+Network Devices
+Permission Groups Discovery
+Email Collection
+Security Account Manager
+WHOIS
+System Firmware
+Search Victim-Owned Websites
+Cloud Groups
+Services Registry Permissions Weakness
+DNS/Passive DNS
+Application Exhaustion Flood
+Compromise Software Dependencies and Development Tools
+Digital Certificates
+DNS Server
+Disk Wipe
+DNS
+Cloud Instance Metadata API
+Securityd Memory
+Group Policy Discovery
+Bootkit
+Data from Removable Media
+Mavinject
+Local Data Staging
+Match Legitimate Resource Name or Location
+Digital Certificates
+Stored Data Manipulation
+Password Cracking
+Local Email Collection
+Keychain
+Boot or Logon Autostart Execution
+LSA Secrets
+SAML Tokens
+Masquerade File Type
+Service Stop
+Malware
+Device Driver Discovery
+Domain Account
+Hide Artifacts
+Dynamic Data Exchange
+Malicious File
+Identify Business Tempo
+Publish/Subscribe Protocols
+Hardware
+Taint Shared Content
+Trust Modification
+Databases
+Symmetric Cryptography
+Local Account
+Social Media Accounts
+Browser Extensions
+Safe Mode Boot
+TFTP Boot
+Windows Service
+Fast Flux DNS
+System Checks
+Cron
+Domain Groups
+Vulnerabilities
+Spearphishing Link
+Clear Linux or Mac System Logs
+Application or System Exploitation
+Office Application Startup
+InstallUtil
+Spearphishing Link
+SSH
+Additional Cloud Roles
+Print Processors
+Spearphishing Attachment
+Stripped Payloads
+Component Object Model
+DLL
+Automated Collection
+Clipboard Data
+Proc Filesystem
+Botnet
+Password Managers
+Gatekeeper Bypass
+ESXi Administration Command
+Drive-by Target
+System Service Discovery
+Network Sniffing
+Code Signing
+Data from Cloud Storage
+Runtime Data Manipulation
+Credentials in Registry
+Network Share Discovery
+Peripheral Device Discovery
+Break Process Trees
+Network Topology
+Code Signing Certificates
+Windows File and Directory Permissions Modification
+Add-ins
+System Information Discovery
+Application Layer Protocol
+AppDomainManager
+Remote Data Staging
+Additional Container Cluster Roles
+Scheduled Task/Job
+Msiexec
+Network Trust Dependencies
+Reflection Amplification
+Password Filter DLL
+Terminal Services DLL
+Software Extensions
+Service Exhaustion Flood
+Compromise Hardware Supply Chain
+Native API
+Ccache Files
+Clear Network Connection History and Configurations
+AS-REP Roasting
+Virtual Private Server
+AutoHotKey & AutoIT
+Clear Command History
+Replication Through Removable Media
+Data from Local System
+Deobfuscate/Decode Files or Information
+Outlook Rules
+Impair Defenses
+Cloud Accounts
+Email Accounts
+Additional Local or Domain Groups
+Upload Malware
+Supply Chain Compromise
+Exploit Public-Facing Application
+Steal or Forge Kerberos Tickets
+Credentials from Password Stores
+Exfiltration Over Web Service
+Remote Access Tools
+Domains
+Archive via Library
+Thread Execution Hijacking
+Masquerading
+Application Shimming
+Unsecured Credentials
+Port Monitors
+Clear Mailbox Data
+Login Hook
+Content Injection
+Process Injection
+Exfiltration Over Webhook
+Traffic Signaling
+Direct Cloud VM Connections
+System Binary Proxy Execution
+Timestomp
+Evil Twin
+Reflective Code Loading
+Wi-Fi Discovery
+Mutual Exclusion
+Ignore Process Interrupts
+Escape to Host
+Shortcut Modification
+Application Window Discovery
+Email Account
+Time Based Checks
+CMSTP
+SSH Hijacking
+Disable Windows Event Logging
+Scheduled Transfer
+SMB/Windows Admin Shares
+Protocol Tunneling
+Control Panel
+Network Address Translation Traversal
+Upload Tool
+Security Support Provider
+Overwrite Process Arguments
+Use Alternate Authentication Material
+Exfiltration Over Other Network Medium
+Network Device Configuration Dump
+Gather Victim Identity Information
+Disable or Modify System Firewall
+Archive Collected Data
+SIP and Trust Provider Hijacking
+Browser Session Hijacking
+Remote Services
+Mail Protocols
+Hybrid Identity
+Vulnerability Scanning
+Cloud API
+Search Open Technical Databases
+Electron Applications
+Disable or Modify Linux Audit System
+Code Signing Policy Modification
+Deploy Container
+Modify Registry
+Launch Daemon
+Cloud Infrastructure Discovery
+Credentials from Web Browsers
+Path Interception by Search Order Hijacking
+Remote Service Session Hijacking
+Binary Padding
+Web Shell
+Group Policy Modification
+Browser Information Discovery
+Private Keys
+Server
+Windows Remote Management
+Exfiltration Over Bluetooth
+Default Accounts
+Time Providers
+Dynamic Linker Hijacking
+Local Account
+Search Threat Vendor Data
+Input Injection
+Communication Through Removable Media
+Clear Windows Event Logs
+Email Accounts
+LLMNR/NBT-NS Poisoning and SMB Relay
+File and Directory Permissions Modification
+LSASS Memory
+IDE Extensions
+Active Scanning
+Junk Code Insertion
+Abuse Elevation Control Mechanism
+Create Process with Token
+Setuid and Setgid
+Winlogon Helper DLL
+Distributed Component Object Model
+Password Spraying
+External Proxy
+Web Portal Capture
+Email Addresses
+Spearphishing Voice
+Cached Domain Credentials
+SSH Authorized Keys
+Virtual Machine Discovery
+Network Security Appliances
+Image File Execution Options Injection
+Odbcconf
+Search Engines
+Business Relationships
+Temporary Elevated Cloud Access
+Video Capture
+Process Doppelgänging
+System Network Configuration Discovery
+Delete Cloud Instance
+Code Repositories
+Executable Installer File Permissions Weakness
+Accessibility Features
+Account Discovery
+Proxy
+Command and Scripting Interpreter
+Malicious Library
+Indicator Blocking
+Domain Account
+Extended Attributes
+Employee Names
+Domain Trust Discovery
+Golden Ticket
+Automated Exfiltration
+Client Configurations
+Disable or Modify Cloud Firewall
+IDE Tunneling
+Malware
+SVG Smuggling
+Component Firmware
+Indicator Removal
+Exfiltration Over Symmetric Encrypted Non-C2 Protocol
+Office Template Macros
+Virtual Private Server
+Confluence
+Pass the Ticket
+File and Directory Discovery
+Dynamic Resolution
+Masquerade Task or Service
+Asynchronous Procedure Call
+Traffic Duplication
+Plist File Modification
+JamPlus
+AppCert DLLs
+Email Forwarding Rule
+Data Staged
+Steal or Forge Authentication Certificates
+Device Registration
+System Network Connections Discovery
+Compromise Infrastructure
+Mark-of-the-Web Bypass
+Pre-OS Boot
+Portable Executable Injection
+Verclsid
+Compromise Accounts
+Launchctl
+Botnet
+Network Device CLI
+Shell History
+Downgrade Attack
+XPC Services
+Virtualization/Sandbox Evasion
+Web Service
+Credentials In Files
+Mshta
+Login Items
+Stage Capabilities
+Link Target
+Multi-Stage Channels
+Financial Theft
+Execution Guardrails
+Web Cookies
+Log Enumeration
+Token Impersonation/Theft
+Cloud Services
+Port Knocking
+LNK Icon Smuggling
+Web Services
+Steal Application Access Token
+Spearphishing Attachment
+Additional Cloud Credentials
+User Execution
+Internal Defacement
+Hidden Users
+Make and Impersonate Token
+Group Policy Preferences
+Exfiltration Over Asymmetric Encrypted Non-C2 Protocol
+Cloud Account
+Process Discovery
+Impair Command History Logging
+Network Provider DLL
+Windows Management Instrumentation Event Subscription
+CDNs
+User Activity Based Checks
+Cloud Accounts
+Software Deployment Tools
+Exfiltration Over C2 Channel
+Parent PID Spoofing
+Gather Victim Org Information
+Forge Web Credentials
+Multi-Factor Authentication Request Generation
+Compromise Host Software Binary
+Chat Messages
+PowerShell
+Change Default File Association
+VDSO Hijacking
+File Transfer Protocols
+Exploitation for Credential Access
+Emond
+One-Way Communication
+Gather Victim Network Information
+Exploitation of Remote Services
+Registry Run Keys / Startup Folder
+Trusted Relationship
+Cloud Account
+Local Groups
+Search Open Websites/Domains
+Disable or Modify Network Device Firewall
+Account Manipulation
+Exfiltration Over Alternative Protocol
+Kernel Modules and Extensions
+Delay Execution
+GUI Input Capture
+Tool
+Exfiltration over USB
+KernelCallbackTable
+Search Closed Sources
+Systemd Timers
+Phishing
+ROMMONkit
+Compiled HTML File
+Compute Hijacking
+Network Share Connection Removal
+Multi-hop Proxy
+Brute Force
+Unix Shell
+Outlook Forms
+Disable or Modify Tools
+Data Manipulation
+Inter-Process Communication
+Data Obfuscation
+Data from Network Shared Drive
+Web Services
+Modify System Image
+Hijack Execution Flow
+Browser Fingerprint
+Lua
+Indicator Removal from Tools
+Malicious Image
+Container Service
+Valid Accounts
+Non-Standard Port
+Social Media Accounts
+Process Hollowing
+Exploitation for Privilege Escalation
+Resource Forking
+Account Access Removal
+Credential Stuffing
+Obfuscated Files or Information
+Multi-Factor Authentication
+Remote Email Collection
+IIS Components
+Invalid Code Signature
+Run Virtual Instance
+Polymorphic Code
+Password Policy Discovery
+Event Triggered Execution
+Unix Shell Configuration Modification
+Forced Authentication
+SID-History Injection
+Network Boundary Bridging
+Data Encrypted for Impact
+Subvert Trust Controls
+Elevated Execution with Prompt
+Firmware
+Encrypted Channel
+Authentication Package
+Regsvr32
+Exfiltration to Text Storage Sites
+Software
+Input Capture
+Spearphishing Voice
+Exploits
+Social Media
+Customer Relationship Management Software
+Component Object Model Hijacking
+Credentials
+Compromise Software Supply Chain
+Rename Legitimate Utilities
+Bidirectional Communication
+Exploitation for Client Execution
+Wordlist Scanning
+Spoof Security Alerting
+Outlook Home Page
+Asymmetric Cryptography
+Exfiltration to Cloud Storage
+Lateral Tool Transfer
+Path Interception by Unquoted Path
+Install Digital Certificate
+Startup Items
+System Language Discovery
+Non-Application Layer Protocol
+Container CLI/API
+Steganography
+DNS Server
+Protocol or Service Impersonation
+Query Registry
+Data Transfer Size Limits
+Web Session Cookie
+Domain Accounts
+Regsvcs/Regasm
+Install Root Certificate
+Network Logon Script
+Endpoint Denial of Service
+Compile After Delivery
+System Location Discovery
+VBA Stomping
+BITS Jobs
+MSBuild
+Impersonation
+Modify Cloud Compute Configurations
+Domain Fronting
+ARP Cache Poisoning
+Disable or Modify Cloud Logs
+Security Software Discovery
+Hidden Window
+ClickOnce
+Python
+Identify Roles
+Data Encoding
+AppInit DLLs
+Phishing for Information
+Resource Hijacking
+Establish Accounts
+Obtain Capabilities
+Conditional Access Policies
+Create Cloud Instance
+Cloud Secrets Management Stores
+Code Repositories
+Transmitted Data Manipulation
+/etc/passwd and /etc/shadow
+Launch Agent
+System Services
+Windows Command Shell
+Proc Memory
+Acquire Access
+Patch System Image
+Silver Ticket
+Data from Information Repositories
+Clear Persistence
+Hypervisor CLI
+Windows Credential Manager
+Masquerade Account Name
+Remote Desktop Software
+Server Software Component
+Data Destruction
+Non-Standard Encoding
+Domain Controller Authentication
+Transfer Data to Cloud Account
+HTML Smuggling
+Reversible Encryption
+Command Obfuscation
+File Deletion
+Drive-by Compromise
+Network Denial of Service
+Cloud Administration Command
+Installer Packages
+Scanning IP Blocks
+Template Injection
+RC Scripts
+Access Token Manipulation
+Multi-Factor Authentication Interception
+Software Packing
+Serverless
+Web Protocols
+Visual Basic
+Hidden File System
+Systemd Service
+RDP Hijacking
+Create Account
+XDG Autostart Entries
+Server
+Cloud Service Discovery
+Malicious Copy and Paste
+Remote System Discovery
+Network Service Discovery
+Domain Properties
+Software Discovery
+Cloud Service Dashboard
+Thread Local Storage
+Debugger Evasion
+SEO Poisoning
+Pass the Hash
+Exfiltration Over Physical Medium
+Ingress Tool Transfer
+SyncAppvPublishingServer
+Additional Email Delegate Permissions
+Code Signing Certificates
+TCC Manipulation
+Ptrace System Calls
+Power Settings
+Dynamic API Resolution
+Remote Desktop Protocol
+Logon Script (Windows)
+ListPlanting
+Hide Infrastructure
+Domain or Tenant Policy Modification
+XSL Script Processing
+Scan Databases
+Hidden Files and Directories
+Determine Physical Locations
+Office Test
+Develop Capabilities
+NTDS
+SNMP (MIB Dump)
+Steganography
+Malicious Link
+Application Access Token
+LSASS Driver
+Service Execution
+Cloud Accounts
+Environmental Keying
+Fallback Channels
+Local Storage Discovery
+NTFS File Attributes
+Kerberoasting
+DCSync
+System Time Discovery
+At
+Dynamic-link Library Injection
+Exploits
+Modify Authentication Process
+Udev Rules
+Credential API Hooking
+Inhibit System Recovery
+Netsh Helper DLL
+Spearphishing via Service
+Internal Proxy
+System Script Proxy Execution
+Dead Drop Resolver
+Junk Data
+Spearphishing Service
+vSphere Installation Bundles
+Container API
+Domains
+SQL Stored Procedures
+Disk Content Wipe
+Messaging Applications
+Exfiltration Over Unencrypted Non-C2 Protocol
+Compression
+Dylib Hijacking
+Downgrade System Image
+Local Accounts
+Wi-Fi Networks
+Exploitation for Defense Evasion
+Trusted Developer Utilities Proxy Execution
+System Shutdown/Reboot
+MMC
+Process Argument Spoofing
+COR_PROFILER
+Operation Dream Job
+KV Botnet Activity
+SharePoint ToolShell Exploitation
+Frankenstein
+RedDelta Modified PlugX Infection Chain Operations
+RedPenguin
+Operation Sharpshooter
+Operation Honeybee
+Operation MidnightEclipse
+Triton Safety Instrumented System Attack
+Operation Dust Storm
+2015 Ukraine Electric Power Attack
+Indian Critical Infrastructure Intrusions
+Operation Spalax
+3CX Supply Chain Attack
+Cutting Edge
+C0018
+Water Curupira Pikabot Distribution
+J-magic Campaign
+C0021
+C0015
+Operation Ghost
+Juicy Mix
+HomeLand Justice
+C0032
+SolarWinds Compromise
+Pikabot Distribution February 2024
+FunnyDream
+Operation CuckooBees
+Salesforce Data Exfiltration
+APT28 Nearest Neighbor Campaign
+Outer Space
+ArcaneDoor
+C0033
+2016 Ukraine Electric Power Attack
+C0010
+APT41 DUST
+Night Dragon
+Versa Director Zero Day Exploitation
+Operation Wocao
+C0011
+C0017
+C0026
+C0027
+2022 Ukraine Electric Power Attack
+Quad7 Activity
+FLORAHOX Activity
+CostaRicto
+The MITRE Corporation
+APT38
+Indrik Spider
+BlackByte
+Elderwood
+SideCopy
+GALLIUM
+APT17
+APT3
+Mustard Tempest
+Kimsuky
+EXOTIC LILY
+TA577
+admin@338
+Volt Typhoon
+Patchwork
+APT41
+Salt Typhoon
+Dragonfly
+Evilnum
+Gorgon Group
+menuPass
+APT32
+HAFNIUM
+MuddyWater
+Strider
+Naikon
+FIN6
+RedEcho
+Gamaredon Group
+Storm-1811
+Leafminer
+TeamTNT
+FIN7
+Sandworm Team
+Machete
+APT18
+Andariel
+CURIUM
+Sidewinder
+Mustang Panda
+Scattered Spider
+APT39
+UNC3886
+Contagious Interview
+TA2541
+Akira
+APT37
+Moses Staff
+OilRig
+Windigo
+Higaisa
+Carbanak
+Tropic Trooper
+Orangeworm
+Sea Turtle
+Suckfly
+Putter Panda
+POLONIUM
+TA459
+Aquatic Panda
+Aoqin Dragon
+Ferocious Kitten
+The White Company
+Ke3chang
+Saint Bear
+APT1
+DarkHydrus
+Confucius
+BlackTech
+Leviathan
+MoustachedBouncer
+Group5
+Blue Mockingbird
+SilverTerrier
+Turla
+Storm-0501
+TA505
+BITTER
+DarkVishnya
+FIN5
+Mofang
+Lotus Blossom
+APT29
+Dark Caracal
+Cinnamon Tempest
+Chimera
+Cleaver
+Medusa Group
+BRONZE BUTLER
+TA551
+TEMP.Veles
+BackdoorDiplomacy
+Star Blizzard
+Axiom
+TA578
+Deep Panda
+Ember Bear
+LazyScripter
+Windshift
+Volatile Cedar
+ToddyCat
+Whitefly
+LuminousMoth
+Agrius
+Water Galura
+APT28
+Malteiro
+Metador
+APT42
+APT5
+Fox Kitten
+RTM
+APT12
+APT-C-36
+Winnti Group
+Tonto Team
+GOLD SOUTHFIELD
+Lazarus Group
+INC Ransom
+Earth Lusca
+Silence
+Sowbug
+Threat Group-1314
+Thrip
+APT16
+LAPSUS$
+Cobalt Group
+CopyKittens
+Wizard Spider
+Molerats
+Velvet Ant
+Transparent Tribe
+IndigoZebra
+Moonstone Sleet
+Inception
+Play
+PROMETHIUM
+APT30
+HEXANE
+DragonOK
+Daggerfly
+Rancor
+WIRTE
+PLATINUM
+Magic Hound
+Ajax Security Team
+Threat Group-3390
+APT33
+FIN10
+FIN8
+FIN13
+APT19
+PittyTiger
+Nomadic Octopus
+PoisonIvy
+None
+ngrok

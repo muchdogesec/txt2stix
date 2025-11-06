@@ -876,6 +876,26 @@ ai_mitre_cwe:
   test_cases: ai_mitre_cwe
   stix_mapping: ctibutler-mitre-cwe-id
 
+####### Sector #######
+
+ai_sector:
+  type: ai
+  dogesec_web: true
+  name: 'Attack Pattern'
+  description: 'Detect which sectors from a fixed sector list are referenced anywhere in the input text.'
+  notes: 'lookup_sector_aliases legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: dogesec
+  version: 1.0.0
+  prompt_base: |
+      You will be given a list of possible sectors. Check whatever sector best matches what is being referenced in the text
+      (either directly or via obvious common synonyms).
+  prompt_helper: ''
+  prompt_conversion: 'Should respond with one of ["Road transport","Hospitality","Finance","Lodging industry","Hosting service providers","Technologies","Information Technologies Consulting","Travel and tourism industry","Food and drinks businesses","Banking institutions","Education","Defense industry","Diplomacy","Schools","Non-Governmental Organizations (NGOs)","Healthcare research","Defense ministries (including the military)","Oil","Research","Think tanks","Political parties","Legislative branch (parliamentary chambers)","Mining","Defense research and development","Gambling","Air transport","Nuclear power (civilian use)","Energy","Consulting","Maritime transport","Insurance services","Government and administrations","Market infrastructures","Transport","Gas","Citizens","Digital infrastructures","Heavy industries","Engineering consulting","Construction","Local administrations","Ministries of foreign affairs","Telecommunications","Sports","Agriculture and agribusiness","Entertainment industry","Logistics","Central administration and government","Retail (distribution)","Internet Service providers","Pharmacy and drugs manufacturing","Financial organizations","Manufacturing","Universities","Defense","International organizations","Legal consulting","Renewable energies","Health","Rail transport","Culture","Civil society","Culture and entertainment","Medias and audiovisual","Unknown","Healthcare services","Dissidents","Water distribution and supply","Electricity","Judicial power (justice)","High-tech"]'
+  test_cases: ai_sector_names
+  stix_mapping: ctibutler-sector-name
+
 ####### Generic Extractions #######
 
 ai_attack_pattern:

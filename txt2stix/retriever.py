@@ -138,6 +138,12 @@ def _retrieve_stix_objects(host, knowledge_base, filter_value):
             return retreiver.get_objects_by_alias(filter_value, "attack-mobile")
         case "mitre-attack-ics-aliases":
             return retreiver.get_objects_by_alias(filter_value, "attack-ics")
+        
+        ### Sector
+        case 'sector-alias':
+            return retreiver.get_objects_by_alias(filter_value, 'sector')
+        case 'sector-name':
+            return retreiver.get_objects_by_name(filter_value, 'sector')
 
         ### OTHERS by Name
         case "mitre-capec-name":

@@ -1,3 +1,4 @@
+FrostyGoop Incident
 Triton Safety Instrumented System Attack
 2015 Ukraine Electric Power Attack
 Maroochy Water Breach
@@ -55,6 +56,9 @@ Evasive Serpens
 Hazel Sandstorm
 EUROPIUM
 ITG13
+Earth Simnavaz
+Crambus
+TA452
 TEMP.Veles
 XENOTIME
 CyberAv3ngers
@@ -123,6 +127,8 @@ ACAD/Medre.A
 REvil
 Sodin
 Sodinokibi
+FrostyGoop
+BUSTLEBERM
 INCONTROLLER
 PIPEDREAM
 KillDisk
@@ -137,5 +143,3 @@ Win32/Industroyer
 Flame
 Flamer
 sKyWIper
-Leafminer
-Raspite

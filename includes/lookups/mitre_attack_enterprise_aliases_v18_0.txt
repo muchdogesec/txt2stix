@@ -1,312 +1,24 @@
-Operation Dream Job
-Operation North Star
-Operation Interception
-KV Botnet Activity
-Frankenstein
-Operation Sharpshooter
-Operation Honeybee
-Triton Safety Instrumented System Attack
-Operation Dust Storm
-2015 Ukraine Electric Power Attack
-Operation Spalax
-Cutting Edge
-C0018
-Water Curupira Pikabot Distribution
-C0021
-C0015
-Operation Ghost
-HomeLand Justice
-C0032
-SolarWinds Compromise
-Pikabot Distribution February 2024
-FunnyDream
-Operation CuckooBees
-C0033
-2016 Ukraine Electric Power Attack
-C0010
-APT41 DUST
-Night Dragon
-Versa Director Zero Day Exploitation
-Operation Wocao
-C0011
-C0017
-C0026
-C0027
-2022 Ukraine Electric Power Attack
-CostaRicto
-APT38
-NICKEL GLADSTONE
-BeagleBoyz
-Bluenoroff
-Stardust Chollima
-Sapphire Sleet
-COPERNICIUM
-Indrik Spider
-Evil Corp
-Manatee Tempest
-DEV-0243
-UNC2165
+FrostyGoop Incident
+ShadowRay
+SPACEHOP Activity
+Leviathan Australian Intrusions
 NEODYMIUM
-Elderwood
-Elderwood Gang
-Beijing Group
-Sneaky Panda
-SideCopy
-GALLIUM
-Granite Typhoon
-APT17
-Deputy Dog
-APT3
-Gothic Panda
-Pirpi
-UPS Team
-Buckeye
-Threat Group-0110
-TG-0110
-Mustard Tempest
-DEV-0206
-TA569
-GOLD PRELUDE
-UNC1543
 GCMAN
-Kimsuky
-Black Banshee
-Velvet Chollima
-Emerald Sleet
-THALLIUM
-APT43
-TA427
-EXOTIC LILY
-TA577
-admin@338
-Volt Typhoon
-BRONZE SILHOUETTE
-Vanguard Panda
-DEV-0391
-UNC3236
-Voltzite
-Insidious Taurus
-Patchwork
-Hangover Group
-Dropping Elephant
-Chinastrats
-MONSOON
-Operation Hangover
-APT41
-Wicked Panda
-Brass Typhoon
-BARIUM
-Dragonfly
-TEMP.Isotope
-DYMALLOY
-Berserk Bear
-TG-4192
-Crouching Yeti
-IRON LIBERTY
-Energetic Bear
-Ghost Blizzard
-BROMINE
-Evilnum
-Gorgon Group
-menuPass
-Cicada
-POTASSIUM
-Stone Panda
-APT10
-Red Apollo
-CVNX
-HOGFISH
-BRONZE RIVERSIDE
-APT32
-SeaLotus
-OceanLotus
-APT-C-00
-Canvas Cyclone
-BISMUTH
-HAFNIUM
-Operation Exchange Marauder
-Silk Typhoon
-MuddyWater
-Earth Vetala
-MERCURY
-Static Kitten
-Seedworm
-TEMP.Zagros
-Mango Sandstorm
-TA450
-Strider
-ProjectSauron
-Naikon
-FIN6
-Magecart Group 6
-ITG08
-Skeleton Spider
-TAAL
-Camouflage Tempest
-Gamaredon Group
-IRON TILDEN
-Primitive Bear
-ACTINIUM
-Armageddon
-Shuckworm
-DEV-0157
-Aqua Blizzard
+AppleJeus
+Gleaming Pisces
+Citrine Sleet
+UNC1720
+UNC4736
 Moafee
 Gallmaker
-Leafminer
-Raspite
-TeamTNT
-FIN7
-GOLD NIAGARA
-ITG14
-Carbon Spider
-ELBRUS
-Sangria Tempest
-Sandworm Team
-ELECTRUM
-Telebots
-IRON VIKING
-BlackEnergy (Group)
-Quedagh
-Voodoo Bear
-IRIDIUM
-Seashell Blizzard
-FROZENBARENTS
-APT44
-Machete
-APT-C-43
-El Machete
-APT18
-TG-0416
-Dynamite Panda
-Threat Group-0416
-Andariel
-Silent Chollima
-PLUTONIUM
-Onyx Sleet
-CURIUM
-Crimson Sandstorm
-TA456
-Tortoise Shell
-Yellow Liderc
-Sidewinder
-T-APT-04
-Rattlesnake
-Mustang Panda
-TA416
-RedDelta
-BRONZE PRESIDENT
 ZIRCONIUM
 APT31
 Violet Typhoon
 Rocke
-Scattered Spider
-Roasted 0ktapus
-Octo Tempest
-Storm-0875
-APT39
-ITG07
-Chafer
-Remix Kitten
-TA2541
-Akira
-GOLD SAHARA
-PUNK SPIDER
-APT37
-InkySquid
-ScarCruft
-Reaper
-Group123
-TEMP.Reaper
-Ricochet Chollima
-Moses Staff
-DEV-0500
-Marigold Sandstorm
-OilRig
-COBALT GYPSY
-IRN2
-APT34
-Helix Kitten
-Evasive Serpens
-Hazel Sandstorm
-EUROPIUM
-ITG13
-Windigo
-Higaisa
-Carbanak
-Anunak
-Tropic Trooper
-Pirate Panda
-KeyBoy
-Orangeworm
-Suckfly
-Putter Panda
-APT2
-MSUpdater
-POLONIUM
-Plaid Rain
-TA459
-Aquatic Panda
-Aoqin Dragon
-Ferocious Kitten
-The White Company
-Ke3chang
-APT15
-Mirage
-Vixen Panda
-GREF
-Playful Dragon
-RoyalAPT
-NICKEL
-Nylon Typhoon
-Saint Bear
-Storm-0587
-TA471
-UAC-0056
-Lorec53
-APT1
-Comment Crew
-Comment Group
-Comment Panda
-DarkHydrus
-Confucius
-Confucius APT
-BlackTech
-Palmerworm
-Leviathan
-MUDCARP
-Kryptonite Panda
-Gadolinium
-BRONZE MOHAWK
-TEMP.Jumper
-APT40
-TEMP.Periscope
-Gingham Typhoon
-MoustachedBouncer
-Group5
-Blue Mockingbird
 Winter Vivern
 TA473
 UAC-0114
-SilverTerrier
-Turla
-IRON HUNTER
-Group 88
-Waterbug
-WhiteBear
-Snake
-Krypton
-Venomous Bear
-Secret Blizzard
-BELUGASTURGEON
 Poseidon Group
-TA505
-Hive0065
-Spandex Tempest
-CHIMBORAZO
-BITTER
-T-APT-17
-DarkVishnya
 RedCurl
 APT-C-23
 Mantis
@@ -316,248 +28,23 @@ TAG-63
 Grey Karkadann
 Big Bang APT
 Two-tailed Scorpion
-FIN5
-Mofang
-Lotus Blossom
-DRAGONFISH
-Spring Dragon
-RADIUM
-Raspberry Typhoon
 Stealth Falcon
-APT29
-IRON RITUAL
-IRON HEMLOCK
-NobleBaron
-Dark Halo
-NOBELIUM
-UNC2452
-YTTRIUM
-The Dukes
-Cozy Bear
-CozyDuke
-SolarStorm
-Blue Kitsune
-UNC3524
-Midnight Blizzard
-Dark Caracal
-Cinnamon Tempest
-DEV-0401
-Emperor Dragonfly
-BRONZE STARLIGHT
-Chimera
-Cleaver
-Threat Group 2889
-TG-2889
 Silent Librarian
 TA407
 COBALT DICKENS
-BRONZE BUTLER
-REDBALDKNIGHT
-Tick
-TA551
-GOLD CABIN
-Shathak
-TEMP.Veles
-XENOTIME
 Equation
-BackdoorDiplomacy
-Star Blizzard
-SEABORGIUM
-Callisto Group
-TA446
-COLDRIVER
 Darkhotel
 DUBNIUM
 Zigzag Hail
-Axiom
-Group 72
-TA578
-Deep Panda
-Shell Crew
-WebMasters
-KungFu Kittens
-PinkPanther
-Black Vine
-Ember Bear
-UNC2589
-Bleeding Bear
-DEV-0586
-Cadet Blizzard
-Frozenvista
-LazyScripter
-Windshift
-Bahamut
-Volatile Cedar
-Lebanese Cedar
-ToddyCat
-Whitefly
-LuminousMoth
-Agrius
-Pink Sandstorm
-AMERICIUM
-Agonizing Serpens
-BlackShadow
-APT28
-IRON TWILIGHT
-SNAKEMACKEREL
-Swallowtail
-Group 74
-Sednit
-Sofacy
-Pawn Storm
-Fancy Bear
-STRONTIUM
-Tsar Team
-Threat Group-4127
-TG-4127
-Forest Blizzard
-FROZENLAKE
-Malteiro
-Metador
-APT5
-Mulberry Typhoon
-MANGANESE
-BRONZE FLEETWOOD
-Keyhole Panda
-UNC2630
-Fox Kitten
-UNC757
-Parisite
-Pioneer Kitten
-RUBIDIUM
-Lemon Sandstorm
-RTM
-APT12
-IXESHE
-DynCalc
-Numbered Panda
-DNSCALC
-APT-C-36
-Blind Eagle
 Scarlet Mimic
-Winnti Group
-Blackfly
-Tonto Team
-Earth Akhlut
-BRONZE HUNTLEY
-CactusPete
-Karma Panda
-GOLD SOUTHFIELD
-Pinchy Spider
-Lazarus Group
-Labyrinth Chollima
-HIDDEN COBRA
-Guardians of Peace
-ZINC
-NICKEL ACADEMY
-Diamond Sleet
-INC Ransom
-GOLD IONIC
-Earth Lusca
-TAG-22
-Charcoal Typhoon
-CHROMIUM
-ControlX
 FIN4
-Silence
-Whisper Spider
-Sowbug
-Threat Group-1314
-TG-1314
-Thrip
-APT16
-LAPSUS$
-DEV-0537
-Strawberry Tempest
 BlackOasis
-Cobalt Group
-GOLD KINGSWOOD
-Cobalt Gang
-Cobalt Spider
-CopyKittens
-Wizard Spider
-UNC1878
-TEMP.MixMaster
-Grim Spider
-FIN12
-GOLD BLACKBURN
-ITG23
-Periwinkle Tempest
-DEV-0193
-Molerats
-Operation Molerats
-Gaza Cybergang
-Transparent Tribe
-COPPER FIELDSTONE
-APT36
-Mythic Leopard
-ProjectM
-IndigoZebra
-Moonstone Sleet
-Storm-1789
-Inception
-Inception Framework
-Cloud Atlas
-Play
-PROMETHIUM
-StrongPity
-APT30
-HEXANE
-Lyceum
-Siamesekitten
-Spirlin
-DragonOK
-Daggerfly
-Evasive Panda
-BRONZE HIGHLAND
-Rancor
-WIRTE
-PLATINUM
-Magic Hound
-TA453
-COBALT ILLUSION
-Charming Kitten
-ITG18
-Phosphorus
-Newscaster
-APT35
-Mint Sandstorm
-Ajax Security Team
-Operation Woolen-Goldfish
-AjaxTM
-Rocket Kitten
-Flying Kitten
-Operation Saffron Rose
-Threat Group-3390
-Earth Smilodon
-TG-3390
-Emissary Panda
-BRONZE UNION
-APT27
-Iron Tiger
-LuckyMouse
-APT33
-HOLMIUM
-Elfin
-Peach Sandstorm
-FIN10
-FIN8
-Syssphinx
-FIN13
-Elephant Beetle
-APT19
-Codoso
-C0d0so0
-Codoso Team
-Sunshop Group
-PittyTiger
-Nomadic Octopus
-DustSquad
 HDoor
 Custom HDoor
 TrickBot
 Totbrick
 TSPY_TRICKLOAD
+cd00r
 PowerDuke
 EKANS
 SNAKEHOSE
@@ -575,7 +62,9 @@ AcidRain
 GRIFFON
 Exaramel for Windows
 Amadey
+JumbledPath
 RDFSNIFFER
+NICECURL
 Proxysvc
 Orz
 AIRBREAK
@@ -596,16 +85,19 @@ Get2
 POWRUNER
 KOPILUWAK
 RobbinHood
+MEDUSA
 VersaMem
 TDTESS
 Chinoxy
 SharpStage
+PAKLOG
 COATHANGER
 Sardonic
 Smoke Loader
 Dofoil
 WindTail
 Misdat
+reGeorg
 FLIPSIDE
 Linux Rabbit
 adbupd
@@ -615,12 +107,15 @@ KEYMARBLE
 BUBBLEWRAP
 Backdoor.APT.FakeWinHTTPHelper
 HAWKBALL
+TAMECAT
 PS1
 Ursnif
 Gozi-ISFB
 PE_URSNIF
 Dreambot
+CASTLETAP
 ThreatNeedle
+RansomHub
 ZLib
 RedLeaves
 BUGJUICE
@@ -631,6 +126,7 @@ LITTLELAMB.WOOLTEA
 Felismus
 Zeus Panda
 GeminiDuke
+Havoc
 CARROTBAT
 Matryoshka
 FrameworkPOS
@@ -638,9 +134,11 @@ Trinity
 GravityRAT
 WEBC2
 Prestige
+InvisibleFerret
 Bankshot
 Trojan Manuscript
 SharpDisco
+StrongPity
 HAPPYWORK
 xCaon
 PLAINTEE
@@ -652,10 +150,15 @@ AuditCred
 Roptimizer
 Lurid
 Enfal
+TONESHELL
+UPSTYLE
 Kasidet
+Hannotog
 OceanSalt
 Playcrypt
+Play
 Brave Prince
+Medusa Ransomware
 RainyDay
 Ecipekac
 HEAVYHAND
@@ -668,6 +171,9 @@ LOWBALL
 NETWIRE
 TinyTurla
 PyDCrypt
+J-magic
+PowerExchange
+BOOKWORM
 HyperStack
 iKitten
 OSX/MacDownloader
@@ -685,26 +191,32 @@ NemesisGemina
 EvilGrab
 EnvyScout
 SslMM
+STATICPLUGIN
 IMAPLoader
 GreyEnergy
+Gomir
 Aria-body
 Emotet
 Geodo
 SNUGRIDE
 Olympic Destroyer
+BOLDMOVE
 Crimson
 MSIL/Crimson
 Tomiris
 TEARDROP
 DUSTTRAP
 Turian
+THINCRUST
 BADHATCH
+Machete
 Pyark
 PowerLess
 Action RAT
 Avenger
 DUSTPAN
 Prikormka
+PUBLOAD
 Gootloader
 PingPull
 WellMess
@@ -715,14 +227,19 @@ Mafalda
 KARAE
 Squirrelwaffle
 ELMER
+CANONSTAGER
 PolyglotDuke
+HexEval Loader
 Umbreon
 AuTo Stealer
+ShrinkLocker
 Hildegard
 Agent.btz
 SLOWDRIFT
 SHUTTERSPEED
 SombRAT
+ODAgent
+BlackByte 2.0 Ransomware
 FlawedGrace
 FLASHFLOOD
 FlawedAmmyy
@@ -740,6 +257,7 @@ RegDuke
 ProLock
 Moneybird
 InvisiMole
+CLAIMLOADER
 P.A.S. Webshell
 Fobushell
 QUIETEXIT
@@ -752,12 +270,15 @@ FruitFly
 ZeroT
 Keydnap
 OSX/Keydnap
+AcidPour
 RDAT
 Hacking Team UEFI Rootkit
 Skidmap
 Okrum
+TRANSLATEXT
 Regin
 Bonadan
+Line Dancer
 SamSam
 Samas
 Neoichor
@@ -765,7 +286,9 @@ Conti
 Raspberry Robin
 Mispadu
 RemoteCMD
+Megazord
 Diavol
+REPTILE
 Raindrop
 Doki
 TEXTMATE
@@ -816,6 +339,7 @@ BADFLICK
 ObliqueRAT
 SHOTPUT
 Backdoor.APT.CookieCutter
+Pirpi
 Avaddon
 Conficker
 Kido
@@ -829,8 +353,10 @@ XAgentOSX
 OSX.Sofacy
 Green Lambert
 China Chopper
+SnappyTCP
 CALENDAR
 LockerGoga
+LightSpy
 Chaos
 ISMInjector
 PUNCHBUGGY
@@ -841,22 +367,28 @@ HELLOKITTY
 CostaBricks
 Cheerscrypt
 LIGHTWIRE
+KeyBoy
 POSHSPY
 MiniDuke
 HyperBro
 Anchor
 Anchor_DNS
+Line Runner
 Pteranodon
 Pterodo
 DarkTortilla
+BeaverTail
 ROKRAT
 CORESHELL
+Sofacy
 SOURFACE
 RunningRAT
 VPNFilter
+SplatDropper
 Babuk
 Babyk
 Vasa Locker
+Exbyte
 DarkWatchman
 Dyre
 Dyzap
@@ -877,6 +409,8 @@ Reaver
 Bisonal
 MultiLayer Wiper
 S-Type
+Lumma Stealer
+LummaStealer
 SeaDuke
 SeaDaddy
 SeaDesk
@@ -887,6 +421,7 @@ Duqu
 Truvasys
 Remsec
 Backdoor.Remsec
+ProjectSauron
 Industroyer2
 Sykipot
 Explosive
@@ -904,15 +439,20 @@ KEYPLUG.LINUX
 Cuba
 DEATHRANSOM
 Clambling
+Akira
 DarkGate
 Mongall
 NanHaiShu
+LockBit 3.0
+LockBit Black
 SVCReady
 ThiefQuest
 MacRansom.K
 EvilQuest
 FoggyWeb
 NGLite
+Carbanak
+Anunak
 XTunnel
 Trojan.Shunnael
 X-Tunnel
@@ -943,6 +483,7 @@ WanaCrypt
 WanaCrypt0r
 WCry
 Gazer
+WhiteBear
 TSCookie
 Latrodectus
 IceNova
@@ -959,26 +500,31 @@ OSX.Bundlore
 P8RAT
 HEAVYPOT
 GreetCake
+VIRTUALPIE
 EVILNUM
 KOMPROGO
 SMOKEDHAM
 Mori
 QUADAGENT
+Sagerunex
 TAINTEDSCRIBE
 Sys10
 pngdowner
 Royal
 BendyBear
 Uroburos
+Snake
 Metamorfo
 Casbaneiro
 Spica
+Embargo
 Trojan.Karagany
 xFrost
 Karagany
 Bandook
 PipeMon
 SYNful Knock
+MagicRAT
 TINYTYPHON
 KONNI
 T9000
@@ -997,6 +543,7 @@ JHUHUGIT
 Trojan.Sofacy
 Seduploader
 JKEYSKW
+Sednit
 GAMEFISH
 SofacyCarberp
 SPACESHIP
@@ -1007,6 +554,7 @@ Ixeshe
 Micropsia
 Kerrdown
 RARSTONE
+RedLine Stealer
 VBShower
 BPFDoor
 JustForFun
@@ -1030,18 +578,22 @@ StreamEx
 BoxCaon
 NightClub
 Crutch
+Akira _v2
 SDBbot
 Mosquito
+RTM
 Redaman
 QUIETCANARY
 Tunnus
 Derusbi
 PHOTO
+BlackByte Ransomware
 SodaMaster
 DARKTOWN
 dfls
 DelfsCake
 Hikit
+StrelaStealer
 Grandoreiro
 WellMail
 LiteDuke
@@ -1057,6 +609,7 @@ DRIFTWOOD
 Sibot
 ZxxZ
 Tarrask
+GoBear
 Drovorub
 Shark
 Bazar
@@ -1069,12 +622,15 @@ BadPatch
 MESSAGETAP
 RATANKBA
 SUGARDUMP
+XLoader
+Formbook
 SOUNDBITE
 BADCALL
 hcdLoader
 Nidiran
 Backdoor.Nidiran
 MoonWind
+CorKLOG
 Ryuk
 Cryptoistic
 HermeticWiper
@@ -1086,6 +642,10 @@ Mespinoza
 Final1stspy
 MgBot
 ccf32
+Kapeka
+KnuckleTouch
+LockBit 2.0
+OilCheck
 Zebrocy
 Zekapab
 Pandora
@@ -1098,6 +658,8 @@ CrossRAT
 OwaAuth
 Cadelspy
 Cobalt Strike
+SampleCheck5000
+SC5k
 SUNBURST
 Solorigate
 EvilBunny
@@ -1121,9 +683,11 @@ USB Stealer
 Win32/USBStealer
 OSX_OCEANLOTUS.D
 Backdoor.MacOS.OCEANLOTUS.F
+OilBooster
 CCBkdr
 OnionDuke
 Taidoor
+SHIPSHAPE
 Cherry Picker
 SUPERNOVA
 P2P ZeuS
@@ -1132,10 +696,6 @@ Gameover ZeuS
 Kivars
 CaddyWiper
 Cyclops Blink
-PoisonIvy
-Breut
-Poison Ivy
-Darkmoon
 Seasalt
 NativeZone
 NanoCore
@@ -1153,11 +713,13 @@ Cardinal RAT
 DanBot
 BISCUIT
 Calisto
+Solar
 Pisloader
 GoldenSpy
 Gold Dragon
 RGDoor
 Ramsay
+Neo-reGeorg
 FakeM
 Carberp
 FRAMESTING
@@ -1169,8 +731,10 @@ Revenge RAT
 MacMa
 OSX.CDDS
 DazzleSpy
+FunnyDream
 ROADSWEEP
 SUNSPOT
+MOPSLED
 More_eggs
 SKID
 Terra Loader
@@ -1192,6 +756,7 @@ PUNCHTRACK
 PSVC
 Proton
 Trojan.Mebromi
+Mango
 InnaputRAT
 WIREFIRE
 GIFTEDVISITOR
@@ -1216,10 +781,12 @@ SPLM
 Xagent
 X-Agent
 webhp
+StealBit
 FELIXROOT
 GreyEnergy mini
 ZxShell
 Sensocode
+RIFLESPINE
 SLIGHTPULSE
 NDiskMonitor
 CoinTicker
@@ -1236,6 +803,7 @@ Melcoz
 Winnti for Windows
 PowerPunch
 BONDUPDATER
+Troll Stealer
 BLACKCOFFEE
 BFG Agonizer
 Ebury
@@ -1249,6 +817,7 @@ Bladabindi
 ZIPLINE
 Maze
 BOOTRASH
+HIUPAN
 ComRAT
 TURNEDUP
 ChChes
@@ -1259,6 +828,7 @@ ANDROMEDA
 Manjusaka
 IceApple
 JPIN
+VIRTUALPITA
 metaMain
 SideTwist
 KOCTOPUS
@@ -1281,7 +851,8 @@ Win32/KillDisk.NBH
 Win32/KillDisk.NBD
 Win32/KillDisk.NBC
 Win32/KillDisk.NBB
-AppleJeus
+Qilin
+Agenda
 SoreFang
 STARWHALE
 CANOPY
@@ -1294,6 +865,7 @@ Socksbot
 Pcexter
 HIDEDRV
 CozyCar
+CozyDuke
 CozyBear
 Cozer
 EuroAPT
@@ -1304,6 +876,7 @@ httpclient
 POWERSTATS
 Powermud
 POWERTON
+StarProxy
 ECCENTRICBANDWAGON
 BADNEWS
 Linfo
@@ -1350,6 +923,7 @@ GLOOXMAIL
 Trojan.GTALK
 Dok
 Retefe
+SplatCloak
 Waterbear
 FIVEHANDS
 Comnie
@@ -1361,6 +935,8 @@ OSInfo
 MacSpy
 Lizar
 Tirion
+Icebot
+DiceLoader
 Dtrack
 H1N1
 SLOWPULSE
@@ -1395,6 +971,7 @@ SLOTHFULMEDIA
 JackOfHearts
 QueenOfClubs
 FALLCHILL
+XORIndex Loader
 Small Sieve
 GRAMDOOR
 Flame
@@ -1422,7 +999,6 @@ Impacket
 ipconfig
 AADInternals
 Tasklist
-ngrok
 Lslsass
 Arp
 arp.exe
@@ -1456,6 +1032,8 @@ Systeminfo
 Out1
 ConnectWise
 ScreenConnect
+attrib
+attrib.exe
 Imminent Monitor
 Ruler
 Winexe
@@ -1493,10 +1071,580 @@ HUC Packet Transmit Tool
 SDelete
 QuasarRAT
 xRAT
+cipher.exe
 Rubeus
 Tor
 AdFind
 Wevtutil
+Quick Assist
 PsExec
-Twitoor
-Bouncing Golf
+Operation Dream Job
+Operation North Star
+Operation Interception
+KV Botnet Activity
+SharePoint ToolShell Exploitation
+Frankenstein
+RedDelta Modified PlugX Infection Chain Operations
+RedPenguin
+Operation Sharpshooter
+Operation Honeybee
+Operation MidnightEclipse
+Triton Safety Instrumented System Attack
+Operation Dust Storm
+2015 Ukraine Electric Power Attack
+Indian Critical Infrastructure Intrusions
+Operation Spalax
+3CX Supply Chain Attack
+Cutting Edge
+C0018
+Water Curupira Pikabot Distribution
+J-magic Campaign
+C0021
+C0015
+Operation Ghost
+Juicy Mix
+HomeLand Justice
+C0032
+SolarWinds Compromise
+Pikabot Distribution February 2024
+Operation CuckooBees
+Salesforce Data Exfiltration
+APT28 Nearest Neighbor Campaign
+Outer Space
+ArcaneDoor
+C0033
+2016 Ukraine Electric Power Attack
+C0010
+APT41 DUST
+Night Dragon
+Versa Director Zero Day Exploitation
+Operation Wocao
+C0011
+C0017
+C0026
+C0027
+2022 Ukraine Electric Power Attack
+Quad7 Activity
+FLORAHOX Activity
+CostaRicto
+APT38
+NICKEL GLADSTONE
+BeagleBoyz
+Bluenoroff
+Stardust Chollima
+Sapphire Sleet
+COPERNICIUM
+Indrik Spider
+Evil Corp
+Manatee Tempest
+DEV-0243
+UNC2165
+BlackByte
+Hecamede
+Elderwood
+Elderwood Gang
+Beijing Group
+Sneaky Panda
+SideCopy
+GALLIUM
+Granite Typhoon
+APT17
+Deputy Dog
+APT3
+Gothic Panda
+UPS Team
+Buckeye
+Threat Group-0110
+TG-0110
+Mustard Tempest
+DEV-0206
+TA569
+GOLD PRELUDE
+UNC1543
+Kimsuky
+Black Banshee
+Velvet Chollima
+Emerald Sleet
+THALLIUM
+APT43
+TA427
+Springtail
+EXOTIC LILY
+TA577
+admin@338
+Volt Typhoon
+BRONZE SILHOUETTE
+Vanguard Panda
+DEV-0391
+UNC3236
+Voltzite
+Insidious Taurus
+Patchwork
+Hangover Group
+Dropping Elephant
+Chinastrats
+MONSOON
+Operation Hangover
+APT41
+Wicked Panda
+Brass Typhoon
+BARIUM
+Salt Typhoon
+Dragonfly
+TEMP.Isotope
+DYMALLOY
+Berserk Bear
+TG-4192
+Crouching Yeti
+IRON LIBERTY
+Energetic Bear
+Ghost Blizzard
+BROMINE
+Evilnum
+Gorgon Group
+menuPass
+Cicada
+POTASSIUM
+Stone Panda
+APT10
+Red Apollo
+CVNX
+HOGFISH
+BRONZE RIVERSIDE
+APT32
+SeaLotus
+OceanLotus
+APT-C-00
+Canvas Cyclone
+BISMUTH
+HAFNIUM
+Operation Exchange Marauder
+Silk Typhoon
+MuddyWater
+Earth Vetala
+MERCURY
+Static Kitten
+Seedworm
+TEMP.Zagros
+Mango Sandstorm
+TA450
+Strider
+Naikon
+FIN6
+Magecart Group 6
+ITG08
+Skeleton Spider
+TAAL
+Camouflage Tempest
+RedEcho
+Gamaredon Group
+IRON TILDEN
+Primitive Bear
+ACTINIUM
+Armageddon
+Shuckworm
+DEV-0157
+Aqua Blizzard
+Storm-1811
+Leafminer
+Raspite
+TeamTNT
+FIN7
+GOLD NIAGARA
+ITG14
+Carbon Spider
+ELBRUS
+Sangria Tempest
+Sandworm Team
+ELECTRUM
+Telebots
+IRON VIKING
+BlackEnergy (Group)
+Quedagh
+Voodoo Bear
+IRIDIUM
+Seashell Blizzard
+FROZENBARENTS
+APT44
+APT-C-43
+El Machete
+APT18
+TG-0416
+Dynamite Panda
+Threat Group-0416
+Andariel
+Silent Chollima
+PLUTONIUM
+Onyx Sleet
+CURIUM
+Crimson Sandstorm
+TA456
+Tortoise Shell
+Yellow Liderc
+Sidewinder
+T-APT-04
+Rattlesnake
+Mustang Panda
+TA416
+RedDelta
+BRONZE PRESIDENT
+STATELY TAURUS
+FIREANT
+CAMARO DRAGON
+EARTH PRETA
+HIVE0154
+TWILL TYPHOON
+TANTALUM
+LUMINOUS MOTH
+UNC6384
+TEMP.Hex
+Red Lich
+Scattered Spider
+Roasted 0ktapus
+Octo Tempest
+Storm-0875
+UNC3944
+APT39
+ITG07
+Chafer
+Remix Kitten
+UNC3886
+Contagious Interview
+DeceptiveDevelopment
+Gwisin Gang
+Tenacious Pungsan
+DEV#POPPER
+PurpleBravo
+TAG-121
+TA2541
+GOLD SAHARA
+PUNK SPIDER
+Howling Scorpius
+APT37
+InkySquid
+ScarCruft
+Reaper
+Group123
+TEMP.Reaper
+Ricochet Chollima
+Moses Staff
+DEV-0500
+Marigold Sandstorm
+OilRig
+COBALT GYPSY
+IRN2
+APT34
+Helix Kitten
+Evasive Serpens
+Hazel Sandstorm
+EUROPIUM
+ITG13
+Earth Simnavaz
+Crambus
+TA452
+Windigo
+Higaisa
+Tropic Trooper
+Pirate Panda
+Orangeworm
+Sea Turtle
+Teal Kurma
+Marbled Dust
+Cosmic Wolf
+SILICON
+Suckfly
+Putter Panda
+APT2
+MSUpdater
+POLONIUM
+Plaid Rain
+TA459
+Aquatic Panda
+Aoqin Dragon
+Ferocious Kitten
+The White Company
+Ke3chang
+APT15
+Mirage
+Vixen Panda
+GREF
+Playful Dragon
+RoyalAPT
+NICKEL
+Nylon Typhoon
+Saint Bear
+Storm-0587
+TA471
+UAC-0056
+Lorec53
+APT1
+Comment Crew
+Comment Group
+Comment Panda
+DarkHydrus
+Confucius
+Confucius APT
+BlackTech
+Palmerworm
+Leviathan
+MUDCARP
+Kryptonite Panda
+Gadolinium
+BRONZE MOHAWK
+TEMP.Jumper
+APT40
+TEMP.Periscope
+Gingham Typhoon
+MoustachedBouncer
+Group5
+Blue Mockingbird
+SilverTerrier
+Turla
+IRON HUNTER
+Group 88
+Waterbug
+Krypton
+Venomous Bear
+Secret Blizzard
+BELUGASTURGEON
+Storm-0501
+TA505
+Hive0065
+Spandex Tempest
+CHIMBORAZO
+BITTER
+T-APT-17
+DarkVishnya
+FIN5
+Mofang
+Lotus Blossom
+DRAGONFISH
+Spring Dragon
+RADIUM
+Raspberry Typhoon
+Bilbug
+Thrip
+APT29
+IRON RITUAL
+IRON HEMLOCK
+NobleBaron
+Dark Halo
+NOBELIUM
+UNC2452
+YTTRIUM
+The Dukes
+Cozy Bear
+SolarStorm
+Blue Kitsune
+UNC3524
+Midnight Blizzard
+Dark Caracal
+Cinnamon Tempest
+DEV-0401
+Emperor Dragonfly
+BRONZE STARLIGHT
+Chimera
+Cleaver
+Threat Group 2889
+TG-2889
+Medusa Group
+BRONZE BUTLER
+REDBALDKNIGHT
+Tick
+TA551
+GOLD CABIN
+Shathak
+TEMP.Veles
+XENOTIME
+BackdoorDiplomacy
+Star Blizzard
+SEABORGIUM
+Callisto Group
+TA446
+COLDRIVER
+Axiom
+Group 72
+TA578
+Deep Panda
+Shell Crew
+WebMasters
+KungFu Kittens
+PinkPanther
+Black Vine
+Ember Bear
+UNC2589
+Bleeding Bear
+DEV-0586
+Cadet Blizzard
+Frozenvista
+LazyScripter
+Windshift
+Bahamut
+Volatile Cedar
+Lebanese Cedar
+ToddyCat
+Whitefly
+LuminousMoth
+Agrius
+Pink Sandstorm
+AMERICIUM
+Agonizing Serpens
+BlackShadow
+Water Galura
+GOLD FEATHER
+APT28
+IRON TWILIGHT
+SNAKEMACKEREL
+Swallowtail
+Group 74
+Pawn Storm
+Fancy Bear
+STRONTIUM
+Tsar Team
+Threat Group-4127
+TG-4127
+Forest Blizzard
+FROZENLAKE
+GruesomeLarch
+Malteiro
+Metador
+APT42
+APT5
+Mulberry Typhoon
+MANGANESE
+BRONZE FLEETWOOD
+Keyhole Panda
+UNC2630
+Fox Kitten
+UNC757
+Parisite
+Pioneer Kitten
+RUBIDIUM
+Lemon Sandstorm
+APT12
+IXESHE
+DynCalc
+Numbered Panda
+DNSCALC
+APT-C-36
+Blind Eagle
+Winnti Group
+Blackfly
+Tonto Team
+Earth Akhlut
+BRONZE HUNTLEY
+CactusPete
+Karma Panda
+GOLD SOUTHFIELD
+Pinchy Spider
+Lazarus Group
+Labyrinth Chollima
+HIDDEN COBRA
+Guardians of Peace
+ZINC
+NICKEL ACADEMY
+Diamond Sleet
+INC Ransom
+GOLD IONIC
+Earth Lusca
+TAG-22
+Charcoal Typhoon
+CHROMIUM
+ControlX
+Silence
+Whisper Spider
+Sowbug
+Threat Group-1314
+TG-1314
+APT16
+LAPSUS$
+DEV-0537
+Strawberry Tempest
+Cobalt Group
+GOLD KINGSWOOD
+Cobalt Gang
+Cobalt Spider
+CopyKittens
+Wizard Spider
+UNC1878
+TEMP.MixMaster
+Grim Spider
+FIN12
+GOLD BLACKBURN
+ITG23
+Periwinkle Tempest
+DEV-0193
+Molerats
+Operation Molerats
+Gaza Cybergang
+Velvet Ant
+Transparent Tribe
+COPPER FIELDSTONE
+APT36
+Mythic Leopard
+ProjectM
+IndigoZebra
+Moonstone Sleet
+Storm-1789
+Inception
+Inception Framework
+Cloud Atlas
+PROMETHIUM
+APT30
+HEXANE
+Lyceum
+Siamesekitten
+Spirlin
+DragonOK
+Daggerfly
+Evasive Panda
+BRONZE HIGHLAND
+Rancor
+WIRTE
+PLATINUM
+Magic Hound
+TA453
+COBALT ILLUSION
+Charming Kitten
+ITG18
+Phosphorus
+Newscaster
+APT35
+Mint Sandstorm
+Ajax Security Team
+Operation Woolen-Goldfish
+AjaxTM
+Rocket Kitten
+Flying Kitten
+Operation Saffron Rose
+Threat Group-3390
+Earth Smilodon
+TG-3390
+Emissary Panda
+BRONZE UNION
+APT27
+Iron Tiger
+LuckyMouse
+Linen Typhoon
+APT33
+HOLMIUM
+Elfin
+Peach Sandstorm
+FIN10
+FIN8
+Syssphinx
+FIN13
+Elephant Beetle
+APT19
+Codoso
+C0d0so0
+Codoso Team
+Sunshop Group
+PittyTiger
+Nomadic Octopus
+DustSquad
+PoisonIvy
+Breut
+Poison Ivy
+Darkmoon
+ngrok
