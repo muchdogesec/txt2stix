@@ -1,0 +1,645 @@
+Scheduled Task/Job
+Adversary-in-the-Middle
+Abuse Elevation Control Mechanism
+Remote Access Software
+Uninstall Malicious Application
+Indicator Removal on Host
+Supply Chain Compromise
+Impersonate SS7 Nodes
+Match Legitimate Name or Location
+Protected User Data
+Asymmetric Cryptography
+Software Discovery
+Process Discovery
+Call Log
+Security Software Discovery
+Ptrace System Calls
+Impair Defenses
+Abuse Accessibility Features
+Exploitation of Remote Services
+Web Protocols
+Steal Application Access Token
+User Evasion
+Virtualization/Sandbox Evasion
+Application Versioning
+Command and Scripting Interpreter
+Disable or Modify Tools
+Ingress Tool Transfer
+Dynamic Resolution
+Network Service Scanning
+Exfiltration Over C2 Channel
+Accounts
+Exploitation for Privilege Escalation
+Call Control
+Exfiltration Over Unencrypted Non-C2 Protocol
+Broadcast Receivers
+Access Notifications
+Exfiltration Over Alternative Protocol
+Internet Connection Discovery
+Boot or Logon Initialization Scripts
+Execution Guardrails
+GUI Input Capture
+Compromise Client Software Binary
+Software Packing
+Native API
+Exploitation for Client Execution
+Proxy Through Victim
+Foreground Persistence
+Replication Through Removable Media
+Audio Capture
+Hijack Execution Flow
+Unix Shell
+Application Layer Protocol
+Download New Code at Runtime
+Exploitation for Initial Access
+System Checks
+Stored Application Data
+Screen Capture
+Transmitted Data Manipulation
+Compromise Software Dependencies and Development Tools
+URI Hijacking
+Subvert Trust Controls
+Keychain
+Virtualization Solution
+Bidirectional Communication
+Non-Standard Port
+Compromise Software Supply Chain
+Dead Drop Resolver
+Location Tracking
+Device Administrator Permissions
+Remote Device Management Services
+Data Destruction
+Linked Devices
+SIM Card Swap
+Input Capture
+Generate Traffic from Victim
+Disguise Root/Jailbreak Indicators
+Calendar Entries
+File Deletion
+Device Lockout
+Keylogging
+SMS Control
+Process Injection
+Symmetric Cryptography
+Wi-Fi Discovery
+Compromise Hardware Supply Chain
+Clipboard Data
+Data Manipulation
+SMS Messages
+Web Service
+System Runtime API Hijacking
+Credentials from Password Store
+Hooking
+File and Directory Discovery
+Obfuscated Files or Information
+Input Injection
+Network Denial of Service
+Compromise Application Executable
+Event Triggered Execution
+System Network Configuration Discovery
+Video Capture
+One-Way Communication
+Data Encrypted for Impact
+Prevent Application Removal
+System Network Connections Discovery
+Phishing
+SSL Pinning
+Lockscreen Bypass
+Contact List
+Data from Local System
+Account Access Removal
+System Information Discovery
+Archive Collected Data
+Geofencing
+Conceal Multimedia Files
+Endpoint Denial of Service
+Out of Band Data
+Encrypted Channel
+Suppress Application Icon
+Masquerading
+Steganography
+Hide Artifacts
+Code Signing Policy Modification
+Domain Generation Algorithms
+Drive-By Compromise
+Operation Dust Storm
+C0033
+Operation Triangulation
+Use Recent OS Version
+Application Developer Guidance
+Enterprise Policy
+User Guidance
+Do Not Mitigate
+Antivirus/Antimalware
+System Partition Integrity
+Encrypt Network Traffic
+Lock Bootloader
+Security Updates
+Deploy Compromised Device Detection Method
+Interconnection Filtering
+Attestation
+The MITRE Corporation
+Bouncing Golf
+APT41
+UNC788
+MuddyWater
+Sandworm Team
+Scattered Spider
+Confucius
+MoustachedBouncer
+BITTER
+APT-C-23
+Dark Caracal
+Star Blizzard
+Windshift
+APT28
+Earth Lusca
+LAPSUS$
+PROMETHIUM
+CarbonSteal
+Cerberus
+DroidJack
+Rotexy
+Stealth Mango
+Allwinner
+GoldenEagle
+FlixOnline
+Bread
+TriangleDB
+Hornbill
+Judy
+OldBoot
+Gooligan
+SpyNote RAT
+TrickMo
+INSOMNIA
+Dvmap
+Zen
+NotCompatible
+AhRat
+XLoader for Android
+Trojan-SMS.AndroidOS.FakeInst.a
+XLoader for iOS
+AbstractEmu
+Chameleon
+Exodus
+Dendroid
+WireLurker
+Desert Scorpion
+Pegasus for iOS
+Tangelo
+RCSAndroid
+Corona Updates
+Skygofree
+KeyRaider
+ZergHelper
+CherryBlos
+DoubleAgent
+Twitoor
+Fakecalls
+S.O.V.A.
+ANDROIDOS_ANSERVER.A
+DualToy
+Mandrake
+HilalRAT
+X-Agent for Android
+DEFENSOR ID
+BRATA
+LightSpy
+MazarBOT
+Ginp
+HummingWhale
+eSurv
+TangleBot
+Monokle
+RatMilad
+DCHSpy
+Red Alert 2.0
+ViceLeaker
+FlyTrap
+FakeSpy
+SpyDealer
+Concipit1248
+RuMMS
+Pegasus for Android
+SpyC23
+FrozenCell
+AndroidOS/MalLocker.B
+SharkBot
+RedDrop
+CHEMISTGAMES
+YiSpecter
+Trojan-SMS.AndroidOS.Agent.ao
+BOULDSPY
+Anubis
+AndroRAT
+FinFisher
+Agent Smith
+Asacub
+GPlayed
+EventBot
+HenBox
+Binary Validator
+GodFather
+Riltok
+GolfSpy
+Pallas
+Circles
+Tiktok Pro
+PJApps
+ShiftyBug
+HummingBad
+Exobot
+OBAD
+FjordPhantom
+Android/Chuli.A
+Charger
+Drinik
+Trojan-SMS.AndroidOS.OpFake.a
+XcodeGhost
+SilkBean
+WolfRAT
+BusyGasper
+BrainTest
+TERRACOTTA
+Escobar
+Android/SpyAgent
+Triada
+Golden Cup
+FluBot
+ViperRAT
+Adups
+SimBad
+Android/AdDisplay.Ashas
+Phenakite
+TianySpy
+Sunbird
+DressCode
+Gustuff
+None
+FlexiSpy
+Xbot
+Analytic 1789
+Analytic 1740
+Analytic 1649
+Analytic 1679
+Analytic 1725
+Analytic 1792
+Analytic 1829
+Analytic 1747
+Analytic 1736
+Analytic 1807
+Analytic 1836
+Analytic 1727
+Analytic 1832
+Analytic 1759
+Analytic 1819
+Analytic 1814
+Analytic 1662
+Analytic 1704
+Analytic 1801
+Analytic 1705
+Analytic 1768
+Analytic 1714
+Analytic 1816
+Analytic 1762
+Analytic 1644
+Analytic 1738
+Analytic 1778
+Analytic 1711
+Analytic 1720
+Analytic 1729
+Analytic 1718
+Analytic 1737
+Analytic 1760
+Analytic 1750
+Analytic 1717
+Analytic 1688
+Analytic 1788
+Analytic 1669
+Analytic 1687
+Analytic 1774
+Analytic 1799
+Analytic 1735
+Analytic 1820
+Analytic 1672
+Analytic 1795
+Analytic 1764
+Analytic 1845
+Analytic 1808
+Analytic 1769
+Analytic 1773
+Analytic 1665
+Analytic 1831
+Analytic 1734
+Analytic 1696
+Analytic 1719
+Analytic 1763
+Analytic 1766
+Analytic 1748
+Analytic 1689
+Analytic 1847
+Analytic 1673
+Analytic 1685
+Analytic 1733
+Analytic 1723
+Analytic 1654
+Analytic 1648
+Analytic 1659
+Analytic 1804
+Analytic 1805
+Analytic 1693
+Analytic 1703
+Analytic 1658
+Analytic 1691
+Analytic 1701
+Analytic 1790
+Analytic 1671
+Analytic 1708
+Analytic 1732
+Analytic 1756
+Analytic 1821
+Analytic 1783
+Analytic 1851
+Analytic 1826
+Analytic 1700
+Analytic 1749
+Analytic 1787
+Analytic 1667
+Analytic 1852
+Analytic 1846
+Analytic 1721
+Analytic 1730
+Analytic 1806
+Analytic 1686
+Analytic 1742
+Analytic 1761
+Analytic 1824
+Analytic 1677
+Analytic 1828
+Analytic 1812
+Analytic 1683
+Analytic 1752
+Analytic 1779
+Analytic 1724
+Analytic 1776
+Analytic 1675
+Analytic 1848
+Analytic 1784
+Analytic 1815
+Analytic 1744
+Analytic 1751
+Analytic 1680
+Analytic 1661
+Analytic 1800
+Analytic 1743
+Analytic 1794
+Analytic 1726
+Analytic 1842
+Analytic 1715
+Analytic 1840
+Analytic 1839
+Analytic 1710
+Analytic 1786
+Analytic 1646
+Analytic 1699
+Analytic 1698
+Analytic 1825
+Analytic 1728
+Analytic 1754
+Analytic 1785
+Analytic 1651
+Analytic 1653
+Analytic 1650
+Analytic 1811
+Analytic 1765
+Analytic 1771
+Analytic 1682
+Analytic 1690
+Analytic 1833
+Analytic 1741
+Analytic 1652
+Analytic 1645
+Analytic 1802
+Analytic 1803
+Analytic 1770
+Analytic 1775
+Analytic 1676
+Analytic 1796
+Analytic 1753
+Analytic 1757
+Analytic 1835
+Analytic 1843
+Analytic 1678
+Analytic 1827
+Analytic 1684
+Analytic 1841
+Analytic 1853
+Analytic 1745
+Analytic 1767
+Analytic 1713
+Analytic 1647
+Analytic 1817
+Analytic 1697
+Analytic 1781
+Analytic 1668
+Analytic 1854
+Analytic 1692
+Analytic 1707
+Analytic 1702
+Analytic 1709
+Analytic 1694
+Analytic 1660
+Analytic 1791
+Analytic 1780
+Analytic 1793
+Analytic 1822
+Analytic 1722
+Analytic 1731
+Analytic 1849
+Analytic 1656
+Analytic 1772
+Analytic 1850
+Analytic 1655
+Analytic 1674
+Analytic 1666
+Analytic 1663
+Analytic 1670
+Analytic 1664
+Analytic 1782
+Analytic 1797
+Analytic 1695
+Analytic 1809
+Analytic 1739
+Analytic 1834
+Analytic 1818
+Analytic 1755
+Analytic 1830
+Analytic 1681
+Analytic 1798
+Analytic 1657
+Analytic 1716
+Analytic 1777
+Analytic 1746
+Analytic 1810
+Analytic 1813
+Analytic 1706
+Analytic 1758
+Analytic 1712
+Analytic 1837
+Analytic 1838
+Analytic 1844
+Analytic 1823
+Network Connection Creation
+Network Traffic Content
+Process Creation
+System Settings
+API Calls
+Application Assets
+Process Termination
+Command Execution
+Protected Configuration
+Network Communication
+Host Status
+OS API Execution
+Network Traffic Flow
+Permissions Requests
+System Notifications
+Permissions Request
+Process Metadata
+Detection of Contact List
+Detection of Phishing
+Detection of Boot or Logon Initialization Scripts
+Detection of Exploitation for Client Execution
+Detection of Network Service Scanning
+Detection of Call Log
+Detection of System Information Discovery
+Detection of Call Control
+Detection of System Checks
+Detection of Symmetric Cryptography
+Detection of Abuse Accessibility Features
+Detection of Calendar Entries
+Detection of Disable or Modify Tools
+Detection of Process Discovery
+Detection of URI Hijacking
+Detection of Disguise Root/Jailbreak Indicators
+Detection of Native API
+Detection of Compromise Software Supply Chain
+Detection of Compromise Application Executable
+Detection of Dynamic Resolution
+Detection of Hide Artifacts
+Detection of Generate Traffic from Victim
+Detection of Input Injection
+Detection of Data Encrypted for Impact
+Detection of SMS Control
+Detection of Input Capture
+Detection of Geofencing
+Detection of Exploitation for Initial Access
+Detection of Bidirectional Communication
+Detection of Indicator Removal on Host
+Detection of Virtualization Solution
+Detection of Internet Connection Discovery
+Detection of Hooking
+Detection of Device Lockout
+Detection of Lockscreen Bypass
+Detection of Software Packing
+Detection of Unix Shell
+Detection of Screen Capture
+Detection of Web Protocols
+Detection of Exploitation of Remote Services
+Detection of Replication Through Removable Media
+Detection of Audio Capture
+Detection of Exfiltration Over C2 Channel
+Detection of One-Way Communication
+Detection of Device Administrator Permissions
+Detection of Transmitted Data Manipulation
+Detection of Steal Application Access Token
+Detection of GUI Input Capture
+Detection of Protected User Data
+Detection of System Network Configuration Discovery
+Detection of Steganography
+Detection of Impair Defenses
+Detection of File Deletion
+Detection of SIM Card Swap
+Detection of Uninstall Malicious Application
+Detection of Ingress Tool Transfer
+Detection of Exploitation for Privilege Escalation
+Detection of User Evasion
+Detection of Suppress Application Icon
+Detection of Remote Device Management Services
+Detection of Ptrace System Calls
+Detection of Subvert Trust Controls
+Detection of Command and Scripting Interpreter
+Detection of Software Discovery
+Detection of Web Service
+Detection of Data Manipulation
+Detection of Encrypted Channel
+Detection of Account Access Removal
+Detection of Non-Standard Port
+Detection of Adversary-in-the-Middle
+Detection of Prevent Application Removal
+Detection of Clipboard Data
+Detection of Obfuscated Files or Information
+Detection of Compromise Client Software Binary
+Detection of System Network Connections Discovery
+Detection of Exfiltration Over Alternative Protocol
+Detection of System Runtime API Hijacking
+Detection of Execution Guardrails
+Detection of Dead Drop Resolver
+Detection of Access Notifications
+Detection of Network Denial of Service
+Detection of Supply Chain Compromise
+Detection of Match Legitimate Name or Location
+Detection of Proxy Through Victim
+Detection of Accounts
+Detection of Security Software Discovery
+Detection of Download New Code at Runtime
+Detection of Conceal Multimedia Files
+Detection of Abuse Elevation Control Mechanism
+Detection of Broadcast Receivers
+Detection of Data from Local System
+Detection of Virtualization/Sandbox Evasion
+Detection of Application Layer Protocol
+Detection of Impersonate SS7 Nodes
+Detection of Code Signing Policy Modification
+Detection of Location Tracking
+Detection of SMS Messages
+Detection of File and Directory Discovery
+Detection of Credentials from Password Store
+Detection of Keychain
+Detection of Hijack Execution Flow
+Detection of Archive Collected Data
+Detection of Process Injection
+Detection of Endpoint Denial of Service
+Detection of Asymmetric Cryptography
+Detection of Domain Generation Algorithms
+Detection of Foreground Persistence
+Detection of SSL Pinning
+Detection of Exfiltration Over Unencrypted Non-C2 Protocol
+Detection of Compromise Software Dependencies and Development Tools
+Detection of Remote Access Software
+Detection of Drive-By Compromise
+Detection of Video Capture
+Detection of Masquerading
+Detection of Stored Application Data
+Detection of Out of Band Data
+Detection of Application Versioning
+Detection of Scheduled Task/Job
+Detection of Compromise Hardware Supply Chain
+Detection of Linked Devices
+Detection of Wi-Fi Discovery
+Detection of Keylogging
+Detection of Data Destruction
+Detection of Event Triggered Execution
+Initial Access
+Exfiltration
+Persistence
+Privilege Escalation
+Command and Control
+Execution
+Impact
+Credential Access
+Collection
+Lateral Movement
+Defense Evasion
+Discovery

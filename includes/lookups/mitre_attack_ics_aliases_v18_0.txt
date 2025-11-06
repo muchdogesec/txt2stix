@@ -1,0 +1,145 @@
+FrostyGoop Incident
+Triton Safety Instrumented System Attack
+2015 Ukraine Electric Power Attack
+Maroochy Water Breach
+Unitronics Defacement Campaign
+2016 Ukraine Electric Power Attack
+2022 Ukraine Electric Power Attack
+APT38
+NICKEL GLADSTONE
+BeagleBoyz
+Bluenoroff
+Stardust Chollima
+Sapphire Sleet
+COPERNICIUM
+ALLANITE
+Palmetto Fusion
+Dragonfly
+TEMP.Isotope
+DYMALLOY
+Berserk Bear
+TG-4192
+Crouching Yeti
+IRON LIBERTY
+Energetic Bear
+Ghost Blizzard
+BROMINE
+FIN6
+Magecart Group 6
+ITG08
+Skeleton Spider
+TAAL
+Camouflage Tempest
+FIN7
+GOLD NIAGARA
+ITG14
+Carbon Spider
+ELBRUS
+Sangria Tempest
+Sandworm Team
+ELECTRUM
+Telebots
+IRON VIKING
+BlackEnergy (Group)
+Quedagh
+Voodoo Bear
+IRIDIUM
+Seashell Blizzard
+FROZENBARENTS
+APT44
+OilRig
+COBALT GYPSY
+IRN2
+APT34
+Helix Kitten
+Evasive Serpens
+Hazel Sandstorm
+EUROPIUM
+ITG13
+Earth Simnavaz
+Crambus
+TA452
+TEMP.Veles
+XENOTIME
+CyberAv3ngers
+Soldiers of Soloman
+GOLD SOUTHFIELD
+Pinchy Spider
+Lazarus Group
+Labyrinth Chollima
+HIDDEN COBRA
+Guardians of Peace
+ZINC
+NICKEL ACADEMY
+Diamond Sleet
+Wizard Spider
+UNC1878
+TEMP.MixMaster
+Grim Spider
+FIN12
+GOLD BLACKBURN
+ITG23
+Periwinkle Tempest
+DEV-0193
+HEXANE
+Lyceum
+Siamesekitten
+Spirlin
+APT33
+HOLMIUM
+Elfin
+Peach Sandstorm
+EKANS
+SNAKEHOSE
+Backdoor.Oldrea
+Havex
+Stuxnet
+W32.Stuxnet
+Bad Rabbit
+Win32/Diskcoder.D
+PLC-Blaster
+BlackEnergy
+Black Energy
+NotPetya
+ExPetr
+Diskcoder.C
+GoldenEye
+Petrwrap
+Nyetya
+Conficker
+Kido
+Downadup
+LockerGoga
+VPNFilter
+Duqu
+Industroyer2
+WannaCry
+WanaCry
+WanaCrypt
+WanaCrypt0r
+WCry
+Triton
+TRISIS
+HatMan
+Fuxnet
+Ryuk
+ACAD/Medre.A
+REvil
+Sodin
+Sodinokibi
+FrostyGoop
+BUSTLEBERM
+INCONTROLLER
+PIPEDREAM
+KillDisk
+Win32/KillDisk.NBI
+Win32/KillDisk.NBH
+Win32/KillDisk.NBD
+Win32/KillDisk.NBC
+Win32/KillDisk.NBB
+Industroyer
+CRASHOVERRIDE
+Win32/Industroyer
+Flame
+Flamer
+sKyWIper

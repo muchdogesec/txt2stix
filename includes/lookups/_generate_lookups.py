@@ -68,7 +68,7 @@ queries = {
     "mitre_attack_enterprise_id_v18_0.txt":
       """
         FOR doc IN mitre_attack_enterprise_vertex_collection
-          FILTER doc._stix2arango_note == "version=16_0"
+          FILTER doc._stix2arango_note == "version=18_0"
           AND doc.type != "x-mitre-matrix"
           AND doc.x_mitre_deprecated != true
           AND doc.revoked != true
@@ -81,7 +81,7 @@ queries = {
     "mitre_attack_enterprise_name_v18_0.txt":
       """
         FOR doc IN mitre_attack_enterprise_vertex_collection
-          FILTER doc._stix2arango_note == "version=16_0"
+          FILTER doc._stix2arango_note == "version=18_0"
           AND doc.type != "x-mitre-matrix"
           AND doc.x_mitre_deprecated != true
           AND doc.revoked != true
@@ -92,7 +92,7 @@ queries = {
         FOR alias IN UNIQUE(
           FLATTEN(
             FOR doc IN mitre_attack_enterprise_vertex_collection
-              FILTER doc._stix2arango_note == "version=16_0"
+              FILTER doc._stix2arango_note == "version=18_0"
               AND doc.type != "x-mitre-matrix"
               AND doc.x_mitre_deprecated != true
               AND doc.revoked != true
@@ -109,7 +109,7 @@ queries = {
     "mitre_attack_ics_id_v18_0.txt":
       """
         FOR doc IN mitre_attack_ics_vertex_collection
-          FILTER doc._stix2arango_note == "version=16_0"
+          FILTER doc._stix2arango_note == "version=18_0"
           AND doc.type != "x-mitre-matrix"
           AND doc.x_mitre_deprecated != true
           AND doc.revoked != true
@@ -122,7 +122,7 @@ queries = {
     "mitre_attack_ics_name_v18_0.txt":
       """
         FOR doc IN mitre_attack_ics_vertex_collection
-          FILTER doc._stix2arango_note == "version=16_0"
+          FILTER doc._stix2arango_note == "version=18_0"
           AND doc.type != "x-mitre-matrix"
           AND doc.x_mitre_deprecated != true
           AND doc.revoked != true
@@ -133,7 +133,7 @@ queries = {
         FOR alias IN UNIQUE(
           FLATTEN(
             FOR doc IN mitre_attack_ics_vertex_collection
-              FILTER doc._stix2arango_note == "version=16_0"
+              FILTER doc._stix2arango_note == "version=18_0"
               AND doc.type != "x-mitre-matrix"
               AND doc.x_mitre_deprecated != true
               AND doc.revoked != true
@@ -150,7 +150,7 @@ queries = {
     "mitre_attack_mobile_id_v18_0.txt":
       """
         FOR doc IN mitre_attack_mobile_vertex_collection
-          FILTER doc._stix2arango_note == "version=16_0"
+          FILTER doc._stix2arango_note == "version=18_0"
           AND doc.type != "x-mitre-matrix"
           AND doc.x_mitre_deprecated != true
           AND doc.revoked != true
@@ -163,7 +163,7 @@ queries = {
     "mitre_attack_mobile_name_v18_0.txt":
       """
         FOR doc IN mitre_attack_mobile_vertex_collection
-          FILTER doc._stix2arango_note == "version=16_0"
+          FILTER doc._stix2arango_note == "version=18_0"
           AND doc.type != "x-mitre-matrix"
           AND doc.x_mitre_deprecated != true
           AND doc.revoked != true
@@ -174,7 +174,7 @@ queries = {
         FOR alias IN UNIQUE(
           FLATTEN(
             FOR doc IN mitre_attack_mobile_vertex_collection
-              FILTER doc._stix2arango_note == "version=16_0"
+              FILTER doc._stix2arango_note == "version=18_0"
               AND doc.type != "x-mitre-matrix"
               AND doc.x_mitre_deprecated != true
               AND doc.revoked != true
@@ -231,19 +231,6 @@ queries = {
           AND doc.x_mitre_deprecated != true
           AND doc.revoked != true
           RETURN doc.name
-      """,
-    "mitre_attack_enterprise_id_v18_0.txt":
-      """
-        FOR doc IN mitre_attack_enterprise_vertex_collection
-          FILTER doc._stix2arango_note == "version=16_0"
-          AND doc.type != "x-mitre-matrix"
-          AND doc.x_mitre_deprecated != true
-          AND doc.revoked != true
-          AND IS_ARRAY(doc.external_references)
-          FOR reference IN doc.external_references
-            FILTER reference.source_name == "mitre-attack"
-            SORT reference.external_id ASC
-            RETURN reference.external_id
       """,
     "sector_aliases_v1_0.txt":
       """

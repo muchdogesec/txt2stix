@@ -1,0 +1,1650 @@
+FrostyGoop Incident
+ShadowRay
+SPACEHOP Activity
+Leviathan Australian Intrusions
+NEODYMIUM
+GCMAN
+AppleJeus
+Gleaming Pisces
+Citrine Sleet
+UNC1720
+UNC4736
+Moafee
+Gallmaker
+ZIRCONIUM
+APT31
+Violet Typhoon
+Rocke
+Winter Vivern
+TA473
+UAC-0114
+Poseidon Group
+RedCurl
+APT-C-23
+Mantis
+Arid Viper
+Desert Falcon
+TAG-63
+Grey Karkadann
+Big Bang APT
+Two-tailed Scorpion
+Stealth Falcon
+Silent Librarian
+TA407
+COBALT DICKENS
+Equation
+Darkhotel
+DUBNIUM
+Zigzag Hail
+Scarlet Mimic
+FIN4
+BlackOasis
+HDoor
+Custom HDoor
+TrickBot
+Totbrick
+TSPY_TRICKLOAD
+cd00r
+PowerDuke
+EKANS
+SNAKEHOSE
+BLINDINGCAN
+Ninja
+Pikabot
+Wiarp
+RCSession
+Spark
+QuietSieve
+SynAck
+Bumblebee
+MURKYTOP
+AcidRain
+GRIFFON
+Exaramel for Windows
+Amadey
+JumbledPath
+RDFSNIFFER
+NICECURL
+Proxysvc
+Orz
+AIRBREAK
+Torisma
+NOKKI
+yty
+Backdoor.Oldrea
+Havex
+DOGCALL
+Stuxnet
+W32.Stuxnet
+Downdelph
+Delphacy
+RotaJakiro
+AvosLocker
+SEASHARPEE
+Get2
+POWRUNER
+KOPILUWAK
+RobbinHood
+MEDUSA
+VersaMem
+TDTESS
+Chinoxy
+SharpStage
+PAKLOG
+COATHANGER
+Sardonic
+Smoke Loader
+Dofoil
+WindTail
+Misdat
+reGeorg
+FLIPSIDE
+Linux Rabbit
+adbupd
+Emissary
+Exaramel for Linux
+KEYMARBLE
+BUBBLEWRAP
+Backdoor.APT.FakeWinHTTPHelper
+HAWKBALL
+TAMECAT
+PS1
+Ursnif
+Gozi-ISFB
+PE_URSNIF
+Dreambot
+CASTLETAP
+ThreatNeedle
+RansomHub
+ZLib
+RedLeaves
+BUGJUICE
+Miner-C
+POWERSOURCE
+DNSMessenger
+LITTLELAMB.WOOLTEA
+Felismus
+Zeus Panda
+GeminiDuke
+Havoc
+CARROTBAT
+Matryoshka
+FrameworkPOS
+Trinity
+GravityRAT
+WEBC2
+Prestige
+InvisibleFerret
+Bankshot
+Trojan Manuscript
+SharpDisco
+StrongPity
+HAPPYWORK
+xCaon
+PLAINTEE
+Pony
+WinMM
+Nebulae
+Janicab
+AuditCred
+Roptimizer
+Lurid
+Enfal
+TONESHELL
+UPSTYLE
+Kasidet
+Hannotog
+OceanSalt
+Playcrypt
+Play
+Brave Prince
+Medusa Ransomware
+RainyDay
+Ecipekac
+HEAVYHAND
+SigLoader
+DESLoader
+AppleSeed
+BUSHWALK
+macOS.OSAMiner
+LOWBALL
+NETWIRE
+TinyTurla
+PyDCrypt
+J-magic
+PowerExchange
+BOOKWORM
+HyperStack
+iKitten
+OSX/MacDownloader
+HAMMERTOSS
+HammerDuke
+NetDuke
+OLDBAIT
+Sasfis
+Bad Rabbit
+Win32/Diskcoder.D
+CosmicDuke
+TinyBaron
+BotgenStudios
+NemesisGemina
+EvilGrab
+EnvyScout
+SslMM
+STATICPLUGIN
+IMAPLoader
+GreyEnergy
+Gomir
+Aria-body
+Emotet
+Geodo
+SNUGRIDE
+Olympic Destroyer
+BOLDMOVE
+Crimson
+MSIL/Crimson
+Tomiris
+TEARDROP
+DUSTTRAP
+Turian
+THINCRUST
+BADHATCH
+Machete
+Pyark
+PowerLess
+Action RAT
+Avenger
+DUSTPAN
+Prikormka
+PUBLOAD
+Gootloader
+PingPull
+WellMess
+Dacls
+DropBook
+Woody RAT
+Mafalda
+KARAE
+Squirrelwaffle
+ELMER
+CANONSTAGER
+PolyglotDuke
+HexEval Loader
+Umbreon
+AuTo Stealer
+ShrinkLocker
+Hildegard
+Agent.btz
+SLOWDRIFT
+SHUTTERSPEED
+SombRAT
+ODAgent
+BlackByte 2.0 Ransomware
+FlawedGrace
+FLASHFLOOD
+FlawedAmmyy
+Snip3
+FYAnti
+DILLJUICE stage2
+Rifdoor
+SUGARUSH
+LoFiSe
+HOPLIGHT
+Cuckoo Stealer
+GuLoader
+WastedLocker
+RegDuke
+ProLock
+Moneybird
+InvisiMole
+CLAIMLOADER
+P.A.S. Webshell
+Fobushell
+QUIETEXIT
+Naid
+Apostle
+Volgmer
+WINERACK
+WhisperGate
+FruitFly
+ZeroT
+Keydnap
+OSX/Keydnap
+AcidPour
+RDAT
+Hacking Team UEFI Rootkit
+Skidmap
+Okrum
+TRANSLATEXT
+Regin
+Bonadan
+Line Dancer
+SamSam
+Samas
+Neoichor
+Conti
+Raspberry Robin
+Mispadu
+RemoteCMD
+Megazord
+Diavol
+REPTILE
+Raindrop
+Doki
+TEXTMATE
+Siloscape
+BlackCat
+ALPHV
+Noberus
+Fysbis
+IcedID
+VERMIN
+UBoatRAT
+Nightdoor
+MarkiRAT
+PowerShower
+Kazuar
+NavRAT
+DarkComet
+DarkKomet
+Fynloski
+Krademok
+FYNLOS
+NETEAGLE
+POORAIM
+HUI Loader
+CHIMNEYSWEEP
+Ragnar Locker
+FatDuke
+Lucifer
+BlackEnergy
+Black Energy
+zwShell
+GLASSTOKEN
+DCSrv
+DRATzarus
+BOOSTWRITE
+Rising Sun
+ASPXSpy
+ASPXTool
+NotPetya
+ExPetr
+Diskcoder.C
+GoldenEye
+Petrwrap
+Nyetya
+ShimRat
+Chrommme
+BADFLICK
+ObliqueRAT
+SHOTPUT
+Backdoor.APT.CookieCutter
+Pirpi
+Avaddon
+Conficker
+Kido
+Downadup
+SocGholish
+FakeUpdates
+Flagpro
+Hi-Zor
+SpicyOmelette
+XAgentOSX
+OSX.Sofacy
+Green Lambert
+China Chopper
+SnappyTCP
+CALENDAR
+LockerGoga
+LightSpy
+Chaos
+ISMInjector
+PUNCHBUGGY
+ShellTea
+GoldMax
+SUNSHUTTLE
+HELLOKITTY
+CostaBricks
+Cheerscrypt
+LIGHTWIRE
+KeyBoy
+POSHSPY
+MiniDuke
+HyperBro
+Anchor
+Anchor_DNS
+Line Runner
+Pteranodon
+Pterodo
+DarkTortilla
+BeaverTail
+ROKRAT
+CORESHELL
+Sofacy
+SOURFACE
+RunningRAT
+VPNFilter
+SplatDropper
+Babuk
+Babyk
+Vasa Locker
+Exbyte
+DarkWatchman
+Dyre
+Dyzap
+Dyreza
+BlackMould
+Javali
+PACEMAKER
+LunarLoader
+BBSRAT
+PlugX
+Thoper
+TVT
+DestroyRAT
+Sogu
+Kaba
+Korplug
+Reaver
+Bisonal
+MultiLayer Wiper
+S-Type
+Lumma Stealer
+LummaStealer
+SeaDuke
+SeaDaddy
+SeaDesk
+BS2005
+DustySky
+NeD Worm
+Duqu
+Truvasys
+Remsec
+Backdoor.Remsec
+ProjectSauron
+Industroyer2
+Sykipot
+Explosive
+Xbash
+Rover
+Epic
+Tavdig
+Wipbot
+WorldCupSec
+TadjMakhal
+LightNeuron
+Peppy
+KEYPLUG
+KEYPLUG.LINUX
+Cuba
+DEATHRANSOM
+Clambling
+Akira
+DarkGate
+Mongall
+NanHaiShu
+LockBit 3.0
+LockBit Black
+SVCReady
+ThiefQuest
+MacRansom.K
+EvilQuest
+FoggyWeb
+NGLite
+Carbanak
+Anunak
+XTunnel
+Trojan.Shunnael
+X-Tunnel
+XAPS
+Hydraq
+Roarur
+MdmBot
+HomeUnix
+Homux
+HidraQ
+HydraQ
+McRat
+Aurora
+9002 RAT
+SHARPSTATS
+Ferocious
+HOMEFRY
+CreepyDrive
+Caterpillar WebShell
+Netwalker
+Elise
+BKDR_ESILE
+Page
+USBferry
+WannaCry
+WanaCry
+WanaCrypt
+WanaCrypt0r
+WCry
+Gazer
+WhiteBear
+TSCookie
+Latrodectus
+IceNova
+Unidentified 111
+Saint Bot
+Pay2Key
+Chaes
+Briba
+CharmPower
+TYPEFRAME
+3PARA RAT
+Bundlore
+OSX.Bundlore
+P8RAT
+HEAVYPOT
+GreetCake
+VIRTUALPIE
+EVILNUM
+KOMPROGO
+SMOKEDHAM
+Mori
+QUADAGENT
+Sagerunex
+TAINTEDSCRIBE
+Sys10
+pngdowner
+Royal
+BendyBear
+Uroburos
+Snake
+Metamorfo
+Casbaneiro
+Spica
+Embargo
+Trojan.Karagany
+xFrost
+Karagany
+Bandook
+PipeMon
+SYNful Knock
+MagicRAT
+TINYTYPHON
+KONNI
+T9000
+Winnti for Linux
+RAPIDPULSE
+gh0st RAT
+Mydoor
+Moudoor
+Shamoon
+Disttrack
+Skeleton Key
+DnsSystem
+MoleNet
+CORALDECK
+JHUHUGIT
+Trojan.Sofacy
+Seduploader
+JKEYSKW
+Sednit
+GAMEFISH
+SofacyCarberp
+SPACESHIP
+BLUELIGHT
+KGH_SPY
+down_new
+Ixeshe
+Micropsia
+Kerrdown
+RARSTONE
+RedLine Stealer
+VBShower
+BPFDoor
+JustForFun
+Backdoor.Linux.BPFDOOR
+Backdoor.Solaris.BPFDOOR.ZAJE
+Black Basta
+ZeroCleare
+ZEROCLEAR
+Catchamas
+StoneDrill
+DROPSHOT
+OopsIE
+4H RAT
+RogueRobin
+Attor
+DealersChoice
+SQLRat
+LitePower
+MegaCortex
+StreamEx
+BoxCaon
+NightClub
+Crutch
+Akira _v2
+SDBbot
+Mosquito
+RTM
+Redaman
+QUIETCANARY
+Tunnus
+Derusbi
+PHOTO
+BlackByte Ransomware
+SodaMaster
+DARKTOWN
+dfls
+DelfsCake
+Hikit
+StrelaStealer
+Grandoreiro
+WellMail
+LiteDuke
+Starloader
+Sakula
+Sakurel
+VIPER
+VaporRage
+RawPOS
+FIENDCRY
+DUEBREW
+DRIFTWOOD
+Sibot
+ZxxZ
+Tarrask
+GoBear
+Drovorub
+Shark
+Bazar
+KEGTAP
+Team9
+Bazaloader
+PULSECHECK
+Kobalos
+BadPatch
+MESSAGETAP
+RATANKBA
+SUGARDUMP
+XLoader
+Formbook
+SOUNDBITE
+BADCALL
+hcdLoader
+Nidiran
+Backdoor.Nidiran
+MoonWind
+CorKLOG
+Ryuk
+Cryptoistic
+HermeticWiper
+Trojan.Killdisk
+DriveSlayer
+ABK
+Pysa
+Mespinoza
+Final1stspy
+MgBot
+ccf32
+Kapeka
+KnuckleTouch
+LockBit 2.0
+OilCheck
+Zebrocy
+Zekapab
+Pandora
+FinFisher
+FinSpy
+SpeakUp
+LunarMail
+WARPWIRE
+CrossRAT
+OwaAuth
+Cadelspy
+Cobalt Strike
+SampleCheck5000
+SC5k
+SUNBURST
+Solorigate
+EvilBunny
+Wingbird
+Cobian RAT
+HotCroissant
+ServHelper
+JCry
+Unknown Logger
+REvil
+Sodin
+Sodinokibi
+RIPTIDE
+Valak
+Samurai
+PinchDuke
+Milan
+James
+USBStealer
+USB Stealer
+Win32/USBStealer
+OSX_OCEANLOTUS.D
+Backdoor.MacOS.OCEANLOTUS.F
+OilBooster
+CCBkdr
+OnionDuke
+Taidoor
+SHIPSHAPE
+Cherry Picker
+SUPERNOVA
+P2P ZeuS
+Peer-to-Peer ZeuS
+Gameover ZeuS
+Kivars
+CaddyWiper
+Cyclops Blink
+Seasalt
+NativeZone
+NanoCore
+TajMahal
+PLEAD
+Raccoon Stealer
+IPsec Helper
+Daserf
+Muirim
+Nioupale
+GoldFinder
+Carbon
+LoJax
+Cardinal RAT
+DanBot
+BISCUIT
+Calisto
+Solar
+Pisloader
+GoldenSpy
+Gold Dragon
+RGDoor
+Ramsay
+Neo-reGeorg
+FakeM
+Carberp
+FRAMESTING
+HARDRAIN
+NKAbuse
+Pillowmint
+TrailBlazer
+Revenge RAT
+MacMa
+OSX.CDDS
+DazzleSpy
+FunnyDream
+ROADSWEEP
+SUNSPOT
+MOPSLED
+More_eggs
+SKID
+Terra Loader
+SysUpdate
+HyperSSL
+Soldier
+FOCUSFJORD
+TinyZBot
+OutSteel
+BackConfig
+PowGoop
+Kwampirs
+Nerex
+BoomBox
+DEADEYE
+DEADEYE.EMBED
+DEADEYE.APPEND
+PUNCHTRACK
+PSVC
+Proton
+Trojan.Mebromi
+Mango
+InnaputRAT
+WIREFIRE
+GIFTEDVISITOR
+Kessel
+GrimAgent
+LookBack
+STEADYPULSE
+Clop
+NetTraveler
+YAHOYAH
+Lokibot
+CallMe
+ROCKBOOT
+CloudDuke
+MiniDionis
+CloudLook
+Egregor
+PoetRAT
+CHOPSTICK
+Backdoor.SofacyX
+SPLM
+Xagent
+X-Agent
+webhp
+StealBit
+FELIXROOT
+GreyEnergy mini
+ZxShell
+Sensocode
+RIFLESPINE
+SLIGHTPULSE
+NDiskMonitor
+CoinTicker
+DDKONG
+Penquin
+Penquin 2.0
+Penquin_x64
+BabyShark
+LATEOP
+Cannon
+CreepySnail
+build_downer
+Melcoz
+Winnti for Windows
+PowerPunch
+BONDUPDATER
+Troll Stealer
+BLACKCOFFEE
+BFG Agonizer
+Ebury
+Kinsing
+PITSTOP
+Meteor
+njRAT
+Njw0rm
+LV
+Bladabindi
+ZIPLINE
+Maze
+BOOTRASH
+HIUPAN
+ComRAT
+TURNEDUP
+ChChes
+Scorpion
+HAYMAKER
+PowerStallion
+ANDROMEDA
+Manjusaka
+IceApple
+JPIN
+VIRTUALPITA
+metaMain
+SideTwist
+KOCTOPUS
+MechaFlounder
+Psylo
+Heyoka Backdoor
+HTTPBrowser
+Token Control
+HttpDump
+Mis-Type
+LunarWeb
+XCSSET
+OSX.DubRobber
+Disco
+Dipsind
+Octopus
+KillDisk
+Win32/KillDisk.NBI
+Win32/KillDisk.NBH
+Win32/KillDisk.NBD
+Win32/KillDisk.NBC
+Win32/KillDisk.NBB
+Qilin
+Agenda
+SoreFang
+STARWHALE
+CANOPY
+MirageFox
+Industroyer
+CRASHOVERRIDE
+Win32/Industroyer
+DownPaper
+Socksbot
+Pcexter
+HIDEDRV
+CozyCar
+CozyDuke
+CozyBear
+Cozer
+EuroAPT
+Kevin
+Agent Tesla
+Pasam
+httpclient
+POWERSTATS
+Powermud
+POWERTON
+StarProxy
+ECCENTRICBANDWAGON
+BADNEWS
+Linfo
+Goopy
+ShadowPad
+POISONPLUG.SHADOW
+Remexi
+Astaroth
+Guildma
+QakBot
+Pinkslipbot
+QuackBot
+QBot
+SYSCON
+CookieMiner
+Hancitor
+Chanitor
+Gelsemium
+Gelsevirine
+Gelsenicine
+Gelsemine
+jRAT
+JSocket
+AlienSpy
+Frutas
+Sockrat
+Unrecom
+jFrutas
+Adwind
+jBiFrost
+Trojan.Maljava
+Helminth
+Dridex
+Bugat v5
+BBK
+Komplex
+OSX/Shlayer
+Zshlayer
+Crossrider
+Denis
+INC Ransomware
+DEADWOOD
+GLOOXMAIL
+Trojan.GTALK
+Dok
+Retefe
+SplatCloak
+Waterbear
+FIVEHANDS
+Comnie
+Vasport
+AutoIt backdoor
+JSS Loader
+PHOREAL
+OSInfo
+MacSpy
+Lizar
+Tirion
+Icebot
+DiceLoader
+Dtrack
+H1N1
+SLOWPULSE
+Seth-Locker
+LoudMiner
+Azorult
+BitPaymer
+wp_encrypt
+FriedEx
+BACKSPACE
+Lecna
+Zox
+Gresim
+ZoxRPC
+ZoxPNG
+UPPERCUT
+ANEL
+ADVSTORESHELL
+AZZY
+EVILTOSS
+NETUI
+Sedreco
+StrifeWater
+Mivast
+HiddenWasp
+WarzoneRAT
+Warzone
+Ave Maria
+Net Crawler
+NetC
+SLOTHFULMEDIA
+JackOfHearts
+QueenOfClubs
+FALLCHILL
+XORIndex Loader
+Small Sieve
+GRAMDOOR
+Flame
+Flamer
+sKyWIper
+HermeticWizard
+Net
+net.exe
+RemoteUtilities
+Covenant
+NPPSPY
+BloodHound
+certutil
+certutil.exe
+at
+at.exe
+ShimRatReporter
+Sliver
+SILENTTRINITY
+PowerSploit
+Pacu
+Windows Credential Editor
+WCE
+Impacket
+ipconfig
+AADInternals
+Tasklist
+Lslsass
+Arp
+arp.exe
+spwebmember
+Empire
+EmPyre
+PowerShell Empire
+FRP
+dsquery
+dsquery.exe
+PcShare
+RawDisk
+netstat
+PoshC2
+Fgdump
+CSPY Downloader
+Rclone
+MimiPenguin
+netsh
+netsh.exe
+CARROTBALL
+BITSAdmin
+meek
+AsyncRAT
+ROADTools
+Brute Ratel C4
+BRc4
+Peirates
+Remcos
+Systeminfo
+Out1
+ConnectWise
+ScreenConnect
+attrib
+attrib.exe
+Imminent Monitor
+Ruler
+Winexe
+MCMD
+Nltest
+MailSniper
+pwdump
+Responder
+Donut
+Mimikatz
+gsecdump
+IronNetInjector
+Invoke-PSImage
+NBTscan
+LaZagne
+Ping
+cmd
+cmd.exe
+esentutl
+esentutl.exe
+CrackMapExec
+Koadic
+schtasks
+schtasks.exe
+Cachedump
+Expand
+Pupy
+Reg
+reg.exe
+ftp
+ftp.exe
+Mythic
+HTRAN
+HUC Packet Transmit Tool
+SDelete
+QuasarRAT
+xRAT
+cipher.exe
+Rubeus
+Tor
+AdFind
+Wevtutil
+Quick Assist
+PsExec
+Operation Dream Job
+Operation North Star
+Operation Interception
+KV Botnet Activity
+SharePoint ToolShell Exploitation
+Frankenstein
+RedDelta Modified PlugX Infection Chain Operations
+RedPenguin
+Operation Sharpshooter
+Operation Honeybee
+Operation MidnightEclipse
+Triton Safety Instrumented System Attack
+Operation Dust Storm
+2015 Ukraine Electric Power Attack
+Indian Critical Infrastructure Intrusions
+Operation Spalax
+3CX Supply Chain Attack
+Cutting Edge
+C0018
+Water Curupira Pikabot Distribution
+J-magic Campaign
+C0021
+C0015
+Operation Ghost
+Juicy Mix
+HomeLand Justice
+C0032
+SolarWinds Compromise
+Pikabot Distribution February 2024
+Operation CuckooBees
+Salesforce Data Exfiltration
+APT28 Nearest Neighbor Campaign
+Outer Space
+ArcaneDoor
+C0033
+2016 Ukraine Electric Power Attack
+C0010
+APT41 DUST
+Night Dragon
+Versa Director Zero Day Exploitation
+Operation Wocao
+C0011
+C0017
+C0026
+C0027
+2022 Ukraine Electric Power Attack
+Quad7 Activity
+FLORAHOX Activity
+CostaRicto
+APT38
+NICKEL GLADSTONE
+BeagleBoyz
+Bluenoroff
+Stardust Chollima
+Sapphire Sleet
+COPERNICIUM
+Indrik Spider
+Evil Corp
+Manatee Tempest
+DEV-0243
+UNC2165
+BlackByte
+Hecamede
+Elderwood
+Elderwood Gang
+Beijing Group
+Sneaky Panda
+SideCopy
+GALLIUM
+Granite Typhoon
+APT17
+Deputy Dog
+APT3
+Gothic Panda
+UPS Team
+Buckeye
+Threat Group-0110
+TG-0110
+Mustard Tempest
+DEV-0206
+TA569
+GOLD PRELUDE
+UNC1543
+Kimsuky
+Black Banshee
+Velvet Chollima
+Emerald Sleet
+THALLIUM
+APT43
+TA427
+Springtail
+EXOTIC LILY
+TA577
+admin@338
+Volt Typhoon
+BRONZE SILHOUETTE
+Vanguard Panda
+DEV-0391
+UNC3236
+Voltzite
+Insidious Taurus
+Patchwork
+Hangover Group
+Dropping Elephant
+Chinastrats
+MONSOON
+Operation Hangover
+APT41
+Wicked Panda
+Brass Typhoon
+BARIUM
+Salt Typhoon
+Dragonfly
+TEMP.Isotope
+DYMALLOY
+Berserk Bear
+TG-4192
+Crouching Yeti
+IRON LIBERTY
+Energetic Bear
+Ghost Blizzard
+BROMINE
+Evilnum
+Gorgon Group
+menuPass
+Cicada
+POTASSIUM
+Stone Panda
+APT10
+Red Apollo
+CVNX
+HOGFISH
+BRONZE RIVERSIDE
+APT32
+SeaLotus
+OceanLotus
+APT-C-00
+Canvas Cyclone
+BISMUTH
+HAFNIUM
+Operation Exchange Marauder
+Silk Typhoon
+MuddyWater
+Earth Vetala
+MERCURY
+Static Kitten
+Seedworm
+TEMP.Zagros
+Mango Sandstorm
+TA450
+Strider
+Naikon
+FIN6
+Magecart Group 6
+ITG08
+Skeleton Spider
+TAAL
+Camouflage Tempest
+RedEcho
+Gamaredon Group
+IRON TILDEN
+Primitive Bear
+ACTINIUM
+Armageddon
+Shuckworm
+DEV-0157
+Aqua Blizzard
+Storm-1811
+Leafminer
+Raspite
+TeamTNT
+FIN7
+GOLD NIAGARA
+ITG14
+Carbon Spider
+ELBRUS
+Sangria Tempest
+Sandworm Team
+ELECTRUM
+Telebots
+IRON VIKING
+BlackEnergy (Group)
+Quedagh
+Voodoo Bear
+IRIDIUM
+Seashell Blizzard
+FROZENBARENTS
+APT44
+APT-C-43
+El Machete
+APT18
+TG-0416
+Dynamite Panda
+Threat Group-0416
+Andariel
+Silent Chollima
+PLUTONIUM
+Onyx Sleet
+CURIUM
+Crimson Sandstorm
+TA456
+Tortoise Shell
+Yellow Liderc
+Sidewinder
+T-APT-04
+Rattlesnake
+Mustang Panda
+TA416
+RedDelta
+BRONZE PRESIDENT
+STATELY TAURUS
+FIREANT
+CAMARO DRAGON
+EARTH PRETA
+HIVE0154
+TWILL TYPHOON
+TANTALUM
+LUMINOUS MOTH
+UNC6384
+TEMP.Hex
+Red Lich
+Scattered Spider
+Roasted 0ktapus
+Octo Tempest
+Storm-0875
+UNC3944
+APT39
+ITG07
+Chafer
+Remix Kitten
+UNC3886
+Contagious Interview
+DeceptiveDevelopment
+Gwisin Gang
+Tenacious Pungsan
+DEV#POPPER
+PurpleBravo
+TAG-121
+TA2541
+GOLD SAHARA
+PUNK SPIDER
+Howling Scorpius
+APT37
+InkySquid
+ScarCruft
+Reaper
+Group123
+TEMP.Reaper
+Ricochet Chollima
+Moses Staff
+DEV-0500
+Marigold Sandstorm
+OilRig
+COBALT GYPSY
+IRN2
+APT34
+Helix Kitten
+Evasive Serpens
+Hazel Sandstorm
+EUROPIUM
+ITG13
+Earth Simnavaz
+Crambus
+TA452
+Windigo
+Higaisa
+Tropic Trooper
+Pirate Panda
+Orangeworm
+Sea Turtle
+Teal Kurma
+Marbled Dust
+Cosmic Wolf
+SILICON
+Suckfly
+Putter Panda
+APT2
+MSUpdater
+POLONIUM
+Plaid Rain
+TA459
+Aquatic Panda
+Aoqin Dragon
+Ferocious Kitten
+The White Company
+Ke3chang
+APT15
+Mirage
+Vixen Panda
+GREF
+Playful Dragon
+RoyalAPT
+NICKEL
+Nylon Typhoon
+Saint Bear
+Storm-0587
+TA471
+UAC-0056
+Lorec53
+APT1
+Comment Crew
+Comment Group
+Comment Panda
+DarkHydrus
+Confucius
+Confucius APT
+BlackTech
+Palmerworm
+Leviathan
+MUDCARP
+Kryptonite Panda
+Gadolinium
+BRONZE MOHAWK
+TEMP.Jumper
+APT40
+TEMP.Periscope
+Gingham Typhoon
+MoustachedBouncer
+Group5
+Blue Mockingbird
+SilverTerrier
+Turla
+IRON HUNTER
+Group 88
+Waterbug
+Krypton
+Venomous Bear
+Secret Blizzard
+BELUGASTURGEON
+Storm-0501
+TA505
+Hive0065
+Spandex Tempest
+CHIMBORAZO
+BITTER
+T-APT-17
+DarkVishnya
+FIN5
+Mofang
+Lotus Blossom
+DRAGONFISH
+Spring Dragon
+RADIUM
+Raspberry Typhoon
+Bilbug
+Thrip
+APT29
+IRON RITUAL
+IRON HEMLOCK
+NobleBaron
+Dark Halo
+NOBELIUM
+UNC2452
+YTTRIUM
+The Dukes
+Cozy Bear
+SolarStorm
+Blue Kitsune
+UNC3524
+Midnight Blizzard
+Dark Caracal
+Cinnamon Tempest
+DEV-0401
+Emperor Dragonfly
+BRONZE STARLIGHT
+Chimera
+Cleaver
+Threat Group 2889
+TG-2889
+Medusa Group
+BRONZE BUTLER
+REDBALDKNIGHT
+Tick
+TA551
+GOLD CABIN
+Shathak
+TEMP.Veles
+XENOTIME
+BackdoorDiplomacy
+Star Blizzard
+SEABORGIUM
+Callisto Group
+TA446
+COLDRIVER
+Axiom
+Group 72
+TA578
+Deep Panda
+Shell Crew
+WebMasters
+KungFu Kittens
+PinkPanther
+Black Vine
+Ember Bear
+UNC2589
+Bleeding Bear
+DEV-0586
+Cadet Blizzard
+Frozenvista
+LazyScripter
+Windshift
+Bahamut
+Volatile Cedar
+Lebanese Cedar
+ToddyCat
+Whitefly
+LuminousMoth
+Agrius
+Pink Sandstorm
+AMERICIUM
+Agonizing Serpens
+BlackShadow
+Water Galura
+GOLD FEATHER
+APT28
+IRON TWILIGHT
+SNAKEMACKEREL
+Swallowtail
+Group 74
+Pawn Storm
+Fancy Bear
+STRONTIUM
+Tsar Team
+Threat Group-4127
+TG-4127
+Forest Blizzard
+FROZENLAKE
+GruesomeLarch
+Malteiro
+Metador
+APT42
+APT5
+Mulberry Typhoon
+MANGANESE
+BRONZE FLEETWOOD
+Keyhole Panda
+UNC2630
+Fox Kitten
+UNC757
+Parisite
+Pioneer Kitten
+RUBIDIUM
+Lemon Sandstorm
+APT12
+IXESHE
+DynCalc
+Numbered Panda
+DNSCALC
+APT-C-36
+Blind Eagle
+Winnti Group
+Blackfly
+Tonto Team
+Earth Akhlut
+BRONZE HUNTLEY
+CactusPete
+Karma Panda
+GOLD SOUTHFIELD
+Pinchy Spider
+Lazarus Group
+Labyrinth Chollima
+HIDDEN COBRA
+Guardians of Peace
+ZINC
+NICKEL ACADEMY
+Diamond Sleet
+INC Ransom
+GOLD IONIC
+Earth Lusca
+TAG-22
+Charcoal Typhoon
+CHROMIUM
+ControlX
+Silence
+Whisper Spider
+Sowbug
+Threat Group-1314
+TG-1314
+APT16
+LAPSUS$
+DEV-0537
+Strawberry Tempest
+Cobalt Group
+GOLD KINGSWOOD
+Cobalt Gang
+Cobalt Spider
+CopyKittens
+Wizard Spider
+UNC1878
+TEMP.MixMaster
+Grim Spider
+FIN12
+GOLD BLACKBURN
+ITG23
+Periwinkle Tempest
+DEV-0193
+Molerats
+Operation Molerats
+Gaza Cybergang
+Velvet Ant
+Transparent Tribe
+COPPER FIELDSTONE
+APT36
+Mythic Leopard
+ProjectM
+IndigoZebra
+Moonstone Sleet
+Storm-1789
+Inception
+Inception Framework
+Cloud Atlas
+PROMETHIUM
+APT30
+HEXANE
+Lyceum
+Siamesekitten
+Spirlin
+DragonOK
+Daggerfly
+Evasive Panda
+BRONZE HIGHLAND
+Rancor
+WIRTE
+PLATINUM
+Magic Hound
+TA453
+COBALT ILLUSION
+Charming Kitten
+ITG18
+Phosphorus
+Newscaster
+APT35
+Mint Sandstorm
+Ajax Security Team
+Operation Woolen-Goldfish
+AjaxTM
+Rocket Kitten
+Flying Kitten
+Operation Saffron Rose
+Threat Group-3390
+Earth Smilodon
+TG-3390
+Emissary Panda
+BRONZE UNION
+APT27
+Iron Tiger
+LuckyMouse
+Linen Typhoon
+APT33
+HOLMIUM
+Elfin
+Peach Sandstorm
+FIN10
+FIN8
+Syssphinx
+FIN13
+Elephant Beetle
+APT19
+Codoso
+C0d0so0
+Codoso Team
+Sunshop Group
+PittyTiger
+Nomadic Octopus
+DustSquad
+PoisonIvy
+Breut
+Poison Ivy
+Darkmoon
+ngrok

@@ -1,0 +1,412 @@
+Block Command Message
+Service Stop
+Modify Parameter
+Modify Controller Tasking
+Wireless Sniffing
+Loss of View
+Activate Firmware Update Mode
+Manipulation of Control
+Denial of Service
+Block Serial COM
+System Binary Proxy Execution
+Command-Line Interface
+Point & Tag Identification
+Device Restart/Shutdown
+User Execution
+Wireless Compromise
+Change Operating Mode
+Alarm Suppression
+Detect Operating Mode
+Loss of Protection
+Monitor Process State
+Scripting
+Remote System Information Discovery
+Program Upload
+Exploit Public-Facing Application
+Data from Information Repositories
+Transient Cyber Asset
+Manipulate I/O Image
+Network Sniffing
+Rootkit
+Automated Collection
+Block Reporting Message
+Unauthorized Command Message
+Data Destruction
+Manipulation of View
+Indicator Removal on Host
+I/O Image
+Denial of View
+Execution through API
+Supply Chain Compromise
+Loss of Safety
+Loss of Productivity and Revenue
+Spearphishing Attachment
+Autorun Image
+Drive-by Compromise
+Damage to Property
+Spoof Reporting Message
+Exploitation of Remote Services
+Default Credentials
+External Remote Services
+Brute Force I/O
+Adversary-in-the-Middle
+Exploitation for Evasion
+Loss of Control
+Hooking
+Graphical User Interface
+Rogue Master
+Native API
+Loss of Availability
+Theft of Operational Information
+System Firmware
+Masquerading
+Program Download
+Replication Through Removable Media
+Screen Capture
+Hardcoded Credentials
+Valid Accounts
+Exploitation for Privilege Escalation
+Remote System Discovery
+Connection Proxy
+Standard Application Layer Protocol
+Remote Services
+Denial of Control
+Modify Alarm Settings
+Commonly Used Port
+Project File Infection
+Network Connection Enumeration
+Lateral Tool Transfer
+Module Firmware
+Internet Accessible Device
+Data from Local System
+Change Credential
+Modify Program
+FrostyGoop Incident
+Triton Safety Instrumented System Attack
+2015 Ukraine Electric Power Attack
+Maroochy Water Breach
+Unitronics Defacement Campaign
+2016 Ukraine Electric Power Attack
+2022 Ukraine Electric Power Attack
+Application Isolation and Sandboxing
+Filter Network Traffic
+Restrict Web-Based Content
+Validate Program Inputs
+Network Segmentation
+Restrict Library Loading
+Active Directory Configuration
+Network Intrusion Prevention
+Restrict Registry Permissions
+Data Loss Prevention
+Access Management
+Mitigation Limited or Not Effective
+Exploit Protection
+Limit Access to Resource Over Network
+Execution Prevention
+Static Network Configuration
+Password Policies
+Privileged Account Management
+Human User Authentication
+SSL/TLS Inspection
+Code Signing
+Software Process and Device Authentication
+Encrypt Network Traffic
+Account Use Policies
+Application Developer Guidance
+Boot Integrity
+Mechanical Protection Layers
+Update Software
+Watchdog Timers
+Operational Information Confidentiality
+Operating System Configuration
+Limit Hardware Installation
+Encrypt Sensitive Information
+Network Allowlists
+Supply Chain Management
+Data Backup
+Out-of-Band Communications Channel
+Audit
+Communication Authenticity
+Disable or Remove Feature or Program
+Threat Intelligence Program
+Safety Instrumented Systems
+User Training
+Multi-factor Authentication
+Vulnerability Scanning
+Authorization Enforcement
+User Account Management
+Redundancy of Service
+Restrict File and Directory Permissions
+Software Configuration
+Antivirus/Antimalware
+Minimize Wireless Signal Propagation
+The MITRE Corporation
+APT38
+ALLANITE
+Dragonfly
+FIN6
+FIN7
+Sandworm Team
+OilRig
+TEMP.Veles
+CyberAv3ngers
+GOLD SOUTHFIELD
+Lazarus Group
+Wizard Spider
+HEXANE
+APT33
+EKANS
+Backdoor.Oldrea
+Stuxnet
+Bad Rabbit
+PLC-Blaster
+BlackEnergy
+NotPetya
+Conficker
+LockerGoga
+VPNFilter
+Duqu
+Industroyer2
+WannaCry
+Triton
+Fuxnet
+Ryuk
+ACAD/Medre.A
+REvil
+FrostyGoop
+INCONTROLLER
+KillDisk
+Industroyer
+Flame
+None
+Analytic 1881
+Analytic 1936
+Analytic 1855
+Analytic 1916
+Analytic 1886
+Analytic 1860
+Analytic 1895
+Analytic 1874
+Analytic 1859
+Analytic 1925
+Analytic 1926
+Analytic 1932
+Analytic 1907
+Analytic 1868
+Analytic 1872
+Analytic 1879
+Analytic 1914
+Analytic 1909
+Analytic 1929
+Analytic 1924
+Analytic 1880
+Analytic 1921
+Analytic 1893
+Analytic 1899
+Analytic 1864
+Analytic 1920
+Analytic 1908
+Analytic 1882
+Analytic 1913
+Analytic 1894
+Analytic 1883
+Analytic 1901
+Analytic 1897
+Analytic 1898
+Analytic 1892
+Analytic 1870
+Analytic 1905
+Analytic 1887
+Analytic 1858
+Analytic 1902
+Analytic 1918
+Analytic 1862
+Analytic 1928
+Analytic 1922
+Analytic 1915
+Analytic 1863
+Analytic 1900
+Analytic 1889
+Analytic 1911
+Analytic 1935
+Analytic 1877
+Analytic 1878
+Analytic 1934
+Analytic 1869
+Analytic 1866
+Analytic 1885
+Analytic 1896
+Analytic 1930
+Analytic 1871
+Analytic 1884
+Analytic 1876
+Analytic 1906
+Analytic 1910
+Analytic 1865
+Analytic 1856
+Analytic 1931
+Analytic 1903
+Analytic 1917
+Analytic 1923
+Analytic 1904
+Analytic 1873
+Analytic 1857
+Analytic 1867
+Analytic 1875
+Analytic 1912
+Analytic 1891
+Analytic 1861
+Analytic 1919
+Analytic 1888
+Analytic 1890
+Analytic 1927
+Analytic 1933
+Virtual Private Network (VPN) Server
+Jump Host
+Remote Terminal Unit (RTU)
+Field I/O
+Human-Machine Interface (HMI)
+Programmable Automation Controller (PAC)
+Data Gateway
+Safety Controller
+Intelligent Electronic Device (IED)
+Distributed Control System (DCS) Controller
+Application Server
+Programmable Logic Controller (PLC)
+Firewall
+Switch
+Routers
+Data Historian
+Control Server
+Workstation
+Windows Registry Key Deletion
+Network Connection Creation
+File Access
+File Creation
+Network Traffic Content
+Logon Session Metadata
+Process Creation
+Drive Creation
+Process/Event Alarm
+Drive Modification
+Service Creation
+Process Termination
+File Metadata
+Service Modification
+Command Execution
+Service Metadata
+Scheduled Job Metadata
+File Modification
+Software
+Process History/Live Data
+OS API Execution
+Application Log Content
+Logon Session Creation
+Device Alarm
+Script Execution
+Network Traffic Flow
+User Account Authentication
+Asset Inventory
+Firmware Modification
+Module Load
+Windows Registry Key Modification
+File Deletion
+Process Metadata
+Scheduled Job Creation
+Network Share Access
+Scheduled Job Modification
+Detection of Rootkit
+Detection of Block Reporting Message
+Detection of Masquerading
+Detection of Denial of Service
+Detection of Project File Infection
+Detection of System Firmware
+Detection of Exploitation for Privilege Escalation
+Detection of Alarm Suppression
+Detection of Denial of View
+Detection of Device Restart/Shutdown
+Detection of Denial of Control
+Detection of Theft of Operational Information
+Detection of Block Command Message
+Detection of Change Credential
+Detection of Commonly Used Port
+Detection of Loss of Control
+Detection of Data from Local System
+Detection of Screen Capture
+Detection of Brute Force I/O
+Detection of Network Connection Enumeration
+Detection of Automated Collection
+Detection of Modify Parameter
+Detection of Manipulation of View
+Detection of Block Serial COM
+Detection of System Binary Proxy Execution
+Detection of Point & Tag Identification
+Detection of Supply Chain Compromise
+Detection of Native API
+Detection of Monitor Process State
+Detection of Lateral Tool Transfer
+Detection of Remote System Information Discovery
+Detection of Exploitation of Remote Services
+Detection of Activate Firmware Update Mode
+Detection of Program Upload
+Detection of Program Download
+Detection of Standard Application Layer Protocol
+Detection of Remote Services
+Detection of Wireless Compromise
+Detection of Modify Program
+Detection of Modify Alarm Settings
+Detection of Graphical User Interface
+Detection of Connection Proxy
+Detection of Drive-by Compromise
+Detection of Transient Cyber Asset
+Detection of Autorun Image
+Detection of Exploitation for Evasion
+Detection of Rogue Master
+Detection of Hooking
+Detection of Data from Information Repositories
+Detection of Loss of View
+Detection of Exploit Public-Facing Application
+Detection of Manipulate I/O Image
+Detection of Manipulation of Control
+Detection of Default Credentials
+Detection of Service Stop
+Detection of Adversary-in-the-Middle
+Detection of Spearphishing Attachment
+Detection of Wireless Sniffing
+Detection of Command-Line Interface
+Detection of Spoof Reporting Message
+Detection of Loss of Protection
+Detection of Loss of Productivity and Revenue
+Detection of Internet Accessible Device
+Detection of I/O Image
+Detection of Replication Through Removable Media
+Detection of Unauthorized Command Message
+Detection of Loss of Availability
+Detection of Hardcoded Credentials
+Detection of Module Firmware
+Detection of Detect Operating Mode
+Detection of Indicator Removal on Host
+Detection of External Remote Services
+Detection of User Execution
+Detection of Remote System Discovery
+Detection of Data Destruction
+Detection of Execution through API
+Detection of Network Sniffing
+Detection of Damage to Property
+Detection of Scripting
+Detection of Loss of Safety
+Detection of Change Operating Mode
+Detection of Modify Controller Tasking
+Detection of Valid Accounts
+Inhibit Response Function
+Privilege Escalation
+Lateral Movement
+Discovery
+Initial Access
+Impact
+Persistence
+Execution
+Command and Control
+Collection
+Evasion
+Impair Process Control
