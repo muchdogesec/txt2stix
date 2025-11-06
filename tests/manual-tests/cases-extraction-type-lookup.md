@@ -348,3 +348,16 @@ python3 txt2stix.py \
 	--use_extractions lookup_tool \
 	--report_id e7e54176-71c5-41d0-94a5-325e4b2192d0
 ```
+
+#### lookup_sector_alias
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_sector_aliasees.txt \
+	--name 'lookup_sector_alias' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions lookup_sector_alias \
+	--report_id 86d439c4-9793-4d11-9a26-238a48a4896c
+```

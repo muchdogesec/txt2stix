@@ -237,7 +237,7 @@ stix2-patterns==2.0.0
     #   stix2-validator
 stix2-validator==3.2.0
     # via txt2stix (pyproject.toml)
-stix2extensions==1.2.0
+stix2extensions==1.2.6
     # via txt2stix (pyproject.toml)
 tenacity==9.1.2
     # via llama-index-core

@@ -272,7 +272,7 @@ lookup_sector_alias:
   name: 'Sector names'
   description: 'Extracts Sector alias from text.'
   notes: 'ai_mitre_attack_ics also exists but beware of hallucinations'
-  file: 'lookups/sector_aliases_1_0.txt'
+  file: 'lookups/sector_aliases_v1_0.txt'
   created: 2020-01-01
   modified:  2020-01-01
   created_by: dogesec
