@@ -1,0 +1,157 @@
+LLM Prompt Obfuscation
+Black-Box Optimization
+Acquire Infrastructure
+Journals and Conference Proceedings
+Erode AI Model Integrity
+Pre-Print Repositories
+LLM Prompt Crafting
+Denial of AI Service
+Extract AI Model
+Generative AI
+Direct
+Impersonation
+Extract LLM System Prompt
+Create Proxy AI Model
+Malicious Package
+Discover LLM System Information
+AI Development Workspaces
+LLM Trusted Output Components Manipulation
+Train Proxy via Gathered AI Artifacts
+Modify AI Model Architecture
+Obtain Capabilities
+Special Character Sets
+Publish Poisoned Datasets
+Model
+Financial Harm
+Search Open AI Vulnerability Analysis
+Search Victim-Owned Websites
+System Prompt
+Spearphishing via Social Engineering LLM
+Physical Countermeasures
+Search Application Repositories
+Data from Information Repositories
+Poison Training Data
+Use Pre-Trained Model
+Technical Blogs
+False RAG Entry Injection
+External Harms
+AI Intellectual Property Theft
+Drive-by Compromise
+Acquire Public AI Artifacts
+Masquerading
+Discover LLM Hallucinations
+Manual Modification
+Unsecured Credentials
+Establish Accounts
+Infer Training Data Membership
+Societal Harm
+Publish Hallucinated Entities
+Black-Box Transfer
+LLM Response Rendering
+User Harm
+Reverse Shell
+RAG Poisoning
+User Execution
+Physical Environment Access
+Evade AI Model
+Cost Harvesting
+Discover AI Artifacts
+Insert Backdoor Trigger
+Consumer Hardware
+Gather RAG-Indexed Targets
+Hardware
+Domains
+Indirect
+Full AI Model Access
+LLM Prompt Self-Replication
+AI Supply Chain Compromise
+System Instruction Keywords
+Spamming AI System with Chaff Data
+Poison AI Model
+Discover AI Model Family
+Reputational Harm
+Serverless
+Adversarial AI Attack Implementations
+LLM Prompt Injection
+Unsafe AI Artifacts
+Cloud Service Discovery
+Manipulate AI Model
+Discover AI Model Ontology
+Embed Malware
+Software Tools
+Data from Local System
+Develop Capabilities
+Invert AI Model
+Erode Dataset Integrity
+Datasets
+Container Registry
+Active Scanning
+Valid Accounts
+Corrupt AI Model
+Exfiltration via AI Inference API
+Adversarial AI Attacks
+AI Artifact Collection
+AI Software
+Search Open Technical Databases
+LLM Data Leakage
+Stage Capabilities
+Models
+Citations
+Discover AI Model Outputs
+LLM Plugin Compromise
+Exploit Public-Facing Application
+Exfiltration via Cyber Means
+Phishing
+White-Box Optimization
+Publish Poisoned Models
+Train Proxy via Replication
+Data
+Command and Scripting Interpreter
+AI-Enabled Product or Service
+LLM Jailbreak
+Retrieval Content Crafting
+Craft Adversarial Data
+AI Model Inference API Access
+Verify Attack
+AI Model Distribution Methods
+Input Restoration
+Control Access to AI Models and Data at Rest
+User Training
+Passive AI Output Obfuscation
+Validate AI Model
+Restrict Library Loading
+Maintain AI Dataset Provenance
+Encrypt Sensitive Information
+Restrict Number of AI Model Queries
+Code Signing
+Verify AI Artifacts
+Use Multi-Modal Sensors
+Control Access to AI Models and Data in Production
+Adversarial Input Detection
+Generative AI Model Alignment
+Limit Public Release of Information
+AI Telemetry Logging
+Use Ensemble Methods
+AI Bill of Materials
+Model Hardening
+Limit Model Artifact Release
+Sanitize Training Data
+Generative AI Guidelines
+Generative AI Guardrails
+Vulnerability Scanning
+ATLAS
+AI Model Access
+Execution
+Initial Access
+AI Attack Staging
+Credential Access
+Impact
+Reconnaissance
+Collection
+Command and Control
+Defense Evasion
+Exfiltration
+Discovery
+Privilege Escalation
+Resource Development
+Persistence

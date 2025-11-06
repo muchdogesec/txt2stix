@@ -1,171 +1,751 @@
+Academic
+Academic Industry
+Academic Sector
+Academic Sectors
+Academics
+Academics Industry
+Academics Sector
+Academicses
+Activism
+Activism Industry
+Activism Sector
+Activisms
+Advisories
+Advisory
+Advisory Sector
+Aerospace
+Aerospace Industry
+Aerospace Sector
+Aerospaces
+Agribusiness
+Agribusiness Industry
+Agribusiness Sector
+Agribusinesses
+Agriculture
+Agriculture And Agribusiness
+Agriculture And Agribusinesses
+Agriculture Industry
+Agriculture Sector
+Agricultures
+Air Transport
+Air Transport Industry
+Air Transport Sector
+Air Transports
+Airline
+Airline Industry
+Airline Sector
+Airlines
 Automotive
-Hospitality-Leisure
-Financial Industry (FI)
-Financial-Services
-Financial
-Financial Services
-Technology
-Crypto
-Cryptocurrency
-Information Security
-Vulnerability Research
-software
-Software Development
-IT
-Currency Exchange
-Virtual Currency
+Automotive Industry
+Automotive Sector
+Automotives
+Aviation
+Aviation Industry
+Aviation Sector
+Aviations
+Bank
+Bank Sector
+Banking
+Banking & Investment Services
+Banking & Investment Serviceses
+Banking Industry
+Banking Institutions
+Banking Institutions Industry
+Banking Institutions Sector
+Banking Institutionses
+Banking Sector
+Banking Services
+Banking Services Industry
+Banking Services Sector
+Banking Serviceses
+Bankings
+Banks
+Banks Industry
+Banks Sector
+Bankses
+Beverage
+Beverage Industry
+Beverage Sector
+Beverages
+Biomedical
+Biomedical Industry
+Biomedical Sector
+Biomedicals
+Biotechnologies
+Biotechnology
+Biotechnology Industry
+Biotechnology Sector
 Bitcoin
-Information Technology
-IT Service Providers
+Building
+Building Industry
+Building Sector
+Buildings
+Cellular
+Cellular Industry
+Cellular Sector
+Cellulars
+Central Administration And Government
+Central Administration And Governments
+Charitable Organizations
+Charitable Organizations Sector
+Chemical
+Chemical Industry
+Chemicals
+Citizens
+Citizens Industry
+Citizens Sector
+Citizenses
+Civil Societies
+Civil Society
+Civil Society Industry
+Civil Society Sector
+Commerce
+Commerce Industry
+Commerce Sector
+Commerces
+Commercial
+Commercial Sector
+Commercials
 Commodities
-Tourism
+Commodities Industry
+Commodities Sector
+Commoditieses
+Communications
+Communications Industry
+Communications Sector
+Communicationses
+Construction
+Construction Industry
+Construction Sector
+Constructions
+Consulting
+Consulting Industry
+Consulting Sector
+Consultings
+Critical Infrastructure
+Critical Infrastructure Industry
+Critical Infrastructure Sector
+Critical Infrastructures
+Critical Infrastructureses
+Critical Public
+Critical Public Industry
+Critical Public Sector
+Critical Publics
+Crypto
+Cryptocurrencies
+Cryptocurrency
+Cryptocurrency Industry
+Cryptocurrency Sector
+Culture
+Culture & Entertainment
+Culture And Entertainments
+Culture Industry
+Culture Sector
+Cultures
+Currency Exchange
+Currency Exchange Sector
+Dams
+Dams Industry
+Dams Sector
+Damses
+Defence
+Defence Industries
+Defence Industry
+Defence Research And Development
+Defence Research And Developments
+Defence Sector
+Defences
+Defense
+Defense Industries
+Defense Industry
+Defense Ministries (Including The Military)
+Defense Research & Development
+Defense Research And Developments
+Defense Sector
+Defenses
+Digital Infrastructures
+Digital Infrastructures Industry
+Digital Infrastructures Sector
+Digital Infrastructureses
+Diplomacies
+Diplomacy
+Diplomacy Industry
+Diplomacy Sector
+Diplomatic
+Diplomatic Industry
+Diplomatic Organizations
+Diplomatic Organizations Industry
+Diplomatic Organizations Sector
+Diplomatic Organizationses
+Diplomatic Sector
+Diplomatics
+Dissidents
+Dissidents Industry
+Dissidents Sector
+Dissidentses
+Distribution
+Distribution Industry
+Distribution Sector
+Distributions
+Domain
+Domain Industry
+Domain Sector
+Domains
+E-Commerce
+E-Commerces
+Ecommerce
+Ecommerces
+Education
+Education Industry
+Education Sector
+Educations
+Election
+Election Industry
+Election Sector
+Elections
+Electrical
+Electrical Industry
+Electrical Sector
+Electricals
+Electricities
+Electricity
+Electricity Industry
+Electricity Sector
+Electronics
+Electronics Industry
+Electronics Sector
+Electronicses
+Emergency-Services
+Emergency-Services Sector
+Energies
+Energy
+Energy Industry
+Energy Sector
+Engineering
+Engineering Consulting
+Engineering Consulting Industry
+Engineering Consulting Sector
+Engineering Consultings
+Engineering Industry
+Engineering Sector
+Engineerings
+Entertainment
+Entertainment Industries
+Entertainment Industry
+Entertainment Sector
+Entertainments
+Environmental
+Environmental Industry
+Environmental Sector
+Environmentals
+Finance
+Finance Industry
+Finance Sector
+Finances
+Financial
+Financial Industry
+Financial Industry (FI)
+Financial Organizations
+Financial Organizations Industry
+Financial Organizations Sector
+Financial Organizationses
+Financial Sector
+Financial-Services
+Financial-Services Industry
+Financial-Services Sector
+Financial-Serviceses
+Financials
 Food
+Food And Drinks Businesses
+Food And Drinks Businesseses
+Food Industry
+Food Production
+Food Production Industry
+Food Production Sector
+Food Productions
+Food Sector
+Foods
+Foreign
+Foreign Affairs
+Foreign Affairs Industry
+Foreign Affairs Sector
+Foreign Affairses
+Foreign Industry
+Foreign Sector
+Foreigns
+Fuel
+Fuel Industry
+Fuel Sector
+Fuels
+Gambling
+Gambling Industry
+Gambling Sector
+Gamblings
+Gaming
+Gaming Industry
+Gaming Sector
+Gamings
+Gas
+Gas And
+Gas And Industry
+Gas And Oil
+Gas And Oils
+Gas And Sector
+Gas Ands
+Gas Industry
+Gas Sector
+Gases
+Government
+Government & Administrations
+Government And Administrationses
+Government Industry
+Government Sector
+Government-Local
+Government-Local Industry
+Government-Local Sector
+Government-Locals
+Government-National
+Government-National Industry
+Government-Nationals
+Government-Public-Services
+Government-Public-Services Industry
+Government-Public-Serviceses
+Government-Regional
+Government-Regional Industry
+Government-Regional Sector
+Government-Regionals
+Governments
+Health
+Health Industry
+Health Sector
+Healthcare
+Healthcare Industry
+Healthcare Research
+Healthcare Research Industry
+Healthcare Research Sector
+Healthcare Researches
+Healthcare Sector
+Healthcare Services
+Healthcare Services Industry
+Healthcare Services Sector
+Healthcare Serviceses
+Healthcares
+Healths
+Heavy Industries Industry
+Heavy Industry
+High Tech
+High Teches
+High Technologies
+High Technology
+High Technology Industry
+High Technology Sector
+High-Tech Industry
+High-Tech Sector
+Higher Education
+Higher Education Industry
+Higher Education Sector
+Higher Educations
+Hospitalities
+Hospitality
+Hospitality Industry
+Hospitality Sector
+Hospitality-Leisure
+Hospitality-Leisure Industry
+Hospitality-Leisure Sector
+Hospitality-Leisures
+Hosting Service Providers
+Hosting Service Providerses
+HR Services
+HR Services Industry
+HR Serviceses
+Human Rights
+Human Rights Industry
+Human Rights Sector
+Humanitarian
+Humanitarian Sector
+ICS
+ICS Industry
+ICS Sector
+Icses
+Industrial
+Industrial Control Systems
+Industrial Control Systemses
+Industrial Industry
+Industrial Sector
+Industrials
+Industry
+Information Security
+Information Security Sector
+Information Technologies
+Information Technologies Consulting
+Information Technologies Consultings
+Information Technology
+Information Technology Industry
+Information Technology Sector
+Infrastructure
+Infrastructures
+Insurance
+Insurance Industry
+Insurance Sector
+Insurance Services
+Insurance Services Industry
+Insurance Services Sector
+Insurance Serviceses
+Insurances
+Intelligence
+Intelligence Industry
+Intelligence Sector
+Intelligence Services
+Intelligence Services Industry
+Intelligence Services Sector
+Intelligence Serviceses
+Intelligences
+International Organizations
+International Organizations Industry
+International Organizations Sector
+International Organizationses
+Internet Service Providers
+Internet Service Providerses
+Investment
+Investment Industry
+Investment Sector
+Investments
+IT
+IT Sector
+IT Service Providers
+IT Service Providerses
+Journalism
+Journalisms
+Journalists
+Journalists Industry
+Journalists Sector
+Journalistses
+Judicial Power (Justice)
+Law
+Law Enforcement
+Law Industry
+Law Sector
+Laws
+Legal
+Legal Consulting
+Legal Consulting Industry
+Legal Consulting Sector
+Legal Consultings
+Legal Industry
+Legal Sector
+Legals
+Legislative Branch (Parliamentary Chambers)
+Local Administrations
+Local Administrations Industry
+Local Administrations Sector
+Local Administrationses
+Lodging Industries
+Lodging Industry
+Logistic
+Logistic Industry
+Logistic Sector
+Logistics
+Logistics Industry
+Logistics Sector
+Logisticses
+Manufacturing
+Manufacturing Industry
+Manufacturing Sector
+Manufacturings
+Marine
+Marine Industry
+Marine Sector
+Marines
+Maritime
+Maritime Industry
+Maritime Sector
+Maritime Transport
+Maritime Transport Industry
+Maritime Transport Sector
+Maritime Transports
+Maritimes
+Market Infrastructures
+Market Infrastructures Industry
+Market Infrastructures Sector
+Market Infrastructureses
+Marketing
+Marketing / Public Relations
+Marketings
+Media
+Media Industry
+Media Sector
+Medias
+Medias & Audiovisual
+Medias And Audiovisuals
+Medical
+Medical Industry
+Medical Sector
+Medicals
+Metal
+Metallurgical
+Metallurgical Industry
+Metals
+Militaries
+Military
+Military Industry
+Military Sector
+Mining
+Mining Industry
+Mining Sector
+Minings
+Ministries Of Foreign Affairs
+Ministries Of Foreign Affairses
+National Securities
+National Security
+National Security Industry
+National Security Sector
+Natural Gas Utilities
+Natural Gas Utilitieses
+Natural Resources
+Natural Resources Industry
+Natural Resources Sector
+Natural Resourceses
+Naval
+Naval Industry
+Naval Sector
+Navals
+News
+News & Media
+News & Medias
+News Industry
+News Media
+News Media Sector
+News Medias
+Newses
+NGO
+NGO Industry
+NGO Sector
+Ngos
+Non Governmental Organizations (Ngos)
+Non-Profit
+Non-Profit Industry
+Non-Profit Sector
+Non-Profits
+Nuclear
+Nuclear Industry
+Nuclear Power (Civilian Use)
+Nuclear Sector
+Nuclears
+Nutritional Supplements
+Nutritional Supplements Industry
+Nutritional Supplements Sector
+Nutritional Supplementses
+Offshore
+Offshore Engineering
+Offshore Engineering Industry
+Offshore Engineering Sector
+Offshore Engineerings
+Offshore Industry
+Offshore Sector
+Offshores
+Oil
+Oil & Gas Manufacturing
+Oil & Gas Manufacturings
+Oil And Gas
+Oil And Gases
+Oil Industry
+Oil Sector
+Oils
+Online Gaming Communities
+Online Gaming Community
+Petrochemicals
+Petrochemicalses
+Pharmaceutical
+Pharmaceutical Industry
+Pharmaceutical Sector
+Pharmaceuticals
+Pharmaceuticals Industry
+Pharmaceuticals Sector
+Pharmaceuticalses
+Pharmacy And Drugs Manufacturing
+Pharmacy And Drugs Manufacturings
+Police
+Police Sector
+Political
+Political Industry
+Political Opposition
+Political Opposition Industry
+Political Opposition Sector
+Political Oppositions
+Political Parties
+Political Parties Industry
+Political Parties Sector
+Political Partieses
+Political Sector
+Politicals
+Politics
+Politics Industry
+Politics Sector
+Politicses
+Power
+Power Industry
+Power Sector
+Powers
+Professional & Consumer Services
+Professional Services
+Professional Services Sector
+Public Relations
+Public Relations Industry
+Public Relations Sector
+Public Relationses
+Rail Transport
+Rail Transport Industry
+Rail Transport Sector
+Rail Transports
+Real Estate
+Real Estate Industry
+Real Estate Sector
+Real Estates
+Religion
+Religion Industry
+Religion Sector
+Religions
+Religious
+Religious Industry
+Religious Sector
+Religiouses
+Renewable Energies
+Renewable Energies Industry
+Renewable Energies Sector
+Renewable Energieses
+Research
+Research Industry
+Research Sector
+Researches
 Restaurant
 Restaurant Chains
-Beverage
-Banking
-Bank
-Banks
-Banking Services
-Banking & Investment Services
-Defence industry
-Diplomatic
-Foreign
-NGO
-Human Rights
-Non-Profit
-Environmental
-Humanitarian
-Charitable Organizations
-Biomedical
-Military
-intelligence
-Intelligence services
-Fuel
-Think tank
-Thinktank
-Thinktanks
-Political opposition
-Politics
-Political
-Defence research and development
-Aerospace
-Aviation
-Satellite
-Satellite and communications
-Airline
-Nuclear
-Natural Resources
-Energy
-Professional services
-Professional & consumer services
-HR Services
-Marketing / Public Relations
-Marketing
-Public Relations
-Advisory
-Marine
-Naval
-maritime
-Insurance
-Government
-Election
-Voting
-Trade
-Trading
-Transportation
-Shipping
-Oil and Gas
-Natural Gas Utilities
-Gas and Oil
-Oil & Gas Manufacturing
-Gas And
-Religion
-Religious
-Cellular
-domain
-Chemical
-Petrochemicals
-Industry
-Metal
-Infrastructure
-Critical Infrastructure
-Metallurgical
-metals
-heavy industry
-Critical Infrastructures
-Textile
-Engineering
-Building
-Offshore Engineering
-Offshore
-Real Estate
-Government-Local
-Government-Regional
-Foreign Affairs
-Communications
-Telecommunication
-Telecom
-Telecoms
-Sport
-Agriculture
-Agribusiness
-Food Production
-Nutritional Supplements
-Gaming
-Online Gaming Community
-Logistic
-Government-National
-Emergency-Services
-Government-Public-Services
-Law Enforcement
-Police
-Security
-Critical Public
+Restaurant Chains Industry
+Restaurant Chains Sector
+Restaurant Chainses
+Restaurant Industry
+Restaurant Sector
+Restaurants
 Retail
-Commercial
-Distribution
-e-commerce
-Ecommerce
-commerce
-Wholesale
-Pharmaceuticals
-Pharmaceutical
-investment
-Utilities
-industrial
-ICS
-Industrial Control Systems
-Higher education
-Academic
-Academics
-Academic Sector
-Defence
-National Security
-Diplomatic Organizations
-Legal
-Healthcare
-Travel
-Entertainment
-Media
-Journalism
-Journalists
-News
-News Media
-News & Media
-Undefined
-Medical
-Social Services
-activism
-Dams
-Water
-Water Treatment Plants
-Electrical
-Power
-Utilities & Electric
-law
+Retail (Distribution)
+Retail (Distribution) Sector
+Retails
+Road Transport
+Road Transport Industry
+Road Transport Sector
+Road Transports
+Satellite
+Satellite And Communications
+Satellite Industry
+Satellites
+Schools
+Schools Industry
+Schools Sector
+Schoolses
+Securities
+Security
+Security Sector
 Semiconductor
-Biotechnology
-Electronics
-High Tech
-High Technology
+Semiconductor Industry
+Semiconductor Sector
+Semiconductors
+Shipping
+Shipping Industry
+Shipping Sector
+Shippings
+Social Services
+Social Services Industry
+Social Services Sector
+Social Serviceses
+Software
+Software Development
+Software Sector
+Sport
+Sport Industry
+Sport Sector
+Sports
+Sports Industry
+Sports Sector
+Sportses
+Technologieses
+Technology
+Telecom
+Telecom Industry
+Telecom Sector
+Telecommunication
+Telecommunication Industry
+Telecommunication Sector
+Telecommunications
+Telecommunications Industry
+Telecommunications Sector
+Telecommunicationses
+Telecoms
+Telecoms Industry
+Telecoms Sector
+Telecomses
+Textile
+Think Tank
+Think Tank Industry
+Think Tank Sector
+Think Tanks
+Think Tanks Industry
+Think Tanks Sector
+Think Tankses
+Thinktank
+Thinktank Industry
+Thinktank Sector
+Thinktanks
+Thinktanks Industry
+Thinktanks Sector
+Thinktankses
+Tourism
+Tourism Industry
+Tourism Sector
+Tourisms
+Trade
+Trade Industry
+Trade Sector
+Trades
+Trading
+Trading Industry
+Trading Sector
+Tradings
+Transport
+Transport Industry
+Transport Sector
+Transportation
+Transportation Industry
+Transportation Sector
+Transportations
+Transports
+Travel
+Travel And Tourism Industries
+Travel And Tourism Industry
+Travel Industry
+Travel Sector
+Travels
+Universities
+Universities Industry
+Universities Sector
+Universitieses
+Utilities
+Utilities & Electric
+Utilities & Electrics
+Utilities Industry
+Utilities Sector
+Utilitieses
+Virtual Currency
+Voting
+Voting Industry
+Voting Sector
+Votings
+Vulnerability Research
+Vulnerability Research Industry
+Water
+Water Distribution & Supply
+Water Distribution And Supplies
+Water Industry
+Water Sector
+Water Treatment Plants
+Water Treatment Plantses
+Waters
+Wholesale

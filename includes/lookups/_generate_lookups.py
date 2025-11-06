@@ -12,10 +12,10 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Define queries and output files
 queries = {
-    "mitre_cwe_id_v4_15.txt":
+    "mitre_cwe_id_v4_18.txt":
       """
         FOR doc IN mitre_cwe_vertex_collection
-          FILTER doc._stix2arango_note == "version=4_15"
+          FILTER doc._stix2arango_note == "version=4_18"
           AND IS_ARRAY(doc.external_references)
           AND doc.x_mitre_deprecated != true
           AND doc.revoked != true
@@ -27,10 +27,10 @@ queries = {
             SORT reference.external_id ASC
             RETURN reference.external_id
       """,
-    "mitre_cwe_name_v4_15.txt":
+    "mitre_cwe_name_v4_18.txt":
       """
         FOR doc IN mitre_cwe_vertex_collection
-          FILTER doc._stix2arango_note == "version=4_15"
+          FILTER doc._stix2arango_note == "version=4_18"
           AND IS_ARRAY(doc.external_references)
           AND doc.x_mitre_deprecated != true
           AND doc.revoked != true
@@ -65,7 +65,7 @@ queries = {
           AND !CONTAINS(doc.name, "DEPRECATED:")
           RETURN doc.name
       """,
-    "mitre_attack_enterprise_id_v16_0.txt":
+    "mitre_attack_enterprise_id_v18_0.txt":
       """
         FOR doc IN mitre_attack_enterprise_vertex_collection
           FILTER doc._stix2arango_note == "version=16_0"
@@ -78,7 +78,7 @@ queries = {
             SORT reference.external_id ASC
             RETURN reference.external_id
       """,
-    "mitre_attack_enterprise_name_v16_0.txt":
+    "mitre_attack_enterprise_name_v18_0.txt":
       """
         FOR doc IN mitre_attack_enterprise_vertex_collection
           FILTER doc._stix2arango_note == "version=16_0"
@@ -87,7 +87,7 @@ queries = {
           AND doc.revoked != true
           RETURN doc.name
       """,
-    "mitre_attack_enterprise_aliases_v16_0.txt":
+    "mitre_attack_enterprise_aliases_v18_0.txt":
       """
         FOR alias IN UNIQUE(
           FLATTEN(
@@ -106,7 +106,7 @@ queries = {
         )
         RETURN alias
       """,
-    "mitre_attack_ics_id_v16_0.txt":
+    "mitre_attack_ics_id_v18_0.txt":
       """
         FOR doc IN mitre_attack_ics_vertex_collection
           FILTER doc._stix2arango_note == "version=16_0"
@@ -119,7 +119,7 @@ queries = {
             SORT reference.external_id ASC
             RETURN reference.external_id
       """,
-    "mitre_attack_ics_name_v16_0.txt":
+    "mitre_attack_ics_name_v18_0.txt":
       """
         FOR doc IN mitre_attack_ics_vertex_collection
           FILTER doc._stix2arango_note == "version=16_0"
@@ -128,7 +128,7 @@ queries = {
           AND doc.revoked != true
           RETURN doc.name
       """,
-    "mitre_attack_ics_aliases_v16_0.txt":
+    "mitre_attack_ics_aliases_v18_0.txt":
       """
         FOR alias IN UNIQUE(
           FLATTEN(
@@ -147,7 +147,7 @@ queries = {
         )
         RETURN alias
       """,
-    "mitre_attack_mobile_id_v16_0.txt":
+    "mitre_attack_mobile_id_v18_0.txt":
       """
         FOR doc IN mitre_attack_mobile_vertex_collection
           FILTER doc._stix2arango_note == "version=16_0"
@@ -160,7 +160,7 @@ queries = {
             SORT reference.external_id ASC
             RETURN reference.external_id
       """,
-    "mitre_attack_mobile_name_v16_0.txt":
+    "mitre_attack_mobile_name_v18_0.txt":
       """
         FOR doc IN mitre_attack_mobile_vertex_collection
           FILTER doc._stix2arango_note == "version=16_0"
@@ -169,7 +169,7 @@ queries = {
           AND doc.revoked != true
           RETURN doc.name
       """,
-    "mitre_attack_mobile_aliases_v16_0.txt":
+    "mitre_attack_mobile_aliases_v18_0.txt":
       """
         FOR alias IN UNIQUE(
           FLATTEN(
@@ -188,10 +188,10 @@ queries = {
         )
         RETURN alias
       """,
-    "mitre_atlas_id_v4_5_2.txt":
+    "mitre_atlas_id_v4_9_0.txt":
       """
         FOR doc IN mitre_atlas_vertex_collection
-          FILTER doc._stix2arango_note == "version=4_5_2"
+          FILTER doc._stix2arango_note == "version=4_9_0"
           AND doc.type != "x-mitre-matrix"
           AND doc.x_mitre_deprecated != true
           AND doc.revoked != true
@@ -201,19 +201,19 @@ queries = {
             SORT reference.external_id ASC
             RETURN reference.external_id
       """,
-    "mitre_atlas_name_v4_5_2.txt":
+    "mitre_atlas_name_v4_9_0.txt":
       """
         FOR doc IN mitre_atlas_vertex_collection
-          FILTER doc._stix2arango_note == "version=4_5_2"
+          FILTER doc._stix2arango_note == "version=4_9_0"
           AND doc.type != "x-mitre-matrix"
           AND doc.x_mitre_deprecated != true
           AND doc.revoked != true
           RETURN doc.name
       """,
-    "disarm_id_v1_5.txt":
+    "disarm_id_v1_6.txt":
       """
         FOR doc IN disarm_vertex_collection
-          FILTER doc._stix2arango_note == "version=1_5"
+          FILTER doc._stix2arango_note == "version=1_6"
           AND doc.type != "x-mitre-matrix"
           AND doc.x_mitre_deprecated != true
           AND doc.revoked != true
@@ -223,14 +223,36 @@ queries = {
             SORT reference.external_id ASC
             RETURN reference.external_id
     """,
-    "disarm_name_v1_5.txt":
+    "disarm_name_v1_6.txt":
       """
         FOR doc IN disarm_vertex_collection
-          FILTER doc._stix2arango_note == "version=1_5"
+          FILTER doc._stix2arango_note == "version=1_6"
           AND doc.type != "x-mitre-matrix"
           AND doc.x_mitre_deprecated != true
           AND doc.revoked != true
           RETURN doc.name
+      """,
+    "mitre_attack_enterprise_id_v18_0.txt":
+      """
+        FOR doc IN mitre_attack_enterprise_vertex_collection
+          FILTER doc._stix2arango_note == "version=16_0"
+          AND doc.type != "x-mitre-matrix"
+          AND doc.x_mitre_deprecated != true
+          AND doc.revoked != true
+          AND IS_ARRAY(doc.external_references)
+          FOR reference IN doc.external_references
+            FILTER reference.source_name == "mitre-attack"
+            SORT reference.external_id ASC
+            RETURN reference.external_id
+      """,
+    "sector_aliases_v1_0.txt":
+      """
+        FOR doc IN sector_vertex_collection
+          FILTER doc._stix2arango_note == "version=1_0"
+            AND doc.revoked != true
+          FOR alias IN (doc.x_opencti_aliases ? doc.x_opencti_aliases : [])
+            COLLECT alias_dedup = alias
+            RETURN alias_dedup
       """
 }
 

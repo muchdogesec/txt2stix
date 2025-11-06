@@ -28,7 +28,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_ipv4_address_only \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 38b19704-7a8c-4105-9bc5-39cceb65ed7f
 ```
 
@@ -70,7 +70,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_ipv4_address_cidr \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id fc852fef-4d68-4d28-9a1b-f29940b97016
 ```
 
@@ -84,7 +84,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_ipv4_address_port \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id aeb1eb97-84d4-4026-8f8c-fbd784763b62
 ```
 
@@ -100,7 +100,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_ipv6_address_only \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 0f86dc8f-97b7-46a4-ac32-10bed0b6dfea
 ```
 
@@ -114,7 +114,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_ipv6_address_cidr \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id af9bae9a-6a40-4f87-b51c-50bd0bb4d394
 ```
 
@@ -128,7 +128,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_ipv6_address_port \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 85edd875-f3eb-4530-8604-74aa93842450
 ```
 
@@ -144,7 +144,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_url \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id bcd05fa3-d219-4151-9bbe-76a2eb1f77ca
 ```
 
@@ -158,7 +158,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_url_file \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 6d062894-6762-42e7-a36c-5dbad10f7b59
 ```
 
@@ -172,7 +172,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_url_path \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id a7e94479-b79a-4bd6-9fa8-1a4a0c43f973
 ```
 
@@ -188,7 +188,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_domain_name_only \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 0804ff04-f3ef-41b0-998c-7e699a4ce916
 ```
 
@@ -202,7 +202,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_domain_name_subdomain \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 19d948c9-9c33-48ef-b6df-7197119a4bd1
 ```
 
@@ -218,7 +218,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_host_name \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 92b49b8b-75eb-40de-96ab-5bda4608afb2
 ```
 
@@ -232,7 +232,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_host_name_subdomain \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 487bc2d3-5bb0-4413-af93-7da64b86f682
 ```
 
@@ -246,7 +246,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_host_name_url \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 9e113deb-71b4-4415-9266-460dbb0518d0
 ```
 
@@ -260,7 +260,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_host_name_file \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id f9b6b76e-fbde-45e8-9bfb-a739e3cc5e14
 ```
 
@@ -274,7 +274,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_host_name_path \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 5572ff73-9a88-4715-8a97-c12fdaea477a
 ```
 
@@ -290,7 +290,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_directory_windows \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 81a7188a-4c9c-48c0-8dbb-38a591182f03
 ```
 
@@ -304,7 +304,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_directory_windows_with_file \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 03fe7f4f-101d-481f-ab47-5b7dd55c1e85
 ```
 
@@ -318,7 +318,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_directory_unix \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id bc82d4c1-c924-48fd-8896-82633c0bafb3
 ```
 
@@ -332,7 +332,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_directory_unix_file \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id b2b8e25e-44df-40b7-9a32-170d8976ee72
 ```
 
@@ -348,7 +348,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_file_name \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 86fcb9d4-f0bb-4a3b-b014-30694bd568b4
 ```
 
@@ -362,7 +362,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_file_hash_md5 \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id cd086fd4-3a7f-49ff-9e7d-2f024b754501
 ```
 
@@ -376,7 +376,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_file_hash_sha_1 \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id dbfda3d7-56f2-4cd1-b909-9a8f7f28667e
 ```
 
@@ -390,7 +390,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_file_hash_sha_256 \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 0cbfb4aa-9482-46d6-8c86-475973021378
 ```
 
@@ -404,7 +404,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_file_hash_sha_512 \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id bea70032-f6fe-4261-8aad-e11ca3a89c50
 ```
 
@@ -420,7 +420,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_email_address \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id f07f175f-b1ac-404e-b555-14c613ba9f0f
 ```
 
@@ -436,7 +436,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_mac_address \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id c24a75f5-7a7d-4db8-9f9a-1b20176f9ea6
 ```
 
@@ -452,7 +452,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_windows_registry_key \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id aeb4c001-a6d0-44cf-8a8e-1ee17cf38247
 ```
 
@@ -468,7 +468,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_user_agent \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 58b2a7e5-60a5-43cf-86cf-e6d1ed0d5a48
 ```
 
@@ -484,7 +484,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_autonomous_system_number \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 1bfdedb9-b3c1-44b9-bebb-8371651350d7
 ```
 
@@ -500,7 +500,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_cryptocurrency_btc_wallet \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 61c32b8c-f901-46b9-b684-119e61b27f9a
 ```
 
@@ -514,7 +514,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_cryptocurrency_btc_wallet_transaction \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 52d2146c-798a-440f-942f-6fe039fb8995
 ```
 
@@ -528,7 +528,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_cryptocurrency_btc_transaction \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id cbb2a5f9-2f30-48c0-a45d-aa51974f84a3
 ```
 
@@ -546,7 +546,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_cve_id \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id bd97c631-a992-4a83-9ee1-7c911b23cea2
 ```
 
@@ -564,7 +564,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_cpe_uri \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 71483c72-ee15-4213-aff5-61fba6f67067
 ```
 
@@ -582,7 +582,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_bank_card_all \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 323eb995-d181-4b96-9c3e-c175a83a0782
 ```
 
@@ -598,7 +598,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_bank_card_mastercard \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id dbde8394-c094-46c5-b5cc-f0e58f3f257c
 ```
 
@@ -614,7 +614,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_bank_card_visa \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id ad935ada-a993-4631-ab0b-57015a36880a
 ```
 
@@ -630,7 +630,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_bank_card_amex \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 84f0f6f8-86f3-439b-b905-ef38ddcea262
 ```
 
@@ -646,7 +646,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_bank_card_union_pay \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 16e8eafa-423d-4b7a-84f0-e32f224bb302
 ```
 
@@ -662,7 +662,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_bank_card_diners \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id ddf3f977-823a-42da-9c3a-878b0d1c0d16
 ```
 
@@ -678,7 +678,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_bank_card_jcb \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id c85d2cea-0d36-418f-8a41-9e5a1fb8b6da
 ```
 
@@ -694,7 +694,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_bank_card_discover \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id a6f61277-847c-4c4a-a251-3723aa41772b
 ```
 
@@ -710,7 +710,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_iban_number \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id ecb21127-4f17-49d0-a335-cb76aa5a9440
 ```
 
@@ -726,7 +726,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_phone_number \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 5e177e1f-a747-41c6-878a-5983d120323a
 ```
 
@@ -742,7 +742,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_country \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 256f89fe-ad21-4604-9d6d-b8b5335f4657
 ```
 
@@ -756,7 +756,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_mitre_attack_enterprise \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 37535e3d-da26-4afd-8bae-e37f0c917c85
 ```
 
@@ -770,7 +770,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_mitre_attack_mobile \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 0751c9b2-43ab-4463-9480-1d8542f7fa6c
 ```
 
@@ -784,7 +784,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_mitre_attack_ics \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 949a0740-69c7-4c78-bedc-c78917360b57
 ```
 
@@ -798,7 +798,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_mitre_capec \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 7a1aed89-5aef-4e14-8453-019d8375e08d
 ```
 
@@ -812,10 +812,23 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_mitre_cwe \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 6ba5c857-86be-4016-9490-7b83b2d18105
 ```
 
+#### ai_sector
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_sector_aliases.txt \
+	--name 'ai_sector' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_sector \
+	--ai_settings_extractions openai:gpt-5 \
+	--report_id d8c1b8fa-4d82-488f-932f-ee987a556107
+```
 
 ## Generic STIX lookups
 
@@ -829,7 +842,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_attack_pattern \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 9ec6d60f-76a8-4428-8923-646e176eab0b
 ```
 
@@ -843,7 +856,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_campaign \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 7ff6f6c3-8246-4a54-8055-bd53f59fb436
 ```
 
@@ -857,7 +870,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_course_of_action \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 29e17725-c6fc-4618-8584-841eb8402fd4
 ```
 
@@ -871,7 +884,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_identity \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 6c66109c-565e-454a-9244-793bf59ca3bb
 ```
 
@@ -885,7 +898,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_infrastructure \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id faeb013a-e09e-4ab8-b892-362ce00ff581
 ```
 
@@ -899,7 +912,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_intrusion_set \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 5a2ed151-96eb-482c-b0f3-0ce268b193d5
 ```
 
@@ -913,7 +926,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_malware \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 67457a27-6f9c-4dea-9289-2cd4345de918
 ```
 
@@ -927,7 +940,7 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_threat_actor \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 5fa6d228-149b-4f7f-8f7f-f5b430c7b9b9
 ```
 
@@ -941,6 +954,6 @@ python3 txt2stix.py \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_tool \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5 \
 	--report_id 30dde76b-12da-42c7-afe4-97389e47fcaa
 ```
