@@ -165,17 +165,9 @@ If you would like to understand how txt2stix works in more detail, please refer 
 
 This documentation is paticularly helpful to read for those of you wanting to add your own custom extractions.
 
-## Useful supporting tools
-
-* [A Quick Start Guide to txt2stix](https://www.dogesec.com/blog/txt2stix_quickstart_guide/)
-* [An example of how to use txt2stix with Attack Flows](https://www.dogesec.com/blog/understading_structure_attack_flows/)
-* [STIX2 Python Library](https://pypi.org/project/stix2/): APIs for serializing and de-serializing STIX2 JSON content
-* [STIX 2 Pattern Validator](https://pypi.org/project/stix2-patterns/): a tool for checking the syntax of the Cyber Threat Intelligence (CTI) STIX Pattern expressions
-* [STIX Viewer](https://github.com/traut/stixview): Quickly load bundles produced from your report
-
 ## Support
 
-[Minimal support provided via the DOGESEC community](https://community.dogesec.com/).
+[Minimal support provided via the dogesec community](https://community.dogesec.com/).
 
 ## License
 
