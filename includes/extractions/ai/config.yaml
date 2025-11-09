@@ -881,7 +881,7 @@ ai_mitre_cwe:
 ai_sector:
   type: ai
   dogesec_web: true
-  name: 'Attack Pattern'
+  name: 'Sectors'
   description: 'Detect which sectors from a fixed sector list are referenced anywhere in the input text.'
   notes: 'lookup_sector_aliases legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
