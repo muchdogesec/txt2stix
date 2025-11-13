@@ -7,7 +7,7 @@ from txt2stix import txt2stixBundler
 from txt2stix.ai_extractor.base import BaseAIExtractor
 from txt2stix.common import UUID_NAMESPACE
 from txt2stix.retriever import STIXObjectRetriever
-from stix2extensions.attack_action import AttackAction, AttackFlow
+from stix2extensions import AttackAction, AttackFlow
 from .utils import AttackFlowList
 
 def parse_flow(report, flow: AttackFlowList, techniques, tactics):
