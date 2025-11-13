@@ -133,7 +133,7 @@ class txt2stixBundler:
         "phone-number": None,
         "weakness": None,
     }
-    EXTENSION_DEFINITION_BASE_URL = "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/extension-definitions"
+    EXTENSION_DEFINITION_BASE_URL = "https://raw.githubusercontent.com/muchdogesec/stix2extensions/main/automodel_generated/extension-definitions"
     ATTACK_FLOW_SMO_URL = "https://github.com/muchdogesec/stix2extensions/raw/refs/heads/main/remote-definitions/attack-flow.json"
     report = None
     identity = None
