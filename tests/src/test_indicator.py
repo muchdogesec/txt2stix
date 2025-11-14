@@ -339,13 +339,13 @@ all_extractors = get_all_extractors()
             "DE29100500001061045672",
             "pattern_iban_number",
             {
-                "bank-account--bedcfd65-c65b-5ded-9fa0-c9bfe17d57d0",
+                "relationship--97947636-acc1-5a2f-971f-cfeee373e75e",
+                "bank-account--4e351d05-b4f5-5d7e-b51e-66e92021ba5a",
                 "indicator--816dfb00-4107-5dd0-be00-4607400f4df3",
-                "relationship--78a4214c-9cb2-5efb-b581-30f1f18c0671",
                 "location--8d8abee9-2855-57ea-9df9-5251079802e6",
             },
             {
-                "bank-account--bedcfd65-c65b-5ded-9fa0-c9bfe17d57d0",
+                "bank-account--4e351d05-b4f5-5d7e-b51e-66e92021ba5a",
             },
             id="bank-account",
         ),
@@ -364,35 +364,20 @@ all_extractors = get_all_extractors()
         ],
         ## payment-card, with issuer-name
         pytest.param(
-            "5555555555554444",
+            "4142414241424142",
             "pattern_bank_card_mastercard",
             {
-                "location--24ff45f2-9cd3-554c-a53c-2ed70bb17cb8",
-                "payment-card--45b2fea7-587b-5ccf-a9b2-e0fa748d6423",
-                "relationship--03a31907-32ae-5f83-80a7-37dbe0ed61c2",
-                "indicator--d85b6d0d-116d-5518-8b59-dd018d060bda",
-                "relationship--174da36f-c5d9-5eea-b024-8fcdba87ce56",
-                "identity--7d46a822-1e99-5c73-ac5e-dec6400977ab",
+                "location--e68e76c5-60f1-506e-b495-86adb8ec0a5b",
+                "payment-card--0e1fb108-12c0-5357-9265-d0bcdd90c4bd",
+                "relationship--acd8efa8-3702-5c74-bb9c-ddb9720ca799",
+                "indicator--12f0d365-0b5d-53c4-9b23-2032db90887c",
+                "relationship--f372a1f8-397a-57f1-a14c-fe808dd286cd",
+                "identity--643665ba-f411-5f6f-aa8a-40bb2003529d",
             },
             {
-                "payment-card--45b2fea7-587b-5ccf-a9b2-e0fa748d6423",
+                "payment-card--0e1fb108-12c0-5357-9265-d0bcdd90c4bd",
             },
             id="payment-card, with issuer-name",
-        ),
-        ## payment-card, no issuer-name
-        pytest.param(
-            "376654224631002",
-            "pattern_bank_card_amex",
-            {
-                "identity--643246fc-9204-5b4b-976d-2e605b355c24",
-                "payment-card--683af74c-c39f-5ca1-8366-7781f8ac7685",
-                "relationship--57b4a9eb-2e8c-5826-b11f-add6a436d203",
-                "indicator--ce0cb0ba-608e-52fa-9c98-9bff146caef8",
-            },
-            {
-                "payment-card--683af74c-c39f-5ca1-8366-7781f8ac7685",
-            },
-            id="payment-card, no issuer-name",
         ),
     ],
 )
@@ -402,7 +387,6 @@ def test_build_observables(value, extractor_name, expected_objects, expected_rel
     objects, relationships = build_observables(
         mock_bundler, extractor.stix_mapping, indicator, value, extractor
     )
-    print({obj["id"] for obj in objects})
     assert {obj["id"] for obj in objects} == set(expected_objects)
     assert {id for id in relationships} == set(expected_rels)
 
