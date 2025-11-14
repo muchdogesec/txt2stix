@@ -23,7 +23,7 @@ dependencies = [
   "requests>=2.32.4",
   "python-dotenv>=1.0.1",
   "schwifty>=2024.6.1",
-  "stix2extensions",
+  "stix2extensions>=2.0.1",
   "tld>=0.13",
   "tldextract>=5.1.2",
   "validators>=0.28.3",
