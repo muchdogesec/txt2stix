@@ -361,6 +361,7 @@ def validate_token_count(max_tokens, input, extractors: list[BaseAIExtractor]):
     logging.info('INPUT_TOKEN_LIMIT = %d', max_tokens)
     for extractor in extractors:
         token_count = _count_token(extractor, input)
+        logging.info(f"{extractor.extractor_name}: input_file token count = {token_count}") 
         if  token_count > max_tokens:
             raise FatalException(f"{extractor.extractor_name}: input_file token count ({token_count}) exceeds INPUT_TOKEN_LIMIT ({max_tokens})")
 

@@ -28,8 +28,8 @@ dependencies = [
   "tldextract>=5.1.2",
   "validators>=0.28.3",
   "base58>=2.1.1",
-  "llama-index-core>=0.12.42",
-  'llama-index-llms-openai>=0.4.5',
+  "llama-index-core>=0.14.8",
+  'llama-index-llms-openai>=0.6.8',
   'mistune>=3.0.2',
   'beautifulsoup4>=4.12.3',
   'stix2-validator',
@@ -52,8 +52,9 @@ stix2arango = "txt2stix.txt2stix:main"
 "includes" = "txt2stix/includes"
 
 [project.optional-dependencies]
-anthropic = ['llama-index-llms-anthropic>=0.7.2']
-gemini = ['llama-index-llms-gemini>=0.5.0']
-deepseek = ['llama-index-llms-deepseek>=0.1.2']
-openrouter = ['llama-index-llms-openrouter>=0.3.2']
+anthropic = ['llama-index-llms-anthropic>=0.9.7']
+gemini = ['llama-index-llms-google-genai>=0.5.0']
+deepseek = ['llama-index-llms-deepseek>=0.2.2']
+openrouter = ['llama-index-llms-openrouter>=0.4.2']
+llms = ["txt2stix[anthropic,gemini,deepseek,openrouter]"]
 tests = ["pytest", "requests", "pytest-subtests", "pytest-cov", "python-dateutil"]
