@@ -309,14 +309,25 @@ def log_notes(content, type):
     logging.debug(f" ========================= {'-'*len(type)} ========================= ")
 
 def extract_all(bundler: txt2stixBundler, extractors_map, text_content, ai_extractors: list[BaseAIExtractor]=[], **kwargs):
+    # Backwards-compatible wrapper: run extractors then process them into bundler
+    all_extracts = run_extractors(bundler, extractors_map, text_content, ai_extractors=ai_extractors, **kwargs)
+    process_extracts(bundler, all_extracts)
+    return all_extracts
+
+
+def run_extractors(bundler: txt2stixBundler, extractors_map, text_content, ai_extractors: list[BaseAIExtractor]=[], **kwargs):
+    """Run extraction calls (lookup, pattern, AI) and return a dict of all extracts.
+
+    This function does NOT modify the bundler. Use `process_extracts` to
+    feed the returned extracts into a bundler (or replay saved extracts).
+    """
     assert ai_extractors or not extractors_map.get("ai"), "There should be at least one AI extractor in ai_extractors"
 
-    text_content = "\n"+text_content+"\n"
+    text_content = "\n" + text_content + "\n"
     all_extracts = dict()
     if extractors_map.get("lookup"):
         try:
             lookup_extracts = lookups.extract_all(extractors_map["lookup"].values(), text_content)
-            bundler.process_observables(lookup_extracts)
             all_extracts["lookup"] = lookup_extracts
         except BaseException as e:
             logging.exception("lookup extraction failed", exc_info=True)
@@ -324,37 +335,64 @@ def extract_all(bundler: txt2stixBundler, extractors_map, text_content, ai_extra
     if extractors_map.get("pattern"):
         try:
             logging.info("using pattern extractors")
-            pattern_extracts = pattern.extract_all(extractors_map["pattern"].values(), text_content, ignore_extraction_boundary=kwargs.get('ignore_extraction_boundary', False))
-            bundler.process_observables(pattern_extracts)
+            pattern_extracts = pattern.extract_all(
+                extractors_map["pattern"].values(),
+                text_content,
+                ignore_extraction_boundary=kwargs.get('ignore_extraction_boundary', False),
+            )
             all_extracts["pattern"] = pattern_extracts
         except BaseException as e:
             logging.exception("pattern extraction failed", exc_info=True)
 
     if extractors_map.get("ai"):
         logging.info("using ai extractors")
-
         for extractor in ai_extractors:
             logging.info("running extractor: %s", extractor.extractor_name)
             try:
                 ai_extracts = extractor.extract_objects(text_content, extractors_map["ai"].values())
-                bundler.process_observables(ai_extracts)
                 all_extracts[f"ai-{extractor.extractor_name}"] = ai_extracts
             except BaseException as e:
                 logging.exception("AI extraction failed for %s", extractor.extractor_name, exc_info=True)
 
-    log_notes(all_extracts, "Extractions")
+    for i, ex in enumerate(itertools.chain(*all_extracts.values())):
+        ex['id'] = 'ex-'+str(i)
     return all_extracts
 
+
+def process_extracts(bundler: txt2stixBundler, all_extracts: dict):
+    """Process a previously-created `all_extracts` dict into the given bundler.
+
+    This allows replaying saved extracts without invoking extractors again.
+    """
+    for key, extracts in (all_extracts or {}).items():
+        try:
+            bundler.process_observables(extracts)
+        except BaseException:
+            logging.exception("processing extracts failed for %s", key, exc_info=True)
+
+    log_notes(all_extracts, "Extractions")
+
 def extract_relationships_with_ai(bundler: txt2stixBundler, text_content, all_extracts, ai_extractor_session: BaseAIExtractor):
-    relationships = None
+    # Backwards-compatible wrapper: extract relationships then process into bundler
+    relationships = extract_relationships(text_content, all_extracts, ai_extractor_session)
     try:
-        all_extracts = list(itertools.chain(*all_extracts.values()))
-        relationships = ai_extractor_session.extract_relationships(text_content, all_extracts, RELATIONSHIP_TYPES)
-        relationships = relationships.model_dump()
-        log_notes(relationships, "Relationships")
-        bundler.process_relationships(relationships['relationships'])
+        if relationships and bundler:
+            bundler.process_relationships(relationships.get('relationships', []))
     except BaseException as e:
         logging.exception("Relationship processing failed: %s", e)
+    return relationships
+
+
+def extract_relationships(text_content, all_extracts, ai_extractor_session: BaseAIExtractor):
+    relationships = None
+    try:
+        # flatten extracts into a single list
+        flattened = list(itertools.chain(*all_extracts.values()))
+        rel = ai_extractor_session.extract_relationships(text_content, flattened, RELATIONSHIP_TYPES)
+        relationships = rel.model_dump()
+        log_notes(relationships, "Relationships")
+    except BaseException as e:
+        logging.exception("Relationship extraction failed: %s", e)
     return relationships
 
 def validate_token_count(max_tokens, input, extractors: list[BaseAIExtractor]):
@@ -383,21 +421,56 @@ def run_txt2stix(bundler: txt2stixBundler, preprocessed_text: str, extractors_ma
 
                 **kwargs
         ) -> Txt2StixData:
+    # First, perform extraction-phase (LLM and extractor calls). This does not
+    # modify the provided bundler so the results can be saved and replayed.
+    txt2stix_data = extraction_phase(
+        preprocessed_text,
+        extractors_map,
+        ai_content_check_provider=ai_content_check_provider,
+        input_token_limit=input_token_limit,
+        ai_settings_extractions=ai_settings_extractions,
+        ai_settings_relationships=ai_settings_relationships,
+        relationship_mode=relationship_mode,
+        ignore_extraction_boundary=ignore_extraction_boundary,
+        ai_extract_if_no_incidence=ai_extract_if_no_incidence,
+    )
+
+    # Then, process the extracted data into the bundler (no LLM calls).
+    processing_phase(
+        bundler,
+        preprocessed_text,
+        txt2stix_data,
+        ai_create_attack_flow=ai_create_attack_flow,
+        ai_create_attack_navigator_layer=ai_create_attack_navigator_layer,
+        ai_settings_relationships=ai_settings_relationships,
+        ai_content_check_provider=ai_content_check_provider,
+    )
+    return txt2stix_data
+
+
+def extraction_phase(preprocessed_text: str, extractors_map: dict,
+                     ai_content_check_provider=None,
+                     input_token_limit=10,
+                     ai_settings_extractions=None,
+                     ai_settings_relationships=None,
+                     relationship_mode="standard",
+                     ignore_extraction_boundary=False,
+                     ai_extract_if_no_incidence=True,
+                     **kwargs
+        ) -> Txt2StixData:
+    """Perform token validation and run extractors/AI models. Does NOT modify a bundler."""
     should_extract = True
-    retval = Txt2StixData.model_construct()
-    retval.extractions = retval.attack_flow = retval.relationships = None
+    txt2stix_data = Txt2StixData.model_construct()
+    txt2stix_data.extractions = txt2stix_data.attack_flow = txt2stix_data.relationships = None
+
     if ai_content_check_provider:
         logging.info("checking content")
-        model : BaseAIExtractor = ai_content_check_provider
+        model: BaseAIExtractor = ai_content_check_provider
         validate_token_count(input_token_limit, preprocessed_text, [model])
-        retval.content_check = model.check_content(preprocessed_text)
-        should_extract = retval.content_check.describes_incident
+        txt2stix_data.content_check = model.check_content(preprocessed_text)
+        should_extract = txt2stix_data.content_check.describes_incident
         logging.info("=== ai-check-content output ====")
-        logging.info(retval.content_check.model_dump_json())
-        bundler.report.external_references.append(dict(source_name='txt2stix_describes_incident', description=str(should_extract).lower(), external_id=model.extractor_name))
-        for classification in retval.content_check.incident_classification:
-            bundler.report.labels.append(f'classification.{classification}'.lower())
-        bundler.add_summary(retval.content_check.summary, model.extractor_name)
+        logging.info(txt2stix_data.content_check.model_dump_json())
 
     if should_extract or ai_extract_if_no_incidence:
         if extractors_map.get("ai"):
@@ -405,13 +478,48 @@ def run_txt2stix(bundler: txt2stixBundler, preprocessed_text: str, extractors_ma
         if relationship_mode == "ai":
             validate_token_count(input_token_limit, preprocessed_text, [ai_settings_relationships])
 
-        retval.extractions = extract_all(bundler, extractors_map, preprocessed_text, ai_extractors=ai_settings_extractions, ignore_extraction_boundary=ignore_extraction_boundary)
-        if relationship_mode == "ai" and sum(map(lambda x: len(x), retval.extractions.values())):
-            retval.relationships = extract_relationships_with_ai(bundler, preprocessed_text, retval.extractions, ai_settings_relationships)
-        
+        # run extractors (no bundler side-effects)
+        txt2stix_data.extractions = run_extractors(None, extractors_map, preprocessed_text, ai_extractors=ai_settings_extractions, ignore_extraction_boundary=ignore_extraction_boundary)
+
+        # extract relationships (no bundler processing here)
+        if relationship_mode == "ai" and txt2stix_data.extractions and sum(map(lambda x: len(x), txt2stix_data.extractions.values())):
+            txt2stix_data.relationships = extract_relationships(preprocessed_text, txt2stix_data.extractions, ai_settings_relationships)
+    print(txt2stix_data)
+    return txt2stix_data
+
+
+def processing_phase(bundler: txt2stixBundler, preprocessed_text: str, data: Txt2StixData,
+                     ai_create_attack_flow=False, ai_create_attack_navigator_layer=False,
+                     ai_settings_relationships=None, ai_content_check_provider=None):
+    """Process extracted `data` into the given `bundler` without invoking LLMs."""
+    # apply content_check results into bundler
+    try:
+        if data.content_check:
+            cc = data.content_check
+            provider_name = ai_content_check_provider and ai_content_check_provider.extractor_name
+            bundler.report.external_references.append(dict(source_name='txt2stix_describes_incident', description=str(cc.describes_incident).lower(), external_id=provider_name))
+            for classification in cc.incident_classification:
+                bundler.report.labels.append(f'classification.{classification}'.lower())
+            bundler.add_summary(cc.summary, provider_name)
+    except BaseException:
+        logging.exception("applying content_check to bundler failed", exc_info=True)
+
+    # process extracts into bundler
+    process_extracts(bundler, data.extractions)
+
+    # process relationships into bundler
+    try:
+        if data.relationships:
+            bundler.process_relationships(data.relationships.get('relationships', []))
+    except BaseException:
+        logging.exception("processing relationships failed", exc_info=True)
+
+    # generate attack flow / navigator layer now that bundler has been populated
+    try:
         if ai_create_attack_flow or ai_create_attack_navigator_layer:
-            retval.attack_flow, retval.navigator_layer = attack_flow.extract_attack_flow_and_navigator(bundler, preprocessed_text, ai_create_attack_flow, ai_create_attack_navigator_layer, ai_settings_relationships)
-    return retval
+            data.attack_flow, data.navigator_layer = attack_flow.extract_attack_flow_and_navigator(bundler, preprocessed_text, ai_create_attack_flow, ai_create_attack_navigator_layer, ai_settings_relationships, flow=data.attack_flow)
+    except BaseException:
+        logging.exception("attack flow / navigator generation failed", exc_info=True)
 
 
 

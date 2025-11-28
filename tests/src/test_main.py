@@ -32,6 +32,10 @@ from txt2stix.txt2stix import (
     load_env,
     # run_txt2stix,
     extract_all,
+    # process_extracts,
+    process_extracts,
+    extraction_phase,
+    processing_phase,
     extract_relationships_with_ai,
 )
 from txt2stix.common import FatalException
@@ -333,8 +337,6 @@ def test_extract_all():
         bundler.process_observables.assert_any_call(['ai3', 'ai9'])
 
 
-
-
 def test_extract_relationships_with_ai():
     mock_bundler = MagicMock()
     text = "TEXT_CONTENT"
@@ -358,3 +360,85 @@ def test_check_credentials(monkeypatch):
     ])
     with pytest.raises(SystemExit):
         parse_args()
+
+
+def test_process_extracts_normal_and_none():
+    """Ensure process_extracts calls bundler.process_observables for each key,
+    and handles None/empty input without error."""
+    bundler = MagicMock()
+    all_extracts = {
+        'lookup': ['l1', 'l2'],
+        'pattern': ['p1'],
+        'ai-ex1': ['a1', 'a2']
+    }
+
+    # Normal case
+    process_extracts(bundler, all_extracts)
+    assert bundler.process_observables.call_count == len(all_extracts)
+    bundler.process_observables.assert_any_call(['l1', 'l2'])
+    bundler.process_observables.assert_any_call(['p1'])
+    bundler.process_observables.assert_any_call(['a1', 'a2'])
+
+    # None or empty should not raise and should not call further
+    bundler.reset_mock()
+    process_extracts(bundler, {})
+    process_extracts(bundler, None)
+    bundler.process_observables.assert_not_called()
+
+
+def test_process_extracts_handles_exceptions():
+    """If bundler.process_observables raises for one key, process_extracts should continue."""
+    def side_effect(extracts):
+        if extracts == ['bad']:
+            raise Exception('boom')
+
+    bundler = MagicMock()
+    bundler.process_observables.side_effect = side_effect
+
+    all_extracts = {
+        'good': ['ok'],
+        'badkey': ['bad'],
+        'also_good': ['ok2']
+    }
+
+    # Should not raise
+    process_extracts(bundler, all_extracts)
+
+    # All three attempted
+    assert bundler.process_observables.call_count == 3
+
+
+def test_extraction_phase_runs_extractors_and_relationships():
+    preprocessed_text = "SOME TEXT"
+    extractors_map = {'lookup': {'l': 1}, 'pattern': {'p': 1}, 'ai': {'a': 1}}
+
+    with patch('txt2stix.txt2stix.run_extractors') as mock_run_extractors, \
+         patch('txt2stix.txt2stix.extract_relationships') as mock_extract_relationships, \
+        patch('txt2stix.txt2stix.validate_token_count') as mock_validate_token_limit:
+        mock_run_extractors.return_value = {'lookup': ['l1'], 'pattern': ['p1']}
+        mock_extract_relationships.return_value = {'relationships': ['r1']}
+
+        data = extraction_phase(preprocessed_text, extractors_map, ai_content_check_provider=None, input_token_limit=10, ai_settings_extractions=["ai_1", "ai_2"], ai_settings_relationships=None, relationship_mode='ai')
+
+        mock_run_extractors.assert_called_once()
+        mock_extract_relationships.assert_called_once()
+        assert data.extractions == {'lookup': ['l1'], 'pattern': ['p1']}
+        assert data.relationships == {'relationships': ['r1']}
+
+
+def test_processing_phase_applies_extracts_and_relationships():
+    preprocessed_text = "SOME TEXT"
+    # prepare data object similar to Txt2StixData
+    data = SimpleNamespace()
+    data.extractions = {'lookup': ['l1'], 'pattern': ['p1']}
+    data.relationships = {'relationships': ['r1']}
+    data.content_check = None
+
+    bundler = MagicMock()
+    bundler.report = SimpleNamespace(external_references=[], labels=[])
+
+    processing_phase(bundler, preprocessed_text, data, ai_create_attack_flow=False, ai_create_attack_navigator_layer=False)
+
+    bundler.process_observables.assert_any_call(['l1'])
+    bundler.process_observables.assert_any_call(['p1'])
+    bundler.process_relationships.assert_called_once_with(['r1'])

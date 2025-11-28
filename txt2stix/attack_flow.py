@@ -213,6 +213,7 @@ def extract_attack_flow_and_navigator(
     ai_create_attack_flow,
     ai_create_attack_navigator_layer,
     ai_settings_relationships,
+    flow=None
 ):
     ex: BaseAIExtractor = ai_settings_relationships
     tactics = get_all_tactics()
@@ -225,7 +226,7 @@ def extract_attack_flow_and_navigator(
     ]
     logging.debug(f"parsed techniques: {json.dumps(logged_techniques, indent=4)}")
 
-    flow = ex.extract_attack_flow(preprocessed_text, techniques)
+    flow = flow or ex.extract_attack_flow(preprocessed_text, techniques)
     navigator = None
     if ai_create_attack_flow:
         logging.info("creating attack-flow bundle")

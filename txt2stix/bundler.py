@@ -422,10 +422,6 @@ class txt2stixBundler:
     def process_observables(self, extractions, add_standard_relationship=False):
         for ex in extractions:
             try:
-                if ex.get("id", "").startswith(
-                    "ai"
-                ):  # so id is distinct across multiple AIExtractors
-                    ex["id"] = f'{ex["id"]}_{self.observables_processed}'
                 ex["id"] = ex.get("id", f"ex_{self.observables_processed}")
                 self.observables_processed += 1
                 self.add_indicator(ex, add_standard_relationship)
@@ -437,6 +433,7 @@ class txt2stixBundler:
                 ex["error"] = str(e)
 
     def process_relationships(self, observables):
+        print(observables)
         for relationship in observables:
             try:
                 self.add_ai_relationship(relationship)
