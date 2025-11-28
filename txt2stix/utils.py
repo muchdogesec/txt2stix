@@ -8,7 +8,7 @@ import mistune
 from mistune.renderers.markdown import MarkdownRenderer
 from mistune.util import unescape
 
-from txt2stix.ai_extractor.utils import AttackFlowList, DescribesIncident
+from txt2stix.ai_extractor.utils import AttackFlowList, DescribesIncident, RelationshipList
 class ImageLinkRemover(MarkdownRenderer):
     def __init__(self, remove_links: bool=False, remove_images: bool=False):
         self.remove_links = remove_links
@@ -49,7 +49,7 @@ class ImageLinkRemover(MarkdownRenderer):
 class Txt2StixData(BaseModel):
     content_check: DescribesIncident = Field(default=None)
     extractions: dict = Field(default=None)
-    relationships: list[dict] = Field(default_factory=list)
+    relationships: dict|RelationshipList = Field(default_factory=dict)
     attack_flow: AttackFlowList = Field(default=None)
     navigator_layer: list = Field(default=None)
 

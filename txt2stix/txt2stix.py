@@ -496,7 +496,7 @@ def processing_phase(bundler: txt2stixBundler, preprocessed_text: str, data: Txt
     try:
         if data.content_check:
             cc = data.content_check
-            provider_name = ai_content_check_provider and ai_content_check_provider.extractor_name
+            provider_name = str(ai_content_check_provider)
             bundler.report.external_references.append(dict(source_name='txt2stix_describes_incident', description=str(cc.describes_incident).lower(), external_id=provider_name))
             for classification in cc.incident_classification:
                 bundler.report.labels.append(f'classification.{classification}'.lower())

@@ -105,3 +105,6 @@ class BaseAIExtractor():
     def _check_credential(self):
         self.llm.complete("say 'hi'")
         return True
+    
+    def __str__(self):
+        return self.extractor_name
