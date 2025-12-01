@@ -160,7 +160,7 @@ def test_content_check_param(mock_validate_token_count, subtests):
 
 
 @mock.patch('txt2stix.txt2stix.attack_flow.extract_attack_flow_and_navigator')
-def test_attack_flow_or_nav(mock_extract_attack_flow, subtests):
+def test_attack_flow_or_nav__no_preset_flow(mock_extract_attack_flow, subtests):
     preprocessed_text = "192.168.0.1"
     mock_extractors_map = parse_extractors_globbed("extractor", all_extractors, "pattern_ipv4_address_only,pattern_domain_name_only")
     extractor = parse_model(TEST_AI_MODEL)
@@ -175,7 +175,7 @@ def test_attack_flow_or_nav(mock_extract_attack_flow, subtests):
     
     with subtests.test("both true", ai_create_attack_flow=True, ai_create_attack_navigator_layer=True):
         retval = run_txt2stix(mock_bundler, preprocessed_text, mock_extractors_map, ai_settings_relationships=extractor, ai_create_attack_flow=True, ai_create_attack_navigator_layer=True)
-        mock_extract_attack_flow.assert_called_once_with(mock_bundler, preprocessed_text, True, True, extractor)
+        mock_extract_attack_flow.assert_called_once_with(mock_bundler, preprocessed_text, True, True, extractor, flow=None)
         assert retval.attack_flow == "a"
         assert retval.navigator_layer == "b"
 
@@ -184,7 +184,7 @@ def test_attack_flow_or_nav(mock_extract_attack_flow, subtests):
     
     with subtests.test("only flow", ai_create_attack_flow=True, ai_create_attack_navigator_layer=False):
         retval = run_txt2stix(mock_bundler, preprocessed_text, mock_extractors_map, ai_settings_relationships=extractor, ai_create_attack_flow=True, ai_create_attack_navigator_layer=False)
-        mock_extract_attack_flow.assert_called_once_with(mock_bundler, preprocessed_text, True, False, extractor)
+        mock_extract_attack_flow.assert_called_once_with(mock_bundler, preprocessed_text, True, False, extractor, flow=None)
         assert retval.attack_flow == "a"
         assert retval.navigator_layer == "b"
 
@@ -193,24 +193,24 @@ def test_attack_flow_or_nav(mock_extract_attack_flow, subtests):
     
     with subtests.test("only nav", ai_create_attack_flow=False, ai_create_attack_navigator_layer=True):
         retval = run_txt2stix(mock_bundler, preprocessed_text, mock_extractors_map, ai_settings_relationships=extractor, ai_create_attack_flow=False, ai_create_attack_navigator_layer=True)
-        mock_extract_attack_flow.assert_called_once_with(mock_bundler, preprocessed_text, False, True, extractor)
+        mock_extract_attack_flow.assert_called_once_with(mock_bundler, preprocessed_text, False, True, extractor, flow=None)
         assert retval.attack_flow == "a"
         assert retval.navigator_layer == "b"
 
 
 
-@mock.patch('txt2stix.txt2stix.extract_relationships_with_ai')
-def test_relationship_mode(mock_extract_relationships_with_ai, subtests):
+@mock.patch('txt2stix.txt2stix.extract_relationships')
+def test_relationship_mode(mock_extract_relationships, subtests):
     mock_extractors_map = parse_extractors_globbed("extractor", all_extractors, "pattern_ipv4_address_only,pattern_domain_name_only")
     preprocessed_text = "192.168.0.1"
-    mock_extract_relationships_with_ai.return_value =  []
+    mock_extract_relationships.return_value =  []
 
     with subtests.test('mode_standard'):
         retval = run_txt2stix(mock_bundler, preprocessed_text, mock_extractors_map, ai_settings_relationships=parse_model(TEST_AI_MODEL), relationship_mode='standard')
-        mock_extract_relationships_with_ai.assert_not_called()
+        mock_extract_relationships.assert_not_called()
         assert retval.relationships == None, "extract_relationships_with_ai should not run"
 
     with subtests.test('mode_ai'):
         retval = run_txt2stix(mock_bundler, preprocessed_text, mock_extractors_map, ai_settings_relationships=parse_model(TEST_AI_MODEL), relationship_mode='ai')
-        mock_extract_relationships_with_ai.assert_called_once()
+        mock_extract_relationships.assert_called_once()
         assert retval.relationships != None, "extract_relationships_with_ai should run"

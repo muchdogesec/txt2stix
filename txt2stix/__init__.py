@@ -1,6 +1,5 @@
 from txt2stix import extractions
 from .bundler import txt2stixBundler
-from .txt2stix import extract_all
 from pathlib import Path
 
 INCLUDES_PATH = None

@@ -33,6 +33,9 @@ class RelationshipList(BaseModel):
     relationships: list[Relationship] = Field(default_factory=list)
     success: bool
 
+    def get(self, key, default=None):
+        return getattr(self, key, default)
+
 class DescribesIncident(BaseModel):
     describes_incident: bool = Field(description="does the <document> include malware analysis, APT group reports, data breaches and vulnerabilities?")
     explanation: str = Field(description="Two or three sentence summary of the incidents it describes OR summary of what it describes instead of an incident")

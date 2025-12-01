@@ -1,7 +1,5 @@
-from datetime import datetime
 import tempfile
 from types import SimpleNamespace
-import uuid
 import pytest
 from unittest import mock
 from unittest.mock import MagicMock, patch
@@ -10,12 +8,8 @@ import sys
 import os
 
 from txt2stix.utils import RELATIONSHIP_TYPES, remove_links
-from . import utils
 
-from txt2stix import get_all_extractors
 from txt2stix.ai_extractor.openai import OpenAIExtractor
-from txt2stix.ai_extractor.utils import DescribesIncident
-from txt2stix.bundler import txt2stixBundler
 from txt2stix.txt2stix import (
     main,
     newLogger,
@@ -24,15 +18,18 @@ from txt2stix.txt2stix import (
     parse_extractors_globbed,
     parse_model,
     parse_ref,
-    run_txt2stix,
     setLogFile,
     split_comma,
     range_type,
     parse_labels,
     load_env,
     # run_txt2stix,
-    extract_all,
-    extract_relationships_with_ai,
+    # process_extracts,
+    process_extracts,
+    extraction_phase,
+    processing_phase,
+    run_extractors,
+    extract_relationships,
 )
 from txt2stix.common import FatalException
 import argparse
@@ -240,23 +237,6 @@ def test_parse_extractors_globbed():
 def test_parse_bool(string, expected):
     assert parse_bool(string) == expected
 
-def test_extract_all():
-    """Test the extract_all function"""
-    mock_bundler = MagicMock()
-    mock_extractors_map = {"lookup": {}, "pattern": {}, "ai": {}}
-    text_content = "some sample text"
-    ai_extractors = [MagicMock()]
-
-    with mock.patch("txt2stix.txt2stix.extract_all") as mock_lookups:
-        mock_lookups.return_value = {}
-
-        result = mock_lookups(
-            mock_bundler, mock_extractors_map, text_content, ai_extractors=ai_extractors
-        )
-        assert isinstance(result, dict)
-        mock_lookups.assert_called_once()
-
-
 def test_main_func():
     input_text = "fake input text"
     processed_text = "processed input text"
@@ -302,53 +282,64 @@ def named_ai_extractor_mock(name, retval):
     m.extract_objects.return_value = retval
     return m
 
-def test_extract_all():
-    bundler = MagicMock()
-    with( 
-        patch('txt2stix.lookups.extract_all') as mock_lookup__extract_all,
-        patch('txt2stix.pattern.extract_all') as mock_pattern__extract_all,
+def test_run_extractors():
+    with (
+        patch("txt2stix.lookups.extract_all") as mock_lookup__extract_all,
+        patch("txt2stix.pattern.extract_all") as mock_pattern__extract_all,
     ):
-        mock_lookup__extract_all.return_value = ['lookup1', 'lookup2']
-        mock_pattern__extract_all.return_value = ['pattern1', 'pattern2']
+        mock_lookup__extract_all.return_value = [dict(value="lookup1"), dict(value="lookup2")]
+        mock_pattern__extract_all.return_value = [dict(value="pattern1"), dict(value="pattern2")]
 
-        ## test pattern and lookup
-        all_extracts = extract_all(bundler, dict(lookup=dict(a=1), pattern=dict(b=2)), '')
-        bundler.process_observables.assert_called()
-        bundler.process_observables.assert_any_call(['lookup1', 'lookup2'])
-        bundler.process_observables.assert_any_call(['pattern1', 'pattern2'])
-        assert all_extracts == dict(lookup=['lookup1', 'lookup2'], pattern=['pattern1', 'pattern2'])
+        # test pattern and lookup (no bundler processing in run_extractors)
+        all_extracts = run_extractors(dict(lookup=dict(a=1), pattern=dict(b=2)), "")
 
-        # test pattern and ai
+        # ensure returned structure contains the lists and each item got an id
+        assert "lookup" in all_extracts and "pattern" in all_extracts
+        for lst in all_extracts.values():
+            for item in lst:
+                assert isinstance(item, dict)
+                assert "id" in item and item["id"].startswith("ex-")
+
+        # test pattern and ai with one failing extractor
         ai_extractors = [
-            named_ai_extractor_mock('ex1', ['ai0']),
-            named_ai_extractor_mock('ai2', ['ai3', 'ai9']),
-            MagicMock()
+            named_ai_extractor_mock("llm:model2", [dict(value="value 0")]),
+            named_ai_extractor_mock("openai:model1", [dict(value="ai3"), dict(value="ai9")]),
+            MagicMock(),
         ]
         ai_extractors[-1].extract_objects.side_effect = Exception
-        all_extracts = extract_all(bundler, dict(lookup=dict(a=1), pattern=dict(b=2), ai=dict(c=1)), '', ai_extractors=ai_extractors)
-        bundler.process_observables.assert_called()
-        bundler.process_observables.assert_any_call(['lookup1', 'lookup2'])
-        bundler.process_observables.assert_any_call(['pattern1', 'pattern2'])
-        bundler.process_observables.assert_any_call(['ai0'])
-        bundler.process_observables.assert_any_call(['ai3', 'ai9'])
+
+        all_extracts = run_extractors(
+            dict(lookup=dict(a=1), pattern=dict(b=2), ai=dict(c=1)), "", ai_extractors=ai_extractors
+        )
+
+        # succeeded AI extractors should appear
+        assert any(k.startswith("ai-") for k in all_extracts.keys())
+        assert set(all_extracts) == {"lookup", "pattern", "ai-llm:model2", "ai-openai:model1"}
+        # failing extractor should not break others; items should still have ids
+        for lst in all_extracts.values():
+            for item in lst:
+                assert "id" in item
 
 
-
-
-def test_extract_relationships_with_ai():
-    mock_bundler = MagicMock()
+def test_extract_relationships():
     text = "TEXT_CONTENT"
-    all_extracts = {'lookup': [1, 2], 'ai': [3, 4]}
+    all_extracts = {"lookup": [1, 2], "ai": [3, 4]}
     mock_ai_session = MagicMock()
-    mock_ai_session.extract_relationships.return_value.model_dump.return_value = {'relationships': [1, 2]}
-    relationships = extract_relationships_with_ai(mock_bundler, text, all_extracts, mock_ai_session)
-    mock_ai_session.extract_relationships.assert_called_once_with(text, [1, 2, 3, 4], RELATIONSHIP_TYPES)
+    mock_ai_session.extract_relationships.return_value.model_dump.return_value = {
+        "relationships": [1, 2]
+    }
+
+    relationships = extract_relationships(text, all_extracts, mock_ai_session)
+
+    mock_ai_session.extract_relationships.assert_called_once_with(
+        text, [1, 2, 3, 4], RELATIONSHIP_TYPES
+    )
     mock_ai_session.extract_relationships.return_value.model_dump.assert_called()
     assert relationships == mock_ai_session.extract_relationships.return_value.model_dump.return_value
-    mock_bundler.process_relationships.assert_called_once_with([1, 2])
 
+    # exception path returns None
     mock_ai_session.extract_relationships.side_effect = Exception
-    assert extract_relationships_with_ai(mock_bundler, text, all_extracts, mock_ai_session) == None
+    assert extract_relationships(text, all_extracts, mock_ai_session) is None
 
 
 def test_check_credentials(monkeypatch):
@@ -358,3 +349,85 @@ def test_check_credentials(monkeypatch):
     ])
     with pytest.raises(SystemExit):
         parse_args()
+
+
+def test_process_extracts_normal_and_none():
+    """Ensure process_extracts calls bundler.process_observables for each key,
+    and handles None/empty input without error."""
+    bundler = MagicMock()
+    all_extracts = {
+        'lookup': ['l1', 'l2'],
+        'pattern': ['p1'],
+        'ai-ex1': ['a1', 'a2']
+    }
+
+    # Normal case
+    process_extracts(bundler, all_extracts)
+    assert bundler.process_observables.call_count == len(all_extracts)
+    bundler.process_observables.assert_any_call(['l1', 'l2'])
+    bundler.process_observables.assert_any_call(['p1'])
+    bundler.process_observables.assert_any_call(['a1', 'a2'])
+
+    # None or empty should not raise and should not call further
+    bundler.reset_mock()
+    process_extracts(bundler, {})
+    process_extracts(bundler, None)
+    bundler.process_observables.assert_not_called()
+
+
+def test_process_extracts_handles_exceptions():
+    """If bundler.process_observables raises for one key, process_extracts should continue."""
+    def side_effect(extracts):
+        if extracts == ['bad']:
+            raise Exception('boom')
+
+    bundler = MagicMock()
+    bundler.process_observables.side_effect = side_effect
+
+    all_extracts = {
+        'good': ['ok'],
+        'badkey': ['bad'],
+        'also_good': ['ok2']
+    }
+
+    # Should not raise
+    process_extracts(bundler, all_extracts)
+
+    # All three attempted
+    assert bundler.process_observables.call_count == 3
+
+
+def test_extraction_phase_runs_extractors_and_relationships():
+    preprocessed_text = "SOME TEXT"
+    extractors_map = {'lookup': {'l': 1}, 'pattern': {'p': 1}, 'ai': {'a': 1}}
+
+    with patch('txt2stix.txt2stix.run_extractors') as mock_run_extractors, \
+         patch('txt2stix.txt2stix.extract_relationships') as mock_extract_relationships, \
+        patch('txt2stix.txt2stix.validate_token_count') as mock_validate_token_limit:
+        mock_run_extractors.return_value = {'lookup': ['l1'], 'pattern': ['p1']}
+        mock_extract_relationships.return_value = {'relationships': ['r1']}
+
+        data = extraction_phase(preprocessed_text, extractors_map, ai_content_check_provider=None, input_token_limit=10, ai_settings_extractions=["ai_1", "ai_2"], ai_settings_relationships=None, relationship_mode='ai')
+
+        mock_run_extractors.assert_called_once()
+        mock_extract_relationships.assert_called_once()
+        assert data.extractions == {'lookup': ['l1'], 'pattern': ['p1']}
+        assert data.relationships == {'relationships': ['r1']}
+
+
+def test_processing_phase_applies_extracts_and_relationships():
+    preprocessed_text = "SOME TEXT"
+    # prepare data object similar to Txt2StixData
+    data = SimpleNamespace()
+    data.extractions = {'lookup': ['l1'], 'pattern': ['p1']}
+    data.relationships = {'relationships': ['r1']}
+    data.content_check = None
+
+    bundler = MagicMock()
+    bundler.report = SimpleNamespace(external_references=[], labels=[])
+
+    processing_phase(bundler, preprocessed_text, data, ai_create_attack_flow=False, ai_create_attack_navigator_layer=False)
+
+    bundler.process_observables.assert_any_call(['l1'])
+    bundler.process_observables.assert_any_call(['p1'])
+    bundler.process_relationships.assert_called_once_with(['r1'])
