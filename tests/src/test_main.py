@@ -312,29 +312,29 @@ def test_extract_all():
         patch('txt2stix.lookups.extract_all') as mock_lookup__extract_all,
         patch('txt2stix.pattern.extract_all') as mock_pattern__extract_all,
     ):
-        mock_lookup__extract_all.return_value = ['lookup1', 'lookup2']
-        mock_pattern__extract_all.return_value = ['pattern1', 'pattern2']
+        mock_lookup__extract_all.return_value = [dict(value='lookup1'), dict(value='lookup2')]
+        mock_pattern__extract_all.return_value = [dict(value='pattern1'), dict(value='pattern2')]
 
         ## test pattern and lookup
         all_extracts = extract_all(bundler, dict(lookup=dict(a=1), pattern=dict(b=2)), '')
         bundler.process_observables.assert_called()
-        bundler.process_observables.assert_any_call(['lookup1', 'lookup2'])
-        bundler.process_observables.assert_any_call(['pattern1', 'pattern2'])
-        assert all_extracts == dict(lookup=['lookup1', 'lookup2'], pattern=['pattern1', 'pattern2'])
+        bundler.process_observables.assert_any_call(mock_lookup__extract_all.return_value)
+        bundler.process_observables.assert_any_call(mock_pattern__extract_all.return_value)
+        assert all_extracts == dict(lookup=mock_lookup__extract_all.return_value, pattern=mock_pattern__extract_all.return_value)
 
         # test pattern and ai
         ai_extractors = [
-            named_ai_extractor_mock('ex1', ['ai0']),
-            named_ai_extractor_mock('ai2', ['ai3', 'ai9']),
+            named_ai_extractor_mock('ex1', [dict(value='value 0')]),
+            named_ai_extractor_mock('ai2', [dict(value='ai3'), dict(value='ai9')]),
             MagicMock()
         ]
         ai_extractors[-1].extract_objects.side_effect = Exception
         all_extracts = extract_all(bundler, dict(lookup=dict(a=1), pattern=dict(b=2), ai=dict(c=1)), '', ai_extractors=ai_extractors)
         bundler.process_observables.assert_called()
-        bundler.process_observables.assert_any_call(['lookup1', 'lookup2'])
-        bundler.process_observables.assert_any_call(['pattern1', 'pattern2'])
-        bundler.process_observables.assert_any_call(['ai0'])
-        bundler.process_observables.assert_any_call(['ai3', 'ai9'])
+        bundler.process_observables.assert_any_call(mock_lookup__extract_all.return_value)
+        bundler.process_observables.assert_any_call(mock_pattern__extract_all.return_value)
+        bundler.process_observables.assert_any_call(ai_extractors[0].extract_objects.return_value)
+        bundler.process_observables.assert_any_call(ai_extractors[1].extract_objects.return_value)
 
 
 def test_extract_relationships_with_ai():
