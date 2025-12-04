@@ -1,3 +1,4 @@
+import json
 from pathlib import PurePosixPath, PureWindowsPath
 import pytest
 from unittest import mock
@@ -12,6 +13,7 @@ from txt2stix.indicator import (
     BadDataException,
 )
 from stix2 import HashConstant
+from stix2.serialization import serialize as serialize_stix
 
 from txt2stix.bundler import txt2stixBundler
 from datetime import datetime
@@ -379,6 +381,21 @@ all_extractors = get_all_extractors()
             },
             id="payment-card, with issuer-name",
         ),
+        ## identity
+        pytest.param(
+            "My Identity 1",
+            "ai_identity",
+            {"identity--919283f8-8498-542b-a532-6bb2003282aa"},
+            {"identity--919283f8-8498-542b-a532-6bb2003282aa"},
+            id="identity-i",
+        ),
+        pytest.param(
+            "My Identity 2",
+            "ai_identity",
+            {"identity--2e0aadad-9b58-5c8c-bef6-4c258b35f319"},
+            {"identity--2e0aadad-9b58-5c8c-bef6-4c258b35f319"},
+            id="identity-ii",
+        ),
     ],
 )
 def test_build_observables(value, extractor_name, expected_objects, expected_rels):
@@ -389,6 +406,44 @@ def test_build_observables(value, extractor_name, expected_objects, expected_rel
     )
     assert {obj["id"] for obj in objects} == set(expected_objects)
     assert {id for id in relationships} == set(expected_rels)
+
+
+def test_identity_deterministic():
+    value = "My Identity 1"
+    extractor = all_extractors["ai_identity"]
+    indicator = mock_bundler.new_indicator(extractor, extractor.stix_mapping, value)
+    objects, relationships = build_observables(
+        mock_bundler, extractor.stix_mapping, indicator, value, extractor
+    )
+    assert len(objects) == 1
+    assert len(relationships) == 1
+    obj = objects[0]
+    assert obj["id"] == relationships[0]
+    obj = json.loads(serialize_stix(obj))
+    assert obj == {
+        "type": "identity",
+        "spec_version": "2.1",
+        "id": "identity--919283f8-8498-542b-a532-6bb2003282aa",
+        "created_by_ref": "identity--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5",
+        "created": "2020-01-01T00:00:00.000Z",
+        "modified": "2020-01-01T00:00:00.000Z",
+        "name": "My Identity 1",
+        "identity_class": "unspecified",
+        "external_references": [
+            {
+                "source_name": "txt2stix_report_id",
+                "external_id": "4719f590-f54e-5589-88b0-cdeeac908a51",
+            },
+            {
+                "source_name": "txt2stix_extraction_type",
+                "description": "ai_identity_1.0.0",
+            },
+        ],
+        "object_marking_refs": [
+            "marking-definition--e828b379-4e03-4974-9ac4-e53a884c97c1",
+            "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5",
+        ],
+    }
 
 
 @pytest.mark.parametrize(
