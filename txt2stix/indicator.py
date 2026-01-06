@@ -683,17 +683,18 @@ def _build_observables(
             f"txt2stix+{extracted_value}",
         )
     )
+    _date = datetime(2020, 1, 1, tzinfo=UTC)
 
     if stix_mapping == "attack-pattern":
         stix_objects = [
             dict_to_stix2(
                 {
                     "type": "attack-pattern",
-                    # "id": stix_mapping + "--" + _id_part,
+                    "id": stix_mapping + "--" + _id_part,
                     "spec_version": "2.1",
                     "created_by_ref": indicator["created_by_ref"],
-                    "created": indicator["created"],
-                    "modified": indicator["modified"],
+                    "created": _date,
+                    "modified": _date,
                     "name": extracted_value,
                     "external_references": indicator["external_references"],
                 }
@@ -705,11 +706,11 @@ def _build_observables(
             dict_to_stix2(
                 {
                     "type": "campaign",
-                    # "id": stix_mapping + "--" + _id_part,
+                    "id": stix_mapping + "--" + _id_part,
                     "spec_version": "2.1",
                     "created_by_ref": indicator["created_by_ref"],
-                    "created": indicator["created"],
-                    "modified": indicator["modified"],
+                    "created": _date,
+                    "modified": _date,
                     "name": extracted_value,
                     "object_marking_refs": indicator["object_marking_refs"],
                     "external_references": indicator["external_references"],
@@ -722,11 +723,11 @@ def _build_observables(
             dict_to_stix2(
                 {
                     "type": "course-of-action",
-                    # "id": stix_mapping + "--" + _id_part,
+                    "id": stix_mapping + "--" + _id_part,
                     "spec_version": "2.1",
                     "created_by_ref": indicator["created_by_ref"],
-                    "created": indicator["created"],
-                    "modified": indicator["modified"],
+                    "created": _date,
+                    "modified": _date,
                     "name": extracted_value,
                     "object_marking_refs": indicator["object_marking_refs"],
                     "external_references": indicator["external_references"],
@@ -739,11 +740,11 @@ def _build_observables(
             dict_to_stix2(
                 {
                     "type": "infrastructure",
-                    # "id": stix_mapping + "--" + _id_part,
+                    "id": stix_mapping + "--" + _id_part,
                     "spec_version": "2.1",
                     "created_by_ref": indicator["created_by_ref"],
-                    "created": indicator["created"],
-                    "modified": indicator["modified"],
+                    "created": _date,
+                    "modified": _date,
                     "name": extracted_value,
                     "infrastructure_types": ["unknown"],
                     "object_marking_refs": indicator["object_marking_refs"],
@@ -757,11 +758,11 @@ def _build_observables(
             dict_to_stix2(
                 {
                     "type": "intrusion-set",
-                    # "id": stix_mapping + "--" + _id_part,
+                    "id": stix_mapping + "--" + _id_part,
                     "spec_version": "2.1",
                     "created_by_ref": indicator["created_by_ref"],
-                    "created": indicator["created"],
-                    "modified": indicator["modified"],
+                    "created": _date,
+                    "modified": _date,
                     "name": extracted_value,
                     "object_marking_refs": indicator["object_marking_refs"],
                     "external_references": indicator["external_references"],
@@ -774,11 +775,11 @@ def _build_observables(
             dict_to_stix2(
                 {
                     "type": "malware",
-                    # "id": stix_mapping + "--" + _id_part,
+                    "id": stix_mapping + "--" + _id_part,
                     "spec_version": "2.1",
                     "created_by_ref": indicator["created_by_ref"],
-                    "created": indicator["created"],
-                    "modified": indicator["modified"],
+                    "created": _date,
+                    "modified": _date,
                     "name": extracted_value,
                     "malware_types": ["unknown"],
                     "is_family": True,
@@ -793,11 +794,11 @@ def _build_observables(
             dict_to_stix2(
                 {
                     "type": "threat-actor",
-                    # "id": stix_mapping + "--" + _id_part,
+                    "id": stix_mapping + "--" + _id_part,
                     "spec_version": "2.1",
                     "created_by_ref": indicator["created_by_ref"],
-                    "created": indicator["created"],
-                    "modified": indicator["modified"],
+                    "created": _date,
+                    "modified": _date,
                     "name": extracted_value,
                     "threat_actor_types": "unknown",
                     "object_marking_refs": indicator["object_marking_refs"],
@@ -811,11 +812,11 @@ def _build_observables(
             dict_to_stix2(
                 {
                     "type": "tool",
-                    # "id": stix_mapping + "--" + _id_part,
+                    "id": stix_mapping + "--" + _id_part,
                     "spec_version": "2.1",
                     "created_by_ref": indicator["created_by_ref"],
-                    "created": indicator["created"],
-                    "modified": indicator["modified"],
+                    "created": _date,
+                    "modified": _date,
                     "name": extracted_value,
                     "tool_types": "unknown",
                     "object_marking_refs": indicator["object_marking_refs"],
@@ -831,8 +832,8 @@ def _build_observables(
                     "type": "identity",
                     "spec_version": "2.1",
                     "created_by_ref": indicator["created_by_ref"],
-                    "created": datetime(2020, 1, 1, tzinfo=UTC),
-                    "modified": datetime(2020, 1, 1, tzinfo=UTC),
+                    "created": _date,
+                    "modified": _date,
                     "id": "identity--" + _id_part,
                     "name": extracted_value,
                     "identity_class": "unspecified",

@@ -396,6 +396,27 @@ all_extractors = get_all_extractors()
             {"identity--2e0aadad-9b58-5c8c-bef6-4c258b35f319"},
             id="identity-ii",
         ),
+
+        ## generic sdo extracts (course-of-action, threat-actor, tool)
+        pytest.param(
+            "EvilTool v2.0",
+            "lookup_tool",
+            {
+                "tool--1b13ef4f-7bd5-563a-9ca1-00ebdb7071a8",
+            },
+            {"tool--1b13ef4f-7bd5-563a-9ca1-00ebdb7071a8"},
+            id="generic tool",
+        ),
+
+        pytest.param(
+            "EvilActor",
+            "lookup_threat_actor",
+            {
+                "threat-actor--4c4be570-b34e-556e-a8e0-5cb290668770",
+            },
+            {"threat-actor--4c4be570-b34e-556e-a8e0-5cb290668770"},
+            id="generic threat-actor",
+        ),
     ],
 )
 def test_build_observables(value, extractor_name, expected_objects, expected_rels):
