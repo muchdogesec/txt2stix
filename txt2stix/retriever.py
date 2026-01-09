@@ -69,6 +69,10 @@ class STIXObjectRetriever:
         return self._retrieve_objects(
             urljoin(self.api_root, f"v1/location/objects/?alpha2_code={id}")
         )
+    
+    def get_location_bundle(self, id):
+        endpoint = urljoin(self.api_root, f"v1/location/objects/{id}/bundle/?types=location,relationship")
+        return self._retrieve_objects(endpoint, key="objects")
 
     def get_objects_by_name(self, name, type):
         return self._retrieve_objects(
@@ -122,6 +126,10 @@ def _retrieve_stix_objects(host, knowledge_base, filter_value):
             return retreiver.retrieve_object_by_id(filter_value, "cpe")
         case "location":
             return retreiver.get_location_objects(filter_value)
+        case "location-with-regions":
+            locations = retreiver.get_location_bundle(filter_value)
+            locations.sort(key=lambda x: int(x.get('country') == filter_value), reverse=True)
+            return locations
 
         ### ATT&CK by Name
         case "mitre-attack-enterprise-name":
@@ -162,8 +170,6 @@ def _retrieve_stix_objects(host, knowledge_base, filter_value):
 
 def retrieve_stix_objects(stix_mapping: str, filter_value, host=None):
     knowledge_base = stix_mapping
-    if stix_mapping in ["location"]:
-        host = "ctibutler"
     if not host:
         host, _, knowledge_base = stix_mapping.partition("-")
     try:
