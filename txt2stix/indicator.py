@@ -106,7 +106,10 @@ def _build_observables(
 ):
     retrieved_objects = retrieve_stix_objects(stix_mapping, extracted_value)
     if retrieved_objects:
-        return retrieved_objects, [sdo["id"] for sdo in retrieved_objects]
+        relatable = [sdo["id"] for sdo in retrieved_objects]
+        if 'location' in stix_mapping:
+            relatable = [retrieved_objects[0]['id']]
+        return retrieved_objects, relatable
     if retrieved_objects == []:
         logger.warning(
             f"could not find `{stix_mapping}` with id=`{extracted_value}` in remote"
@@ -623,7 +626,7 @@ def _build_observables(
         extracted_value = extracted_value.replace("-", "").replace(" ", "")
 
         country_code, bank_code = get_iban_details(extracted_value)
-        location = retrieve_stix_objects("location", country_code)[0]
+        location = retrieve_stix_objects("ctibutler-location", country_code)[0]
         stix_objects.append(location)
 
         bank_acc = dict_to_stix2(

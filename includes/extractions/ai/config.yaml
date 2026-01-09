@@ -778,7 +778,23 @@ ai_country:
   type: ai
   dogesec_web: true
   name: 'Country'
-  description: 'Will extract countries, turn into two digit country codes, and import location object from CTI Butler.'
+  description: 'Will extract countries, turn into two digit country codes, and import location (and all related regions and subregions) object from CTI Butler.'
+  notes: 'lookup_country_alpha2 legacy extraction also exists if you cannot use AI'
+  created: 2020-01-01
+  modified: 2020-01-01
+  created_by: dogesec
+  version: 1.0.0
+  prompt_base: 'Extract all countries described in the text, including countries printed as IS0-3166 Alpha2 and Alpha3 codes.'
+  prompt_helper: 'If you are unsure, you can read more about the standard here: https://www.iso.org/iso-3166-country-codes.html'
+  prompt_conversion: 'Convert all country extractions to their corresponding IS0-3166 Alpha2 codes.'
+  test_cases: ai_country
+  stix_mapping: ctibutler-location-with-regions
+
+ai_country_only:
+  type: ai
+  dogesec_web: true
+  name: 'Country only'
+  description: 'Will extract countries, turn into two digit country codes, and import location (without regions and subregions) object from CTI Butler.'
   notes: 'lookup_country_alpha2 legacy extraction also exists if you cannot use AI'
   created: 2020-01-01
   modified: 2020-01-01

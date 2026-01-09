@@ -5,8 +5,23 @@
 lookup_country_alpha2:
   type: lookup
   dogesec_web: false
-  name: 'Country Alpha2'
-  description: 'Extracts countries using ISO 3166-1 alpha2 codes'
+  name: 'Country Alpha2 (with regions)'
+  description: 'Extracts countries using ISO 3166-1 alpha2 codes (will create relationships to regions and subregions).'
+  notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_country. This extractor is very dumb e.g the words `is` and `in` will result in extractions for Iceland and India'
+  file: 'lookups/country_iso3166_alpha2.txt'
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: dogesec
+  version: 1.0.0
+  test_cases: generic_country_alpha2
+  stix_mapping: ctibutler-location-with-regions
+
+
+lookup_country_alpha2_country_only:
+  type: lookup
+  dogesec_web: false
+  name: 'Country Alpha2 (without regions)'
+  description: 'Extracts countries using ISO 3166-1 alpha2 codes (will not create relationships).'
   notes: 'RECOMMENDED FOR BETTER ACCURACY: Use ai_country. This extractor is very dumb e.g the words `is` and `in` will result in extractions for Iceland and India'
   file: 'lookups/country_iso3166_alpha2.txt'
   created: 2020-01-01

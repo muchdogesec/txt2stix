@@ -738,12 +738,28 @@ python3 txt2stix.py \
 python3 txt2stix.py \
 	--relationship_mode standard \
 	--input_file tests/data/extraction_types/ai_country.txt \
-	--name 'ai_country_alpha2' \
+	--name 'ai_country' \
 	--tlp_level clear \
 	--confidence 100 \
 	--use_extractions ai_country \
 	--ai_settings_extractions openai:gpt-5 \
 	--report_id 256f89fe-ad21-4604-9d6d-b8b5335f4657
+```
+
+Check regions are imported.
+
+#### ai_country_only
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/ai_country.txt \
+	--name 'ai_country_only' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_country_only \
+	--ai_settings_extractions openai:gpt-5 \
+	--report_id 7adbbed0-0d22-43e0-9894-1adb6a708461
 ```
 
 #### ai_mitre_attack_enterprise

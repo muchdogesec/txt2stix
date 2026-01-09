@@ -90,6 +90,19 @@ def f():
             ("location--6dbe266a-c149-5ba3-8b39-74f1b5063312",),
         ),
         (
+            "ctibutler-location-with-regions",
+            "NG",
+            [
+                "location--6dbe266a-c149-5ba3-8b39-74f1b5063312",
+                "location--097ca10f-e203-53c0-8f9d-2634ac58bc1b",
+                "location--48451447-0bc6-517a-aff5-a779d3a24a21",
+                "location--ccb963ba-9370-5eeb-80e3-c8d8738275ed",
+                "relationship--28b54976-c9a6-586c-9378-18556f917d3c",
+                "relationship--3cb6677e-c141-56c0-ba3e-6f9d03fa8487",
+                "relationship--769ac179-c26b-5ca0-abde-d61667962b82",
+            ],
+        ),
+        (
             "ctibutler-mitre-atlas-id",
             "AML.T0050",
             ["attack-pattern--eda10125-6f7d-479f-857a-19ef5d86a961"],
@@ -134,5 +147,5 @@ def f():
 def test_retrieve_objects(stix_mapping, kb_id, expected_ids, f):
     objects = retrieve_stix_objects(stix_mapping, kb_id)
     assert objects != None
-    object_ids = {obj["id"] for obj in objects}
+    object_ids = {x['id'] for x in objects}
     assert object_ids == set(expected_ids)
