@@ -461,17 +461,21 @@ def run_txt2stix(
     # First, perform extraction-phase (LLM and extractor calls). This does not
     # modify the provided bundler so the results can be saved and replayed.
     # skip extraction phase if txt2stix_data is passed
-    txt2stix_data = txt2stix_data or extraction_phase(
-        preprocessed_text,
-        extractors_map,
-        ai_content_check_provider=ai_content_check_provider,
-        input_token_limit=input_token_limit,
-        ai_settings_extractions=ai_settings_extractions,
-        ai_settings_relationships=ai_settings_relationships,
-        relationship_mode=relationship_mode,
-        ignore_extraction_boundary=ignore_extraction_boundary,
-        ai_extract_if_no_incidence=ai_extract_if_no_incidence,
-    )
+    if not txt2stix_data:
+        logging.info("=== Extraction Phase ===")
+        txt2stix_data = extraction_phase(
+            preprocessed_text,
+            extractors_map,
+            ai_content_check_provider=ai_content_check_provider,
+            input_token_limit=input_token_limit,
+            ai_settings_extractions=ai_settings_extractions,
+            ai_settings_relationships=ai_settings_relationships,
+            relationship_mode=relationship_mode,
+            ignore_extraction_boundary=ignore_extraction_boundary,
+            ai_extract_if_no_incidence=ai_extract_if_no_incidence,
+        )
+    else:
+        logging.info("=== Skipping Extraction Phase (replaying saved data) ===")
 
     # Then, process the extracted data into the bundler (no LLM calls).
     processing_phase(
