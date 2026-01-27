@@ -419,7 +419,9 @@ def test_processing_phase_applies_extracts_and_relationships():
     preprocessed_text = "SOME TEXT"
     # prepare data object similar to Txt2StixData
     data = SimpleNamespace()
-    data.extractions = {'lookup': ['l1'], 'pattern': ['p1']}
+    mock1 = {"name": "observable1", "error": "some error"}
+    mock2 = {"name": "observable2", "error": "some error"}
+    data.extractions = {'lookup': [mock1], 'pattern': [mock2]}
     data.relationships = {'relationships': ['r1']}
     data.content_check = None
 
@@ -428,6 +430,8 @@ def test_processing_phase_applies_extracts_and_relationships():
 
     processing_phase(bundler, preprocessed_text, data, ai_create_attack_flow=False, ai_create_attack_navigator_layer=False)
 
-    bundler.process_observables.assert_any_call(['l1'])
-    bundler.process_observables.assert_any_call(['p1'])
+    bundler.process_observables.assert_any_call([mock1])
+    bundler.process_observables.assert_any_call([mock2])
+    assert "error" not in mock2  # ensure no error field removal in this test
+    assert "error" not in mock1  # ensure no error field removal in this test
     bundler.process_relationships.assert_called_once_with(['r1'])

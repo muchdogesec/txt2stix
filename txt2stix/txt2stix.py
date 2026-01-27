@@ -556,7 +556,7 @@ def processing_phase(
     ai_content_check_provider=None,
 ):
     """Process extracted `data` into the given `bundler` without invoking LLMs."""
-    for d in itertools.chain([], *data.extractions.values()):
+    for d in itertools.chain([], *(data.extractions or {}).values()):
         d.pop("error", None)
     try:
         if data.content_check:
