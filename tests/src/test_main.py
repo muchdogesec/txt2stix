@@ -30,8 +30,10 @@ from txt2stix.txt2stix import (
     processing_phase,
     run_extractors,
     extract_relationships,
+    validate_token_count,
 )
-from txt2stix.common import FatalException
+from txt2stix.common import FatalException, MinorException
+from txt2stix.bundler import txt2stixBundler
 import argparse
 
 
@@ -435,3 +437,92 @@ def test_processing_phase_applies_extracts_and_relationships():
     assert "error" not in mock2  # ensure no error field removal in this test
     assert "error" not in mock1  # ensure no error field removal in this test
     bundler.process_relationships.assert_called_once_with(['r1'])
+
+
+def test_run_extractors():
+    """Test run_extractors returns dict with id fields and handles AI extractor failures."""
+    text_content = "SAMPLE TEXT"
+    extractors_map = {
+        'lookup': {'lookup1': MagicMock()},
+        'pattern': {'pattern1': MagicMock()},
+        'ai': {'ai1': MagicMock()}
+    }
+    
+    mock_ai_extractor1 = MagicMock()
+    mock_ai_extractor1.extractor_name = "ai_extractor_1"
+    mock_ai_extractor1.extract_objects.return_value = [{'type': 'ipv4', 'value': '1.1.1.1'}]
+    
+    mock_ai_extractor2 = MagicMock()
+    mock_ai_extractor2.extractor_name = "ai_extractor_2"
+    mock_ai_extractor2.extract_objects.side_effect = Exception("AI extraction failed")
+    
+    with patch('txt2stix.txt2stix.lookups.extract_all') as mock_lookup, \
+         patch('txt2stix.txt2stix.pattern.extract_all') as mock_pattern:
+        
+        mock_lookup.return_value = [{'type': 'domain', 'value': 'example.com'}]
+        mock_pattern.return_value = [{'type': 'url', 'value': 'http://test.com'}]
+        
+        result = run_extractors(extractors_map, text_content, ai_extractors=[mock_ai_extractor1, mock_ai_extractor2])
+        
+        # Verify lookup and pattern were called
+        assert 'lookup' in result
+        assert 'pattern' in result
+        assert 'ai-ai_extractor_1' in result
+        
+        # Verify all extracts have 'id' field
+        all_extracts = []
+        for extracts in result.values():
+            all_extracts.extend(extracts)
+        
+        for i, extract in enumerate(all_extracts):
+            assert 'id' in extract
+            assert extract['id'].startswith('ex-')
+        
+        # Verify AI extractor 2 failure was handled (should not be in results)
+        assert 'ai-ai_extractor_2' not in result
+
+
+def test_extract_relationships():
+    """Test extract_relationships calls AI session and handles exceptions."""
+    text = "TEXT_CONTENT"
+    all_extracts = {"lookup": [{'id': 'ex-0'}, {'id': 'ex-1'}], "ai": [{'id': 'ex-2'}, {'id': 'ex-3'}]}
+    mock_ai_session = MagicMock()
+    mock_ai_session.extract_relationships.return_value.model_dump.return_value = {
+        "relationships": [{'source': 'ex-0', 'target': 'ex-2'}]
+    }
+
+    relationships = extract_relationships(text, all_extracts, mock_ai_session)
+
+    # Verify extract_relationships was called with flattened list
+    called_args = mock_ai_session.extract_relationships.call_args
+    assert len(called_args[0][1]) == 4  # flattened list of 4 extracts
+    assert called_args[0][2] == RELATIONSHIP_TYPES
+    
+    mock_ai_session.extract_relationships.return_value.model_dump.assert_called()
+    assert relationships == {"relationships": [{'source': 'ex-0', 'target': 'ex-2'}]}
+
+    # Test exception handling - should return None
+    mock_ai_session.extract_relationships.side_effect = Exception("AI failed")
+    assert extract_relationships(text, all_extracts, mock_ai_session) is None
+
+
+def test_validate_token_count():
+    """Test validate_token_count raises FatalException when limit exceeded."""
+    
+    # Test case 1: Should not raise when under limit
+    mock_extractor1 = MagicMock()
+    mock_extractor1.extractor_name = "test_extractor_under_limit"
+    mock_extractor1.count_tokens.return_value = 500
+    
+    # Use different input text to avoid lru_cache collision
+    validate_token_count(1000, "test input 1", [mock_extractor1])
+    
+    # Test case 2: Should raise when over limit
+    mock_extractor2 = MagicMock()
+    mock_extractor2.extractor_name = "test_extractor_over_limit"
+    mock_extractor2.count_tokens.return_value = 1500
+    
+    with pytest.raises(FatalException, match="exceeds INPUT_TOKEN_LIMIT"):
+        # Use different input text to avoid lru_cache collision
+        validate_token_count(1000, "test input 2", [mock_extractor2])
+
