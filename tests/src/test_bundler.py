@@ -114,6 +114,20 @@ def test_add_indicator(bundler):
         assert bundler.id_map[extracted_dict["id"]] == mocked_related_refs
 
 
+def test_add_indicator_rejects_empty_values(bundler):
+    """Test that add_indicator raises MinorException for None or empty extracted values."""    
+    extracted_dict_empty = {
+        "id": "ex-1",
+        "type": "test_type",
+        "value": ""
+    }
+    mocked_extractor = MagicMock()
+    bundler.all_extractors = dict(test_type=mocked_extractor)
+    
+    with pytest.raises(MinorException, match="extracted value is empty"):
+        bundler.add_indicator(extracted_dict_empty, add_standard_relationship=False)
+
+
 def test_add_indicator_sets_id_map():
     extractor = MagicMock()
     extractor.stix_mapping = "domain-name"

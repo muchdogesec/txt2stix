@@ -307,6 +307,9 @@ class txt2stixBundler:
         extracted_value = extracted_dict["value"]
         extracted_id = extracted_dict["id"]
 
+        if extracted_value is None or extracted_value == "":
+            raise MinorException(f"extracted value is empty")
+
         indicator = self.new_indicator(extractor, stix_mapping, extracted_value)
         # set id so it doesn''t need to be created in build_observables
         if extracted_dict.get("indexes"):
