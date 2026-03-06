@@ -16,6 +16,7 @@ from stix2 import HashConstant
 from txt2stix.bundler import txt2stixBundler
 from datetime import datetime
 
+
 def dummy_bundler():
     return txt2stixBundler(
         name="test_indicator.py",
@@ -27,4 +28,6 @@ def dummy_bundler():
         labels=None,
         created=datetime(2020, 1, 1),
     )
+
+
 # all_extractors = get_all_extractors()

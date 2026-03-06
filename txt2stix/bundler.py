@@ -244,7 +244,7 @@ class txt2stixBundler:
 
         self.bundle.objects.extend([self.default_marking, self.identity, self.report])
         # add default STIX 2.1 marking definition for txt2stix
-        self.report['object_marking_refs'].append(self.default_marking.id)
+        self.report["object_marking_refs"].append(self.default_marking.id)
 
     def add_extension(self, object):
         _type = object["type"]
@@ -273,7 +273,7 @@ class txt2stixBundler:
         if sdo_id not in self.added_objects:
             self.added_objects.add(sdo_id)
             if is_report_object:
-                self.report['object_refs'].append(sdo_id)
+                self.report["object_refs"].append(sdo_id)
             self.bundle.objects.append(sdo)
 
         sdo_value = ""
@@ -335,15 +335,15 @@ class txt2stixBundler:
             "type": "indicator",
             "id": self.indicator_id_from_value(extracted_value, stix_mapping),
             "spec_version": "2.1",
-            "created_by_ref": self.report['created_by_ref'],
-            "created": self.report['created'],
-            "modified": self.report['modified'],
+            "created_by_ref": self.report["created_by_ref"],
+            "created": self.report["created"],
+            "modified": self.report["modified"],
             "indicator_types": ["unknown"],
             "name": extracted_value,
             "pattern_type": "stix",
             "pattern": f"[ {stix_mapping}:value = { repr(extracted_value) } ]",
-            "valid_from": self.report['created'],
-            "object_marking_refs": self.report['object_marking_refs'],
+            "valid_from": self.report["created"],
+            "object_marking_refs": self.report["object_marking_refs"],
             "external_references": [
                 {
                     "source_name": "txt2stix_report_id",
@@ -398,11 +398,11 @@ class txt2stixBundler:
             source_ref=source_ref,
             target_ref=target_ref,
             relationship_type=relationship_type,
-            created_by_ref=self.report['created_by_ref'],
-            created=self.report['created'],
+            created_by_ref=self.report["created_by_ref"],
+            created=self.report["created"],
             description=description,
-            modified=self.report['modified'],
-            object_marking_refs=self.report['object_marking_refs'],
+            modified=self.report["modified"],
+            object_marking_refs=self.report["object_marking_refs"],
             external_references=external_references
             or [
                 {
@@ -455,7 +455,7 @@ class txt2stixBundler:
         )
 
     def add_summary(self, summary, ai_summary_provider):
-        self.report['external_references'].append(
+        self.report["external_references"].append(
             dict(
                 source_name="txt2stix_ai_summary",
                 external_id=ai_summary_provider,
@@ -473,7 +473,7 @@ class txt2stixBundler:
         smo_objects = self.load_stix_object_from_url(self.ATTACK_FLOW_SMO_URL)["objects"]
         objects.extend(smo_objects)
         for obj in objects:
-            if obj["id"] == self.report['id']:
+            if obj["id"] == self.report["id"]:
                 continue
             is_report_object = obj["type"] not in ["extension-definition", "identity"]
             self.add_ref(obj, is_report_object=is_report_object)

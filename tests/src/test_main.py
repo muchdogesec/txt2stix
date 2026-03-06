@@ -109,71 +109,105 @@ def test_parse_args():
             assert args.input_file == Path("test.txt")
             assert args.name == "test-report"
 
+
 def test_parse_args_fails(monkeypatch):
-    tmp = tempfile.NamedTemporaryFile(prefix='test_parse_args_fails')
-    monkeypatch.setattr(sys, 'argv', [
-        "program",
-        "--input-file",
-        tmp.name,
-        "--name",
-        "a"*125,
-        "--relationship_mode",
-        "standard",
-    ])
-    with pytest.raises(argparse.ArgumentError, match='max 124 characters'):
+    tmp = tempfile.NamedTemporaryFile(prefix="test_parse_args_fails")
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "program",
+            "--input-file",
+            tmp.name,
+            "--name",
+            "a" * 125,
+            "--relationship_mode",
+            "standard",
+        ],
+    )
+    with pytest.raises(argparse.ArgumentError, match="max 124 characters"):
         parse_args()
 
-    monkeypatch.setattr(sys, 'argv', [
-        "program",
-        "--input-file",
-        tmp.name,
-        "--name",
-        "a",
-        "--relationship_mode",
-        "ai",
-    ])
-    with pytest.raises(argparse.ArgumentError, match="relationship_mode is set to AI, --ai_settings_relationships is required"):
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "program",
+            "--input-file",
+            tmp.name,
+            "--name",
+            "a",
+            "--relationship_mode",
+            "ai",
+        ],
+    )
+    with pytest.raises(
+        argparse.ArgumentError,
+        match="relationship_mode is set to AI, --ai_settings_relationships is required",
+    ):
         parse_args()
 
-    monkeypatch.setattr(sys, 'argv', [
-        "program",
-        "--input-file",
-        tmp.name,
-        "--name",
-        "a",
-        "--relationship_mode",
-        "standard",
-        "--ai_create_attack_flow",
-    ])
-    with pytest.raises(argparse.ArgumentError, match="argument --ai_create_attack_flow: --ai_settings_relationships must be set"):
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "program",
+            "--input-file",
+            tmp.name,
+            "--name",
+            "a",
+            "--relationship_mode",
+            "standard",
+            "--ai_create_attack_flow",
+        ],
+    )
+    with pytest.raises(
+        argparse.ArgumentError,
+        match="argument --ai_create_attack_flow: --ai_settings_relationships must be set",
+    ):
         parse_args()
 
-
-    monkeypatch.setattr(sys, 'argv', [
-        "program",
-        "--input-file",
-        tmp.name,
-        "--name",
-        "a",
-        "--relationship_mode",
-        "standard",
-        "--ai_create_attack_navigator_layer",
-    ])
-    with pytest.raises(argparse.ArgumentError, match="argument --ai_create_attack_navigator_layer: --ai_settings_relationships must be set"):
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "program",
+            "--input-file",
+            tmp.name,
+            "--name",
+            "a",
+            "--relationship_mode",
+            "standard",
+            "--ai_create_attack_navigator_layer",
+        ],
+    )
+    with pytest.raises(
+        argparse.ArgumentError,
+        match="argument --ai_create_attack_navigator_layer: --ai_settings_relationships must be set",
+    ):
         parse_args()
 
-    monkeypatch.setattr(sys, 'argv', [
-        "program",
-        "--input-file",
-        tmp.name,
-        "--name",
-        "a",
-        "--relationship_mode",
-        "standard",
-        "--use_extractions", "ai_ipv4_address_only",
-    ])
-    with pytest.raises(argparse.ArgumentError, match="ai based extractors are passed, --ai_settings_extractions is required"):
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "program",
+            "--input-file",
+            tmp.name,
+            "--name",
+            "a",
+            "--relationship_mode",
+            "standard",
+            "--use_extractions",
+            "ai_ipv4_address_only",
+        ],
+    )
+    with pytest.raises(
+        argparse.ArgumentError,
+        match="ai based extractors are passed, --ai_settings_extractions is required",
+    ):
         parse_args()
+
 
 def test_load_env(mock_environment):
     """Test if environment loading and validation works."""
@@ -205,39 +239,40 @@ def test_parse_extractors_globbed():
     ):
         assert parse_extractors_globbed(
             "extractor", all_extractors, "abcd_pattern"
-        ) == {'pattern': {'abcd_pattern': abcd_pattern}}
+        ) == {"pattern": {"abcd_pattern": abcd_pattern}}
 
-        assert parse_extractors_globbed(
-            "extractor", all_extractors, "abcd_*"
-        ) == {'pattern': {'abcd_pattern': abcd_pattern}, 'lookup': {'abcd_lookup': abcd_lookup}}
+        assert parse_extractors_globbed("extractor", all_extractors, "abcd_*") == {
+            "pattern": {"abcd_pattern": abcd_pattern},
+            "lookup": {"abcd_lookup": abcd_lookup},
+        }
 
-    with pytest.raises(argparse.ArgumentTypeError, match='`bad_pattern` has 0 matches'):
-        parse_extractors_globbed(
-            "extractor", all_extractors, "bad_pattern"
-        )
+    with pytest.raises(argparse.ArgumentTypeError, match="`bad_pattern` has 0 matches"):
+        parse_extractors_globbed("extractor", all_extractors, "bad_pattern")
 
-    
-    with pytest.raises(argparse.ArgumentTypeError, match="extractor `null_extractor`: 'NoneType' object has no attribute 'type'"):
-        parse_extractors_globbed(
-            "extractor", all_extractors, "null*"
-        )
+    with pytest.raises(
+        argparse.ArgumentTypeError,
+        match="extractor `null_extractor`: 'NoneType' object has no attribute 'type'",
+    ):
+        parse_extractors_globbed("extractor", all_extractors, "null*")
+
 
 @pytest.mark.parametrize(
-    ['string', 'expected'],
+    ["string", "expected"],
     [
-        ('yes', True),
-        ('YeS', True),
-        ('y', True),
-        ('Y', True),
-        ('1', True),
-        ('0', False),
-        ('n', False),
-        ('no', False),
-        ('NO', False),
-    ]
+        ("yes", True),
+        ("YeS", True),
+        ("y", True),
+        ("Y", True),
+        ("1", True),
+        ("0", False),
+        ("n", False),
+        ("no", False),
+        ("NO", False),
+    ],
 )
 def test_parse_bool(string, expected):
     assert parse_bool(string) == expected
+
 
 def test_main_func():
     input_text = "fake input text"
@@ -272,11 +307,12 @@ def test_main_func():
 
 
 def test_setLogFile():
-    tmp = tempfile.NamedTemporaryFile(prefix='setlogfile')
+    tmp = tempfile.NamedTemporaryFile(prefix="setlogfile")
     p = Path(tmp.name)
     logger = newLogger("txt2stix")
     setLogFile(logger, p)
     assert p.exists(), "log file should be created"
+
 
 def named_ai_extractor_mock(name, retval):
     m = MagicMock()
@@ -284,13 +320,20 @@ def named_ai_extractor_mock(name, retval):
     m.extract_objects.return_value = retval
     return m
 
+
 def test_run_extractors():
     with (
         patch("txt2stix.lookups.extract_all") as mock_lookup__extract_all,
         patch("txt2stix.pattern.extract_all") as mock_pattern__extract_all,
     ):
-        mock_lookup__extract_all.return_value = [dict(value="lookup1"), dict(value="lookup2")]
-        mock_pattern__extract_all.return_value = [dict(value="pattern1"), dict(value="pattern2")]
+        mock_lookup__extract_all.return_value = [
+            dict(value="lookup1"),
+            dict(value="lookup2"),
+        ]
+        mock_pattern__extract_all.return_value = [
+            dict(value="pattern1"),
+            dict(value="pattern2"),
+        ]
 
         # test pattern and lookup (no bundler processing in run_extractors)
         all_extracts = run_extractors(dict(lookup=dict(a=1), pattern=dict(b=2)), "")
@@ -305,18 +348,27 @@ def test_run_extractors():
         # test pattern and ai with one failing extractor
         ai_extractors = [
             named_ai_extractor_mock("llm:model2", [dict(value="value 0")]),
-            named_ai_extractor_mock("openai:model1", [dict(value="ai3"), dict(value="ai9")]),
+            named_ai_extractor_mock(
+                "openai:model1", [dict(value="ai3"), dict(value="ai9")]
+            ),
             MagicMock(),
         ]
         ai_extractors[-1].extract_objects.side_effect = Exception
 
         all_extracts = run_extractors(
-            dict(lookup=dict(a=1), pattern=dict(b=2), ai=dict(c=1)), "", ai_extractors=ai_extractors
+            dict(lookup=dict(a=1), pattern=dict(b=2), ai=dict(c=1)),
+            "",
+            ai_extractors=ai_extractors,
         )
 
         # succeeded AI extractors should appear
         assert any(k.startswith("ai-") for k in all_extracts.keys())
-        assert set(all_extracts) == {"lookup", "pattern", "ai-llm:model2", "ai-openai:model1"}
+        assert set(all_extracts) == {
+            "lookup",
+            "pattern",
+            "ai-llm:model2",
+            "ai-openai:model1",
+        }
         # failing extractor should not break others; items should still have ids
         for lst in all_extracts.values():
             for item in lst:
@@ -337,7 +389,10 @@ def test_extract_relationships():
         text, [1, 2, 3, 4], RELATIONSHIP_TYPES
     )
     mock_ai_session.extract_relationships.return_value.model_dump.assert_called()
-    assert relationships == mock_ai_session.extract_relationships.return_value.model_dump.return_value
+    assert (
+        relationships
+        == mock_ai_session.extract_relationships.return_value.model_dump.return_value
+    )
 
     # exception path returns None
     mock_ai_session.extract_relationships.side_effect = Exception
@@ -345,10 +400,7 @@ def test_extract_relationships():
 
 
 def test_check_credentials(monkeypatch):
-    monkeypatch.setattr(sys, 'argv', [
-        "program",
-        "--check_credentials"
-    ])
+    monkeypatch.setattr(sys, "argv", ["program", "--check_credentials"])
     with pytest.raises(SystemExit):
         parse_args()
 
@@ -357,18 +409,14 @@ def test_process_extracts_normal_and_none():
     """Ensure process_extracts calls bundler.process_observables for each key,
     and handles None/empty input without error."""
     bundler = MagicMock()
-    all_extracts = {
-        'lookup': ['l1', 'l2'],
-        'pattern': ['p1'],
-        'ai-ex1': ['a1', 'a2']
-    }
+    all_extracts = {"lookup": ["l1", "l2"], "pattern": ["p1"], "ai-ex1": ["a1", "a2"]}
 
     # Normal case
     process_extracts(bundler, all_extracts)
     assert bundler.process_observables.call_count == len(all_extracts)
-    bundler.process_observables.assert_any_call(['l1', 'l2'])
-    bundler.process_observables.assert_any_call(['p1'])
-    bundler.process_observables.assert_any_call(['a1', 'a2'])
+    bundler.process_observables.assert_any_call(["l1", "l2"])
+    bundler.process_observables.assert_any_call(["p1"])
+    bundler.process_observables.assert_any_call(["a1", "a2"])
 
     # None or empty should not raise and should not call further
     bundler.reset_mock()
@@ -379,18 +427,15 @@ def test_process_extracts_normal_and_none():
 
 def test_process_extracts_handles_exceptions():
     """If bundler.process_observables raises for one key, process_extracts should continue."""
+
     def side_effect(extracts):
-        if extracts == ['bad']:
-            raise Exception('boom')
+        if extracts == ["bad"]:
+            raise Exception("boom")
 
     bundler = MagicMock()
     bundler.process_observables.side_effect = side_effect
 
-    all_extracts = {
-        'good': ['ok'],
-        'badkey': ['bad'],
-        'also_good': ['ok2']
-    }
+    all_extracts = {"good": ["ok"], "badkey": ["bad"], "also_good": ["ok2"]}
 
     # Should not raise
     process_extracts(bundler, all_extracts)
@@ -401,20 +446,30 @@ def test_process_extracts_handles_exceptions():
 
 def test_extraction_phase_runs_extractors_and_relationships():
     preprocessed_text = "SOME TEXT"
-    extractors_map = {'lookup': {'l': 1}, 'pattern': {'p': 1}, 'ai': {'a': 1}}
+    extractors_map = {"lookup": {"l": 1}, "pattern": {"p": 1}, "ai": {"a": 1}}
 
-    with patch('txt2stix.txt2stix.run_extractors') as mock_run_extractors, \
-         patch('txt2stix.txt2stix.extract_relationships') as mock_extract_relationships, \
-        patch('txt2stix.txt2stix.validate_token_count') as mock_validate_token_limit:
-        mock_run_extractors.return_value = {'lookup': ['l1'], 'pattern': ['p1']}
-        mock_extract_relationships.return_value = {'relationships': ['r1']}
+    with (
+        patch("txt2stix.txt2stix.run_extractors") as mock_run_extractors,
+        patch("txt2stix.txt2stix.extract_relationships") as mock_extract_relationships,
+        patch("txt2stix.txt2stix.validate_token_count") as mock_validate_token_limit,
+    ):
+        mock_run_extractors.return_value = {"lookup": ["l1"], "pattern": ["p1"]}
+        mock_extract_relationships.return_value = {"relationships": ["r1"]}
 
-        data = extraction_phase(preprocessed_text, extractors_map, ai_content_check_provider=None, input_token_limit=10, ai_settings_extractions=["ai_1", "ai_2"], ai_settings_relationships=None, relationship_mode='ai')
+        data = extraction_phase(
+            preprocessed_text,
+            extractors_map,
+            ai_content_check_provider=None,
+            input_token_limit=10,
+            ai_settings_extractions=["ai_1", "ai_2"],
+            ai_settings_relationships=None,
+            relationship_mode="ai",
+        )
 
         mock_run_extractors.assert_called_once()
         mock_extract_relationships.assert_called_once()
-        assert data.extractions == {'lookup': ['l1'], 'pattern': ['p1']}
-        assert data.relationships == {'relationships': ['r1']}
+        assert data.extractions == {"lookup": ["l1"], "pattern": ["p1"]}
+        assert data.relationships == {"relationships": ["r1"]}
 
 
 def test_processing_phase_applies_extracts_and_relationships():
@@ -423,72 +478,89 @@ def test_processing_phase_applies_extracts_and_relationships():
     data = SimpleNamespace()
     mock1 = {"name": "observable1", "error": "some error"}
     mock2 = {"name": "observable2", "error": "some error"}
-    data.extractions = {'lookup': [mock1], 'pattern': [mock2]}
-    data.relationships = {'relationships': ['r1']}
+    data.extractions = {"lookup": [mock1], "pattern": [mock2]}
+    data.relationships = {"relationships": ["r1"]}
     data.content_check = None
 
     bundler = MagicMock()
     bundler.report = SimpleNamespace(external_references=[], labels=[])
 
-    processing_phase(bundler, preprocessed_text, data, ai_create_attack_flow=False, ai_create_attack_navigator_layer=False)
+    processing_phase(
+        bundler,
+        preprocessed_text,
+        data,
+        ai_create_attack_flow=False,
+        ai_create_attack_navigator_layer=False,
+    )
 
     bundler.process_observables.assert_any_call([mock1])
     bundler.process_observables.assert_any_call([mock2])
     assert "error" not in mock2  # ensure no error field removal in this test
     assert "error" not in mock1  # ensure no error field removal in this test
-    bundler.process_relationships.assert_called_once_with(['r1'])
+    bundler.process_relationships.assert_called_once_with(["r1"])
 
 
 def test_run_extractors():
     """Test run_extractors returns dict with id fields and handles AI extractor failures."""
     text_content = "SAMPLE TEXT"
     extractors_map = {
-        'lookup': {'lookup1': MagicMock()},
-        'pattern': {'pattern1': MagicMock()},
-        'ai': {'ai1': MagicMock()}
+        "lookup": {"lookup1": MagicMock()},
+        "pattern": {"pattern1": MagicMock()},
+        "ai": {"ai1": MagicMock()},
     }
-    
+
     mock_ai_extractor1 = MagicMock()
     mock_ai_extractor1.extractor_name = "ai_extractor_1"
-    mock_ai_extractor1.extract_objects.return_value = [{'type': 'ipv4', 'value': '1.1.1.1'}]
-    
+    mock_ai_extractor1.extract_objects.return_value = [
+        {"type": "ipv4", "value": "1.1.1.1"}
+    ]
+
     mock_ai_extractor2 = MagicMock()
     mock_ai_extractor2.extractor_name = "ai_extractor_2"
     mock_ai_extractor2.extract_objects.side_effect = Exception("AI extraction failed")
-    
-    with patch('txt2stix.txt2stix.lookups.extract_all') as mock_lookup, \
-         patch('txt2stix.txt2stix.pattern.extract_all') as mock_pattern:
-        
-        mock_lookup.return_value = [{'type': 'domain', 'value': 'example.com'}]
-        mock_pattern.return_value = [{'type': 'url', 'value': 'http://test.com'}]
-        
-        result = run_extractors(extractors_map, text_content, ai_extractors=[mock_ai_extractor1, mock_ai_extractor2])
-        
+
+    with (
+        patch("txt2stix.txt2stix.lookups.extract_all") as mock_lookup,
+        patch("txt2stix.txt2stix.pattern.extract_all") as mock_pattern,
+    ):
+
+        mock_lookup.return_value = [{"type": "domain", "value": "example.com"}]
+        mock_pattern.return_value = [{"type": "url", "value": "http://test.com"}]
+
+        result = run_extractors(
+            extractors_map,
+            text_content,
+            ai_extractors=[mock_ai_extractor1, mock_ai_extractor2],
+        )
+
         # Verify lookup and pattern were called
-        assert 'lookup' in result
-        assert 'pattern' in result
-        assert 'ai-ai_extractor_1' in result
-        
+        assert "lookup" in result
+        assert "pattern" in result
+        assert "ai-ai_extractor_1" in result
+
         # Verify all extracts have 'id' field
         all_extracts = []
         for extracts in result.values():
             all_extracts.extend(extracts)
-        
+
         for i, extract in enumerate(all_extracts):
-            assert 'id' in extract
-            assert extract['id'].startswith('ex-')
-        
+            assert "id" in extract
+            assert extract["id"].startswith("ex-")
+
         # Verify AI extractor 2 failure was handled (should not be in results)
-        assert 'ai-ai_extractor_2' not in result
+        assert "ai-ai_extractor_2" not in result
 
 
 def test_extract_relationships():
     """Test extract_relationships calls AI session and handles exceptions."""
     text = "TEXT_CONTENT"
-    all_extracts = {"lookup": [{'id': 'ex-0'}, {'id': 'ex-1'}], "ai": [{'id': 'ex-2'}, {'id': 'ex-3'}]}
+    all_extracts = {
+        "lookup": [{"id": "ex-0"}, {"id": "ex-1"}],
+        "ai": [{"id": "ex-2"}, {"id": "ex-3"}],
+    }
     mock_ai_session = MagicMock()
     mock_ai_session.extract_relationships.return_value.model_dump.return_value = {
-        "relationships": [{'source': 'ex-0', 'target': 'ex-2'}]
+        "relationships": [{"source": "ex-0", "target": "ex-2"}]
     }
 
     relationships = extract_relationships(text, all_extracts, mock_ai_session)
@@ -497,9 +569,9 @@ def test_extract_relationships():
     called_args = mock_ai_session.extract_relationships.call_args
     assert len(called_args[0][1]) == 4  # flattened list of 4 extracts
     assert called_args[0][2] == RELATIONSHIP_TYPES
-    
+
     mock_ai_session.extract_relationships.return_value.model_dump.assert_called()
-    assert relationships == {"relationships": [{'source': 'ex-0', 'target': 'ex-2'}]}
+    assert relationships == {"relationships": [{"source": "ex-0", "target": "ex-2"}]}
 
     # Test exception handling - should return None
     mock_ai_session.extract_relationships.side_effect = Exception("AI failed")
@@ -508,21 +580,20 @@ def test_extract_relationships():
 
 def test_validate_token_count():
     """Test validate_token_count raises FatalException when limit exceeded."""
-    
+
     # Test case 1: Should not raise when under limit
     mock_extractor1 = MagicMock()
     mock_extractor1.extractor_name = "test_extractor_under_limit"
     mock_extractor1.count_tokens.return_value = 500
-    
+
     # Use different input text to avoid lru_cache collision
     validate_token_count(1000, "test input 1", [mock_extractor1])
-    
+
     # Test case 2: Should raise when over limit
     mock_extractor2 = MagicMock()
     mock_extractor2.extractor_name = "test_extractor_over_limit"
     mock_extractor2.count_tokens.return_value = 1500
-    
+
     with pytest.raises(FatalException, match="exceeds INPUT_TOKEN_LIMIT"):
         # Use different input text to avoid lru_cache collision
         validate_token_count(1000, "test input 2", [mock_extractor2])
-
