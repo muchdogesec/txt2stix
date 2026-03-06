@@ -147,5 +147,5 @@ def f():
 def test_retrieve_objects(stix_mapping, kb_id, expected_ids, f):
     objects = retrieve_stix_objects(stix_mapping, kb_id)
     assert objects != None
-    object_ids = {x['id'] for x in objects}
+    object_ids = {x["id"] for x in objects}
     assert object_ids == set(expected_ids)

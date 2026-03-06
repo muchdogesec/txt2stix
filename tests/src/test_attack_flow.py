@@ -44,6 +44,7 @@ def test_parse_flow(dummy_report, dummy_objects, dummy_flow):
     flow_objects = parse_flow(report, flow, techniques, tactics)
     assert {obj["id"] for obj in flow_objects} == expected_ids
 
+
 def test_parse_flow__no_success(dummy_report):
     flow_objects = parse_flow(
         dummy_report,
@@ -91,7 +92,9 @@ def test_parse_flow__no_success(dummy_report):
         ],
     ],
 )
-def test_parse_domain_flow(dummy_report, dummy_objects, dummy_flow, domain, expected_ids):
+def test_parse_domain_flow(
+    dummy_report, dummy_objects, dummy_flow, domain, expected_ids
+):
     tactics = get_all_tactics()
     techniques = get_techniques_from_extracted_objects(dummy_objects, tactics)
     flow = dummy_flow

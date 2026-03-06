@@ -120,6 +120,32 @@ DEFAULT_CONTENT_CHECKER_WITH_SUMMARY_TEMPL = PromptTemplate("""
     * `indicator_of_compromise`
     * `ttp`
 </incident_classification>
+<threat_score min=0 max=100>
+    Assign a threat score from `0` to `100` representing the cyber security risk described in the report.
+
+    Scoring guide:
+      * 0 — No cyber threat described or the document is unrelated to security incidents.
+      * 1–20 (Very Low) — Mentions security topics but no real threat (general discussion, research, historical info).
+      * 21–40 (Low) — Minor or limited threats such as low-impact vulnerabilities, proof-of-concept exploits, outdated issues, or weak indicators.
+      * 41–60 (Moderate) — Credible threats with limited scale or impact (moderate vulnerabilities, small campaigns, limited breaches).
+      * 61–80 (High) — Serious active threats (ransomware, malware campaigns, major vulnerabilities, significant breaches, organized threat actors).
+      * 81–100 (Critical) — Extremely severe threats (APT/nation-state activity, zero-day exploitation in the wild, large ransomware campaigns, supply-chain attacks, massive data breaches).
+
+    Evaluate based on:
+      - severity: technical seriousness of the attack or vulnerability
+      - impact: potential damage to organizations, infrastructure, or individuals
+      - scale: number of victims, systems, or organizations potentially affected
+      - sophistication: technical complexity and attacker capability
+      - evidence of active exploitation: presence of indicators or reports showing active use of the threat
+      - report description: how clearly the report describes the threat and its implications
+
+    Rules:
+      - Use only information from the document.
+      - Do not inflate scores when evidence is weak.
+      - If the document does not describe a cyber threat, the score must be `0`.
+
+    Explain the reasoning in `<threat_score_explanation>` and return the numeric result in `<threat_score>`.
+</threat_score>
 <summary>
     Using the MARKDOWN of the report provided in <document>, provide an executive summary of it containing no more than one paragraphs.
     IMPORTANT: the output should be structured as markdown text.

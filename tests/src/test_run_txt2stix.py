@@ -5,35 +5,40 @@ import os
 from txt2stix import get_all_extractors
 from txt2stix.ai_extractor.utils import DescribesIncident
 from txt2stix.bundler import txt2stixBundler
-from txt2stix.txt2stix import (
-    parse_extractors_globbed, parse_model, run_txt2stix
-)
+from txt2stix.txt2stix import parse_extractors_globbed, parse_model, run_txt2stix
 
 from txt2stix.ai_extractor.utils import (
     AttackFlowList,
     DescribesIncident,
 )
 
-
-mock_bundler = txt2stixBundler(
-    name="test_indicator.py",
-    identity=None,
-    tlp_level="red",
-    description="",
-    confidence=None,
-    extractors=None,
-    labels=None,
-    created=datetime(2020, 1, 1),
-)
 all_extractors = get_all_extractors()
 
-TEST_AI_MODEL = os.getenv('TEST_AI_MODEL')
+TEST_AI_MODEL = os.getenv("TEST_AI_MODEL")
+
+
+def new_bundler():
+    return txt2stixBundler(
+        name="test_indicator.py",
+        identity=None,
+        tlp_level="red",
+        description="",
+        confidence=None,
+        extractors=None,
+        labels=None,
+        created=datetime(2020, 1, 1),
+    )
+
+
+mock_bundler = new_bundler()
 
 
 def as_python(obj):
     import json
     from stix2.serialization import serialize
+
     return json.loads(serialize(obj))
+
 
 @mock.patch("txt2stix.txt2stix.validate_token_count")
 def test_content_check_param(mock_validate_token_count, subtests):
@@ -46,24 +51,35 @@ def test_content_check_param(mock_validate_token_count, subtests):
         "pattern_ipv4_address_only,pattern_domain_name_only",
     )
     incident_classifications = ["Class 1", "Class 2", "class 3"]
+    bundler = new_bundler()
 
     with (
-        subtests.test("check_content", ai_extract_if_no_incidence=False, describes_incident=False),
+        subtests.test(
+            "check_content", ai_extract_if_no_incidence=False, describes_incident=False
+        ),
         mock.patch(
             "txt2stix.ai_extractor.base.BaseAIExtractor.check_content"
         ) as mock_check_content,
     ):
         mock_check_content.return_value = DescribesIncident(
-            describes_incident=False, explanation="some bs", incident_classification=[], summary='The summary'
+            describes_incident=False,
+            explanation="some bs",
+            incident_classification=[],
+            summary="The summary",
+            threat_score=31,
         )
         data = run_txt2stix(
-            mock_bundler,
+            bundler,
             preprocessed_text,
             mock_extractors_map,
             ai_content_check_provider=parse_model(TEST_AI_MODEL),
             ai_extract_if_no_incidence=False,
         )
         assert data.content_check.describes_incident == False
+        assert data.content_check.threat_score == 31
+        assert (
+            bundler.report["confidence"] == 31
+        ), "report.confidence should be set to threat_score"
         assert (
             data.extractions == None
         ), "extraction should not happen when check_content.describes_incident is False"
@@ -73,34 +89,49 @@ def test_content_check_param(mock_validate_token_count, subtests):
     mock_validate_token_count.reset_mock()
 
     with (
-        subtests.test("check_content", describes_incident=False, ai_extract_if_no_incidence=True),
+        subtests.test(
+            "check_content", describes_incident=False, ai_extract_if_no_incidence=True
+        ),
         mock.patch(
             "txt2stix.ai_extractor.base.BaseAIExtractor.check_content"
         ) as mock_check_content,
-
         mock.patch(
             "txt2stix.txt2stix.txt2stixBundler.add_summary"
         ) as mock_bundle__add_summary,
     ):
         mock_check_content.return_value = DescribesIncident(
-            describes_incident=False, explanation="some bs", incident_classification=[], summary='The summary'
+            describes_incident=False,
+            explanation="some bs",
+            incident_classification=[],
+            summary="The summary",
+            threat_score=47,
         )
         data = run_txt2stix(
-            mock_bundler,
+            bundler,
             preprocessed_text,
             mock_extractors_map,
             ai_content_check_provider=parse_model(TEST_AI_MODEL),
             ai_extract_if_no_incidence=True,
         )
         assert data.content_check.describes_incident == False
+        assert data.content_check.threat_score == 47
+        assert (
+            bundler.report["confidence"] == 47
+        ), "report.confidence should be set to threat_score"
         assert (
             data.extractions
         ), "extraction should happen when check_content.describes_incident is False but ai_extract_if_no_incidence is True"
         mock_check_content.assert_called_once()
         mock_validate_token_count.assert_called_once()
-        mock_bundle__add_summary.assert_called_once_with("The summary", parse_model(TEST_AI_MODEL).extractor_name)
-        print(as_python(mock_bundler.report.external_references))
-        assert {'source_name': 'txt2stix_describes_incident', 'description': 'false', 'external_id': parse_model(TEST_AI_MODEL).extractor_name} in as_python(mock_bundler.report.external_references)
+        mock_bundle__add_summary.assert_called_once_with(
+            "The summary", parse_model(TEST_AI_MODEL).extractor_name
+        )
+        print(as_python(bundler.report["external_references"]))
+        assert {
+            "source_name": "txt2stix_describes_incident",
+            "description": "false",
+            "external_id": parse_model(TEST_AI_MODEL).extractor_name,
+        } in as_python(bundler.report["external_references"])
 
     mock_validate_token_count.reset_mock()
 
@@ -116,26 +147,42 @@ def test_content_check_param(mock_validate_token_count, subtests):
         mock_check_content.return_value = DescribesIncident(
             describes_incident=True,
             explanation="some bs",
-            incident_classification=incident_classifications, summary='The summary'
+            incident_classification=incident_classifications,
+            summary="The summary",
+            threat_score=85,
         )
         data = run_txt2stix(
-            mock_bundler,
+            bundler,
             preprocessed_text,
             mock_extractors_map,
             ai_content_check_provider=parse_model(TEST_AI_MODEL),
         )
         assert data.content_check.describes_incident == True
+        assert data.content_check.threat_score == 85
+        assert (
+            bundler.report["confidence"] == 85
+        ), "report.confidence should be set to threat_score (85)"
         assert (
             data.extractions
         ), "extraction should happen when check_content.describes_incident is False"
         mock_check_content.assert_called_once()
         mock_validate_token_count.assert_called_once()
         for classification in incident_classifications:
-            assert f"classification.{classification}".lower() in mock_bundler.report.labels
-        mock_bundle__add_summary.assert_called_once_with("The summary", parse_model(TEST_AI_MODEL).extractor_name)
-        assert {'source_name': 'txt2stix_describes_incident', 'description': 'true', 'external_id': parse_model(TEST_AI_MODEL).extractor_name} in as_python(mock_bundler.report.external_references)
+            assert (
+                f"classification.{classification}".lower() in bundler.report["labels"]
+            )
+        mock_bundle__add_summary.assert_called_once_with(
+            "The summary", parse_model(TEST_AI_MODEL).extractor_name
+        )
+        assert {
+            "source_name": "txt2stix_describes_incident",
+            "description": "true",
+            "external_id": parse_model(TEST_AI_MODEL).extractor_name,
+        } in as_python(bundler.report["external_references"])
 
     mock_validate_token_count.reset_mock()
+
+    bundler = new_bundler()
 
     with (
         subtests.test("no_check_content"),
@@ -146,71 +193,130 @@ def test_content_check_param(mock_validate_token_count, subtests):
         mock_check_content.return_value = DescribesIncident(
             describes_incident=True,
             explanation="some bs",
-            incident_classification=["yes"], summary='The summary',
+            incident_classification=["yes"],
+            summary="The summary",
+            threat_score=50,
         )
-        data = run_txt2stix(mock_bundler, preprocessed_text, mock_extractors_map)
+        data = run_txt2stix(bundler, preprocessed_text, mock_extractors_map)
         assert data.content_check == None, "content_check should be nil"
         assert (
             data.extractions
         ), "extraction should happen when check_content is disabled"
         mock_check_content.assert_not_called()
         mock_validate_token_count.assert_not_called()
-        assert {'source_name': 'txt2stix_describes_incident', 'description': 'true', 'external_id': parse_model(TEST_AI_MODEL).extractor_name} in as_python(mock_bundler.report.external_references)
+        # Note: When content_check is None, report.confidence should remain as initially set (None in this case)
+        assert (
+            bundler.report["confidence"] is None
+        ), "report.confidence should remain None when content_check is not used"
 
 
-
-@mock.patch('txt2stix.txt2stix.attack_flow.extract_attack_flow_and_navigator')
+@mock.patch("txt2stix.txt2stix.attack_flow.extract_attack_flow_and_navigator")
 def test_attack_flow_or_nav__no_preset_flow(mock_extract_attack_flow, subtests):
     preprocessed_text = "192.168.0.1"
-    mock_extractors_map = parse_extractors_globbed("extractor", all_extractors, "pattern_ipv4_address_only,pattern_domain_name_only")
+    mock_extractors_map = parse_extractors_globbed(
+        "extractor",
+        all_extractors,
+        "pattern_ipv4_address_only,pattern_domain_name_only",
+    )
     extractor = parse_model(TEST_AI_MODEL)
     mock_extract_attack_flow.return_value = "a", "b"
 
-
     with subtests.test("neither true"):
-        retval = run_txt2stix(mock_bundler, preprocessed_text, mock_extractors_map, ai_settings_relationships=parse_model(TEST_AI_MODEL))
+        retval = run_txt2stix(
+            mock_bundler,
+            preprocessed_text,
+            mock_extractors_map,
+            ai_settings_relationships=parse_model(TEST_AI_MODEL),
+        )
         mock_extract_attack_flow.assert_not_called()
-        assert retval.attack_flow == None, "attack_flow should not run"    
+        assert retval.attack_flow == None, "attack_flow should not run"
 
-    
-    with subtests.test("both true", ai_create_attack_flow=True, ai_create_attack_navigator_layer=True):
-        retval = run_txt2stix(mock_bundler, preprocessed_text, mock_extractors_map, ai_settings_relationships=extractor, ai_create_attack_flow=True, ai_create_attack_navigator_layer=True)
-        mock_extract_attack_flow.assert_called_once_with(mock_bundler, preprocessed_text, True, True, extractor, flow=None)
+    with subtests.test(
+        "both true", ai_create_attack_flow=True, ai_create_attack_navigator_layer=True
+    ):
+        retval = run_txt2stix(
+            mock_bundler,
+            preprocessed_text,
+            mock_extractors_map,
+            ai_settings_relationships=extractor,
+            ai_create_attack_flow=True,
+            ai_create_attack_navigator_layer=True,
+        )
+        mock_extract_attack_flow.assert_called_once_with(
+            mock_bundler, preprocessed_text, True, True, extractor, flow=None
+        )
         assert retval.attack_flow == "a"
         assert retval.navigator_layer == "b"
 
     mock_extract_attack_flow.reset_mock()
-    
-    
-    with subtests.test("only flow", ai_create_attack_flow=True, ai_create_attack_navigator_layer=False):
-        retval = run_txt2stix(mock_bundler, preprocessed_text, mock_extractors_map, ai_settings_relationships=extractor, ai_create_attack_flow=True, ai_create_attack_navigator_layer=False)
-        mock_extract_attack_flow.assert_called_once_with(mock_bundler, preprocessed_text, True, False, extractor, flow=None)
+
+    with subtests.test(
+        "only flow", ai_create_attack_flow=True, ai_create_attack_navigator_layer=False
+    ):
+        retval = run_txt2stix(
+            mock_bundler,
+            preprocessed_text,
+            mock_extractors_map,
+            ai_settings_relationships=extractor,
+            ai_create_attack_flow=True,
+            ai_create_attack_navigator_layer=False,
+        )
+        mock_extract_attack_flow.assert_called_once_with(
+            mock_bundler, preprocessed_text, True, False, extractor, flow=None
+        )
         assert retval.attack_flow == "a"
         assert retval.navigator_layer == "b"
 
     mock_extract_attack_flow.reset_mock()
-    
-    
-    with subtests.test("only nav", ai_create_attack_flow=False, ai_create_attack_navigator_layer=True):
-        retval = run_txt2stix(mock_bundler, preprocessed_text, mock_extractors_map, ai_settings_relationships=extractor, ai_create_attack_flow=False, ai_create_attack_navigator_layer=True)
-        mock_extract_attack_flow.assert_called_once_with(mock_bundler, preprocessed_text, False, True, extractor, flow=None)
+
+    with subtests.test(
+        "only nav", ai_create_attack_flow=False, ai_create_attack_navigator_layer=True
+    ):
+        retval = run_txt2stix(
+            mock_bundler,
+            preprocessed_text,
+            mock_extractors_map,
+            ai_settings_relationships=extractor,
+            ai_create_attack_flow=False,
+            ai_create_attack_navigator_layer=True,
+        )
+        mock_extract_attack_flow.assert_called_once_with(
+            mock_bundler, preprocessed_text, False, True, extractor, flow=None
+        )
         assert retval.attack_flow == "a"
         assert retval.navigator_layer == "b"
 
 
-
-@mock.patch('txt2stix.txt2stix.extract_relationships')
+@mock.patch("txt2stix.txt2stix.extract_relationships")
 def test_relationship_mode(mock_extract_relationships, subtests):
-    mock_extractors_map = parse_extractors_globbed("extractor", all_extractors, "pattern_ipv4_address_only,pattern_domain_name_only")
+    mock_extractors_map = parse_extractors_globbed(
+        "extractor",
+        all_extractors,
+        "pattern_ipv4_address_only,pattern_domain_name_only",
+    )
     preprocessed_text = "192.168.0.1"
-    mock_extract_relationships.return_value =  []
+    mock_extract_relationships.return_value = []
 
-    with subtests.test('mode_standard'):
-        retval = run_txt2stix(mock_bundler, preprocessed_text, mock_extractors_map, ai_settings_relationships=parse_model(TEST_AI_MODEL), relationship_mode='standard')
+    with subtests.test("mode_standard"):
+        retval = run_txt2stix(
+            mock_bundler,
+            preprocessed_text,
+            mock_extractors_map,
+            ai_settings_relationships=parse_model(TEST_AI_MODEL),
+            relationship_mode="standard",
+        )
         mock_extract_relationships.assert_not_called()
-        assert retval.relationships == None, "extract_relationships_with_ai should not run"
+        assert (
+            retval.relationships == None
+        ), "extract_relationships_with_ai should not run"
 
-    with subtests.test('mode_ai'):
-        retval = run_txt2stix(mock_bundler, preprocessed_text, mock_extractors_map, ai_settings_relationships=parse_model(TEST_AI_MODEL), relationship_mode='ai')
+    with subtests.test("mode_ai"):
+        retval = run_txt2stix(
+            mock_bundler,
+            preprocessed_text,
+            mock_extractors_map,
+            ai_settings_relationships=parse_model(TEST_AI_MODEL),
+            relationship_mode="ai",
+        )
         mock_extract_relationships.assert_called_once()
         assert retval.relationships != None, "extract_relationships_with_ai should run"

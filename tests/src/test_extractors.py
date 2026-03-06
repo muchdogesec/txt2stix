@@ -1,8 +1,6 @@
 import pytest
 from txt2stix import get_all_extractors, pattern, lookups
 
-
-
 all_extractors = get_all_extractors()
 
 

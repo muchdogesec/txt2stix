@@ -52,17 +52,17 @@ def parse_domain_flow(report, flow: AttackFlowList, techniques, tactics, domain)
             if not flow_obj:
                 flow_obj = {
                     "type": "attack-flow",
-                    "id": "attack-flow--"+str(uuid.uuid5(UUID_NAMESPACE, f"attack-flow+{domain}+{report.id}")),
+                    "id": "attack-flow--"+str(uuid.uuid5(UUID_NAMESPACE, f"attack-flow+{domain}+{report['id']}")),
                     "spec_version": "2.1",
-                    "created": report.created,
-                    "modified": report.modified,
-                    "created_by_ref": report.created_by_ref,
+                    "created": report["created"],
+                    "modified": report["modified"],
+                    "created_by_ref": report["created_by_ref"],
                     "start_refs": [action_obj["id"]],
-                    "name": f"[{domain.split('-')[0].upper()}] {report.name}",
-                    "description": report.description,
+                    "name": f"[{domain.split('-')[0].upper()}] {report['name']}",
+                    "description": report["description"],
                     "scope": "malware",
-                    "external_references": report.external_references,
-                    "object_marking_refs": report.object_marking_refs,
+                    "external_references": report["external_references"],
+                    "object_marking_refs": report["object_marking_refs"],
                 }
                 flow_objects.append(AttackFlow(**flow_obj))
                 flow_objects.append(
@@ -70,16 +70,16 @@ def parse_domain_flow(report, flow: AttackFlowList, techniques, tactics, domain)
                         type="relationship",
                         spec_version="2.1",
                         id="relationship--"
-                        + str(uuid.uuid5(UUID_NAMESPACE, f"attack-flow+{report.id}+{flow_obj['id']}")),
-                        created_by_ref=report.created_by_ref,
-                        created=report.created,
-                        modified=report.modified,
+                        + str(uuid.uuid5(UUID_NAMESPACE, f"attack-flow+{report['id']}+{flow_obj['id']}")),
+                        created_by_ref=report["created_by_ref"],
+                        created=report["created"],
+                        modified=report["modified"],
                         relationship_type="attack-flow",
-                        description=f"Attack Flow for {report.name}",
-                        source_ref=report.id,
+                        description=f"Attack Flow for {report['name']}",
+                        source_ref=report["id"],
                         target_ref=flow_obj["id"],
-                        external_references=report.external_references,
-                        object_marking_refs=report.object_marking_refs,
+                        external_references=report["external_references"],
+                        object_marking_refs=report["object_marking_refs"],
                     )
                 )
             else:
@@ -184,7 +184,7 @@ def create_navigator_layer(report, summary, flow: AttackFlowList, techniques, ta
                     "attack": tactics[domain]['version'],
                     "navigator": "5.1.0"
                 },
-                "name": report.name,
+                "name": report["name"],
                 "domain": domain,
                 "description": summary,
                 "techniques": domain_techniques,
@@ -194,7 +194,7 @@ def create_navigator_layer(report, summary, flow: AttackFlowList, techniques, ta
                     "maxValue": 100,
                 },
                 "legendItems": [],
-                "metadata": [{"name": "report_id", "value": report.id}],
+                "metadata": [{"name": "report_id", "value": report["id"]}],
                 "links": [
                     {
                         "label": "Generated using txt2stix",

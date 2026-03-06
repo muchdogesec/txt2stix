@@ -396,7 +396,6 @@ all_extractors = get_all_extractors()
             {"identity--2e0aadad-9b58-5c8c-bef6-4c258b35f319"},
             id="identity-ii",
         ),
-
         ## generic sdo extracts (course-of-action, threat-actor, tool)
         pytest.param(
             "EvilTool v2.0",
@@ -407,7 +406,6 @@ all_extractors = get_all_extractors()
             {"tool--1b13ef4f-7bd5-563a-9ca1-00ebdb7071a8"},
             id="generic tool",
         ),
-
         pytest.param(
             "EvilActor",
             "lookup_threat_actor",
