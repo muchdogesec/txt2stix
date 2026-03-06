@@ -562,7 +562,7 @@ def processing_phase(
         if data.content_check:
             cc = data.content_check
             provider_name = str(ai_content_check_provider)
-            bundler.report.external_references.append(
+            bundler.report['external_references'].append(
                 dict(
                     source_name="txt2stix_describes_incident",
                     description=str(cc.describes_incident).lower(),
@@ -570,8 +570,9 @@ def processing_phase(
                 )
             )
             for classification in cc.incident_classification:
-                bundler.report.labels.append(f"classification.{classification}".lower())
+                bundler.report['labels'].append(f"classification.{classification}".lower())
             bundler.add_summary(cc.summary, provider_name)
+            bundler.report['confidence'] = cc.threat_score
     except BaseException:
         logging.exception("applying content_check to bundler failed", exc_info=True)
 

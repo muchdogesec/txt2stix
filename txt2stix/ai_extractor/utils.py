@@ -41,6 +41,8 @@ class DescribesIncident(BaseModel):
     explanation: str = Field(description="Two or three sentence summary of the incidents it describes OR summary of what it describes instead of an incident")
     incident_classification : list[str] = Field(description="All the valid incident classifications that describe this document/report")
     summary: str = Field(description="executive summary of the document containing no more than one paragraphs.")
+    threat_score: int = Field(description="a threat score for this report on a scale of `0` to `100`, where `0` indicates no threat and `100` indicates an extremely high threat. Always zero for documents that do not describe an incident.", default=0)
+    threat_score_explanation: str = Field(description="explanation of the reasoning behind the assigned threat score", default="")
 
 class AttackFlowItem(BaseModel):
     position : int = Field(description="order of object starting at 0")

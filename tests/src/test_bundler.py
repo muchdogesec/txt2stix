@@ -43,9 +43,9 @@ def test_constructor(tlp_level, identity, created, modified):
         modified=modified,
     )
     assert bundler.tlp_level.name == tlp_level
-    assert bundler.report.id == "report--" + report_id
-    assert bundler.tlp_level.value["id"] in bundler.report.object_marking_refs
-    assert bundler.report.published == bundler.report.created
+    assert bundler.report['id'] == "report--" + report_id
+    assert bundler.tlp_level.value["id"] in bundler.report['object_marking_refs']
+    assert bundler.report['published'] == bundler.report['created']
     if identity:
         assert identity == bundler.identity, "passed identity ignored"
     else:
@@ -53,16 +53,16 @@ def test_constructor(tlp_level, identity, created, modified):
             bundler.identity == bundler.default_identity
         ), "default identity must be used if no identity is passed"
     assert (
-        bundler.report.created_by_ref == bundler.identity["id"]
+        bundler.report['created_by_ref'] == bundler.identity["id"]
     ), "report not using bundler.identity"
     if not modified:
         assert (
-            bundler.report.modified == bundler.report.created
+            bundler.report['modified'] == bundler.report['created']
         ), "modified and created should be the same if modified is not passed"
     else:
-        assert bundler.report.modified == parse_date(modified)
+        assert bundler.report['modified'] == parse_date(modified)
     if created:
-        assert bundler.report.created == parse_date(created)
+        assert bundler.report['created'] == parse_date(created)
 
     assert (
         bundler.identity in bundler.bundle.objects
@@ -285,7 +285,7 @@ def test_add_summary(bundler):
             source_name="txt2stix_ai_summary",
             description=summary,
         )
-        in bundler.report.external_references
+        in bundler.report['external_references']
     )
 
 
@@ -399,3 +399,56 @@ def test_relationship_types(bundler):
     assert (
         relationship["relationship_type"] == "resolves-to"
     ), "relationship type is supported"
+
+
+def test_confidence_field_initialization():
+    """Test that confidence field is properly initialized in the report."""
+    # Test with None confidence
+    bundler_none = txt2stixBundler(
+        name="Test None",
+        identity=None,
+        tlp_level="amber",
+        description="test description",
+        confidence=None,
+        extractors={},
+        labels=[],
+    )
+    assert bundler_none.report['confidence'] is None, "confidence should be None when not set"
+    
+    # Test with specific confidence value
+    bundler_50 = txt2stixBundler(
+        name="Test 50",
+        identity=None,
+        tlp_level="amber",
+        description="test description",
+        confidence=50,
+        extractors={},
+        labels=[],
+    )
+    assert bundler_50.report['confidence'] == 50, "confidence should be 50"
+    
+    # Test with confidence = 0
+    bundler_0 = txt2stixBundler(
+        name="Test 0",
+        identity=None,
+        tlp_level="amber",
+        description="test description",
+        confidence=0,
+        extractors={},
+        labels=[],
+    )
+    assert bundler_0.report['confidence'] == 0, "confidence should be 0"
+    
+    # Test that confidence can be updated (simulating threat_score assignment)
+    bundler_updatable = txt2stixBundler(
+        name="Test Updatable",
+        identity=None,
+        tlp_level="amber",
+        description="test description",
+        confidence=None,
+        extractors={},
+        labels=[],
+    )
+    assert bundler_updatable.report['confidence'] is None
+    bundler_updatable.report['confidence'] = 75
+    assert bundler_updatable.report['confidence'] == 75, "confidence should be updatable to 75"

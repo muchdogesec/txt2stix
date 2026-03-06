@@ -14,21 +14,23 @@ from txt2stix.ai_extractor.utils import (
     DescribesIncident,
 )
 
-
-mock_bundler = txt2stixBundler(
-    name="test_indicator.py",
-    identity=None,
-    tlp_level="red",
-    description="",
-    confidence=None,
-    extractors=None,
-    labels=None,
-    created=datetime(2020, 1, 1),
-)
 all_extractors = get_all_extractors()
 
 TEST_AI_MODEL = os.getenv('TEST_AI_MODEL')
 
+def new_bundler():
+    return txt2stixBundler(
+        name="test_indicator.py",
+        identity=None,
+        tlp_level="red",
+        description="",
+        confidence=None,
+        extractors=None,
+        labels=None,
+        created=datetime(2020, 1, 1),
+    )
+
+mock_bundler = new_bundler()
 
 def as_python(obj):
     import json
@@ -46,6 +48,7 @@ def test_content_check_param(mock_validate_token_count, subtests):
         "pattern_ipv4_address_only,pattern_domain_name_only",
     )
     incident_classifications = ["Class 1", "Class 2", "class 3"]
+    bundler = new_bundler()
 
     with (
         subtests.test("check_content", ai_extract_if_no_incidence=False, describes_incident=False),
@@ -54,16 +57,18 @@ def test_content_check_param(mock_validate_token_count, subtests):
         ) as mock_check_content,
     ):
         mock_check_content.return_value = DescribesIncident(
-            describes_incident=False, explanation="some bs", incident_classification=[], summary='The summary'
+            describes_incident=False, explanation="some bs", incident_classification=[], summary='The summary', threat_score=31
         )
         data = run_txt2stix(
-            mock_bundler,
+            bundler,
             preprocessed_text,
             mock_extractors_map,
             ai_content_check_provider=parse_model(TEST_AI_MODEL),
             ai_extract_if_no_incidence=False,
         )
         assert data.content_check.describes_incident == False
+        assert data.content_check.threat_score == 31
+        assert bundler.report['confidence'] == 31, "report.confidence should be set to threat_score"
         assert (
             data.extractions == None
         ), "extraction should not happen when check_content.describes_incident is False"
@@ -83,24 +88,26 @@ def test_content_check_param(mock_validate_token_count, subtests):
         ) as mock_bundle__add_summary,
     ):
         mock_check_content.return_value = DescribesIncident(
-            describes_incident=False, explanation="some bs", incident_classification=[], summary='The summary'
+            describes_incident=False, explanation="some bs", incident_classification=[], summary='The summary', threat_score=47
         )
         data = run_txt2stix(
-            mock_bundler,
+            bundler,
             preprocessed_text,
             mock_extractors_map,
             ai_content_check_provider=parse_model(TEST_AI_MODEL),
             ai_extract_if_no_incidence=True,
         )
         assert data.content_check.describes_incident == False
+        assert data.content_check.threat_score == 47
+        assert bundler.report['confidence'] == 47, "report.confidence should be set to threat_score"
         assert (
             data.extractions
         ), "extraction should happen when check_content.describes_incident is False but ai_extract_if_no_incidence is True"
         mock_check_content.assert_called_once()
         mock_validate_token_count.assert_called_once()
         mock_bundle__add_summary.assert_called_once_with("The summary", parse_model(TEST_AI_MODEL).extractor_name)
-        print(as_python(mock_bundler.report.external_references))
-        assert {'source_name': 'txt2stix_describes_incident', 'description': 'false', 'external_id': parse_model(TEST_AI_MODEL).extractor_name} in as_python(mock_bundler.report.external_references)
+        print(as_python(bundler.report['external_references']))
+        assert {'source_name': 'txt2stix_describes_incident', 'description': 'false', 'external_id': parse_model(TEST_AI_MODEL).extractor_name} in as_python(bundler.report['external_references'])
 
     mock_validate_token_count.reset_mock()
 
@@ -116,26 +123,30 @@ def test_content_check_param(mock_validate_token_count, subtests):
         mock_check_content.return_value = DescribesIncident(
             describes_incident=True,
             explanation="some bs",
-            incident_classification=incident_classifications, summary='The summary'
+            incident_classification=incident_classifications, summary='The summary', threat_score=85
         )
         data = run_txt2stix(
-            mock_bundler,
+            bundler,
             preprocessed_text,
             mock_extractors_map,
             ai_content_check_provider=parse_model(TEST_AI_MODEL),
         )
         assert data.content_check.describes_incident == True
+        assert data.content_check.threat_score == 85
+        assert bundler.report['confidence'] == 85, "report.confidence should be set to threat_score (85)"
         assert (
             data.extractions
         ), "extraction should happen when check_content.describes_incident is False"
         mock_check_content.assert_called_once()
         mock_validate_token_count.assert_called_once()
         for classification in incident_classifications:
-            assert f"classification.{classification}".lower() in mock_bundler.report.labels
+            assert f"classification.{classification}".lower() in bundler.report['labels']
         mock_bundle__add_summary.assert_called_once_with("The summary", parse_model(TEST_AI_MODEL).extractor_name)
-        assert {'source_name': 'txt2stix_describes_incident', 'description': 'true', 'external_id': parse_model(TEST_AI_MODEL).extractor_name} in as_python(mock_bundler.report.external_references)
+        assert {'source_name': 'txt2stix_describes_incident', 'description': 'true', 'external_id': parse_model(TEST_AI_MODEL).extractor_name} in as_python(bundler.report['external_references'])
 
     mock_validate_token_count.reset_mock()
+
+    bundler = new_bundler()
 
     with (
         subtests.test("no_check_content"),
@@ -146,16 +157,17 @@ def test_content_check_param(mock_validate_token_count, subtests):
         mock_check_content.return_value = DescribesIncident(
             describes_incident=True,
             explanation="some bs",
-            incident_classification=["yes"], summary='The summary',
+            incident_classification=["yes"], summary='The summary', threat_score=50
         )
-        data = run_txt2stix(mock_bundler, preprocessed_text, mock_extractors_map)
+        data = run_txt2stix(bundler, preprocessed_text, mock_extractors_map)
         assert data.content_check == None, "content_check should be nil"
         assert (
             data.extractions
         ), "extraction should happen when check_content is disabled"
         mock_check_content.assert_not_called()
         mock_validate_token_count.assert_not_called()
-        assert {'source_name': 'txt2stix_describes_incident', 'description': 'true', 'external_id': parse_model(TEST_AI_MODEL).extractor_name} in as_python(mock_bundler.report.external_references)
+        # Note: When content_check is None, report.confidence should remain as initially set (None in this case)
+        assert bundler.report['confidence'] is None, "report.confidence should remain None when content_check is not used"
 
 
 
