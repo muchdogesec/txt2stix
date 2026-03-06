@@ -394,7 +394,7 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
 	--relationship_mode ai \
-	--ai_settings_relationships openai:gpt-4o \
+	--ai_settings_relationships openai:gpt-5-mini \
 	--input_file tests/data/manually_generated_reports/disarm_demo.txt \
 	--name 'DISARM demo' \
 	--tlp_level clear \
@@ -405,6 +405,8 @@ python3 txt2stix.py \
 
 ### ai check content
 
+Check AI overrides confidence
+
 ```shell
 python3 txt2stix.py \
     --relationship_mode standard \
@@ -413,7 +415,7 @@ python3 txt2stix.py \
     --tlp_level clear \
     --confidence 100 \
     --use_extractions 'pattern_*' \
-    --ai_content_check_provider openai:gpt-4o \
+    --ai_content_check_provider openai:gpt-5-mini \
     --report_id 4fa18f2d-278b-4fd4-8470-62a8807d35ad
 ```
 
@@ -427,13 +429,13 @@ python3 txt2stix.py \
     --tlp_level clear \
     --confidence 100 \
 	--use_extractions ai_ipv4_address_only \
-	--ai_settings_extractions openai:gpt-4o \
-    --ai_content_check_provider openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5-mini \
+    --ai_content_check_provider openai:gpt-5-mini \
     --ai_extract_if_no_incidence false \
     --report_id ed6039d6-699c-44f0-9bf0-957d4d0ff99f
 ```
 
- Will pass but still process, as `ai_content_check_provider` is omitted
+Will pass but still process, as `ai_content_check_provider` is omitted
 
 ```shell
 python3 txt2stix.py \
@@ -443,11 +445,11 @@ python3 txt2stix.py \
     --tlp_level clear \
     --confidence 100 \
 	--use_extractions ai_ipv4_address_only \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5-mini \
     --tlp_level clear \
     --confidence 100 \
 	--use_extractions ai_ipv4_address_only \
-	--ai_settings_extractions openai:gpt-4o \
+	--ai_settings_extractions openai:gpt-5-mini \
 	--ai_extract_if_no_incidence false \
     --report_id 2880d1c1-0211-45b6-8565-befe596ff81f
 ```
@@ -459,13 +461,13 @@ no indicators
 ```shell
 python3 txt2stix.py \
     --relationship_mode ai \
-    --ai_settings_relationships openai:gpt-4o \
+    --ai_settings_relationships openai:gpt-5-mini \
     --input_file tests/data/manually_generated_reports/attack_flow_demo.txt \
     --name 'Test MITRE ATT&CK Flow demo' \
     --tlp_level clear \
     --confidence 100 \
     --use_extractions 'ai_mitre_attack_enterprise' \
-    --ai_settings_extractions openai:gpt-4o \
+    --ai_settings_extractions openai:gpt-5-mini \
     --ai_create_attack_flow \
     --report_id c0fef67c-720b-4184-a62e-ea465b4d89b5
 ```
@@ -475,13 +477,13 @@ with indicators
 ```shell
 python3 txt2stix.py \
     --relationship_mode ai \
-    --ai_settings_relationships openai:gpt-4o \
+    --ai_settings_relationships openai:gpt-5-mini \
     --input_file tests/data/manually_generated_reports/attack_flow_demo.txt \
     --name 'Test MITRE ATT&CK Flow demo with iocs' \
     --tlp_level clear \
     --confidence 100 \
     --use_extractions ai_mitre_attack_enterprise,'pattern_*' \
-    --ai_settings_extractions openai:gpt-4o \
+    --ai_settings_extractions openai:gpt-5-mini \
     --ai_create_attack_flow \
     --report_id 3b160a8d-12dd-4e7c-aee8-5af6e371b425
 ```
@@ -509,15 +511,15 @@ python3 txt2stix.py \
 ```shell
 python3 txt2stix.py \
     --relationship_mode ai \
-    --ai_settings_relationships openai:gpt-4o \
+    --ai_settings_relationships openai:gpt-5-mini \
     --input_file tests/data/manually_generated_reports/attack_navigator_demo.txt \
     --name 'Test MITRE ATT&CK Navigator' \
     --tlp_level clear \
     --confidence 100 \
     --use_extractions 'ai_mitre_attack_*' \
-    --ai_settings_extractions openai:gpt-4o \
+    --ai_settings_extractions openai:gpt-5-mini \
     --ai_create_attack_navigator_layer \
-    --ai_content_check_provider openai:gpt-4o \
+    --ai_content_check_provider openai:gpt-5-mini \
     --report_id b599f044-f22c-4e38-a2ed-3ef43442ccd2
 ```
 
@@ -530,13 +532,13 @@ used to check prompts only sent once
 ```shell
 python3 txt2stix.py \
     --relationship_mode ai \
-    --ai_settings_relationships openai:gpt-4o \
+    --ai_settings_relationships openai:gpt-5-mini \
     --input_file tests/data/manually_generated_reports/attack_navigator_demo.txt \
     --name 'Test MITRE ATT&CK Flow and Navigator' \
     --tlp_level clear \
     --confidence 100 \
     --use_extractions 'ai_mitre_attack_enterprise' \
-    --ai_settings_extractions openai:gpt-4o \
+    --ai_settings_extractions openai:gpt-5-mini \
     --ai_create_attack_flow \
     --ai_create_attack_navigator_layer \
     --report_id c0d48262-1d9f-42d2-aa29-f0cba1bfa2e0
@@ -549,13 +551,13 @@ same extraction twice in doc
 ```shell
 python3 txt2stix.py \
     --relationship_mode ai \
-    --ai_settings_relationships openai:gpt-4o \
+    --ai_settings_relationships openai:gpt-5-mini \
     --input_file tests/data/manually_generated_reports/ai_index_position.txt \
     --name 'Extraction index' \
     --tlp_level clear \
     --confidence 100 \
     --use_extractions 'ai_ipv4_address_only' \
-    --ai_settings_extractions openai:gpt-4o \
+    --ai_settings_extractions openai:gpt-5-mini \
     --report_id 2b3326b4-dfcf-4391-b550-e91652f9ffcd
 ```
 
@@ -575,6 +577,6 @@ python3 txt2stix.py \
 	--report_id c0766db1-0748-429b-8e4c-f1a3a9fd1a3a
 ```
 
-
+### threat score
 
 
