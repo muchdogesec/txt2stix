@@ -419,6 +419,8 @@ class txt2stixBundler:
 
     def to_json(self):
         report_index = self.bundle.objects.index(self.report)
+        if not self.report['object_refs']:
+            self.report['object_refs'] = [self.identity['id']]
         self.bundle.objects[report_index] = parse_stix(self.report, allow_custom=True)
         return serialize(self.bundle, indent=4)
 

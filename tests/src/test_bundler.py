@@ -1,3 +1,4 @@
+import json
 from unittest.mock import MagicMock, call, patch
 import uuid
 
@@ -452,3 +453,19 @@ def test_confidence_field_initialization():
     assert (
         bundler_updatable.report["confidence"] == 75
     ), "confidence should be updatable to 75"
+
+
+def test_to_json__empty_object_refs(bundler):
+    json_output = json.loads(bundler.to_json())
+    assert json_output["type"] == "bundle"
+    json_objects = json_output["objects"]
+    report = next(obj for obj in json_objects if obj["type"] == "report")
+    assert report["id"] == "report--d9f3b306-e7fe-4074-b89a-33ce54280718"
+    assert report["object_refs"] == [bundler.identity["id"]]
+
+
+def test_to_json__with_object_refs(bundler):
+    bundler.report["object_refs"] = ["ipv4-addr--0a4dd580-16b8-482c-93bd-8f5f004f8082"]
+    json_output = json.loads(bundler.to_json())
+    report = next(obj for obj in json_output["objects"] if obj["type"] == "report")
+    assert report["object_refs"] == ["ipv4-addr--0a4dd580-16b8-482c-93bd-8f5f004f8082"]
