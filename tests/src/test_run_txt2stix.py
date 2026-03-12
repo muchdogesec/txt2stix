@@ -51,7 +51,6 @@ def test_content_check_param(mock_validate_token_count, subtests):
         "pattern_ipv4_address_only,pattern_domain_name_only",
     )
     incident_classifications = ["Class 1", "Class 2", "class 3"]
-    bundler = new_bundler()
 
     with (
         subtests.test(
@@ -61,6 +60,8 @@ def test_content_check_param(mock_validate_token_count, subtests):
             "txt2stix.ai_extractor.base.BaseAIExtractor.check_content"
         ) as mock_check_content,
     ):
+        bundler = new_bundler()
+        assert bundler.report["confidence"] is None
         mock_check_content.return_value = DescribesIncident(
             describes_incident=False,
             explanation="some bs",
@@ -79,7 +80,7 @@ def test_content_check_param(mock_validate_token_count, subtests):
         assert data.content_check.threat_score == 31
         assert (
             bundler.report["confidence"] == 31
-        ), "report.confidence should be set to threat_score"
+        ), "report.confidence should be replaced by threat_score when confidence is None"
         assert (
             data.extractions == None
         ), "extraction should not happen when check_content.describes_incident is False"
@@ -99,6 +100,8 @@ def test_content_check_param(mock_validate_token_count, subtests):
             "txt2stix.txt2stix.txt2stixBundler.add_summary"
         ) as mock_bundle__add_summary,
     ):
+        bundler = new_bundler()
+        assert bundler.report["confidence"] is None
         mock_check_content.return_value = DescribesIncident(
             describes_incident=False,
             explanation="some bs",
@@ -117,7 +120,7 @@ def test_content_check_param(mock_validate_token_count, subtests):
         assert data.content_check.threat_score == 47
         assert (
             bundler.report["confidence"] == 47
-        ), "report.confidence should be set to threat_score"
+        ), "report.confidence should be replaced by threat_score when confidence is None"
         assert (
             data.extractions
         ), "extraction should happen when check_content.describes_incident is False but ai_extract_if_no_incidence is True"
@@ -126,7 +129,6 @@ def test_content_check_param(mock_validate_token_count, subtests):
         mock_bundle__add_summary.assert_called_once_with(
             "The summary", parse_model(TEST_AI_MODEL).extractor_name
         )
-        print(as_python(bundler.report["external_references"]))
         assert {
             "source_name": "txt2stix_describes_incident",
             "description": "false",
@@ -144,6 +146,8 @@ def test_content_check_param(mock_validate_token_count, subtests):
             "txt2stix.txt2stix.txt2stixBundler.add_summary"
         ) as mock_bundle__add_summary,
     ):
+        bundler = new_bundler()
+        assert bundler.report["confidence"] is None
         mock_check_content.return_value = DescribesIncident(
             describes_incident=True,
             explanation="some bs",
@@ -161,10 +165,10 @@ def test_content_check_param(mock_validate_token_count, subtests):
         assert data.content_check.threat_score == 85
         assert (
             bundler.report["confidence"] == 85
-        ), "report.confidence should be set to threat_score (85)"
+        ), "report.confidence should be replaced by threat_score when confidence is None"
         assert (
             data.extractions
-        ), "extraction should happen when check_content.describes_incident is False"
+        ), "extraction should happen when check_content.describes_incident is True"
         mock_check_content.assert_called_once()
         mock_validate_token_count.assert_called_once()
         for classification in incident_classifications:
@@ -182,14 +186,14 @@ def test_content_check_param(mock_validate_token_count, subtests):
 
     mock_validate_token_count.reset_mock()
 
-    bundler = new_bundler()
-
     with (
         subtests.test("no_check_content"),
         mock.patch(
             "txt2stix.ai_extractor.base.BaseAIExtractor.check_content"
         ) as mock_check_content,
     ):
+        bundler = new_bundler()
+        assert bundler.report["confidence"] is None
         mock_check_content.return_value = DescribesIncident(
             describes_incident=True,
             explanation="some bs",
@@ -204,10 +208,71 @@ def test_content_check_param(mock_validate_token_count, subtests):
         ), "extraction should happen when check_content is disabled"
         mock_check_content.assert_not_called()
         mock_validate_token_count.assert_not_called()
-        # Note: When content_check is None, report.confidence should remain as initially set (None in this case)
         assert (
             bundler.report["confidence"] is None
         ), "report.confidence should remain None when content_check is not used"
+
+    mock_validate_token_count.reset_mock()
+
+    with (
+        subtests.test("check_content", confidence_preset=0),
+        mock.patch(
+            "txt2stix.ai_extractor.base.BaseAIExtractor.check_content"
+        ) as mock_check_content,
+        mock.patch(
+            "txt2stix.txt2stix.txt2stixBundler.add_summary"
+        ) as mock_bundle__add_summary,
+    ):
+        bundler = new_bundler()
+        bundler.report["confidence"] = 0
+        mock_check_content.return_value = DescribesIncident(
+            describes_incident=True,
+            explanation="some bs",
+            incident_classification=[],
+            summary="The summary",
+            threat_score=75,
+        )
+        data = run_txt2stix(
+            bundler,
+            preprocessed_text,
+            mock_extractors_map,
+            ai_content_check_provider=parse_model(TEST_AI_MODEL),
+        )
+        assert data.content_check.threat_score == 75
+        assert (
+            bundler.report["confidence"] == 0
+        ), "report.confidence should NOT be replaced when already set to 0"
+
+    mock_validate_token_count.reset_mock()
+
+    with (
+        subtests.test("check_content", confidence_preset=60),
+        mock.patch(
+            "txt2stix.ai_extractor.base.BaseAIExtractor.check_content"
+        ) as mock_check_content,
+        mock.patch(
+            "txt2stix.txt2stix.txt2stixBundler.add_summary"
+        ) as mock_bundle__add_summary,
+    ):
+        bundler = new_bundler()
+        bundler.report["confidence"] = 60
+        mock_check_content.return_value = DescribesIncident(
+            describes_incident=True,
+            explanation="some bs",
+            incident_classification=[],
+            summary="The summary",
+            threat_score=90,
+        )
+        data = run_txt2stix(
+            bundler,
+            preprocessed_text,
+            mock_extractors_map,
+            ai_content_check_provider=parse_model(TEST_AI_MODEL),
+        )
+        assert data.content_check.threat_score == 90
+        assert (
+            bundler.report["confidence"] == 60
+        ), "report.confidence should NOT be replaced when already set to 60"
 
 
 @mock.patch("txt2stix.txt2stix.attack_flow.extract_attack_flow_and_navigator")

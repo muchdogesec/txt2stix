@@ -572,7 +572,8 @@ def processing_phase(
             for classification in cc.incident_classification:
                 bundler.report["labels"].append(f"classification.{classification}".lower())
             bundler.add_summary(cc.summary, provider_name)
-            bundler.report["confidence"] = cc.threat_score
+            if bundler.report["confidence"] is None:
+                bundler.report["confidence"] = cc.threat_score
     except BaseException:
         logging.exception("applying content_check to bundler failed", exc_info=True)
 
