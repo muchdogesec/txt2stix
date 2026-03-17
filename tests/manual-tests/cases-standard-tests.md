@@ -405,7 +405,7 @@ python3 txt2stix.py \
 
 ### ai check content
 
-Check AI overrides confidence
+Check AI DOES NOT overrides confidence
 
 ```shell
 python3 txt2stix.py \
@@ -495,13 +495,13 @@ no indicators
 ```shell
 python3 txt2stix.py \
     --relationship_mode ai \
-    --ai_settings_relationships openai:gpt-5 \
+    --ai_settings_relationships openai:gpt-5-mini \
     --input_file tests/data/manually_generated_reports/attack_flow_demo.txt \
     --name 'Test MITRE ATT&CK Flow demo' \
     --tlp_level clear \
     --confidence 100 \
     --use_extractions 'ai_mitre_attack_*' \
-    --ai_settings_extractions openai:gpt-5 \
+    --ai_settings_extractions openai:gpt-5-mini \
     --ai_create_attack_flow \
     --report_id ccc8c844-6a89-4762-b4e7-77c918fa4b8f
 ```
