@@ -1259,16 +1259,6 @@ Objects created:
     "object_marking_refs": [
         "marking-definition--<TLP LEVEL SET>",
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
-    ],
-    "external_references": [
-        {
-            "source_name": "txt2stix_report_id",
-            "external_id": "<UUID OF REPORT OBJECT>"
-        },
-        {
-            "source_name": "txt2stix_extraction_type",
-            "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
-        }
     ]
 }
 ```
@@ -1293,16 +1283,6 @@ Objects created:
     "object_marking_refs": [
         "marking-definition--<TLP LEVEL SET>",
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
-    ],
-    "external_references": [
-        {
-            "source_name": "txt2stix_report_id",
-            "external_id": "<UUID OF REPORT OBJECT>"
-        },
-        {
-            "source_name": "txt2stix_extraction_type",
-            "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
-        }
     ]
 }
 ```
@@ -1327,16 +1307,6 @@ Objects created:
     "object_marking_refs": [
         "marking-definition--<TLP LEVEL SET>",
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
-    ],
-    "external_references": [
-        {
-            "source_name": "txt2stix_report_id",
-            "external_id": "<UUID OF REPORT OBJECT>"
-        },
-        {
-            "source_name": "txt2stix_extraction_type",
-            "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
-        }
     ]
 }
 ```
@@ -1362,16 +1332,6 @@ Objects created:
     "object_marking_refs": [
         "marking-definition--<TLP LEVEL SET>",
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
-    ],
-    "external_references": [
-        {
-            "source_name": "txt2stix_report_id",
-            "external_id": "<UUID OF REPORT OBJECT>"
-        },
-        {
-            "source_name": "txt2stix_extraction_type",
-            "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
-        }
     ]
 }
 ```
@@ -1396,16 +1356,6 @@ Objects created:
     "object_marking_refs": [
         "marking-definition--<TLP LEVEL SET>",
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
-    ],
-    "external_references": [
-        {
-            "source_name": "txt2stix_report_id",
-            "external_id": "<UUID OF REPORT OBJECT>"
-        },
-        {
-            "source_name": "txt2stix_extraction_type",
-            "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
-        }
     ]
 }
 ```
@@ -1432,16 +1382,6 @@ Objects created:
     "object_marking_refs": [
         "marking-definition--<TLP LEVEL SET>",
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
-    ],
-    "external_references": [
-        {
-            "source_name": "txt2stix_report_id",
-            "external_id": "<UUID OF REPORT OBJECT>"
-        },
-        {
-            "source_name": "txt2stix_extraction_type",
-            "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
-        }
     ]
 }
 ```
@@ -1467,16 +1407,6 @@ Objects created:
     "object_marking_refs": [
         "marking-definition--<TLP LEVEL SET>",
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
-    ],
-    "external_references": [
-        {
-            "source_name": "txt2stix_report_id",
-            "external_id": "<UUID OF REPORT OBJECT>"
-        },
-        {
-            "source_name": "txt2stix_extraction_type",
-            "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
-        }
     ]
 }
 ```
@@ -1502,16 +1432,6 @@ Objects created:
     "object_marking_refs": [
         "marking-definition--<TLP LEVEL SET>",
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
-    ],
-    "external_references": [
-        {
-            "source_name": "txt2stix_report_id",
-            "external_id": "<UUID OF REPORT OBJECT>"
-        },
-        {
-            "source_name": "txt2stix_extraction_type",
-            "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
-        }
     ]
 }
 ```
@@ -1537,16 +1457,6 @@ Objects created:
     "object_marking_refs": [
         "marking-definition--<TLP LEVEL SET>",
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
-    ],
-    "external_references": [
-        {
-            "source_name": "txt2stix_report_id",
-            "external_id": "<UUID OF REPORT OBJECT>"
-        },
-        {
-            "source_name": "txt2stix_extraction_type",
-            "external_id": "<EXTRACTION SLUG>_<EXTRACTION_VERSION>"
-        }
     ]
 }
 ```
