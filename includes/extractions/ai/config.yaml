@@ -430,6 +430,24 @@ ai_file_hash_sha_512:
   test_cases: generic_file_hash_sha_512
   stix_mapping: file-hash
 
+####### Process extractions #######
+
+ai_process_command_line:
+  type: ai
+  dogesec_web: true
+  name: 'Command Line Process'
+  description: 'Extracts command line processes and commands shown in text'
+  notes: ''
+  created: 2026-04-14
+  modified:  2026-04-14
+  created_by: dogesec
+  version: 1.0.0
+  prompt_base: 'Extract all command line processes shown in the text.'
+  prompt_helper: 'Command line processes include shell commands, terminal commands, PowerShell commands, CMD commands, and any other executable commands with their arguments. Include the full command with all parameters and arguments.'
+  prompt_conversion: ''
+  test_cases: generic_process_command_line
+  stix_mapping: process
+
 ####### Email address extractions #######
 
 ai_email_address:
