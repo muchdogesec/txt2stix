@@ -1308,12 +1308,12 @@ Objects created:
     "type": "attack-pattern",
     "spec_version": "2.1",
     "id": "campaign--<UUIDV5>",
-    "created_by_ref": "identity--<DEFAULT OR CUSTOM IDENTITY OBJECT ID>",
+    "created_by_ref": "identity--<TXT2STIX IDENTITY>",
     "created": "2020-01-01T00:00:00.000Z",
     "modified": "2020-01-01T00:00:00.000Z",
     "name": "<EXTRACTED VALUE>",
     "object_marking_refs": [
-        "marking-definition--<TLP LEVEL SET>",
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
     ]
 }
@@ -1332,12 +1332,12 @@ Objects created:
     "type": "campaign",
     "spec_version": "2.1",
     "id": "campaign--<UUIDV5>",
-    "created_by_ref": "identity--<DEFAULT OR CUSTOM IDENTITY OBJECT ID>",
+    "created_by_ref": "identity--<TXT2STIX IDENTITY>",
     "created": "2020-01-01T00:00:00.000Z",
     "modified": "2020-01-01T00:00:00.000Z",
     "name": "<EXTRACTED VALUE>",
     "object_marking_refs": [
-        "marking-definition--<TLP LEVEL SET>",
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
     ]
 }
@@ -1356,12 +1356,12 @@ Objects created:
     "type": "course-of-action",
     "spec_version": "2.1",
     "id": "course-of-action--<UUIDV5>",
-    "created_by_ref": "identity--<DEFAULT OR CUSTOM IDENTITY OBJECT ID>",
+    "created_by_ref": "identity--<TXT2STIX IDENTITY>",
     "created": "2020-01-01T00:00:00.000Z",
     "modified": "2020-01-01T00:00:00.000Z",
     "name": "<EXTRACTED VALUE>",
     "object_marking_refs": [
-        "marking-definition--<TLP LEVEL SET>",
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
     ]
 }
@@ -1380,13 +1380,13 @@ Objects created:
     "type":"infrastructure",
     "spec_version": "2.1",
     "id":"infrastructure--<UUIDV5>",
-    "created_by_ref": "identity--<DEFAULT OR CUSTOM IDENTITY OBJECT ID>",
+    "created_by_ref": "identity--<TXT2STIX IDENTITY>",
     "created": "2020-01-01T00:00:00.000Z",
     "modified": "2020-01-01T00:00:00.000Z",
     "name": "<EXTRACTED VALUE>",
     "infrastructure_types": ["unknown"],
     "object_marking_refs": [
-        "marking-definition--<TLP LEVEL SET>",
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
     ]
 }
@@ -1405,12 +1405,12 @@ Objects created:
     "type": "intrusion-set",
     "spec_version": "2.1",
     "id": "intrusion-set--<UUIDV5>",
-    "created_by_ref": "identity--<DEFAULT OR CUSTOM IDENTITY OBJECT ID>",
+    "created_by_ref": "identity--<TXT2STIX IDENTITY>",
     "created": "2020-01-01T00:00:00.000Z",
     "modified": "2020-01-01T00:00:00.000Z",
     "name": "<EXTRACTED VALUE>",
     "object_marking_refs": [
-        "marking-definition--<TLP LEVEL SET>",
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
     ]
 }
@@ -1429,14 +1429,14 @@ Objects created:
     "type": "malware",
     "spec_version": "2.1",
     "id": "malware--<UUIDV5>",
-    "created_by_ref": "identity--<DEFAULT OR CUSTOM IDENTITY OBJECT ID>",
+    "created_by_ref": "identity--<TXT2STIX IDENTITY>",
     "created": "2020-01-01T00:00:00.000Z",
     "modified": "2020-01-01T00:00:00.000Z",
     "name": "<EXTRACTED VALUE>",
     "malware_types": ["unknown"],
     "is_family": true,
     "object_marking_refs": [
-        "marking-definition--<TLP LEVEL SET>",
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
     ]
 }
@@ -1455,13 +1455,13 @@ Objects created:
     "type": "threat-actor",
     "spec_version": "2.1",
     "id": "threat-actor--<UUIDV5>",
-    "created_by_ref": "identity--<DEFAULT OR CUSTOM IDENTITY OBJECT ID>",
+    "created_by_ref": "identity--<TXT2STIX IDENTITY>",
     "created": "2020-01-01T00:00:00.000Z",
     "modified": "2020-01-01T00:00:00.000Z",
     "name": "<EXTRACTED VALUE>",
     "threat_actor_types": "unknown",
     "object_marking_refs": [
-        "marking-definition--<TLP LEVEL SET>",
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
     ]
 }
@@ -1480,13 +1480,13 @@ Objects created:
     "type": "tool",
     "spec_version": "2.1",
     "id": "tool--<UUIDV5>",
-    "created_by_ref": "identity--<DEFAULT OR CUSTOM IDENTITY OBJECT ID>",
+    "created_by_ref": "identity--<TXT2STIX IDENTITY>",
     "created": "2020-01-01T00:00:00.000Z",
     "modified": "2020-01-01T00:00:00.000Z",
     "name": "<EXTRACTED VALUE>",
     "tool_types": "unknown",
     "object_marking_refs": [
-        "marking-definition--<TLP LEVEL SET>",
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
     ]
 }
@@ -1505,13 +1505,13 @@ Objects created:
     "type": "identity",
     "spec_version": "2.1",
     "id": "identity--<UUIDV5>",
-    "created_by_ref": "identity--<DEFAULT OR CUSTOM IDENTITY OBJECT ID>",
+    "created_by_ref": "identity--<TXT2STIX IDENTITY>",
     "created": "2020-01-01T00:00:00.000Z",
     "modified": "2020-01-01T00:00:00.000Z",
     "name": "<EXTRACTED VALUE>",
     "identity_class": "unspecified",
     "object_marking_refs": [
-        "marking-definition--<TLP LEVEL SET>",
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
     ]
 }
@@ -1530,13 +1530,13 @@ Objects always created:
     "type": "procedure",
     "spec_version": "2.1",
     "id": "procedure--<GENERATED BY STIX2 LIBRARY>",
-    "created_by_ref": "identity--<DEFAULT OR CUSTOM IDENTITY OBJECT ID>",
+    "created_by_ref": "identity--<TXT2STIX IDENTITY>",
     "created": "<REPORT CREATED PROPERTY VALUE>",
     "modified": "<REPORT MODIFIED PROPERTY VALUE>",
     "name": "<EXTRACTED FROM TEXT>",
     "objective": "<EXTRACTED FROM TEXT>",
     "object_marking_refs": [
-        "marking-definition--<TLP LEVEL SET>",
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
     ],
     "extensions": {
