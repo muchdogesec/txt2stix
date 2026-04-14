@@ -4,7 +4,7 @@ import os
 import re
 import uuid
 from stix2.parsing import dict_to_stix2
-from stix2 import HashConstant, File
+from stix2 import HashConstant
 from stix2.v21.vocab import HASHING_ALGORITHM
 from stix2.patterns import _HASH_REGEX as HASHING_ALGORITHM_2
 from ipaddress import ip_address
@@ -27,7 +27,7 @@ if TYPE_CHECKING:
 
 # from schwifty import IBAN
 
-from .common import DOGESEC_IDENTITY_ID, TXT2STIX_MARKING, UUID_NAMESPACE, MinorException
+from .common import TXT2STIX_IDENTITY, TXT2STIX_MARKING, UUID_NAMESPACE, MinorException
 
 from .retriever import retrieve_stix_objects
 
@@ -692,7 +692,7 @@ def _build_observables(
         TLP_LEVEL.CLEAR.value.id,
         TXT2STIX_MARKING.id
     ]
-    external_refs = [ref for ref in indicator['external_references'] if ref['source_name'] != 'txt2stix_report_id']
+    external_refs = None
 
     if stix_mapping == "attack-pattern":
         stix_objects = [
@@ -701,7 +701,7 @@ def _build_observables(
                     "type": "attack-pattern",
                     "id": stix_mapping + "--" + _id_part,
                     "spec_version": "2.1",
-                    "created_by_ref": DOGESEC_IDENTITY_ID,
+                    "created_by_ref": TXT2STIX_IDENTITY.id,
                     "created": _date,
                     "modified": _date,
                     "name": extracted_value,
@@ -718,7 +718,7 @@ def _build_observables(
                     "type": "campaign",
                     "id": stix_mapping + "--" + _id_part,
                     "spec_version": "2.1",
-                    "created_by_ref": DOGESEC_IDENTITY_ID,
+                    "created_by_ref": TXT2STIX_IDENTITY.id,
                     "created": _date,
                     "modified": _date,
                     "name": extracted_value,
@@ -735,7 +735,7 @@ def _build_observables(
                     "type": "course-of-action",
                     "id": stix_mapping + "--" + _id_part,
                     "spec_version": "2.1",
-                    "created_by_ref": DOGESEC_IDENTITY_ID,
+                    "created_by_ref": TXT2STIX_IDENTITY.id,
                     "created": _date,
                     "modified": _date,
                     "name": extracted_value,
@@ -752,7 +752,7 @@ def _build_observables(
                     "type": "infrastructure",
                     "id": stix_mapping + "--" + _id_part,
                     "spec_version": "2.1",
-                    "created_by_ref": DOGESEC_IDENTITY_ID,
+                    "created_by_ref": TXT2STIX_IDENTITY.id,
                     "created": _date,
                     "modified": _date,
                     "name": extracted_value,
@@ -770,7 +770,7 @@ def _build_observables(
                     "type": "intrusion-set",
                     "id": stix_mapping + "--" + _id_part,
                     "spec_version": "2.1",
-                    "created_by_ref": DOGESEC_IDENTITY_ID,
+                    "created_by_ref": TXT2STIX_IDENTITY.id,
                     "created": _date,
                     "modified": _date,
                     "name": extracted_value,
@@ -787,7 +787,7 @@ def _build_observables(
                     "type": "malware",
                     "id": stix_mapping + "--" + _id_part,
                     "spec_version": "2.1",
-                    "created_by_ref": DOGESEC_IDENTITY_ID,
+                    "created_by_ref": TXT2STIX_IDENTITY.id,
                     "created": _date,
                     "modified": _date,
                     "name": extracted_value,
@@ -806,7 +806,7 @@ def _build_observables(
                     "type": "threat-actor",
                     "id": stix_mapping + "--" + _id_part,
                     "spec_version": "2.1",
-                    "created_by_ref": DOGESEC_IDENTITY_ID,
+                    "created_by_ref": TXT2STIX_IDENTITY.id,
                     "created": _date,
                     "modified": _date,
                     "name": extracted_value,
@@ -824,7 +824,7 @@ def _build_observables(
                     "type": "tool",
                     "id": stix_mapping + "--" + _id_part,
                     "spec_version": "2.1",
-                    "created_by_ref": DOGESEC_IDENTITY_ID,
+                    "created_by_ref": TXT2STIX_IDENTITY.id,
                     "created": _date,
                     "modified": _date,
                     "name": extracted_value,
@@ -841,7 +841,7 @@ def _build_observables(
                 {
                     "type": "identity",
                     "spec_version": "2.1",
-                    "created_by_ref": DOGESEC_IDENTITY_ID,
+                    "created_by_ref": TXT2STIX_IDENTITY.id,
                     "created": _date,
                     "modified": _date,
                     "id": "identity--" + _id_part,
