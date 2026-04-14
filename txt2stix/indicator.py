@@ -19,6 +19,7 @@ import validators
 from txt2stix.pattern.extractors.others.phonenumber_extractor import (
     PhoneNumberExtractor,
 )
+from txt2stix.tlp_levels import TLP_LEVEL
 from txt2stix.utils import validate_file_mimetype, validate_reg_key
 
 if TYPE_CHECKING:
@@ -26,7 +27,7 @@ if TYPE_CHECKING:
 
 # from schwifty import IBAN
 
-from .common import UUID_NAMESPACE, MinorException
+from .common import DOGESEC_IDENTITY_ID, TXT2STIX_MARKING, UUID_NAMESPACE, MinorException
 
 from .retriever import retrieve_stix_objects
 
@@ -687,6 +688,11 @@ def _build_observables(
         )
     )
     _date = datetime(2020, 1, 1, tzinfo=UTC)
+    marking_refs = [
+        TLP_LEVEL.CLEAR.value.id,
+        TXT2STIX_MARKING.id
+    ]
+    external_refs = [ref for ref in indicator['external_references'] if ref['source_name'] != 'txt2stix_report_id']
 
     if stix_mapping == "attack-pattern":
         stix_objects = [
@@ -695,11 +701,12 @@ def _build_observables(
                     "type": "attack-pattern",
                     "id": stix_mapping + "--" + _id_part,
                     "spec_version": "2.1",
-                    "created_by_ref": indicator["created_by_ref"],
+                    "created_by_ref": DOGESEC_IDENTITY_ID,
                     "created": _date,
                     "modified": _date,
                     "name": extracted_value,
-                    "external_references": indicator["external_references"],
+                    "external_references": external_refs,
+                    "object_marking_refs": marking_refs,
                 }
             )
         ]
@@ -711,12 +718,12 @@ def _build_observables(
                     "type": "campaign",
                     "id": stix_mapping + "--" + _id_part,
                     "spec_version": "2.1",
-                    "created_by_ref": indicator["created_by_ref"],
+                    "created_by_ref": DOGESEC_IDENTITY_ID,
                     "created": _date,
                     "modified": _date,
                     "name": extracted_value,
-                    "object_marking_refs": indicator["object_marking_refs"],
-                    "external_references": indicator["external_references"],
+                    "external_references": external_refs,
+                    "object_marking_refs": marking_refs,
                 }
             )
         ]
@@ -728,12 +735,12 @@ def _build_observables(
                     "type": "course-of-action",
                     "id": stix_mapping + "--" + _id_part,
                     "spec_version": "2.1",
-                    "created_by_ref": indicator["created_by_ref"],
+                    "created_by_ref": DOGESEC_IDENTITY_ID,
                     "created": _date,
                     "modified": _date,
                     "name": extracted_value,
-                    "object_marking_refs": indicator["object_marking_refs"],
-                    "external_references": indicator["external_references"],
+                    "external_references": external_refs,
+                    "object_marking_refs": marking_refs,
                 }
             )
         ]
@@ -745,13 +752,13 @@ def _build_observables(
                     "type": "infrastructure",
                     "id": stix_mapping + "--" + _id_part,
                     "spec_version": "2.1",
-                    "created_by_ref": indicator["created_by_ref"],
+                    "created_by_ref": DOGESEC_IDENTITY_ID,
                     "created": _date,
                     "modified": _date,
                     "name": extracted_value,
                     "infrastructure_types": ["unknown"],
-                    "object_marking_refs": indicator["object_marking_refs"],
-                    "external_references": indicator["external_references"],
+                    "external_references": external_refs,
+                    "object_marking_refs": marking_refs,
                 }
             )
         ]
@@ -763,12 +770,12 @@ def _build_observables(
                     "type": "intrusion-set",
                     "id": stix_mapping + "--" + _id_part,
                     "spec_version": "2.1",
-                    "created_by_ref": indicator["created_by_ref"],
+                    "created_by_ref": DOGESEC_IDENTITY_ID,
                     "created": _date,
                     "modified": _date,
                     "name": extracted_value,
-                    "object_marking_refs": indicator["object_marking_refs"],
-                    "external_references": indicator["external_references"],
+                    "external_references": external_refs,
+                    "object_marking_refs": marking_refs,
                 }
             )
         ]
@@ -780,14 +787,14 @@ def _build_observables(
                     "type": "malware",
                     "id": stix_mapping + "--" + _id_part,
                     "spec_version": "2.1",
-                    "created_by_ref": indicator["created_by_ref"],
+                    "created_by_ref": DOGESEC_IDENTITY_ID,
                     "created": _date,
                     "modified": _date,
                     "name": extracted_value,
                     "malware_types": ["unknown"],
                     "is_family": True,
-                    "object_marking_refs": indicator["object_marking_refs"],
-                    "external_references": indicator["external_references"],
+                    "external_references": external_refs,
+                    "object_marking_refs": marking_refs,
                 }
             )
         ]
@@ -799,13 +806,13 @@ def _build_observables(
                     "type": "threat-actor",
                     "id": stix_mapping + "--" + _id_part,
                     "spec_version": "2.1",
-                    "created_by_ref": indicator["created_by_ref"],
+                    "created_by_ref": DOGESEC_IDENTITY_ID,
                     "created": _date,
                     "modified": _date,
                     "name": extracted_value,
-                    "threat_actor_types": "unknown",
-                    "object_marking_refs": indicator["object_marking_refs"],
-                    "external_references": indicator["external_references"],
+                    "threat_actor_types": ["unknown"],
+                    "external_references": external_refs,
+                    "object_marking_refs": marking_refs,
                 }
             )
         ]
@@ -817,13 +824,13 @@ def _build_observables(
                     "type": "tool",
                     "id": stix_mapping + "--" + _id_part,
                     "spec_version": "2.1",
-                    "created_by_ref": indicator["created_by_ref"],
+                    "created_by_ref": DOGESEC_IDENTITY_ID,
                     "created": _date,
                     "modified": _date,
                     "name": extracted_value,
-                    "tool_types": "unknown",
-                    "object_marking_refs": indicator["object_marking_refs"],
-                    "external_references": indicator["external_references"],
+                    "tool_types": ["unknown"],
+                    "external_references": external_refs,
+                    "object_marking_refs": marking_refs,
                 }
             )
         ]
@@ -834,14 +841,14 @@ def _build_observables(
                 {
                     "type": "identity",
                     "spec_version": "2.1",
-                    "created_by_ref": indicator["created_by_ref"],
+                    "created_by_ref": DOGESEC_IDENTITY_ID,
                     "created": _date,
                     "modified": _date,
                     "id": "identity--" + _id_part,
                     "name": extracted_value,
                     "identity_class": "unspecified",
-                    "object_marking_refs": indicator["object_marking_refs"],
-                    "external_references": indicator["external_references"],
+                    "external_references": external_refs,
+                    "object_marking_refs": marking_refs,
                 }
             )
         ]
