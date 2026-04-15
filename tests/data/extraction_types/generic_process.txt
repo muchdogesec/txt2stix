@@ -1,0 +1,9 @@
+====Good====
+
+grep --color=always error app.log
+ls -la /tmp
+tar -xzf archive.tar.gz
+
+====Bad====
+
+/tmp

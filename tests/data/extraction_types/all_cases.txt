@@ -111,6 +111,9 @@ DE29100500001061045672
 GB94BARC10201530093459
 +442083661177
 0044 20836 61177
+grep --color=always error app.log
+ls -la /tmp
+tar -xzf archive.tar.gz
 AU
 GB
 AU

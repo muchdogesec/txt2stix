@@ -437,6 +437,16 @@ generic_phone_number:
   test_negative_examples:
     - '+4420836' # is not long enough
 
+####### Process Extractions #######
+
+generic_process:
+  test_positive_examples:
+    - 'grep --color=always error app.log'
+    - 'ls -la /tmp'
+    - 'tar -xzf archive.tar.gz'
+  test_negative_examples:
+    - '/tmp' # is directory
+
 ####### County extractions #######
 ### YOU NEED TO ENSURE POSITIVE TESTS EXIST IN YOUR CTIBUTLER INSTALL
 
