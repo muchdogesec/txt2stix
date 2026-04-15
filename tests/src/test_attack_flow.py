@@ -2,6 +2,7 @@ from types import SimpleNamespace
 import pytest
 from unittest.mock import MagicMock, patch
 
+from tests.src.utils import stix2python
 from txt2stix.ai_extractor.utils import AttackFlowList, AttackFlowItem
 from txt2stix.attack_flow import (
     create_navigator_layer,
@@ -10,6 +11,7 @@ from txt2stix.attack_flow import (
     parse_domain_flow,
     parse_flow,
     extract_attack_flow_and_navigator,
+    make_procedures_from_flow,
 )
 from stix2 import Report
 
@@ -249,6 +251,52 @@ def test_extract_attack_flow_and_navigator(dummy_objects, dummy_report):
         mock_parse_flow.assert_not_called()
 
         mock_create_navigator_layer.assert_not_called()
+
+
+def test_extract_attack_flow_and_navigator_creates_procedures(
+    dummy_objects, dummy_report, dummy_flow
+):
+    """Test that extract_attack_flow_and_navigator creates procedures and adds them to bundle"""
+    bundler = MagicMock()
+    bundler.report = dummy_report
+    bundler.bundle.objects = dummy_objects
+    ai_extractor = MagicMock()
+    mock_extract_flow = ai_extractor.extract_attack_flow
+    mock_extract_flow.return_value = dummy_flow
+    text = "My awesome text"
+
+    with (
+        patch("txt2stix.attack_flow.parse_flow") as mock_parse_flow,
+        patch("txt2stix.attack_flow.make_procedures_from_flow") as mock_make_procedures,
+    ):
+        # Mock the procedures that would be created
+        mock_procedures = [MagicMock(), MagicMock(), MagicMock()]
+        mock_make_procedures.return_value = mock_procedures
+
+        # Call with ai_create_attack_flow=True
+        flow, nav = extract_attack_flow_and_navigator(
+            bundler, text, True, False, ai_extractor
+        )
+
+        # Verify make_procedures_from_flow was called with the flow and report
+        mock_make_procedures.assert_called_once_with(dummy_flow, bundler.report)
+
+        # Verify each procedure was added to the bundle via bundler.add_ref
+        assert bundler.add_ref.call_count == len(mock_procedures)
+        for proc in mock_procedures:
+            bundler.add_ref.assert_any_call(proc, is_report_object=True)
+
+        # Reset and test with ai_create_attack_flow=False
+        bundler.add_ref.reset_mock()
+        mock_make_procedures.reset_mock()
+
+        flow, nav = extract_attack_flow_and_navigator(
+            bundler, text, False, False, ai_extractor
+        )
+
+        # Verify make_procedures_from_flow was NOT called
+        mock_make_procedures.assert_not_called()
+        bundler.add_ref.assert_not_called()
 
 
 def test_create_navigator_layer(dummy_report):
@@ -521,6 +569,104 @@ def test_create_navigator_layer__real_flow(dummy_report, dummy_flow, dummy_objec
             "layout": {"layout": "side"},
         },
     ]
+
+
+def test_make_procedures_from_flow_with_optional_fields(dummy_report):
+    """Test creating procedures with optional context, objective, and variants fields"""
+    flow = AttackFlowList.model_validate(
+        {
+            "items": [
+                {
+                    "position": 0,
+                    "attack_technique_id": "T1566",
+                    "name": "Phishing via malicious email",
+                    "description": "Adversaries send phishing emails with malicious attachments",
+                    "context": "Enterprise email environment with limited security awareness",
+                    "objective": "Gain initial access to corporate network",
+                    "variants": [
+                        "Spear-phishing with PDF attachments",
+                        "Credential harvesting via fake login pages",
+                    ],
+                },
+                {
+                    "position": 1,
+                    "attack_technique_id": "T1078",
+                    "name": "Use of valid accounts",
+                    "description": "Using compromised credentials for access",
+                    # No context, objective, or variants
+                },
+            ],
+            "success": True,
+            "tactic_selection": [
+                ("T1566", "initial-access"),
+                ("T1078", "defense-evasion"),
+            ],
+        }
+    )
+
+    procedures = stix2python(make_procedures_from_flow(flow, dummy_report))
+    assert procedures == [
+        {
+            "type": "procedure",
+            "spec_version": "2.1",
+            "id": "procedure--dd6ae92e-8086-5a27-aabc-27f86402a3f6",
+            "created": "2025-03-10T15:06:31.567505Z",
+            "modified": '2025-03-10T15:06:34.423062Z',
+            "created_by_ref": dummy_report["created_by_ref"],
+            "name": "Phishing via malicious email",
+            "description": "Adversaries send phishing emails with malicious attachments",
+            "objective": "Gain initial access to corporate network",
+            "context": "Enterprise email environment with limited security awareness",
+            "variants": [
+                "Spear-phishing with PDF attachments",
+                "Credential harvesting via fake login pages",
+            ],
+            "external_references": [
+                {"source_name": "mitre-attack", "external_id": "T1566"}
+            ],
+            "extensions": {
+                "extension-definition--3dc9c77a-9790-5cd0-94d5-2337871b886b": {
+                    "extension_type": "new-sdo"
+                }
+            },
+            "object_marking_refs": [
+                "marking-definition--e828b379-4e03-4974-9ac4-e53a884c97c1",
+                "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5",
+            ],
+        },
+        {
+            "type": "procedure",
+            "spec_version": "2.1",
+            "id": "procedure--a4367740-333c-5608-9444-2270eddea568",
+            "created": "2025-03-10T15:06:31.567505Z",
+            "modified": '2025-03-10T15:06:34.423062Z',
+            "created_by_ref": dummy_report["created_by_ref"],
+            "name": "Use of valid accounts",
+            "description": "Using compromised credentials for access",
+            "external_references": [
+                {"source_name": "mitre-attack", "external_id": "T1078"}
+            ],
+            "extensions": {
+                "extension-definition--3dc9c77a-9790-5cd0-94d5-2337871b886b": {
+                    "extension_type": "new-sdo"
+                }
+            },
+            "object_marking_refs": [
+                "marking-definition--e828b379-4e03-4974-9ac4-e53a884c97c1",
+                "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5",
+            ],
+        },
+    ]
+
+
+def test_make_procedures_from_flow_empty(dummy_report):
+    """Test with empty flow items"""
+    flow = AttackFlowList.model_validate(
+        {"items": [], "success": True, "tactic_selection": []}
+    )
+
+    procedures = make_procedures_from_flow(flow, dummy_report)
+    assert len(procedures) == 0
 
 
 @pytest.fixture

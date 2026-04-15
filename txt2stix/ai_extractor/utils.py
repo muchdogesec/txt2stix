@@ -49,6 +49,9 @@ class AttackFlowItem(BaseModel):
     attack_technique_id : str
     name: str
     description: str
+    context: str = None
+    objective: str = None
+    variants: list[str] = None
 
 class AttackFlowList(BaseModel):
     tactic_selection: list[tuple[str, str]] = Field(description="attack technique id to attack tactic id mapping using possible_tactics")

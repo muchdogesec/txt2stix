@@ -7,7 +7,7 @@ from txt2stix import txt2stixBundler
 from txt2stix.ai_extractor.base import BaseAIExtractor
 from txt2stix.common import UUID_NAMESPACE
 from txt2stix.retriever import STIXObjectRetriever
-from stix2extensions import AttackAction, AttackFlow
+from stix2extensions import AttackAction, AttackFlow, Procedure
 from .utils import AttackFlowList
 
 def parse_flow(report, flow: AttackFlowList, techniques, tactics):
@@ -231,9 +231,50 @@ def extract_attack_flow_and_navigator(
     if ai_create_attack_flow:
         logging.info("creating attack-flow bundle")
         bundler.flow_objects = parse_flow(bundler.report, flow, techniques, tactics)
+        for obj in make_procedures_from_flow(flow, bundler.report):
+            bundler.add_ref(obj, is_report_object=True)
 
     if ai_create_attack_navigator_layer:
         navigator = create_navigator_layer(
             bundler.report, bundler.summary, flow, techniques, tactics
         )
     return flow, navigator
+
+def make_procedures_from_flow(flow: AttackFlowList, report) -> list[Procedure]:
+    """Create STIX Procedure objects from attack flow items.
+    
+    Args:
+        flow: AttackFlowList containing the attack flow items
+        report: Report object for created and modified timestamps and created_by_ref
+        
+    Returns:
+        List of Procedure STIX objects
+    """
+    procedures = []
+    for item in flow.items:
+        # Generate deterministic ID based on technique, name, and report (if provided)
+        id_base = f"{item.attack_technique_id}+{item.name}"
+        procedure_id = f"procedure--{str(uuid.uuid5(UUID_NAMESPACE, id_base))}"
+        
+        # Create Procedure object
+        procedure = Procedure(
+            id=procedure_id,
+            name=item.name,
+            created=report["created"],
+            modified=report["modified"],
+            created_by_ref=report["created_by_ref"],
+            object_marking_refs=report["object_marking_refs"],
+            description=item.description,
+            context=item.context,
+            objective=item.objective,
+            variants=item.variants,
+            external_references=[
+                {
+                    "source_name": "mitre-attack",
+                    "external_id": item.attack_technique_id,
+                }
+            ]
+        )
+        procedures.append(procedure)
+    
+    return procedures
