@@ -730,6 +730,22 @@ python3 txt2stix.py \
 	--report_id 5e177e1f-a747-41c6-878a-5983d120323a
 ```
 
+### Process
+
+#### ai_process_command_line
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_process.txt \
+	--name 'ai_process_command_line' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_process_command_line \
+	--ai_settings_extractions openai:gpt-5-mini \
+	--report_id 43ef4a79-33ed-40c5-a95e-158ef8df2428
+```
+
 ## AI extractions with lookup versions too
 
 #### ai_country
@@ -973,3 +989,4 @@ python3 txt2stix.py \
 	--ai_settings_extractions openai:gpt-5-mini \
 	--report_id 30dde76b-12da-42c7-afe4-97389e47fcaa
 ```
+
