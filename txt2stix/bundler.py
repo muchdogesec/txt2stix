@@ -1,12 +1,8 @@
-import enum
 import logging
 from stix2 import (
-    Report,
     Identity,
     MarkingDefinition,
-    Relationship,
     Bundle,
-    Note,
 )
 from stix2.parsing import dict_to_stix2, parse as parse_stix
 from stix2.serialization import serialize
@@ -18,110 +14,15 @@ from stix2 import (
 import requests
 
 
-from .common import UUID_NAMESPACE, MinorException
+from .common import UUID_NAMESPACE, MinorException, TXT2STIX_IDENTITY, TXT2STIX_MARKING
 from datetime import UTC, datetime as dt
 import uuid
 import json
 from .indicator import build_observables
+from .tlp_levels import TLP_LEVEL
 
 
 logger = logging.getLogger("txt2stix.stix")
-
-
-class TLP_LEVEL(enum.Enum):
-    CLEAR = MarkingDefinition(
-        spec_version="2.1",
-        id="marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
-        created="2022-10-01T00:00:00.000Z",
-        definition_type="TLP:CLEAR",
-        extensions={
-            "extension-definition--60a3c5c5-0d10-413e-aab3-9e08dde9e88d": {
-                "extension_type": "property-extension",
-                "tlp_2_0": "clear",
-            }
-        },
-    )
-    GREEN = MarkingDefinition(
-        spec_version="2.1",
-        id="marking-definition--bab4a63c-aed9-4cf5-a766-dfca5abac2bb",
-        created="2022-10-01T00:00:00.000Z",
-        definition_type="TLP:GREEN",
-        extensions={
-            "extension-definition--60a3c5c5-0d10-413e-aab3-9e08dde9e88d": {
-                "extension_type": "property-extension",
-                "tlp_2_0": "green",
-            }
-        },
-    )
-    AMBER = MarkingDefinition(
-        spec_version="2.1",
-        id="marking-definition--55d920b0-5e8b-4f79-9ee9-91f868d9b421",
-        created="2022-10-01T00:00:00.000Z",
-        definition_type="TLP:AMBER",
-        extensions={
-            "extension-definition--60a3c5c5-0d10-413e-aab3-9e08dde9e88d": {
-                "extension_type": "property-extension",
-                "tlp_2_0": "amber",
-            }
-        },
-    )
-    AMBER_STRICT = MarkingDefinition(
-        spec_version="2.1",
-        id="marking-definition--939a9414-2ddd-4d32-a0cd-375ea402b003",
-        created="2022-10-01T00:00:00.000Z",
-        definition_type="TLP:AMBER+STRICT",
-        extensions={
-            "extension-definition--60a3c5c5-0d10-413e-aab3-9e08dde9e88d": {
-                "extension_type": "property-extension",
-                "tlp_2_0": "amber+strict",
-            }
-        },
-    )
-    RED = MarkingDefinition(
-        spec_version="2.1",
-        id="marking-definition--e828b379-4e03-4974-9ac4-e53a884c97c1",
-        created="2022-10-01T00:00:00.000Z",
-        definition_type="TLP:RED",
-        extensions={
-            "extension-definition--60a3c5c5-0d10-413e-aab3-9e08dde9e88d": {
-                "extension_type": "property-extension",
-                "tlp_2_0": "red",
-            }
-        },
-    )
-
-    @classmethod
-    def levels(cls):
-        return dict(
-            clear=cls.CLEAR,
-            green=cls.GREEN,
-            amber=cls.AMBER,
-            amber_strict=cls.AMBER_STRICT,
-            red=cls.RED,
-        )
-
-    @classmethod
-    def values(cls):
-        return [
-            cls.CLEAR.value,
-            cls.GREEN.value,
-            cls.AMBER.value,
-            cls.AMBER_STRICT.value,
-            cls.RED.value,
-        ]
-
-    @classmethod
-    def get(cls, level):
-        if isinstance(level, str):
-            level = level.replace("-", "_").replace("+", "_")
-        if isinstance(level, cls):
-            return level
-        return cls.levels()[level]
-
-    @property
-    def name(self):
-        return super().name.lower()
-
 
 class txt2stixBundler:
     EXTENSION_MAPPING = {
@@ -142,40 +43,8 @@ class txt2stixBundler:
     id_map = dict()
     id_value_map = dict()
     _flow_objects = []
-    # this identity is https://raw.githubusercontent.com/muchdogesec/stix4doge/main/objects/identity/txt2stix.json
-    default_identity = Identity(
-        type="identity",
-        spec_version="2.1",
-        id="identity--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5",
-        created_by_ref="identity--9779a2db-f98c-5f4b-8d08-8ee04e02dbb5",
-        created="2020-01-01T00:00:00.000Z",
-        modified="2020-01-01T00:00:00.000Z",
-        name="txt2stix",
-        description="https://github.com/muchdogsec/txt2stix",
-        identity_class="system",
-        sectors=["technology"],
-        contact_information="https://www.dogesec.com/contact/",
-        object_marking_refs=[
-            "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
-            "marking-definition--97ba4e8b-04f6-57e8-8f6e-3a0f0a7dc0fb",
-        ],
-    )
-    # this marking-definition is https://raw.githubusercontent.com/muchdogesec/stix4doge/main/objects/marking-definition/txt2stix.json
-    default_marking = MarkingDefinition(
-        type="marking-definition",
-        spec_version="2.1",
-        id="marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5",
-        created_by_ref="identity--9779a2db-f98c-5f4b-8d08-8ee04e02dbb5",
-        created="2020-01-01T00:00:00.000Z",
-        definition_type="statement",
-        definition={
-            "statement": "This object was created using: https://github.com/muchdogesec/txt2stix"
-        },
-        object_marking_refs=[
-            "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
-            "marking-definition--97ba4e8b-04f6-57e8-8f6e-3a0f0a7dc0fb",
-        ],
-    )
+    default_identity = TXT2STIX_IDENTITY
+    default_marking = TXT2STIX_MARKING
 
     def __init__(
         self,

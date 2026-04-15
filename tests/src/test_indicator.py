@@ -448,18 +448,8 @@ def test_identity_deterministic():
         "modified": "2020-01-01T00:00:00.000Z",
         "name": "My Identity 1",
         "identity_class": "unspecified",
-        "external_references": [
-            {
-                "source_name": "txt2stix_report_id",
-                "external_id": "4719f590-f54e-5589-88b0-cdeeac908a51",
-            },
-            {
-                "source_name": "txt2stix_extraction_type",
-                "description": "ai_identity_1.0.0",
-            },
-        ],
         "object_marking_refs": [
-            "marking-definition--e828b379-4e03-4974-9ac4-e53a884c97c1",
+            "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
             "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5",
         ],
     }

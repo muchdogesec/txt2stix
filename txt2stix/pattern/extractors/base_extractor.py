@@ -65,10 +65,6 @@ class BaseExtractor:
             start_index = 0
             
             for index, word in tokenize(text):
-                # word = match.group('item')
-                # end_index = start_index + len(word) - 1
-
-                # word = BaseExtractor.trim_invalid_characters(word, cls.invalid_characters)
                 try:
                     if cls.extraction_function(word):
                         extracted_observables.append((word, index))
@@ -89,15 +85,6 @@ class BaseExtractor:
             string_positions[string].append(pos)
 
         response = []
-
-        # for extraction, positions in string_positions.items():
-        #     response.append({
-        #         "value": extraction,
-        #         "type": cls.name,
-        #         "version": cls.version,
-        #         "stix_mapping": cls.stix_mapping,
-        #         "start_index": positions,
-        #     })
 
         for position, (string, pos) in enumerate(extracted_observables, 1):
             if cls.filter_function and not cls.filter_function(string):

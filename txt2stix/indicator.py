@@ -1,12 +1,14 @@
 from __future__ import annotations
 from datetime import UTC, datetime
+import json
 import os
 import re
 import uuid
 from stix2.parsing import dict_to_stix2
-from stix2 import HashConstant, File
+from stix2 import HashConstant
+from stix2.base import SCO_DET_ID_NAMESPACE
 from stix2.v21.vocab import HASHING_ALGORITHM
-from stix2.patterns import _HASH_REGEX as HASHING_ALGORITHM_2
+from stix2.patterns import _HASH_REGEX as HASHING_ALGORITHM_2, StringConstant
 from ipaddress import ip_address
 from pathlib import PurePosixPath, PureWindowsPath
 from phonenumbers import geocoder
@@ -19,6 +21,7 @@ import validators
 from txt2stix.pattern.extractors.others.phonenumber_extractor import (
     PhoneNumberExtractor,
 )
+from txt2stix.tlp_levels import TLP_LEVEL
 from txt2stix.utils import validate_file_mimetype, validate_reg_key
 
 if TYPE_CHECKING:
@@ -26,7 +29,7 @@ if TYPE_CHECKING:
 
 # from schwifty import IBAN
 
-from .common import UUID_NAMESPACE, MinorException
+from .common import TXT2STIX_IDENTITY, TXT2STIX_MARKING, UUID_NAMESPACE, MinorException
 
 from .retriever import retrieve_stix_objects
 
@@ -122,7 +125,7 @@ def _build_observables(
 
     if stix_mapping == "ipv4-addr":
         indicator["name"] = f"ipv4: {extracted_value}"
-        indicator["pattern"] = f"[ ipv4-addr:value = { repr(extracted_value) } ]"
+        indicator["pattern"] = f"[ ipv4-addr:value = { StringConstant(extracted_value) } ]"
 
         stix_objects.append(
             dict_to_stix2(
@@ -143,7 +146,7 @@ def _build_observables(
     if stix_mapping == "ipv4-addr-port":
         extracted_value, port = split_ip_port(extracted_value)
         indicator["name"] = f"ipv4: {extracted_value}"
-        indicator["pattern"] = f"[ ipv4-addr:value = { repr(extracted_value) } ]"
+        indicator["pattern"] = f"[ ipv4-addr:value = { StringConstant(extracted_value) } ]"
 
         stix_objects.append(
             dict_to_stix2(
@@ -174,7 +177,7 @@ def _build_observables(
 
     if stix_mapping == "ipv6-addr":
         indicator["name"] = f"ipv6: {extracted_value}"
-        indicator["pattern"] = f"[ ipv6-addr:value = { repr(extracted_value) } ]"
+        indicator["pattern"] = f"[ ipv6-addr:value = { StringConstant(extracted_value) } ]"
 
         stix_objects.append(
             dict_to_stix2(
@@ -194,7 +197,7 @@ def _build_observables(
     if stix_mapping == "ipv6-addr-port":
         extracted_value, port = split_ip_port(extracted_value)
         indicator["name"] = f"ipv6: {extracted_value}"
-        indicator["pattern"] = f"[ ipv6-addr:value = { repr(extracted_value) } ]"
+        indicator["pattern"] = f"[ ipv6-addr:value = { StringConstant(extracted_value) } ]"
 
         stix_objects.append(
             dict_to_stix2(
@@ -235,7 +238,7 @@ def _build_observables(
             if r != True:
                 raise BadDataException("invalid domain or hostname") from r
         indicator["name"] = f"Domain: {extracted_value}"
-        indicator["pattern"] = f"[ domain-name:value = { repr(extracted_value) } ]"
+        indicator["pattern"] = f"[ domain-name:value = { StringConstant(extracted_value) } ]"
 
         stix_objects.append(
             dict_to_stix2(
@@ -257,7 +260,7 @@ def _build_observables(
             raise BadDataException("invalid url") from q
         # assert validators.url(extracted_value) == True
         indicator["name"] = f"URL: {extracted_value}"
-        indicator["pattern"] = f"[ url:value = { repr(extracted_value) } ]"
+        indicator["pattern"] = f"[ url:value = { StringConstant(extracted_value) } ]"
 
         stix_objects.append(
             dict_to_stix2(
@@ -289,7 +292,7 @@ def _build_observables(
             }
         )
         indicator["name"] = f"File name: {extracted_value}"
-        indicator["pattern"] = f"[ file:name = { repr(extracted_value) } ]"
+        indicator["pattern"] = f"[ file:name = { StringConstant(extracted_value) } ]"
 
         stix_objects.append(file)
         stix_objects.append(
@@ -304,7 +307,7 @@ def _build_observables(
 
     if stix_mapping == "directory":
         indicator["name"] = f"Directory: {extracted_value}"
-        indicator["pattern"] = f"[ directory:path = { repr(extracted_value) } ]"
+        indicator["pattern"] = f"[ directory:path = { StringConstant(extracted_value) } ]"
 
         stix_objects.append(
             dict_to_stix2(
@@ -337,7 +340,7 @@ def _build_observables(
         )
         indicator["name"] = f"Directory File: {extracted_value}"
         indicator["pattern"] = (
-            f"[ directory:path = { repr(dir_obj.path) }  OR file:name = {repr(file.name)}]"
+            f"[ directory:path = { StringConstant(dir_obj.path) }  OR file:name = {StringConstant(file.name)}]"
         )
 
         stix_objects.append(dir_obj)
@@ -360,7 +363,7 @@ def _build_observables(
         # this needs to be updated, maybe put hash_type in notes?
         indicator["name"] = f"{file_hash_type}: {extracted_value}"
         indicator["pattern"] = (
-            f"[ file:hashes.'{file_hash_type}' = { repr(extracted_value) } ]"
+            f"[ file:hashes.'{file_hash_type}' = { StringConstant(extracted_value) } ]"
         )
         stix_objects[0] = dict_to_stix2(indicator, allow_custom=True)
 
@@ -389,7 +392,7 @@ def _build_observables(
         if q != True:
             raise BadDataException("invalid email") from q
         indicator["name"] = f"Email Address: {extracted_value}"
-        indicator["pattern"] = f"[ email-addr:value = { repr(extracted_value) } ]"
+        indicator["pattern"] = f"[ email-addr:value = { StringConstant(extracted_value) } ]"
 
         stix_objects.append(
             dict_to_stix2(
@@ -411,7 +414,7 @@ def _build_observables(
         if q != True:
             raise BadDataException("invalid email") from q
         indicator["name"] = f"MAC Address: {extracted_value}"
-        indicator["pattern"] = f"[ mac-addr:value = { repr(extracted_value) } ]"
+        indicator["pattern"] = f"[ mac-addr:value = { StringConstant(extracted_value) } ]"
 
         stix_objects.append(
             dict_to_stix2(
@@ -433,7 +436,7 @@ def _build_observables(
             raise BadDataException("Invalid registry key")
         indicator["name"] = f"Windows Registry Key: {extracted_value}"
         indicator["pattern"] = (
-            f"[ windows-registry-key:key = { repr(extracted_value) } ]"
+            f"[ windows-registry-key:key = { StringConstant(extracted_value) } ]"
         )
 
         stix_objects.append(
@@ -457,7 +460,7 @@ def _build_observables(
 
     if stix_mapping == "user-agent":
         indicator["name"] = f"User Agent: {extracted_value}"
-        indicator["pattern"] = f"[ user-agent:value = { repr(extracted_value) } ]"
+        indicator["pattern"] = f"[ user-agent:value = { StringConstant(extracted_value) } ]"
 
         stix_objects.append(
             dict_to_stix2(
@@ -486,7 +489,7 @@ def _build_observables(
         ), "AS Number must be between 1 and 65535"
         indicator["name"] = f"AS{extracted_value}"
         indicator["pattern"] = (
-            f"[ autonomous-system:number = { repr(extracted_value) } ]"
+            f"[ autonomous-system:number = { extracted_value } ]"
         )
 
         stix_objects.append(
@@ -516,7 +519,7 @@ def _build_observables(
         btc2stix = crypto2stix.BTC2Stix()
         indicator["name"] = f"{currency_symbol} Wallet: {extracted_value}"
         indicator["pattern"] = (
-            f"[ cryptocurrency-wallet:value = { repr(extracted_value) } ]"
+            f"[ cryptocurrency-wallet:value = { StringConstant(extracted_value) } ]"
         )
         wallet_obj, *other_objects = btc2stix.process_wallet(
             extracted_value, wallet_only=True, transactions_only=False
@@ -543,7 +546,7 @@ def _build_observables(
         txn_object, *other_objects = btc2stix.process_transaction(extracted_value)
         indicator["name"] = f"{currency_symbol} Transaction: {extracted_value}"
         indicator["pattern"] = (
-            f"[ cryptocurrency-transaction:value = { repr(extracted_value) } ]"
+            f"[ cryptocurrency-transaction:value = { StringConstant(extracted_value) } ]"
         )
 
         stix_objects.append(txn_object)
@@ -568,7 +571,7 @@ def _build_observables(
         btc2stix = crypto2stix.BTC2Stix()
         indicator["name"] = f"{currency_symbol} Wallet: {extracted_value}"
         indicator["pattern"] = (
-            f"[ cryptocurrency-wallet:value = { repr(extracted_value) } ]"
+            f"[ cryptocurrency-wallet:value = { StringConstant(extracted_value) } ]"
         )
         wallet_obj, *other_objects = btc2stix.process_wallet(
             extracted_value, wallet_only=False, transactions_only=True
@@ -604,7 +607,7 @@ def _build_observables(
             card_type = card_object["scheme"]
 
         indicator["name"] = f"{card_type}: {extracted_value}"
-        indicator["pattern"] = f"[ payment-card:value = { repr(extracted_value) } ]"
+        indicator["pattern"] = f"[ payment-card:value = { StringConstant(extracted_value) } ]"
 
         stix_objects.append(
             bundler.new_relationship(
@@ -622,7 +625,7 @@ def _build_observables(
         if q != True:
             raise BadDataException("invalid iban number") from q
         indicator["name"] = f"Bank account: {extracted_value}"
-        indicator["pattern"] = f"[ bank-account:iban = { repr(extracted_value) } ]"
+        indicator["pattern"] = f"[ bank-account:iban = { StringConstant(extracted_value) } ]"
         extracted_value = extracted_value.replace("-", "").replace(" ", "")
 
         country_code, bank_code = get_iban_details(extracted_value)
@@ -655,7 +658,7 @@ def _build_observables(
         if not country_code:
             raise BadDataException("parse phone number failed")
         indicator["name"] = f"Phone Number: {extracted_value}"
-        indicator["pattern"] = f"[ phone-number:value = { repr(extracted_value) }"
+        indicator["pattern"] = f"[ phone-number:value = { StringConstant(extracted_value) }"
         if country_code:
             indicator["pattern"] += f" AND phone-number:country = '{country_code}' "
         indicator["pattern"] += " ]"
@@ -680,6 +683,30 @@ def _build_observables(
             )
         )
 
+    if stix_mapping == "process":
+        indicator["name"] = f"Process: {extracted_value}"
+        indicator["pattern"] = f"[ process:command_line = { StringConstant(extracted_value) } ]"
+
+        stix_objects.append(
+            dict_to_stix2(
+                {
+                    "id": "process--" + str(uuid.uuid5(SCO_DET_ID_NAMESPACE, json.dumps({"command_line": extracted_value}))),
+                    "type": "process",
+                    "spec_version": "2.1",
+                    "command_line": extracted_value,
+                }
+            )
+        )
+        stix_objects.append(
+            bundler.new_relationship(
+                indicator["id"],
+                stix_objects[1].id,
+                "related-to",
+                description=f"STIX pattern contains {extracted_value}",
+                external_references=indicator["external_references"],
+            )
+        )
+
     _id_part = str(
         uuid.uuid5(
             UUID_NAMESPACE,
@@ -687,6 +714,11 @@ def _build_observables(
         )
     )
     _date = datetime(2020, 1, 1, tzinfo=UTC)
+    marking_refs = [
+        TLP_LEVEL.CLEAR.value.id,
+        TXT2STIX_MARKING.id
+    ]
+    external_refs = None
 
     if stix_mapping == "attack-pattern":
         stix_objects = [
@@ -695,11 +727,12 @@ def _build_observables(
                     "type": "attack-pattern",
                     "id": stix_mapping + "--" + _id_part,
                     "spec_version": "2.1",
-                    "created_by_ref": indicator["created_by_ref"],
+                    "created_by_ref": TXT2STIX_IDENTITY.id,
                     "created": _date,
                     "modified": _date,
                     "name": extracted_value,
-                    "external_references": indicator["external_references"],
+                    "external_references": external_refs,
+                    "object_marking_refs": marking_refs,
                 }
             )
         ]
@@ -711,12 +744,12 @@ def _build_observables(
                     "type": "campaign",
                     "id": stix_mapping + "--" + _id_part,
                     "spec_version": "2.1",
-                    "created_by_ref": indicator["created_by_ref"],
+                    "created_by_ref": TXT2STIX_IDENTITY.id,
                     "created": _date,
                     "modified": _date,
                     "name": extracted_value,
-                    "object_marking_refs": indicator["object_marking_refs"],
-                    "external_references": indicator["external_references"],
+                    "external_references": external_refs,
+                    "object_marking_refs": marking_refs,
                 }
             )
         ]
@@ -728,12 +761,12 @@ def _build_observables(
                     "type": "course-of-action",
                     "id": stix_mapping + "--" + _id_part,
                     "spec_version": "2.1",
-                    "created_by_ref": indicator["created_by_ref"],
+                    "created_by_ref": TXT2STIX_IDENTITY.id,
                     "created": _date,
                     "modified": _date,
                     "name": extracted_value,
-                    "object_marking_refs": indicator["object_marking_refs"],
-                    "external_references": indicator["external_references"],
+                    "external_references": external_refs,
+                    "object_marking_refs": marking_refs,
                 }
             )
         ]
@@ -745,13 +778,13 @@ def _build_observables(
                     "type": "infrastructure",
                     "id": stix_mapping + "--" + _id_part,
                     "spec_version": "2.1",
-                    "created_by_ref": indicator["created_by_ref"],
+                    "created_by_ref": TXT2STIX_IDENTITY.id,
                     "created": _date,
                     "modified": _date,
                     "name": extracted_value,
                     "infrastructure_types": ["unknown"],
-                    "object_marking_refs": indicator["object_marking_refs"],
-                    "external_references": indicator["external_references"],
+                    "external_references": external_refs,
+                    "object_marking_refs": marking_refs,
                 }
             )
         ]
@@ -763,12 +796,12 @@ def _build_observables(
                     "type": "intrusion-set",
                     "id": stix_mapping + "--" + _id_part,
                     "spec_version": "2.1",
-                    "created_by_ref": indicator["created_by_ref"],
+                    "created_by_ref": TXT2STIX_IDENTITY.id,
                     "created": _date,
                     "modified": _date,
                     "name": extracted_value,
-                    "object_marking_refs": indicator["object_marking_refs"],
-                    "external_references": indicator["external_references"],
+                    "external_references": external_refs,
+                    "object_marking_refs": marking_refs,
                 }
             )
         ]
@@ -780,14 +813,14 @@ def _build_observables(
                     "type": "malware",
                     "id": stix_mapping + "--" + _id_part,
                     "spec_version": "2.1",
-                    "created_by_ref": indicator["created_by_ref"],
+                    "created_by_ref": TXT2STIX_IDENTITY.id,
                     "created": _date,
                     "modified": _date,
                     "name": extracted_value,
                     "malware_types": ["unknown"],
                     "is_family": True,
-                    "object_marking_refs": indicator["object_marking_refs"],
-                    "external_references": indicator["external_references"],
+                    "external_references": external_refs,
+                    "object_marking_refs": marking_refs,
                 }
             )
         ]
@@ -799,13 +832,13 @@ def _build_observables(
                     "type": "threat-actor",
                     "id": stix_mapping + "--" + _id_part,
                     "spec_version": "2.1",
-                    "created_by_ref": indicator["created_by_ref"],
+                    "created_by_ref": TXT2STIX_IDENTITY.id,
                     "created": _date,
                     "modified": _date,
                     "name": extracted_value,
-                    "threat_actor_types": "unknown",
-                    "object_marking_refs": indicator["object_marking_refs"],
-                    "external_references": indicator["external_references"],
+                    "threat_actor_types": ["unknown"],
+                    "external_references": external_refs,
+                    "object_marking_refs": marking_refs,
                 }
             )
         ]
@@ -817,13 +850,13 @@ def _build_observables(
                     "type": "tool",
                     "id": stix_mapping + "--" + _id_part,
                     "spec_version": "2.1",
-                    "created_by_ref": indicator["created_by_ref"],
+                    "created_by_ref": TXT2STIX_IDENTITY.id,
                     "created": _date,
                     "modified": _date,
                     "name": extracted_value,
-                    "tool_types": "unknown",
-                    "object_marking_refs": indicator["object_marking_refs"],
-                    "external_references": indicator["external_references"],
+                    "tool_types": ["unknown"],
+                    "external_references": external_refs,
+                    "object_marking_refs": marking_refs,
                 }
             )
         ]
@@ -834,14 +867,14 @@ def _build_observables(
                 {
                     "type": "identity",
                     "spec_version": "2.1",
-                    "created_by_ref": indicator["created_by_ref"],
+                    "created_by_ref": TXT2STIX_IDENTITY.id,
                     "created": _date,
                     "modified": _date,
                     "id": "identity--" + _id_part,
                     "name": extracted_value,
                     "identity_class": "unspecified",
-                    "object_marking_refs": indicator["object_marking_refs"],
-                    "external_references": indicator["external_references"],
+                    "external_references": external_refs,
+                    "object_marking_refs": marking_refs,
                 }
             )
         ]
@@ -865,6 +898,7 @@ def _build_observables(
         "payment-card",
         "bank-account",
         "phone-number",
+        "process",
         "attack-pattern",
         "campaign",
         "course-of-action",
