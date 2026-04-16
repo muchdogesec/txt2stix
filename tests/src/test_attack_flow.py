@@ -12,6 +12,7 @@ from txt2stix.attack_flow import (
     parse_flow,
     extract_attack_flow_and_navigator,
     make_procedures_from_flow,
+    AttackAction,
 )
 from stix2 import Report
 
@@ -265,6 +266,9 @@ def test_extract_attack_flow_and_navigator_creates_procedures(
     mock_extract_flow.return_value = dummy_flow
     text = "My awesome text"
 
+    tactics = get_all_tactics()
+    techniques = get_techniques_from_extracted_objects(bundler.bundle.objects, tactics)
+
     with (
         patch("txt2stix.attack_flow.parse_flow") as mock_parse_flow,
         patch("txt2stix.attack_flow.make_procedures_from_flow") as mock_make_procedures,
@@ -272,14 +276,18 @@ def test_extract_attack_flow_and_navigator_creates_procedures(
         # Mock the procedures that would be created
         mock_procedures = [MagicMock(), MagicMock(), MagicMock()]
         mock_make_procedures.return_value = mock_procedures
+        mock_flow_objects = [MagicMock(), MagicMock()]
+        mock_parse_flow.return_value = mock_flow_objects
 
         # Call with ai_create_attack_flow=True
         flow, nav = extract_attack_flow_and_navigator(
             bundler, text, True, False, ai_extractor
         )
 
-        # Verify make_procedures_from_flow was called with the flow and report
-        mock_make_procedures.assert_called_once_with(dummy_flow, bundler.report)
+        # Verify make_procedures_from_flow was called with correct parameters
+        mock_make_procedures.assert_called_once_with(
+            dummy_flow, bundler.report, techniques, mock_flow_objects
+        )
 
         # Verify each procedure was added to the bundle via bundler.add_ref
         assert bundler.add_ref.call_count == len(mock_procedures)
@@ -604,14 +612,61 @@ def test_make_procedures_from_flow_with_optional_fields(dummy_report):
         }
     )
 
-    procedures = stix2python(make_procedures_from_flow(flow, dummy_report))
+    # Create mock techniques dictionary
+    techniques = {
+        "T1566": {
+            "stix_obj": {
+                "id": "attack-pattern--a62a8db3-f23a-4d8f-afd6-9dbc77e7813b",
+                "name": "Phishing",
+                "external_references": [
+                    {"source_name": "mitre-attack", "external_id": "T1566"}
+                ],
+            }
+        },
+        "T1078": {
+            "stix_obj": {
+                "id": "attack-pattern--b17a1a56-e99c-403c-8948-561df0cffe81",
+                "name": "Valid Accounts",
+                "external_references": [
+                    {"source_name": "mitre-attack", "external_id": "T1078"}
+                ],
+            }
+        },
+    }
+
+    # Create mock flow_objects (empty for this test as we're not testing relationships)
+    flow_objects = [
+        AttackAction(
+            id="attack-action--1fd63972-ef98-5da5-81f5-4090c7dfa585",
+            technique_id="T1566",
+            name="Some name",
+            tactic_id="TA01",
+            tactic_ref="x-mitre-tactic--e50de437-96c4-4a8f-8140-dfbb521b2189",
+            technique_ref="attack-pattern--a62a8db3-f23a-4d8f-afd6-9dbc77e7813b",
+            allow_custom=True,
+        )
+    ]
+
+    results = stix2python(
+        make_procedures_from_flow(flow, dummy_report, techniques, flow_objects)
+    )
+
+    # Filter procedures and relationships
+    procedures = [obj for obj in results if obj["type"] == "procedure"]
+    relationships = [obj for obj in results if obj["type"] == "relationship"]
+
+    # Should have 2 procedures and 3 relationships (one per procedure to technique, and one relationship between the two procedures)
+    assert len(procedures) == 2
+    assert len(relationships) == 3  # One relationship for the first procedure to the technique, one for the second procedure to its technique, and one relationship between the two procedures (if they are related in the flow)
+
+    # Check first procedure with optional fields
     assert procedures == [
         {
             "type": "procedure",
             "spec_version": "2.1",
-            "id": "procedure--dd6ae92e-8086-5a27-aabc-27f86402a3f6",
+            "id": "procedure--cc4d69d4-01a0-50fa-84a5-e8b09a88fddb",
             "created": "2025-03-10T15:06:31.567505Z",
-            "modified": '2025-03-10T15:06:34.423062Z',
+            "modified": "2025-03-10T15:06:34.423062Z",
             "created_by_ref": dummy_report["created_by_ref"],
             "name": "Phishing via malicious email",
             "description": "Adversaries send phishing emails with malicious attachments",
@@ -622,7 +677,11 @@ def test_make_procedures_from_flow_with_optional_fields(dummy_report):
                 "Credential harvesting via fake login pages",
             ],
             "external_references": [
-                {"source_name": "mitre-attack", "external_id": "T1566"}
+                {
+                    "source_name": "txt2stix_report_id",
+                    "external_id": dummy_report["id"],
+                },
+                {"source_name": "mitre-attack", "external_id": "T1566"},
             ],
             "extensions": {
                 "extension-definition--3dc9c77a-9790-5cd0-94d5-2337871b886b": {
@@ -637,20 +696,95 @@ def test_make_procedures_from_flow_with_optional_fields(dummy_report):
         {
             "type": "procedure",
             "spec_version": "2.1",
-            "id": "procedure--a4367740-333c-5608-9444-2270eddea568",
+            "id": "procedure--53110406-669f-5c82-be3e-8b5af6d27cbe",
             "created": "2025-03-10T15:06:31.567505Z",
-            "modified": '2025-03-10T15:06:34.423062Z',
+            "modified": "2025-03-10T15:06:34.423062Z",
             "created_by_ref": dummy_report["created_by_ref"],
             "name": "Use of valid accounts",
             "description": "Using compromised credentials for access",
             "external_references": [
-                {"source_name": "mitre-attack", "external_id": "T1078"}
+                {
+                    "source_name": "txt2stix_report_id",
+                    "external_id": dummy_report["id"],
+                },
+                {"source_name": "mitre-attack", "external_id": "T1078"},
             ],
             "extensions": {
                 "extension-definition--3dc9c77a-9790-5cd0-94d5-2337871b886b": {
                     "extension_type": "new-sdo"
                 }
             },
+            "object_marking_refs": [
+                "marking-definition--e828b379-4e03-4974-9ac4-e53a884c97c1",
+                "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5",
+            ],
+        },
+    ]
+    assert relationships == [
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--720a719e-d5ea-5ef8-81a0-fc6f1102f7aa",
+            "created_by_ref": "identity--e92c648d-03eb-59a5-a318-9a36e6f8057c",
+            "created": "2025-03-10T15:06:31.567505Z",
+            "modified": "2025-03-10T15:06:34.423062Z",
+            "relationship_type": "related-to",
+            "description": "Phishing via malicious email is related to Phishing",
+            "source_ref": "procedure--cc4d69d4-01a0-50fa-84a5-e8b09a88fddb",
+            "target_ref": "attack-pattern--a62a8db3-f23a-4d8f-afd6-9dbc77e7813b",
+            "external_references": [
+                {
+                    "source_name": "txt2stix_report_id",
+                    "external_id": "report--9c88fbcb-8c0d-4124-868b-3dcb1e9b696c",
+                },
+                {"source_name": "mitre-attack", "external_id": "T1566"},
+            ],
+            "object_marking_refs": [
+                "marking-definition--e828b379-4e03-4974-9ac4-e53a884c97c1",
+                "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5",
+            ],
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--c72e54e5-5999-562a-964a-a0e9dcce33f8",
+            "created_by_ref": "identity--e92c648d-03eb-59a5-a318-9a36e6f8057c",
+            "created": "2025-03-10T15:06:31.567505Z",
+            "modified": "2025-03-10T15:06:34.423062Z",
+            "relationship_type": "related-to",
+            "description": "Phishing via malicious email",
+            "source_ref": "procedure--cc4d69d4-01a0-50fa-84a5-e8b09a88fddb",
+            "target_ref": "attack-action--1fd63972-ef98-5da5-81f5-4090c7dfa585",
+            "external_references": [
+                {
+                    "source_name": "txt2stix_report_id",
+                    "external_id": "report--9c88fbcb-8c0d-4124-868b-3dcb1e9b696c",
+                },
+                {"source_name": "mitre-attack", "external_id": "T1566"},
+            ],
+            "object_marking_refs": [
+                "marking-definition--e828b379-4e03-4974-9ac4-e53a884c97c1",
+                "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5",
+            ],
+        },
+        {
+            "type": "relationship",
+            "spec_version": "2.1",
+            "id": "relationship--99827043-5d62-501b-9521-dc2c95a1c58c",
+            "created_by_ref": "identity--e92c648d-03eb-59a5-a318-9a36e6f8057c",
+            "created": "2025-03-10T15:06:31.567505Z",
+            "modified": "2025-03-10T15:06:34.423062Z",
+            "relationship_type": "related-to",
+            "description": "Use of valid accounts is related to Valid Accounts",
+            "source_ref": "procedure--53110406-669f-5c82-be3e-8b5af6d27cbe",
+            "target_ref": "attack-pattern--b17a1a56-e99c-403c-8948-561df0cffe81",
+            "external_references": [
+                {
+                    "source_name": "txt2stix_report_id",
+                    "external_id": "report--9c88fbcb-8c0d-4124-868b-3dcb1e9b696c",
+                },
+                {"source_name": "mitre-attack", "external_id": "T1078"},
+            ],
             "object_marking_refs": [
                 "marking-definition--e828b379-4e03-4974-9ac4-e53a884c97c1",
                 "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5",
@@ -665,7 +799,11 @@ def test_make_procedures_from_flow_empty(dummy_report):
         {"items": [], "success": True, "tactic_selection": []}
     )
 
-    procedures = make_procedures_from_flow(flow, dummy_report)
+    # Empty techniques and flow_objects for empty flow
+    techniques = {}
+    flow_objects = []
+
+    procedures = make_procedures_from_flow(flow, dummy_report, techniques, flow_objects)
     assert len(procedures) == 0
 
 

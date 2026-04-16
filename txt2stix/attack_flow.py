@@ -10,6 +10,7 @@ from txt2stix.retriever import STIXObjectRetriever
 from stix2extensions import AttackAction, AttackFlow, Procedure
 from .utils import AttackFlowList
 
+
 def parse_flow(report, flow: AttackFlowList, techniques, tactics):
     logging.info(f"flow.success = {flow.success}")
     if not flow.success:
@@ -19,6 +20,7 @@ def parse_flow(report, flow: AttackFlowList, techniques, tactics):
         flow_objects = parse_domain_flow(report, flow, techniques, tactics, domain)
         objects.extend(flow_objects)
     return objects
+
 
 def parse_domain_flow(report, flow: AttackFlowList, techniques, tactics, domain):
     flow_objects = []
@@ -52,7 +54,12 @@ def parse_domain_flow(report, flow: AttackFlowList, techniques, tactics, domain)
             if not flow_obj:
                 flow_obj = {
                     "type": "attack-flow",
-                    "id": "attack-flow--"+str(uuid.uuid5(UUID_NAMESPACE, f"attack-flow+{domain}+{report['id']}")),
+                    "id": "attack-flow--"
+                    + str(
+                        uuid.uuid5(
+                            UUID_NAMESPACE, f"attack-flow+{domain}+{report['id']}"
+                        )
+                    ),
                     "spec_version": "2.1",
                     "created": report["created"],
                     "modified": report["modified"],
@@ -70,7 +77,12 @@ def parse_domain_flow(report, flow: AttackFlowList, techniques, tactics, domain)
                         type="relationship",
                         spec_version="2.1",
                         id="relationship--"
-                        + str(uuid.uuid5(UUID_NAMESPACE, f"attack-flow+{report['id']}+{flow_obj['id']}")),
+                        + str(
+                            uuid.uuid5(
+                                UUID_NAMESPACE,
+                                f"attack-flow+{report['id']}+{flow_obj['id']}",
+                            )
+                        ),
                         created_by_ref=report["created_by_ref"],
                         created=report["created"],
                         modified=report["modified"],
@@ -181,8 +193,8 @@ def create_navigator_layer(report, summary, flow: AttackFlowList, techniques, ta
             {
                 "versions": {
                     "layer": "4.5",
-                    "attack": tactics[domain]['version'],
-                    "navigator": "5.1.0"
+                    "attack": tactics[domain]["version"],
+                    "navigator": "5.1.0",
                 },
                 "name": report["name"],
                 "domain": domain,
@@ -213,14 +225,14 @@ def extract_attack_flow_and_navigator(
     ai_create_attack_flow,
     ai_create_attack_navigator_layer,
     ai_settings_relationships,
-    flow=None
+    flow=None,
 ):
     ex: BaseAIExtractor = ai_settings_relationships
     tactics = get_all_tactics()
     techniques = get_techniques_from_extracted_objects(bundler.bundle.objects, tactics)
     if not techniques:
         return None, None
-    
+
     logged_techniques = [
         {k: v for k, v in t.items() if k != "stix_obj"} for t in techniques.values()
     ]
@@ -231,7 +243,9 @@ def extract_attack_flow_and_navigator(
     if ai_create_attack_flow:
         logging.info("creating attack-flow bundle")
         bundler.flow_objects = parse_flow(bundler.report, flow, techniques, tactics)
-        for obj in make_procedures_from_flow(flow, bundler.report):
+        for obj in make_procedures_from_flow(
+            flow, bundler.report, techniques, bundler.flow_objects
+        ):
             bundler.add_ref(obj, is_report_object=True)
 
     if ai_create_attack_navigator_layer:
@@ -240,22 +254,30 @@ def extract_attack_flow_and_navigator(
         )
     return flow, navigator
 
-def make_procedures_from_flow(flow: AttackFlowList, report) -> list[Procedure]:
+
+def make_procedures_from_flow(
+    flow: AttackFlowList, report, techniques, flow_objects
+) -> list[Procedure]:
     """Create STIX Procedure objects from attack flow items.
-    
+
     Args:
         flow: AttackFlowList containing the attack flow items
         report: Report object for created and modified timestamps and created_by_ref
-        
+
     Returns:
         List of Procedure STIX objects
     """
-    procedures = []
+    retval = []
+    flow_objects_by_technique_id = {
+        obj["technique_id"]: obj
+        for obj in flow_objects
+        if obj["type"] == "attack-action"
+    }
     for item in flow.items:
         # Generate deterministic ID based on technique, name, and report (if provided)
-        id_base = f"{item.attack_technique_id}+{item.name}"
+        id_base = f"{report['id']}+{item.name}"
         procedure_id = f"procedure--{str(uuid.uuid5(UUID_NAMESPACE, id_base))}"
-        
+        technique = techniques[item.attack_technique_id]["stix_obj"]
         # Create Procedure object
         procedure = Procedure(
             id=procedure_id,
@@ -269,12 +291,58 @@ def make_procedures_from_flow(flow: AttackFlowList, report) -> list[Procedure]:
             objective=item.objective,
             variants=item.variants,
             external_references=[
-                {
-                    "source_name": "mitre-attack",
-                    "external_id": item.attack_technique_id,
-                }
-            ]
+                dict(
+                    source_name="txt2stix_report_id",
+                    external_id=report["id"],
+                ),
+                technique["external_references"][0],
+            ],
         )
-        procedures.append(procedure)
-    
-    return procedures
+        retval.append(procedure)
+        retval.append(
+            Relationship(
+                type="relationship",
+                spec_version="2.1",
+                id="relationship--"
+                + str(
+                    uuid.uuid5(
+                        UUID_NAMESPACE, f"procedure+{procedure.id}+{technique['id']}"
+                    )
+                ),
+                created_by_ref=procedure.created_by_ref,
+                created=procedure.created,
+                modified=procedure.modified,
+                relationship_type="related-to",
+                description=f"{procedure.name} is related to {technique['name']}",
+                source_ref=procedure.id,
+                target_ref=technique["id"],
+                external_references=procedure.external_references,
+                object_marking_refs=procedure.object_marking_refs,
+            )
+        )
+
+        flow_obj = flow_objects_by_technique_id.get(item.attack_technique_id)
+        if flow_obj:
+            retval.append(
+                Relationship(
+                    type="relationship",
+                    spec_version="2.1",
+                    id="relationship--"
+                    + str(
+                        uuid.uuid5(
+                            UUID_NAMESPACE, f"procedure+{procedure.id}+{flow_obj['id']}"
+                        )
+                    ),
+                    created_by_ref=procedure.created_by_ref,
+                    created=procedure.created,
+                    modified=procedure.modified,
+                    relationship_type="related-to",
+                    description=procedure.name,
+                    source_ref=procedure.id,
+                    target_ref=flow_obj["id"],
+                    external_references=procedure.external_references,
+                    object_marking_refs=procedure.object_marking_refs,
+                )
+            )
+
+    return retval
