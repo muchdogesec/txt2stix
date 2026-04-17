@@ -173,7 +173,7 @@ Your task is to analyze structured cybersecurity incident reports (e.g., malware
 
     # PART 1: Tactic Selection Phase
     ChatMessage.from_str("""
-PART 1: TACTIC SELECTION
+## PART 1: TACTIC SELECTION
 
 For each of the technique in `<extracted_techniques>`, return [technique_id, tactic_name], where
 - technique id = `technique.id`
@@ -202,22 +202,68 @@ For each of the technique in `<extracted_techniques>`, return [technique_id, tac
 
     # PART 2: Attack Flow Construction Phase
     ChatMessage.from_str("""
-PART 2: ATTACK FLOW CONSTRUCTION
+## PART 2: ATTACK FLOW CONSTRUCTION
 
 Using the `<extracted_techniques>` and the incident details in the document, construct a sequence of MITRE ATT&CK techniques that represent the adversary’s logical progression through the attack.
 
 For each technique:
 - Use the `technique.id` exactly as provided
 - Assign:
-  - `name`: a short, context-based phrase describing how the technique is used
-  - `description`: a longer explanation of how the technique operates in this specific incident, based only on the document
-  - `position`: the step in the logical or chronological attack sequence (starting at 0)
+  - `name`: short context-based phrase describing how the technique is used
+  - `description`: detailed explanation of how the technique operates in this incident (based only on the document)
+  - `context`: operational environment or conditions where the technique is used (optional)
+  - `objective`: attacker's goal or intended outcome for using this technique (optional)
+  - `variants`: list of specific variations or implementations observed in this incident (optional)
+  - `position`: step in the logical/chronological attack sequence (starting at 0)
 
-⚠️ Constraints:
+### Field Definitions:
+
+**context** — The operational context or environment where this procedure is relevant.
+This describes the specific operational setting, infrastructure, or circumstances where the technique was applied.
+Consider:
+- Specific infrastructure or systems targeted (e.g., backup systems, domain controllers, cloud services)
+- Timing or operational windows (e.g., during maintenance, off-hours)
+- Environmental conditions (e.g., air-gapped networks, legacy systems)
+- Deployment context (e.g., production environments, development systems)
+
+Examples:
+* "Windows backup infrastructure during maintenance windows"
+* "Cloud environment with misconfigured permissions"
+* "Enterprise domain controllers in segmented network"
+* "Legacy Linux servers without EDR deployment"
+
+**objective** — The attacker goal or intended effect achieved by the procedure.
+This is a clear, direct statement of what the attacker aims to accomplish with this specific technique.
+Consider:
+- Immediate tactical goal (prevent recovery, establish access, evade detection)
+- Intended effect on the target (disable security, exfiltrate data, maintain persistence)
+- Strategic purpose within the attack chain
+
+Examples:
+* "Prevent host recovery before ransomware encryption"
+* "Exfiltrate sensitive data for financial gain"
+* "Establish persistence for long-term access"
+* "Disable security monitoring to evade detection"
+
+**variants** — Known variants of the same underlying procedural pattern.
+These are different implementation methods or tools used to achieve the same technique, as observed in this specific incident.
+Consider:
+- Alternative tools or commands used
+- Different execution methods for the same goal
+- Unique modifications or adaptations
+- Tool chaining or sequencing variations
+
+Examples:
+* "Uses WMIC to launch encoded PowerShell"
+* "Uses PsExec before scheduled task creation"
+* "Uses custom-built backdoor instead of standard C2 framework"
+* "Leverages WMI event subscriptions for persistence"
+
+### ⚠️ Constraints:
 - Use **only** technique IDs provided in `<extracted_techniques>` — do **not** invent or infer new ones
 - Ensure all included technique IDs exactly match `technique.id` from `<extracted_techniques>` (e.g., `T1059` must match `T1059` and not `T1059.005`, `T1001.001` must match `T1001.001` and not `T1001`).
 
-📤 Output Format:
+### 📤 Output Format:
 <code>
 {
   "items": [
@@ -225,7 +271,8 @@ For each technique:
       "position": 0,
       "attack_technique_id": "Txxxx",
       "name": "Short contextual name",
-      "description": "Detailed contextual explanation"
+      "description": "Detailed contextual explanation",
+      ...
     },
     ...
   ],
@@ -237,16 +284,21 @@ Your goal is to tell the story of how the adversary moved through the attack usi
 """, MessageRole.USER),
     # PART 3: Combination phase
     ChatMessage.from_str("""
+## PART 3: COMBINATION PHASE
+
 📤 Final Output Format:
 <code>
 {
-  "tactic_selection": [...],  // Use your previous output
+  "tactic_selection": [...],  // Use your previous output from PART 1
   "items": [
     {
       "position": 0,
       "attack_technique_id": "Txxxx",
       "name": "Short contextual name",
-      "description": "Detailed contextual explanation"
+      "description": "Detailed contextual explanation",
+      "context": "Operational environment or conditions (optional)",
+      "objective": "Attacker's goal or intended outcome (optional)",
+      "variants": ["Specific variations observed (optional)"]
     },
     ...
   ],

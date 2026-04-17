@@ -1,5 +1,5 @@
 from pathlib import PurePosixPath, PureWindowsPath
-import pytest
+import pytest, json
 from unittest import mock
 from txt2stix import get_all_extractors
 from txt2stix.indicator import (
@@ -12,6 +12,7 @@ from txt2stix.indicator import (
     BadDataException,
 )
 from stix2 import HashConstant
+from stix2.serialization import serialize
 
 from txt2stix.bundler import txt2stixBundler
 from datetime import datetime
@@ -30,4 +31,6 @@ def dummy_bundler():
     )
 
 
+def stix2python(stix_obj):
+    return json.loads(serialize(stix_obj))
 # all_extractors = get_all_extractors()
