@@ -27,7 +27,7 @@ attrs==25.3.0
     #   aiohttp
     #   jsonschema
     #   referencing
-banks==2.2.0
+banks==2.4.2
     # via llama-index-core
 base58==2.1.1
     # via txt2stix (pyproject.toml)
