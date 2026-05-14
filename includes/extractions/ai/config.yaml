@@ -831,7 +831,7 @@ ai_mitre_attack_enterprise:
   dogesec_web: true
   name: 'MITRE ATT&CK Enterprise'
   description: 'Will extract references to MITRE ATT&CK Enterprise objects, convert to ID, and import object from CTI Butler.'
-  notes: 'lookup_mitre_attack_enterprise_id and lookup_mitre_attack_enterprise_name legacy extractions also exists if you cannot use AI'
+  notes: ''
   created: 2020-01-01
   modified: 2020-01-01
   created_by: dogesec
@@ -847,7 +847,7 @@ ai_mitre_attack_mobile:
   dogesec_web: true
   name: 'MITRE ATT&CK Mobile'
   description: 'Will extract references to MITRE ATT&CK Mobile objects, convert to ID, and import object from CTI Butler.'
-  notes: 'lookup_mitre_attack_mobile_id and lookup_mitre_attack_mobile_name legacy extractions also exists if you cannot use AI'
+  notes: ''
   created: 2020-01-01
   modified: 2020-01-01
   created_by: dogesec
@@ -863,7 +863,7 @@ ai_mitre_attack_ics:
   dogesec_web: true
   name: 'MITRE ATT&CK ICS'
   description: 'Will extract references to MITRE ATT&CK ICS objects, convert to ID, and import object from CTI Butler.'
-  notes: 'lookup_mitre_attack_ics_id and lookup_mitre_attack_ics_name legacy extractions also exists if you cannot use AI'
+  notes: ''
   created: 2020-01-01
   modified: 2020-01-01
   created_by: dogesec
@@ -881,7 +881,7 @@ ai_mitre_capec:
   dogesec_web: true
   name: 'MITRE CAPEC ID'
   description: 'Will extract references to MITRE CAPEC objects, convert to ID, and import object from CTI Butler.'
-  notes: 'lookup_mitre_capec_id and lookup_mitre_capec_name legacy extractions also exists if you cannot use AI'
+  notes: ''
   created: 2020-01-01
   modified: 2020-01-01
   created_by: dogesec
@@ -899,16 +899,72 @@ ai_mitre_cwe:
   dogesec_web: true
   name: 'MITRE CWE'
   description: 'Will extract references to MITRE CWE objects, convert to ID, and import object from CTI Butler.'
-  notes: 'lookup_mitre_cwe_id and lookup_mitre_cwe_name legacy extractions also exists if you cannot use AI'
+  notes: ''
   created: 2020-01-01
   modified: 2020-01-01
   created_by: dogesec
   version: 1.0.0
-  prompt_base: 'Extract all references to a MITRE CWE object from the text.'
-  prompt_helper: 'If you are unsure, you can learn more about MITRE CAPEC here: https://cwe.mitre.org/'
+  prompt_base: 'Extract all references to a MITRE CWE objects from the text.'
+  prompt_helper: 'If you are unsure, you can learn more about MITRE CWE here: https://cwe.mitre.org/'
   prompt_conversion: 'You should respond with only the CWE ID.'
   test_cases: ai_mitre_cwe
   stix_mapping: ctibutler-mitre-cwe-id
+
+####### MITRE ATLAS #######
+
+ai_mitre_atlas:
+  type: ai
+  dogesec_web: true
+  name: 'MITRE ATLAS'
+  description: 'Will extract references to MITRE ATLAS objects, convert to ID, and import object from CTI Butler.'
+  notes: ''
+  created: 2020-01-01
+  modified: 2020-01-01
+  created_by: dogesec
+  version: 1.0.0
+  prompt_base: 'Extract all references to a MITRE ATLAS objects from the text.'
+  prompt_helper: 'If you are unsure, you can learn more about MITRE ATLAS here: https://atlas.mitre.org/'
+  prompt_conversion: 'You should respond with only the MITRE ATLAS ID.'
+  test_cases: 
+  stix_mapping: 
+
+####### DISARM #######
+
+ai_disarm:
+  type: ai
+  dogesec_web: true
+  name: 'DISARM'
+  description: 'Will extract references to DISARM objects, convert to ID, and import object from CTI Butler.'
+  notes: ''
+  created: 2020-01-01
+  modified: 2020-01-01
+  created_by: dogesec
+  version: 1.0.0
+  prompt_base: 'Extract all references to a DISARM objects from the text.'
+  prompt_helper: 'If you are unsure, you can learn more about DISARM here: https://www.disarm.foundation/'
+  prompt_conversion: 'You should respond with only the DISARM ID.'
+  test_cases: 
+  stix_mapping: 
+
+####### MITRE F3 #######
+
+####### DISARM #######
+
+ai_mitre_f3:
+  type: ai
+  dogesec_web: true
+  name: 'MITRE Fraud Fighting Framework (F3)'
+  description: 'Will extract references to MITRE Fraud Fighting Framework (F3) objects, convert to ID, and import object from CTI Butler.'
+  notes: ''
+  created: 2020-01-01
+  modified: 2020-01-01
+  created_by: dogesec
+  version: 1.0.0
+  prompt_base: 'Extract all references to a MITRE Fraud Fighting Framework (F3) objects from the text.'
+  prompt_helper: 'If you are unsure, you can learn more about MITRE Fraud Fighting Framework (F3) here: https://ctid.mitre.org/fraud'
+  prompt_conversion: 'You should respond with only the MITRE Fraud Fighting Framework (F3) ID.'
+  test_cases: 
+  stix_mapping: 
 
 ####### Sector #######
 
