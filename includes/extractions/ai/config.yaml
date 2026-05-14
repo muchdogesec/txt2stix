@@ -853,7 +853,7 @@ ai_mitre_attack_mobile:
   created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all references to MITRE ATT&CK Mobile tactics, techniques, groups, data sources, mitigations, software, and campaigns described in the text. These references may not be explicit in the text so you should be careful to account for the natural language of the text your analysis. Do not include MITRE ATT&CK ICS or MITRE ATT&CK Enterprise in the results.'
-  prompt_helper: 'If you are unsure, you can learn more about MITRE ATT&CK Enterprise here: https://attack.mitre.org/matrices/mobile/'
+  prompt_helper: 'Extractions should be only made if the text includes references to industrial mobile/cell networks or infrastructure. If you are unsure, you can learn more about MITRE ATT&CK Enterprise here: https://attack.mitre.org/matrices/mobile/'
   prompt_conversion: 'You should respond with only the ATT&CK ID.'
   test_cases: ai_mitre_attack_mobile
   stix_mapping: ctibutler-mitre-attack-mobile-id
@@ -869,7 +869,7 @@ ai_mitre_attack_ics:
   created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all references to MITRE ATT&CK ICS tactics, techniques, groups, data sources, mitigations, software, and campaigns described in the text. These references may not be explicit in the text so you should be careful to account for the natural language of the text your analysis. Do not include MITRE ATT&CK Mobile or MITRE ATT&CK Enterprise in the results.'
-  prompt_helper: 'If you are unsure, you can learn more about MITRE ATT&CK Enterprise here: https://attack.mitre.org/matrices/ics/'
+  prompt_helper: 'Extractions should be only made if the text includes references to industrial control systems. If you are unsure, you can learn more about MITRE ATT&CK Enterprise here: https://attack.mitre.org/matrices/ics/'
   prompt_conversion: 'You should respond with only the ATT&CK ID.'
   test_cases: ai_mitre_attack_ics
   stix_mapping: ctibutler-mitre-attack-ics-id
@@ -923,10 +923,10 @@ ai_mitre_atlas:
   created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all references to a MITRE ATLAS objects from the text.'
-  prompt_helper: 'If you are unsure, you can learn more about MITRE ATLAS here: https://atlas.mitre.org/'
+  prompt_helper: 'Extractions should be only made if the text includes references of AI based threats. If you are unsure, you can learn more about MITRE ATLAS here: https://atlas.mitre.org/'
   prompt_conversion: 'You should respond with only the MITRE ATLAS ID.'
-  test_cases: 
-  stix_mapping: 
+  test_cases: ai_mitre_atlas
+  stix_mapping: ctibutler-mitre-atlas-id
 
 ####### DISARM #######
 
@@ -941,14 +941,12 @@ ai_disarm:
   created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all references to a DISARM objects from the text.'
-  prompt_helper: 'If you are unsure, you can learn more about DISARM here: https://www.disarm.foundation/'
+  prompt_helper: 'Extractions should be only made if the text includes references of disinformation campaigns. If you are unsure, you can learn more about DISARM here: https://www.disarm.foundation/'
   prompt_conversion: 'You should respond with only the DISARM ID.'
-  test_cases: 
-  stix_mapping: 
+  test_cases: ai_disarm
+  stix_mapping: ctibutler-disarm-id
 
 ####### MITRE F3 #######
-
-####### DISARM #######
 
 ai_mitre_f3:
   type: ai
@@ -961,10 +959,10 @@ ai_mitre_f3:
   created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all references to a MITRE Fraud Fighting Framework (F3) objects from the text.'
-  prompt_helper: 'If you are unsure, you can learn more about MITRE Fraud Fighting Framework (F3) here: https://ctid.mitre.org/fraud'
+  prompt_helper: 'Extractions should be only made if the text includes references of fraud. If you are unsure, you can learn more about MITRE Fraud Fighting Framework (F3) here: https://ctid.mitre.org/fraud'
   prompt_conversion: 'You should respond with only the MITRE Fraud Fighting Framework (F3) ID.'
-  test_cases: 
-  stix_mapping: 
+  test_cases: ai_mitre_f3
+  stix_mapping: ctibutler-f3-id
 
 ####### Sector #######
 
