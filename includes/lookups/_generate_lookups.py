@@ -240,7 +240,50 @@ queries = {
           FOR alias IN (doc.x_opencti_aliases ? doc.x_opencti_aliases : [])
             COLLECT alias_dedup = alias
             RETURN alias_dedup
-      """
+      """,
+      "mitre_f3_id_v1_0.txt":
+        """
+          FOR doc IN mitre_f3_vertex_collection
+            FILTER doc._stix2arango_note == "version=1_0"
+            AND doc.x_mitre_deprecated != true
+            AND doc.revoked != true
+            AND IS_ARRAY(doc.external_references)
+            FOR reference IN doc.external_references
+              FILTER reference.source_name == "mitre-f3" // AND STARTS_WITH(reference.external_id, "F")
+              SORT reference.external_id ASC
+              RETURN reference.external_id
+        """,
+      "mitre_f3_name_v1_0.txt":
+        """
+          FOR doc IN mitre_f3_vertex_collection
+            FILTER doc._stix2arango_note == "version=1_0"
+            AND doc.x_mitre_deprecated != true
+            AND doc.revoked != true
+            RETURN doc.name
+        """,
+      "mitre_d3f3nd_id_v1_3_0.txt":
+        """
+          FOR doc IN d3fend_vertex_collection
+            FILTER doc._stix2arango_note == "version=1_3_0"
+            AND doc.x_mitre_deprecated != true
+            // AND doc.type != "indicator" // skip artifacts
+            AND doc.revoked != true
+            AND IS_ARRAY(doc.external_references)
+            FOR reference IN doc.external_references
+              FILTER reference.source_name == "mitre-d3fend"
+              SORT reference.external_id ASC
+              RETURN reference.external_id
+        """,
+
+      "mitre_d3f3nd_name_v1_3_0.txt":
+        """
+          FOR doc IN d3fend_vertex_collection
+            FILTER doc._stix2arango_note == "version=1_3_0"
+            // AND doc.type != "indicator" // skip artifacts
+            AND doc.x_mitre_deprecated != true
+            AND doc.revoked != true
+            RETURN doc.name
+        """,
 }
 
 # Execute each query and save the results in the script's directory

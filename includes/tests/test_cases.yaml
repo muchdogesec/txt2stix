@@ -629,6 +629,12 @@ generic_mitre_atlas_name:
   test_negative_examples:
     - 'AML.T0050' # is id
 
+ai_mitre_atlas:
+  test_positive_examples:
+    - 'AML.M0015' # course-of-action--91d08908-dd7d-487c-b035-6f43f54f1855
+    - 'AML.T0050' # attack-pattern--3f58075b-fed5-49ad-b41d-b6f664678e24
+  test_negative_examples:
+
 ####### DISARM #######
 ### YOU NEED TO ENSURE POSITIVE TESTS EXIST IN YOUR CTIBUTLER INSTALL
 
@@ -646,6 +652,44 @@ generic_disarm_name:
     - 'Develop Narratives' # x-mitre-tactic--ec5943c5-cf40-59dd-a7ed-c2175fc9727a
   test_negative_examples:
     - 'T0131.001' # is id
+
+ai_disarm:
+  test_positive_examples:
+    - 'T0131.001' # attack-pattern--db0a00c8-7913-5895-b0a2-a7378eaab591
+    - 'TA01' # x-mitre-tactic--b977ad29-eb0c-5f09-bb2f-6d3f23e2a175
+  test_negative_examples:
+
+####### F3 #######
+### YOU NEED TO ENSURE POSITIVE TESTS EXIST IN YOUR CTIBUTLER INSTALL
+
+generic_mitre_f3:
+  test_positive_examples:
+    - 'F1001' # attack-pattern--ccecdfd4-795e-5ce8-920f-b80d455d6abb
+    - 'TA0002' # x-mitre-tactic--48bd862a-bbd0-5b06-9aa8-30e9b76ae923
+  test_negative_examples:
+    - 'TA9999' # invalid id
+    - 'ATM Manipulation' # is name
+
+generic_mitre_f3_name:
+  test_positive_examples:
+    - 'ATM Manipulation' # attack-pattern--f3f8b871-10f3-56c0-b1a4-7cf7cfd92972
+  test_negative_examples:
+    - 'F1001' # is id
+
+generic_mitre_d3fend:
+  test_positive_examples:
+    - 'D3-SPP' # course-of-action--09538fd5-30bc-5a10-971f-535f8d8bbf2f
+    - 'd3f:Isolate' # course-of-action--1730a9e1-15a2-58a8-a8b2-4729378f7192
+  test_negative_examples:
+    - 'd3fend:Isolate' # invalid prefix format
+
+generic_mitre_d3fend_name:
+  test_positive_examples:
+    - 'DNS Denylisting' # course-of-action--1730a9e1-15a2-58a8-a8b2-4729378f7192
+    - 'User Account Permissions' # course-of-action--09538fd5-30bc-5a10-971f-535f8d8bbf2f
+  test_negative_examples:
+    - 'D3-SPP' # is ID
+    - 'd3f:Isolate' # is namespaced ID
 
 ####### Sector ########
 generic_sector_aliases:

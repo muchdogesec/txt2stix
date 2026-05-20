@@ -1,0 +1,9 @@
+In March 2026, a regional financial institution identified a coordinated fraud campaign targeting online banking customers. The attackers first conducted F1034 (Interactive Voice Response Mapping) to understand the bank’s automated phone system and identify authentication workflows that could be abused.
+
+After gathering information, the threat actors used F1040.002, also known as Official Phone Number Spoofing, to impersonate the bank’s fraud department. Victims received calls appearing to originate from the institution’s legitimate support number. During these calls, the attackers attempted T1111 (Multi-Factor Authentication Interception) by convincing customers to share one-time passcodes sent to their devices.
+
+Using the intercepted authentication material, the actors performed T1550 to gain unauthorized access to customer accounts without needing passwords. Several compromised accounts were then subjected to F1005.005 (Account Manipulation: Change E-Delivery or Notification Settings), allowing the attackers to suppress fraud alerts and account notifications.
+
+The campaign progressed into FA0002 (Monetization), where stolen funds were transferred through mule accounts and eventually converted using F1017, Conversion to Physical Monetary Instruments. Investigators later discovered that some attackers also attempted F1015 (Churning) by rapidly moving funds between linked accounts to generate transaction-based rewards and obscure audit trails.
+
+In a separate but related incident, investigators identified attempts at F1016 (Compromise Payment Gateway) targeting a third-party merchant processor connected to the same institution. Analysts believe this activity was intended to expand fraudulent transaction capabilities and increase the scale of monetization operations.
