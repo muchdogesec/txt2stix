@@ -662,7 +662,7 @@ ai_disarm:
 ####### F3 #######
 ### YOU NEED TO ENSURE POSITIVE TESTS EXIST IN YOUR CTIBUTLER INSTALL
 
-ai_mitre_f3:
+generic_mitre_f3:
   test_positive_examples:
     - 'F1001' # attack-pattern--ccecdfd4-795e-5ce8-920f-b80d455d6abb
     - 'TA0002' # x-mitre-tactic--48bd862a-bbd0-5b06-9aa8-30e9b76ae923
@@ -670,17 +670,26 @@ ai_mitre_f3:
     - 'TA9999' # invalid id
     - 'ATM Manipulation' # is name
 
-ai_mitre_f3_name:
+generic_mitre_f3_name:
   test_positive_examples:
     - 'ATM Manipulation' # attack-pattern--f3f8b871-10f3-56c0-b1a4-7cf7cfd92972
   test_negative_examples:
     - 'F1001' # is id
 
-ai_mitre_f3:
+generic_mitre_d3fend:
   test_positive_examples:
-    - 'F1001' # attack-pattern--ccecdfd4-795e-5ce8-920f-b80d455d6abb
-    - 'TA0002' # x-mitre-tactic--48bd862a-bbd0-5b06-9aa8-30e9b76ae923
+    - 'D3-SPP' # course-of-action--09538fd5-30bc-5a10-971f-535f8d8bbf2f
+    - 'd3f:Isolate' # course-of-action--1730a9e1-15a2-58a8-a8b2-4729378f7192
   test_negative_examples:
+    - 'd3fend:Isolate' # invalid prefix format
+
+generic_mitre_d3fend_name:
+  test_positive_examples:
+    - 'DNS Denylisting' # course-of-action--1730a9e1-15a2-58a8-a8b2-4729378f7192
+    - 'User Account Permissions' # course-of-action--09538fd5-30bc-5a10-971f-535f8d8bbf2f
+  test_negative_examples:
+    - 'D3-SPP' # is ID
+    - 'd3f:Isolate' # is namespaced ID
 
 ####### Sector ########
 generic_sector_aliases:

@@ -249,6 +249,36 @@ lookup_mitre_f3_name:
   test_cases: generic_mitre_f3_name
   stix_mapping: ctibutler-f3-name
 
+####### MITRE D3FEND #######
+
+lookup_mitre_d3f3nd_id:
+  type: lookup
+  dogesec_web: false
+  name: MITRE D3FEND IDs
+  description: 'Extracts MITRE D3FEND IDs from text. See lookup name for version used.'
+  notes: 'ai_mitre_d3f3nd also exists but beware of hallucinations'
+  file: 'lookups/mitre_d3f3nd_id_v1_3_0.txt'
+  created: 2020-01-01
+  modified: 2020-01-01
+  created_by: dogesec
+  version: 1.3.0
+  test_cases: generic_mitre_d3f3nd
+  stix_mapping: ctibutler-d3fend-id
+
+lookup_mitre_d3f3nd_name:
+  type: lookup
+  dogesec_web: false
+  name: MITRE D3FEND Names
+  description: 'Extracts MITRE D3FEND names from text. See lookup name for version used.'
+  notes: 'ai_mitre_d3f3nd also exists but beware of hallucinations'
+  file: 'lookups/mitre_d3f3nd_name_v1_3_0.txt'
+  created: 2020-01-01
+  modified: 2020-01-01
+  created_by: dogesec
+  version: 1.3.0
+  test_cases: generic_mitre_d3f3nd_name
+  stix_mapping: ctibutler-d3fend-name
+
 ####### MITRE ATLAS #######
 
 lookup_mitre_atlas_id:

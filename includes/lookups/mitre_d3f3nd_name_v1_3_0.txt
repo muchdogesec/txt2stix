@@ -1,0 +1,1150 @@
+Dead Code Elimination
+Inbound Session Volume Analysis
+Emulated File Analysis
+Disk Formatting
+Platform Hardening
+Broadcast Domain Isolation
+Content Modification
+Process Analysis
+Password Rotation
+Strong Password Policy
+Decoy Object
+System Configuration Permissions
+User Session Init Config Analysis
+User Account Permissions
+Decoy Persona
+Asset Vulnerability Enumeration
+Domain Name Reputation Analysis
+Restore Access
+File Eviction
+Restore Email
+DNS Traffic Analysis
+Restore File
+Reverse Resolution IP Denylisting
+Connected Honeynet
+User Data Transfer Analysis
+Network Node Inventory
+Software Update
+Homoglyph Detection
+Stack Frame Canary Validation
+File Metadata Value Verification
+System Call Analysis
+Authentication Event Thresholding
+Database Query String Analysis
+Service Dependency Mapping
+Identifier Activity Analysis
+Application Hardening
+Firmware Verification
+RPC Traffic Analysis
+Process Termination
+Identifier Analysis
+Content Excision
+Passive Logical Link Mapping
+Trusted Library
+TPM Boot Integrity
+Routing Access Mediation
+Executable Denylisting
+Biometric Authentication
+File Format Verification
+Certificate Pinning
+Network Resource Access Mediation
+Message Authentication
+Passive Certificate Analysis
+Decoy User Credential
+Protocol Metadata Anomaly Detection
+IO Port Restriction
+Integer Range Validation
+Process Eviction
+Container Image Analysis
+File Content Rules
+Organization Mapping
+Restore Network Access
+Domain Trust Policy
+Host Reboot
+Application Performance Monitoring
+System Call Filtering
+Local File Access Mediation
+Kernel-based Process Isolation
+Byte Sequence Emulation
+Content Substitution
+Local Account Monitoring
+Network Traffic Signature Analysis
+Memory Block Start Validation
+Integrated Honeynet
+Resource Access Pattern Analysis
+Null Pointer Checking
+File Hash Reputation Analysis
+File Encryption
+Operating Mode Restriction
+Job Function Access Pattern Analysis
+URL Analysis
+Process Spawn Analysis
+File Content Analysis
+File Hashing
+Process Segment Execution Prevention
+Motion Sensor Monitoring
+Variable Initialization
+Token Binding
+Message Analysis
+Credential Hardening
+Inbound Traffic Filtering
+Connection Attempt Analysis
+Process Suspension
+Forward Resolution Domain Denylisting
+Encrypted Tunnels
+User Group Permissions
+Content Filtering
+Network Traffic Community Deviation
+Access Policy Administration
+Restore Object
+Operational Activity Mapping
+Message Hardening
+Authentication Cache Invalidation
+Decoy Public Release
+Network Traffic Policy Mapping
+File Magic Byte Verification
+Reference Nullification
+Outbound Traffic Filtering
+System Dependency Mapping
+Network Traffic Filtering
+Application Protocol Command Analysis
+Email Removal
+RF Shielding
+Standalone Honeynet
+Network Mapping
+Disk Partitioning
+Scheduled Job Analysis
+Disable Remote Access
+Network Access Mediation
+Domain Registration Takedown
+File Content Decompression Checking
+Data Inventory
+LAN Access Mediation
+Network Vulnerability Assessment
+Network Isolation
+File Analysis
+Operating Mode Monitoring
+Hierarchical Domain Denylisting
+User Geolocation Logon Pattern Analysis
+Credential Compromise Scope Analysis
+Operational Dependency Mapping
+Process Code Segment Verification
+Access Modeling
+Reissue Credential
+IP Reputation Analysis
+Firmware Behavior Analysis
+Variable Type Validation
+Decoy Session Token
+Operational Process Monitoring
+Host Shutdown
+File Internal Structure Verification
+System File Analysis
+Segment Address Offset Randomization
+Token-based Authentication
+Indirect Branch Call Analysis
+Sender MTA Reputation Analysis
+Remote Terminal Session Detection
+Platform Monitoring
+Restore Disk Image
+Homoglyph Denylisting
+Exception Handler Pointer Validation
+Web Session Activity Analysis
+Session Termination
+Physical Access Monitoring
+DNS Cache Eviction
+Certificate Rotation
+Per Host Download-Upload Ratio Analysis
+File Creation Analysis
+Content Format Conversion
+Shadow Stack Comparisons
+Local File Permissions
+Script Execution Analysis
+Electronic Lock Monitoring
+File Metadata Consistency Validation
+Application-based Process Isolation
+Process Lineage Analysis
+Message Encryption
+Application Configuration Hardening
+Forward Resolution IP Denylisting
+Active Physical Link Mapping
+Object Eviction
+Change Default Password
+Credential Rotation
+Hardware-based Write Protection
+Disk Encryption
+Unlock Account
+Password Authentication
+Operational Risk Assessment
+Endpoint-based Web Server Access Mediation
+File Carving
+Decoy Environment
+Credential Scrubbing
+Sender Reputation Analysis
+Credential Transmission Scoping
+Restore Software
+Endpoint Health Beacon
+Physical Enclosure Hardening
+System Init Config Analysis
+User Behavior Analysis
+Content Rebuild
+Execution Isolation
+Remote File Access Mediation
+System Vulnerability Assessment
+Account Locking
+Input Device Analysis
+Email Filtering
+Source Code Hardening
+Proxy-based Web Server Access Mediation
+Content Validation
+Disk Erasure
+Restore User Account Access
+One-time Password
+Authorization Event Thresholding
+Pointer Validation
+Hardware-based Process Isolation
+Directional Network Link
+Access Mediation
+Bootloader Authentication
+Decoy Network Resource
+Process Self-Modification Detection
+Physical Locking
+Driver Load Integrity Checking
+Administrative Network Activity Analysis
+Pointer Authentication
+Application Exception Monitoring
+Identifier Reputation Analysis
+Dynamic Analysis
+Content Quarantine
+Video Surveillance
+System Firmware Verification
+File Access Pattern Analysis
+Certificate Analysis
+Hardware Component Inventory
+Domain Logic Validation
+Asset Inventory
+Agent Authentication
+Data Exchange Mapping
+Physical Access Mediation
+Operational Logic Validation
+Session Duration Analysis
+Transfer Agent Authentication
+URL Reputation Analysis
+Remote Firmware Update Monitoring
+Firmware Embedded Monitoring Code
+Active Logical Link Mapping
+Physical Link Mapping
+DNS Denylisting
+IPC Traffic Analysis
+File Integrity Monitoring
+Restore Configuration
+Credential Eviction
+DNS Allowlisting
+Active Certificate Analysis
+Domain Account Monitoring
+Credential Revocation
+Operating System Monitoring
+Multi-factor Authentication
+System Mapping
+Network Traffic Analysis
+Service Binary Verification
+Relay Pattern Analysis
+Web Session Access Mediation
+Proximity Sensor Monitoring
+Peripheral Firmware Verification
+Logical Link Mapping
+Client-server Payload Profiling
+Platform Uptime Monitoring
+Registry Key Deletion
+Decoy File
+System Daemon Monitoring
+Certificate-based Authentication
+Executable Allowlisting
+Software Inventory
+Restore Database
+Direct Physical Link Mapping
+Configuration Inventory
+Memory Boundary Tracking
+OT Variable Access Restriction
+OT Process Data Command
+Proximity Sensor
+Move File
+Storage
+Network Packet
+Windows NtCreateProcess
+OS API Access Process
+File Content Block Data
+Log File
+Host
+Linux Ptrace Argument PTRACE_INTERRUPT
+Windows NtWriteFile
+PowerShell Profile Script
+Windows NtFlushInstructionCache
+OT Network Traffic
+Windows QueryPerformanceCounter
+Windows NtProtectVirtualMemory
+OT Create Data Command
+Laptop Computer
+Network Init Script File Resource
+Dynamic Analysis Tool
+Operating Mode
+Network Directory Resource
+OT Device Management Message
+Linux Pause Process
+Authorization Log
+Network Link
+Windows NtCreateNamedPipeFile
+Memory Pool
+Stack Frame Canary
+Web Resource Access
+Kerberos Ticket
+Digital System
+Container Process
+Linux Connect
+Process Start Function
+Named Pipe
+Copy Memory Function
+Decoder Application
+Inbound Internet Network Traffic
+Memory Allocation Function
+Outbound Internet Web Traffic
+Custom Archive File
+SSH Session
+Kerberos Ticket Granting Service Ticket
+Stack Component
+File Footer Block
+Intranet File Transfer Traffic
+Digital Media
+Certificate File
+Configuration File
+File Transfer Network Traffic
+Symbolic Link
+Windows WriteFile
+Block Device
+Document File
+Python Script File
+Job Scheduler Software
+OS API Read File
+Archive File
+DNS Server
+Internet File Transfer Traffic
+Cryptographic Key
+Peripheral Firmware
+Central Processing Unit
+HMI Application Process
+Session Token
+Keyboard Input Device
+Windows OpenProcess
+Graphics Processing Unit
+Graphics Card Firmware
+Certificate
+Operating Mode
+Office Application
+Linux Ptrace Argument PTRACE_POKETEXT
+Remote Database Query
+Create Process
+Windows TerminateProcess
+OT Power Supply
+User Input Function
+Thin Client Computer
+Transducer Sensor
+Intranet Multicast Network Traffic
+Computer Enclosure
+OS API Create Process
+Wireless Router
+Impersonate User
+Time Series Database
+Hard Link
+OS API Get Thread Context
+NTFS Hard Link
+Storage Snapshot
+Intranet Network Traffic
+Database Query
+Windows WriteProcessMemory
+Windows NtWriteFileGather
+Linux OpenAt Argument O_RDONLY, O_WRONLY, O_RDWR
+Physical Lock
+Flash Memory
+Linux Kill Argument SIGKILL
+OS API Trace Thread
+Server
+Windows DeleteFile
+Access Control Configuration
+Intranet Network
+System Call
+Application Runtime Variable
+Storage Image
+Set Thread Context
+OT Stop Command
+Copy Token
+Windows SetThreadContext
+Application Inventory Sensor
+Mobile Phone
+Multimedia File
+OT Process Data Historian
+Get Open Windows
+Write File
+Job Schedule
+Alias
+System Firewall Configuration
+OT Read File Command
+Output Device
+Bitmap Image File
+Encrypted Credential
+Heap Segment
+OS API Create Thread
+Linux _Exit
+Property List File
+System Configuration Init Database Record
+Metadata
+Local Resource Access
+OS API Set Registers
+Windows CreateThread
+Windows NtSuspendThread
+TFTP Server
+Configuration Database
+Resume Thread
+Windows VirtualProtectEx
+Hard Disk Firmware
+Password
+Linux Vfork
+In-memory Password Store
+Web File Resource
+Database Record
+Page
+User Logon Init Resource
+Access Control Group
+Legacy System
+Create File
+Inbound Network Traffic
+Linux Write
+OT Synchronize Time Command
+Intranet Web Network Traffic
+Hardware Device
+Image Data Segment
+Windows NtCreatePagingFile
+Image Segment
+Dependency
+Network Sensor
+Media Server
+Save Registers
+Pointer Dereferencing Function
+Password Database
+Linux Unlink
+Linux Munmap
+Unit Test Execution Tool
+OS API Resume Thread
+Tablet Computer
+System Config System Call
+Router
+OT Scan Time
+Windows NtCreateProcessEx
+Data Link Link
+Browser
+Mail Network Traffic
+OT Change Data Command
+OS API Write Memory
+Slow Symbolic Link
+Authentication Log
+RPC Network Traffic
+Serialization Function
+Windows NtOpenThread
+Network Scanner
+Data Artifact Server
+Reverse Proxy Server
+Write Protect Switch
+Office Application File
+Software Packaging Tool
+Open File
+Windows NtAllocateVirtualMemoryEx
+Windows NtDuplicateToken
+Digital Artifact
+Windows Shortcut File
+Executable Binary
+Configuration Resource
+User Application
+Linux Unlinkat
+Read File
+OS API Copy Token
+Content Policy
+Boot Loader
+Network Card Firmware
+Delete File
+Physical Artifact
+Physical Address
+OS API Suspend Process
+Software Deployment Tool
+Computer Case
+DNS Network Traffic
+VPN Server
+Developer Application
+Exception Handler
+Read Memory
+Shortcut File
+Internet Network Traffic
+Electromagnetic Signal
+Network Traffic Analysis Software
+Windows NtSetInformationFile Argument FileDispositionInformation
+Raw Memory Access Function
+Logical Link
+Windows OpenThread
+OT Actuator
+OT Security Command
+Bus Network Traffic
+File Magic Bytes
+Peripheral Hub Firmware
+Integration Test Execution Tool
+Removable Media Device
+Message Transfer Agent
+Windows OpenFile
+Container Build Tool
+Memory Extent
+OT I/O Module
+Internet Persona
+Private Key
+Connect Socket
+Public Key
+Wireless Link
+Free Memory
+Load Module
+System
+IP Address
+Linux Open Argument O_RDONLY, O_WRONLY, O_RDWR
+Application Layer Firewall
+Clipboard
+Intrusion Detection System
+Software Repository
+JavaScript Blob
+Get Thread Context
+Binary Segment
+Network Interface Card
+Digital Multimedia
+Authentication Server
+Differential Volume Snapshot
+Outbound Internet DNS Lookup Traffic
+Binary Large Object
+Enclave
+Container Runtime
+Logon User
+Init Script
+Memory Free Function
+OS API Open File
+Host-based Firewall
+Group Policy
+Resource Fork
+Secondary Storage
+Directory Service
+Executable File
+Zero Client Computer
+Radio Modem
+OT Modify Control Program Command
+Transmitter
+Authentication Service
+Orchestration Worker
+File Header Block Signature
+Physical Key
+OS API Load Module
+Remote Command
+Python Package
+Modem
+Digital Text
+Web Network Traffic
+Source Code Analyzer Tool
+OT Create New Control Program Command
+Software Package
+Digital Information
+OS API Move File
+Web Application Firewall
+Operating System Packaging Tool
+Trust Store
+Database
+Network Traffic
+Orchestration Controller
+Software
+Inbound Internet Encrypted Traffic
+Encrypted Password
+Inbound Internet Web Traffic
+File
+Windows NtDeleteFile
+Electronic Combination Lock
+Administrative Network Traffic
+User Init Configuration File
+Child Process
+Disk Image
+Processor Cache Memory
+Memory Management Unit Component
+OT Run Command
+Application Process Configuration
+Computer Network Node
+OT Pause Command
+Display Device Driver
+Suspend Process
+System Software
+Internet Network
+OT Remote Mode Command
+Boot Record
+Windows NtCreateThreadEx
+System Configuration Database
+Inbound Internet DNS Response Traffic
+System Init Script
+OT Delete Control Program Command
+Windows CreateProcessA
+Linux OpenAt2 Argument O_RDONLY, O_WRONLY, O_RDWR
+RTSP Server
+Startup Directory
+Pointer
+Linux Mmap2
+Video Input Device
+Network Audio Streaming Resource
+Application Configuration Database Record
+Create Socket
+Bus Network Node
+Utility Software
+System Init Configuration
+Linux Renameat
+Proxy Server
+OT Exception Message
+OT Modify Device Configuration Command
+Client Application
+Cyber Sensor
+Access Process
+Windows NtSetThreadContext
+Power Supply
+Internet DNS Lookup
+Linux Execve
+Outbound Internet Encrypted Web Traffic
+Shadow Stack
+First-stage Boot Loader
+MacOS Keychain
+Application Installer
+Application Configuration File
+OT Debug Command
+Full Volume Snapshot
+Web Resource
+Orchestration Server
+Domain Registration
+Signal
+File System Link
+File Content Block Metadata
+Linux Delete Module
+Inbound Internet Encrypted Web Traffic
+Authenticate User
+User Action
+Call Stack
+File Server
+System Init Process
+Switch
+User Interface
+Digital Audio
+Computing Server
+Configuration Management Database
+RDP Session
+OT Error Message
+Linux Socket
+File Section
+Windows NtAllocateVirtualMemory
+Computing Image
+Network Resource Access
+Domain User Account
+Digital Camera
+Credential
+Digital Image
+NTFS Symbolic Link
+Kernel Module
+Default User Account
+Network Audio Visual Streaming Resource
+Application
+File Path Open Function
+Security Token
+File Header Block Content
+CA Certificate File
+NTFS Link
+Resume Process
+Session
+Application Failure Count Variable
+Process Environment Variable
+User Startup Script File
+Windows DuplicateToken
+IP Phone
+OS API System Function
+Asset Inventory Agent
+Configuration Database Record
+Trace Process
+Set System Config Value
+OT Write Command
+Log
+Outbound Network Traffic
+Compiler Configuration File
+Operating System Configuration
+OT Diagnostics Message
+Certificate Trust Store
+System Firmware
+File System Metadata
+Data Acquisition Agent
+OT Device Firmware Command
+Shim Database
+Image Code Segment
+OT Control Logic Process
+Vector Image File
+Activity Dependency
+Local Area Network
+Windows ResumeThread
+Linux Fork
+Unload Module
+Processor Register
+System Startup Directory
+Command Line Interface
+Translation Lookaside Buffer
+DHCP Server
+Get System Time
+OS API Save Registers
+OT Control Function
+Domain Name
+User Behavior
+Browser Extension
+Resource
+OT Establish Remote Connection Command
+Motion Detector
+Firewall
+File Header Block
+Command History Log
+Outbound Internet File Transfer Traffic
+Directory
+Windows GetThreadContext
+MAC Address
+Mail Server
+Encoder Application
+Data Acquisition Unit
+Database File
+OT Disconnect Remote Connection Command
+Email Rule
+System Configuration Init Resource
+User
+OS API Unload Module
+Network Node
+Runtime Variable
+Test Execution Tool
+Windows NtReadFileScatter
+Client Computer
+Finger Print Scanner Input Device
+OT Engineering Workstation
+Linux Open Argument O_CREAT
+DNS Lookup
+System Dependency
+Kernel
+Privileged User Account
+Remote Authorization Service
+OT Connection Command
+Windows NtOpenFile
+DHCP Network Traffic
+System Password Database
+Embedded Database Application
+Authentication Function
+System Time Application
+Remote Resource
+Network Resource
+Processor
+Digital Document
+Import Library Function
+Stack Frame
+File Share Service
+Container Image
+Wireless Access Point
+DHCP Service
+Application Scan Time
+Digital Fingerprint
+Linux OpenAt Argument O_CREAT
+Bus Network
+Operating System Executable File
+Process Code Segment
+Partition
+NTFS Junction Point
+Firmware
+Write Memory
+Get Screen Capture
+Physical Link
+Linux Clone
+Interprocess Communication
+Instant Messaging Client
+Linux OpenAt2 Argument O_CREAT
+Partition Table
+Network Flow
+Wide Area Network
+Exec
+Build Tool
+Authorization Service
+Parent Process
+Digital Video
+System State Image
+Link
+URL
+Repository
+Linux Writev
+Desktop Computer
+Intranet Administrative Network Traffic
+Network Agent
+User Group
+File Metadata
+Boot Sector
+Processor Component
+Receiver
+Remote Login Session
+Cloud Storage
+OT Read Time Command
+Code Repository
+OT Read Value Command
+Get System Config Value
+Outbound Internet Network Traffic
+Operations Center Computer
+Computer Cabinet
+DNS Record
+Vector Image
+Windows NtFreeVirtualMemory
+Network Video Streaming Resource
+Event Log
+Multimedia Document File
+Anonymous Pipe
+Windows NtGetThreadContext
+Mail Service
+Terminate Process
+Network Protocol Analyzer
+Memory Word
+Network Multimedia Streaming Resource
+Get System Network Config Value
+Kernel Process Table
+OT Test Command
+Wired Link
+OT Delete Data Command
+Windows NtCreateFile
+Linux Read
+I/O Module
+Network Media Streaming Resource
+Kiosk Computer
+Application Process
+Remote Terminal Session
+Linux Time
+Subroutine
+Ticket Granting Ticket
+Service Account
+OT Network
+String Format Function
+Display Server
+Web Identity Token
+System Configuration Database Record
+POSIX Symbolic Link
+Shared Computer
+Virtual Machine Image
+Fast Symbolic Link
+Command
+Windows NtSuspendProcess
+File Content Block
+Database Service
+Input Device
+Forward Proxy Server
+OT Time Command
+Volume
+Packet Log
+Mathematical Function
+Linux Execveat
+OT Device Identification Message
+OS API Get System Time
+Remote Authentication Service
+OT Human Machine Interface
+Operating System Log File
+Thread
+Operating System File
+Operating System Configuration Component
+OT Program Mode Command
+Platform Uptime
+Create Thread
+Dial Up Modem
+Windows SuspendThread
+Record
+Eval Function
+Packet Capture File
+Optical Modem
+Linux Ptrace Argument PTRACE_GETREGS
+Local Resource
+Chatroom Client
+Linux Ptrace Argument PTRACE_ATTACH
+Get Running Processes
+File Footer Block Signature
+Firmware Sensor
+Address Space
+Intrusion Prevention System
+Electrical Signal
+Windows NtQuerySystemTime
+Optical Disc Image
+Local Authentication Service
+Container Orchestration Software
+Linux Clone3 Argument CLONE_THREAD
+OT Read Command
+Network Frame
+User Startup Directory
+Console Output Function
+Remote Procedure Call
+Service Application Process
+Kerberos Ticket Granting Ticket
+Symmetric Key
+System Service Software
+Access Control List
+Physical Data Diode
+Local Area Network Traffic
+Second-stage Boot Loader
+Linux Ptrace Argument PTRACE_PEEKTEXT
+User Profile
+OT Sensor
+Collaborative Software
+Cloud-based Database Application
+File Hash
+Session Cookie
+Software Library File
+OT Protocol Message
+Linux Ptrace Argument PTRACE_TRACEME
+OT Controller
+OT Control Variable
+User Process
+Shell Command
+Shared Resource Access Function
+OT Modify Device Operating Mode Command
+OS API Free Memory
+OS API Set Thread Context
+Linux Ptrace Argument PTRACE_CONT
+Linux Clone3
+Web Script File
+Application Shim
+Web API Resource
+Allocate Memory
+Windows Registry Value
+Personal Computer
+Access Mediator
+Image Scanner Input Device
+Kernel API Sensor
+Network Time Server
+Barcode Scanner Input Device
+Script Application Process
+Physical Key Lock
+Thread Start Function
+Memory Management Unit
+Windows VirtualFree
+OT Set Time Command
+Application Layer Link
+Command History Log File
+Stack Segment
+HMI Application
+Local User Account
+Display Adapter
+Memory Address
+Windows CreateFileA
+Software Library
+Service Application
+Web Server
+OT Engineering Software
+OT Read Device Configuration Command
+OS API Exec
+Combination Lock
+OT Abort Command
+Set Registers
+OT Network Management Command
+Operating System Configuration File
+Software Patch
+OT Logic Variable
+OS API Function
+Digital Identity
+Network Flow Sensor
+Shared Library File
+OT Embedded Computer
+Hostname
+Network File Share Resource
+Linux Mmap
+Identifier
+Password Manager
+OT Transport Configuration Command
+Image File
+Password File
+OS API Create Socket
+Bus Message
+Cloud Configuration
+Page Frame
+Database Service Application
+Database Server
+Access Token
+Outbound Internet Encrypted Remote Terminal Traffic
+Linux Readv
+User Init Script
+Software Artifact Server
+Application Configuration
+Computer Platform
+Audio Input Device
+Operating System
+OT Device Description Message
+Windows CreateRemoteThread
+OS API Resume Process
+Saved Instruction Pointer
+Bitmap Image
+Print Server
+Package URL
+OS API Write File
+Volume Snapshot
+Bus Network Frame
+OS API Connect Socket
+Deserialization Function
+Network Service
+Windows VirtualAllocEx
+Scheduled Job
+Page Table
+Code Analyzer
+Process Tree
+Digital Audio Visual Media
+Embedded Computer
+OT Process Variable
+Windows Registry Key
+Linux Ptrace Argument PTRACE_DETACH
+Static Analysis Tool
+System Utilization Record
+Windows NtCreateThread
+Outbound Internet Mail Traffic
+Password Store
+Transport Link
+Memory Block
+Volume Boot Record
+Java Archive
+Web Access Token
+Graphical User Interface
+OS API Allocate Memory
+Outbound Internet Encrypted Traffic
+Network
+Hardware Driver
+Sensor
+Kerberos Ticket Granting Ticket Account
+Cloud Service Sensor
+IPC Network Traffic
+Primary Storage
+Database Application
+Intranet IPC Network Traffic
+Cloud Instance Metadata
+Actuator
+OT Download Control Program Command
+Login Session
+Web Application
+Artifact Server
+Computing Snapshot
+Windows NtReadFile
+OT Control Program
+Web Application Server
+Windows NtResumeThread
+Host Configuration Sensor
+Service Dependency
+Network Session
+Application Configuration Database
+Resource Access
+OT Mode Switch
+Digital Information Bearer
+Digital Event Record
+OT Device Configuration Command
+OT Control Command
+Operating System Shared Library File
+Virtual Memory Space
+Transceiver
+Linux Pause Thread
+Get Open Sockets
+Linux Creat
+Linux Rename
+Linux Ptrace Argument PTRACE_SETREGS
+Memory Address Space
+Cloud User Account
+OS API Terminate Process
+Inbound Internet Mail Traffic
+Pipe
+Microcode
+Host Group
+Human Input Device Firmware
+Stored Procedure
+Codec Application
+Windows NtOpenProcess
+Windows NtTerminateProcess
+Virtualization Software
+Decoy Artifact
+Global User Account
+Business Communication Platform Client
+User to User Message
+Linux Renameat2
+Network File Resource
+Remote Session
+Codec Library
+Virtual Address
+ROM
+Unix Link
+Local Authorization Service
+OS API Delete File
+Mouse Input Device
+OS API Create File
+Digital Message
+Email Attachment
+Linux Socketcall Argument SYS_CONNECT
+Digital Access Badge
+Asymmetric Key
+RAM
+Windows ReadFile
+Log Message Function
+Version Control Tool
+Trace Thread
+Operating System Process
+User Account
+Linux Clone Argument CLONE_THREAD
+Web Server Application
+Endpoint Sensor
+HTML File
+Telecommand
+Process Image
+Email
+Windows NtCreateMailslotFile
+Application Rule
+OT Change Control Program Command
+System Platform Variable
+Outbound Internet RPC Traffic
+Intranet DNS Lookup
+Data Dependency
+Windows Registry
+Authentication Service Application
+OT Alarm Message
+DHCP Service Application
+Linux Socketcall Argument SYS_SOCKET
+Input Function
+Shim
+Executable Script
+System Application Cycle Count
+Memory Protection Unit
+Credential Management System
+Object File
+Tertiary Storage
+Intranet RPC Network Traffic
+Process
+OS API Read Memory
+Unix Hard Link
+Process Data Segment
+OS API Suspend Thread
+OT Proprietary Message
+OS API Trace Process
+File System
+File Footer Block Content
+Network Printer
+Microsoft HTML Application
+TFTP Network Traffic
+File System Sensor
+External Content Inclusion Function
+Suspend Thread
+Windows NtWriteVirtualMemory
+Remote Shell Command
+Linux Init_Module
+Process Segment
+Compiler
+None
+D3FEND™ - A knowledge graph of cybersecurity countermeasures
+Model
+Evict
+Detect
+Harden
+Isolate
+Restore
+Deceive
+dogesec

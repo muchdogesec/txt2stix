@@ -1,0 +1,7 @@
+A fraud attempt was detected in a banking environment after unusual login behavior triggered **Authorization Event Thresholding (D3:Detect)** alerts. The system flagged deviations from normal customer activity patterns, especially repeated failed logins followed by sudden successful access from a new device.
+
+Shortly after entry, the attacker attempted to escalate control by abusing identity flows through **Impersonate User (D3:ImpersonateUser)** techniques, while trying to weaken account restrictions under **User Account Permissions (D3-UAP)**. At the same time, they attempted to keep the session alive by probing system states that would normally be caught by **Operating Mode Monitoring (D3:Detect)**.
+
+As the fraud operation expanded, suspicious outbound requests to known bad domains were automatically blocked using **DNS Denylisting (D3:Isolate)**, cutting off communication with external infrastructure used for coordination. On the host side, malicious processes were quickly terminated through **Object Eviction (D3:Evict)** before they could carry out further actions.
+
+Before any sensitive data could be altered or extracted, security policy enforcement kicked in via **Content Policy (D3:ContentPolicy)** and **Content Excision (D3-CNE)**, stripping out embedded malicious payloads in transferred files and halting the attack chain. The incident ended without financial loss, but revealed a coordinated attempt to combine identity abuse, session manipulation, and controlled network exfiltration.

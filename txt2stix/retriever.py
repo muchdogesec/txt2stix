@@ -158,6 +158,12 @@ def _retrieve_stix_objects(host, knowledge_base, filter_value):
             return retreiver.get_objects_by_name(filter_value, 'mitre-f3')
         case "f3-id":
             return retreiver.get_objects_by_id(filter_value, 'mitre-f3')
+        
+        ### D3FEND
+        case "d3fend-name":
+            return retreiver.get_objects_by_name(filter_value, 'd3fend')
+        case "d3fend-id":
+            return retreiver.get_objects_by_id(filter_value, 'd3fend')
 
 
         ### OTHERS by Name
