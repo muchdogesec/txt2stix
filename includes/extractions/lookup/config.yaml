@@ -219,6 +219,36 @@ lookup_mitre_cwe_name:
   test_cases: generic_mitre_cwe_name
   stix_mapping: ctibutler-mitre-cwe-name
 
+####### MITRE F3 #######
+
+lookup_mitre_f3_id:
+  type: lookup
+  dogesec_web: false
+  name: MITRE F3 IDs
+  description: 'Extracts MITRE Fraud Fighting Framework (F3) IDs from text. See lookup name for version used.'
+  notes: 'ai_mitre_f3 also exists but beware of hallucinations'
+  file: 'lookups/mitre_f3_id_v1_0.txt'
+  created: 2020-01-01
+  modified: 2020-01-01
+  created_by: dogesec
+  version: 1.0.0
+  test_cases: generic_mitre_f3
+  stix_mapping: ctibutler-f3-id
+
+lookup_mitre_f3_name:
+  type: lookup
+  dogesec_web: false
+  name: MITRE F3 Names
+  description: 'Extracts MITRE Fraud Fighting Framework (F3) names from text. See lookup name for version used.'
+  notes: 'ai_mitre_f3 also exists but beware of hallucinations'
+  file: 'lookups/mitre_f3_name_v1_0.txt'
+  created: 2020-01-01
+  modified: 2020-01-01
+  created_by: dogesec
+  version: 1.0.0
+  test_cases: generic_mitre_f3_name
+  stix_mapping: ctibutler-f3-name
+
 ####### MITRE ATLAS #######
 
 lookup_mitre_atlas_id:

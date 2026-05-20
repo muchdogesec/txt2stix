@@ -152,6 +152,13 @@ def _retrieve_stix_objects(host, knowledge_base, filter_value):
             return retreiver.get_objects_by_alias(filter_value, 'sector')
         case 'sector-name':
             return retreiver.get_objects_by_name(filter_value, 'sector')
+        
+        ### F3
+        case "f3-name":
+            return retreiver.get_objects_by_name(filter_value, 'mitre-f3')
+        case "f3-id":
+            return retreiver.get_objects_by_id(filter_value, 'mitre-f3')
+
 
         ### OTHERS by Name
         case "mitre-capec-name":
