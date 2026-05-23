@@ -848,6 +848,34 @@ python3 txt2stix.py \
 	--report_id 6ba5c857-86be-4016-9490-7b83b2d18105
 ```
 
+#### ai_mitre_d3fend
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/ai_mitre_d3fend.txt \
+	--name 'ai_mitre_d3fend' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_mitre_d3fend \
+	--ai_settings_extractions openai:gpt-5-mini \
+	--report_id c6908157-fdb3-4f48-8106-66417367a10b
+```
+
+#### ai_mitre_f3
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/ai_mitre_f3.txt \
+	--name 'ai_mitre_f3' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_mitre_f3 \
+	--ai_settings_extractions openai:gpt-5-mini \
+	--report_id 9f4814b8-9d69-46dd-82ca-41ecc94170b1
+```
+
 #### ai_sector
 
 ```shell

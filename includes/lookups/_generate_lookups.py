@@ -261,7 +261,7 @@ queries = {
             AND doc.revoked != true
             RETURN doc.name
         """,
-      "mitre_d3f3nd_id_v1_3_0.txt":
+      "mitre_d3fend_id_v1_3_0.txt":
         """
           FOR doc IN d3fend_vertex_collection
             FILTER doc._stix2arango_note == "version=1_3_0"
@@ -275,7 +275,7 @@ queries = {
               RETURN reference.external_id
         """,
 
-      "mitre_d3f3nd_name_v1_3_0.txt":
+      "mitre_d3fend_name_v1_3_0.txt":
         """
           FOR doc IN d3fend_vertex_collection
             FILTER doc._stix2arango_note == "version=1_3_0"

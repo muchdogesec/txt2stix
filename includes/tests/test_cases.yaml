@@ -676,6 +676,15 @@ generic_mitre_f3_name:
   test_negative_examples:
     - 'F1001' # is id
 
+ai_mitre_f3:
+  test_positive_examples:
+    - 'F1001' # is id
+  test_negative_examples:
+    -
+
+####### D3FEND #######
+### YOU NEED TO ENSURE POSITIVE TESTS EXIST IN YOUR CTIBUTLER INSTALL
+
 generic_mitre_d3fend:
   test_positive_examples:
     - 'D3-SPP' # course-of-action--09538fd5-30bc-5a10-971f-535f8d8bbf2f
@@ -690,6 +699,12 @@ generic_mitre_d3fend_name:
   test_negative_examples:
     - 'D3-SPP' # is ID
     - 'd3f:Isolate' # is namespaced ID
+
+ai_mitre_d3fend:
+  test_positive_examples:
+    - '3f:Isolate' # is id
+  test_negative_examples:
+    -
 
 ####### Sector ########
 generic_sector_aliases:

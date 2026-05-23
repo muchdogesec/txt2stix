@@ -1,6 +1,6 @@
 ====Good====
 
-F1001
+3f:Isolate
 
 ====Bad====
 

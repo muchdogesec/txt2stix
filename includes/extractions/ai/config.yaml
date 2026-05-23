@@ -966,7 +966,7 @@ ai_mitre_f3:
 
 ####### MITRE D3FEND #######
 
-ai_mitre_d3f3nd:
+ai_mitre_d3fend:
   type: ai
   dogesec_web: true
   name: 'MITRE D3FEND'
@@ -979,7 +979,7 @@ ai_mitre_d3f3nd:
   prompt_base: 'Extract all references to MITRE D3FEND objects from the text.'
   prompt_helper: 'Extractions should only be made if the text includes references to defensive cybersecurity techniques, countermeasures, or defensive methodologies. If you are unsure, you can learn more about MITRE D3FEND here: https://d3fend.mitre.org/'
   prompt_conversion: 'You should respond with only the MITRE D3FEND ID.'
-  test_cases: ai_mitre_d3f3nd
+  test_cases: ai_mitre_d3fend
   stix_mapping: ctibutler-d3fend-id
 
 ####### Sector #######

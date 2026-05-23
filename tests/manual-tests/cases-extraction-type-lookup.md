@@ -11,6 +11,8 @@ python3 txt2stix.py \
 	--report_id e591128d-1a69-4679-9785-4de6a7c14f28
 ```
 
+### ATLAS
+
 #### lookup_mitre_atlas_id
 
 ```shell
@@ -37,6 +39,8 @@ python3 txt2stix.py \
 	--report_id f68ac5ca-5062-4c89-9d0a-274ff97aa13b
 ```
 
+### DISARM
+
 #### lookup_disarm_id
 
 ```shell
@@ -62,6 +66,8 @@ python3 txt2stix.py \
 	--use_extractions lookup_disarm_name \
 	--report_id f51c1399-abcf-417a-b3e4-2c205790b172
 ```
+
+### MITRE ATT&CK
 
 #### lookup_mitre_attack_enterprise_id
 
@@ -180,6 +186,8 @@ python3 txt2stix.py \
 	--report_id 993aa74f-106e-4efd-9a8c-a6f46b1df48e
 ```
 
+### MITRE CAPEC
+
 #### lookup_mitre_capec_id
 
 ```shell
@@ -206,6 +214,8 @@ python3 txt2stix.py \
 	--report_id b6400977-2bcf-4d01-a953-6e3555ab2d2b
 ```
 
+### CWE
+
 #### lookup_mitre_cwe_id
 
 ```shell
@@ -231,6 +241,64 @@ python3 txt2stix.py \
 	--use_extractions lookup_mitre_cwe_name \
 	--report_id 06d19a95-4605-44e8-b075-bdb151d46430
 ```
+
+### MITRE D3FEND
+
+#### lookup_mitre_d3fend_name
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_mitre_d3fend_name.txt \
+	--name 'lookup_mitre_d3fend_name' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions lookup_mitre_d3fend_name \
+	--report_id 1d3ce15d-fa41-4f0a-a144-05be683fc93f
+```
+
+#### lookup_mitre_d3fend_id
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_mitre_d3fend.txt \
+	--name 'lookup_mitre_d3fend_id' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions lookup_mitre_d3fend_id \
+	--report_id 80ca9466-fc61-4c05-9d09-d0b80d072d79
+```
+
+### MITRE F3
+
+#### lookup_mitre_f3_name
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_mitre_f3_name.txt \
+	--name 'lookup_mitre_f3_name' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions lookup_mitre_f3_name \
+	--report_id b03736ed-544e-436c-896b-5004c04314cf
+```
+
+#### lookup_mitre_f3_id
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_mitre_f3.txt \
+	--name 'lookup_mitre_f3_id' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions lookup_mitre_f3_id \
+	--report_id 39e3b2c1-2113-4de4-b63d-6dfb71195aaa
+```
+
+### Generic object extractions
 
 #### lookup_attack_pattern
 
