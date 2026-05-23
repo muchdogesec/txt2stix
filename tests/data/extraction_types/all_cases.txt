@@ -164,10 +164,23 @@ AML.M0015
 AML.T0050
 Defense Evasion
 Active Scanning
+AML.M0015
+AML.T0050
 T0131.001
 TA01
 Microtarget
 Develop Narratives
+T0131.001
+TA01
+F1001
+TA0002
+ATM Manipulation
+F1001
+D3-SPP
+d3f:Isolate
+DNS Denylisting
+User Account Permissions
+3f:Isolate
 Biotechnology
 Diplomatic Organizations
 Content Spoofer

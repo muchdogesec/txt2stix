@@ -1,0 +1,132 @@
+Interactive Voice Response Mapping
+Impersonate Account Holder
+Phone Number Spoofing: Official Phone Number Spoofing
+Conversion to Physical Monetary Instruments: Cash
+Abuse of Public-Facing API
+Device Fingerprint Spoofing
+Phishing
+PAN/CVV Generation
+Electronic Funds Transfer: Peer-to-Peer Transfer
+Scheduled Transfer
+Acquire Infrastructure: Malvertising
+Remote Access Tools
+Compromise Accounts: Social Media Accounts
+Convert to Cryptocurrency
+Falsify Business Documents
+Stage Capabilities: SEO Poisoning
+Abuse SMS verification
+Conversion to Physical Monetary Instruments: Cashier's Check
+Bank Deposit: Night Deposit
+Bank Deposit: Test Deposit
+NFC Payment
+Account Manipulation: Update Call Receiving Device
+Gather Customer Information
+Drive-by Compromise
+Multi-Factor Authentication Interception
+Account Takeover: Exposed API Key
+Search Open Websites/Domains: Social Media
+Browser Session Hijacking
+Email Spoofing
+Create Fake Materials: Fake Website
+Account Takeover: Exposed Login Credential
+Indicator Removal
+Electronic Funds Transfer: Regional Payment Rail
+Buy Money Order
+Establish Accounts
+Compromise Accounts
+Card Dump Capture
+Structuring
+Check Fraud
+Dispute Legitimate Transaction
+Account Manipulation: Add Beneficiary
+Use Virtual Cards
+Bank Deposit: ATM Deposit
+Mail Theft
+Abuse of Public-Facing API: Mobile API Abuse
+Exploitation of Gambling Platforms
+Adversary-in-the-Browser: Malicious JavaScript Injection
+Search Open Websites/Domains
+Adversary-in-the-Browser
+Compromise Accounts: Cloud Accounts
+Acquire Infrastructure
+PaReq Manipulation
+Change Payroll Details
+Brute Force: Password Cracking
+Conversion to Physical Monetary Instruments
+Account Manipulation: Account Linking
+Supply Chain Compromise
+Account Manipulation
+Phone Number Spoofing: Customer Phone Number Spoofing
+Create Fraudulent Merchant Account
+Search Open Websites/Domains: Search Engines
+ATM Manipulation: ATM Software Manipulation
+Screen Capture
+Create Fake Materials: Fake Documents
+SIM Card Swap
+Brute Force: Password Spraying
+Phone Number Spoofing
+Adversary-in-the-Browser: DLL Injection
+Conversion to Physical Monetary Instruments: Money Order
+Brute Force: Password Guessing
+Transfer of funds
+Account Manipulation: Change Account Details
+Account Manipulation: Change E-Delivery or Notification Settings
+Stage Capabilities
+Reversal of Transaction
+Reactivate Account
+Account Manipulation: Add Authorized User
+Use Alternate Authentication Material: Application Access Token
+Access with Stolen Session Cookie
+Steal Web Session Cookie
+PIN-code Peeking
+Multi-Factor Authentication Request Generation
+Abuse Accessibility Features
+Electronic Funds Transfer: Wire Transfer
+Create Fake Materials
+Credentials from Password Stores
+Phishing for Information
+Impersonate Official
+Acquire Infrastructure: Domains
+Account Manipulation: Enable Account Features
+Acquire Access
+Use Alternate Authentication Material
+Card Testing
+Bank Deposit: Mobile Deposit
+Email Bombing
+Account Takeover
+New Vendor Setup
+Delete Relevant Emails
+Create Counterfeit Card
+Compromise Payment Gateway
+Account Access Removal
+ATM Manipulation: ATM Hardware Manipulation
+Acquire Infrastructure: Virtual Private Network or Server
+3DS Bypass
+Fradulent Purchasing
+Abuse of Public-Facing API: Web API Abuse
+Account Manipulation: Change of Payment Details
+Test Payment Thresholds
+Account Takeover: Password Reset
+Credentials from Password Stores: Password Managers
+Adversary-in-the-Browser: Malicious Browser Extension
+Adversary-in-the-Middle
+Brute Force
+Credentials from Password Stores: Credentials from Web Browsers
+Insider Access Abuse
+Geolocation Spoofing
+Compromise Accounts: Corporate Accounts
+ATM Manipulation
+Churning
+Brute Force:  Credential Stuffing
+Bank Deposit
+Electronic Funds Transfer
+Compromise Accounts: Email Accounts
+F3
+Fight Financial Fraud Matrix
+Monetization
+Positioning
+Execution
+Defense Evasion
+Resource Development
+Reconnaissance
+Initial Access

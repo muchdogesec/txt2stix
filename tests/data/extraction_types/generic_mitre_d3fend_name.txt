@@ -1,0 +1,9 @@
+====Good====
+
+DNS Denylisting
+User Account Permissions
+
+====Bad====
+
+D3-SPP
+d3f:Isolate

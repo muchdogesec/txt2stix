@@ -1,0 +1,9 @@
+====Good====
+
+F1001
+TA0002
+
+====Bad====
+
+TA9999
+ATM Manipulation
