@@ -702,7 +702,7 @@ generic_mitre_d3fend_name:
 
 ai_mitre_d3fend:
   test_positive_examples:
-    - '3f:Isolate' # is id
+    - 'd3f:Isolate' # is id
   test_negative_examples:
     -
 
