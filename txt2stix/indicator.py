@@ -861,7 +861,10 @@ def _build_observables(
             )
         ]
 
-    if stix_mapping == "identity":
+    if stix_mapping.startswith("identity"):
+        _class = "unspecified"
+        if stix_mapping == "identity-company-name":
+            _class = "organization"
         stix_objects = [
             dict_to_stix2(
                 {
@@ -872,7 +875,7 @@ def _build_observables(
                     "modified": _date,
                     "id": "identity--" + _id_part,
                     "name": extracted_value,
-                    "identity_class": "unspecified",
+                    "identity_class": _class,
                     "external_references": external_refs,
                     "object_marking_refs": marking_refs,
                 }

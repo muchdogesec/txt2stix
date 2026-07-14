@@ -1018,7 +1018,7 @@ ai_company_names:
   prompt_helper: ''
   prompt_conversion: ''
   test_cases: ai_company_names
-  stix_mapping: company-names
+  stix_mapping: identity-company-name
 
 ####### Generic Extractions #######
 
