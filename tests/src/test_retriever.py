@@ -110,7 +110,7 @@ def f():
         (
             "ctibutler-mitre-atlas-name",
             "Defense Evasion",
-            ["x-mitre-tactic--22a483dc-1102-5fd0-94bd-b4259c537274"],
+            ["x-mitre-tactic--22a483dc-1102-5fd0-94bd-b4259c537274", "attack-pattern--1f612544-c939-5d60-ad34-2d0644622e1f"],
         ),
         (
             "ctibutler-disarm-id",
