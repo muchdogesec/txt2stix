@@ -1522,6 +1522,7 @@ UUIDv5 is generated using namespace `f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5` and `
 Objects created:
 
 * `identity`
+* `sector`
 
 ```json
 {
@@ -1541,22 +1542,6 @@ Objects created:
 ```
 
 UUIDv5 is generated using namespace `f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5` and `txt2stix+<extracted_value>`
-
-### stix-mapping: `software` (product)
-
-Objects created:
-
-* `software`
-
-```json
-{
-    "type": "software",
-    "spec_version": "2.1",
-    "id": "software--<STIX2 LIB GEN>",
-    "name": "<EXTRACTED VALUE>",
-    "vendor": "<EXTRACTED VALUE>"
-}
-```
 
 ## STIX Mapping (remotely created objects)
 

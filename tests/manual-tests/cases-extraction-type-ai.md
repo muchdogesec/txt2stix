@@ -890,6 +890,21 @@ python3 txt2stix.py \
 	--report_id d8c1b8fa-4d82-488f-932f-ee987a556107
 ```
 
+#### ai_companies
+
+```shell
+python3 txt2stix.py \
+	--relationship_mode standard \
+	--input_file tests/data/extraction_types/generic_sector_aliases.txt \
+	--name 'ai_company_names' \
+	--tlp_level clear \
+	--confidence 100 \
+	--use_extractions ai_company_names \
+	--ai_settings_extractions openai:gpt-5-mini \
+	--report_id 2567570b-0315-4856-a401-5e1f881d28da
+```
+
+
 ## Generic STIX lookups
 
 #### ai_attack_pattern

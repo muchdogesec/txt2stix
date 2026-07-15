@@ -180,9 +180,11 @@ D3-SPP
 d3f:Isolate
 DNS Denylisting
 User Account Permissions
-3f:Isolate
+d3f:Isolate
 Biotechnology
 Diplomatic Organizations
+Google
+Microsoft
 Content Spoofer
 Inspector-1
 Patch server

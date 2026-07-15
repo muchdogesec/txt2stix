@@ -1,0 +1,8 @@
+====Good====
+
+Google
+Microsoft
+
+====Bad====
+
+Biotechnology
