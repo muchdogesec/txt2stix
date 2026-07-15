@@ -709,10 +709,18 @@ ai_mitre_d3fend:
 ####### Sector ########
 generic_sector_aliases:
   test_positive_examples:
-    - Biotechnology
-    - Diplomatic Organizations
+    - 'Biotechnology'
+    - 'Diplomatic Organizations'
   test_negative_examples:
-    - Random Company Inc
+    - 'Random Company Inc'
+
+####### Sector ########
+generic_company_names:
+  test_positive_examples:
+    - 'Google'
+    - 'Microsoft'
+  test_negative_examples:
+    - Biotechnology
 
 ####### Misc STIX Objects #######
 

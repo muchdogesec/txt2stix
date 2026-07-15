@@ -1241,7 +1241,6 @@ To ensure duplicate `phone-number` objects are not created for the same values, 
 * Namespace = `00abedb4-aa42-466c-9c01-fed23315a9b7` (this is the default MITRE namespace used in the stix2 python lib https://github.com/oasis-open/cti-python-stix2/blob/50fd81fd6ba4f26824a864319305bc298e89bb45/stix2/base.py#L29)
 * Value = `<number>`
 
-
 ### stix-mapping: `process`
 
 Objects always created:
@@ -1295,7 +1294,6 @@ To ensure duplicate `process` objects are not created for the same values, a UUI
 
 * Namespace = `00abedb4-aa42-466c-9c01-fed23315a9b7` (this is the default MITRE namespace used in the stix2 python lib https://github.com/oasis-open/cti-python-stix2/blob/50fd81fd6ba4f26824a864319305bc298e89bb45/stix2/base.py#L29)
 * Value = `<number>`
-
 
 ### stix-mapping: `attack-pattern`
 
@@ -1510,6 +1508,32 @@ Objects created:
     "modified": "2020-01-01T00:00:00.000Z",
     "name": "<EXTRACTED VALUE>",
     "identity_class": "unspecified",
+    "object_marking_refs": [
+        "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
+        "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"
+    ]
+}
+```
+
+UUIDv5 is generated using namespace `f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5` and `txt2stix+<extracted_value>`
+
+### stix-mapping: `identity` (companies)
+
+Objects created:
+
+* `identity`
+* `sector`
+
+```json
+{
+    "type": "identity",
+    "spec_version": "2.1",
+    "id": "identity--<UUIDV5>",
+    "created_by_ref": "identity--<TXT2STIX IDENTITY>",
+    "created": "2020-01-01T00:00:00.000Z",
+    "modified": "2020-01-01T00:00:00.000Z",
+    "name": "<EXTRACTED VALUE>",
+    "identity_class": "organization",
     "object_marking_refs": [
         "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
         "marking-definition--f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5"

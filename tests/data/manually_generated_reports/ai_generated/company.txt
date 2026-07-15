@@ -1,0 +1,18 @@
+On 14 July 2026, an unidentified individual gained
+unauthorized physical access to **Northbridge Industrial
+Systems** by tailgating an employee through a secure
+entrance.
+
+The intruder briefly accessed an unattended workstation
+and connected an unauthorized USB device before leaving
+unnoticed.
+
+Three days later, the company detected unauthorized
+account access and attempted data exfiltration,
+consistent with malware deployed during the physical
+breach.
+
+Investigators are also examining possible links to a
+recent attack against **SilverPeak Logistics**,
+suggesting the two incidents may be part of a broader
+campaign targeting regional businesses.

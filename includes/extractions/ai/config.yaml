@@ -1002,6 +1002,24 @@ ai_sector:
   test_cases: ai_sector_names
   stix_mapping: ctibutler-sector-name
 
+####### Identity (companies) #######
+
+ai_company_names:
+  type: ai
+  dogesec_web: true
+  name: 'Companies'
+  description: 'Will extract all company names'
+  notes: ''
+  created: 2020-01-01
+  modified:  2020-01-01
+  created_by: dogesec
+  version: 1.0.0
+  prompt_base: 'Extract all company names from the text.'
+  prompt_helper: ''
+  prompt_conversion: ''
+  test_cases: ai_company_names
+  stix_mapping: identity-company-name
+
 ####### Generic Extractions #######
 
 ai_attack_pattern:
