@@ -44,7 +44,7 @@ class NamedDict(dict):
         value = None
         try:
             value = super().__getattribute__(attr)
-        except:
+        except AttributeError:
             pass
         if value is not None:
             return value

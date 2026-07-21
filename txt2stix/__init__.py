@@ -15,7 +15,7 @@ def get_include_path():
     try:
         from . import includes
         INCLUDES_PATH = Path(includes.__file__).parent
-    except:
+    except ImportError:
         pass
     return INCLUDES_PATH
 

@@ -42,7 +42,7 @@ class URLPathExtractor(BaseExtractor):
         try:
             ip_address(address)
             return True
-        except:
+        except Exception:
             return False
     @staticmethod
     def is_valid_url(url):

@@ -300,7 +300,7 @@ class txt2stixBundler:
                 ex["id"] = ex.get("id", f"ex_{self.observables_processed}")
                 self.observables_processed += 1
                 self.add_indicator(ex, add_standard_relationship)
-            except BaseException as e:
+            except Exception as e:
                 logger.debug(
                     f"ran into exception while processing observable `{ex}`. {e}",
                     exc_info=True,
@@ -312,7 +312,7 @@ class txt2stixBundler:
         for relationship in observables:
             try:
                 self.add_ai_relationship(relationship)
-            except BaseException as e:
+            except Exception as e:
                 logger.debug(
                     f"ran into exception while processing relationship `{relationship}`",
                     stack_info=True,

@@ -17,7 +17,7 @@ class CryptoBTCWalletExtractor(BaseExtractor):
         try:
             b58decode(value).hex()
             return True
-        except:
+        except ValueError:
             return False
 
 class CryptoBTCWalletTransactionExtractor(CryptoBTCWalletExtractor):

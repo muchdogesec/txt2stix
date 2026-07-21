@@ -64,7 +64,7 @@ try:
     from . import includes
 
     INCLUDES_PATH = Path(includes.__file__).parent
-except:
+except ImportError:
     pass
 
 
@@ -112,7 +112,7 @@ def parse_extractors_globbed(type, all_extractors, names):
                 pattern.load_extractor(extractor)
             filtered_extractors[extractor.type] = extraction_processor
             extraction_processor[extractor_name] = extractor
-        except BaseException as e:
+        except Exception as e:
             raise argparse.ArgumentTypeError(f"{type} `{extractor_name}`: {e}")
     return filtered_extractors
 
@@ -355,7 +355,7 @@ def run_extractors(
                 extractors_map["lookup"].values(), text_content
             )
             all_extracts["lookup"] = lookup_extracts
-        except BaseException as e:
+        except Exception as e:
             logging.exception("lookup extraction failed", exc_info=True)
 
     if extractors_map.get("pattern"):
@@ -369,7 +369,7 @@ def run_extractors(
                 ),
             )
             all_extracts["pattern"] = pattern_extracts
-        except BaseException as e:
+        except Exception as e:
             logging.exception("pattern extraction failed", exc_info=True)
 
     if extractors_map.get("ai"):
@@ -381,7 +381,7 @@ def run_extractors(
                     text_content, extractors_map["ai"].values()
                 )
                 all_extracts[f"ai-{extractor.extractor_name}"] = ai_extracts
-            except BaseException as e:
+            except Exception as e:
                 logging.exception(
                     "AI extraction failed for %s",
                     extractor.extractor_name,
@@ -401,7 +401,7 @@ def process_extracts(bundler: txt2stixBundler, all_extracts: dict):
     for key, extracts in (all_extracts or {}).items():
         try:
             bundler.process_observables(extracts)
-        except BaseException:
+        except Exception:
             logging.exception("processing extracts failed for %s", key, exc_info=True)
 
     log_notes(all_extracts, "Extractions")
@@ -419,7 +419,7 @@ def extract_relationships(
         )
         relationships = rel.model_dump()
         log_notes(relationships, "Relationships")
-    except BaseException as e:
+    except Exception as e:
         logging.exception("Relationship extraction failed: %s", e)
     return relationships
 
@@ -574,7 +574,7 @@ def processing_phase(
             bundler.add_summary(cc.summary, provider_name)
             if bundler.report["confidence"] is None:
                 bundler.report["confidence"] = cc.threat_score
-    except BaseException:
+    except Exception:
         logging.exception("applying content_check to bundler failed", exc_info=True)
 
     # process extracts into bundler
@@ -584,7 +584,7 @@ def processing_phase(
     try:
         if data.relationships:
             bundler.process_relationships(data.relationships.get("relationships", []))
-    except BaseException:
+    except Exception:
         logging.exception("processing relationships failed", exc_info=True)
 
     # generate attack flow / navigator layer now that bundler has been populated
@@ -600,7 +600,7 @@ def processing_phase(
                     flow=data.attack_flow,
                 )
             )
-    except BaseException:
+    except Exception:
         logging.exception("attack flow / navigator generation failed", exc_info=True)
 
 
@@ -644,7 +644,7 @@ def main():
         ## write outputs
         out = bundler.to_json()
         output_dir = Path("./output") / str(bundler.uuid)
-        with contextlib.suppress(BaseException):
+        with contextlib.suppress(Exception):
             shutil.rmtree(output_dir)
         output_dir.mkdir(exist_ok=True, parents=True)
         output_path = output_dir / f"{bundler.bundle.id}.json"
@@ -661,5 +661,3 @@ def main():
             logger.info(f"Wrote navigator output to `{nav_path}`")
     except argparse.ArgumentError as e:
         logger.exception(e, exc_info=True)
-    except:
-        raise

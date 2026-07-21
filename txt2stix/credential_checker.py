@@ -23,7 +23,7 @@ def check_llms():
             auth_info[model_name] = model.check_credential()
         except argparse.ArgumentTypeError:
             auth_info[model_name] = "unsupported"
-        except:
+        except Exception:
             auth_info[model_name] = "unauthorized"
     return auth_info
 
@@ -43,7 +43,7 @@ def check_ctibutler_vulmatch(service):
                 return "authorized"
             case _:
                 return "unknown"
-    except:
+    except Exception:
         return "offline"
 
 def check_btcscan():
@@ -57,7 +57,7 @@ def check_btcscan():
                 return "authorized"
             case _:
                 return "unknown"
-    except:
+    except Exception:
         return "offline"
 
 def check_statuses(test_llms=False):
