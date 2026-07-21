@@ -55,7 +55,7 @@ def find_hash_type(value, name):
         try:
             HashConstant(value, alg)
             return alg
-        except:
+        except ValueError:
             pass
     return
 
@@ -100,7 +100,7 @@ def build_observables(
         )
     except BadDataException:
         raise
-    except BaseException as e:
+    except Exception as e:
         raise BadDataException("unknown data error") from e
 
 

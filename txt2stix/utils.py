@@ -61,7 +61,7 @@ def remove_links(input_text: str, remove_images: bool, remove_anchors: bool):
 def read_included_file(path):
     try:
         return pkgutil.get_data("txt2stix.includes", path).decode()
-    except:
+    except (AttributeError, ImportError):
         return (Path("includes")/path).read_text()
     
 def validate_tld(domain: str):

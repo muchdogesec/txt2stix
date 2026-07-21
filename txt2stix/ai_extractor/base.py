@@ -99,7 +99,7 @@ class BaseAIExtractor():
     def check_credential(self):
         try:
             return "authorized" if self._check_credential() else "unauthorized"
-        except:
+        except Exception:
             return "unknown"
         
     def _check_credential(self):

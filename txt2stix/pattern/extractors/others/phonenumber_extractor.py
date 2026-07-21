@@ -36,6 +36,6 @@ class PhoneNumberExtractor(BaseExtractor):
             if not phonenumbers.is_valid_number(phone):
                 return None
             return phone
-        except:
+        except Exception:
             return None
 
