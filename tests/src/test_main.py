@@ -108,6 +108,59 @@ def test_parse_args():
             args = parse_args()
             assert args.input_file == Path("test.txt")
             assert args.name == "test-report"
+            assert args.admiralty_source_reliability is None
+            assert args.admiralty_information_credibility is None
+
+
+def test_parse_admiralty_args():
+    with mock.patch(
+        "sys.argv",
+        [
+            "program",
+            "--input-file",
+            "test.txt",
+            "--name",
+            "test-report",
+            "--relationship_mode",
+            "standard",
+            "--admiralty-source-reliability",
+            "b",
+            "--admiralty-information-credibility",
+            "2",
+        ],
+    ):
+        with mock.patch("pathlib.Path.exists", return_value=True):
+            args = parse_args()
+
+    assert args.admiralty_source_reliability == "B"
+    assert args.admiralty_information_credibility == 2
+
+
+@pytest.mark.parametrize(
+    ("argument", "value"),
+    [
+        ("--admiralty-source-reliability", "G"),
+        ("--admiralty-information-credibility", "7"),
+    ],
+)
+def test_parse_invalid_admiralty_args(argument, value):
+    with mock.patch(
+        "sys.argv",
+        [
+            "program",
+            "--input-file",
+            "test.txt",
+            "--name",
+            "test-report",
+            "--relationship_mode",
+            "standard",
+            argument,
+            value,
+        ],
+    ):
+        with mock.patch("pathlib.Path.exists", return_value=True):
+            with pytest.raises(SystemExit):
+                parse_args()
 
 
 def test_parse_args_fails(monkeypatch):

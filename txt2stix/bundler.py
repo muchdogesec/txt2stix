@@ -20,6 +20,10 @@ import uuid
 import json
 from .indicator import build_observables
 from .tlp_levels import TLP_LEVEL
+from .admiralty import (
+    ADMIRALTY_INFORMATION_CREDIBILITY,
+    ADMIRALTY_SOURCE_RELIABILITY,
+)
 
 
 logger = logging.getLogger("txt2stix.stix")
@@ -60,12 +64,26 @@ class txt2stixBundler:
         created=None,
         external_references=None,
         modified=None,
+        admiralty_source_reliability=None,
+        admiralty_information_credibility=None,
     ) -> None:
         self.observables_processed = 0
         self.created = created or dt.now(tz=UTC)
         self.all_extractors = extractors
         self.identity = identity or self.default_identity
         self.tlp_level = TLP_LEVEL.get(tlp_level)
+        self.admiralty_source_reliability = (
+            ADMIRALTY_SOURCE_RELIABILITY.get(admiralty_source_reliability)
+            if admiralty_source_reliability is not None
+            else None
+        )
+        self.admiralty_information_credibility = (
+            ADMIRALTY_INFORMATION_CREDIBILITY.get(
+                admiralty_information_credibility
+            )
+            if admiralty_information_credibility is not None
+            else None
+        )
         self.summary = ""
         if report_id:
             self.uuid = report_id
@@ -110,12 +128,29 @@ class txt2stixBundler:
 
     def set_defaults(self):
         # self.value.extend(TLP_LEVEL.values()) # adds all tlp levels
-        self.bundle = Bundle(objects=[self.tlp_level.value], id=f"bundle--{self.uuid}")
+        self.bundle = Bundle(
+            objects=[self.tlp_level.value],
+            id=f"bundle--{self.uuid}",
+        )
 
-        self.bundle.objects.extend([self.default_marking, self.identity, self.report])
+        self.bundle.objects.extend([self.default_marking, self.identity])
+        self.set_admiralty_defaults(self.admiralty_source_reliability, self.admiralty_information_credibility)
+        self.bundle.objects.append(self.report)
         # add default STIX 2.1 marking definition for txt2stix
         self.report["object_marking_refs"].append(self.default_marking.id)
-
+    
+    def set_admiralty_defaults(self, source_reliability, information_credibility):
+        self.admiralty_markings = []
+        for marking in [source_reliability, information_credibility]:
+            if marking is None:
+                continue
+            self.report["object_marking_refs"].append(marking.value.id)
+            self.admiralty_markings.append(marking.value)
+            for obj in marking.objects:
+                if obj.id not in self.added_objects:
+                    self.added_objects.add(obj.id)
+                    self.bundle.objects.append(obj)
+    
     def add_extension(self, object):
         _type = object["type"]
         if self.EXTENSION_MAPPING.get(_type, "") is None:
