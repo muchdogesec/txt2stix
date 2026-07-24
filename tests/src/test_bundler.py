@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 from unittest.mock import MagicMock, call, patch
 import uuid
 
@@ -7,8 +8,13 @@ from txt2stix.bundler import txt2stixBundler, TLP_LEVEL
 from txt2stix.common import MinorException
 from . import utils
 from dateutil.parser import parse as parse_date
-from stix2 import Identity, Relationship
+from stix2 import Identity, MarkingDefinition, Relationship
 from stix2extensions import Weakness, PaymentCard
+from txt2stix.admiralty import (
+    ADMIRALTY_INFORMATION_CREDIBILITY,
+    ADMIRALTY_SOURCE_RELIABILITY,
+)
+from txt2stix import admiralty as admiralty_module
 
 dummy_identity = Identity(
     **{
@@ -18,6 +24,26 @@ dummy_identity = Identity(
         "name": "Test Identity",
     }
 )
+
+ADMIRALTY_BUNDLE_PATH = (
+    Path(__file__).resolve().parents[1] / "data" / "admiralty" / "all_objects_bundle.json"
+)
+ADMIRALTY_BUNDLE_DATA = json.loads(ADMIRALTY_BUNDLE_PATH.read_text())
+
+
+@pytest.fixture
+def mock_admiralty_fetch(monkeypatch):
+    def get(url, timeout):
+        response = MagicMock()
+        response.json.return_value = ADMIRALTY_BUNDLE_DATA
+        response.raise_for_status.return_value = None
+        return response
+
+    admiralty_module.prepare.cache_clear()
+    monkeypatch.setattr(admiralty_module, "ADMIRALTY__OBJECTS", {})
+    monkeypatch.setattr(admiralty_module.requests, "get", get)
+    yield
+    admiralty_module.prepare.cache_clear()
 
 
 @pytest.mark.parametrize(
@@ -462,6 +488,110 @@ def test_to_json__empty_object_refs(bundler):
     report = next(obj for obj in json_objects if obj["type"] == "report")
     assert report["id"] == "report--d9f3b306-e7fe-4074-b89a-33ce54280718"
     assert report["object_refs"] == [bundler.identity["id"]]
+
+
+@pytest.mark.parametrize(
+    (
+        "source_reliability",
+        "information_credibility",
+        "expected_admiralty_markings",
+    ),
+    [
+        (None, None, 0),
+        ("A", None, 1),
+        (None, 1, 1),
+        ("B", 2, 2),
+    ],
+)
+def test_admiralty_markings(
+    source_reliability,
+    information_credibility,
+    expected_admiralty_markings,
+    mock_admiralty_fetch,
+):
+    bundler = txt2stixBundler(
+        name="Admiralty test",
+        identity=None,
+        tlp_level="clear",
+        description="test description",
+        confidence=None,
+        extractors={},
+        labels=[],
+        admiralty_source_reliability=source_reliability,
+        admiralty_information_credibility=information_credibility,
+    )
+
+    assert len(bundler.admiralty_markings) == expected_admiralty_markings
+    for marking in bundler.admiralty_markings:
+        assert marking in bundler.bundle.objects
+        assert marking.id in bundler.report["object_marking_refs"]
+
+    assert len(bundler.report["object_marking_refs"]) == (
+        2 + expected_admiralty_markings
+    )
+
+
+def test_admiralty_markings_propagate_to_report_specific_objects(
+    mock_admiralty_fetch,
+):
+    bundler = txt2stixBundler(
+        name="Admiralty test",
+        identity=None,
+        tlp_level="clear",
+        description="test description",
+        confidence=None,
+        extractors={},
+        labels=[],
+        admiralty_source_reliability="A",
+        admiralty_information_credibility=1,
+    )
+    extractor = MagicMock(slug="test", version="1")
+
+    indicator = bundler.new_indicator(extractor, "domain-name", "example.com")
+    relationship = bundler.new_relationship(
+        "domain-name--8f17bb97-632c-57ca-8856-879a3fd651ce",
+        "ipv4-addr--b2e7528e-0693-57c1-8f2c-5cc679fb61fc",
+        "resolves-to",
+    )
+
+    assert indicator["object_marking_refs"] == bundler.report["object_marking_refs"]
+    assert list(relationship.object_marking_refs) == bundler.report[
+        "object_marking_refs"
+    ]
+
+
+def test_admiralty_markings_do_not_propagate_to_reusable_objects(
+    mock_admiralty_fetch,
+):
+    extractor = MagicMock(
+        stix_mapping="campaign",
+        slug="test_campaign",
+        version="1_0",
+    )
+    bundler = txt2stixBundler(
+        name="Admiralty test",
+        identity=None,
+        tlp_level="red",
+        description="test description",
+        confidence=None,
+        extractors={"test_campaign": extractor},
+        labels=[],
+        admiralty_source_reliability="A",
+        admiralty_information_credibility=1,
+    )
+
+    bundler.add_indicator(
+        {"type": "test_campaign", "value": "Reusable campaign", "id": "ex-0"},
+        add_standard_relationship=False,
+    )
+
+    campaign = next(obj for obj in bundler.bundle.objects if obj["type"] == "campaign")
+    admiralty_ids = {marking.id for marking in bundler.admiralty_markings}
+    assert admiralty_ids.isdisjoint(campaign.object_marking_refs)
+    assert list(campaign.object_marking_refs) == [
+        TLP_LEVEL.CLEAR.value.id,
+        bundler.default_marking.id,
+    ]
 
 
 def test_to_json__with_object_refs(bundler):

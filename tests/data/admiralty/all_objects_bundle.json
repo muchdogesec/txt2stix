@@ -1,0 +1,314 @@
+{
+    "type": "bundle",
+    "id": "bundle--e8e8b846-7db6-5104-bdb5-0740c043e010",
+    "objects": [
+        {
+            "type": "extension-definition",
+            "spec_version": "2.1",
+            "id": "extension-definition--5b93a453-445f-5fd6-9035-1d8fd3f8188b",
+            "created_by_ref": "identity--9779a2db-f98c-5f4b-8d08-8ee04e02dbb5",
+            "created": "2020-01-01T00:00:00.000Z",
+            "modified": "2020-01-01T00:00:00.000Z",
+            "name": "Marking Definition Admiralty Source Reliability",
+            "description": "This extension adds new properties to Marking Definition objects to capture Admiralty source reliability.",
+            "schema": "https://downloads.ctibutler.com/admiralty-codes/schemas/properties/marking-definition-admiralty-source-reliability.json",
+            "version": "1.0",
+            "extension_types": [
+                "property-extension"
+            ],
+            "extension_properties": [
+                "admiralty_source_reliability",
+                "admiralty_source_reliability_description"
+            ],
+            "object_marking_refs": [
+                "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
+                "marking-definition--60c0f466-511a-5419-9f7e-4814e696da40"
+            ]
+        },
+        {
+            "type": "extension-definition",
+            "spec_version": "2.1",
+            "id": "extension-definition--684bccf7-abc1-5315-ba05-33c5371cc0a6",
+            "created_by_ref": "identity--9779a2db-f98c-5f4b-8d08-8ee04e02dbb5",
+            "created": "2020-01-01T00:00:00.000Z",
+            "modified": "2020-01-01T00:00:00.000Z",
+            "name": "Marking Definition Admiralty Information Credibility",
+            "description": "This extension adds new properties to Marking Definition objects to capture Admiralty information credibility.",
+            "schema": "https://downloads.ctibutler.com/admiralty-codes/schemas/properties/marking-definition-admiralty-information-credibility.json",
+            "version": "1.0",
+            "extension_types": [
+                "property-extension"
+            ],
+            "extension_properties": [
+                "admiralty_information_credibility",
+                "admiralty_information_credibility_description"
+            ],
+            "object_marking_refs": [
+                "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
+                "marking-definition--60c0f466-511a-5419-9f7e-4814e696da40"
+            ]
+        },
+        {
+            "type": "identity",
+            "spec_version": "2.1",
+            "id": "identity--9779a2db-f98c-5f4b-8d08-8ee04e02dbb5",
+            "created": "2020-01-01T00:00:00.000Z",
+            "modified": "2020-01-01T00:00:00.000Z",
+            "name": "dogesec",
+            "description": "https://github.com/muchdogesec/",
+            "identity_class": "organization",
+            "sectors": [
+                "technology"
+            ],
+            "contact_information": "https://www.dogesec.com/contact/",
+            "confidence": 100,
+            "object_marking_refs": [
+                "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
+                "marking-definition--97ba4e8b-04f6-57e8-8f6e-3a0f0a7dc0fb"
+            ]
+        },
+        {
+            "type": "marking-definition",
+            "spec_version": "2.1",
+            "id": "marking-definition--0a48adab-e7d5-5354-8a41-abf199fe2628",
+            "created": "2020-01-01T00:00:00.000Z",
+            "created_by_ref": "identity--9779a2db-f98c-5f4b-8d08-8ee04e02dbb5",
+            "name": "Admiralty Information Credibility: 5 - Improbable",
+            "extensions": {
+                "extension-definition--684bccf7-abc1-5315-ba05-33c5371cc0a6": {
+                    "extension_type": "property-extension",
+                    "admiralty_information_credibility": "5",
+                    "admiralty_information_credibility_description": "Improbable"
+                }
+            },
+            "object_marking_refs": [
+                "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
+                "marking-definition--60c0f466-511a-5419-9f7e-4814e696da40"
+            ]
+        },
+        {
+            "type": "marking-definition",
+            "spec_version": "2.1",
+            "id": "marking-definition--223ecfcc-22ce-5ece-b91c-a05a53a91959",
+            "created": "2020-01-01T00:00:00.000Z",
+            "created_by_ref": "identity--9779a2db-f98c-5f4b-8d08-8ee04e02dbb5",
+            "name": "Admiralty Source Reliability: D - Not usually reliable",
+            "extensions": {
+                "extension-definition--5b93a453-445f-5fd6-9035-1d8fd3f8188b": {
+                    "extension_type": "property-extension",
+                    "admiralty_source_reliability": "D",
+                    "admiralty_source_reliability_description": "Not usually reliable"
+                }
+            },
+            "object_marking_refs": [
+                "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
+                "marking-definition--60c0f466-511a-5419-9f7e-4814e696da40"
+            ]
+        },
+        {
+            "type": "marking-definition",
+            "spec_version": "2.1",
+            "id": "marking-definition--2244db4b-ee29-5b8c-bed4-c7ac784c647a",
+            "created": "2020-01-01T00:00:00.000Z",
+            "created_by_ref": "identity--9779a2db-f98c-5f4b-8d08-8ee04e02dbb5",
+            "name": "Admiralty Information Credibility: 6 - Truth cannot be judged",
+            "extensions": {
+                "extension-definition--684bccf7-abc1-5315-ba05-33c5371cc0a6": {
+                    "extension_type": "property-extension",
+                    "admiralty_information_credibility": "6",
+                    "admiralty_information_credibility_description": "Truth cannot be judged"
+                }
+            },
+            "object_marking_refs": [
+                "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
+                "marking-definition--60c0f466-511a-5419-9f7e-4814e696da40"
+            ]
+        },
+        {
+            "type": "marking-definition",
+            "spec_version": "2.1",
+            "id": "marking-definition--2462b621-0825-5879-917c-082e0394bcf4",
+            "created": "2020-01-01T00:00:00.000Z",
+            "created_by_ref": "identity--9779a2db-f98c-5f4b-8d08-8ee04e02dbb5",
+            "name": "Admiralty Information Credibility: 1 - Confirmed by other sources",
+            "extensions": {
+                "extension-definition--684bccf7-abc1-5315-ba05-33c5371cc0a6": {
+                    "extension_type": "property-extension",
+                    "admiralty_information_credibility": "1",
+                    "admiralty_information_credibility_description": "Confirmed by other sources"
+                }
+            },
+            "object_marking_refs": [
+                "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
+                "marking-definition--60c0f466-511a-5419-9f7e-4814e696da40"
+            ]
+        },
+        {
+            "type": "marking-definition",
+            "spec_version": "2.1",
+            "id": "marking-definition--3545f856-c5f5-5d2f-a1ae-102e0b6028b2",
+            "created": "2020-01-01T00:00:00.000Z",
+            "created_by_ref": "identity--9779a2db-f98c-5f4b-8d08-8ee04e02dbb5",
+            "name": "Admiralty Source Reliability: C - Fairly reliable",
+            "extensions": {
+                "extension-definition--5b93a453-445f-5fd6-9035-1d8fd3f8188b": {
+                    "extension_type": "property-extension",
+                    "admiralty_source_reliability": "C",
+                    "admiralty_source_reliability_description": "Fairly reliable"
+                }
+            },
+            "object_marking_refs": [
+                "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
+                "marking-definition--60c0f466-511a-5419-9f7e-4814e696da40"
+            ]
+        },
+        {
+            "type": "marking-definition",
+            "spec_version": "2.1",
+            "id": "marking-definition--4c76ec83-d905-5ada-b0bf-8ae2fb9e9f4d",
+            "created": "2020-01-01T00:00:00.000Z",
+            "created_by_ref": "identity--9779a2db-f98c-5f4b-8d08-8ee04e02dbb5",
+            "name": "Admiralty Information Credibility: 3 - Possibly true",
+            "extensions": {
+                "extension-definition--684bccf7-abc1-5315-ba05-33c5371cc0a6": {
+                    "extension_type": "property-extension",
+                    "admiralty_information_credibility": "3",
+                    "admiralty_information_credibility_description": "Possibly true"
+                }
+            },
+            "object_marking_refs": [
+                "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
+                "marking-definition--60c0f466-511a-5419-9f7e-4814e696da40"
+            ]
+        },
+        {
+            "type": "marking-definition",
+            "spec_version": "2.1",
+            "id": "marking-definition--60c0f466-511a-5419-9f7e-4814e696da40",
+            "created_by_ref": "identity--9779a2db-f98c-5f4b-8d08-8ee04e02dbb5",
+            "created": "2020-01-01T00:00:00.000Z",
+            "definition_type": "statement",
+            "definition": {
+                "statement": "This object was created using: https://github.com/muchdogesec/stix2extensions"
+            },
+            "object_marking_refs": [
+                "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
+                "marking-definition--97ba4e8b-04f6-57e8-8f6e-3a0f0a7dc0fb"
+            ]
+        },
+        {
+            "type": "marking-definition",
+            "spec_version": "2.1",
+            "id": "marking-definition--9cf59b27-57f8-5250-98f4-16c462d5652c",
+            "created": "2020-01-01T00:00:00.000Z",
+            "created_by_ref": "identity--9779a2db-f98c-5f4b-8d08-8ee04e02dbb5",
+            "name": "Admiralty Information Credibility: 2 - Probably true",
+            "extensions": {
+                "extension-definition--684bccf7-abc1-5315-ba05-33c5371cc0a6": {
+                    "extension_type": "property-extension",
+                    "admiralty_information_credibility": "2",
+                    "admiralty_information_credibility_description": "Probably true"
+                }
+            },
+            "object_marking_refs": [
+                "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
+                "marking-definition--60c0f466-511a-5419-9f7e-4814e696da40"
+            ]
+        },
+        {
+            "type": "marking-definition",
+            "spec_version": "2.1",
+            "id": "marking-definition--9eff5f66-33b9-5e54-9868-72179b28ae12",
+            "created": "2020-01-01T00:00:00.000Z",
+            "created_by_ref": "identity--9779a2db-f98c-5f4b-8d08-8ee04e02dbb5",
+            "name": "Admiralty Source Reliability: E - Unreliable",
+            "extensions": {
+                "extension-definition--5b93a453-445f-5fd6-9035-1d8fd3f8188b": {
+                    "extension_type": "property-extension",
+                    "admiralty_source_reliability": "E",
+                    "admiralty_source_reliability_description": "Unreliable"
+                }
+            },
+            "object_marking_refs": [
+                "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
+                "marking-definition--60c0f466-511a-5419-9f7e-4814e696da40"
+            ]
+        },
+        {
+            "type": "marking-definition",
+            "spec_version": "2.1",
+            "id": "marking-definition--adebda39-90c9-5ac0-9107-c26d86a6c3d8",
+            "created": "2020-01-01T00:00:00.000Z",
+            "created_by_ref": "identity--9779a2db-f98c-5f4b-8d08-8ee04e02dbb5",
+            "name": "Admiralty Source Reliability: F - Reliability cannot be judged",
+            "extensions": {
+                "extension-definition--5b93a453-445f-5fd6-9035-1d8fd3f8188b": {
+                    "extension_type": "property-extension",
+                    "admiralty_source_reliability": "F",
+                    "admiralty_source_reliability_description": "Reliability cannot be judged"
+                }
+            },
+            "object_marking_refs": [
+                "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
+                "marking-definition--60c0f466-511a-5419-9f7e-4814e696da40"
+            ]
+        },
+        {
+            "type": "marking-definition",
+            "spec_version": "2.1",
+            "id": "marking-definition--b3cd9dd0-9081-5cbe-84d0-ef5bc11b8b13",
+            "created": "2020-01-01T00:00:00.000Z",
+            "created_by_ref": "identity--9779a2db-f98c-5f4b-8d08-8ee04e02dbb5",
+            "name": "Admiralty Source Reliability: B - Usually reliable",
+            "extensions": {
+                "extension-definition--5b93a453-445f-5fd6-9035-1d8fd3f8188b": {
+                    "extension_type": "property-extension",
+                    "admiralty_source_reliability": "B",
+                    "admiralty_source_reliability_description": "Usually reliable"
+                }
+            },
+            "object_marking_refs": [
+                "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
+                "marking-definition--60c0f466-511a-5419-9f7e-4814e696da40"
+            ]
+        },
+        {
+            "type": "marking-definition",
+            "spec_version": "2.1",
+            "id": "marking-definition--c36a018d-bc8e-57a4-a39d-9e7e31d1bc17",
+            "created": "2020-01-01T00:00:00.000Z",
+            "created_by_ref": "identity--9779a2db-f98c-5f4b-8d08-8ee04e02dbb5",
+            "name": "Admiralty Information Credibility: 4 - Doubtful",
+            "extensions": {
+                "extension-definition--684bccf7-abc1-5315-ba05-33c5371cc0a6": {
+                    "extension_type": "property-extension",
+                    "admiralty_information_credibility": "4",
+                    "admiralty_information_credibility_description": "Doubtful"
+                }
+            },
+            "object_marking_refs": [
+                "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
+                "marking-definition--60c0f466-511a-5419-9f7e-4814e696da40"
+            ]
+        },
+        {
+            "type": "marking-definition",
+            "spec_version": "2.1",
+            "id": "marking-definition--cf438540-077a-56c7-b68e-82fcc2bb0208",
+            "created": "2020-01-01T00:00:00.000Z",
+            "created_by_ref": "identity--9779a2db-f98c-5f4b-8d08-8ee04e02dbb5",
+            "name": "Admiralty Source Reliability: A - Completely reliable",
+            "extensions": {
+                "extension-definition--5b93a453-445f-5fd6-9035-1d8fd3f8188b": {
+                    "extension_type": "property-extension",
+                    "admiralty_source_reliability": "A",
+                    "admiralty_source_reliability_description": "Completely reliable"
+                }
+            },
+            "object_marking_refs": [
+                "marking-definition--94868c89-83c2-464b-929b-a1a8aa3c8487",
+                "marking-definition--60c0f466-511a-5419-9f7e-4814e696da40"
+            ]
+        }
+    ]
+}

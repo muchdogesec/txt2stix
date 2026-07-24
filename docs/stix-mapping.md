@@ -16,6 +16,12 @@ Each mode maps to a STIX marking definition object;
 
 Depending on the value set by user, the generated STIX objects will contain a `marking-definition--` reference in the `object_marking_refs` field to the corresponding TLP level.
 
+### Admiralty Code SMOs
+
+Users can optionally set `admiralty_source_reliability` (`A` through `F`) and `admiralty_information_credibility` (`1` through `6`). Each value maps to a separate Admiralty Marking Definition so the two dimensions can be filtered independently.
+
+Selected Admiralty markings are applied to the Report and to report-specific objects whose markings are inherited from that Report, including Indicators, Relationships, and Attack Flow objects. Reusable and remotely retrieved objects retain their own markings. If an option is omitted, no marking for that dimension is assigned. Admiralty information credibility does not change the Report's `confidence` property.
+
 ### Marking definitions
 
 All objects created by txt2stix also have a standard marking definition in the `object_marking_refs` property.

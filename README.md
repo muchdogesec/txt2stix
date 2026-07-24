@@ -107,6 +107,8 @@ The following arguments are available:
 * `--name` (text, required): name of file, max 72 chars. Will be used in the STIX Report Object created.
 * `--report_id` (UUIDv4, default is random UUIDv4): Sometimes it is required to control the id of the `report` object generated. You can therefore pass a valid UUIDv4 in this field to be assigned to the report. e.g. passing `2611965-930e-43db-8b95-30a1e119d7e2` would create a STIX object id `report--2611965-930e-43db-8b95-30a1e119d7e2`. If this argument is not passed, the UUID will be randomly generated.
 * `--tlp_level` (dictionary, default, `clear`): Options are `clear`, `green`, `amber`, `amber_strict`, `red`.
+* `--admiralty_source_reliability` (`A`-`F`, optional): Assigns an Admiralty source reliability Marking Definition to the report and its report-specific objects. If omitted, no source reliability is assigned.
+* `--admiralty_information_credibility` (`1`-`6`, optional): Assigns an Admiralty information credibility Marking Definition to the report and its report-specific objects. If omitted, no information credibility is assigned.
 * `--confidence` (value between 0-100): If not passed, report will be assigned no confidence score value
 * `--labels` (OPTIONAL): comma seperated list of labels. Case-insensitive (will all be converted to lower-case). Allowed `a-z`, `0-9`. e.g.`label1,label2` would create 2 labels.
 * `--created` (datetime, optional): by default all object `created` times will take the time the script was run. If you want to explicitly set these times you can do so using this flag. Pass the value in the format `YYYY-MM-DDTHH:MM:SS.sssZ` e.g. `2020-01-01T00:00:00.000Z`

@@ -21,6 +21,10 @@ from .utils import RELATIONSHIP_TYPES, Txt2StixData, remove_links
 from .common import UUID_NAMESPACE, FatalException
 
 from .bundler import txt2stixBundler, parse_stix, TLP_LEVEL
+from .admiralty import (
+    ADMIRALTY_INFORMATION_CREDIBILITY,
+    ADMIRALTY_SOURCE_RELIABILITY,
+)
 from . import extractions, lookups, pattern
 from types import SimpleNamespace
 import functools
@@ -233,6 +237,24 @@ def parse_args():
         choices=TLP_LEVEL.levels().keys(),
         default="clear",
         help="TLP level, default is clear",
+    )
+    parser.add_argument(
+        "--admiralty_source_reliability",
+        "--admiralty-source-reliability",
+        choices=ADMIRALTY_SOURCE_RELIABILITY.levels().keys(),
+        type=str.upper,
+        default=None,
+        help="Admiralty source reliability, A-F. Default if not passed is null.",
+        metavar="[A-F]",
+    )
+    parser.add_argument(
+        "--admiralty_information_credibility",
+        "--admiralty-information-credibility",
+        choices=range(1, 7),
+        type=int,
+        default=None,
+        help="Admiralty information credibility, 1-6. Default if not passed is null.",
+        metavar="[1-6]",
     )
     extractions_arg = parser.add_argument(
         "--use_extractions",
@@ -630,6 +652,8 @@ def main():
             created=args.created,
             report_id=args.report_id,
             external_references=args.external_refs,
+            admiralty_source_reliability=args.admiralty_source_reliability,
+            admiralty_information_credibility=args.admiralty_information_credibility,
         )
         log_notes(sys.argv, "Config")
 
