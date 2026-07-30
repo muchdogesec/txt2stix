@@ -16,11 +16,27 @@ Each mode maps to a STIX marking definition object;
 
 Depending on the value set by user, the generated STIX objects will contain a `marking-definition--` reference in the `object_marking_refs` field to the corresponding TLP level.
 
+The `extension-definition--60a3c5c5-0d10-413e-aab3-9e08dde9e88d` object that defines the `tlp_2_0` STIX extension used by these markings, and its creator identity `identity--b3bca3c2-1f3d-4b54-b44f-dac42c3a8f01` (CISA), are always imported into the bundle, regardless of which TLP level is set.
+
 ### Admiralty Code SMOs
 
 Users can optionally set `admiralty_source_reliability` (`A` through `F`) and `admiralty_information_credibility` (`1` through `6`). Each value maps to a separate Admiralty Marking Definition so the two dimensions can be filtered independently.
 
 Selected Admiralty markings are applied to the Report and to report-specific objects whose markings are inherited from that Report, including Indicators, Relationships, and Attack Flow objects. Reusable and remotely retrieved objects retain their own markings. If an option is omitted, no marking for that dimension is assigned. Admiralty information credibility does not change the Report's `confidence` property.
+
+### PAP (Permissible Actions Protocol) SMOs
+
+Users can optionally set `pap_level` (`clear`, `green`, `amber`, `red`, or `white`). Each value maps to the official [OASIS PAP marking-definition object](https://github.com/oasis-open/cti-stix-common-objects/tree/main/extension-definition-specifications/pap-marking-definition-f8d) for that level (`white` is a legacy value retained for older MISP compatibility; prefer `clear` for new use).
+
+The same logic used for Admiralty markings applies here: the selected PAP marking is applied to the Report and to report-specific objects whose markings are inherited from that Report (Indicators, Relationships, Attack Flow objects), but not to reusable or remotely retrieved objects, which keep static `created`/`modified` dates (e.g. `2020-01-01`). If `pap_level` is omitted, no PAP marking is assigned.
+
+* Clear: `marking-definition--ad15a0cd-55b6-4588-a14c-a66105329b92`
+* Green: `marking-definition--c43594d1-4b11-4c59-93ab-1c9b14d53ce9`
+* Amber: `marking-definition--60f8932b-e51e-4458-b265-a2e8be9a80ab`
+* Red: `marking-definition--740d36e5-7714-4c30-961a-3ae632ceee0e`
+* White (legacy): `marking-definition--a3bea94c-b469-41dc-9cfe-d6e7daba7730`
+
+Each of these markings carries the `extension-definition--f8d78575-edfd-406e-8e84-6162a8450f5b` PAP extension in its `extensions` property, per the OASIS specification. When `pap_level` is set, this extension-definition object and its creator identity `identity--b3bca3c2-1f3d-4b54-b44f-dac42c3a8f01` (CISA — the same identity used for the TLP 2.0 extension above) are imported into the bundle. CISA is only imported once even if both TLP 2.0 and PAP extensions are present in the same bundle.
 
 ### Marking definitions
 

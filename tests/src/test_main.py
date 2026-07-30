@@ -110,6 +110,7 @@ def test_parse_args():
             assert args.name == "test-report"
             assert args.admiralty_source_reliability is None
             assert args.admiralty_information_credibility is None
+            assert args.pap_level is None
 
 
 def test_parse_admiralty_args():
@@ -156,6 +157,48 @@ def test_parse_invalid_admiralty_args(argument, value):
             "standard",
             argument,
             value,
+        ],
+    ):
+        with mock.patch("pathlib.Path.exists", return_value=True):
+            with pytest.raises(SystemExit):
+                parse_args()
+
+
+@pytest.mark.parametrize("pap_level", ["clear", "green", "amber", "red", "white"])
+def test_parse_pap_args(pap_level):
+    with mock.patch(
+        "sys.argv",
+        [
+            "program",
+            "--input-file",
+            "test.txt",
+            "--name",
+            "test-report",
+            "--relationship_mode",
+            "standard",
+            "--pap-level",
+            pap_level,
+        ],
+    ):
+        with mock.patch("pathlib.Path.exists", return_value=True):
+            args = parse_args()
+
+    assert args.pap_level == pap_level
+
+
+def test_parse_invalid_pap_args():
+    with mock.patch(
+        "sys.argv",
+        [
+            "program",
+            "--input-file",
+            "test.txt",
+            "--name",
+            "test-report",
+            "--relationship_mode",
+            "standard",
+            "--pap-level",
+            "invalid",
         ],
     ):
         with mock.patch("pathlib.Path.exists", return_value=True):

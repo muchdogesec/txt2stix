@@ -25,6 +25,7 @@ from .admiralty import (
     ADMIRALTY_INFORMATION_CREDIBILITY,
     ADMIRALTY_SOURCE_RELIABILITY,
 )
+from .pap_levels import PAP_LEVEL
 from .language import detect_language
 from . import extractions, lookups, pattern
 from types import SimpleNamespace
@@ -256,6 +257,13 @@ def parse_args():
         default=None,
         help="Admiralty information credibility, 1-6. Default if not passed is null.",
         metavar="[1-6]",
+    )
+    parser.add_argument(
+        "--pap_level",
+        "--pap-level",
+        choices=PAP_LEVEL.levels().keys(),
+        default=None,
+        help="PAP (Permissible Actions Protocol) level. Optional. Default if not passed is null (no PAP marking assigned).",
     )
     extractions_arg = parser.add_argument(
         "--use_extractions",
@@ -664,6 +672,7 @@ def main():
             external_references=args.external_refs,
             admiralty_source_reliability=args.admiralty_source_reliability,
             admiralty_information_credibility=args.admiralty_information_credibility,
+            pap_level=args.pap_level,
         )
         log_notes(sys.argv, "Config")
 
