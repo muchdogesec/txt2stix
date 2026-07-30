@@ -401,18 +401,18 @@ all_extractors = get_all_extractors()
             "EvilTool v2.0",
             "lookup_tool",
             {
-                "tool--1b13ef4f-7bd5-563a-9ca1-00ebdb7071a8",
+                "tool--b57b05f3-72fa-5e0b-8aa7-29f04e74cf7c",
             },
-            {"tool--1b13ef4f-7bd5-563a-9ca1-00ebdb7071a8"},
+            {"tool--b57b05f3-72fa-5e0b-8aa7-29f04e74cf7c"},
             id="generic tool",
         ),
         pytest.param(
             "EvilActor",
             "lookup_threat_actor",
             {
-                "threat-actor--4c4be570-b34e-556e-a8e0-5cb290668770",
+                "threat-actor--4bcf61f4-4b2d-587a-9f4a-4617a9ad30a2",
             },
-            {"threat-actor--4c4be570-b34e-556e-a8e0-5cb290668770"},
+            {"threat-actor--4bcf61f4-4b2d-587a-9f4a-4617a9ad30a2"},
             id="generic threat-actor",
         ),
     ],
