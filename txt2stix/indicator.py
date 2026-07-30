@@ -710,7 +710,7 @@ def _build_observables(
     _id_part = str(
         uuid.uuid5(
             UUID_NAMESPACE,
-            f"txt2stix+{extracted_value}",
+            f"txt2stix+{extracted_value.title()}",
         )
     )
     _date = datetime(2020, 1, 1, tzinfo=UTC)
