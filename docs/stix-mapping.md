@@ -57,6 +57,7 @@ All files uploaded are represented as a unique [STIX Report SDO](https://docs.oa
     "name": "<NAME ENTERED ON UPLOAD>",
     "description": "<FULL BODY OF TEXT FROM FILE>",
     "confidence": "<CONFIDENCE VALUE PASSED AT CLI, IF EXISTS, ELSE NOT PRINTED>",
+    "lang": "<ISO 639-1 LANGUAGE CODE DETECTED BY py3langid, OVERRIDDEN BY AI CONTENT CHECK LANGUAGE IF AI CONTENT CHECK PROVIDER SET>",
     "published": "<ITEM INGEST DATE>",
     "object_marking_refs": [
         "marking-definition--<TLP LEVEL SET>",

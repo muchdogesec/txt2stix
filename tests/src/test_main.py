@@ -534,6 +534,7 @@ def test_processing_phase_applies_extracts_and_relationships():
     data.extractions = {"lookup": [mock1], "pattern": [mock2]}
     data.relationships = {"relationships": ["r1"]}
     data.content_check = None
+    data.language = None
 
     bundler = MagicMock()
     bundler.report = SimpleNamespace(external_references=[], labels=[])

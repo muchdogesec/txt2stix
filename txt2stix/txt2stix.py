@@ -25,6 +25,7 @@ from .admiralty import (
     ADMIRALTY_INFORMATION_CREDIBILITY,
     ADMIRALTY_SOURCE_RELIABILITY,
 )
+from .language import detect_language
 from . import extractions, lookups, pattern
 from types import SimpleNamespace
 import functools
@@ -531,6 +532,9 @@ def extraction_phase(
         txt2stix_data.relationships
     ) = None
 
+    txt2stix_data.language = detect_language(preprocessed_text)
+    logging.info("langid detected language: %s", txt2stix_data.language)
+
     if ai_content_check_provider:
         logging.info("checking content")
         model: BaseAIExtractor = ai_content_check_provider
@@ -539,6 +543,8 @@ def extraction_phase(
         should_extract = txt2stix_data.content_check.describes_incident
         logging.info("=== ai-check-content output ====")
         logging.info(txt2stix_data.content_check.model_dump_json())
+        if txt2stix_data.content_check.language:
+            txt2stix_data.language = txt2stix_data.content_check.language
 
     if should_extract or ai_extract_if_no_incidence:
         if extractors_map.get("ai"):
@@ -580,6 +586,10 @@ def processing_phase(
     """Process extracted `data` into the given `bundler` without invoking LLMs."""
     for d in itertools.chain([], *(data.extractions or {}).values()):
         d.pop("error", None)
+
+    if data.language:
+        bundler.report["lang"] = data.language
+
     try:
         if data.content_check:
             cc = data.content_check

@@ -1,6 +1,9 @@
 from datetime import datetime
+from pathlib import Path
 from unittest import mock
 import os
+
+import pytest
 
 from txt2stix import get_all_extractors
 from txt2stix.ai_extractor.utils import DescribesIncident
@@ -15,6 +18,13 @@ from txt2stix.ai_extractor.utils import (
 all_extractors = get_all_extractors()
 
 TEST_AI_MODEL = os.getenv("TEST_AI_MODEL")
+
+AI_GENERATED_REPORTS_DIR = (
+    Path(__file__).resolve().parents[1]
+    / "data"
+    / "manually_generated_reports"
+    / "ai_generated"
+)
 
 
 def new_bundler():
@@ -385,3 +395,85 @@ def test_relationship_mode(mock_extract_relationships, subtests):
         )
         mock_extract_relationships.assert_called_once()
         assert retval.relationships != None, "extract_relationships_with_ai should run"
+
+
+@pytest.mark.parametrize(
+    ("filename", "expected_lang"),
+    [
+        ("report_fr.txt", "fr"),
+        ("report_de.txt", "de"),
+        ("report_es.txt", "es"),
+        ("report_ja.txt", "ja"),
+        ("company.txt", "en"),
+    ],
+)
+def test_language_detected_via_langid_without_content_check(filename, expected_lang):
+    """When no AI content check provider is used, `lang` should come from py3langid."""
+    text = (AI_GENERATED_REPORTS_DIR / filename).read_text()
+    bundler = new_bundler()
+
+    data = run_txt2stix(bundler, text, {})
+
+    assert data.language == expected_lang
+    assert bundler.report["lang"] == expected_lang
+
+
+@mock.patch("txt2stix.txt2stix.validate_token_count")
+def test_ai_content_check_language_takes_priority_over_langid(
+    mock_validate_token_count,
+):
+    """The AI-determined language should override the py3langid result when both run."""
+    preprocessed_text = (AI_GENERATED_REPORTS_DIR / "report_fr.txt").read_text()
+    bundler = new_bundler()
+
+    with mock.patch(
+        "txt2stix.ai_extractor.base.BaseAIExtractor.check_content"
+    ) as mock_check_content:
+        mock_check_content.return_value = DescribesIncident(
+            describes_incident=True,
+            explanation="some bs",
+            incident_classification=[],
+            summary="The summary",
+            threat_score=50,
+            language="de",
+        )
+        data = run_txt2stix(
+            bundler,
+            preprocessed_text,
+            {},
+            ai_content_check_provider=parse_model(TEST_AI_MODEL),
+        )
+
+    assert (
+        data.language == "de"
+    ), "AI content check language should take priority over langid"
+    assert bundler.report["lang"] == "de"
+
+
+@mock.patch("txt2stix.txt2stix.validate_token_count")
+def test_langid_used_when_ai_content_check_language_empty(mock_validate_token_count):
+    """If the AI content check does not return a language, the py3langid result is kept."""
+    preprocessed_text = (AI_GENERATED_REPORTS_DIR / "report_fr.txt").read_text()
+    bundler = new_bundler()
+
+    with mock.patch(
+        "txt2stix.ai_extractor.base.BaseAIExtractor.check_content"
+    ) as mock_check_content:
+        mock_check_content.return_value = DescribesIncident(
+            describes_incident=True,
+            explanation="some bs",
+            incident_classification=[],
+            summary="The summary",
+            threat_score=50,
+        )
+        data = run_txt2stix(
+            bundler,
+            preprocessed_text,
+            {},
+            ai_content_check_provider=parse_model(TEST_AI_MODEL),
+        )
+
+    assert (
+        data.language == "fr"
+    ), "langid result should be used when content check does not return a language"
+    assert bundler.report["lang"] == "fr"

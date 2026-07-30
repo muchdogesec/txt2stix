@@ -152,6 +152,9 @@ DEFAULT_CONTENT_CHECKER_WITH_SUMMARY_TEMPL = PromptTemplate("""
     IMPORTANT: This `summary` is different from explanation.
     IMPORTANT: You are to simplify the long intelligence reports into concise summaries for other to quickly understand the contents.
 </summary>
+<language>
+    Identify the language the <document> is primarily written in and return it as an ISO 639-1 two-letter code (e.g. `en`, `fr`, `de`, `es`, `ja`) in `language`.
+</language>
 """)
 
 
