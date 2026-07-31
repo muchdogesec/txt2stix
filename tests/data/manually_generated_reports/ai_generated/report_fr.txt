@@ -1,0 +1,18 @@
+Le 3 mars 2026, une entreprise fictive nommée **Solutions Norbert SA** a détecté une intrusion
+sur son réseau interne après que son équipe de sécurité a remarqué un trafic sortant inhabituel
+vers une adresse IP externe inconnue.
+
+L'enquête a révélé qu'un logiciel malveillant, surnommé **GhostRat26**, avait été installé sur
+plusieurs postes de travail via une pièce jointe piégée dans un courriel d'hameçonnage ciblé.
+Le logiciel malveillant permettait à l'attaquant d'exfiltrer des documents confidentiels et
+d'enregistrer les frappes clavier des employés.
+
+Les analystes ont attribué cette campagne à un groupe qu'ils suivent sous le nom de
+**Renard Silencieux**, connu pour cibler des entreprises du secteur manufacturier en Europe
+francophone. Ce groupe utilise généralement des techniques de mouvement latéral discrètes et
+des serveurs de commande et de contrôle hébergés dans plusieurs juridictions afin de compliquer
+les efforts d'attribution.
+
+Solutions Norbert SA a depuis isolé les systèmes compromis, réinitialisé les identifiants de tous
+les comptes concernés et déployé une surveillance renforcée du réseau pour détecter toute activité
+résiduelle liée à cette campagne.

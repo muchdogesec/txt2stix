@@ -52,6 +52,7 @@ class Txt2StixData(BaseModel):
     relationships: dict|RelationshipList = Field(default_factory=dict)
     attack_flow: AttackFlowList = Field(default=None)
     navigator_layer: list = Field(default=None)
+    language: str = Field(default=None)
 
 
 def remove_links(input_text: str, remove_images: bool, remove_anchors: bool):

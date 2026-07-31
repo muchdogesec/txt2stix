@@ -1,0 +1,15 @@
+Am 12. April 2026 stellte die fiktive Firma **Nordfeld Logistik GmbH** fest, dass Kundendaten aus
+ihrer internen Bestellverwaltung im Darknet zum Verkauf angeboten wurden.
+
+Eine forensische Untersuchung ergab, dass die Angreifer eine ungepatchte Schwachstelle in einer
+veralteten Webanwendung ausgenutzt hatten, um sich unbefugten Zugriff auf die Datenbank zu
+verschaffen. Die kompromittierten Datensätze enthielten Namen, Lieferadressen sowie teilweise
+maskierte Zahlungsinformationen von mehreren tausend Kunden.
+
+Sicherheitsforscher ordneten den Vorfall einer finanziell motivierten Gruppe zu, die intern als
+**Eiserner Distelfink** bezeichnet wird. Diese Gruppe ist bekannt dafür, kleine und mittlere
+Unternehmen in der Logistikbranche ins Visier zu nehmen und gestohlene Datensätze anschließend in
+einschlägigen Untergrundforen weiterzuverkaufen.
+
+Nordfeld Logistik GmbH hat die betroffene Anwendung vom Netz genommen, alle Kundenkennwörter
+zurückgesetzt und die zuständigen Datenschutzbehörden über den Vorfall informiert.

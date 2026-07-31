@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "txt2stix"
-version = "1.7.0"
+version = "1.7.1"
 authors = [{ name = "dogesec" }]
 maintainers = [{ name = "dogesec" }]
 description = "txt2stix is a Python script that is designed to identify and extract IoCs and TTPs from text files, identify the relationships between them, convert them to STIX 2.1 objects, and output as a STIX 2.1 bundle."
@@ -34,6 +34,7 @@ dependencies = [
   'beautifulsoup4>=4.12.3',
   'stix2-validator',
   "json-repair",
+  "py3langid>=0.3.0",
 ]
 
 [tool.hatch.metadata]

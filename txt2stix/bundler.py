@@ -14,16 +14,23 @@ from stix2 import (
 import requests
 
 
-from .common import UUID_NAMESPACE, MinorException, TXT2STIX_IDENTITY, TXT2STIX_MARKING
+from .common import (
+    UUID_NAMESPACE,
+    MinorException,
+    TXT2STIX_IDENTITY,
+    TXT2STIX_MARKING,
+    CISA_IDENTITY,
+)
 from datetime import UTC, datetime as dt
 import uuid
 import json
 from .indicator import build_observables
-from .tlp_levels import TLP_LEVEL
+from .tlp_levels import TLP_LEVEL, TLP_2_0_EXTENSION_DEFINITION
 from .admiralty import (
     ADMIRALTY_INFORMATION_CREDIBILITY,
     ADMIRALTY_SOURCE_RELIABILITY,
 )
+from .pap_levels import PAP_LEVEL
 
 
 logger = logging.getLogger("txt2stix.stix")
@@ -66,6 +73,7 @@ class txt2stixBundler:
         modified=None,
         admiralty_source_reliability=None,
         admiralty_information_credibility=None,
+        pap_level=None,
     ) -> None:
         self.observables_processed = 0
         self.created = created or dt.now(tz=UTC)
@@ -83,6 +91,9 @@ class txt2stixBundler:
             )
             if admiralty_information_credibility is not None
             else None
+        )
+        self.pap_level = (
+            PAP_LEVEL.get(pap_level) if pap_level is not None else None
         )
         self.summary = ""
         if report_id:
@@ -134,11 +145,19 @@ class txt2stixBundler:
         )
 
         self.bundle.objects.extend([self.default_marking, self.identity])
+        self.add_tlp_extension_objects()
         self.set_admiralty_defaults(self.admiralty_source_reliability, self.admiralty_information_credibility)
+        self.set_pap_default(self.pap_level)
         self.bundle.objects.append(self.report)
         # add default STIX 2.1 marking definition for txt2stix
         self.report["object_marking_refs"].append(self.default_marking.id)
-    
+
+    def add_tlp_extension_objects(self):
+        for obj in (TLP_2_0_EXTENSION_DEFINITION, CISA_IDENTITY):
+            if obj.id not in self.added_objects:
+                self.added_objects.add(obj.id)
+                self.bundle.objects.append(obj)
+
     def set_admiralty_defaults(self, source_reliability, information_credibility):
         self.admiralty_markings = []
         for marking in [source_reliability, information_credibility]:
@@ -150,6 +169,17 @@ class txt2stixBundler:
                 if obj.id not in self.added_objects:
                     self.added_objects.add(obj.id)
                     self.bundle.objects.append(obj)
+
+    def set_pap_default(self, pap_level):
+        self.pap_marking = None
+        if pap_level is None:
+            return
+        self.pap_marking = pap_level.value
+        self.report["object_marking_refs"].append(self.pap_marking.id)
+        for obj in pap_level.objects:
+            if obj.id not in self.added_objects:
+                self.added_objects.add(obj.id)
+                self.bundle.objects.append(obj)
     
     def add_extension(self, object):
         _type = object["type"]

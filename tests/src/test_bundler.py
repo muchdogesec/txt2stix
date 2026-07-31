@@ -15,6 +15,7 @@ from txt2stix.admiralty import (
     ADMIRALTY_SOURCE_RELIABILITY,
 )
 from txt2stix import admiralty as admiralty_module
+from txt2stix.pap_levels import PAP_LEVEL
 
 dummy_identity = Identity(
     **{
@@ -98,6 +99,24 @@ def test_constructor(tlp_level, identity, created, modified):
         bundler.tlp_level.value in bundler.bundle.objects
     ), "tlp_level marking definition must be in bundle.objects"
     assert bundler.report in bundler.bundle.objects, "report must be in bundle.objects"
+
+
+def test_tlp_extension_definition_and_creator_always_imported():
+    from txt2stix.tlp_levels import TLP_2_0_EXTENSION_DEFINITION
+    from txt2stix.common import CISA_IDENTITY
+
+    bundler = txt2stixBundler(
+        name="TLP extension test",
+        identity=None,
+        tlp_level="clear",
+        description="",
+        confidence=None,
+        extractors=[],
+        labels=[],
+    )
+    assert TLP_2_0_EXTENSION_DEFINITION in bundler.bundle.objects
+    assert CISA_IDENTITY in bundler.bundle.objects
+    assert bundler.bundle.objects.count(CISA_IDENTITY) == 1
 
 
 @pytest.mark.parametrize(
@@ -592,6 +611,153 @@ def test_admiralty_markings_do_not_propagate_to_reusable_objects(
         TLP_LEVEL.CLEAR.value.id,
         bundler.default_marking.id,
     ]
+
+
+@pytest.mark.parametrize(
+    ("pap_level", "expected_pap_markings"),
+    [
+        (None, 0),
+        ("clear", 1),
+        ("green", 1),
+        ("AMBER", 1),
+        ("red", 1),
+        ("white", 1),
+    ],
+)
+def test_pap_markings(pap_level, expected_pap_markings):
+    bundler = txt2stixBundler(
+        name="PAP test",
+        identity=None,
+        tlp_level="clear",
+        description="test description",
+        confidence=None,
+        extractors={},
+        labels=[],
+        pap_level=pap_level,
+    )
+
+    if expected_pap_markings:
+        assert bundler.pap_marking is not None
+        assert bundler.pap_marking in bundler.bundle.objects
+        assert bundler.pap_marking.id in bundler.report["object_marking_refs"]
+        assert bundler.pap_marking == PAP_LEVEL.get(pap_level).value
+    else:
+        assert bundler.pap_marking is None
+
+    assert len(bundler.report["object_marking_refs"]) == (
+        2 + expected_pap_markings
+    )
+
+
+def test_pap_extension_definition_and_creator_imported_once():
+    from txt2stix.pap_levels import PAP_EXTENSION_DEFINITION
+    from txt2stix.common import CISA_IDENTITY
+
+    bundler = txt2stixBundler(
+        name="PAP extension test",
+        identity=None,
+        tlp_level="clear",
+        description="",
+        confidence=None,
+        extractors={},
+        labels=[],
+        pap_level="amber",
+    )
+
+    assert PAP_EXTENSION_DEFINITION in bundler.bundle.objects
+    assert CISA_IDENTITY in bundler.bundle.objects
+    # CISA is the creator of both the TLP 2.0 and PAP extensions, and must
+    # only be imported into the bundle once even though both markings use it.
+    assert bundler.bundle.objects.count(CISA_IDENTITY) == 1
+
+
+def test_pap_marking_propagates_to_report_specific_objects():
+    bundler = txt2stixBundler(
+        name="PAP test",
+        identity=None,
+        tlp_level="clear",
+        description="test description",
+        confidence=None,
+        extractors={},
+        labels=[],
+        pap_level="amber",
+    )
+    extractor = MagicMock(slug="test", version="1")
+
+    indicator = bundler.new_indicator(extractor, "domain-name", "example.com")
+    relationship = bundler.new_relationship(
+        "domain-name--8f17bb97-632c-57ca-8856-879a3fd651ce",
+        "ipv4-addr--b2e7528e-0693-57c1-8f2c-5cc679fb61fc",
+        "resolves-to",
+    )
+
+    assert indicator["object_marking_refs"] == bundler.report["object_marking_refs"]
+    assert list(relationship.object_marking_refs) == bundler.report[
+        "object_marking_refs"
+    ]
+
+
+def test_pap_marking_does_not_propagate_to_reusable_objects():
+    extractor = MagicMock(
+        stix_mapping="campaign",
+        slug="test_campaign",
+        version="1_0",
+    )
+    bundler = txt2stixBundler(
+        name="PAP test",
+        identity=None,
+        tlp_level="red",
+        description="test description",
+        confidence=None,
+        extractors={"test_campaign": extractor},
+        labels=[],
+        pap_level="red",
+    )
+
+    bundler.add_indicator(
+        {"type": "test_campaign", "value": "Reusable campaign", "id": "ex-0"},
+        add_standard_relationship=False,
+    )
+
+    campaign = next(obj for obj in bundler.bundle.objects if obj["type"] == "campaign")
+    assert bundler.pap_marking.id not in campaign.object_marking_refs
+    assert list(campaign.object_marking_refs) == [
+        TLP_LEVEL.CLEAR.value.id,
+        bundler.default_marking.id,
+    ]
+
+
+def test_pap_and_admiralty_together(mock_admiralty_fetch):
+    bundler = txt2stixBundler(
+        name="PAP + Admiralty test",
+        identity=None,
+        tlp_level="clear",
+        description="test description",
+        confidence=None,
+        extractors={},
+        labels=[],
+        admiralty_source_reliability="A",
+        admiralty_information_credibility=1,
+        pap_level="green",
+    )
+
+    assert bundler.pap_marking.id in bundler.report["object_marking_refs"]
+    assert len(bundler.admiralty_markings) == 2
+    assert len(bundler.report["object_marking_refs"]) == 2 + 2 + 1
+
+
+def test_pap_invalid_value_raises():
+    with pytest.raises(KeyError):
+        txt2stixBundler(
+            name="PAP test",
+            identity=None,
+            tlp_level="clear",
+            description="test description",
+            confidence=None,
+            extractors={},
+            labels=[],
+            pap_level="black",
+        )
 
 
 def test_to_json__with_object_refs(bundler):

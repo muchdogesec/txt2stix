@@ -1,0 +1,15 @@
+El 21 de mayo de 2026, la empresa ficticia **Banco Altavista** informó de una campaña de
+phishing dirigida a sus clientes de banca en línea.
+
+Los atacantes enviaron correos electrónicos que suplantaban las comunicaciones oficiales del
+banco, dirigiendo a las víctimas hacia un sitio web fraudulento diseñado para robar credenciales
+de acceso y códigos de autenticación de un solo uso. Una vez obtenidas las credenciales, los
+delincuentes iniciaron transferencias no autorizadas desde varias cuentas afectadas.
+
+Los analistas de amenazas vincularon esta campaña con un actor conocido como
+**Escorpión Nocturno**, un grupo cibercriminal que ha atacado previamente a varias entidades
+financieras en América Latina utilizando kits de phishing reutilizables y infraestructura alojada
+en proveedores de alojamiento a prueba de balas.
+
+Banco Altavista bloqueó el dominio fraudulento, notificó a los clientes afectados y reforzó sus
+controles de autenticación multifactor para mitigar futuros intentos similares.

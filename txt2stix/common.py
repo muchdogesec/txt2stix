@@ -5,6 +5,28 @@ from stix2 import Identity, MarkingDefinition
 UUID_NAMESPACE = UUID("f92e15d9-6afc-5ae2-bb3e-85a1fd83a3b5")
 DOGESEC_IDENTITY_ID = "identity--9779a2db-f98c-5f4b-8d08-8ee04e02dbb5"
 
+# https://github.com/oasis-open/cti-stix-common-objects/tree/main/extension-definition-specifications
+# CISA is the creator of the official TLP 2.0 and PAP marking-definition STIX extensions.
+CISA_IDENTITY_ID = "identity--b3bca3c2-1f3d-4b54-b44f-dac42c3a8f01"
+CISA_IDENTITY = Identity(
+    type="identity",
+    spec_version="2.1",
+    id=CISA_IDENTITY_ID,
+    created_by_ref=CISA_IDENTITY_ID,
+    created="2021-01-01T00:00:01.000Z",
+    modified="2021-01-01T00:00:01.000Z",
+    name="Cybersecurity and Infrastructure Security Agency",
+    description=(
+        "The United States Cybersecurity and Infrastructure Security Agency "
+        "(CISA) is the Nation’s risk advisor, working with partners to "
+        "defend against today’s threats and collaborating to build more "
+        "secure and resilient infrastructure for the future."
+    ),
+    identity_class="organization",
+    sectors=["government-national"],
+    contact_information="cyberservices@cisa.dhs.gov",
+)
+
 TXT2STIX_IDENTITY = Identity(
     type="identity",
     spec_version="2.1",
