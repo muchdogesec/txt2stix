@@ -1,47 +1,68 @@
 import logging
 from typing import Type
-from llama_index.core.program import LLMTextCompletionProgram
 
-import textwrap
-from llama_index.core import PromptTemplate
-from llama_index.core.llms.llm import LLM
 
-from txt2stix.ai_extractor.prompts import DEFAULT_CONTENT_CHECKER_WITH_SUMMARY_TEMPL, DEFAULT_EXTRACTION_TEMPL, DEFAULT_RELATIONSHIP_TEMPL, DEFAULT_SYSTEM_PROMPT, ATTACK_FLOW_PROMPT_TEMPL
-from txt2stix.ai_extractor.utils import AttackFlowList, DescribesIncident, ExtractionList, ParserWithLogging, RelationshipList, get_extractors_str
-from llama_index.core.utils import get_tokenizer
+from txt2stix.ai_extractor import prompts
+from txt2stix.ai_extractor.data_models import AttackFlowList, DescribesIncident, ExtractionList, RelationshipList
 
 from txt2stix.lookups import find_get_indexes
 
+def new_completion_program(llm, output_model, prompt, verbose=True):
+    from llama_index.core.program import LLMTextCompletionProgram
+    from .utils import ParserWithLogging
+    return LLMTextCompletionProgram.from_defaults(
+        output_parser=ParserWithLogging(output_model),
+        prompt=prompt,
+        verbose=verbose,
+        llm=llm,
+    )
 
 _ai_extractor_registry: dict[str, 'Type[BaseAIExtractor]'] = {}
+
+
+class _LazyPrompt:
+    def __init__(self, name):
+        self.name = name
+
+    def __get__(self, instance, owner=None):
+        return getattr(prompts, self.name)
+
+
+def __getattr__(name):
+    # Preserve the previously re-exported prompt constants.
+    if name in prompts.__all__:
+        return getattr(prompts, name)
+    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+
+
 class BaseAIExtractor():
-    system_prompt = DEFAULT_SYSTEM_PROMPT
+    system_prompt = prompts.DEFAULT_SYSTEM_PROMPT
 
-    extraction_template = DEFAULT_EXTRACTION_TEMPL
+    extraction_template = _LazyPrompt("DEFAULT_EXTRACTION_TEMPL")
 
-    relationship_template = DEFAULT_RELATIONSHIP_TEMPL
+    relationship_template = _LazyPrompt("DEFAULT_RELATIONSHIP_TEMPL")
 
-    content_check_template = DEFAULT_CONTENT_CHECKER_WITH_SUMMARY_TEMPL
+    content_check_template = _LazyPrompt("DEFAULT_CONTENT_CHECKER_WITH_SUMMARY_TEMPL")
 
     def _get_extraction_program(self):
-        return LLMTextCompletionProgram.from_defaults(
-            output_parser=ParserWithLogging(ExtractionList),
+        return new_completion_program(
+            output_model=ExtractionList,
             prompt=self.extraction_template,
             verbose=True,
             llm=self.llm,
         )
 
     def _get_relationship_program(self):
-        return LLMTextCompletionProgram.from_defaults(
-            output_parser=ParserWithLogging(RelationshipList),
+        return new_completion_program(
+            output_model=RelationshipList,
             prompt=self.relationship_template,
             verbose=True,
             llm=self.llm,
         )
 
     def _get_content_checker_program(self):
-        return LLMTextCompletionProgram.from_defaults(
-            output_parser=ParserWithLogging(DescribesIncident),
+        return new_completion_program(
+            output_model=DescribesIncident,
             prompt=self.content_check_template,
             verbose=True,
             llm=self.llm,
@@ -51,9 +72,9 @@ class BaseAIExtractor():
         return self._get_content_checker_program()(context_str=text)
 
     def _get_attack_flow_program(self):
-        return LLMTextCompletionProgram.from_defaults(
-            output_parser=ParserWithLogging(AttackFlowList),
-            prompt=ATTACK_FLOW_PROMPT_TEMPL,
+        return new_completion_program(
+            output_model=AttackFlowList,
+            prompt=prompts.ATTACK_FLOW_PROMPT_TEMPL,
             verbose=True,
             llm=self.llm,
         )
@@ -70,6 +91,7 @@ class BaseAIExtractor():
         return self._get_relationship_program()(relationship_types=relationship_types, input_file=input_text, extractions=extractions)
 
     def extract_objects(self, input_text: str, extractors) -> ExtractionList:
+        from .utils import get_extractors_str
         extraction_list: ExtractionList = self._get_extraction_program()(extractors=get_extractors_str(extractors), input_file=input_text)
         for extract in extraction_list.extractions:
             extract.start_index = list(find_get_indexes(extract.original_text, input_text))
@@ -80,6 +102,7 @@ class BaseAIExtractor():
         pass
 
     def count_tokens(self, input_text):
+        from llama_index.core.utils import get_tokenizer
         logging.info("unsupported model `%s`, estimating using llama-index's default tokenizer", self.extractor_name)
         return len(get_tokenizer()(input_text))
 

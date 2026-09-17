@@ -1,30 +1,22 @@
 from txt2stix import extractions
-from .bundler import txt2stixBundler
 from pathlib import Path
 
-INCLUDES_PATH = None
-def get_include_path():
-    global INCLUDES_PATH
-    
-    if INCLUDES_PATH:
-        return INCLUDES_PATH
-    
-    from pathlib import Path
-    MODULE_PATH = Path(__file__).parent.parent
-    INCLUDES_PATH = MODULE_PATH/"includes"
-    try:
-        from . import includes
-        INCLUDES_PATH = Path(includes.__file__).parent
-    except ImportError:
-        pass
-    return INCLUDES_PATH
-
-def set_include_path(path):
-    global INCLUDES_PATH
-    INCLUDES_PATH = path
+from .utils import get_include_path, set_include_path, INCLUDE_PATH
 
 def get_all_extractors(include_path=None):
     return extractions.parse_extraction_config(include_path or get_include_path())
+
+
+def __getattr__(name):
+    if name == "INCLUDES_PATH":
+        from . import utils
+        return utils.INCLUDES_PATH
+    # Metadata consumers should not import the extraction engine.
+    if name == "txt2stixBundler":
+        from .bundler import txt2stixBundler
+        globals()[name] = txt2stixBundler
+        return txt2stixBundler
+    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
 
 
 __all__ = [

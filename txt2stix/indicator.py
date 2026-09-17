@@ -11,7 +11,7 @@ from stix2.v21.vocab import HASHING_ALGORITHM
 from stix2.patterns import _HASH_REGEX as HASHING_ALGORITHM_2, StringConstant
 from ipaddress import ip_address
 from pathlib import PurePosixPath, PureWindowsPath
-from phonenumbers import geocoder
+from phonenumbers import region_codes_for_country_code
 import logging
 from stix2extensions.tools import creditcard2stix, crypto2stix
 from typing import TYPE_CHECKING
@@ -82,7 +82,7 @@ def split_ip_port(ip_port: str):
 def get_country_code(number: str) -> str:
     phone = PhoneNumberExtractor.parse_phone_number(number)
     if phone:
-        return geocoder.region_codes_for_country_code(phone.country_code)[0]
+        return region_codes_for_country_code(phone.country_code)[0]
     else:
         raise BadDataException("bad phone number")
 

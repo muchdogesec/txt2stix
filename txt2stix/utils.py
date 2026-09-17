@@ -8,7 +8,34 @@ import mistune
 from mistune.renderers.markdown import MarkdownRenderer
 from mistune.util import unescape
 
-from txt2stix.ai_extractor.utils import AttackFlowList, DescribesIncident, RelationshipList
+from txt2stix.ai_extractor.data_models import AttackFlowList, DescribesIncident, RelationshipList
+
+
+INCLUDES_PATH = None
+def get_include_path():
+    global INCLUDES_PATH
+
+    if INCLUDES_PATH:
+        return INCLUDES_PATH
+
+    from pathlib import Path
+    MODULE_PATH = Path(__file__).parent.parent
+    INCLUDES_PATH = MODULE_PATH/"includes"
+    try:
+        from . import includes
+        INCLUDES_PATH = Path(includes.__file__).parent
+    except ImportError:
+        pass
+    return INCLUDES_PATH
+
+def set_include_path(path):
+    global INCLUDES_PATH
+    INCLUDES_PATH = path
+
+INCLUDE_PATH = get_include_path()
+
+
+
 class ImageLinkRemover(MarkdownRenderer):
     def __init__(self, remove_links: bool=False, remove_images: bool=False):
         self.remove_links = remove_links
@@ -63,7 +90,7 @@ def read_included_file(path):
     try:
         return pkgutil.get_data("txt2stix.includes", path).decode()
     except (AttributeError, ImportError):
-        return (Path("includes")/path).read_text()
+        return (get_include_path()/path).read_text()
     
 def validate_tld(domain: str):
     _, _, suffix = domain.lower().rpartition('.')
