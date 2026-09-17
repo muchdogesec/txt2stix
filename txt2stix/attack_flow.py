@@ -1,10 +1,12 @@
 import json
 import logging
+import typing
 import uuid
 from stix2 import Relationship
 from txt2stix import txt2stixBundler
 
-from txt2stix.ai_extractor.base import BaseAIExtractor
+if typing.TYPE_CHECKING:
+    from txt2stix.ai_extractor.base import BaseAIExtractor
 from txt2stix.common import UUID_NAMESPACE
 from txt2stix.retriever import STIXObjectRetriever
 from stix2extensions import AttackAction, AttackFlow, Procedure

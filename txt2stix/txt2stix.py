@@ -2,7 +2,6 @@ import argparse, dotenv
 import contextlib
 import shutil
 from datetime import datetime
-import glob
 import uuid
 import itertools
 import fnmatch
@@ -10,30 +9,25 @@ import re
 from pathlib import Path
 import sys, os
 
-from pydantic import BaseModel
 
-from txt2stix.ai_extractor.utils import DescribesIncident
 from txt2stix import attack_flow, credential_checker
 
 
 from .utils import RELATIONSHIP_TYPES, Txt2StixData, remove_links
 
-from .common import UUID_NAMESPACE, FatalException
+from .common import FatalException
 
 from .bundler import txt2stixBundler, parse_stix, TLP_LEVEL
 from .admiralty import (
-    ADMIRALTY_INFORMATION_CREDIBILITY,
     ADMIRALTY_SOURCE_RELIABILITY,
 )
 from .pap_levels import PAP_LEVEL
 from .language import detect_language
 from . import extractions, lookups, pattern
-from types import SimpleNamespace
 import functools
-from fnmatch import filter
-from .ai_extractor import ALL_AI_EXTRACTORS, BaseAIExtractor, ModelError
-from stix2.serialization import serialize as stix2_serialize
-from stix2 import Bundle
+from .ai_extractor import ALL_AI_EXTRACTORS, ModelError
+from .ai_extractor.base import BaseAIExtractor
+from .utils import INCLUDES_PATH
 
 import json, logging
 
@@ -64,16 +58,6 @@ def setLogFile(logger, file: Path):
     logger.info("=====================txt2stix======================")
 
 
-MODULE_PATH = Path(__file__).parent.parent
-INCLUDES_PATH = MODULE_PATH / "includes"
-try:
-    from . import includes
-
-    INCLUDES_PATH = Path(includes.__file__).parent
-except ImportError:
-    pass
-
-
 def split_comma(s: str) -> list[str]:
     return [ss for ss in s.split(",") if ss]
 
@@ -96,7 +80,6 @@ def parse_labels(labels: str) -> list[str]:
     for label in labels:
         if not re.fullmatch(r"[a-zA-Z0-9]+", label):
             raise argparse.ArgumentTypeError(f"invalid label: {label}")
-
     return labels
 
 
@@ -138,7 +121,6 @@ def parse_model(value: str):
             f"invalid AI provider in `{value}`, must be one of {list(ALL_AI_EXTRACTORS)}"
         )
     provider = ALL_AI_EXTRACTORS[provider]
-
     try:
         if len(splits) == 2:
             return provider(model=splits[1])

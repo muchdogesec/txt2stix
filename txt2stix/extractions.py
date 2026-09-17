@@ -1,3 +1,4 @@
+from functools import lru_cache
 from typing import Any, Type
 import yaml
 from pathlib import Path
@@ -48,6 +49,7 @@ class Extractor(NamedDict):
 def remove_empty(iterable: list):
     return [it for it in iterable if it]
 
+@lru_cache(maxsize=10)
 def parse_extraction_config(include_path: Path):
     config = {}
     test_cases = load_test_cases_config(include_path)
