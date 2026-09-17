@@ -2,7 +2,7 @@ import logging
 from typing import Type
 
 
-from txt2stix.ai_extractor.prompts import DEFAULT_CONTENT_CHECKER_WITH_SUMMARY_TEMPL, DEFAULT_EXTRACTION_TEMPL, DEFAULT_RELATIONSHIP_TEMPL, DEFAULT_SYSTEM_PROMPT, ATTACK_FLOW_PROMPT_TEMPL
+from txt2stix.ai_extractor import prompts
 from txt2stix.ai_extractor.data_models import AttackFlowList, DescribesIncident, ExtractionList, RelationshipList
 
 from txt2stix.lookups import find_get_indexes
@@ -18,14 +18,31 @@ def new_completion_program(llm, output_model, prompt, verbose=True):
     )
 
 _ai_extractor_registry: dict[str, 'Type[BaseAIExtractor]'] = {}
+
+
+class _LazyPrompt:
+    def __init__(self, name):
+        self.name = name
+
+    def __get__(self, instance, owner=None):
+        return getattr(prompts, self.name)
+
+
+def __getattr__(name):
+    # Preserve the previously re-exported prompt constants.
+    if name in prompts.__all__:
+        return getattr(prompts, name)
+    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+
+
 class BaseAIExtractor():
-    system_prompt = DEFAULT_SYSTEM_PROMPT
+    system_prompt = prompts.DEFAULT_SYSTEM_PROMPT
 
-    extraction_template = DEFAULT_EXTRACTION_TEMPL
+    extraction_template = _LazyPrompt("DEFAULT_EXTRACTION_TEMPL")
 
-    relationship_template = DEFAULT_RELATIONSHIP_TEMPL
+    relationship_template = _LazyPrompt("DEFAULT_RELATIONSHIP_TEMPL")
 
-    content_check_template = DEFAULT_CONTENT_CHECKER_WITH_SUMMARY_TEMPL
+    content_check_template = _LazyPrompt("DEFAULT_CONTENT_CHECKER_WITH_SUMMARY_TEMPL")
 
     def _get_extraction_program(self):
         return new_completion_program(
@@ -57,7 +74,7 @@ class BaseAIExtractor():
     def _get_attack_flow_program(self):
         return new_completion_program(
             output_model=AttackFlowList,
-            prompt=ATTACK_FLOW_PROMPT_TEMPL,
+            prompt=prompts.ATTACK_FLOW_PROMPT_TEMPL,
             verbose=True,
             llm=self.llm,
         )

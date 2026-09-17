@@ -145,7 +145,7 @@ packaging==25.0
     # via marshmallow
 pathvalidate==3.3.1
     # via txt2stix (pyproject.toml)
-phonenumbers==9.0.12
+phonenumberslite==9.0.26
     # via txt2stix (pyproject.toml)
 pillow==11.3.0
     # via llama-index-core

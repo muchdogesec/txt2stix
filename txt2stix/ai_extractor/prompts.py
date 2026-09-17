@@ -1,7 +1,7 @@
 
-from llama_index.core import PromptTemplate, ChatPromptTemplate
+
 import textwrap
-from llama_index.core.base.llms.types import ChatMessage, MessageRole
+
 
 
 DEFAULT_SYSTEM_PROMPT = textwrap.dedent(
@@ -18,7 +18,7 @@ DEFAULT_SYSTEM_PROMPT = textwrap.dedent(
 """
 )
 
-DEFAULT_EXTRACTION_TEMPL = PromptTemplate(textwrap.dedent(
+_DEFAULT_EXTRACTION_TEMPL_DATA = textwrap.dedent(
     """
     <persona>
         You are a cyber-security threat intelligence analysis tool responsible for analysing intelligence provided in text files.
@@ -46,10 +46,10 @@ DEFAULT_EXTRACTION_TEMPL = PromptTemplate(textwrap.dedent(
         Response MUST start with: {"success":
     </response>
     """
-))
+)
 
 
-DEFAULT_RELATIONSHIP_TEMPL = PromptTemplate(textwrap.dedent(
+_DEFAULT_RELATIONSHIP_TEMPL_DATA = textwrap.dedent(
 """
 <persona>
     You are a cyber-security threat intelligence analysis tool responsible for analysing intelligence provided in text files.
@@ -84,9 +84,9 @@ DEFAULT_RELATIONSHIP_TEMPL = PromptTemplate(textwrap.dedent(
     Response MUST start with: {"success":
 </response>
 """
-))
+)
 
-DEFAULT_CONTENT_CHECKER_WITH_SUMMARY_TEMPL = PromptTemplate("""
+_DEFAULT_CONTENT_CHECKER_WITH_SUMMARY_TEMPL_DATA = """
 <persona>
     You are a cyber security threat intelligence analyst.
     Your job is to review reports that describe a cyber security incidents and/or threat intelligence.
@@ -155,27 +155,20 @@ DEFAULT_CONTENT_CHECKER_WITH_SUMMARY_TEMPL = PromptTemplate("""
 <language>
     Identify the language the <document> is primarily written in and return it as an ISO 639-1 two-letter code (e.g. `en`, `fr`, `de`, `es`, `ja`) in `language`.
 </language>
-""")
+"""
 
 
 
-ATTACK_FLOW_PROMPT_TEMPL = ChatPromptTemplate([
-    ChatMessage.from_str("""You are a cybersecurity threat intelligence analyst.
+_ATTACK_FLOW_PROMPT_TEMPL_DATA = [
+    ('system', """You are a cybersecurity threat intelligence analyst.
 
-Your task is to analyze structured cybersecurity incident reports (e.g., malware analysis, APTs, data breaches, vulnerabilities) and extract and organize MITRE ATT&CK techniques as part of an attack flow analysis. This analysis helps defenders understand adversary behavior using the MITRE Attack Flow model maintained by the MITRE Center for Threat-Informed Defense.""", MessageRole.SYSTEM),
-
-    ChatMessage.from_str("Hello. Please provide the document for analysis. Only include the full document text in your response.", MessageRole.ASSISTANT),
-
-    ChatMessage.from_str("{document}", MessageRole.USER),
-
-    ChatMessage.from_str("What ATT&CK techniques and related metadata were extracted from this document?", MessageRole.ASSISTANT),
-
-    ChatMessage.from_str("<extracted_techniques>\n\n{extracted_techniques}\n\n</extracted_techniques>", MessageRole.USER),
-
-    ChatMessage.from_str("Let's begin with tactic selection. What should I do with the techniques and possible tactics?", MessageRole.ASSISTANT),
-
-    # PART 1: Tactic Selection Phase
-    ChatMessage.from_str("""
+Your task is to analyze structured cybersecurity incident reports (e.g., malware analysis, APTs, data breaches, vulnerabilities) and extract and organize MITRE ATT&CK techniques as part of an attack flow analysis. This analysis helps defenders understand adversary behavior using the MITRE Attack Flow model maintained by the MITRE Center for Threat-Informed Defense."""),
+    ('assistant', "Hello. Please provide the document for analysis. Only include the full document text in your response."),
+    ('user', "{document}"),
+    ('assistant', "What ATT&CK techniques and related metadata were extracted from this document?"),
+    ('user', "<extracted_techniques>\n\n{extracted_techniques}\n\n</extracted_techniques>"),
+    ('assistant', "Let's begin with tactic selection. What should I do with the techniques and possible tactics?"),
+    ('user', """
 ## PART 1: TACTIC SELECTION
 
 For each of the technique in `<extracted_techniques>`, return [technique_id, tactic_name], where
@@ -199,12 +192,9 @@ For each of the technique in `<extracted_techniques>`, return [technique_id, tac
 - Ensure **every** technique in `<extracted_techniques>` appears in `tactic_selection`, even if uncertain — choose the best fit.
 - Technique IDs in `tactic_selection` must match exactly from <extracted_techniques> (e.g., `T1059` must match `T1059` and not `T1059.005`, `T1001.001` must match `T1001.001` and not `T1001`).
 - Must include every technique in `<extracted_techniques>`
-""", MessageRole.USER),
-
-    ChatMessage.from_str("Thanks. Now let's continue with the attack flow. How should I proceed?", MessageRole.ASSISTANT),
-
-    # PART 2: Attack Flow Construction Phase
-    ChatMessage.from_str("""
+"""),
+    ('assistant', "Thanks. Now let's continue with the attack flow. How should I proceed?"),
+    ('user', """
 ## PART 2: ATTACK FLOW CONSTRUCTION
 
 Using the `<extracted_techniques>` and the incident details in the document, construct a sequence of MITRE ATT&CK techniques that represent the adversary’s logical progression through the attack.
@@ -284,9 +274,8 @@ Examples:
 </code>
 
 Your goal is to tell the story of how the adversary moved through the attack using the extracted ATT&CK techniques, in the correct sequence, with clear context for defenders.
-""", MessageRole.USER),
-    # PART 3: Combination phase
-    ChatMessage.from_str("""
+"""),
+    ('user', """
 ## PART 3: COMBINATION PHASE
 
 📤 Final Output Format:
@@ -315,5 +304,30 @@ Your goal is to tell the story of how the adversary moved through the attack usi
 - Do **not** introduce new technique IDs
 
 ✅ Your goal is to build a realistic, document-based attack flow using MITRE ATT&CK technique–tactic pairs.
-""", MessageRole.USER)
-])
+""")
+]
+
+
+_PROMPT_NAMES = (
+    "DEFAULT_EXTRACTION_TEMPL", "DEFAULT_RELATIONSHIP_TEMPL",
+    "DEFAULT_CONTENT_CHECKER_WITH_SUMMARY_TEMPL", "ATTACK_FLOW_PROMPT_TEMPL",
+)
+__all__ = ["DEFAULT_SYSTEM_PROMPT", *_PROMPT_NAMES]
+
+
+def __getattr__(name):
+    """Keep legacy template exports, constructing LlamaIndex objects on demand."""
+    if name not in _PROMPT_NAMES:
+        raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+    from llama_index.core import PromptTemplate, ChatPromptTemplate
+    from llama_index.core.base.llms.types import ChatMessage
+
+    data = globals()["_" + name + "_DATA"]
+    if name == "ATTACK_FLOW_PROMPT_TEMPL":
+        prompt = ChatPromptTemplate([
+            ChatMessage.from_str(content, role) for role, content in data
+        ])
+    else:
+        prompt = PromptTemplate(data)
+    globals()[name] = prompt
+    return prompt

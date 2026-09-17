@@ -50,7 +50,7 @@ class AttackFlowList(BaseModel):
 
     def model_post_init(self, context):
         return super().model_post_init(context)
-    
+
     @property
     def tactic_mapping(self):
         return dict(self.tactic_selection)

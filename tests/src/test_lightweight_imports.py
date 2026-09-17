@@ -38,6 +38,44 @@ def test_metadata_and_model_validation_do_not_import_processing_dependencies():
     ''')
 
 
+def test_base_class_and_language_imports_are_lightweight():
+    run_clean('''
+        import sys
+        from txt2stix.ai_extractor import BaseAIExtractor
+        from txt2stix.ai_extractor import prompts
+        from txt2stix.language import detect_language
+
+        assert BaseAIExtractor.system_prompt == prompts.DEFAULT_SYSTEM_PROMPT
+        for prefix in ('llama_index', 'py3langid', 'numpy'):
+            assert not any(n == prefix or n.startswith(prefix + '.') for n in sys.modules)
+
+        from llama_index.core import PromptTemplate, ChatPromptTemplate
+        for attr, name in (
+            ('extraction_template', 'DEFAULT_EXTRACTION_TEMPL'),
+            ('relationship_template', 'DEFAULT_RELATIONSHIP_TEMPL'),
+            ('content_check_template', 'DEFAULT_CONTENT_CHECKER_WITH_SUMMARY_TEMPL'),
+        ):
+            template = getattr(prompts, name)
+            assert isinstance(template, PromptTemplate)
+            assert getattr(BaseAIExtractor, attr) is template
+            assert getattr(BaseAIExtractor(), attr) is template
+            assert template.template == getattr(prompts, '_' + name + '_DATA')
+        chat = prompts.ATTACK_FLOW_PROMPT_TEMPL
+        assert isinstance(chat, ChatPromptTemplate)
+        assert [(m.role.value, m.content) for m in chat.message_templates] == prompts._ATTACK_FLOW_PROMPT_TEMPL_DATA
+        instance = BaseAIExtractor()
+        override = PromptTemplate('custom {text}')
+        instance.extraction_template = override
+        assert instance.extraction_template is override
+        class Custom(BaseAIExtractor, provider='custom', register=False):
+            extraction_template = override
+        assert Custom().extraction_template is override
+        assert 'py3langid' not in sys.modules
+        assert detect_language('This is a report describing a malware campaign targeting financial institutions.') == 'en'
+        assert 'py3langid' in sys.modules
+    ''')
+
+
 def test_lazy_public_exports_and_phone_country_lookup_remain_compatible():
     run_clean('''
         import sys
