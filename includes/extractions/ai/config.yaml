@@ -13,7 +13,7 @@ ai_ipv4_address_only:
   created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all IPv4 addresses from the text.'
-  prompt_helper: 'Do not include any IPv4s that contain a port or CIDR.'
+  prompt_helper: ''
   prompt_conversion: ''
   test_cases: generic_ipv4_address_only
   stix_mapping: ipv4-addr
@@ -29,7 +29,7 @@ ai_ipv4_address_cidr:
   created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all IPv4 addresses with a CIDR from the text. CIDR part must be >=0 <=32.'
-  prompt_helper: 'Do not include any IPs that do not have a CIDR.'
+  prompt_helper: ''
   prompt_conversion: ''
   test_cases: ipv4_address_cidr
   stix_mapping: ipv4-addr
@@ -45,7 +45,7 @@ ai_ipv4_address_port:
   created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all IPv4 addresses with a port from the text. Port number part must be >=0 <=65535.'
-  prompt_helper: 'Do not include any IPv4s that do not contain a port number.'
+  prompt_helper: ''
   prompt_conversion: ''
   test_cases: ipv4_address_port
   stix_mapping: ipv4-addr-port
@@ -63,7 +63,7 @@ ai_ipv6_address_only:
   created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all IPv6 addresses from the text.'
-  prompt_helper: 'Do not include any IPv6s that contain a port or CIDR.'
+  prompt_helper: ''
   prompt_conversion: ''
   test_cases: generic_ipv6_address_only
   stix_mapping: ipv6-addr
@@ -79,7 +79,7 @@ ai_ipv6_address_cidr:
   created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all IPv6 addresses with a CIDR from the text. CIDR part must be >=0 <=128.'
-  prompt_helper: 'Do not include any IPv6s that do not contain a CIDR'
+  prompt_helper: ''
   prompt_conversion: ''
   test_cases: generic_ipv6_address_cidr
   stix_mapping: ipv6-addr
@@ -95,7 +95,7 @@ ai_ipv6_address_port:
   created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all IPv6 addresses with a CIDR from the text. Port number part must be >=0 <=65535.'
-  prompt_helper: 'Do not include any IPv6s that do not contain a port number'
+  prompt_helper: ''
   prompt_conversion: ''
   test_cases: generic_ipv6_address_port
   stix_mapping: ipv6-addr-port
@@ -443,7 +443,7 @@ ai_process_command_line:
   created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all command line processes shown in the text.'
-  prompt_helper: 'Command line processes include shell commands, terminal commands, PowerShell commands, CMD commands, and any other executable commands with their arguments. Include the full command with all parameters and arguments.'
+  prompt_helper: ''
   prompt_conversion: ''
   test_cases: generic_process_command_line
   stix_mapping: process
@@ -602,7 +602,7 @@ ai_cve_id:
   version: 1.0.0
   prompt_base: 'Extract all CVE IDs from the text.'
   prompt_helper: ''
-  prompt_conversion: 'If needed, you can read more about CVEs here: https://nvd.nist.gov/vuln'
+  prompt_conversion: ''
   test_cases: generic_cve_id
   stix_mapping: vulmatch-cve-id
 
@@ -620,7 +620,7 @@ ai_cpe_uri:
   version: 1.0.0
   prompt_base: 'Extract all CPEs match strings from the text.'
   prompt_helper: ''
-  prompt_conversion: 'If needed, you can read more about CVEs here: https://nvd.nist.gov/products'
+  prompt_conversion: ''
   test_cases: generic_cpe_uri
   stix_mapping: vulmatch-cpe-id
 
@@ -767,7 +767,7 @@ ai_iban_number:
   created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all International Bank Account Numbers (IBAN) from the text.'
-  prompt_helper: 'If needed, you can read more about IBAN numbers with examples here: https://www.iban.com/structure'
+  prompt_helper: ''
   prompt_conversion: ''
   test_cases: generic_iban_number
   stix_mapping: bank-account
@@ -785,7 +785,7 @@ ai_phone_number:
   created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all phone numbers from the text.'
-  prompt_helper: 'If needed, you can read more about the E.164 standard with examples here: https://en.wikipedia.org/wiki/E.164'
+  prompt_helper: ''
   prompt_conversion: 'Please convert the number to the E.164 standard with the correct country code. Remove any whitespace from the final value.'
   test_cases: generic_phone_number
   stix_mapping: phone-number
@@ -803,7 +803,7 @@ ai_country:
   created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all countries described in the text, including countries printed as IS0-3166 Alpha2 and Alpha3 codes.'
-  prompt_helper: 'If you are unsure, you can read more about the standard here: https://www.iso.org/iso-3166-country-codes.html'
+  prompt_helper: ''
   prompt_conversion: 'Convert all country extractions to their corresponding IS0-3166 Alpha2 codes.'
   test_cases: ai_country
   stix_mapping: ctibutler-location-with-regions
@@ -819,7 +819,7 @@ ai_country_only:
   created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all countries described in the text, including countries printed as IS0-3166 Alpha2 and Alpha3 codes.'
-  prompt_helper: 'If you are unsure, you can read more about the standard here: https://www.iso.org/iso-3166-country-codes.html'
+  prompt_helper: ''
   prompt_conversion: 'Convert all country extractions to their corresponding IS0-3166 Alpha2 codes.'
   test_cases: ai_country
   stix_mapping: ctibutler-location
@@ -837,7 +837,7 @@ ai_mitre_attack_enterprise:
   created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all references to MITRE ATT&CK Enterprise tactics, techniques, groups, data sources, mitigations, software, and campaigns described in the text. These references may not be explicit in the text so you should be careful to account for the natural language of the text your analysis. Do not include MITRE ATT&CK ICS or MITRE ATT&CK Mobile in the results.'
-  prompt_helper: 'If you are unsure, you can learn more about MITRE ATT&CK Enterprise here: https://attack.mitre.org/matrices/enterprise/'
+  prompt_helper: ''
   prompt_conversion: 'You should respond with only the ATT&CK ID.'
   test_cases: ai_mitre_attack_enterprise
   stix_mapping: ctibutler-mitre-attack-enterprise-id
@@ -853,7 +853,7 @@ ai_mitre_attack_mobile:
   created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all references to MITRE ATT&CK Mobile tactics, techniques, groups, data sources, mitigations, software, and campaigns described in the text. These references may not be explicit in the text so you should be careful to account for the natural language of the text your analysis. Do not include MITRE ATT&CK ICS or MITRE ATT&CK Enterprise in the results.'
-  prompt_helper: 'Extractions should be only made if the text includes references to industrial mobile/cell networks or infrastructure. If you are unsure, you can learn more about MITRE ATT&CK Enterprise here: https://attack.mitre.org/matrices/mobile/'
+  prompt_helper: ''
   prompt_conversion: 'You should respond with only the ATT&CK ID.'
   test_cases: ai_mitre_attack_mobile
   stix_mapping: ctibutler-mitre-attack-mobile-id
@@ -869,7 +869,7 @@ ai_mitre_attack_ics:
   created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all references to MITRE ATT&CK ICS tactics, techniques, groups, data sources, mitigations, software, and campaigns described in the text. These references may not be explicit in the text so you should be careful to account for the natural language of the text your analysis. Do not include MITRE ATT&CK Mobile or MITRE ATT&CK Enterprise in the results.'
-  prompt_helper: 'Extractions should be only made if the text includes references to industrial control systems. If you are unsure, you can learn more about MITRE ATT&CK Enterprise here: https://attack.mitre.org/matrices/ics/'
+  prompt_helper: ''
   prompt_conversion: 'You should respond with only the ATT&CK ID.'
   test_cases: ai_mitre_attack_ics
   stix_mapping: ctibutler-mitre-attack-ics-id
@@ -887,7 +887,7 @@ ai_mitre_capec:
   created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all references to a MITRE CAPEC object from the text.'
-  prompt_helper: 'If you are unsure, you can learn more about MITRE CAPEC here: https://capec.mitre.org/'
+  prompt_helper: ''
   prompt_conversion: 'You should respond with only the CAPEC ID.'
   test_cases: ai_mitre_capec
   stix_mapping: ctibutler-mitre-capec-id
@@ -905,7 +905,7 @@ ai_mitre_cwe:
   created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all references to a MITRE CWE objects from the text.'
-  prompt_helper: 'If you are unsure, you can learn more about MITRE CWE here: https://cwe.mitre.org/'
+  prompt_helper: ''
   prompt_conversion: 'You should respond with only the CWE ID.'
   test_cases: ai_mitre_cwe
   stix_mapping: ctibutler-mitre-cwe-id
@@ -923,7 +923,7 @@ ai_mitre_atlas:
   created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all references to a MITRE ATLAS objects from the text.'
-  prompt_helper: 'Extractions should be only made if the text includes references of AI based threats. If you are unsure, you can learn more about MITRE ATLAS here: https://atlas.mitre.org/'
+  prompt_helper: ''
   prompt_conversion: 'You should respond with only the MITRE ATLAS ID.'
   test_cases: ai_mitre_atlas
   stix_mapping: ctibutler-mitre-atlas-id
@@ -941,7 +941,7 @@ ai_disarm:
   created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all references to a DISARM objects from the text.'
-  prompt_helper: 'Extractions should be only made if the text includes references of disinformation campaigns. If you are unsure, you can learn more about DISARM here: https://www.disarm.foundation/'
+  prompt_helper: ''
   prompt_conversion: 'You should respond with only the DISARM ID.'
   test_cases: ai_disarm
   stix_mapping: ctibutler-disarm-id
@@ -959,7 +959,7 @@ ai_mitre_f3:
   created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all references to a MITRE Fraud Fighting Framework (F3) objects from the text.'
-  prompt_helper: 'Extractions should be only made if the text includes references of fraud. If you are unsure, you can learn more about MITRE Fraud Fighting Framework (F3) here: https://ctid.mitre.org/fraud'
+  prompt_helper: ''
   prompt_conversion: 'You should respond with only the MITRE Fraud Fighting Framework (F3) ID.'
   test_cases: ai_mitre_f3
   stix_mapping: ctibutler-f3-id
@@ -977,7 +977,7 @@ ai_mitre_d3fend:
   created_by: dogesec
   version: 1.3.0
   prompt_base: 'Extract all references to MITRE D3FEND objects from the text.'
-  prompt_helper: 'Extractions should only be made if the text includes references to defensive cybersecurity techniques, countermeasures, or defensive methodologies. If you are unsure, you can learn more about MITRE D3FEND here: https://d3fend.mitre.org/'
+  prompt_helper: ''
   prompt_conversion: 'You should respond with only the MITRE D3FEND ID.'
   test_cases: ai_mitre_d3fend
   stix_mapping: ctibutler-d3fend-id
@@ -1033,8 +1033,8 @@ ai_attack_pattern:
   created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all Attack Patterns from the text.'
-  prompt_helper: 'Attack Patterns are a type of TTP that describe ways that adversaries attempt to compromise targets. Attack Patterns are used to help categorize attacks, generalize specific attacks to the patterns that they follow, and provide detailed information about how attacks are performed. An example of an attack pattern is "spear phishing": a common type of attack where an attacker sends a carefully crafted e-mail message to a party with the intent of getting them to click a link or open an attachment to deliver malware.'
-  prompt_conversion: 'Summarise the extraction into a short title describing the Attack Pattern'
+  prompt_helper: ''
+  prompt_conversion: ''
   test_cases: lookup_attack_pattern
   stix_mapping: attack-pattern
 
@@ -1049,8 +1049,8 @@ ai_campaign:
   created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all Campaigns from the text.'
-  prompt_helper: 'A Campaign is a grouping of adversarial behaviors that describes a set of malicious activities or attacks (sometimes called waves) that occur over a period of time against a specific set of targets. Campaigns usually have well defined objectives and may be part of an Intrusion Set. Campaigns are often attributed to an intrusion set and threat actors.'
-  prompt_conversion: 'Summarise the extraction into the name of the Campaign'
+  prompt_helper: ''
+  prompt_conversion: ''
   test_cases: lookup_campaign
   stix_mapping: campaign
 
@@ -1065,8 +1065,8 @@ ai_course_of_action:
   created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all Course of Actions from the text.'
-  prompt_helper: 'A Course of Action (CoA) is a recommendation from a producer of intelligence to a consumer on the actions that they might take in response to that intelligence. The CoA may be preventative to deter exploitation or corrective to counter its potential impact. The CoA may describe automatable actions (applying patches, configuring firewalls, etc.), manual processes, or a combination of the two. For example, a CoA that describes how to remediate a vulnerability could describe how to apply the patch that removes that vulnerability.'
-  prompt_conversion: 'Summarise the extraction into a short title describing the Course of Action'
+  prompt_helper: ''
+  prompt_conversion: ''
   test_cases: lookup_course_of_action
   stix_mapping: course-of-action
 
@@ -1081,7 +1081,7 @@ ai_identity:
   created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all Identities from the text.'
-  prompt_helper: 'Identities can represent actual individuals, organizations, or groups (e.g., ACME, Inc.) as well as classes of individuals, organizations, systems or groups (e.g., the finance sector).'
+  prompt_helper: ''
   prompt_conversion: ''
   test_cases: lookup_identity
   stix_mapping: identity
@@ -1097,7 +1097,7 @@ ai_infrastructure:
   created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all Infrastructure from the text.'
-  prompt_helper: 'The Infrastructure SDO represents a type of TTP and describes any systems, software services and any associated physical or virtual resources intended to support some purpose (e.g., C2 servers used as part of an attack, device or server that are part of defence, database servers targeted by an attack, etc.).'
+  prompt_helper: ''
   prompt_conversion: ''
   test_cases: lookup_infrastructure
   stix_mapping: infrastructure
@@ -1113,8 +1113,8 @@ ai_intrusion_set:
   created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all Intrusion Sets from the text.'
-  prompt_helper: 'An Intrusion Set is a grouped set of adversarial behaviors and resources with common properties that is believed to be orchestrated by a single organization. An Intrusion Set may capture multiple Campaigns or other activities that are all tied together by shared attributes indicating a common known or unknown Threat Actor.'
-  prompt_conversion: 'Summarise the extraction into a short title describing the Intrusion Set'
+  prompt_helper: ''
+  prompt_conversion: ''
   test_cases: lookup_intrusion_set
   stix_mapping: intrusion-set
 
@@ -1129,7 +1129,7 @@ ai_malware:
   created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all Malware names from the text.'
-  prompt_helper: 'Malware is a type of TTP that represents malicious code. It generally refers to a program that is inserted into a system, usually covertly. The intent is to compromise the confidentiality, integrity, or availability of the victims data, applications, or operating system (OS) or otherwise annoy or disrupt the victim.'
+  prompt_helper: ''
   prompt_conversion: ''
   test_cases: lookup_malware
   stix_mapping: malware
@@ -1145,7 +1145,7 @@ ai_threat_actor:
   created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all Threat Actor names from the text.'
-  prompt_helper: 'Threat Actors are actual individuals, groups, or organizations believed to be operating with malicious intent. A Threat Actor is not an Intrusion Set but may support or be affiliated with various Intrusion Sets, groups, or organizations over time. Threat Actors can be characterized by their motives, capabilities, goals, sophistication level, past activities, resources they have access to, and their role in the organization.'
+  prompt_helper: ''
   prompt_conversion: ''
   test_cases: lookup_threat_actor
   stix_mapping: threat-actor
@@ -1161,7 +1161,7 @@ ai_tool:
   created_by: dogesec
   version: 1.0.0
   prompt_base: 'Extract all Software names from the text.'
-  prompt_helper: 'Legitimate software that can be used by threat actors to perform attacks. Unlike malware, these software packages are often found on a system and have legitimate purposes for power users, system administrators, network administrators, or even normal users. Remote access tools (e.g., RDP) and network scanning tools (e.g., Nmap) are examples of software that may be used by a Threat Actor during an attack.'
+  prompt_helper: ''
   prompt_conversion: ''
   test_cases: lookup_tool
   stix_mapping: tool
