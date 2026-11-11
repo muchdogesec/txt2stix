@@ -364,22 +364,19 @@ all_extractors = get_all_extractors()
                 "phone-number--f3ea8fdf-ef0f-5711-a105-7fcb1c289dc6",
             },
         ],
-        ## payment-card, with issuer-name
+        ## payment-card (no BIN lookup: card only, no issuer identity or location)
         pytest.param(
             "4142414241424142",
             "pattern_bank_card_mastercard",
             {
-                "location--e68e76c5-60f1-506e-b495-86adb8ec0a5b",
                 "payment-card--0e1fb108-12c0-5357-9265-d0bcdd90c4bd",
-                "relationship--acd8efa8-3702-5c74-bb9c-ddb9720ca799",
                 "indicator--12f0d365-0b5d-53c4-9b23-2032db90887c",
                 "relationship--f372a1f8-397a-57f1-a14c-fe808dd286cd",
-                "identity--643665ba-f411-5f6f-aa8a-40bb2003529d",
             },
             {
                 "payment-card--0e1fb108-12c0-5357-9265-d0bcdd90c4bd",
             },
-            id="payment-card, with issuer-name",
+            id="payment-card, no issuer lookup",
         ),
         ## identity
         pytest.param(
