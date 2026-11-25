@@ -1,5 +1,11 @@
+from unittest import mock
+
 import pytest
-from txt2stix.retriever import _retrieve_stix_objects, retrieve_stix_objects
+from txt2stix.retriever import (
+    STIXObjectRetriever,
+    _retrieve_stix_objects,
+    retrieve_stix_objects,
+)
 
 
 @pytest.fixture(scope="session")
@@ -149,3 +155,17 @@ def test_retrieve_objects(stix_mapping, kb_id, expected_ids, f):
     assert objects != None
     object_ids = {x["id"] for x in objects}
     assert object_ids == set(expected_ids)
+
+
+@pytest.mark.parametrize(
+    ("knowledge_base", "method_name"),
+    [("disarm-id", "get_objects_by_id"), ("disarm-name", "get_objects_by_name")],
+)
+def test_disarm_retrieval_uses_lookup_version(
+    knowledge_base, method_name, monkeypatch
+):
+    monkeypatch.setenv("CTIBUTLER_BASE_URL", "https://example.invalid")
+    with mock.patch.object(STIXObjectRetriever, method_name, return_value=[{}]) as method:
+        _retrieve_stix_objects("ctibutler", knowledge_base, "value")
+
+    assert method.call_args.kwargs["disarm_version"] == "1.6"

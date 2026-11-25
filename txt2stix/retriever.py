@@ -54,9 +54,10 @@ class STIXObjectRetriever:
         )
         return self._retrieve_objects(endpoint)
 
-    def get_objects_by_id(self, id, type):
+    def get_objects_by_id(self, id, type, **query_params):
         return self._retrieve_objects(
-            urljoin(self.api_root, f"v1/{type}/objects/{id}/")
+            urljoin(self.api_root, f"v1/{type}/objects/{id}/"),
+            query_params=query_params,
         )
     
     def retrieve_object_by_id(self, id, type):
@@ -74,9 +75,10 @@ class STIXObjectRetriever:
         endpoint = urljoin(self.api_root, f"v1/location/objects/{id}/bundle/?types=location,relationship")
         return self._retrieve_objects(endpoint, key="objects")
 
-    def get_objects_by_name(self, name, type):
+    def get_objects_by_name(self, name, type, **query_params):
         return self._retrieve_objects(
-            urljoin(self.api_root, f"v1/{type}/objects/?name={name}")
+            urljoin(self.api_root, f"v1/{type}/objects/?name={name}"),
+            query_params=query_params,
         )
 
     def get_objects_by_alias(self, alias, type):
@@ -84,11 +86,15 @@ class STIXObjectRetriever:
             urljoin(self.api_root, f"v1/{type}/objects/?alias={alias}")
         )
 
-    def _retrieve_objects(self, endpoint, key="objects"):
+    def _retrieve_objects(self, endpoint, key="objects", query_params=None):
         data = []
         page = 1
+        query_params = query_params or {}
         while True:
-            resp = self.session.get(endpoint, params=dict(page=page, page_size=50))
+            resp = self.session.get(
+                endpoint,
+                params=dict(page=page, page_size=50, **query_params),
+            )
             resp.raise_for_status()
             d = resp.json()
             if len(d[key]) == 0:
@@ -117,7 +123,9 @@ def _retrieve_stix_objects(host, knowledge_base, filter_value):
         case "mitre-atlas-id":
             return retreiver.get_objects_by_id(filter_value, "atlas")
         case "disarm-id":
-            return retreiver.get_objects_by_id(filter_value, "disarm")
+            return retreiver.get_objects_by_id(
+                filter_value, "disarm", disarm_version="1.6"
+            )
         case "mitre-cwe-id":
             return retreiver.get_objects_by_id(filter_value, "cwe")
         case "cve-id":
@@ -174,7 +182,9 @@ def _retrieve_stix_objects(host, knowledge_base, filter_value):
         case "mitre-atlas-name":
             return retreiver.get_objects_by_name(filter_value, "atlas")
         case "disarm-name":
-            return retreiver.get_objects_by_name(filter_value, "disarm")
+            return retreiver.get_objects_by_name(
+                filter_value, "disarm", disarm_version="1.6"
+            )
         case _:
             raise UnsupportedRemoteExtraction(
                 f"pair {(host, knowledge_base)=} not implemented"
