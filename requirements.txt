@@ -6,7 +6,7 @@
 #
 aiohappyeyeballs==2.6.1
     # via aiohttp
-aiohttp==3.13.4
+aiohttp==3.14.4
     # via llama-index-core
 aiosignal==1.4.0
     # via aiohttp
@@ -16,7 +16,7 @@ annotated-types==0.7.0
     # via pydantic
 antlr4-python3-runtime==4.9.3
     # via stix2-patterns
-anyio==4.10.0
+anyio==4.14.2
     # via
     #   httpx
     #   openai
@@ -27,13 +27,13 @@ attrs==25.3.0
     #   aiohttp
     #   jsonschema
     #   referencing
-banks==2.4.2
+banks==2.5.1
     # via llama-index-core
 base58==2.1.1
     # via txt2stix (pyproject.toml)
 beautifulsoup4==4.13.5
     # via txt2stix (pyproject.toml)
-certifi==2025.8.3
+certifi==2026.10.18
     # via
     #   httpcore
     #   httpx
@@ -59,7 +59,7 @@ dirtyjson==1.0.8
     # via llama-index-core
 distro==1.9.0
     # via openai
-filelock==3.19.1
+filelock==4.2.1
     # via tldextract
 filetype==1.2.0
     # via llama-index-core
@@ -69,7 +69,7 @@ frozenlist==1.7.0
     # via
     #   aiohttp
     #   aiosignal
-fsspec==2025.7.0
+fsspec==2026.6.0
     # via llama-index-core
 greenlet==3.2.4
     # via sqlalchemy
@@ -99,7 +99,7 @@ jiter==0.10.0
     # via openai
 joblib==1.5.1
     # via nltk
-json-repair==0.52.4
+json-repair==0.60.1
     # via txt2stix (pyproject.toml)
 jsonpointer==3.0.0
     # via jsonschema
@@ -123,7 +123,7 @@ markupsafe==3.0.2
     # via jinja2
 marshmallow==3.26.2
     # via dataclasses-json
-mistune==3.2.1
+mistune==3.3.4
     # via txt2stix (pyproject.toml)
 multidict==6.6.4
     # via
@@ -135,7 +135,7 @@ nest-asyncio==1.6.0
     # via llama-index-core
 networkx==3.5
     # via llama-index-core
-nltk==3.9.1
+nltk==3.10.4
     # via llama-index-core
 numpy==2.3.2
     # via llama-index-core
@@ -147,7 +147,7 @@ pathvalidate==3.3.1
     # via txt2stix (pyproject.toml)
 phonenumberslite==9.0.26
     # via txt2stix (pyproject.toml)
-pillow==11.3.0
+pillow==13.0.0
     # via llama-index-core
 platformdirs==4.3.8
     # via
@@ -172,7 +172,7 @@ python-dateutil==2.9.0.post0
     # via
     #   arrow
     #   stix2-validator
-python-dotenv==1.1.1
+python-dotenv==1.2.2
     # via txt2stix (pyproject.toml)
 pytz==2025.2
     # via stix2
@@ -186,7 +186,7 @@ regex==2025.7.34
     # via
     #   nltk
     #   tiktoken
-requests==2.32.5
+requests==2.33.0
     # via
     #   llama-index-core
     #   requests-file
@@ -225,7 +225,7 @@ sniffio==1.3.1
     # via
     #   anyio
     #   openai
-soupsieve==2.7
+soupsieve==4.0.0
     # via beautifulsoup4
 sqlalchemy[asyncio]==2.0.43
     # via llama-index-core
@@ -274,7 +274,7 @@ tzdata==2025.2
     # via arrow
 uri-template==1.3.0
     # via jsonschema
-urllib3==2.6.3
+urllib3==2.8.0
     # via requests
 validators==0.35.0
     # via txt2stix (pyproject.toml)
@@ -284,7 +284,7 @@ wrapt==1.17.3
     # via
     #   deprecated
     #   llama-index-core
-yarl==1.20.1
+yarl==1.25.1
     # via aiohttp
 
 # The following packages are considered to be unsafe in a requirements file:
